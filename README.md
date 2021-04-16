@@ -2,7 +2,7 @@
 [![ucvm-ci Actions Status](https://github.com/SCECcode/UCVMC/workflows/ucvm-ci/badge.svg)](https://github.com/SCECcode/UCVMC/actions)
 
 
-# UCVMC
+# UCVM
 
 ## Current UCVM Software Release
 The current UCVM software version is UCVM v19.4.0 which was released in June 2019. We recommend that new users work with this most recent version.
