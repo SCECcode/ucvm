@@ -48,10 +48,6 @@ int (*model_finalize)();
 int (*model_version)(char *ver, int len);
 } ucvm_plugin_model_t;
 
-int (*mmodel_init)(const char *dir, const char *label);
-
-ucvm_plugin_model_t plugin_models[UCVM_MAX_MODELS];
-
 ucvm_plugin_model_t *get_plugin_by_label(char *);
 ucvm_plugin_model_t *get_plugin_by_id(int);
 ucvm_plugin_model_t *get_plugin_by_order(int);
@@ -62,15 +58,15 @@ typedef int (*MFPTR())();
 typedef int (*MVPTR())(char *, int);
 
 // UCVM API Required Functions
-int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf);		/** Initializes CVM-S5. */
-int ucvm_plugin_model_finalize();								/** Cleans up memory, closes CVM-S5. */
-int ucvm_plugin_model_version(int id, char *ver, int len);		/** Retrieves the version of CVM-S5 that we are using. */
-int ucvm_plugin_model_label(int id, char *lab, int len);			/** Retrieves the label for CVM-S5. */
-int ucvm_plugin_model_setparam(int id, int param, ...);			/** Sets optional parameters. */
-int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode,			/** Actually queries the model. */
+int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf);	/** Initializes the model. */
+int ucvm_plugin_model_finalize();				/** Cleans up memory, closes model. */
+int ucvm_plugin_model_version(int id, char *ver, int len);	/** Retrieves the version of model that we are using. */
+int ucvm_plugin_model_label(int id, char *lab, int len);	/** Retrieves the label for model. */
+int ucvm_plugin_model_setparam(int id, int param, ...);		/** Sets optional parameters. */
+int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode,		/** Actually queries the model. */
 			  int n, ucvm_point_t *pnt,
 			  ucvm_data_t *data);
 int ucvm_plugin_get_model(const char *dir, const char *label,
-			  ucvm_model_t *m);						/** Fills the UCVM model structure with S5. */
+			  ucvm_model_t *m);			/** Fills the UCVM model structure. */
 
 #endif

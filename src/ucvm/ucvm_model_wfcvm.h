@@ -3,7 +3,6 @@
 
 #include "ucvm_dtypes.h"
 
-
 /* Init WFCVM */
 int ucvm_wfcvm_model_init(int id, ucvm_modelconf_t *conf);
 

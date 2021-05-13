@@ -29,7 +29,8 @@ optional_large_model_list = [ "cvms5",
                     "cvmh-15.1.1",
                     "albacore",
                     "cvlsu",
-                    "ivlsu"]
+                    "ivlsu",
+                    "wfcvm"]
 optional_large_model_size = { 'cvms5':'1.2G',
                               'cca':'9.2G',
                               'cs173':'72G',
@@ -40,14 +41,14 @@ optional_large_model_size = { 'cvms5':'1.2G',
                               'cvmh-15.1.1':'1.6G',
                               'albacore':'2.3M',
                               'cvlsu':'1M',
-                              'ivlsu':'1M'}
+                              'ivlsu':'1M',
+                              'wfcvm':'50M'}
 target_large_lib_list = ["proj-5.0.0.tar.gz",
                   "fftw-3.3.3.tar.gz",
                   "euclid3-1.3.tar.gz"]
 ##
-## target_large_model_list = ["cvmh-15.1.1.tar.gz"]
 target_large_model_list = []
-target_large_etree_list = ["ucvm.e"]
+target_large_etree_list = ["ucvm.e","ucvm_utah.e"]
 target_large_ref_list = ["test-grid-lib-1d.ref"]
 
 #
@@ -73,11 +74,11 @@ def download_urlfile(url,fname):
 curdir = os.getcwd()
 if os.path.basename(os.path.normpath(curdir)) == "largefiles":
   print("Running in UCVMC/largefiles source directory. ")
-  print("This script will download and install ucvm.e and several other files.")
+  print("This script will download and install ucvm.e, ucvm_utah.e and several other files.")
   print("Due to the size of the files, this download could take minutes to hours to complete.")
 else:
   print("Run this script in the directory that contains the UCVMC/largefiles src directory.")
-  print("This script will download and install ucvm.e and several other files.")
+  print("This script will download and install ucvm.e, ucvm_utah.e and several other files.")
   print("Due to the size of the files, this download could take minutes to hours to complete.")
   sys.exit(0)
 

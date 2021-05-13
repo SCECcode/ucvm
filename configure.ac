@@ -26,7 +26,6 @@ esac
 
 # Determine MPI/CC compiler
 #: ${CFLAGS=""}
-#AC_PROG_CC
 AX_PROG_CC_MPI([true],[use_mpi=yes],[use_mpi=no])
 
 # Check for GNU compiler
@@ -569,9 +568,8 @@ if test "x$enable_model_cvms" = xyes; then
    LDFLAGS="$CVMS_LIB $LDFLAGS"
 
    echo "Checking for SCEC CVM-S"
-   AC_CHECK_LIB(cvms, cvms_init_,[AM_CONDITIONAL(UCVM_AM_ENABLE_CVMS, true)], [AC_MSG_ERROR(["SCEC CVM-S library not found; use --with-cvms-lib-path"])],[-lgfortran -lm])
+   AC_CHECK_LIB(cvms,cvms_init_,[AM_CONDITIONAL(UCVM_AM_ENABLE_CVMS, true)],[AC_MSG_ERROR(["SCEC CVM-S library requires C compiler that can link Fortran libraries"])],[-lgfortran -lm])
    AC_CHECK_HEADER(cvms.h,[],[AC_MSG_ERROR(["SCEC CVM-S header not found; use --with-cvms-include-path"])],[AC_INCLUDES_DEFAULT])
-
    AC_CHECK_FILE([$CVMS_MODEL], [], [AC_MSG_ERROR(["SCEC CVM-S model dir not found; use --with-cvms-model-path"])])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMS, false)
@@ -584,14 +582,15 @@ if test "x$enable_model_cvmsi" = xyes; then
    LDFLAGS="$CVMSI_LIB $LDFLAGS"
 
    echo "Checking for SCEC CVM-SI"
-   AC_CHECK_LIB(cvmsi, cvmsi_init,[AM_CONDITIONAL(UCVM_AM_ENABLE_CVMSI, true)], [AC_MSG_ERROR(["SCEC CVM-SI library not found; use --with-cvmsi-lib-path"])],[-lgfortran -lm])
+   AC_CHECK_LIB(cvmsi,utm_geo_,[AM_CONDITIONAL(UCVM_AM_ENABLE_CVMSI, true)],[AC_MSG_ERROR(["SCEC CVM-SI library requires C compiler that can link Fortran libraries"])],[-lgfortran -lm])
+   echo "Checking for SCEC CVM-SI header"
    AC_CHECK_HEADER(cvmsi.h,[],[AC_MSG_ERROR(["SCEC CVM-SI header not found; use --with-cvmsi-include-path"])],[AC_INCLUDES_DEFAULT])
 
+   echo "Checking for SCEC CVM-SI model directory"
    AC_CHECK_FILE([$CVMSI_MODEL], [], [AC_MSG_ERROR(["SCEC CVM-SI model dir not found; use --with-cvmsi-model-path"])])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMSI, false)
 fi
-
 
 # Check optional SCEC IMPERIAL installation
 if test "x$enable_static" = xyes; then
@@ -652,7 +651,7 @@ if test "x$enable_model_cvms5" = xyes; then
    LDFLAGS="$CVMS5_LIB $LDFLAGS"
 
    echo "Checking for SCEC CVM-S5"
-   AC_CHECK_LIB(cvms5, cvms5_init,[AM_CONDITIONAL(UCVM_AM_ENABLE_CVMS5, true)], [AC_MSG_ERROR(["SCEC CVM-S5 library not found; use --with-cvms5-lib-path"])],[-lproj -letree -lgfortran -lm])
+   AC_CHECK_LIB(cvms5,utm_geo_,[AM_CONDITIONAL(UCVM_AM_ENABLE_CVMS5, true)],[AC_MSG_ERROR(["SCEC CVM-S5 library requires C compiler that can link Fortran libraries"])],[-lproj -letree -lgfortran -lm])
    AC_CHECK_HEADER(cvms5.h,[],[AC_MSG_ERROR(["SCEC CVM-S5 header not found; use --with-cvms5-include-path"])],[AC_INCLUDES_DEFAULT])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMS5, false)
@@ -669,7 +668,7 @@ if test "x$enable_model_cca" = xyes; then
    LDFLAGS="$CCA_LIB $LDFLAGS"
 
    echo "Checking for SCEC CCA"
-   AC_CHECK_LIB(cca, cca_init,[AM_CONDITIONAL(UCVM_AM_ENABLE_CCA, true)], [AC_MSG_ERROR(["SCEC CCA library not found; use --with-cca-lib-path"])],[-lproj -letree -lgfortran -lm])
+   AC_CHECK_LIB(cca,utm_geo_,[AM_CONDITIONAL(UCVM_AM_ENABLE_CCA, true)],[AC_MSG_ERROR(["SCEC CCA library requires C compiler that can link Fortran libraries"])],[-lproj -letree -lgfortran -lm])
    AC_CHECK_HEADER(cca.h,[],[AC_MSG_ERROR(["SCEC CCA header not found; use --with-cca-include-path"])],[AC_INCLUDES_DEFAULT])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CCA, false)
@@ -686,7 +685,7 @@ if test "x$enable_model_cs173" = xyes; then
    LDFLAGS="$CS173_LIB $LDFLAGS"
 
    echo "Checking for SCEC CS173"
-   AC_CHECK_LIB(cs173, cs173_init,[AM_CONDITIONAL(UCVM_AM_ENABLE_CS173, true)], [AC_MSG_ERROR(["SCEC CS173 library not found; use --with-cs173-lib-path"])],[-lproj -letree -lgfortran -lm])
+   AC_CHECK_LIB(cs173, cs173_init,[AM_CONDITIONAL(UCVM_AM_ENABLE_CS173, true)], [AC_MSG_ERROR(["SCEC CS173 library requires a C compiler that can link Fortran libraries"])],[-lproj -letree -lgfortran -lm])
    AC_CHECK_HEADER(cs173.h,[],[AC_MSG_ERROR(["SCEC CS173 header not found; use --with-cs173-include-path"])],[AC_INCLUDES_DEFAULT])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CS173, false)
@@ -703,7 +702,7 @@ if test "x$enable_model_cs173h" = xyes; then
    LDFLAGS="$CS173H_LIB $LDFLAGS"
 
    echo "Checking for SCEC CS173H"
-   AC_CHECK_LIB(cs173h, cs173h_init,[AM_CONDITIONAL(UCVM_AM_ENABLE_CS173H, true)], [AC_MSG_ERROR(["SCEC CS173H library not found; use --with-cs173h-lib-path"])],[-lproj -letree -lgfortran -lm])
+   AC_CHECK_LIB(cs173h, cs173h_init,[AM_CONDITIONAL(UCVM_AM_ENABLE_CS173H, true)], [AC_MSG_ERROR(["SCEC CS173H library requires a C compiler that can link Fortran libraries"])],[-lproj -letree -lgfortran -lm])
    AC_CHECK_HEADER(cs173h.h,[],[AC_MSG_ERROR(["SCEC CS173H header not found; use --with-cs173h-include-path"])],[AC_INCLUDES_DEFAULT])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CS173H, false)
@@ -734,9 +733,8 @@ if test "x$enable_model_wfcvm" = xyes; then
    LDFLAGS="$WFCVM_LIB $LDFLAGS"
 
    echo "Checking for WFCVM"
-   AC_CHECK_LIB(wfcvm, wfcvm_init_,[AM_CONDITIONAL(UCVM_AM_ENABLE_WFCVM, true)], [AC_MSG_ERROR(["WFCVM library not found; use --with-wfcvm-lib-path"])], [-lgfortran -lm])
+   AC_CHECK_LIB(wfcvm, wfcvm_init_,[AM_CONDITIONAL(UCVM_AM_ENABLE_WFCVM, true)],[AC_MSG_ERROR(["SCEC WFCVM library requires a C compiler that can link Fortran libraries"])],[-lgfortran -lm])
    AC_CHECK_HEADER(wfcvm.h,[],[AC_MSG_ERROR(["WFCVM header not found; use --with-wfcvm-include-path"])],[AC_INCLUDES_DEFAULT])
-
    AC_CHECK_FILE([$WFCVM_MODEL], [], [AC_MSG_ERROR(["WFCVM model dir not found; use --with-wfcvm-model-path"])])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_WFCVM, false)

@@ -37,9 +37,9 @@ fi
 
 ## 
 if [ "$LD_LIBRARY_PATH" ] ; then
-  export LD_LIBRARY_PATH=${SCRIPT_DIR}/../lib/euclid3/lib:${SCRIPT_DIR}/../lib/proj-5/lib:${SCRIPT_DIR}/../model/cvms426/lib:${SCRIPT_DIR}/../model/cvms5/lib:${SCRIPT_DIR}/../model/cca/lib:${SCRIPT_DIR}/../model/cencal/lib:${SCRIPT_DIR}/../model/cs173/lib:${SCRIPT_DIR}/../model/albacore/lib:$LD_LIBRARY_PATH
+  export LD_LIBRARY_PATH=${SCRIPT_DIR}/../lib/euclid3/lib:${SCRIPT_DIR}/../lib/proj-5/lib:${SCRIPT_DIR}/../model/cvms426/lib:${SCRIPT_DIR}/../model/cvms5/lib:${SCRIPT_DIR}/../model/cca/lib:${SCRIPT_DIR}/../model/cencal/lib:${SCRIPT_DIR}/../model/cs173/lib:${SCRIPT_DIR}/../model/albacore/lib:${SCRIPT_DIR}/../model/ivlsu/lib:${SCRIPT_DIR}/../model/cvlsu/lib:${SCRIPT_DIR}/../model/wfcvm/lib:$LD_LIBRARY_PATH
   else
-    export LD_LIBRARY_PATH=${SCRIPT_DIR}/../lib/euclid3/lib:${SCRIPT_DIR}/../lib/proj-5/lib:${SCRIPT_DIR}/../model/cvms426/lib:${SCRIPT_DIR}/../model/cvms5/lib:${SCRIPT_DIR}/../model/cca/lib:${SCRIPT_DIR}/../model/cencal/lib:${SCRIPT_DIR}/../model/cs173/lib:${SCRIPT_DIR}/../model/albacore/lib
+    export LD_LIBRARY_PATH=${SCRIPT_DIR}/../lib/euclid3/lib:${SCRIPT_DIR}/../lib/proj-5/lib:${SCRIPT_DIR}/../model/cvms426/lib:${SCRIPT_DIR}/../model/cvms5/lib:${SCRIPT_DIR}/../model/cca/lib:${SCRIPT_DIR}/../model/cencal/lib:${SCRIPT_DIR}/../model/cs173/lib:${SCRIPT_DIR}/../model/albacore/lib:${SCRIPT_DIR}/../model/ivlsu/lib:${SCRIPT_DIR}/../model/cvlsu/lib:${SCRIPT_DIR}/../model/wfcvm/lib
 fi
 
 if [ "$DYLD_LIBRARY_PATH" ] ; then

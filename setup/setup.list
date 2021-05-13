@@ -1,5 +1,15 @@
 {
 	"models": {
+		"WFCVM": {
+			"Version": "2.0",
+                        "Abbreviation": "wfcvm",
+                        "Size": "50M",
+			"Path": "wfcvm",
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V19_4/wfcvm.tar.gz",
+			"Flags": "--enable-model-wfcvm --with-wfcvm-lib-path=lib --with-wfcvm-include-path=include --with-wfcvm-model-path=src",
+			"Ask": "yes",
+			"Order": "12"		
+		},
 		"IMPERIAL": {
 			"Version": "1.0",
                         "Abbreviation": "ivlsu",
@@ -49,6 +59,7 @@
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V19_4/cvms5.tar.gz",
 			"Flags": "--enable-model-cvms5 --with-cvms5-lib-path=lib --with-cvms5-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
+                        "Requirements": ["gfortran"],
 			"Ask": "yes",
 			"Order": "2"		
 		},
@@ -59,6 +70,7 @@
 			"Path": "cvms426",
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V19_4/cvms426.tar.gz",
 			"Flags": "--enable-model-cvmsi --with-cvmsi-lib-path=lib --with-cvmsi-include-path=include --with-cvmsi-model-path=model/i26",
+                        "Requirements": ["gfortran"],
 			"Ask": "yes",
 			"Order": "3"		
 		},
@@ -90,6 +102,7 @@
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V19_4/cca.tar.gz",
 			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
+                        "Requirements": ["gfortran"],
 			"Ask": "yes",
 			"Order": "6"		
 		},

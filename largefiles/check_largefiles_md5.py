@@ -33,8 +33,9 @@ target_large_model_list = ["cvms5.tar.gz",
                     "cencal080.tar.gz",
                     "albacore.tar.gz",
                     "cvlsu.tar.gz",
-                    "ivlsu.tar.gz"]
-target_large_etree_list = ["ucvm.e"]
+                    "ivlsu.tar.gz",
+                    "wfcvm.tar.gz"]
+target_large_etree_list = ["ucvm.e","ucvm_utah.e"]
 target_large_ref_list = ["test-grid-lib-1d.ref"]
 
 #

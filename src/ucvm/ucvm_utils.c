@@ -95,7 +95,7 @@ int list_parse(const char *lstr, int llen, double *arr, int an)
   }
 
   ucvm_strcpy(strbuf, lstr, llen);
-  token = strtok(lstr, LIST_DELIM);
+  token = strtok((char *)lstr, LIST_DELIM);
   while ((token != NULL) && (i < an)) {
     arr[i++] = atof(token);
     token = strtok(NULL, LIST_DELIM);

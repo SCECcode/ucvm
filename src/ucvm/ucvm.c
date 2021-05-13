@@ -155,6 +155,7 @@ int ucvm_init(const char *config)
   // ucvm_dump_config(ucvm_cfg);
 
   /* Check that UCVM interface and map path are defined */
+  /* for ucvm */
   cfgentry = ucvm_find_name(ucvm_cfg, "ucvm_interface");
   if (cfgentry == NULL) {
     fprintf(stderr, "UCVM map interface not found in %s\n", config);
@@ -166,6 +167,20 @@ int ucvm_init(const char *config)
   }
   if (ucvm_find_name(ucvm_cfg, "ucvm_mappath") == NULL) {
     fprintf(stderr, "UCVM map path not found in %s\n", config);
+    return(UCVM_CODE_ERROR);
+  }
+  /* for ucvm_utah */
+  cfgentry = ucvm_find_name(ucvm_cfg, "ucvm_utah_interface");
+  if (cfgentry == NULL) {
+    fprintf(stderr, "UCVM Utah map interface not found in %s\n", config);
+    return(UCVM_CODE_ERROR);
+  }
+  if (strcmp(cfgentry->value, UCVM_MAP_ETREE) != 0) {
+    fprintf(stderr, "Invalid UCVM Utah map interface %s\n", cfgentry->value);
+    return(UCVM_CODE_ERROR);
+  }
+  if (ucvm_find_name(ucvm_cfg, "ucvm_utah_mappath") == NULL) {
+    fprintf(stderr, "UCVM Utah map path not found in %s\n", config);
     return(UCVM_CODE_ERROR);
   }
 
@@ -530,11 +545,19 @@ int ucvm_add_user_model(ucvm_model_t *m, ucvm_modelconf_t *mconf)
 
   /* Perform init */
   if ((mptr->init)(mmax, mconf) != UCVM_CODE_SUCCESS) {
-    fprintf(stderr, "Failed to init model %s with config '%s' and extconfig '%s'. ", 
+
+    if(strlen(mconf->extconfig) != 0) {
+      fprintf(stderr, "Failed to init model %s with config '%s' and extconfig '%s'.", 
 	    mconf->label, mconf->config, mconf->extconfig);
-    fprintf(stderr, 
+      fprintf(stderr, 
 	    "Config keys %s_modelpath and/or %s_extmodelpath are likely undefined.\n", 
 	    mconf->label, mconf->label);
+      } else {
+        fprintf(stderr, "Failed to init model %s with config '%s'.", 
+	    mconf->label, mconf->config);
+        fprintf(stderr, 
+	    "Config keys %s_modelpath is likely undefined.\n", mconf->label);
+    }
 
     return(UCVM_CODE_ERROR);
   }

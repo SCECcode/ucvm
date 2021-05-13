@@ -4,6 +4,8 @@
 #include "ucvm_utils.h"
 #include "ucvm_model_plugin.h"
 
+ucvm_plugin_model_t plugin_models[UCVM_MAX_MODELS];
+
 #ifndef _UCVM_AM_STATIC
 	#include <dlfcn.h>
 #endif

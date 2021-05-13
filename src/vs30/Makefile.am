@@ -8,7 +8,7 @@ endif
 
 # General compiler/linker flags
 AM_CFLAGS = -I../ucvm
-AM_LDFLAGS = -L../ucvm -lucvm ${LDFLAGS}
+AM_LDFLAGS = -dynamic  -L../ucvm -lucvm ${LDFLAGS}
 
 if UCVM_HAVE_MPI
 AM_CFLAGS += -DUM_ENABLE_MPI

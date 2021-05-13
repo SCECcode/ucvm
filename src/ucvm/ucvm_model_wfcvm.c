@@ -59,7 +59,7 @@ int ucvm_wfcvm_model_init(int id, ucvm_modelconf_t *conf)
 
   wfcvm_init_(modeldir, &errcode);
   if (errcode != 0) {
-    fprintf(stderr, "Failed to init CVM-S\n");
+    fprintf(stderr, "Failed to init WFCVM\n");
     return(UCVM_CODE_ERROR);
   }
 
