@@ -59,6 +59,7 @@ ucvm_plugin_model_t plugin_models[UCVM_MAX_MODELS];
 
 /** Have we initialized this model yet? */
 int plugin_model_initialized = 0;
+ucvm_plugin_model_t plugin_models[UCVM_MAX_MODELS];
 
 /**
  * Initializes the model within the UCVM framework. This is accomplished
