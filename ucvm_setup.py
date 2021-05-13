@@ -239,8 +239,8 @@ def _add2LIBRARYPATH_bash(modelsToInstall, librariesToInstall) :
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cs173h/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cs173hlib\n"
     if "CVM-H" in modelsToInstall:
-        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmh1511/lib\n"
-        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmh1511/lib\n"
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmh/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmh/lib\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms/lib\n"
@@ -260,8 +260,8 @@ def _add2LIBRARYPATH_bash(modelsToInstall, librariesToInstall) :
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms5/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms5/lib\n"
     if "CVM-S4.26.M01" in modelsToInstall:
-        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms426/lib\n"
-        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms426/lib\n"
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmsi/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmsi/lib\n"
     if "CenCalVM" in modelsToInstall:
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cencal/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cencal/lib\n"
@@ -364,8 +364,8 @@ def _add2LIBRARYPATH_python(modelsToInstall, librariesToInstall) :
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cs173h/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cs173hlib\")\n"
     if "CVM-H" in modelsToInstall:
-        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmh1511/lib\")\n"
-        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmh1511/lib\")\n"
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmh/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmh/lib\")\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms/lib\")\n"
@@ -385,8 +385,8 @@ def _add2LIBRARYPATH_python(modelsToInstall, librariesToInstall) :
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms5/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms5/lib\")\n"
     if "CVM-S4.26.M01" in modelsToInstall:
-        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms426/lib\")\n"
-        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms426/lib\")\n"
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmsi/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmsi/lib\")\n"
     if "CenCalVM" in modelsToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cencal/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cencal/lib\")\n"
@@ -466,7 +466,7 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
     if "CS173H" in modelsToInstall:
         str=str+"install_name_tool -change libcs173h.so ${MY_UCVM_INSTALL_PATH}/model/cs173h/lib/libcs173h.so $1\n"
     if "CVM-H" in modelsToInstall:
-        str=str+"install_name_tool -change libcvmh.so ${MY_UCVM_INSTALL_PATH}/model/cvmh1511/lib/libcvmh.so $1\n"
+        str=str+"install_name_tool -change libcvmh.so ${MY_UCVM_INSTALL_PATH}/model/cvmh/lib/libcvmh.so $1\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"install_name_tool -change libcvms.so ${MY_UCVM_INSTALL_PATH}/model/cvms/lib/libcvms.so $1\n"
     if "WFCVM" in modelsToInstall:
@@ -480,7 +480,7 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
     if "CVM-S4.26" in modelsToInstall:
         str=str+"install_name_tool -change libcvms5.so ${MY_UCVM_INSTALL_PATH}/model/cvms5/lib/libcvms5.so $1\n"
     if "CVM-S4.26.M01" in modelsToInstall:
-        str=str+"install_name_tool -change libcvmsi.so ${MY_UCVM_INSTALL_PATH}/model/cvms426/lib/libcvmsi.so $1\n"
+        str=str+"install_name_tool -change libcvmsi.so ${MY_UCVM_INSTALL_PATH}/model/cvmsi/lib/libcvmsi.so $1\n"
     if "CenCalVM" in modelsToInstall:
         str=str+"install_name_tool -change libcencal.so ${MY_UCVM_INSTALL_PATH}/model/cencal/lib/libcencal.so $1\n"
     if "CCA" in modelsToInstall:
