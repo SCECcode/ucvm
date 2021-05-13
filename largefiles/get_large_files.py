@@ -13,20 +13,20 @@ else:
   from urllib2 import urlopen
 
 #
-UCVM_Version = "19.4"
+UCVM_Version = "21.7"
 
 # remote repository
-ucvmc_largefile_repository = "http://hypocenter.usc.edu/research/ucvmc/V19_4"
+ucvmc_largefile_repository = "http://hypocenter.usc.edu/research/ucvmc/V21_7"
 
 #
 optional_large_model_list = [ "cvms5",
                     "cca",
                     "cs173",
                     "cs173h",
-                    "cvms4",
-                    "cvms426",
-                    "cencal080",
-                    "cvmh-15.1.1",
+                    "cvms",
+                    "cvmsi",
+                    "cencal",
+                    "cvmh",
                     "albacore",
                     "cvlsu",
                     "ivlsu",
@@ -35,10 +35,10 @@ optional_large_model_size = { 'cvms5':'1.2G',
                               'cca':'9.2G',
                               'cs173':'72G',
                               'cs173h':'72G',
-                              'cvms4':'326M',
-                              'cvms426':'1.6G',
-                              'cencal080':'21G',
-                              'cvmh-15.1.1':'1.6G',
+                              'cvms':'326M',
+                              'cvmsi':'1.6G',
+                              'cencal':'21G',
+                              'cvmh':'1.6G',
                               'albacore':'2.3M',
                               'cvlsu':'1M',
                               'ivlsu':'1M',

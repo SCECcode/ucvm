@@ -1,4 +1,12 @@
 
+2021-07-01  Mei-Hui Su <mei@usc.edu>
+
+* Add ucvm_utah map
+* Added IVLSU/CVLSU/WFCVM models
+* Split ucvm_plotting into a separate release 
+* MacOS Darwin support 
+* Python2/Python 3 support 
+
 2019-06-01  Mei-Hui Su <mei@usc.edu>
 
 * Added z-range to plotting capability for external elygtl 

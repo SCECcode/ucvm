@@ -1,6 +1,6 @@
 # GNU Autoconf config
 
-AC_INIT([UCVM], [19.4.0], [software@scec.org])
+AC_INIT([UCVM], [21.7.0], [software@scec.org])
 AC_CONFIG_AUX_DIR([./aux-config])
 AM_INIT_AUTOMAKE([no-exeext])
 AC_PROG_RANLIB
