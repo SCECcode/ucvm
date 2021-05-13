@@ -48,10 +48,6 @@ int (*model_finalize)();
 int (*model_version)(char *ver, int len);
 } ucvm_plugin_model_t;
 
-int (*mmodel_init)(const char *dir, const char *label);
-
-ucvm_plugin_model_t plugin_models[UCVM_MAX_MODELS];
-
 ucvm_plugin_model_t *get_plugin_by_label(char *);
 ucvm_plugin_model_t *get_plugin_by_id(int);
 ucvm_plugin_model_t *get_plugin_by_order(int);
