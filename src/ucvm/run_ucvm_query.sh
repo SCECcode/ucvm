@@ -23,6 +23,7 @@ do
       FLAGS="${FLAGS} -$OPTION $OPTARG"
       if [ "$MODEL" == "wfcvm" ]; then
         FLAGS="${FLAGS} -p ucvm_utah "
+      fi
   elif [ "$OPTARG" != "" ]; then
       FLAGS="${FLAGS} -$OPTION $OPTARG"
   else
