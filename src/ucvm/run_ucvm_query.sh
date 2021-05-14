@@ -18,6 +18,11 @@ do
   elif [ "$OPTION" == "f" ]; then
       CONF=$OPTARG
       FLAGS="${FLAGS} -$OPTION $OPTARG"
+  elif [ "$OPTION" == "m" ]; then
+      MODEL=$OPTARG
+      FLAGS="${FLAGS} -$OPTION $OPTARG"
+      if [ "$MODEL" == "wfcvm" ]; then
+        FLAGS="${FLAGS} -p ucvm_utah "
   elif [ "$OPTARG" != "" ]; then
       FLAGS="${FLAGS} -$OPTION $OPTARG"
   else
