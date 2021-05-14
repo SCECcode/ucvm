@@ -35,7 +35,6 @@ if [ "$UCVM_INSTALL_PATH" ] ; then
     SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 fi
 
-# 
 source ${SCRIPT_DIR}/../conf/ucvm_env.sh
 
 if [ "$CONF" == "" ]; then
