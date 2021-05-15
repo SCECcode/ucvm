@@ -90,7 +90,7 @@ If a GNU-based MPI compiler is detected, the MPI version of several utilities ar
 The main UCVM configuration file is ${UCVM_INSTALL_DIR}/conf/ucvm.conf. 
 This file defines the paths to some configured models and maps, and it defines selected model flags, such as CVM-H USE_GTL. The UCVM installer sets up this ucvm.conf file automatically.
 
-In most cases, the user does not need to edit the UCVM/conf/ucvm.conf. However, in some circumstances, such as if the user wants to move the UCVM installation directory, or configure the behavior of the CVM-H model, the user  might want to edit the ucvm.conf file. Please see the User Guide for more details on how to edit the UCVM/conf/ucvm.conf configuration file.
+In most cases, the user does not need to edit the UCVM/conf/ucvm.conf. However, in some circumstances, such as changing the behavior of the CVM-H model, the user  might want to edit the ucvm.conf file. Please see the User Guide for more details on how to edit the UCVM/conf/ucvm.conf configuration file.
 
 ## Standard Models and Maps
 The following California velocity models packages are included as part of a standard UCVM installation.  Each model is assigned an abbreviation, and these abbreviations are used to specify the models when making UCVM queries. The model abbreviations used by UCVM are defined in following tables:
@@ -105,9 +105,10 @@ CCA06 | Central California Velocity Model with optional geotechnical layer (Ely-
 CS17.3 | Cypershake study 17.3 Central California Velocity Model and optional geotechincal layer (Ely-Jordan GTL, default is off) | cs173 | 72G
 CS17.3-H | Cypershake study 17.3 Central California Velocity Model with San Joaquin and Santa Maria Basins data from Havard's group and optional geoptechnical layer (Ely-Jordan GTL, default is off) | cs173h |72G
 USGS Bay Area Velocity Model 0.8.3| USGS developed San Francisco and Central California velocity model | cencal | 17G
-Albacore | Albacore Southern California off-shore Velocity Model | albacore | 2.3M
+Albacore | Albacore California off-shore Velocity Model | albacore | 2.3M
 IVLSU | SSIP Imperial Valley Velocity Model developed by LSU | ivlsu | 1M
 CVLSU | SSIP Coachella Valley Velocity Model developed by LSU | ivlsu | 1M
+WFCVM | Wasatch Front Community Velocity Model | wfcvm | 50M
 Southern California 1D  | Modified Hadley Kanamori 1D model based on Hadley-Kanamori model | 1d | 8k
 Northridge Region 1D | Los Angeles Region 1D model used in SCEC Broadband Platform | bbp1d | -
 
@@ -116,7 +117,8 @@ topography map, that also includes statewide Vs30 values, combined into an etree
 
 Toopgrahy and Vs30 Map Name | Description | UCVM Abbreviation
 ----------------------------|-------------|------------------
-USGS NED DEM and Wills-Wald Vs30 | California elevation and Vs30 data in etree format | ucvm
+USGS NED DEM and Wills-Wald Vs30, 2015| California elevation and Vs30 data in etree format | ucvm
+USGS NED DEM and Wills-Wald Vs30, 2006 | Utah elevation and Vs30 data in etree format | ucvm_utah
 
 ## Documentation
 Online UCVM documentation is available at:
