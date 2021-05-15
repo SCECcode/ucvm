@@ -7,7 +7,7 @@
 ## Current UCVM Software Release
 The current UCVM software version is UCVM v21.X.0. We recommend that new users work with this most recent version.
 
-UCVM is distributed as open-source scientific software. It can be installed compiled and run on most Linux-based computer systems if the system includes software development tools including Python, C, and Fortran compilers, and other software tools. The UCVM v21.X.0 source code is distributed using a github repository. On Github, users can find the source code, installation directions for Linux, and a wiki that provide examples and the expected results from UCVM.
+UCVM is distributed as open-source scientific software. It can be installed compiled and run on most Linux-based computer systems if the system includes software development tools including Python, C, and Fortran compilers, and other software tools. The UCVM v21.7.0 source code is distributed using a github repository. On Github, users can find the source code, installation directions for Linux, and a wiki that provide examples and the expected results from UCVM.
 
 ## Background
 
@@ -75,7 +75,7 @@ Once the target computer has the required software tools installed, the basic in
 *  ./ucvm_setup.py
 
 The get_large_files.py and ucvm_setup.py scripts run in a terminal window and print text questions to the user.  The user types answers to the questions in the terminal window. The retrieval script asks the user which velocity model they would like to stage into the local system and the install script asks the user which velocity models they would like to install from retrieved model list: ( 
-CVM-H v15.1, CVM-S4, CVM-S4.26, CVM-S4.26.M01, CCA06, CS17.3, CS17.3-H, Albacore, IVLSU, CVLSU, and USGS CenCal). 
+CVM-H v15.1, CVM-S4, CVM-S4.26, CVM-S4.26.M01, CCA06, CS17.3, CS17.3-H, Albacore, IVLSU, CVLSU, WFCVM, and USGS CenCal). 
 Several models are very large. CCA06, CS17.3 and CS17.3-H are 9.2G, 72G and 72G respectively. We recommend that the user only retrieve needed models and install all retrieved models.
 
 The script will then automatically compile, build, and install the selected models.
