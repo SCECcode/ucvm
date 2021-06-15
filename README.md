@@ -75,7 +75,7 @@ Once the target computer has the required software tools installed, the basic in
 *  ./ucvm_setup.py
 
 The get_large_files.py and ucvm_setup.py scripts run in a terminal window and print text questions to the user.  The user types answers to the questions in the terminal window. The retrieval script asks the user which velocity model they would like to stage into the local system and the install script asks the user which velocity models they would like to install from retrieved model list: ( 
-CVM-H v15.1, CVM-S4, CVM-S4.26, CVM-S4.26.M01, CCA06, CS17.3, CS17.3-H, Albacore, IVLSU, CVLSU, and USGS CenCal). 
+CVM-H v15.1, CVM-S4, CVM-S4.26, CVM-S4.26.M01, CCA06, CS17.3, CS17.3-H, Albacore, IVLSU, CVLSU, WFCVM, and USGS CenCal). 
 Several models are very large. CCA06, CS17.3 and CS17.3-H are 9.2G, 72G and 72G respectively. We recommend that the user only retrieve needed models and install all retrieved models.
 
 The script will then automatically compile, build, and install the selected models.
@@ -108,6 +108,7 @@ USGS Bay Area Velocity Model 0.8.3| USGS developed San Francisco and Central Cal
 Albacore | Albacore Southern California off-shore Velocity Model | albacore | 2.3M
 IVLSU | SSIP Imperial Valley Velocity Model developed by LSU | ivlsu | 1M
 CVLSU | SSIP Coachella Valley Velocity Model developed by LSU | ivlsu | 1M
+WFCVM | Wasatch Front Community Velocity Model(UTAH) | wfcvm | 50M
 Southern California 1D  | Modified Hadley Kanamori 1D model based on Hadley-Kanamori model | 1d | 8k
 Northridge Region 1D | Los Angeles Region 1D model used in SCEC Broadband Platform | bbp1d | -
 
