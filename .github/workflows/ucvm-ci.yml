@@ -47,7 +47,7 @@ jobs:
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
 
-  ucvm-build-cvms-cvmh:
+  ucvm-build-albacore-lsu-wf:
     runs-on: ubuntu-latest
     strategy:
       matrix:
