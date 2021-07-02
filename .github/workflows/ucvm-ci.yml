@@ -2,7 +2,7 @@ name: ucvm-ci
 
 on:
   push:
-    branches: [ toPython3 ]
+    branches: [ target ]
 
 jobs:
   ucvm-build-cvmh:
@@ -12,12 +12,13 @@ jobs:
         python-version: [3.7]
     steps:
     - name: set UCVM_SRC_PATH 
-      run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/UCVMC" >> $GITHUB_ENV
+      run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
-      run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/TARGET" >> $GITHUB_ENV
-    - uses: actions/checkout@v2
+      run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
+    - name: checkout ucvm target
+      uses: actions/checkout@v2
       with: 
-        ref: toPython3
+        ref: target
     - name: build ucvm with cvmh
       run: ./.github/scripts/ucvm-build-cvmh.sh 
       shell: bash
@@ -32,13 +33,13 @@ jobs:
         python-version: [3.7]
     steps:
     - name: set UCVM_SRC_PATH 
-      run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/UCVMC" >> $GITHUB_ENV
+      run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
-      run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/TARGET" >> $GITHUB_ENV
-    - name: checkout ucvm toPython3
+      run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
+    - name: checkout ucvm target
       uses: actions/checkout@v2
       with: 
-        ref: toPython3
+        ref: target
     - name: build ucvm with cvms and cvmh
       run: ./.github/scripts/ucvm-build-cvms-cvmh.sh
       shell: bash
@@ -46,3 +47,23 @@ jobs:
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
 
+  ucvm-build-albacore-lsu-wf:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+    steps:
+    - name: set UCVM_SRC_PATH 
+      run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
+    - name: set UCVM_INSTALL_PATH 
+      run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
+    - name: checkout ucvm target
+      uses: actions/checkout@v2
+      with: 
+        ref: target
+    - name: build ucvm with albacore, cvlsu, ivlsu and wfcvm
+      run: ./.github/scripts/run-build-albacore-lsu-wf.sh
+      shell: bash
+    - name: test ucvm with albacore, cvlsu, ivlsu and wfcvm
+      run: ./.github/scripts/ucvm-test.sh
+      shell: bash
