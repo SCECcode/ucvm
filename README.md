@@ -1,12 +1,13 @@
 
-[![ucvm-ci Actions Status](https://github.com/SCECcode/UCVM/workflows/ucvm-ci/badge.svg)](https://github.com/SCECcode/UCVM/actions)
+[![ucvm-ci Actions Status](https://github.com/SCECcode/ucvm/workflows/ucvm-ci/badge.svg)](https://github.com/SCECcode/ucvm/actions)
 
 
 # UCVM
 
-## Current UCVM Software Release
+## Official UCVM Software Release
 The current UCVM software version is [UCVM v19.4.0](http://github.com/SCECcode/UCVMC/wiki) which was released in June 2019. We recommend that new users work with that version of the software because it contains improvements not found in earlier versions.
 
+## Preliminary UCVM Software Release
 Since UCVM v19.4.0 was released, we have continued to integrate new velocity models and new capabilities into UCVM. These recent changes are available on a UCVM development branch in this github repository, but these updates have not been included in an official UCVM release. To simplify UCVM software development, we are separating the next UCVM software distribution into a collection of inter-operable software packages. This is the UCVM github repository for the [UCVM core package](https://github.com/SCECcode/ucvm.git) that provides the UCVM query interface. The velocity models are managed in their own github repositories (e.g. [CVM-S4](https://github.com/SCECcode/cvms), [CVM-H v15.1](https://github.com/SCECcode/cvmh), [CVM-S4.26](https://github.com/SCECcode/cvms5), [CVM-S4.26.M01](https://github.com/SCECcode/cvmsi)). Specialized UCVM plotting tools can be retrieved from the [UCVM plotting package](https://github.com/SCECcode/ucvm_plotting) github repository if needed. We expect to release this multi-package version of UCVM in mid-2021.
 
 UCVM is distributed as open-source scientific software. It can be installed compiled and run on most Linux-based computer systems if the system includes software development tools including Python, C, and Fortran compilers, and other software tools.
@@ -41,7 +42,7 @@ Havard Santa Maria Basin Model: orange square,
 CS18.5 Cypershake Study's Tiled Velocity Model: blue
 ) : [Coverage.kml](documentation/coverage.kml)
 
-UCVM software repository contains a software codebase developed by Philip Maechling, Mei-Hui Su, David Gill, Patrick Small, and others at SCEC. UCVM is released as open-source scientific software under an Apache 2 software license.
+UCVM software repository contains a software codebase developed by Philip Maechling, Mei-Hui Su, David Gill, Patrick Small, and others at SCEC. UCVM is released as open-source scientific software under an open-source BSD 3-Clause License.
 
 UCVM was developed with support from National Science Foundation (NSF), US Geological Survey (USGS), and other sources.
 
@@ -50,9 +51,9 @@ UCVM was developed with support from National Science Foundation (NSF), US Geolo
 
 Testing UCVM on all possible combinations of operating sysetms and software stacks requires more software developer resources than currently available. So, we have defined a UCVM reference software stack that we use to develop and test the software. This UCVM distrbution has been shown to work on the following reference software stack. It may work on other software stacks, also, but this is the supported software environment.
 
-*  Linux operating system (e.g. CentOS 7 Linux) x86_64-linux 
-*  GNU gcc/gfortran compilers version 4.8.5
-*  Python 2 or 3 (Anaconda)
+*  Linux operating system (e.g. CentOS 8 Linux) x86_64-linux 
+*  GNU gcc/gfortran compilers version 8.8.5
+*  Python 3 (Anaconda)
 *  Autotools build software for Linux
 *  Automake, Autoconf build tools for Linux
 *  Git client
@@ -64,12 +65,12 @@ External Libraries installed by UCVM
 
 Optional Software for building MPI binaries:
 
-*  openmpi 1.8.8??
+*  openmpi 2.0.2
 
 ## Installation
 Once the target computer has the required software tools installed, the basic install of UCVM is:
-*  git clone https://github.com/SCECcode/UCVM.git
-*  cd UCVM/largefiles
+*  git clone https://github.com/SCECcode/ucvm.git
+*  cd ucvm/largefiles
 *  ./get_large_files.py
 *  ./check_largefiles_md5.py
 *  ./stage_large_files.py
@@ -78,6 +79,7 @@ Once the target computer has the required software tools installed, the basic in
 
 The get_large_files.py and ucvm_setup.py scripts run in a terminal window and print text questions to the user.  The user types answers to the questions in the terminal window. The retrieval script asks the user which velocity model they would like to stage into the local system and the install script asks the user which velocity models they would like to install from retrieved model list: ( 
 CVM-H v15.1, CVM-S4, CVM-S4.26, CVM-S4.26.M01, CCA06, CS17.3, CS17.3-H, Albacore, IVLSU, CVLSU, WFCVM, and USGS CenCal). 
+
 Several models are very large. CCA06, CS17.3 and CS17.3-H are 9.2G, 72G and 72G respectively. We recommend that the user only retrieve needed models and install all retrieved models.
 
 The script will then automatically compile, build, and install the selected models.
@@ -124,7 +126,7 @@ USGS NED DEM and Wills-Wald Vs30, 2006 | Utah elevation and Vs30 data in etree f
 
 ## Documentation
 Online UCVM documentation is available at:
-*  https://github.com/SCECcode/UCVM/wiki
+*  https://github.com/SCECcode/ucvm/wiki
 
 Additional documentation advanced features and previous versions of UCVM are posted at:
 *  http://scec.usc.edu/scecpedia/UCVM
@@ -137,7 +139,7 @@ More Installation instruction:
 
 Issue Tracking:
 
-* GitHub: https://github.com/SCECcode/UCVM/issues
+* GitHub: https://github.com/SCECcode/ucvm/issues
 
 Email:
 
