@@ -19,7 +19,7 @@ import sys
 import subprocess
 import pdb
 
-UCVM_Version = "19.4"
+UCVM_Version = "21.7"
 target_large_lib_list = ["proj-5.0.0.tar.gz",
                   "fftw-3.3.3.tar.gz",
                   "euclid3-1.3.tar.gz"]

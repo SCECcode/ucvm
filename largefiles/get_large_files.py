@@ -13,10 +13,10 @@ else:
   from urllib2 import urlopen
 
 #
-UCVM_Version = "19.4"
+UCVM_Version = "21.7"
 
 # remote repository
-ucvmc_largefile_repository = "http://hypocenter.usc.edu/research/ucvmc/V19_4"
+ucvmc_largefile_repository = "http://hypocenter.usc.edu/research/ucvmc/V21_7"
 
 #
 optional_large_model_list = [ "cvms5",
