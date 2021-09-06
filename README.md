@@ -1,11 +1,11 @@
 
-[![ucvm-ci Actions Status](https://github.com/SCECcode/UCVM/workflows/ucvm-ci/badge.svg)](https://github.com/SCECcode/UCVM/actions)
+[![ucvm-ci Actions Status](https://github.com/pjmaechling/ucvm/workflows/ucvm-ci/badge.svg)](https://github.com/pjmaechling/ucvm/actions)
 
 
 # UCVM
 
 ## Current UCVM Software Release
-The current UCVM software version is [UCVM v19.4.0](http://github.com/SCECcode/UCVMC/wiki) which was released in June 2019. We recommend that new users work with that version of the software because it contains improvements not found in earlier versions.
+The current UCVM software version is [UCVM v21.10.0](http://github.com/SCECcode/ucvm/wiki) which was released in October 2021. We recommend that new users work with this version of the software because it contains improvements not found in earlier versions.
 
 Since UCVM v19.4.0 was released, we have continued to integrate new velocity models and new capabilities into UCVM. These recent changes are available on a UCVM development branch in this github repository, but these updates have not been included in an official UCVM release. To simplify UCVM software development, we are separating the next UCVM software distribution into a collection of inter-operable software packages. This is the UCVM github repository for the [UCVM core package](https://github.com/SCECcode/ucvm.git) that provides the UCVM query interface. The velocity models are managed in their own github repositories (e.g. [CVM-S4](https://github.com/SCECcode/cvms), [CVM-H v15.1](https://github.com/SCECcode/cvmh), [CVM-S4.26](https://github.com/SCECcode/cvms5), [CVM-S4.26.M01](https://github.com/SCECcode/cvmsi)). Specialized UCVM plotting tools can be retrieved from the [UCVM plotting package](https://github.com/SCECcode/ucvm_plotting) github repository if needed. We expect to release this multi-package version of UCVM in mid-2021.
 
