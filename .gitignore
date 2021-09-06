@@ -1,6 +1,7 @@
 INSTALL
 largefiles/cca.tar.gz
 largefiles/cs173.tar.gz
+largefiles/cs173h.tar.gz
 *.pyc
 *.o
 model/ucvm/ucvm.e
