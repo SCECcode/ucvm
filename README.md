@@ -9,7 +9,7 @@ UCVM was developed as an interdisciplinary research collaboration involving geos
 UCVM is open-source scientific software designed to support earth scientists, civil engineers, and other groups interested in detailed information about earth properties. UCVM is primarily used by scientists to work with earth material properties on regional scales. One important use of UCVM is to create simulation meshes used in high resolution 3D wave propagation simulations for California.
 
 # Table of Contents:
-* [README.md](https://github.com/pjmaechling/ucvm/blob/master/README.md)
+* [README.md](https://github.com/pjmaechling/ucvm/blob/main/README.md)
 * [UCVM Software Documentation](https://github.com/pjmaechling/ucvm/wiki)
 
 # Installation:
@@ -36,13 +36,13 @@ Email:
 * Contact: software@scec.usc.edu
 
 # Contributing:
-We welcome contributions to the UCVM software framework. Geoscientists can register their seismic velocity models into UCVM and software developers can improve and extend the UCVM software. An overview of the process for contributing seismic models or software updates to the UCVM Project is provided in the UCVM [contribution guidelines](https://github.com/pjmaechling/ucvm/blob/master/CONTRIBUTING.md).
+We welcome contributions to the UCVM software framework. Geoscientists can register their seismic velocity models into UCVM and software developers can improve and extend the UCVM software. An overview of the process for contributing seismic models or software updates to the UCVM Project is provided in the UCVM [contribution guidelines](https://github.com/pjmaechling/ucvm/blob/main/CONTRIBUTING.md).
 
 # Credits:
 Include a section for credits in order to highlight and link to the authors of your project.
 
 # License:
-The UCVM software is released under a BSD 3-Clause open-source license. Please see the [LICENSE file](https://github.com/pjmaechling/ucvm/blob/master/LICENSE.md) for distribution license and disclaimers.
+The UCVM software is released under a BSD 3-Clause open-source license. Please see the [LICENSE file](https://github.com/pjmaechling/ucvm/blob/main/LICENSE.md) for distribution license and disclaimers.
 
 ## Preferred Reference
 If you use the UCVM software in your research, please include a reference to the following publication in your research publications. References help us obtain continued financial support for the development of the software. The preferred reference for the UCVM software is:
