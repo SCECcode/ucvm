@@ -1,18 +1,40 @@
-1. Project name: Your project’s name is the first thing people will see upon scrolling down to your README, and is included upon creation of your README file.
+# Project name:
+The Southern California Earthquake Center (SCEC) Unified Community Velocity Model (UCVM) Software
 
-2. Description: A description of your project follows. A good description is clear, short, and to the point. Describe the importance of your project, and what it does.
+# Description: 
+The SCEC Unified Community Velocity Model (UCVM) software framework is a collection of software tools that provide a standard query interface to seismic velocity models. Once a seismic velocity model is registered into UCVM, it can be queried and combined with other velocity models through the UCVM software interface.
 
-3. Table of Contents: Optionally, include a table of contents in order to allow other people to quickly navigate especially long or detailed READMEs.
+UCVM was developed as an interdisciplinary research collaboration involving geoscientists and computer scientists. UCVM geoscience research includes identification and assembly of existing California velocity models into a state-wide model and improvements to existing velocity models. UCVM computer science research includes definition of a easy-to-use CVM query interface, integration of regional 3D and geotechnical models, and automated CVM evaluation processing capabilities.
 
-4. Installation: Installation is the next section in an effective README. Tell other users how to install your project locally. Optionally, include a gif to make the process even more clear for other people.
+UCVM is open-source scientific software designed to support earth scientists, civil engineers, and other groups interested in detailed information about earth properties. UCVM is primarily used by scientists to work with earth material properties on regional scales. One important use of UCVM is to create simulation meshes used in high resolution 3D wave propagation simulations for California.
 
-5. Usage: The next section is usage, in which you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+# Table of Contents:
+  README.md -> this file
+  github.com/sceccode/ucvm/wiki -> project documentation
 
-6. Contributing: Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to your work. To learn more about how to help others contribute, check out the guide for setting guidelines for repository contributors.
+# Installation:
+UCVM was developed to support seismic simulations run on high-performance computing systems, so it is designed to compile and run on Linux-based computers. There are serveral ways to get access to UCVM without installing the software on your own Linux computer. Below we outline several of the options:
 
-7. Credits: Include a section for credits in order to highlight and link to the authors of your project.
+* Query UCVM velocity models, without installing UCVM, using the UCVM website:
+[https://scec.org/research/ucvm]
 
-8. License: Finally, include a section for the license of your project. For more information on choosing a license, check out GitHub’s licensing guide!
+* Run UCVM in Docker on you laptop
+Users can install free Docker software on most computers (e.g. Linux, MacOS, Windows) then run an UCVM Docker image in a terminal window on their computer.
+
+* Install UCVM on Linux system
+Advanced users that want to install many of the UCVM models, or that want to run large parallel queries of the CVM models, should install the UCVM software on a Linux system. UCVM software is developed on USC Center for Advanced Research Computing (CARC) Linux cluster which provide MPI libraries. The UCVM software framework has several MPI-based executables. These executables are built using the automake system if the required MPI libraries are found in the installation computing environment.
+
+# Usage: 
+The next section is usage, in which you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+
+# Contributing:
+Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to your work. To learn more about how to help others contribute, check out the guide for setting guidelines for repository contributors.
+
+# Credits:
+Include a section for credits in order to highlight and link to the authors of your project.
+
+# License:
+BSD 3-Clause
 
 # UCVM
 
