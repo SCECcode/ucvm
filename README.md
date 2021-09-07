@@ -19,7 +19,7 @@
 [![ucvm-ci Actions Status](https://github.com/pjmaechling/ucvm/workflows/ucvm-ci/badge.svg)](https://github.com/pjmaechling/ucvm/actions)
 
 ## Current UCVM Software Release
-The current UCVM software version is [UCVM v21.10.0](http://github.com/SCECcode/ucvm/wiki) which was released in October 2021. We recommend that new users work with this version of the software because it contains improvements not found in earlier versions.
+The current UCVM software version is [UCVM v21.10.0](http://github.com/SCECcode/ucvm/wiki) scheduled for release in October 2021. We recommend that new users work with this version of the software because it contains improvements not found in earlier versions.
 
 Since UCVM v19.4.0 was released, we have continued to integrate new velocity models and new capabilities into UCVM. These recent changes are available on a UCVM development branch in this github repository, but these updates have not been included in an official UCVM release. To simplify UCVM software development, we are separating the next UCVM software distribution into a collection of inter-operable software packages. This is the UCVM github repository for the [UCVM core package](https://github.com/SCECcode/ucvm.git) that provides the UCVM query interface. The velocity models are managed in their own github repositories (e.g. [CVM-S4](https://github.com/SCECcode/cvms), [CVM-H v15.1](https://github.com/SCECcode/cvmh), [CVM-S4.26](https://github.com/SCECcode/cvms5), [CVM-S4.26.M01](https://github.com/SCECcode/cvmsi)). Specialized UCVM plotting tools can be retrieved from the [UCVM plotting package](https://github.com/SCECcode/ucvm_plotting) github repository if needed. We expect to release this multi-package version of UCVM in mid-2021.
 
@@ -64,9 +64,9 @@ UCVM was developed with support from National Science Foundation (NSF), US Geolo
 
 Testing UCVM on all possible combinations of operating sysetms and software stacks requires more software developer resources than currently available. So, we have defined a UCVM reference software stack that we use to develop and test the software. This UCVM distrbution has been shown to work on the following reference software stack. It may work on other software stacks, also, but this is the supported software environment.
 
-*  Linux operating system (e.g. CentOS 7 Linux) x86_64-linux 
-*  GNU gcc/gfortran compilers version 4.8.5
-*  Python 2 or 3 (Anaconda)
+*  Linux operating system (e.g. CentOS 8 Linux) x86_64-linux 
+*  GNU gcc/gfortran compilers version 8.3.5
+*  Python 3 (Anaconda)
 *  Autotools build software for Linux
 *  Automake, Autoconf build tools for Linux
 *  Git client
@@ -77,13 +77,13 @@ External Libraries installed by UCVM
 *  Proj.5 projection library: http://trac.osgeo.org/proj/ (provided during installation)
 
 Optional Software for building MPI binaries:
-
-*  openmpi 1.8.8??
+*  openmpi 2.0.2
+*  module load specifics used for development on USC CARC system in MODULES.md
 
 ## Installation
 Once the target computer has the required software tools installed, the basic install of UCVM is:
 *  git clone https://github.com/SCECcode/UCVM.git
-*  cd UCVM/largefiles
+*  cd ucvm/largefiles
 *  ./get_large_files.py
 *  ./check_largefiles_md5.py
 *  ./stage_large_files.py
@@ -138,7 +138,7 @@ USGS NED DEM and Wills-Wald Vs30, 2006 | Utah elevation and Vs30 data in etree f
 
 ## Documentation
 Online UCVM documentation is available at:
-*  https://github.com/SCECcode/UCVM/wiki
+*  https://github.com/SCECcode/ucvm/wiki
 
 Additional documentation advanced features and previous versions of UCVM are posted at:
 *  http://scec.usc.edu/scecpedia/UCVM
@@ -151,7 +151,7 @@ More Installation instruction:
 
 Issue Tracking:
 
-* GitHub: https://github.com/SCECcode/UCVM/issues
+* GitHub: https://github.com/SCECcode/ucvm/issues
 
 Email:
 
@@ -163,4 +163,4 @@ If you use the UCVM software in your research, please include a reference to the
 Small, P., Gill, D., Maechling, P. J., Taborda, R., Callaghan, S., Jordan, T. H., Ely, G. P., Olsen, K. B., & Goulet, C. A. (2017). The SCEC Unified Community Velocity Model Software Framework. Seismological Research Letters, 88(5). doi:10.1785/0220170082.
 
 ## License
-The UCVM software is released using a BSD-3 open-source license. Please see the LICENSE file for distribution license and disclaimers.
+The UCVM software is released under a BSD 3-Clause open-source license. Please see the LICENSE file for distribution license and disclaimers.
