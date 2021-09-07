@@ -9,8 +9,8 @@ UCVM was developed as an interdisciplinary research collaboration involving geos
 UCVM is open-source scientific software designed to support earth scientists, civil engineers, and other groups interested in detailed information about earth properties. UCVM is primarily used by scientists to work with earth material properties on regional scales. One important use of UCVM is to create simulation meshes used in high resolution 3D wave propagation simulations for California.
 
 # Table of Contents:
-  README.md -> this file
-  github.com/sceccode/ucvm/wiki -> project documentation
+* [README.md](https://github.com/pjmaechling/ucvm/blob/master/README.md)
+* [UCVM Software Documentation](https://github.com/pjmaechling/ucvm/wiki)
 
 # Installation:
 UCVM was developed to support seismic simulations run on high-performance computing systems, so it is designed to compile and run on Linux-based computers. There are serveral ways to get access to UCVM without installing the software on your own Linux computer. Below we outline several of the options:
@@ -27,14 +27,27 @@ Advanced users that want to install many of the UCVM models, or that want to run
 # Usage: 
 The next section is usage, in which you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
 
+# Support:
+Support for UCVM is provided by that Southern California Earthquake Center (SCEC) Research Computing Group. This small group supports several research software distributions including UCVM. For questions or issues, contact the UCVM developers through the git issues system, or by email:
+Issue Tracking:
+* GitHub: https://github.com/pjmaechling/ucvm/issues
+
+Email:
+* Contact: software@scec.usc.edu
+
 # Contributing:
-Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to your work. To learn more about how to help others contribute, check out the guide for setting guidelines for repository contributors.
+We welcome contributions to the UCVM software framework. Geoscientists can register their seismic velocity models into UCVM and software developers can improve and extend the UCVM software. An overview of the process for contributing seismic models or software updates to the UCVM Project is provided in the UCVM [contribution guidelines](https://github.com/pjmaechling/ucvm/blob/master/CONTRIBUTING.md).
 
 # Credits:
 Include a section for credits in order to highlight and link to the authors of your project.
 
 # License:
-BSD 3-Clause
+The UCVM software is released under a BSD 3-Clause open-source license. Please see the [LICENSE file](https://github.com/pjmaechling/ucvm/blob/master/LICENSE.md) for distribution license and disclaimers.
+
+## Preferred Reference
+If you use the UCVM software in your research, please include a reference to the following publication in your research publications. References help us obtain continued financial support for the development of the software. The preferred reference for the UCVM software is:
+
+* Small, P., Gill, D., Maechling, P. J., Taborda, R., Callaghan, S., Jordan, T. H., Ely, G. P., Olsen, K. B., & Goulet, C. A. (2017). The SCEC Unified Community Velocity Model Software Framework. Seismological Research Letters, 88(5). doi:10.1785/0220170082.
 
 # UCVM
 
@@ -169,20 +182,4 @@ More Installation instruction:
 
 * [Additional guidelines for building UCVM](documentation/Installation.md)
 
-## Support
 
-Issue Tracking:
-
-* GitHub: https://github.com/SCECcode/ucvm/issues
-
-Email:
-
-* Contact: software@scec.usc.edu
-
-## Preferred Reference
-If you use the UCVM software in your research, please include a reference to the following publication in your research publications. References help us obtain continued financial support for the development of the software. The preferred reference for the UCVM software is:
-
-Small, P., Gill, D., Maechling, P. J., Taborda, R., Callaghan, S., Jordan, T. H., Ely, G. P., Olsen, K. B., & Goulet, C. A. (2017). The SCEC Unified Community Velocity Model Software Framework. Seismological Research Letters, 88(5). doi:10.1785/0220170082.
-
-## License
-The UCVM software is released under a BSD 3-Clause open-source license. Please see the LICENSE file for distribution license and disclaimers.
