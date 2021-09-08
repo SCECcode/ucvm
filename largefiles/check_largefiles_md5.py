@@ -2,9 +2,9 @@
 #
 # Script for checking downloaded UCVM Files. This script should be run
 # after the UCVM largefiles have been retrieved from their respository
-# into the UCVMC/largefiles subdirectory.
+# into the ucvm/largefiles subdirectory.
 #
-# When both the UCVMC/largefiles and their associated md5 files
+# When both the ucvm/largefiles and their associated md5 files
 # are located in the same directory, then this script will confirm
 # that the largefiles are intact.
 #
@@ -12,14 +12,14 @@
 # Then largefiles are downloaded from SCEC website
 # This script confirms that all files have been downloaded intact.
 # This script provides assurance that the downloaded largefiles
-# are the files required for UCVMC to work properly
+# are the files required for UCVM to work properly
 #
 import os
 import sys
 import subprocess
 import pdb
 
-UCVM_Version = "19.4"
+UCVM_Version = "21.7"
 target_large_lib_list = ["proj-5.0.0.tar.gz",
                   "fftw-3.3.3.tar.gz",
                   "euclid3-1.3.tar.gz"]
@@ -99,7 +99,7 @@ for ref in target_large_ref_list :
 # All largefiles checked
 #
 print("Checked %d UCVM large files with: %d OK, and: %d errors\n"%((total_ok+total_errs),total_ok,total_errs))
-print("Next, run ./stage_large_files.py to move the largefiles in the source code subdirectories.")
+print("Next, run ./stage_largefiles.py to move the largefiles in the source code subdirectories.")
 print("Next, cd .. to move into the parent directory, the UCVM source home directory.")
 print("Next, run ./ucvm_setup.py which will start the configure, make, install process.")
 print("This script will ask the user several questions:")
