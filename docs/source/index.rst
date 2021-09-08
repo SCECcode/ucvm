@@ -1,16 +1,32 @@
-.. UCVM documentation master file, created by
-   sphinx-quickstart on Tue Sep  7 11:21:51 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+SCEC Unified Community Velocity Model (UCVM) Software:
+======================================================
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Getting Started
 
-Welcome to UCVM's documentation!
-================================
+   getting_started/installing
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :hidden:
+   :caption: Background
 
+   background/core_concepts
 
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Tutorials
+
+   tutorials/basic_query
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: References
+
+   references/ucvm_commands
 
 Indices and tables
 ==================
