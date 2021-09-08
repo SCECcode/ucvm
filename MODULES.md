@@ -1,5 +1,13 @@
 The USC CARC system uses a module load system. We have installed UCVM using the following settings:
 
+In addition, because of the use of Anaconda, we found it necessary to add a command to unset
+unset PROJ_LIB
+
+This needs to get unset after the UCVM environment and conda envs are defined. We add this to the end of the conda init in our .bashrc file.
+
+This fixes an error initializing UCVM based on of the environment variable by both proj5 and ucvm.
+
+
 (base) [maechlin@discovery1 ucvm]$ more ~/.bashrc
 # .bashrc
 
@@ -58,3 +66,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+unset PROJ_LIB
