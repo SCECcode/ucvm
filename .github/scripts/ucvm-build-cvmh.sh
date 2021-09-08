@@ -11,7 +11,11 @@ fi
 
 mkdir $UCVM_INSTALL_PATH
 
+<<<<<<< HEAD
 ##["cvms5", "cca", "cs173", "cs173h", "cvms", "cvmsi", "cencal", "cvmh", "albacore", "cvlsu", "ivlsu", "wfcvm"]
+=======
+##[ "cvms5", "cca", "cs173", "cs173h", "cvms4", "cvms426", "cencal080", "cvmh-15.1.1", "albacore", "cvlsu", "ivlsu"]
+>>>>>>> main
 
 cd $UCVM_SRC_PATH/largefiles
 ./get_large_files.py << EOF

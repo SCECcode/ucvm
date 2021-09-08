@@ -15,7 +15,11 @@
                         "Abbreviation": "ivlsu",
                         "Size": "3.1M",
 			"Path": "ivlsu",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/ivlsu.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/ivlsu.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-ivlsu --with-ivlsu-lib-path=lib --with-ivlsu-include-path=include",
 			"Libraries": ["proj-5"],
 			"Ask": "yes",
@@ -26,7 +30,11 @@
                         "Abbreviation": "cvlsu",
                         "Size": "7.0M",
 			"Path": "cvlsu",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/cvlsu.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/cvlsu.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-cvlsu --with-cvlsu-lib-path=lib --with-cvlsu-include-path=include",
 			"Ask": "yes",
 			"Order": "10"		
@@ -36,7 +44,11 @@
                         "Abbreviation": "albacore",
                         "Size": "2.3M",
 			"Path": "albacore",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/albacore.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/albacore.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-albacore --with-albacore-lib-path=lib --with-albacore-include-path=include",
 			"Ask": "yes",
 			"Order": "9"		
@@ -46,7 +58,11 @@
                         "Abbreviation": "cvms",
                         "Size": "326M",
 			"Path": "cvms",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/cvms.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/cvms4.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
 			"Ask": "yes",
 			"Order": "1"
@@ -56,7 +72,11 @@
                         "Abbreviation": "cvms5",
                         "Size": "1.2G",
 			"Path": "cvms5",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/cvms5.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/cvms5.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-cvms5 --with-cvms5-lib-path=lib --with-cvms5-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
                         "Requirements": ["gfortran"],
@@ -67,8 +87,13 @@
 			"Version": "4.26",
                         "Abbreviation": "cvmsi",
                         "Size": "1.6G",
+<<<<<<< HEAD
 			"Path": "cvmsi",
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/cvmsi.tar.gz",
+=======
+			"Path": "cvms426",
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/cvms426.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-cvmsi --with-cvmsi-lib-path=lib --with-cvmsi-include-path=include --with-cvmsi-model-path=model/i26",
                         "Requirements": ["gfortran"],
 			"Ask": "yes",
@@ -78,8 +103,13 @@
 			"Version": "15.1.1",
                         "Abbreviation": "cvmh",
                         "Size": "1.6G",
+<<<<<<< HEAD
 			"Path": "cvmh",
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/cvmh.tar.gz",
+=======
+			"Path": "cvmh1511",
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/cvmh-15.1.1.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-cvmh --with-cvmh-include-path=include --with-cvmh-lib-path=lib --with-gctpc-lib-path=lib --with-cvmh-model-path=model",
 			"Ask": "yes",
 			"Order": "4"
@@ -89,7 +119,11 @@
                         "Abbreviation": "cencal",
                         "Size": "21G",
 			"Path": "cencal",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/cencal.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/cencal080.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-cencal --with-cencal-lib-path=lib --with-cencal-include-path=include/cencalvm/query/ --with-cencal-model-path=model/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=model/USGSBayAreaVMExt-08.3.0.etree",
 			"Ask": "yes",
 			"Order": "5"
@@ -99,7 +133,11 @@
                         "Abbreviation": "cca",
                         "Size": "9.2G",
 			"Path": "cca",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/cca.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/cca.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
                         "Requirements": ["gfortran"],
@@ -111,7 +149,11 @@
                         "Abbreviation": "cs173",
                         "Size": "72G",
 			"Path": "cs173",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/cs173.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/cs173.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-cs173 --with-cs173-lib-path=lib --with-cs173-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
@@ -122,7 +164,11 @@
                         "Abbreviation": "cs173h",
                         "Size": "72G",
 			"Path": "cs173h",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/cs173h.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/cs173h.tar.gz",
+>>>>>>> main
 			"Flags": "--enable-model-cs173h --with-cs173h-lib-path=lib --with-cs173h-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
@@ -133,14 +179,22 @@
 		"Euclid3": {
 			"Path": "euclid3",
                         "Size": "4.7M",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/euclid3-1.3.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/euclid3-1.3.tar.gz",
+>>>>>>> main
 			"Required": "yes",
 			"Ask": "no"
 		},
 		"Proj4": {
 			"Path": "proj-5",
                         "Size": "30M",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/proj-5.0.0.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/proj-5.0.0.tar.gz",
+>>>>>>> main
 			"Required": "yes",
 			"CompileFlags": "--with-jni=no",
 			"Ask": "no"
@@ -148,7 +202,11 @@
 		"FFTW": {
 			"Path": "fftw",
                         "Size": "44M",
+<<<<<<< HEAD
 			"URL": "http://hypocenter.usc.edu/research/ucvmc/V20_7/fftw-3.3.3.tar.gz",
+=======
+			"URL": "http://hypocenter.usc.edu/research/ucvmc/V21_7/fftw-3.3.3.tar.gz",
+>>>>>>> main
 			"Required": "yes",
 			"CompileFlags": "--enable-fortran=no",
 			"Ask": "no"
