@@ -99,7 +99,7 @@ for ref in target_large_ref_list :
 # All largefiles checked
 #
 print("Checked %d UCVM large files with: %d OK, and: %d errors\n"%((total_ok+total_errs),total_ok,total_errs))
-print("Next, run ./stage_large_files.py to move the largefiles in the source code subdirectories.")
+print("Next, run ./stage_largefiles.py to move the largefiles in the source code subdirectories.")
 print("Next, cd .. to move into the parent directory, the UCVM source home directory.")
 print("Next, run ./ucvm_setup.py which will start the configure, make, install process.")
 print("This script will ask the user several questions:")

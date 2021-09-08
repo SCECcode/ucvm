@@ -190,7 +190,7 @@ for m in target_large_ref_list:
 
 print("Completed all required downloads to build the UCVMC programs.\n")
 print("Next, run ./check_largefiles_md5.py to verify the largefiles downloaded without errors.")
-print("Next, run ./stage_large_files.py to move the largefiles in the source code subdirectories.")
+print("Next, run ./stage_largefiles.py to move the largefiles in the source code subdirectories.")
 print("Next, cd .. to move into the parent directory, the UCVM source home directory.")
 print("Next, run ./ucvm_setup.py which will start the configure, make, install process.")
 print("This script will ask the user several questions:")

@@ -58,7 +58,7 @@ def link_largefile(filename, src, dst):
 if len(sys.argv) < 2:
   print("Using default as UCVM install directory")
   print("User can Override the default largefiles directory using the command line like this:")
-  print("%stage_large_files.py /path/to/UCVM/largefiles/directory")
+  print("%stage_largefiles.py /path/to/UCVM/largefiles/directory")
   src_dir = curpath
 else:
   src_dir = str(sys.argv[1])
