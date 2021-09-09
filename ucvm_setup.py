@@ -675,7 +675,7 @@ if not os.path.exists(ucvmpath):
   call(["mkdir", "-p", ucvmpath+'/work'])
   call(["mkdir", "-p", ucvmpath+'/lib'])
 
-## XX config_data["models"].iterkeys()
+## XXX print(config_data["models"].keys())
     
 for model in sorted(iter(config_data["models"].keys()), key=lambda k: config_data["models"][k]["Order"]):
 
@@ -701,6 +701,7 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: config_dat
             
 print("\nYou have indicated that you would like to install")
 printPretty(modelsToInstall)
+
 
 for library in config_data["libraries"]:
     the_library = config_data["libraries"][library]
