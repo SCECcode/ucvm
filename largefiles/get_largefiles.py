@@ -16,7 +16,7 @@ else:
 UCVM_Version = "21.7"
 
 # remote repository
-ucvmc_largefile_repository = "http://hypocenter.usc.edu/research/ucvmc/V21_7"
+ucvmc_largefile_repository = "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model"
 
 #
 optional_large_model_list = [ "cvms5",
