@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # 
 # Script for downloading UCVM largefiles from remote repository site
-# into the UCVMC/largefiles subdirectory.
+# into the ucvm/largefiles subdirectory.
 #
 #
 import os
@@ -16,7 +16,7 @@ else:
 UCVM_Version = "21.7"
 
 # remote repository
-ucvmc_largefile_repository = "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model"
+ucvmc_largefile_repository = "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7"
 
 #
 optional_large_model_list = [ "cvms5",
@@ -73,11 +73,11 @@ def download_urlfile(url,fname):
 #
 curdir = os.getcwd()
 if os.path.basename(os.path.normpath(curdir)) == "largefiles":
-  print("Running in UCVMC/largefiles source directory. ")
+  print("Running in ucvm/largefiles source directory. ")
   print("This script will download and install ucvm.e, ucvm_utah.e and several other files.")
   print("Due to the size of the files, this download could take minutes to hours to complete.")
 else:
-  print("Run this script in the directory that contains the UCVMC/largefiles src directory.")
+  print("Run this script in the directory that contains the ucvm/largefiles src directory.")
   print("This script will download and install ucvm.e, ucvm_utah.e and several other files.")
   print("Due to the size of the files, this download could take minutes to hours to complete.")
   sys.exit(0)
@@ -185,10 +185,10 @@ for m in target_large_ref_list:
       break
     print("Finished downloading: ",m)
   else:
-    print("Required largefile already exists in UCVMC/largefile directory",outfilename)
+    print("Required largefile already exists in ucvm/largefiles directory",outfilename)
     print("If new version is required, delete current local copy (%s) and re-run this script"%(outfilename))
 
-print("Completed all required downloads to build the UCVMC programs.\n")
+print("Completed all required downloads to build the UCVM programs.\n")
 print("Next, run ./check_largefiles_md5.py to verify the largefiles downloaded without errors.")
 print("Next, run ./stage_largefiles.py to move the largefiles in the source code subdirectories.")
 print("Next, cd .. to move into the parent directory, the UCVM source home directory.")
