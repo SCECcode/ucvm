@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>UCVM_21_10_Model_Regions.kml</name>
+	<open>1</open>
+	<Style id="sn_ylw-pushpin">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin1">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="box_style2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#box_normal3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#box_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="box_style22">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#box_normal33</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#box_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="box_style3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#box_normal10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#box_highlight20</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="box_normal">
+		<LineStyle>
+			<color>ffffff00</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_normal2">
+		<LineStyle>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="box_highlight30">
+		<LineStyle>
+			<color>ff00ffaa</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="box_style">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#box_normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#box_highlight1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="box_style1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#box_normal00</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#box_highlight00</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_ylw-pushpin2">
+		<LineStyle>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_normal3">
+		<LineStyle>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_normal33">
+		<LineStyle>
+			<color>FFF01414</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_highlight3">
+		<LineStyle>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="box_style10">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#box_normal0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#box_highlight0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="box_highlight">
+		<LineStyle>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_normal1">
+		<LineStyle>
+			<color>ffffaa55</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_normal11">
+		<LineStyle>
+			<color>ff1478FF</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_normal20">
+		<LineStyle>
+			<color>ff00ffaa</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="box_highlight00">
+		<LineStyle>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_highlight0">
+		<LineStyle>
+			<color>ff7fffff</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_highlight2">
+		<LineStyle>
+			<color>ffffaa55</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="box_style30">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#box_normal1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#box_highlight2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="box_style33">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#box_normal11</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#box_highlight2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sh_ylw-pushpin0">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin1">
+		<LineStyle>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_highlight1">
+		<LineStyle>
+			<color>ffffff00</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_normal00">
+		<LineStyle>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="msn_ylw-pushpin1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_ylw-pushpin0">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="box_style00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#box_normal20</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#box_highlight30</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="box_normal10">
+		<LineStyle>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_normal0">
+		<LineStyle>
+			<color>ff7fffff</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin2">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<Style id="box_highlight20">
+		<LineStyle>
+			<width>1.3</width>
+		</LineStyle>
+	</Style>
+	<StyleMap id="box_style0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#box_normal2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#box_highlight3</styleUrl>
+		</Pair>
+	</StyleMap>
+
+
+<Folder>
+  <name>UCVM Topography and Vs30 Coverage Region</name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>fffff000</color>
+      <width>1.3</width>
+    </LineStyle>
+  </Style>
+  <Placemark>
+    <name>UCVM Topography and Vs30 Coverage Region</name>
+    <description>Bounding box for Unified California Velocity Model (UCVM) topography and Vs30 data sets. The topography supports query by elevation for flat models, and the Vs30 data can be used to add an Ely geotechnical layer to UCVM velocity models.</description>
+    <styleUrl>#box_style10</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>
+        -129.25,41,0 -117.4199,28.0268,0 -110.3864,31.80259,0 -121.5606,45.4670,0 -129.25,41,0
+      </coordinates>
+    </LineString>
+  </Placemark>
+</Folder>
+
+<Folder>
+    <name>CVM-H Region Definitions</name>
+    <Style id="box_highlight3">
+      <LineStyle>
+        <color>ffffffff</color>
+        <width>1.3</width>
+      </LineStyle>
+    </Style>
+    <Placemark>
+      <name>Low Resolution Model</name>
+      <description>Bounding box for low resolution and mantle CVM-H Model.</description>
+      <styleUrl>#box_style30</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -120.862028,30.95649600000001,0 -120.862028,36.612951,0 -113.33294,36.612951,0 -113.33294,30.95649600000001,0 -120.862028,30.95649600000001,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>CVM-H High Resolution Model</name>
+      <description>Bounding box for high resolution CVM-H basin model.</description>
+      <styleUrl>#box_style30</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -117.257011,33.034954,0 -117.257011,34.770882,0 -119.37115,34.770882,0 -119.37115,33.034954,0 -117.257011,33.034954,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Folder>
+  
+<Folder>
+  <name>CVM-S4 Velocity Model Region</name>
+  <Style id="box_highlight3">
+    <LineStyle>
+      <color>ffffffff</color>
+      <width>1.3</width>
+    </LineStyle>
+  </Style>
+  <Placemark>
+    <name>CVM-S4 Velocity Model Region</name>
+    <description>Bounding box for CVM-S4 3D model, CVM-S4 basin models, and a 1D background model that covers all remaining areas in all directions. Basin regions are shown which contain low Vs velocity values based on information about the surface geology in the regions.</description>
+    <styleUrl>#msn_ylw-pushpin</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>
+        -116.64433,31.102,0 -121.568,35.18167,0 -118.49184,37.73133,0 -113.56834,33.65166,0 -116.64433,31.102,0
+      </coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>CVM-S4 Basins Model</name>
+    <description>Bounding box for CVM-S4 basins model.</description>
+    <styleUrl>#msn_ylw-pushpin1</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>
+        -117.783,34.22,0 -117.785,34.1558,0 -117.753,34.148,0 -117.71,34.1456,0 -117.679,34.1617,0 -117.632,34.1706,0 -117.602,34.1748,0 -117.559,34.1792,0 -117.506,34.1831,0 -117.448,34.1968,0 -117.414,34.2067,0 -117.43,34.2164,0 -117.454,34.2348,0 -117.469,34.2554,0 -117.417,34.2539,0 -117.401,34.2505,0 -117.378,34.2358,0 -117.348,34.2186,0 -117.307,34.1989,0 -117.261,34.1793,0 -117.21,34.1604,0 -117.16,34.1394,0 -117.096,34.1121,0 -117.021,34.0927,0 -116.978,34.0652,0 -116.995,34.0314,0 -117.001,34,0 -117.047,33.9967,0 -117.112,33.9963,0 -117.187,33.998,0 -117.272,33.9987,0 -117.297,33.9784,0 -117.36,33.9317,0 -117.366,33.8947,0 -117.412,33.8787,0 -117.496,33.8745,0 -117.497,33.8442,0 -117.501,33.8186,0 -117.498,33.8099,0 -117.492,33.7956,0 -117.505,33.7883,0 -117.513,33.7963,0 -117.523,33.8027,0 -117.532,33.8022,0 -117.547,33.8084,0 -117.556,33.8182,0 -117.563,33.8249,0 -117.573,33.8291,0 -117.583,33.8342,0 -117.588,33.8406,0 -117.595,33.8466,0 -117.601,33.8535,0 -117.604,33.8571,0 -117.61,33.8615,0 -117.618,33.8651,0 -117.623,33.8688,0 -117.628,33.8742,0 -117.636,33.875,0 -117.651,33.8757,0 -117.661,33.8838,0 -117.726,33.8974,0 -117.735,33.829,0 -117.794,33.876,0 -117.794,33.777,0 -117.775,33.764,0 -117.775,33.688,0 -117.832,33.663,0 -117.884,33.607,0 -117.884,33.558,0 -118.247,33.558,0 -118.287,33.721,0 -118.4,33.8,0 -118.436,33.8,0 -118.57,33.91,0 -118.571,33.9725,0 -118.571,34.0012,0 -118.571,34.0375,0 -118.571,34.0498,0 -118.571,34.0673,0 -118.571,34.0781,0 -118.585,34.0782,0 -118.611,34.0785,0 -118.628,34.0761,0 -118.633,34.076,0 -118.637,34.0781,0 -118.661,34.0809,0 -118.69,34.0858,0 -118.719,34.0911,0 -118.741,34.0942,0 -118.767,34.0958,0 -118.789,34.096,0 -118.811,34.0759,0 -118.832,34.0544,0 -118.849,34.0401,0 -118.861,34.0347,0 -118.91,34.0359,0 -118.954,34.0361,0 -118.971,34.024,0 -119.266,34.1456,0 -119.478,34.3494,0 -119.477,34.5296,0 -118.523,34.6813,0 -118.307,34.4655,0 -118.307,34.4475,0 -118.292,34.4506,0 -118.286,34.4555,0 -118.283,34.4519,0 -118.278,34.4497,0 -118.267,34.4451,0 -118.255,34.4423,0 -118.245,34.4414,0 -118.236,34.4424,0 -118.221,34.443,0 -118.216,34.4374,0 -118.207,34.4269,0 -118.197,34.4154,0 -118.185,34.4009,0 -118.175,34.3894,0 -118.172,34.3738,0 -118.163,34.3509,0 -118.156,34.3274,0 -118.151,34.2999,0 -118.148,34.2778,0 -118.146,34.2562,0 -118.145,34.239,0 -118.143,34.22,0 -117.783,34.22,0
+      </coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>CVM-S4 Salton Sea Model</name>
+    <description>Bounding box for CVM-S4 Salton Sea model.</description>
+    <styleUrl>#msn_ylw-pushpin0</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>
+        -115,31,0 -116.667,33.5,0 -116.667,34.05,0 -116,34.05,0 -112.667,31,0 -115,31,0
+      </coordinates>
+    </LineString>
+  </Placemark>
+</Folder>
+
+<Folder>
+  <name>USGS Bay Area (CenCal) Velocity Model</name>
+  <Style id="box_highlight">
+    <LineStyle>
+      <color>ffffffff</color>
+      <width>1.3</width>
+    </LineStyle>
+  </Style>
+  <Placemark>
+    <name>Detailed Model</name>
+    <description>Bounding boxes for the detailed USGS Bay Area Velocity Models version 08.2.0</description>
+    <styleUrl>#box_style2</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>
+        -120.644051,37.050062,0 -121.922036,36.320331,0 -123.858493,38.424179,0 -122.562365,39.174505,0 -120.644051,37.050062,0
+      </coordinates>
+    </LineString>
+  </Placemark>
+  <Placemark>
+    <name>Regional Model</name>
+    <description>Bounding boxes for the regional USGS Bay Area Velocity Models version 08.2.0</description>
+    <styleUrl>#box_style2</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>
+        -118.944514,36.702176,0 -121.930857,35.009018,0 -126.353173,39.680558,0 -123.273199,41.484869,0 -118.944514,36.702176,0
+      </coordinates>
+    </LineString>
+  </Placemark>
+</Folder>
+
+<Folder>
+  <name>CVM-S4.26 and CVM-S4.26-M01 Velocity Model Region</name>
+  <Style id="box_highlight10">
+    <LineStyle>
+      <color>641400FF</color>
+      <width>1.3</width>
+    </LineStyle>
+  </Style>
+  <Placemark>
+    <name>CVM-S4.26 and CVM-S4.26-M01 Velocity Model Region</name>
+    <description>Bounding box for CVM-S4.26 a tomopgraphy improved version of CVM-S4 (no GTL, no Background model) defined to a depth of 50km. CVM-S4.26-M01 adds a 1D background model, and provides low velocity values in the top 350m from CVM-S4 that were removed during the tomography.</description>
+    <styleUrl>#box_style00</styleUrl>
+    <LineString>
+      <tessellate>1</tessellate>
+      <coordinates>
+        -116.000,30.4499,0
+        -122.300,34.7835,0
+        -118.9475,38.3035,0
+        -112.5182,33.7819,0
+        -116.000,30.4499,0
+      </coordinates>
+    </LineString>
+  </Placemark>
+</Folder>
+
+ <Folder>
+   <name>CCA-06 Central California Velocity Model Region</name>
+   <Style id="box_highlight1">
+     <LineStyle>
+       <color>ffff0000</color>
+       <width>1.3</width>
+     </LineStyle>
+   </Style>
+   <Placemark>
+		<name>CCA-06 Central California Seismic Velocity Model</name>
+    <description>Bounding box for a tomography-improved Central California velocity model (CCA-06) defined to a depth of 50km. Model was developed using scattering integral and ambient noise tomography methods. Starting model was assembled from CVM-S4 and USGS Northern Califirnoa Bay Area (CenCal) Model. </description>
+		<styleUrl>#box_style10</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+				<coordinates>
+				-122.950,36.598,0 -118.296,39.353,0 -115.445,36.038,0 -120.000,33.398,0 -122.950,36.598,0
+				</coordinates>
+    </LineString>
+	</Placemark>
+  </Folder>
+ 
+ <Folder>
+   <name>CS173 CyberShake Study 17.3 Velocity Model Region</name>
+   <Style id="box_highlight1">
+     <LineStyle>
+       <color>ff000000</color>
+       <width>1.3</width>
+     </LineStyle>
+   </Style>
+   <Placemark>
+     <name>CS173 - CyberShake Study 17.3 Tiled Central California</name>
+     <description>CyberShake Study 17.3 simulations used velocity models built using several existing California 3D and 1D velocity models. When constructing meshes, the CVM tiling order was CCA-06, Cencal, and CVM-S4.26.M01. A 10km horizontal smoothing process was done at interfaces between tiled velocity models.</description>
+     <styleUrl>#box_style33</styleUrl>
+     <LineString>
+       <tessellate>1</tessellate>
+       <coordinates>
+         -127.65648,37.08416,0
+         -116.48562,31.26643,0
+         -112.92896,35.33518,0
+         -124.51032,41.45284,0
+         -127.65648,37.08416,0
+       </coordinates>
+     </LineString>
+   </Placemark>
+ </Folder>
+ 
+ 
+ <Folder>
+   <name>CS173-H CyberShake Study 17.3 Velocity Model with Harvard Basins</name>
+   <Style id="box_highlight1">
+     <LineStyle>
+       <color>ff000000</color>
+       <width>1.3</width>
+     </LineStyle>
+   </Style>
+   <Placemark>
+     <name>CS173-H - CyberShake Study 17.3 Central California with Harvard Basins</name>
+     <description>CyberShake Study 17.3 simulations used velocity models built using several existing California 3D and 1D velocity models. When constructing meshes, the CVM tiling order was CCA-06, Cencal, and CVM-S4.26.M01. A 10km horizontal smoothing process was done at interfaces between tiled velocity models.</description>
+     <styleUrl>#box_style33</styleUrl>
+     <LineString>
+       <tessellate>1</tessellate>
+       <coordinates>
+         -127.65648,37.08416,0
+         -116.48562,31.26643,0
+         -112.92896,35.33518,0
+         -124.51032,41.45284,0
+         -127.65648,37.08416,0
+       </coordinates>
+     </LineString>
+   </Placemark>
+
+<Placemark>
+  <name>Harvard San Joaquin Basin Model </name>
+  <description>Bounding boxes for the Harvard San Jaoquin Basin Model Region</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+      -121.98481607959579,37.765476,0
+      -119.47544539570369,34.535499,0
+      -118.0879731936682,35.223012,0
+      -120.587,38.40,0
+      -121.98481607959579,37.765476,0
+    </coordinates>
+  </LineString>
+</Placemark>
+<Placemark>
+  <name>Harvard Santa Maria Basin Model</name>
+  <description>Bounding boxes for the Harvard Santa Maria Basin Model</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+      -121.06861217908948,35.447151,0
+      -121.0028109650184,34.097848,0
+      -119.37879716844978,34.140087,0
+      -119.41798612862107,35.491556,0
+      -121.06861217908948,35.447151,0
+    </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+ 
+<Folder>
+ <name>CS18.5 CyberShake Study 18.5 Velocity Model Region</name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>fff00000</color>
+      <width>1.3</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>CS18.5 - CyberShake Study 18.5 Tiled Central California Velocity Model.</name>
+  <description>CyberShake Study 18.5 will tile multiple models to create velocity model for this region. Tiling models order is Cencal,CCA-06 with Ely GTL,CVM-S4.26 with Ely GTL. This region is based on simulation volumne for Site Lenore.</description>
+  <styleUrl>#box_style22</styleUrl>
+  <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+-125.37935,40.13379,0
+-120.84456,42.27262,0
+-114.70278,33.45715,0
+-118.90701,31.54909,0
+-125.37935,40.13379,0
+     </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+ 
+
+<Folder>
+ <name>Albacore Model Region</name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>fff00000</color>
+      <width>1.3</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>Albacore Velocity Model.</name>
+  <description>CyberShake Study 18.5 will tile multiple models to create velocity model for this region. Tiling models order is Cencal,CCA-06 with Ely GTL,CVM-S4.26 with Ely GTL. This region is based on simulation volumne for Site Lenore.</description>
+  <styleUrl>#box_style22</styleUrl>
+  <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+-125.37935,40.13379,0
+-120.84456,42.27262,0
+-114.70278,33.45715,0
+-118.90701,31.54909,0
+-125.37935,40.13379,0
+     </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+
+<Folder>
+ <name>Coachela Valley Velocity Model Region</name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>fff00000</color>
+      <width>1.3</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>Coachella Valley Velocity Model.</name>
+  <description>Coachella Valley Velocity Model developed by LSU</description>
+  <styleUrl>#box_style22</styleUrl>
+  <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+ -115.7,33.3,0
+ -116.7,33.3,0
+ -116.7,34.2,0
+ -115.7,34.2,0
+ -115.7,33.3,0
+     </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+
+<Folder>
+ <name>Imperial Valley Velocity Model Region</name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>fff00000</color>
+      <width>1.3</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>Imperial Valley Velocity Model</name>
+  <description>Imperial Valley Velocity Model developed by LSU</description>
+  <styleUrl>#box_style22</styleUrl>
+  <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+-116.051578,32.596922,0
+-115.344866,32.596922,0
+-115.344866,33.356203,0
+-116.051578,33.356203,0
+-116.051578,32.596922,0
+     </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+<Folder>
+ <name>Albacore Offshore Velocity Model Region</name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>ffff0000</color>
+      <width>4</width>
+    </LineStyle>
+  </Style>
+	<Placemark>
+		<name>Albacore Offshore Southern California Model</name>
+    <description>Offshore Southern California lithospheric velocity structure from noise cross-correlation functions (2016) D. C. Bowden1, M. D. Kohler2, V. C. Tsai1, and D. S. Weeraratne, JGR RESEARCH ARTICLE, DOI: 10.1002/2016JB012919</description>
+    <styleUrl>#box_style00</styleUrl>
+		<LineString>
+     <tessellate>1</tessellate>
+				<coordinates>
+-116.847200,33.300000,0
+-116.847200,32.700000,0
+-124.047200,32.700000,0
+-124.047200,33.000000,0
+-124.647200,33.000000,0
+-124.647200,33.600000,0
+-123.447200,33.600000,0
+-123.447200,33.900000,0
+-123.147200,33.900000,0
+-123.147200,34.200000,0
+-121.347200,34.200000,0
+-121.347200,34.500000,0
+-120.447200,34.500000,0
+-120.447200,34.800000,0
+-118.947200,34.800000,0
+-118.947200,34.500000,0
+-118.647200,34.500000,0
+-118.647200,34.200000,0
+-118.047200,34.200000,0
+-118.047200,33.900000,0
+-117.447200,33.900000,0
+-117.447200,33.600000,0
+-117.147200,33.600000,0
+-117.147200,33.300000,0
+-116.847200,33.300000,0
+				</coordinates>
+			</LineString>
+	</Placemark>
+  </Folder>
+
+</Document>
+</kml>
