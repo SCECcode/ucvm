@@ -1,3 +1,4 @@
+conf/call_install_name_tool
 aclocal.m4
 docs/.idea
 docs/build
@@ -11,7 +12,7 @@ largefiles/cs173h.tar.gz
 *.o
 model/ucvm/ucvm.e
 model/ucvm/ucvm_yong_wald.e
-model/ucvm_utah/ucvm.e
+model/ucvm/ucvm_utah.e
 test/ref/test-grid-lib-1d.ref
 test/ref/test-grid-ucvm_query-1d.ref
 largefiles/euclid3-1.3.tar.gz
