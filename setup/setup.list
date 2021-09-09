@@ -36,7 +36,7 @@
                         "Abbreviation": "cvms",
                         "Size": "326M",
 			"Path": "cvms",
-			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvms.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvms4.tar.gz",
 			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
 			"Ask": "yes",
 			"Order": "1"
@@ -67,7 +67,7 @@
                         "Abbreviation": "cvmh",
                         "Size": "1.6G",
 			"Path": "cvmh1511",
-			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvmh-15.1.1.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvmh.tar.gz",
 			"Flags": "--enable-model-cvmh --with-cvmh-include-path=include --with-cvmh-lib-path=lib --with-gctpc-lib-path=lib --with-cvmh-model-path=model",
 			"Ask": "yes",
 			"Order": "4"
@@ -120,14 +120,14 @@
 		"Euclid3": {
 			"Path": "euclid3",
                         "Size": "4.7M",
-			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/euclid3-1.3.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/lib/euclid3-1.3.tar.gz",
 			"Required": "yes",
 			"Ask": "no"
 		},
 		"Proj4": {
 			"Path": "proj-5",
                         "Size": "30M",
-			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/proj-5.0.0.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/lib/proj-5.0.0.tar.gz",
 			"Required": "yes",
 			"CompileFlags": "--with-jni=no",
 			"Ask": "no"
@@ -135,7 +135,7 @@
 		"FFTW": {
 			"Path": "fftw",
                         "Size": "44M",
-			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/fftw-3.3.3.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/lib/fftw-3.3.3.tar.gz",
 			"Required": "yes",
 			"CompileFlags": "--enable-fortran=no",
 			"Ask": "no"
