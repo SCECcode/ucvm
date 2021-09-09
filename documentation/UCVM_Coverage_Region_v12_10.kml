@@ -313,7 +313,7 @@
 </Folder>
 
 <Folder>
-    <name>CVM-H Region Definitions</name>
+    <name>CVM-H Region</name>
     <Style id="box_highlight3">
       <LineStyle>
         <color>ffffffff</color>
@@ -322,7 +322,7 @@
     </Style>
     <Placemark>
       <name>Low Resolution Model</name>
-      <description>Bounding box for low resolution and mantle CVM-H Model.</description>
+      <description>Bounding box for low resolution and mantle CVM-H Model</description>
       <styleUrl>#box_style30</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
@@ -333,7 +333,7 @@
     </Placemark>
     <Placemark>
       <name>CVM-H High Resolution Model</name>
-      <description>Bounding box for high resolution CVM-H basin model.</description>
+      <description>Bounding box for high resolution CVM-H basin model</description>
       <styleUrl>#box_style30</styleUrl>
       <LineString>
         <tessellate>1</tessellate>
@@ -388,7 +388,7 @@
 </Folder>
 
 <Folder>
-  <name>USGS Bay Area (CenCal) Velocity Model</name>
+  <name>USGS Bay Area (CenCal) Velocity Model Regions</name>
   <Style id="box_highlight">
     <LineStyle>
       <color>ffffffff</color>
@@ -396,7 +396,7 @@
     </LineStyle>
   </Style>
   <Placemark>
-    <name>Detailed Model</name>
+    <name>Cencal Detailed Model</name>
     <description>Bounding boxes for the detailed USGS Bay Area Velocity Models version 08.2.0</description>
     <styleUrl>#box_style2</styleUrl>
     <LineString>
@@ -407,7 +407,7 @@
     </LineString>
   </Placemark>
   <Placemark>
-    <name>Regional Model</name>
+    <name>Cencal Regional Model</name>
     <description>Bounding boxes for the regional USGS Bay Area Velocity Models version 08.2.0</description>
     <styleUrl>#box_style2</styleUrl>
     <LineString>
@@ -420,7 +420,7 @@
 </Folder>
 
 <Folder>
-  <name>CVM-S4.26 and CVM-S4.26-M01 Velocity Model Region</name>
+  <name>CVM-S4.26 and CVM-S4.26-M01 Velocity Model Regions</name>
   <Style id="box_highlight10">
     <LineStyle>
       <color>641400FF</color>
@@ -492,7 +492,7 @@
  
  
  <Folder>
-   <name>CS173-H CyberShake Study 17.3 Velocity Model with Harvard Basins</name>
+   <name>CS173-H CyberShake Study 17.3 Velocity Model w/ Harvard Basins Region</name>
    <Style id="box_highlight1">
      <LineStyle>
        <color>ff000000</color>
@@ -516,7 +516,7 @@
    </Placemark>
 
 <Placemark>
-  <name>Harvard San Joaquin Basin Model </name>
+  <name>Harvard San Joaquin Basin Model</name>
   <description>Bounding boxes for the Harvard San Jaoquin Basin Model Region</description>
   <styleUrl>#box_style33</styleUrl>
   <LineString>
@@ -572,43 +572,16 @@
 </Placemark>
  </Folder>
  
-
 <Folder>
- <name>Albacore Model Region</name>
+ <name>Coachella Valley Velocity Model Region</name>
   <Style id="box_highlight1">
     <LineStyle>
-      <color>fff00000</color>
+      <color>fffcc000</color>
       <width>1.3</width>
     </LineStyle>
   </Style>
 <Placemark>
-  <name>Albacore Velocity Model.</name>
-  <description>CyberShake Study 18.5 will tile multiple models to create velocity model for this region. Tiling models order is Cencal,CCA-06 with Ely GTL,CVM-S4.26 with Ely GTL. This region is based on simulation volumne for Site Lenore.</description>
-  <styleUrl>#box_style22</styleUrl>
-  <LineString>
-     <tessellate>1</tessellate>
-     <coordinates>
--125.37935,40.13379,0
--120.84456,42.27262,0
--114.70278,33.45715,0
--118.90701,31.54909,0
--125.37935,40.13379,0
-     </coordinates>
-  </LineString>
-</Placemark>
- </Folder>
-
-
-<Folder>
- <name>Coachela Valley Velocity Model Region</name>
-  <Style id="box_highlight1">
-    <LineStyle>
-      <color>fff00000</color>
-      <width>1.3</width>
-    </LineStyle>
-  </Style>
-<Placemark>
-  <name>Coachella Valley Velocity Model.</name>
+  <name>Coachella Valley Velocity Model</name>
   <description>Coachella Valley Velocity Model developed by LSU</description>
   <styleUrl>#box_style22</styleUrl>
   <LineString>
