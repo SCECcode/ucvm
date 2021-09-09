@@ -6,7 +6,7 @@
 The current UCVM software version is [UCVM v19.4.0](http://github.com/SCECcode/UCVMC/wiki) which was released in June 2019. We recommend that new users work with that version of the software because it contains improvements not found in earlier versions.
 
 ## Preliminary UCVM Software Release v21.10
-We have continued to integrate new velocity models and new capabilities into UCVM and have developed a preliminary version of a new UCVM v21.10. These changes are available on the main branch in this github repository. This preliminary version has not been released as an official UCVM release. 
+We have continued to integrate new velocity models and new capabilities into UCVM and have developed a preliminary version of a new UCVM v21.10. These changes are available on the target branch in this github repository. This preliminary version has not been released as an official UCVM release. 
 
 ## Developing a Modular UCVM
 To simplify UCVM software development, we are separating the next UCVM software distribution into a collection of inter-operable software packages. This is the UCVM github repository for the [UCVM core package](https://github.com/SCECcode/ucvm.git) that provides the UCVM query interface. The velocity models are managed in their own github repositories (e.g. [CVM-S4](https://github.com/SCECcode/cvms), [CVM-H v15.1](https://github.com/SCECcode/cvmh), [CVM-S4.26](https://github.com/SCECcode/cvms5), [CVM-S4.26.M01](https://github.com/SCECcode/cvmsi)). Specialized UCVM plotting tools can be retrieved from the [UCVM plotting package](https://github.com/SCECcode/ucvm_plotting) github repository if needed. We expect to release this multi-package version of UCVM in mid-2021.
@@ -72,14 +72,13 @@ Optional Software for building MPI binaries:
 Once the target computer has the required software tools installed, the basic install of UCVM is:
 *  git clone https://github.com/SCECcode/ucvm.git
 *  cd ucvm/largefiles
-*  ./get_large_files.py
+*  ./get_largefiles.py
 *  ./check_largefiles_md5.py
-*  ./stage_large_files.py
+*  ./stage_largefiles.py
 *  cd ..
 *  ./ucvm_setup.py
 
-The get_large_files.py and ucvm_setup.py scripts run in a terminal window and print text questions to the user.  The user types answers to the questions in the terminal window. The retrieval script asks the user which velocity model they would like to stage into the local system and the install script asks the user which velocity models they would like to install from retrieved model list: ( 
-CVM-H v15.1, CVM-S4, CVM-S4.26, CVM-S4.26.M01, CCA06, CS17.3, CS17.3-H, Albacore, IVLSU, CVLSU, WFCVM, and USGS CenCal). 
+The get_largefiles.py and ucvm_setup.py scripts run in a terminal window and print text questions to the user.  The user types answers to the questions in the terminal window. The retrieval script asks the user which velocity model they would like to stage into the local system and the install script asks the user which velocity models they would like to install from retrieved model list: (CVM-H v15.1, CVM-S4, CVM-S4.26, CVM-S4.26.M01, CCA06, CS17.3, CS17.3-H, Albacore, IVLSU, CVLSU, WFCVM, and USGS CenCal). 
 
 Several models are very large. CCA06, CS17.3 and CS17.3-H are 9.2G, 72G and 72G respectively. We recommend that the user only retrieve needed models and install all retrieved models.
 
