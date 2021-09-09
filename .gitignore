@@ -3,6 +3,7 @@ docs/.idea
 docs/build
 docs/build/html
 INSTALL
+largefiles/ucvm_utah.e
 largefiles/cca.tar.gz
 largefiles/cs173.tar.gz
 largefiles/cs173h.tar.gz

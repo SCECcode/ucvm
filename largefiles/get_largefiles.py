@@ -108,7 +108,7 @@ for m in target_large_lib_list:
   scec_url = "%s/lib/%s"%(ucvmc_largefile_repository,m)
   #
   # First check if file exists. If so, don't re-download.
-  # Tell user that old files must be deleted from UCVMC/largefiles to download new version
+  # Tell user that old files must be deleted from UCVM/largefiles to download new version
   #
   if not os.path.exists(outfilename):
     try:
@@ -118,7 +118,7 @@ for m in target_large_lib_list:
       break
     print("Finished downloading: ",m)
   else:
-    print("Required largefile already exists in UCVMC/largefile directory",outfilename)
+    print("Required largefile already exists in UCVM/largefile directory",outfilename)
     print("If new version is required, delete current local copy (%s) and re-run this script"%(outfilename))
 
 #
@@ -130,7 +130,7 @@ for m in target_large_model_list:
   scec_url = "%s/model/%s"%(ucvmc_largefile_repository,m)
   #
   # First check if file exists. If so, don't re-download.
-  # Tell user that old files must be deleted from UCVMC/largefiles to download new version
+  # Tell user that old files must be deleted from UCVM/largefiles to download new version
   #
   if not os.path.exists(outfilename):
     try:
@@ -140,7 +140,7 @@ for m in target_large_model_list:
       break
     print("Finished downloading: ",m)
   else:
-    print("Required largefile already exists in UCVMC/largefile directory",outfilename)
+    print("Required largefile already exists in UCVM/largefile directory",outfilename)
     print("If new version is required, delete current local copy (%s) and re-run this script"%(outfilename))
 
 #
@@ -153,7 +153,7 @@ for m in target_large_etree_list:
   scec_url = "%s/etree/%s"%(ucvmc_largefile_repository,m)
   #
   # First check if file exists. If so, don't re-download.
-  # Tell user that old files must be deleted from UCVMC/largefiles to download new version
+  # Tell user that old files must be deleted from UCVM/largefiles to download new version
   #
   if not os.path.exists(outfilename):
     try:
@@ -163,7 +163,7 @@ for m in target_large_etree_list:
       break
     print("Finished downloading: ",m)
   else:
-    print("Required largefile already exists in UCVMC/largefile directory",outfilename)
+    print("Required largefile already exists in UCVM/largefile directory",outfilename)
     print("If new version is required, delete current local copy (%s) and re-run this script"%(outfilename))
 
 #
@@ -175,7 +175,7 @@ for m in target_large_ref_list:
   scec_url = "%s/ref/%s"%(ucvmc_largefile_repository,m)
   #
   # First check if file exists. If so, don't re-download.
-  # Tell user that old files must be deleted from UCVMC/largefiles to download new version
+  # Tell user that old files must be deleted from UCVM/largefiles to download new version
   #
   if not os.path.exists(outfilename):
     try:
