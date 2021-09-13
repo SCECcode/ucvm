@@ -27,7 +27,7 @@ if(mypath == None) :
     print("Need to set UCVM_INSTALL_PATH to run > ucvm_models.py")
     exit(1)
 
-CMD=mypath+"/bin/run_ucvm_query.sh"
+CMD=mypath+"/utilities/run_ucvm_query.sh"
 proc = Popen([CMD, "-H"], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
 rawoutput = proc.communicate()[0]
 output=rawoutput.decode()
