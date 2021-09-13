@@ -1,10 +1,11 @@
-bin_PROGRAMS = installed_models makegrid run_ucvm.sh run_ucvm_query.sh time_mesh_generation
+EXTRA_DIST = installed_models makegrid.sh run_ucvm.sh run_ucvm_query.sh time_mesh_generation.py
 
-install: $(bin_PROGRAMS)
+install: $(install_PROGRAMS)
 	mkdir -p ${prefix}/utilities
 	if ! test . -ef ${prefix}/utilities; then \
-	for i in $(bin_PROGRAMS); do \
-                cp $${i} ${prefix}/utilities; \
+		for i in $(EXTRA_DIST); do \
+			cp $${i} ${prefix}/utilities; \
+		done \	
 	fi
 
 clean:

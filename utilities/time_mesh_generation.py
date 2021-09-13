@@ -62,7 +62,7 @@ print(target_models)
 # long it takes to populate the models
 #
 
-for model_string in target_mnodels :
+for model_string in target_models :
   start = time.time()
   cmd="$UCVM_INSTALL_PATH/utilities/run_ucvm_query.sh -f $UCVM_INSTALL_PATH/conf/ucvm.conf -m %s < ./out.grd > mesh_%s.out"%(model_string,model_string)
   print(cmd)
