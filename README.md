@@ -8,12 +8,10 @@ The current UCVM software version is [UCVM v19.4.0](http://github.com/SCECcode/U
 ## Preliminary UCVM Software Release v21.10
 We have continued to integrate new velocity models and new capabilities into UCVM and have developed a preliminary version of a new UCVM v21.10. These changes are available on the target branch in this github repository. This preliminary version has not been released as an official UCVM release. 
 
-## Developing a Modular UCVM
-To simplify UCVM software development, we are separating the next UCVM software distribution into a collection of inter-operable software packages. This is the UCVM github repository for the [UCVM core package](https://github.com/SCECcode/ucvm.git) that provides the UCVM query interface. The velocity models are managed in their own github repositories (e.g. [CVM-S4](https://github.com/SCECcode/cvms), [CVM-H v15.1](https://github.com/SCECcode/cvmh), [CVM-S4.26](https://github.com/SCECcode/cvms5), [CVM-S4.26.M01](https://github.com/SCECcode/cvmsi)). Specialized UCVM plotting tools can be retrieved from the [UCVM plotting package](https://github.com/SCECcode/ucvm_plotting) github repository if needed. We expect to release this multi-package version of UCVM in mid-2021.
+## Web-based UCVM Documentation
+Over and technical information about UCVM is posted in the online UCVM github wiki: [UCVM Wiki-based documentation](https://github.com/sceccode/ucvm/wiki)
 
-UCVM is distributed as open-source scientific software. It can be installed compiled and run on most Linux-based computer systems if the system includes software development tools including Python, C, and Fortran compilers, and other software tools.
-
-## Background
+## Overview of SCEC UCVM
 
 The SCEC Unified Community Velocity Model (UCVM) software is used to access information, including estimated Vp and Vs seismic wave velocities and density, about the earth's crust. 
 
@@ -47,54 +45,10 @@ UCVM software repository contains a software codebase developed by Philip Maechl
 
 UCVM was developed with support from National Science Foundation (NSF), US Geological Survey (USGS), and other sources.
 
+## Developing a Modular UCVM
+To simplify UCVM software development, we are separating the next UCVM software distribution into a collection of inter-operable software packages. This is the UCVM github repository for the [UCVM core package](https://github.com/SCECcode/ucvm.git) that provides the UCVM query interface. The velocity models are managed in their own github repositories (e.g. [CVM-S4](https://github.com/SCECcode/cvms), [CVM-H v15.1](https://github.com/SCECcode/cvmh), [CVM-S4.26](https://github.com/SCECcode/cvms5), [CVM-S4.26.M01](https://github.com/SCECcode/cvmsi)). Specialized UCVM plotting tools can be retrieved from the [UCVM plotting package](https://github.com/SCECcode/ucvm_plotting) github repository if needed. We expect to release this multi-package version of UCVM in mid-2021.
 
-## System and Software Requirements
-
-Testing UCVM on all possible combinations of operating sysetms and software stacks requires more software developer resources than currently available. So, we have defined a UCVM reference software stack that we use to develop and test the software. This UCVM distrbution has been shown to work on the following reference software stack. It may work on other software stacks, also, but this is the supported software environment.
-
-*  Linux operating system (e.g. CentOS 8 Linux) x86_64-linux 
-*  GNU gcc/gfortran compilers version 8.8.5
-*  Python 3 (Anaconda)
-*  Autotools build software for Linux
-*  Automake, Autoconf build tools for Linux
-*  Git client
-
-External Libraries installed by UCVM
-
-*  Euclid Etree library: http://www.cs.cmu.edu/~euclid/ (provided during installation)
-*  Proj.5 projection library: http://trac.osgeo.org/proj/ (provided during installation)
-
-Optional Software for building MPI binaries:
-
-*  openmpi 2.0.2
-
-## Installation
-Once the target computer has the required software tools installed, the basic install of UCVM is:
-*  git clone https://github.com/SCECcode/ucvm.git
-*  cd ucvm/largefiles
-*  ./get_largefiles.py
-*  ./check_largefiles_md5.py
-*  ./stage_largefiles.py
-*  cd ..
-*  ./ucvm_setup.py
-
-The get_largefiles.py and ucvm_setup.py scripts run in a terminal window and print text questions to the user.  The user types answers to the questions in the terminal window. The retrieval script asks the user which velocity model they would like to stage into the local system and the install script asks the user which velocity models they would like to install from retrieved model list: (CVM-H v15.1, CVM-S4, CVM-S4.26, CVM-S4.26.M01, CCA06, CS17.3, CS17.3-H, Albacore, IVLSU, CVLSU, WFCVM, and USGS CenCal). 
-
-Several models are very large. CCA06, CS17.3 and CS17.3-H are 9.2G, 72G and 72G respectively. We recommend that the user only retrieve needed models and install all retrieved models.
-
-The script will then automatically compile, build, and install the selected models.
-
-Important! Do not move the UCVM installation to a place different from the target location specified during build time. This will render the autogenerated ucvm.conf and ucvm_bash.conf with useless paths.
-
-## MPI Compilers and UCVM Programs
-
-If a GNU-based MPI compiler is detected, the MPI version of several utilities are created, including ucvm2mesh_mpi, ucvm2mesh_mpi_layer, ucvm2etree_mpi, and basin_query_mpi are built. Otherwise, only the serial versions for these programs are built.
-
-## Configuration
-The main UCVM configuration file is ${UCVM_INSTALL_DIR}/conf/ucvm.conf. 
-This file defines the paths to some configured models and maps, and it defines selected model flags, such as CVM-H USE_GTL. The UCVM installer sets up this ucvm.conf file automatically.
-
-In most cases, the user does not need to edit the UCVM/conf/ucvm.conf. However, in some circumstances, such as changing the behavior of the CVM-H model, the user  might want to edit the ucvm.conf file. Please see the User Guide for more details on how to edit the UCVM/conf/ucvm.conf configuration file.
+UCVM is distributed as open-source scientific software. It can be installed compiled and run on most Linux-based computer systems if the system includes software development tools including Python, C, and Fortran compilers, and other software tools.
 
 ## Standard Models and Maps
 The following California velocity models packages are included as part of a standard UCVM installation.  Each model is assigned an abbreviation, and these abbreviations are used to specify the models when making UCVM queries. The model abbreviations used by UCVM are defined in following tables:
