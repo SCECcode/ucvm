@@ -19,7 +19,7 @@ UCVM provides seismic velocity information for several California regions. Seism
 
 The Unified Community Velocity Model (UCVM) software framework is a collection of software tools designed to provide a standard interface to multiple, alternative, California velocity models. UCVM development is an interdisciplinary research collaboration involving geoscientists, computer scientists, and software developers. UCVM is used in high resolution 3D wave propagation simulations for California.
 
-UCVM software repository contains a software codebase developed by Philip Maechling, Mei-Hui Su, David Gill, Patrick Small, and others at SCEC. UCVM is released as open-source scientific software under an open-source BSD 3-Clause License.
+UCVM software repository contains a software codebase developed by  Patrick Small, Mei-Hui Su, Philip Maechling, David Gill, and others at SCEC. UCVM is released as open-source scientific software under an open-source BSD 3-Clause License. The underlying velocity models may be released under their own open-source license.
 
 UCVM was developed with support from National Science Foundation (NSF), US Geological Survey (USGS), and other sources.
 
