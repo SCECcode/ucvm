@@ -19,6 +19,9 @@ UCVM_CVMS = {"1d":"1D(1d)", \
              "cs173h":"CyperShake 17.3 with San Joaquin and Santa Maria Basins data(cs173h)", \
              "cvmh":"CVM-H 15.1.1(cvmh1511)", \
              "albacore":"ALBACORE(albacore)", \
+             "wfcvm":"Wasatch Front Utah(wfcvm)", \
+             "ivlsu":"SSIP Imperial Valley(ivlsu)", \
+             "cvlsu":"SSIP Coachella Valley(cvlsu)", \
              "cencal":"USGS Bay Area Model(cencal)"}
 
 # get installed models
