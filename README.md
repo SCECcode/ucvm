@@ -9,10 +9,10 @@ The current UCVM software version is [UCVM v19.4.0](http://github.com/SCECcode/U
 We have continued to integrate new velocity models and new capabilities into UCVM and have developed a preliminary version of a new UCVM v21.10. These changes are available on the target branch in this github repository. This preliminary version has not been released as an official UCVM release. 
 
 ## Web-based UCVM Documentation
-Over and technical information about UCVM is posted in the online UCVM github wiki: [UCVM Wiki-based documentation](https://github.com/sceccode/ucvm/wiki)
+Over and technical information about UCVM is posted in the online UCVM github wiki:
+- [UCVM Wiki-based documentation](https://github.com/sceccode/ucvm/wiki)
 
 ## Overview of SCEC UCVM
-
 The SCEC Unified Community Velocity Model (UCVM) software is used to access information, including estimated Vp and Vs seismic wave velocities and density, about the earth's crust. 
 
 UCVM provides seismic velocity information for several California regions. Seismic velocities of rocks and sediments at shallow depths determine how strongly an area will shake. By assigning velocities to rock types in the 3-D geologic model, geologists can gain an understanding of the extent of areas of low shear velocity that are most likely to experience localized strong shaking and future earthquake damage. An important application for the models accessible through UCVM is for use in computer simulations of California earthquakes.
@@ -23,7 +23,7 @@ UCVM software repository contains a software codebase developed by  Patrick Smal
 
 UCVM was developed with support from National Science Foundation (NSF), US Geological Survey (USGS), and other sources.
 
-## Modular UCVM
+## Creating a more Modular UCVM
 To simplify UCVM software development, we have separated the UCVM v19.4 software distribution into a collection of compatible software packages. 
 - This UCVM github repository is for the [UCVM core package](https://github.com/SCECcode/ucvm.git) that provides the UCVM query interface. 
 - The velocity models are managed in their own github repositories (e.g. [CVM-S4](https://github.com/SCECcode/cvms), [CVM-H v15.1](https://github.com/SCECcode/cvmh), [CVM-S4.26](https://github.com/SCECcode/cvms5), [CVM-S4.26.M01](https://github.com/SCECcode/cvmsi)). 
