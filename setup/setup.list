@@ -46,7 +46,7 @@
                         "Abbreviation": "cvms",
                         "Size": "326M",
 			"Path": "cvms",
-			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvms4.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvms.tar.gz",
 			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
 			"Ask": "yes",
 			"Order": "1"
@@ -66,17 +66,18 @@
 			"Version": "4.26",
                         "Abbreviation": "cvmsi",
                         "Size": "1.6G",
-			"Path": "cvms426",
-			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvms426.tar.gz",
+			"Path": "cvmsi",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvmsi.tar.gz",
 			"Flags": "--enable-model-cvmsi --with-cvmsi-lib-path=lib --with-cvmsi-include-path=include --with-cvmsi-model-path=model/i26",
 			"Ask": "yes",
 			"Order": "3"		
 		},
 		"CVM-H": {
 			"Version": "15.1.1",
+l55]2
                         "Abbreviation": "cvmh",
                         "Size": "1.6G",
-			"Path": "cvmh1511",
+			"Path": "cvmh",
 			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvmh.tar.gz",
 			"Flags": "--enable-model-cvmh --with-cvmh-include-path=include --with-cvmh-lib-path=lib --with-gctpc-lib-path=lib --with-cvmh-model-path=model",
 			"Ask": "yes",
@@ -87,7 +88,7 @@
                         "Abbreviation": "cencal",
                         "Size": "21G",
 			"Path": "cencal",
-			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cencal080.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cencal.tar.gz",
 			"Flags": "--enable-model-cencal --with-cencal-lib-path=lib --with-cencal-include-path=include/cencalvm/query/ --with-cencal-model-path=model/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=model/USGSBayAreaVMExt-08.3.0.etree",
 			"Ask": "yes",
 			"Order": "5"
