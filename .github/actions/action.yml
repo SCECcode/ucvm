@@ -13,11 +13,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-<<<<<<< HEAD
-    - run: echo Hello from ucvm/target action.yml ${{ inputs.target-models }}.
-=======
     - run: echo Hello from ucvm action.yml ${{ inputs.target-models }}.
->>>>>>> main
       shell: bash
     - run: ( echo " pwd =>"; pwd;
              echo " RUNNER_WORKSPACE =>"$RUNNER_WORKSPACE;
