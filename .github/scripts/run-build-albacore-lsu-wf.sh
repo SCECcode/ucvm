@@ -20,8 +20,11 @@ y
 y
 y
 EOF
-cd $UCVM_SRC_PATH/largefiles; ./check_largefiles_md5.py
-cd $UCVM_SRC_PATH/largefiles; ./stage_large_files.py
+
+if [ $tmp != 'Darwin' ]; then
+  cd $UCVM_SRC_PATH/largefiles; ./check_largefiles_md5.py
+fi
+cd $UCVM_SRC_PATH/largefiles; ./stage_largefiles.py
 
 cd $UCVM_SRC_PATH
 ./ucvm_setup.py -d -a << EOF &> ucvm_setup_install.log

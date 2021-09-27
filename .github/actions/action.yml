@@ -28,7 +28,7 @@ runs:
     - name: build ucvm with cvmh
       run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-cvmh.sh)
       shell: bash
-    - id: post-build-log
+e   - id: post-build-log
       run: echo "::set-output name=log-file::$(echo $RANDOM)"
       shell: bash
     - name: build ucvm with cvmh
