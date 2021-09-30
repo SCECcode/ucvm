@@ -9,15 +9,10 @@ name: ucvm-build-cvmh-py3
       run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
-<<<<<<< HEAD
-    - name: checkout ucvm
-      uses: actions/checkout@v2
-=======
     - name: checkout ucvm 
       uses: actions/checkout@v2
       with: 
         ref: main
->>>>>>> main
     - name: build ucvm with cvms and cvmh
       run: ./.github/scripts/ucvm-build-cvms-cvmh.sh
       shell: bash
