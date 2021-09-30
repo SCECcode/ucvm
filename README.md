@@ -60,40 +60,26 @@ Since UCVM v19.4.0 was released, we have continued to integrate new velocity mod
 
 UCVM is distributed as open-source scientific software. It can be installed compiled and run on most Linux-based computer systems if the system includes software development tools including Python, C, and Fortran compilers, and other software tools.
 
-## Background
+## Web-based UCVM Documentation
+Over and technical information about UCVM is posted in the online UCVM github wiki:
+- [UCVM Wiki-based documentation](https://github.com/sceccode/ucvm/wiki)
 
-The SCEC Unified Community Velocity Model (UCVM) software is used to access information, including estimated Vp and Vs seismic wave velocities and density, about the earth's crust to about 100km. 
+## Overview of SCEC UCVM
+The SCEC Unified Community Velocity Model (UCVM) software is used to access information, including estimated Vp and Vs seismic wave velocities and density, about the earth's crust. 
 
 UCVM provides seismic velocity information for several California regions. Seismic velocities of rocks and sediments at shallow depths determine how strongly an area will shake. By assigning velocities to rock types in the 3-D geologic model, geologists can gain an understanding of the extent of areas of low shear velocity that are most likely to experience localized strong shaking and future earthquake damage. An important application for the models accessible through UCVM is for use in computer simulations of California earthquakes.
 
-The Unified Community Velocity Model (UCVM) software framework is a collection of software tools designed to provide a standard interface to multiple, alternative, California velocity models. UCVM development is an interdisciplinary research collaboration involving geoscientists, computer scientists, and software developers. UCVM is used in high resolution 3D wave propagation simulations for California. 
+The Unified Community Velocity Model (UCVM) software framework is a collection of software tools designed to provide a standard interface to multiple, alternative, California velocity models. UCVM development is an interdisciplinary research collaboration involving geoscientists, computer scientists, and software developers. UCVM is used in high resolution 3D wave propagation simulations for California.
 
-The map below shows the coverage regions for currently supported California velocity models that are accessible through UCVM. Each of the models shown is considered a regional velocity model. Typically the models return values down to about 50km or 100km, but most models are undefined below 100km. For earth material properties below 100km, global seismic velocity models, such as the Preliminary Earth Reference Model (PREM), are possible alternative models.
-
-
-<img src="documentation/coverage.png" width="80%">
-
-Map shows coverage region for California CVMs registered into UCVM.
-Coverage region for UCVM 2D maps (yellow) overlayed upon regions of various California 3D velocity models 
-(
-CVM-S4: red,
-CVM-S4 geotechnical regions: red polygons, 
-CVM-H high resolution: small light blue square,
-CVM-H low resolution: larger light blue square,
-USGS High Resolution Bay Area: small white rectangle,
-USGS Low Resolution Bay Area: large white rectangle,
-CVM-S4.26, CVM-S4.26M01: green, 
-CCA 06: small yellow, 
-CS17.3, CS17.3-H: large orange rectangle,
-Havard San Joaquin Basin Model: small orange rectangle,
-Havard Santa Maria Basin Model: orange square, 
-CS18.5 Cypershake Study's Tiled Velocity Model: blue
-) : [Coverage.kml](documentation/coverage.kml)
-
-UCVM software repository contains a software codebase developed by Philip Maechling, Mei-Hui Su, David Gill, Patrick Small, and others at SCEC. UCVM is released as open-source scientific software under an Apache 2 software license.
+UCVM software repository contains a software codebase developed by  Patrick Small, Mei-Hui Su, Philip Maechling, David Gill, and others at SCEC. UCVM is released as open-source scientific software under an open-source BSD 3-Clause License. The underlying velocity models may be released under their own open-source license.
 
 UCVM was developed with support from National Science Foundation (NSF), US Geological Survey (USGS), and other sources.
 
+## Creating a more Modular UCVM
+To simplify UCVM software development, we have separated the UCVM v19.4 software distribution into a collection of compatible software packages. 
+- This UCVM github repository is for the [UCVM core package](https://github.com/SCECcode/ucvm.git) that provides the UCVM query interface. 
+- The velocity models are managed in their own github repositories (e.g. [CVM-S4](https://github.com/SCECcode/cvms), [CVM-H v15.1](https://github.com/SCECcode/cvmh), [CVM-S4.26](https://github.com/SCECcode/cvms5), [CVM-S4.26.M01](https://github.com/SCECcode/cvmsi)). 
+- UCVM plotting scripts are now located in the [UCVM plotting package](https://github.com/SCECcode/ucvm_plotting) github repository.
 
 ## System and Software Requirements
 
@@ -159,11 +145,7 @@ USGS Bay Area Velocity Model 0.8.3| USGS developed San Francisco and Central Cal
 Albacore | Albacore California off-shore Velocity Model | albacore | 2.3M
 IVLSU | SSIP Imperial Valley Velocity Model developed by LSU | ivlsu | 1M
 CVLSU | SSIP Coachella Valley Velocity Model developed by LSU | ivlsu | 1M
-<<<<<<< HEAD
-WFCVM | Wasatch Front Community Velocity Model(UTAH) | wfcvm | 50M
-=======
 WFCVM | Wasatch Front Community Velocity Model | wfcvm | 50M
->>>>>>> main
 Southern California 1D  | Modified Hadley Kanamori 1D model based on Hadley-Kanamori model | 1d | 8k
 Northridge Region 1D | Los Angeles Region 1D model used in SCEC Broadband Platform | bbp1d | -
 
@@ -173,7 +155,8 @@ topography map, that also includes statewide Vs30 values, combined into an etree
 Toopgrahy and Vs30 Map Name | Description | UCVM Abbreviation
 ----------------------------|-------------|------------------
 USGS NED DEM and Wills-Wald Vs30, 2015| California elevation and Vs30 data in etree format | ucvm
-USGS NED DEM and Wills-Wald Vs30, 2006 | Utah elevation and Vs30 data in etree format | ucvm_utah
+
+UCVM is distributed as open-source scientific software. It can be installed compiled and run on most Linux-based computer systems if the system includes software development tools including Python, C, and Fortran compilers, and other software tools.
 
 ## Documentation
 Online UCVM documentation is available at:
@@ -186,4 +169,16 @@ More Installation instruction:
 
 * [Additional guidelines for building UCVM](documentation/Installation.md)
 
+## Software and User Support
+Issue Tracking:
+* GitHub: https://github.com/SCECcode/ucvm/issues
+Email:
+* Contact: software@scec.usc.edu
 
+## Preferred UCVM Software Reference
+If you use the UCVM software in your research, please include a reference to the following publication in your research publications. References help us obtain continued financial support for the development of the software. The preferred reference for the UCVM software is:
+
+Small, P., Gill, D., Maechling, P. J., Taborda, R., Callaghan, S., Jordan, T. H., Ely, G. P., Olsen, K. B., & Goulet, C. A. (2017). The SCEC Unified Community Velocity Model Software Framework. Seismological Research Letters, 88(5). doi:10.1785/0220170082.
+
+## License
+The UCVM software is released using a BSD-3 open-source license. Please see the LICENSE file for distribution license and disclaimers.
