@@ -6,25 +6,26 @@ The .gitignore excludes most files in the largefiles directory
 Currently, we stage the largefiles externally, giving the user options on how they
 assemble the list of needed files.
 
-The script are designed to be run in the UCVMC/largefiles dirctory
+The script are designed to be run in the UCVM/largefiles dirctory
 
 First, the user runs a script to get the largefiles.
-This script asks user which model should be downloaded then  the selected model 
-files and other large files are copied from USC into the local directory.
-./get_large_files.py
+This script asks user which model should be downloaded then the selected model 
+files and other large files are copied from an external repository into the local 
+directory.
+./get_largefiles.py
 
 Second, the user runs a script to confirm the largefiles are intact.
 This script prints out the number of OK files and the number of files with errors.
 If any files have errors, those files should be re-downloaded.
 ./check_largefiles_md5.py
 
-Third, the user runs the stage_files script:
-This copies the files from the largefiles directory into the ucvm directory tree
-./stage_large_files.py
+Third, the user runs the file stagin script:
+This copies the files from the largefiles directory into the ucvm  directory tree
+./stage_largefiles.py
 
 
-Finally, the user moves out of the UCVMC/largefiles directory, into the UCVM home directory.
-From the UCVM/ home directory, the user runs:
+Finally, the user moves out of the UCVM/largefiles directory, into the UCVM home directory.
+From the UCVM home directory, the user runs:
 ./ucvm_setup.py
 
 This will run the configure, make, install commands to build the libraries and models.

@@ -15,7 +15,10 @@ jobs:
       run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
-    - uses: actions/checkout@v2
+    - name: checkout ucvm target
+      uses: actions/checkout@v2
+      with: 
+        ref: target
     - name: build ucvm with cvmh
       run: ./.github/scripts/ucvm-build-cvmh.sh 
       shell: bash
@@ -33,20 +36,12 @@ jobs:
       run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
-<<<<<<< HEAD
-<<<<<<< HEAD
     - name: checkout ucvm target
       uses: actions/checkout@v2
       with: 
         ref: target
-=======
     - name: checkout ucvm toPython3
       uses: actions/checkout@v2
->>>>>>> main
-=======
-    - name: checkout ucvm toPython3
-      uses: actions/checkout@v2
->>>>>>> upstream/main
     - name: build ucvm with cvms and cvmh
       run: ./.github/scripts/ucvm-build-cvms-cvmh.sh
       shell: bash
@@ -64,10 +59,12 @@ jobs:
       run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
+
     - name: checkout ucvm target
       uses: actions/checkout@v2
       with: 
         ref: target
+
     - name: build ucvm with albacore, cvlsu, ivlsu and wfcvm
       run: ./.github/scripts/run-build-albacore-lsu-wf.sh
       shell: bash

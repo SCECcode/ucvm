@@ -1,57 +1,37 @@
 #!/usr/bin/env python
 # 
 # Script for downloading UCVM largefiles from remote repository site
-# into the ucvm/largefiles subdirectory.
+# into the ./largefiles subdirectory.
 #
+# Pick up information from ../setup/setup.list
 #
 import os
 import sys
+import json
+import pdb
 
 if sys.version_info.major >= (3) :
   from urllib.request import urlopen 
 else:
   from urllib2 import urlopen
 
-#
-UCVM_Version = "21.7"
 
-# remote repository
-ucvmc_largefile_repository = "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7"
+##########################
 
-#
-optional_large_model_list = [ "cvms5",
-                    "cca",
-                    "cs173",
-                    "cs173h",
-                    "cvms",
-                    "cvmsi",
-                    "cencal",
-                    "cvmh",
-                    "albacore",
-                    "cvlsu",
-                    "ivlsu",
-                    "wfcvm"]
-optional_large_model_size = { 'cvms5':'1.2G',
-                              'cca':'9.2G',
-                              'cs173':'72G',
-                              'cs173h':'72G',
-                              'cvms':'326M',
-                              'cvmsi':'1.6G',
-                              'cencal':'21G',
-                              'cvmh':'1.6G',
-                              'albacore':'2.3M',
-                              'cvlsu':'1M',
-                              'ivlsu':'1M',
-                              'wfcvm':'50M'}
-target_large_lib_list = ["proj-5.0.0.tar.gz",
-                  "fftw-3.3.3.tar.gz",
-                  "euclid3-1.3.tar.gz"]
-##
-target_large_model_list = []
-target_large_etree_list = ["ucvm.e","ucvm_utah.e"]
-target_large_ref_list = ["test-grid-lib-1d.ref"]
+def printPretty(list):
+    buffer = ""
+    # Make a nice comma list.
+    print("  ")
+    for i in range(0, len(list)):
+        buffer += list[i]
+        if i < len(list) - 2:
+            buffer += ", "
+        elif i == len(list) - 2 and len(list) != 2:
+            buffer += ", and "
+        elif i == len(list) - 2:
+            buffer += " and "
+    print(buffer)
 
-#
 def download_urlfile(url,fname):
   try:
     response = urlopen(url)
@@ -68,47 +48,101 @@ def download_urlfile(url,fname):
     raise
   return True
 
+##########################
+
+optional_large_model_list = []
+target_large_lib_list = []
+target_large_model_list = []
+target_large_etree_list = []
+target_large_ref_list = []
+
+try:
+    # We now have our list. Parse it.
+    f = open("../setup/setup.list", "r")
+    json_string = f.read()
+    f.close()
+    config_data = json.loads(json_string)
+except OSError as e:
+    eG(e, "Parsing setup for ucvm model list.")
+
+for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config_data["models"][k]["Order"])):
+    the_model = config_data["models"][model]
+    _url = str(the_model["URL"])
+    _abb= str(the_model["Abbreviation"])
+    _sz= str(the_model["Size"])
+    if config_data["models"][model]["Ask"] != "no":
+       optional_large_model_list.append( {"model":_abb,"url":_url,"size":_sz })
+
+for library in config_data["libraries"].keys() :
+    the_library = config_data["libraries"][library]
+    _url = str(the_library["URL"])
+    _path= str(the_library["Path"])
+    if config_data["libraries"][library]["Required"] == "yes":
+       target_large_lib_list.append({"library":_path, "url":_url});
+
+for etree in config_data["etrees"].keys() :
+    the_etree = config_data["etrees"][etree]
+    _url = str(the_etree["URL"])
+    _path= str(the_etree["Path"])
+    target_large_etree_list.append({"etree":_path, "url":_url});
+
+for ref in config_data["references"].keys() :
+    the_reference = config_data["references"][ref]
+    _url = str(the_reference["URL"])
+    _path= str(the_reference["Path"])
+    target_large_ref_list.append({"reference":_path, "url":_url});
+
 #
 # Check to make sure the script is being run with outside a UCVM directory
 #
 curdir = os.getcwd()
 if os.path.basename(os.path.normpath(curdir)) == "largefiles":
-  print("Running in ucvm/largefiles source directory. ")
+  print("Running in ./largefiles source directory. ")
   print("This script will download and install ucvm.e, ucvm_utah.e and several other files.")
   print("Due to the size of the files, this download could take minutes to hours to complete.")
 else:
-  print("Run this script in the directory that contains the ucvm/largefiles src directory.")
+  print("Run this script in the directory that contains the ./largefiles src directory.")
   print("This script will download and install ucvm.e, ucvm_utah.e and several other files.")
   print("Due to the size of the files, this download could take minutes to hours to complete.")
   sys.exit(0)
 
 ######################################################################
 #
-#
+# Ask, which model file to retrieve
 for m in optional_large_model_list:
-   print("\nWould you like to download " + m + ", will need "+ optional_large_model_size[m] + "?") 
+   _model=m['model']
+   _url=m['url']
+   _size=m['size']
+   print("\nWould you like to download " + _model + ", will need "+ _size + "?") 
    if sys.version_info.major >= (3) :
      yesmodel = input("Enter yes or no: ")
    else:
      yesmodel = raw_input("Enter yes or no: ")
 
    if yesmodel != "" and yesmodel.lower()[0] == "y":
-     model = m + '.tar.gz'
-     target_large_model_list.append(model)
+     model = _model + '.tar.gz'
+     target_large_model_list.append({"model":model,"url":_url})
 
-print("Retrieving files from: %s"%(ucvmc_largefile_repository))
 print("Installing files in: %s"%(curdir))
 
 #
 # First, download the required library files
 #
 for m in target_large_lib_list:
-  print("Retrieving: ",m)
-  outfilename = "./%s"%(m)
-  scec_url = "%s/lib/%s"%(ucvmc_largefile_repository,m)
+  _lib = m['library']
+  _url = m['url']
+  print("Retrieving: ",_lib)
+  _path, _tarname = os.path.split(_url)
+  outfilename = "./%s"%(_tarname)
+  scec_url = _url
+
   #
   # First check if file exists. If so, don't re-download.
+<<<<<<< HEAD
   # Tell user that old files must be deleted from UCVM/largefiles to download new version
+=======
+  # Tell user that old files must be deleted from ./largefiles to download new version
+>>>>>>> upstream/target
   #
   if not os.path.exists(outfilename):
     try:
@@ -116,21 +150,28 @@ for m in target_large_lib_list:
     except:
       print("Error downloading (%s), or writing file (%s)" % (scec_url,outfilename))
       break
-    print("Finished downloading: ",m)
+    print("Finished downloading: ",_lib)
   else:
+<<<<<<< HEAD
     print("Required largefile already exists in UCVM/largefile directory",outfilename)
+=======
+    print("Required largefile already exists in ./largefile directory",outfilename)
+>>>>>>> upstream/target
     print("If new version is required, delete current local copy (%s) and re-run this script"%(outfilename))
 
 #
 # Second download the CVM model files
 #
 for m in target_large_model_list:
-  print("Retrieving: ",m)
-  outfilename = "./%s"%(m)
-  scec_url = "%s/model/%s"%(ucvmc_largefile_repository,m)
+  _model=m["model"]
+  _url=m["url"]
+  print("Retrieving: ",_model)
+  _path, _tarname = os.path.split(_url)
+  outfilename = "./%s"%(_tarname)
+  scec_url = _url
   #
   # First check if file exists. If so, don't re-download.
-  # Tell user that old files must be deleted from UCVM/largefiles to download new version
+  # Tell user that old files must be deleted from ./largefiles to download new version
   #
   if not os.path.exists(outfilename):
     try:
@@ -138,9 +179,9 @@ for m in target_large_model_list:
     except:
       print("Error downloading (%s), or writing file (%s)" % (scec_url,outfilename))
       break
-    print("Finished downloading: ",m)
+    print("Finished downloading: ",_model)
   else:
-    print("Required largefile already exists in UCVM/largefile directory",outfilename)
+    print("Required largefile already exists in ./largefile directory",outfilename)
     print("If new version is required, delete current local copy (%s) and re-run this script"%(outfilename))
 
 #
@@ -148,12 +189,15 @@ for m in target_large_model_list:
 #
 
 for m in target_large_etree_list:
-  print("Retrieving: ",m)
-  outfilename = "./%s"%(m)
-  scec_url = "%s/etree/%s"%(ucvmc_largefile_repository,m)
+  _etree=m["etree"]
+  _url=m["url"]
+  print("Retrieving: ",_etree)
+  _path, _tarname = os.path.split(_url)
+  outfilename = "./%s"%(_tarname)
+  scec_url = _url
   #
   # First check if file exists. If so, don't re-download.
-  # Tell user that old files must be deleted from UCVM/largefiles to download new version
+  # Tell user that old files must be deleted from ./largefiles to download new version
   #
   if not os.path.exists(outfilename):
     try:
@@ -161,21 +205,24 @@ for m in target_large_etree_list:
     except:
       print("Error downloading (%s), or writing file (%s)" % (scec_url,outfilename))
       break
-    print("Finished downloading: ",m)
+    print("Finished downloading: ",_etree)
   else:
-    print("Required largefile already exists in UCVM/largefile directory",outfilename)
+    print("Required largefile already exists in ./largefile directory",outfilename)
     print("If new version is required, delete current local copy (%s) and re-run this script"%(outfilename))
 
 #
 # Download the large reference result file
 #
 for m in target_large_ref_list:
-  print("Retrieving: ",m)
-  outfilename = "./%s"%(m)
-  scec_url = "%s/ref/%s"%(ucvmc_largefile_repository,m)
+  _ref=m["reference"]
+  _url=m["url"]
+  print("Retrieving: ",_ref)
+  _path, _tarname = os.path.split(_url)
+  outfilename = "./%s"%(_tarname)
+  scec_url = _url
   #
   # First check if file exists. If so, don't re-download.
-  # Tell user that old files must be deleted from UCVM/largefiles to download new version
+  # Tell user that old files must be deleted from ./largefiles to download new version
   #
   if not os.path.exists(outfilename):
     try:
@@ -183,9 +230,9 @@ for m in target_large_ref_list:
     except:
       print("Error downloading (%s), or writing file (%s)" % (scec_url,outfilename))
       break
-    print("Finished downloading: ",m)
+    print("Finished downloading: ",_ref)
   else:
-    print("Required largefile already exists in ucvm/largefiles directory",outfilename)
+    print("Required largefile already exists in ./largefiles directory",outfilename)
     print("If new version is required, delete current local copy (%s) and re-run this script"%(outfilename))
 
 print("Completed all required downloads to build the UCVM programs.\n")

@@ -6,7 +6,7 @@ mkdir $UCVM_INSTALL_PATH
 ##["cvms5", "cca", "cs173", "cs173h", "cvms", "cvmsi", "cencal", "cvmh", "albacore", "cvlsu", "ivlsu", "wfcvm"]
 
 cd $UCVM_SRC_PATH/largefiles
-./get_large_files.py << EOF
+./get_largefiles.py << EOF
 n
 n
 n
@@ -20,8 +20,11 @@ y
 y
 y
 EOF
-cd $UCVM_SRC_PATH/largefiles; ./check_largefiles_md5.py
-cd $UCVM_SRC_PATH/largefiles; ./stage_large_files.py
+
+if [ $tmp != 'Darwin' ]; then
+  cd $UCVM_SRC_PATH/largefiles; ./check_largefiles_md5.py
+fi
+cd $UCVM_SRC_PATH/largefiles; ./stage_largefiles.py
 
 cd $UCVM_SRC_PATH
 ./ucvm_setup.py -d -a << EOF &> ucvm_setup_install.log
