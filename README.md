@@ -9,8 +9,8 @@ UCVM was developed as an interdisciplinary research collaboration involving geos
 UCVM is open-source scientific software designed to support earth scientists, civil engineers, and other groups interested in detailed information about earth properties. UCVM is primarily used by scientists to work with earth material properties on regional scales. One important use of UCVM is to create simulation meshes used in high resolution 3D wave propagation simulations for California.
 
 # Table of Contents:
-* [README.md](https://github.com/pjmaechling/ucvm/blob/main/README.md)
-* [UCVM Software Documentation](https://github.com/pjmaechling/ucvm/wiki)
+* [README.md](https://github.com/SCECcode/ucvm/blob/main/README.md)
+* [UCVM Software Documentation](https://github.com/SCECcode/ucvm/wiki)
 
 # Installation:
 UCVM was developed to support seismic simulations run on high-performance computing systems, so it is designed to compile and run on Linux-based computers. There are serveral ways to get access to UCVM without installing the software on your own Linux computer. Below we outline several of the options:
@@ -30,19 +30,19 @@ The next section is usage, in which you instruct other people on how to use your
 # Support:
 Support for UCVM is provided by that Southern California Earthquake Center (SCEC) Research Computing Group. This small group supports several research software distributions including UCVM. For questions or issues, contact the UCVM developers through the git issues system, or by email:
 Issue Tracking:
-* GitHub: https://github.com/pjmaechling/ucvm/issues
+* GitHub: https://github.com/SCECcode/ucvm/issues
 
 Email:
 * Contact: software@scec.usc.edu
 
 # Contributing:
-We welcome contributions to the UCVM software framework. Geoscientists can register their seismic velocity models into UCVM and software developers can improve and extend the UCVM software. An overview of the process for contributing seismic models or software updates to the UCVM Project is provided in the UCVM [contribution guidelines](https://github.com/pjmaechling/ucvm/blob/main/CONTRIBUTING.md).
+We welcome contributions to the UCVM software framework. Geoscientists can register their seismic velocity models into UCVM and software developers can improve and extend the UCVM software. An overview of the process for contributing seismic models or software updates to the UCVM Project is provided in the UCVM [contribution guidelines](https://github.com/SCECcode/ucvm/blob/main/CONTRIBUTING.md).
 
 # Credits:
 Include a section for credits in order to highlight and link to the authors of your project.
 
 # License:
-The UCVM software is released under a BSD 3-Clause open-source license. Please see the [LICENSE file](https://github.com/pjmaechling/ucvm/blob/main/LICENSE.md) for distribution license and disclaimers.
+The UCVM software is released under a BSD 3-Clause open-source license. Please see the [LICENSE file](https://github.com/SCECcode/ucvm/blob/main/LICENSE.md) for distribution license and disclaimers.
 
 ## Preferred Reference
 If you use the UCVM software in your research, please include a reference to the following publication in your research publications. References help us obtain continued financial support for the development of the software. The preferred reference for the UCVM software is:
@@ -51,7 +51,7 @@ If you use the UCVM software in your research, please include a reference to the
 
 # UCVM
 
-[![ucvm-ci Actions Status](https://github.com/pjmaechling/ucvm/workflows/ucvm-ci/badge.svg)](https://github.com/pjmaechling/ucvm/actions)
+[![ucvm-ci Actions Status](https://github.com/SCECcode/ucvm/workflows/ucvm-ci/badge.svg)](https://github.com/SCECcode/ucvm/actions)
 
 ## Current UCVM Software Release
 The current UCVM software version is [UCVM v21.10.0](http://github.com/SCECcode/ucvm/wiki) scheduled for release in October 2021. We recommend that new users work with this version of the software because it contains improvements not found in earlier versions.
@@ -103,11 +103,11 @@ Optional Software for building MPI binaries:
 
 ## Installation
 Once the target computer has the required software tools installed, the basic install of UCVM is:
-*  git clone https://github.com/SCECcode/UCVM.git
+*  git clone https://github.com/SCECcode/ucvm.git
 *  cd ucvm/largefiles
-*  ./get_large_files.py
+*  ./get_largefiles.py
 *  ./check_largefiles_md5.py
-*  ./stage_large_files.py
+*  ./stage_largefiles.py
 *  cd ..
 *  ./ucvm_setup.py
 
