@@ -144,7 +144,7 @@ CS17.3-H | Cypershake study 17.3 Central California Velocity Model with San Joaq
 USGS Bay Area Velocity Model 0.8.3| USGS developed San Francisco and Central California velocity model | cencal | 17G
 Albacore | Albacore California off-shore Velocity Model | albacore | 2.3M
 IVLSU | SSIP Imperial Valley Velocity Model developed by LSU | ivlsu | 1M
-CVLSU | SSIP Coachella Valley Velocity Model developed by LSU | ivlsu | 1M
+CVLSU | SSIP Coachella Valley Velocity Model developed by LSU | cvlsu | 1M
 WFCVM | Wasatch Front Community Velocity Model | wfcvm | 50M
 Southern California 1D  | Modified Hadley Kanamori 1D model based on Hadley-Kanamori model | 1d | 8k
 Northridge Region 1D | Los Angeles Region 1D model used in SCEC Broadband Platform | bbp1d | -
