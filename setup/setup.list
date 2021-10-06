@@ -108,7 +108,7 @@
                         "Abbreviation": "cs173",
                         "Size": "72G",
 			"Path": "cs173",
-			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cs173.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cs173.tar.gz",
 			"Flags": "--enable-model-cs173 --with-cs173-lib-path=lib --with-cs173-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
@@ -138,7 +138,7 @@
 		"FFTW": {
 			"Path": "fftw",
                         "Size": "44M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/lib/fftw-3.3.3.tar.gz"
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/lib/fftw-3.3.3.tar.gz",
 			"Required": "yes",
 			"CompileFlags": "--enable-fortran=no",
 			"Ask": "no"
@@ -186,7 +186,7 @@
                 "test-grid-lib-1d": {
                         "Path": "test-grid-lib-1d.ref",
                         "Size": "584M",
-                        "URL": "https://app.globus.org/file-manager?origin_id=340f1ad2-a64d-4609-a18c-d55810379946&origin_path=%2Fucvm%2Fv21_10%2Fref%2F",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/ref/test-grid-lib-1d.ref",
                         "Required": "yes",
                         "Ask": "no"
                 }
