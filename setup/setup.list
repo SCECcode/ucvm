@@ -5,7 +5,7 @@
                         "Abbreviation": "wfcvm",
                         "Size": "50M",
                         "Path": "wfcvm",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/wfcvm.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/wfcvm.tar.gz",
                         "Flags": "--enable-model-wfcvm --with-wfcvm-lib-path=lib --with-wfcvm-include-path=include --with-wfcvm-model-path=src",
                         "Ask": "yes",
                         "Order": 12
@@ -15,7 +15,7 @@
                         "Abbreviation": "ivlsu",
                         "Size": "3.1M",
 			"Path": "ivlsu",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/ivlsu.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/ivlsu.tar.gz",
 			"Flags": "--enable-model-ivlsu --with-ivlsu-lib-path=lib --with-ivlsu-include-path=include",
 			"Libraries": ["proj-5"],
 			"Ask": "yes",
@@ -26,7 +26,7 @@
                         "Abbreviation": "cvlsu",
                         "Size": "7.0M",
 			"Path": "cvlsu",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvlsu.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvlsu.tar.gz",
 			"Flags": "--enable-model-cvlsu --with-cvlsu-lib-path=lib --with-cvlsu-include-path=include",
 			"Ask": "yes",
 			"Order": 10		
@@ -36,7 +36,7 @@
                         "Abbreviation": "albacore",
                         "Size": "2.3M",
 			"Path": "albacore",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/albacore.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/albacore.tar.gz",
 			"Flags": "--enable-model-albacore --with-albacore-lib-path=lib --with-albacore-include-path=include",
 			"Ask": "yes",
 			"Order": 9		
@@ -46,7 +46,7 @@
                         "Abbreviation": "cvms",
                         "Size": "326M",
 			"Path": "cvms",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvms.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvms.tar.gz",
 			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
 			"Ask": "yes",
 			"Order": 5
@@ -56,7 +56,7 @@
                         "Abbreviation": "cvms5",
                         "Size": "1.2G",
 			"Path": "cvms5",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvms5.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvms5.tar.gz",
 			"Flags": "--enable-model-cvms5 --with-cvms5-lib-path=lib --with-cvms5-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
@@ -67,7 +67,7 @@
                         "Abbreviation": "cvmsi",
                         "Size": "1.6G",
 			"Path": "cvmsi",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvmsi.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvmsi.tar.gz",
 			"Flags": "--enable-model-cvmsi --with-cvmsi-lib-path=lib --with-cvmsi-include-path=include --with-cvmsi-model-path=model/i26",
 			"Ask": "yes",
 			"Order": 6		
@@ -77,7 +77,7 @@
                         "Abbreviation": "cvmh",
                         "Size": "1.6G",
 			"Path": "cvmh",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvmh.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cvmh.tar.gz",
 			"Flags": "--enable-model-cvmh --with-cvmh-include-path=include --with-cvmh-lib-path=lib --with-gctpc-lib-path=lib --with-cvmh-model-path=model",
 			"Ask": "yes",
 			"Order": 8
@@ -87,7 +87,7 @@
                         "Abbreviation": "cencal",
                         "Size": "21G",
 			"Path": "cencal",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cencal.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cencal.tar.gz",
 			"Flags": "--enable-model-cencal --with-cencal-lib-path=lib --with-cencal-include-path=include/cencalvm/query/ --with-cencal-model-path=model/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=model/USGSBayAreaVMExt-08.3.0.etree",
 			"Ask": "yes",
 			"Order": 7
@@ -97,7 +97,7 @@
                         "Abbreviation": "cca",
                         "Size": "9.2G",
 			"Path": "cca",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cca.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cca.tar.gz",
 			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
@@ -108,7 +108,7 @@
                         "Abbreviation": "cs173",
                         "Size": "72G",
 			"Path": "cs173",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cs173.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cs173.tar.gz",
 			"Flags": "--enable-model-cs173 --with-cs173-lib-path=lib --with-cs173-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
@@ -119,7 +119,7 @@
                         "Abbreviation": "cs173h",
                         "Size": "72G",
 			"Path": "cs173h",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cs173h.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/model/cs173h.tar.gz",
 			"Flags": "--enable-model-cs173h --with-cs173h-lib-path=lib --with-cs173h-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
@@ -130,7 +130,7 @@
 		"Proj4": {
 			"Path": "proj-5",
                         "Size": "30M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/lib/proj-5.0.0.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/lib/proj-5.0.0.tar.gz",
 			"Required": "yes",
 			"CompileFlags": "--with-jni=no",
 			"Ask": "no"
@@ -138,7 +138,7 @@
 		"FFTW": {
 			"Path": "fftw",
                         "Size": "44M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/lib/fftw-3.3.3.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/lib/fftw-3.3.3.tar.gz",
 			"Required": "yes",
 			"CompileFlags": "--enable-fortran=no",
 			"Ask": "no"
@@ -146,7 +146,7 @@
 		"Euclid3": {
 			"Path": "euclid3",
                         "Size": "4.7M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/lib/euclid3-1.3.tar.gz",
+			"URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/lib/euclid3-1.3.tar.gz",
 			"Required": "yes",
 			"Ask": "no"
 		},
@@ -170,14 +170,14 @@
                 "UCVM": {
                         "Path": "ucvm.e",
                         "Size": "1.1G",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/etree/ucvm.e",
+                        "URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/etree/ucvm.e",
                         "Required": "yes",
                         "Ask": "no"
                 },
                 "UTAH": {
                         "Path": "ucvm_utah.e",
                         "Size": "418M",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/etree/ucvm_utah.e",
+                        "URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/etree/ucvm_utah.e",
                         "Required": "yes",
                         "Ask": "no"
                 }
@@ -186,7 +186,7 @@
                 "test-grid-lib-1d": {
                         "Path": "test-grid-lib-1d.ref",
                         "Size": "584M",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/ref/test-grid-lib-1d.ref",
+                        "URL": "https://hypocenter.s3.us-west-1.amazonaws.com/ucvm/V21_7/ref/test-grid-lib-1d.ref",
                         "Required": "yes",
                         "Ask": "no"
                 }
