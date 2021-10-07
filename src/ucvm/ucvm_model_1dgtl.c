@@ -94,7 +94,7 @@ double ucvm_1dgtl_scec_vs(double vp, double rho) {
 /* Init 1DGTL */
 int ucvm_1dgtl_model_init(int m, ucvm_modelconf_t *conf)
 {
-  int i;
+  int i, len;
   ucvm_config_t *chead;
   ucvm_config_t *cptr;
 
@@ -129,7 +129,11 @@ int ucvm_1dgtl_model_init(int m, ucvm_modelconf_t *conf)
     fprintf(stderr, "Failed to find version in config\n");
     return(UCVM_CODE_ERROR);
   }
-  snprintf(ucvm_1dgtl_version_id, UCVM_MAX_VERSION_LEN, "%s", cptr->value);
+  len=strlen(cptr->value);
+  if(len <= UCVM_MAX_VERSION_LEN) {
+    len = UCVM_MAX_VERSION_LEN-1;
+  }
+  snprintf(ucvm_1dgtl_version_id, len, "%s", cptr->value);
 
   cptr = ucvm_find_name(chead, "num_z");
   if (cptr == NULL) {

@@ -1,0 +1,72 @@
+{
+    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+    "@type": "SoftwareSourceCode",
+    "license": "https://spdx.org/licenses/BSD-3-Clause",
+    "codeRepository": "https://github.com/SCECcode/ucvm.git",
+    "dateCreated": "2007-11-30",
+    "datePublished": "2008-01-14",
+    "dateModified": "2021-09-30",
+    "downloadUrl": "https://github.com/SCECcode/ucvm/release",
+    "issueTracker": "https://github.com/SCECcode/ucvm/issues",
+    "name": "SCEC Unified Community Velocity Model (UCVM)",
+    "version": "21.9.0",
+    "description": "The SCEC Unified Community Velocity Model (UCVM) is a collection of software tools that provide a standard interface to multiple, alternative, California 3D velocity models. One important use of UCVM is in high resolution 3D wave propagation simulations for California. UCVM was developed by an interdisciplinary research collaboration involving geoscientists and computer scientists. UCVM geoscience research includes identification and assembly of existing California velocity models into a state-wide model and improvements to existing velocity models. UCVM is released as open-source scientific software to support earth scientists, civil engineers, and other groups interested in detailed information about earth properties. UCVM is used by scientists working with earth material properties on regional scales and is used by scientists running large-scale 3D wave propagation simulations.",
+    "applicationCategory": "Seismology",
+    "developmentStatus": "active",
+    "referencePublication": "https://doi.org/10.1785/0220170082",
+    "keywords": [
+        "seismology",
+        "scientific software",
+        "mathematical modeling"
+    ],
+    "programmingLanguage": [
+        "C",
+        "FORTRAN",
+        "Python3"
+    ],
+    "operatingSystem": [
+        "Centos 8"
+    ],
+    "softwareRequirements": [
+        "Python 3.5+"
+    ],
+    "relatedLink": [
+        "https://www.scec.org/research/ucvm",
+        "https://www.scec.org/research/CXM"
+    ],
+    "author": [
+        {
+            "@type": "Person",
+            "givenName": "Mei-Hui",
+            "familyName": "Su",
+            "email": "mei@usc.edu",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "Southern California Earthquake Center, University of Southern California"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://orcid.org/ 0000-0002-9221-7068",
+            "givenName": "Philip",
+            "familyName": "Maechling",
+            "email": "maechlin@usc.edu",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "Southern California Earthquake Center, University of Southern California"
+            }
+        }
+    ],
+    "contributor": [
+        {
+            "@type": "Person",
+            "givenName": "Andreas",
+            "familyName": "Plesch"
+        },
+        {
+            "@type": "Person",
+            "givenName": "Scott",
+            "familyName": "Marshall"
+        }
+    ]
+}

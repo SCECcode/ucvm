@@ -3,7 +3,7 @@ bin_PROGRAMS = ssh_generate ssh_merge
 
 # General compiler/linker flags
 AM_CFLAGS =
-AM_LDFLAGS = ${LDFLAGS}
+AM_LDFLAGS = -dynamic ${LDFLAGS}
 
 all: $(bin_PROGRAMS)
 

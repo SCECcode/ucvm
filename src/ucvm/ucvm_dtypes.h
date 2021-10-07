@@ -7,6 +7,9 @@
 /* Maximum number of supported models */
 #define UCVM_MAX_MODELS 20
 
+/* Maximum number of supported maps (topo + vs30) */
+#define UCVM_MAX_MAPS 2
+
 
 /* Maximum number of model flags */
 #define UCVM_MAX_FLAGS 10

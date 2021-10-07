@@ -39,7 +39,7 @@ int ucvm_schema_etree_cmu_pack(char *schemastr, int len)
     slen = len;
   }
   memset(schemastr, 0, len);
-  strncpy(schemastr, UCVM_META_ETREE_MODEL_SCHEMA, slen);
+  strncpy(schemastr, UCVM_META_ETREE_MODEL_SCHEMA, slen+1);
   return(UCVM_CODE_SUCCESS);
 }
 
@@ -58,7 +58,7 @@ int ucvm_schema_etree_ucvm_pack(char *schemastr, int len)
     slen = len;
   }
   memset(schemastr, 0, len);
-  strncpy(schemastr, UCVM_META_ETREE_MODEL_SCHEMA, slen);
+  strncpy(schemastr, UCVM_META_ETREE_MODEL_SCHEMA, slen+1);
   return(UCVM_CODE_SUCCESS);
 }
 
@@ -77,7 +77,7 @@ int ucvm_schema_etree_map_pack(char *schemastr, int len)
     slen = len;
   }
   memset(schemastr, 0, len);
-  strncpy(schemastr, UCVM_META_ETREE_MAP_SCHEMA, slen);
+  strncpy(schemastr, UCVM_META_ETREE_MAP_SCHEMA, slen+1);
   return(UCVM_CODE_SUCCESS);
 }
 

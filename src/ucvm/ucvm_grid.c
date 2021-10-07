@@ -24,7 +24,6 @@ int ucvm_grid_gen_private(ucvm_projdef_t *iproj, ucvm_trans_t *trans,
 			  ucvm_point_t *pnts, const char *filename)
 {
   int i, j, c;
-  ucvm_bilinear_t cmu;
   projPJ opj = NULL;
   projPJ ipj = NULL;
   double x, y, z, x_offset, y_offset, theta, gridding;
@@ -36,14 +35,6 @@ int ucvm_grid_gen_private(ucvm_projdef_t *iproj, ucvm_trans_t *trans,
   if ((pnts == NULL) && (filename == NULL)) {
     return(UCVM_CODE_ERROR);
   }
-
-  /* Init CMU proj */
-  for (i = 0; i < 4; i++) {
-    cmu.xi[i] = cmu_xi[i];
-    cmu.yi[i] = cmu_yi[i];
-  }
-  cmu.dims[0] = cmu_dims[0];
-  cmu.dims[1] = cmu_dims[1];
 
   if (strstr(iproj->proj, "latlong") == NULL) {
     fprintf(stderr, "Only latlong input projection supported\n");
@@ -191,7 +182,7 @@ int ucvm_grid_convert_private(ucvm_projdef_t *iproj,
   }
   cmu.dims[0] = cmu_dims[0];
   cmu.dims[1] = cmu_dims[1];
-
+  
   /* If input or output projections are CMU, change them to latlong
      and then perform an initial cmu->latlong and/or additional 
      latlong->cmu conversion */

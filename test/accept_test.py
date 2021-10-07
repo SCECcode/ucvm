@@ -5,6 +5,7 @@ import os
 import math
 import array
 import sys
+import platform
 from subprocess import call, Popen, PIPE, STDOUT
 
 #
@@ -14,7 +15,11 @@ from subprocess import call, Popen, PIPE, STDOUT
 def test_vs30_query(dir):
     # Basic vs30 test.
     os.chdir(dir)
-    
+
+    if platform.system() == "Darwin" :
+       myproc = Popen(["../utilities/call_install_name_tool", "../bin/vs30_query"], stdout=PIPE, stderr=STDOUT)
+       myoutput = myproc.communicate()
+
     proc = Popen(["../bin/vs30_query", "-f", "../conf/ucvm.conf", "-m", "bbp1d", \
                   "-i", "0.1"], stdout=PIPE, stdin=PIPE, stderr=STDOUT)
     output = proc.communicate(input=b"-118 34\n-117 35")[0]
@@ -33,6 +38,11 @@ def test_ssh_generate(dir):
     # Basic small-scale heterogeneities validation.
     # writes result to install/tests directory
     os.chdir(dir)
+
+    if platform.system() == "Darwin" :
+       myproc = Popen(["../utilities/call_install_name_tool", "../bin/ssh_generate"], stdout=PIPE, stderr=STDOUT)
+       myoutput = myproc.communicate()
+
     proc = Popen(["../bin/ssh_generate", "-u", "0.1", "-d", "20", "-l", "50", \
                   "-s", "5", "-a", "100", "-b", "100", "-c", "100", \
                   "-f", "inputs/floats.in", "-x", "inputs/floats_complex.in", \

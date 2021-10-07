@@ -31,6 +31,11 @@ if UCVM_AM_ENABLE_CVMS5
 CHANGE_LIST += cvms5_model
 endif
 
+# WFCVM config
+if UCVM_AM_ENABLE_WFCVM
+CHANGE_LIST += wfcvm_model
+endif
+
 # SED Command
 if USER_MAC
 SED = sed -i ''
@@ -41,7 +46,7 @@ SED = sed -i''
 endif
 
 .PHONY=cencal_model cencal_extmodel cvmh_model \
-	cvms_model cvmsi_model cvms5_model cvmnci_model \
+	cvms_model cvmsi_model cvms5_model wfcvm_model cvmnci_model \
 	wfcvm_model cvmlt_model cmrg_model
 
 all: ${CHANGE_LIST}
@@ -74,6 +79,10 @@ cvms5_model: ucvm.conf
 	${SED} "s,#cvms5_modelpath,cvms5_modelpath,g" $^
 	${SED} "s,CVMS5_MODEL,${CVMS5_MODEL},g" $^
 
+wfcvm_model: ucvm.conf
+	${SED} "s,#wfcvm_modelpath,wfcvm_modelpath,g" $^
+	${SED} "s,WFCVM_MODEL,${WFCVM_MODEL},g" $^
+
 
 install:
 	mkdir -p ${prefix}/conf
@@ -84,7 +93,12 @@ install:
 		fi; \
 		if test -e ucvm_env.py; then \
 			cp ucvm_env.py ${prefix}/conf; \
-		fi \
+		fi; \
+		if test -e call_install_name_tool; then \
+			mkdir -p ${prefix}/utilities; \
+			chmod +x call_install_name_tool; \
+			cp call_install_name_tool ${prefix}/utilities/call_install_name_tool; \
+		fi; \
         fi
 
 clean:

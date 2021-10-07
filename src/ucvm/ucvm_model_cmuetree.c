@@ -41,7 +41,7 @@ ucvm_cmuetree_t ucvm_cmuetree;
 /* Init Cmuetree */
 int ucvm_cmuetree_model_init(int id, ucvm_modelconf_t *conf)
 {
-  int i;
+  int i, len;
   char filename[UCVM_MAX_PATH_LEN];
   char *appmeta;
 
@@ -68,7 +68,11 @@ int ucvm_cmuetree_model_init(int id, ucvm_modelconf_t *conf)
   memcpy(&ucvm_cmuetree.conf, conf, sizeof(ucvm_modelconf_t));
 
   /* Read conf file */
-  snprintf(filename, UCVM_MAX_PATH_LEN, "%s/cmuetree.conf", conf->config);
+  len=strlen(conf->config)+strlen("/cmuetree.conf");
+  if(len >= UCVM_MAX_PATH_LEN) {
+    len = UCVM_MAX_PATH_LEN -1;
+  }
+  snprintf(filename, len, "%s/cmuetree.conf", conf->config);
   cfg = ucvm_parse_config(filename);
   if (cfg == NULL) {
     fprintf(stderr, "Failed to read CMU etree config file\n");

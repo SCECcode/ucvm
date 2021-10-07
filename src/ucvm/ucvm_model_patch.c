@@ -45,7 +45,7 @@ ucvm_patch_t ucvm_patch_list[UCVM_MAX_MODELS];
 /* Init Patch */
 int ucvm_patch_model_init(int id, ucvm_modelconf_t *conf)
 {
-  int i, j, n;
+  int i, j, n, len;
   ucvm_patch_t *mptr;
   ucvm_config_t *chead;
   ucvm_config_t *cptr;
@@ -97,14 +97,22 @@ int ucvm_patch_model_init(int id, ucvm_modelconf_t *conf)
     fprintf(stderr, "Failed to find version in config\n");
     return(UCVM_CODE_ERROR);
   }
-  snprintf(mptr->version, UCVM_MAX_VERSION_LEN, "%s", cptr->value);
+  len=strlen(cptr->value);
+  if(len >= UCVM_MAX_VERSION_LEN) {
+    len = UCVM_MAX_VERSION_LEN -1;
+  }
+  snprintf(mptr->version, len, "%s", cptr->value);
 
   cptr = ucvm_find_name(chead, "proj");
   if (cptr == NULL) {
     fprintf(stderr, "Failed to find proj in config\n");
     return(UCVM_CODE_ERROR);
   }
-  snprintf(projstr, UCVM_MAX_PROJ_LEN, "%s", cptr->value);
+  len=strlen(cptr->value);
+  if(len >= UCVM_MAX_PROJ_LEN) {
+    len = UCVM_MAX_PROJ_LEN -1;
+  }
+  snprintf(projstr, len, "%s", cptr->value);
 
   /* Parse origin longitude */
   cptr = ucvm_find_name(chead, "lon_0");
