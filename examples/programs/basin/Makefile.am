@@ -21,6 +21,8 @@ if UCVM_AM_ENABLE_CENCAL
 if UCVM_AM_ENABLE_CVMS
 bin_PROGRAMS += run_basin_query_mpi_complete_cencal_cvms.sh
 run_basin_query_mpi_complete_cencal_cvms_sh_SOURCES = run_basin_query_mpi_complete_cencal_cvms.sh
+bin_PROGRAMS += run_basin_query_mpi_cencal_cvms.sh
+run_basin_query_mpi_cencal_cvms_sh_SOURCES = run_basin_query_mpi_cencal_cvms.sh
 endif
 
 if UCVM_AM_ENABLE_CVMS5
@@ -31,6 +33,8 @@ endif
 if UCVM_AM_ENABLE_CVMSI
 bin_PROGRAMS += run_basin_query_mpi_complete_cencal_cvmsi.sh
 run_basin_query_mpi_complete_cencal_cvmsi_sh_SOURCES = run_basin_query_mpi_complete_cencal_cvmsi.sh
+bin_PROGRAMS += run_basin_query_mpi_cencal_cvmsi.sh
+run_basin_query_mpi_cencal_cvmsi_sh_SOURCES = run_basin_query_mpi_cencal_cvmsi.sh
 endif
 
 endif #CENCAL
