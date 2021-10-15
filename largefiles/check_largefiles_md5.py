@@ -21,7 +21,7 @@ import subprocess
 import tempfile
 import pdb
 
-UCVM_Version = "21.7"
+UCVM_Version = "21.10"
 
 target_large_lib_list = []
 target_large_model_list = []

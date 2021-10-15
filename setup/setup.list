@@ -53,7 +53,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvmh.tar.gz",
 			"Flags": "--enable-model-cvmh --with-cvmh-include-path=include --with-cvmh-lib-path=lib --with-gctpc-lib-path=lib --with-cvmh-model-path=model",
 			"Ask": "yes",
-                        "md5sum": "e90381b889b81dcd784d791b00e393f1  cvmh.tar.gz",
+                        "md5sum": "8e0c96097143b8e765ca074d20c506d5  cvmh.tar.gz",
 			"Order": 8
 		},
 		"CenCalVM": {
@@ -64,7 +64,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cencal.tar.gz",
 			"Flags": "--enable-model-cencal --with-cencal-lib-path=lib --with-cencal-include-path=include/cencalvm/query/ --with-cencal-model-path=model/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=model/USGSBayAreaVMExt-08.3.0.etree",
 			"Ask": "yes",
-                        "md5sum": "da2ff7ea4d7ddf9db46b8c54e61ca5a6  cencal.tar.gz",
+                        "md5sum": "a4829bb190f7c25a383f913551090375  cencal.tar.gz",
 			"Order": 7
 		},
 		"CVM-S4.26.M01": {
@@ -86,7 +86,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvms.tar.gz",
 			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
 			"Ask": "yes",
-                        "md5sum": "225dcb23fe6a051141e069a5c7603539  cvms.tar.gz",
+                        "md5sum": "e5e949ade97eb8e12b5ccb252c602f3a  cvms.tar.gz",
 			"Order": 5
 		},
 		"CS173H": {
