@@ -173,17 +173,19 @@
                         "Lib": "netcdf-4.3.0",
 			"URL": "http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-4.3.0.tar.gz",
 			"Required": "no",
-			"Ask": "no",
 			"Prerequisites": "Dynamic",
-			"Needs": "HDF5"		
+			"Needs": "HDF5",		
+                        "md5sum": "",
+			"Ask": "no"
 		},
 		"HDF5": {
 			"Path": "hdf5",
                         "Lib": "hdf5-1.8.11",
 			"URL": "http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.11.tar.gz",
 			"Required": "no",
-			"Ask": "no",
-			"Prerequisites": "Dynamic"
+			"Prerequisites": "Dynamic",
+                        "md5sum": "",
+			"Ask": "no"
 		}
 	},
         "etrees": {

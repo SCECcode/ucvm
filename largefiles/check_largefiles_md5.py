@@ -16,29 +16,13 @@
 #
 import os
 import sys
+import json
 import subprocess
 import tempfile
+import pdb
 
 UCVM_Version = "21.7"
-target_large_lib_list = ["proj-5.0.0.tar.gz",
-                  "fftw-3.3.3.tar.gz",
-                  "euclid3-1.3.tar.gz"]
-target_large_model_list = ["cvms5.tar.gz",
-                    "cca.tar.gz",
-                    "cs173.tar.gz",
-                    "cs173h.tar.gz",
-                    "cvms.tar.gz",
-                    "cvmsi.tar.gz",
-                    "cvmh.tar.gz",
-                    "cencal.tar.gz",
-                    "albacore.tar.gz",
-                    "cvlsu.tar.gz",
-                    "ivlsu.tar.gz",
-                    "wfcvm.tar.gz"]
-target_large_etree_list = ["ucvm.e","ucvm_utah.e"]
-target_large_ref_list = ["test-grid-lib-1d.ref"]
 
-optional_large_model_list = []
 target_large_lib_list = []
 target_large_model_list = []
 target_large_etree_list = []
@@ -57,7 +41,7 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config
     the_model = config_data["models"][model]
     _md5sum = str(the_model["md5sum"])
     _model = str(the_model["Abbreviation"])+".tar.gz"
-    optional_large_model_list.append( {"model":_model,"md5sum":_md5sum })
+    target_large_model_list.append( {"model":_model,"md5sum":_md5sum })
 
 for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
@@ -80,16 +64,16 @@ for ref in config_data["references"].keys() :
 
 #
 #
-def check_md5file(filename,total_ok,total_errs):
-  print("Checking file: ",filename) 
+def check_md5file(nm,filename,total_ok,total_errs):
+  print("Checking file: "+nm)
   proc = subprocess.Popen(["md5sum", "-c", filename], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
   out,err = proc.communicate()
   res = out.split()
   if res[1].decode("utf-8") == "OK":
-    print("File: %s OK"%(filename))
+    print("File: %s OK"%(nm))
     total_ok += 1
   else:
-    print("Erorr: %s does not match expected value."%(filename))
+    print("Erorr: %s does not match expected value."%(nm))
     total_errs += 1
   return total_ok,total_errs
 
@@ -102,14 +86,15 @@ total_errs = 0
 #
 # Check Model Files
 #
-for item model in target_large_model_list :
+for item in target_large_model_list :
   model = item['model']
   md5sum = item['md5sum']
   if not os.path.exists(model):
     continue
-  fp = tempfile.NamedTemporaryFile(delete=True)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
   fp.write(md5sum)
-  total_ok, total_errs = check_md5file(fp.name,total_ok,total_errs)
+  fp.flush()
+  total_ok, total_errs = check_md5file(model,fp.name,total_ok,total_errs)
   fp.close()
 
 #
@@ -120,9 +105,10 @@ for item in target_large_lib_list :
   md5sum = item['md5sum']
   if not os.path.exists(lib):
     continue
-  fp = tempfile.NamedTemporaryFile(delete=True)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
   fp.write(md5sum)
-  total_ok, total_errs = check_md5file(fp.name,total_ok,total_errs)
+  fp.flush()
+  total_ok, total_errs = check_md5file(lib,fp.name,total_ok,total_errs)
   fp.close()
 
 #
@@ -133,9 +119,10 @@ for item in target_large_etree_list :
   md5sum = item['md5sum']
   if not os.path.exists(etree):
     continue
-  fp = tempfile.NamedTemporaryFile(delete=True)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
   fp.write(md5sum)
-  total_ok, total_errs = check_md5file(fp.name,total_ok,total_errs)
+  fp.flush()
+  total_ok, total_errs = check_md5file(etree,fp.name,total_ok,total_errs)
   fp.close()
 
 #
@@ -146,9 +133,10 @@ for item in target_large_ref_list :
   md5sum = item['md5sum']
   if not os.path.exists(ref):
     continue
-  fp = tempfile.NamedTemporaryFile(delete=True)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
   fp.write(md5sum)
-  total_ok, total_errs = check_md5file(fp.name,total_ok,total_errs)
+  fp.flush()
+  total_ok, total_errs = check_md5file(ref,fp.name,total_ok,total_errs)
   fp.close()
 
 #
