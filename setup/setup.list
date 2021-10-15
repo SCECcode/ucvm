@@ -8,6 +8,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/wfcvm.tar.gz",
                         "Flags": "--enable-model-wfcvm --with-wfcvm-lib-path=lib --with-wfcvm-include-path=include --with-wfcvm-model-path=src",
                         "Ask": "yes",
+                        "md5sum": "efb36b7f416e363be6be35bda59af4c4  wfcvm.tar.gz",
                         "Order": 12
                 },
 		"IMPERIAL": {
@@ -19,6 +20,7 @@
 			"Flags": "--enable-model-ivlsu --with-ivlsu-lib-path=lib --with-ivlsu-include-path=include",
 			"Libraries": ["proj-5"],
 			"Ask": "yes",
+                        "md5sum": "661aea25721b8d7e2be96e38df7e5018  ivlsu.tar.gz",
 			"Order": 11		
 		},
 		"COACHELLA": {
@@ -29,6 +31,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvlsu.tar.gz",
 			"Flags": "--enable-model-cvlsu --with-cvlsu-lib-path=lib --with-cvlsu-include-path=include",
 			"Ask": "yes",
+                        "md5sum": "c1ad6723862845616dc30547512a0667  cvlsu.tar.gz",
 			"Order": 10		
 		},
 		"ALBACORE": {
@@ -39,38 +42,8 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/albacore.tar.gz",
 			"Flags": "--enable-model-albacore --with-albacore-lib-path=lib --with-albacore-include-path=include",
 			"Ask": "yes",
+                        "md5sum": "786fae4dc478a67e39218951af363926  albacore.tar.gz",
 			"Order": 9		
-		},
-		"CVM-S4": {
-			"Version": "4",
-                        "Abbreviation": "cvms",
-                        "Size": "326M",
-			"Path": "cvms",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvms.tar.gz",
-			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
-			"Ask": "yes",
-			"Order": 5
-		},
-		"CVM-S4.26": {
-			"Version": "5.0",
-                        "Abbreviation": "cvms5",
-                        "Size": "1.2G",
-			"Path": "cvms5",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvms5.tar.gz",
-			"Flags": "--enable-model-cvms5 --with-cvms5-lib-path=lib --with-cvms5-include-path=include",
-			"Libraries": ["euclid3", "proj-5"],
-			"Ask": "yes",
-			"Order": 1		
-		},
-		"CVM-S4.26.M01": {
-			"Version": "4.26",
-                        "Abbreviation": "cvmsi",
-                        "Size": "1.6G",
-			"Path": "cvmsi",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvmsi.tar.gz",
-			"Flags": "--enable-model-cvmsi --with-cvmsi-lib-path=lib --with-cvmsi-include-path=include --with-cvmsi-model-path=model/i26",
-			"Ask": "yes",
-			"Order": 6		
 		},
 		"CVM-H": {
 			"Version": "15.1.1",
@@ -80,6 +53,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvmh.tar.gz",
 			"Flags": "--enable-model-cvmh --with-cvmh-include-path=include --with-cvmh-lib-path=lib --with-gctpc-lib-path=lib --with-cvmh-model-path=model",
 			"Ask": "yes",
+                        "md5sum": "e90381b889b81dcd784d791b00e393f1  cvmh.tar.gz",
 			"Order": 8
 		},
 		"CenCalVM": {
@@ -90,29 +64,30 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cencal.tar.gz",
 			"Flags": "--enable-model-cencal --with-cencal-lib-path=lib --with-cencal-include-path=include/cencalvm/query/ --with-cencal-model-path=model/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=model/USGSBayAreaVMExt-08.3.0.etree",
 			"Ask": "yes",
+                        "md5sum": "da2ff7ea4d7ddf9db46b8c54e61ca5a6  cencal.tar.gz",
 			"Order": 7
 		},
-		"CCA": {
-			"Version": "0.6",
-                        "Abbreviation": "cca",
-                        "Size": "9.2G",
-			"Path": "cca",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cca.tar.gz",
-			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
-			"Libraries": ["euclid3", "proj-5"],
+		"CVM-S4.26.M01": {
+			"Version": "4.26",
+                        "Abbreviation": "cvmsi",
+                        "Size": "1.6G",
+			"Path": "cvmsi",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvmsi.tar.gz",
+			"Flags": "--enable-model-cvmsi --with-cvmsi-lib-path=lib --with-cvmsi-include-path=include --with-cvmsi-model-path=model/i26",
 			"Ask": "yes",
-			"Order": 2		
+                        "md5sum": "39f56489800bae3be346960ddc9e9fd5  cvmsi.tar.gz",
+			"Order": 6		
 		},
-		"CS173": {
-			"Version": "1.0",
-                        "Abbreviation": "cs173",
-                        "Size": "72G",
-			"Path": "cs173",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cs173.tar.gz",
-			"Flags": "--enable-model-cs173 --with-cs173-lib-path=lib --with-cs173-include-path=include",
-			"Libraries": ["euclid3", "proj-5"],
+		"CVM-S4": {
+			"Version": "4",
+                        "Abbreviation": "cvms",
+                        "Size": "326M",
+			"Path": "cvms",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvms.tar.gz",
+			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
 			"Ask": "yes",
-			"Order": 3		
+                        "md5sum": "225dcb23fe6a051141e069a5c7603539  cvms.tar.gz",
+			"Order": 5
 		},
 		"CS173H": {
 			"Version": "1.0",
@@ -123,35 +98,79 @@
 			"Flags": "--enable-model-cs173h --with-cs173h-lib-path=lib --with-cs173h-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
+                        "md5sum": "2da1cbc7e689707692764b37679bdbdf  cs173h.tar.gz",
 			"Order": 4		
+		},
+		"CS173": {
+			"Version": "1.0",
+                        "Abbreviation": "cs173",
+                        "Size": "72G",
+			"Path": "cs173",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cs173.tar.gz",
+			"Flags": "--enable-model-cs173 --with-cs173-lib-path=lib --with-cs173-include-path=include",
+			"Libraries": ["euclid3", "proj-5"],
+			"Ask": "yes",
+                        "md5sum": "",
+			"Order": 3		
+		},
+		"CCA": {
+			"Version": "0.6",
+                        "Abbreviation": "cca",
+                        "Size": "9.2G",
+			"Path": "cca",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cca.tar.gz",
+			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
+			"Libraries": ["euclid3", "proj-5"],
+			"Ask": "yes",
+                        "md5sum": "9f73692fbae321e9aafd5d50ae11ac36  cca.tar.gz",
+			"Order": 2		
+		},
+		"CVM-S4.26": {
+			"Version": "5.0",
+                        "Abbreviation": "cvms5",
+                        "Size": "1.2G",
+			"Path": "cvms5",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvms5.tar.gz",
+			"Flags": "--enable-model-cvms5 --with-cvms5-lib-path=lib --with-cvms5-include-path=include",
+			"Libraries": ["euclid3", "proj-5"],
+			"Ask": "yes",
+                        "md5sum": "aad02b6886ee6a0838895b0dad96dc7c  cvms5.tar.gz",
+			"Order": 1		
 		}
 	},
 	"libraries": {
 		"Proj4": {
 			"Path": "proj-5",
+                        "Lib": "proj-5.0.0",
                         "Size": "30M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/lib/proj-5.0.0.tar.gz",
 			"Required": "yes",
 			"CompileFlags": "--with-jni=no",
+                        "md5sum": "51808f2ecceaf426de3b7bf53fc8aae7  proj-5.0.0.tar.gz",
 			"Ask": "no"
 		},
 		"FFTW": {
 			"Path": "fftw",
+                        "Lib": "fftw-3.3.3",
                         "Size": "44M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/lib/fftw-3.3.3.tar.gz",
 			"Required": "yes",
 			"CompileFlags": "--enable-fortran=no",
+                        "md5sum": "0a78f7749bd9c67b7585e163780247c0  fftw-3.3.3.tar.gz",
 			"Ask": "no"
 		},
 		"Euclid3": {
 			"Path": "euclid3",
+                        "Lib": "euclid3-1.3",
                         "Size": "4.7M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/lib/euclid3-1.3.tar.gz",
 			"Required": "yes",
+                        "md5sum": "c980cfb9068c97612b7da27f37cc4a44  euclid3-1.3.tar.gz",
 			"Ask": "no"
 		},
 		"NetCDF": {
 			"Path": "netcdf",
+                        "Lib": "netcdf-4.3.0",
 			"URL": "http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-4.3.0.tar.gz",
 			"Required": "no",
 			"Ask": "no",
@@ -160,6 +179,7 @@
 		},
 		"HDF5": {
 			"Path": "hdf5",
+                        "Lib": "hdf5-1.8.11",
 			"URL": "http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.11.tar.gz",
 			"Required": "no",
 			"Ask": "no",
@@ -172,6 +192,7 @@
                         "Size": "1.1G",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/etree/ucvm.e",
                         "Required": "yes",
+                        "md5sum": "b608cd925e0d5ae676394a38da50cb14  ucvm.e",
                         "Ask": "no"
                 },
                 "UTAH": {
@@ -179,6 +200,7 @@
                         "Size": "418M",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/etree/ucvm_utah.e",
                         "Required": "yes",
+                        "md5sum": "36f8f409c359bf506e15e682240200ca  ucvm_utah.e",
                         "Ask": "no"
                 }
 	},
@@ -188,6 +210,7 @@
                         "Size": "584M",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/ref/test-grid-lib-1d.ref",
                         "Required": "yes",
+                        "md5sum": "5c9183008fed49989c86e7ffdc115d09  test-grid-lib-1d.ref",
                         "Ask": "no"
                 }
 	}

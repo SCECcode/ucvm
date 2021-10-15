@@ -17,7 +17,7 @@
 import os
 import sys
 import subprocess
-import pdb
+import tempfile
 
 UCVM_Version = "21.7"
 target_large_lib_list = ["proj-5.0.0.tar.gz",
@@ -37,6 +37,46 @@ target_large_model_list = ["cvms5.tar.gz",
                     "wfcvm.tar.gz"]
 target_large_etree_list = ["ucvm.e","ucvm_utah.e"]
 target_large_ref_list = ["test-grid-lib-1d.ref"]
+
+optional_large_model_list = []
+target_large_lib_list = []
+target_large_model_list = []
+target_large_etree_list = []
+target_large_ref_list = []
+
+try:
+    # We now have our list. Parse it.
+    f = open("../setup/setup.list", "r")
+    json_string = f.read()
+    f.close()
+    config_data = json.loads(json_string)
+except OSError as e:
+    eG(e, "Parsing setup for ucvm model list.")
+
+for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config_data["models"][k]["Order"])):
+    the_model = config_data["models"][model]
+    _md5sum = str(the_model["md5sum"])
+    _model = str(the_model["Abbreviation"])+".tar.gz"
+    optional_large_model_list.append( {"model":_model,"md5sum":_md5sum })
+
+for library in config_data["libraries"].keys() :
+    the_library = config_data["libraries"][library]
+    _md5sum = str(the_library["md5sum"])
+    _lib = str(the_library["Lib"])+".tar.gz"
+    target_large_lib_list.append({"library":_lib, "md5sum":_md5sum});
+
+for etree in config_data["etrees"].keys() :
+    the_etree = config_data["etrees"][etree]
+    _md5sum = str(the_etree["md5sum"])
+    _etree = str(the_etree["Path"])
+    target_large_etree_list.append({"etree":_etree, "md5sum":_md5sum});
+
+for ref in config_data["references"].keys() :
+    the_reference = config_data["references"][ref]
+    _md5sum = str(the_reference["md5sum"])
+    _ref=str(the_reference["Path"])
+    target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum});
+
 
 #
 #
@@ -62,38 +102,54 @@ total_errs = 0
 #
 # Check Model Files
 #
-for model in target_large_model_list :
+for item model in target_large_model_list :
+  model = item['model']
+  md5sum = item['md5sum']
   if not os.path.exists(model):
     continue
-  md5 = model + ".md5"
-  total_ok, total_errs = check_md5file(md5,total_ok,total_errs)
+  fp = tempfile.NamedTemporaryFile(delete=True)
+  fp.write(md5sum)
+  total_ok, total_errs = check_md5file(fp.name,total_ok,total_errs)
+  fp.close()
 
 #
 # Check Library Files
 #
-for lib in target_large_lib_list :
+for item in target_large_lib_list :
+  lib = item['library']
+  md5sum = item['md5sum']
   if not os.path.exists(lib):
     continue
-  md5 = lib + ".md5"
-  total_ok, total_errs = check_md5file(md5,total_ok,total_errs)
+  fp = tempfile.NamedTemporaryFile(delete=True)
+  fp.write(md5sum)
+  total_ok, total_errs = check_md5file(fp.name,total_ok,total_errs)
+  fp.close()
 
 #
 # Check etree files
 # 
-for etree in target_large_etree_list :
+for item in target_large_etree_list :
+  etree = item['etree']
+  md5sum = item['md5sum']
   if not os.path.exists(etree):
     continue
-  md5 = etree + ".md5"
-  total_ok, total_errs = check_md5file(md5,total_ok,total_errs)
+  fp = tempfile.NamedTemporaryFile(delete=True)
+  fp.write(md5sum)
+  total_ok, total_errs = check_md5file(fp.name,total_ok,total_errs)
+  fp.close()
 
 #
 # Check reference grids files
 #
-for ref in target_large_ref_list :
+for item in target_large_ref_list :
+  ref = item['reference']
+  md5sum = item['md5sum']
   if not os.path.exists(ref):
     continue
-  md5 = ref + ".md5"
-  total_ok, total_errs = check_md5file(md5,total_ok,total_errs)
+  fp = tempfile.NamedTemporaryFile(delete=True)
+  fp.write(md5sum)
+  total_ok, total_errs = check_md5file(fp.name,total_ok,total_errs)
+  fp.close()
 
 #
 # All largefiles checked
