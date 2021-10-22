@@ -20,11 +20,13 @@ UCVM is open-source scientific software designed to support earth scientists, ci
 
 # Installation:
 UCVM was developed to support seismic simulations run on high-performance computing systems, so it is designed to compile and run on Linux-based computers. Before installing UCVM, they should be aware that there are several ways to get access to UCVM without installing the software on your own Linux computer. Below we outline several of the options:
-1. Query UCVM velocity models, without installing UCVM, using the UCVM website: [SCEC UCVM Web viewer](https://scec.org/research/ucvm)
-2. Run UCVM in Docker on you laptop
-Users can install free Docker software on most computers (e.g. Linux, MacOS, Windows) then run an UCVM Docker image in a terminal window on their computer.
+1. Query UCVM velocity models, without installing UCVM, using the UCVM website. 
+* [SCEC UCVM Web viewer](https://scec.org/research/ucvm)
+2. Run UCVM in Docker on you laptop. Users can install free Docker software on most computers (e.g. Linux, MacOS, Windows) then run an UCVM Docker image in a terminal window on their computer. Instructions for using the ucvm_docker images are found here:
+* [UCVM Docker Images](https://github.com/sceccode/ucvm_docker)
 3. Install UCVM on Linux system
-Advanced users that want to install many of the UCVM models, or that want to run large parallel queries of the CVM models, should install the UCVM software on a Linux system. UCVM software is developed on USC Center for Advanced Research Computing (CARC) Linux cluster which provide MPI libraries. The UCVM software framework has several MPI-based executables. These executables are built using the automake system if the required MPI libraries are found in the installation computing environment. [Installation Instructions:](https://github.com/sceccode/ucvm/wiki/installation)
+Advanced users that want to install many of the UCVM models, or that want to run large parallel queries of the CVM models, should install the UCVM software on a Linux system. UCVM software is developed on USC Center for Advanced Research Computing (CARC) Linux cluster which provide MPI libraries. The UCVM software framework has several MPI-based executables. These executables are built using the automake system if the required MPI libraries are found in the installation computing environment. 
+* [Installation Instructions:](https://github.com/sceccode/ucvm/wiki/installation)
 
 # Usage: 
 Once installed, UCVM provides an executable program that provides a query interface to multiple UCVM
@@ -73,8 +75,3 @@ The following developers have contributed to the development of the UCVM softwar
 
 # License:
 The UCVM software is distributed under the BSD 3-Clause open-source license. Please see the [LICENSE.txt file](LICENSE.txt) for more information.
-
-# Preferred Reference
-If you use the UCVM software in your research, please include a reference to the following publication in your research publications. References help us obtain continued financial support for the development of the software. The preferred reference for the UCVM software is:
-
-* Small, P., Gill, D., Maechling, P. J., Taborda, R., Callaghan, S., Jordan, T. H., Ely, G. P., Olsen, K. B., & Goulet, C. A. (2017). The SCEC Unified Community Velocity Model Software Framework. Seismological Research Letters, 88(5). doi:10.1785/0220170082.
