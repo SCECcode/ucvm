@@ -62,7 +62,7 @@ Support for UCVM is provided by that Southern California Earthquake Center (SCEC
 2. Email Contact: (software@scec.usc.edu)
 
 # Contributing:
-We welcome contributions to the UCVM software framework. Geoscientists can register their seismic velocity models into UCVM and software developers can improve and extend the UCVM software. An overview of the process for contributing seismic models or software updates to the UCVM Project is provided in the UCVM [contribution guidelines](https://github.com/SCECcode/ucvm/CONTRIBUTING.md).
+We welcome contributions to the UCVM software framework. Geoscientists can register their seismic velocity models into UCVM and software developers can improve and extend the UCVM software. An overview of the process for contributing seismic models or software updates to the UCVM Project is provided in the UCVM [contribution guidelines](CONTRIBUTING.md).
 
 # Credits:
 The following developers have contributed to the development of the UCVM software framework. Along with these UCVM developers, each velocity model accessible through UCVM has its own list of contributors which can be found in the git repositories for each model.
@@ -72,7 +72,7 @@ The following developers have contributed to the development of the UCVM softwar
 * Patrick Small, University of Southern California
 
 # License:
-The UCVM software is distributed under the BSD 3-Clause open-source license. Please see the [LICENSE.txt file](https://github.com/SCECcode/ucvm/LICENSE.txt) for more information.
+The UCVM software is distributed under the BSD 3-Clause open-source license. Please see the [LICENSE.txt file](LICENSE.txt) for more information.
 
 # Preferred Reference
 If you use the UCVM software in your research, please include a reference to the following publication in your research publications. References help us obtain continued financial support for the development of the software. The preferred reference for the UCVM software is:
