@@ -60,8 +60,8 @@ The first three colums are the input values of lon (decimal degrees), lat (decim
 
 # Support:
 Support for UCVM is provided by that Southern California Earthquake Center (SCEC) Research Computing Group. This group supports several research software distributions including UCVM. Users can report issues and feature requests using UCVM's github-based issue tracking link below. Developers will also respond to emails sent to the SCEC software contact listed below.
-1. Issue Tracking:[GitHub:](https://github.com/SCECcode/ucvm/issues)
-2. Email Contact: (software@scec.usc.edu)
+1. [GitHub UCVM Issue Tracker:](https://github.com/SCECcode/ucvm/issues)
+2. [Email Contact:] software@scec.usc.edu
 
 # Contributing:
 We welcome contributions to the UCVM software framework. Geoscientists can register their seismic velocity models into UCVM and software developers can improve and extend the UCVM software. An overview of the process for contributing seismic models or software updates to the UCVM Project is provided in the UCVM [contribution guidelines](CONTRIBUTING.md).
