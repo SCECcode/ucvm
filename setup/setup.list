@@ -111,6 +111,7 @@
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
                         "md5sum": "",
+                        "md5sum": "b85205ef8d58eaa99dd3590cee9ea56d  cs173.tar.gz",
 			"Order": 3		
 		},
 		"CCA": {
