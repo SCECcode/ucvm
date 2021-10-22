@@ -29,10 +29,66 @@ Advanced users that want to install many of the UCVM models, or that want to run
 * [Installation Instructions:](https://github.com/sceccode/ucvm/wiki/installation)
 
 # Usage: 
-Once installed, UCVM provides an executable program that provides a query interface to multiple UCVM
+Once installed, UCVM provides an executable program, called ucvm_query, that implements a query interface to multiple seismic velocity models.
+
+## Determine Available Velocity Models
+During UCVM installation, the user is asked which velocity models they want installed. As a result, UCVM users need to know which velocity models are installed in their local system. The UCVM executable program, called ucvm_query, can be used to determine which velocity models are installed, as in this following example.
+<pre>
+$ucvm_query -H
+</pre>
+returns
+<pre>
+(base) [maechlin@discovery1 ~]$ ucvm_query -H
+Usage: ucvm_query [-m models<:ifunc>] [-p user_map] [-c coordtype] [-f config] [-z zmin,zmax] [-b] < file.in
+
+Flags:
+	-h This help message.
+	-H Detail help message.
+	-m Comma delimited list of crustal/GTL models to query in order
+	   of preference. GTL models may optionally be suffixed with ':ifunc'
+	   to specify interpolation function.
+	-c Z coordinate mode: geo-depth (gd, default), geo-elev (ge).
+	-f Configuration file. Default is ./ucvm.conf.
+	-p User-defined map to use for elevation and vs30 data.
+	-v Display model version information only.
+	-z Optional depth range for gtl/crust interpolation.
+
+	-b Optional output in json format
+
+	-l Optional input lon,lat,Z(depth/elevation)
+
+Input format is:
+	lon lat Z
+
+Output format is:
+	lon lat Z surf vs30 crustal cr_vp cr_vs cr_rho gtl gtl_vp gtl_vs gtl_rho cmb_algo cmb_vp cmb_vs cmb_rho
+
+Notes:
+	- If running interactively, type Cntl-D to end input coord list.
+
+Version: 21.7.0
+
+Installed Resources:
+          1d : crustal model
+       bbp1d : crustal model
+    cmuetree : crustal model
+       1dgtl : gtl
+      elygtl : gtl
+       cvms5 : crustal model
+         cca : crustal model
+       cs173 : crustal model
+      cs173h : crustal model
+      linear : ifunc
+         ely : ifunc
+        ucvm : map
+        yong : map
+ model_etree : model i/f
+ model_patch : model i/f
+   map_etree : map i/f
+</pre>
 
 ## ucvm_query
-ucvm_query is the basic UCVM interface that queries velocity model of interest.
+'ucvm_query' is the basic UCVM interface that queries velocity model of interest.
 
 <pre>
 $ ucvm_query -f /usr/local/opt/ucvm/conf/ucvm.conf -m cvmh -l 33.84007,-117.95683,0.0
