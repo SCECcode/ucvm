@@ -34,7 +34,7 @@ Once installed, UCVM provides an executable program, called ucvm_query, that imp
 ## Determine Available Velocity Models
 During UCVM installation, the user is asked which velocity models they want installed. As a result, UCVM users need to know which velocity models are installed in their local system. The UCVM executable program, called ucvm_query, can be used to determine which velocity models are installed, as in this following example.
 <pre>
-$ucvm_query -H
+$ ucvm_query -H
 </pre>
 returns
 <pre>
