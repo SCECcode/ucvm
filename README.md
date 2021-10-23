@@ -1,7 +1,7 @@
 [![ucvm-ci Actions Status](https://github.com/SCECcode/ucvm/workflows/ucvm-ci/badge.svg)](https://github.com/SCECcode/ucvm/actions)
 
 # Project name:
-The Southern California Earthquake Center (SCEC) Unified Community Velocity Model (UCVM) Software
+The Unified Community Velocity Model (UCVM) Software
 
 # Description: 
 The SCEC Unified Community Velocity Model (UCVM) software framework is a collection of software tools that provide a standard query interface to seismic velocity models. Once a seismic velocity model is registered into UCVM, it can be queried and combined with other velocity models through the UCVM software interface.
