@@ -5,7 +5,7 @@ install: $(install_PROGRAMS)
 	if ! test . -ef ${prefix}/utilities; then \
 		for i in $(EXTRA_DIST); do \
 			cp $${i} ${prefix}/utilities; \
-		done \	
+		done \
 	fi
 
 clean:

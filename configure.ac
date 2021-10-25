@@ -2,7 +2,7 @@
 
 AC_INIT([UCVM], [21.7.0], [software@scec.org])
 AC_CONFIG_AUX_DIR([./aux-config])
-AM_INIT_AUTOMAKE([no-exeext])
+AM_INIT_AUTOMAKE([foreign no-exeext])
 AC_PROG_RANLIB
 
 # Determine platform
