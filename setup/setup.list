@@ -1,5 +1,16 @@
 {
 	"models": {
+                "CVMHLABN": {
+                        "Version": "1.0",
+                        "Abbreviation": "cvmhlabn",
+                        "Size": "XM",
+                        "Path": "cvmhlabn",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvmhlabn.tar.gz",
+                        "Flags": "--enable-model-cvmhlabn --with-cvmhlabn-lib-path=lib --with-cvmhlabn-include-path=include --with-cvmhlabn-model-path=src",
+                        "Ask": "yes",
+                        "md5sum": "2f309465854f3585c45147cbe4e7cc62  cvmhlabn.tar.gz",
+                        "Order": 13
+                },
                 "WFCVM": {
                         "Version": "2.0",
                         "Abbreviation": "wfcvm",

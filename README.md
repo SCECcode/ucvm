@@ -111,7 +111,7 @@ The first three colums are the input values of lon (decimal degrees), lat (decim
 </pre>
 
 # Support:
-Support for UCVM is provided by that Southern California Earthquake Center (SCEC) Research Computing Group. This group supports several research software distributions including UCVM. Users can report issues and feature requests using UCVM's github-based issue tracking link below. Developers will also respond to emails sent to the SCEC software contact listed below.
+Support for UCVM is provided by the Southern California Earthquake Center (SCEC) Research Computing Group. This group supports several research software distributions including UCVM. Users can report issues and feature requests using UCVM's github-based issue tracking link below. Developers will also respond to emails sent to the SCEC software contact listed below.
 1. [UCVM Github Issue Tracker:](https://github.com/SCECcode/ucvm/issues)
 2. Email Contact: software@scec.usc.edu
 

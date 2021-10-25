@@ -41,6 +41,12 @@ ucvm_plugin_model_t plugin_models[UCVM_MAX_MODELS];
 	extern int cca_finalize;
 	extern int cca_version;
 #endif
+#ifdef _UCVM_ENABLE_CVMHLABN
+	extern int cvmhlabn_init;
+	extern int cvmhlabn_query;
+	extern int cvmhlabn_finalize;
+	extern int cvmhlabn_version;
+#endif
 #ifdef _UCVM_ENABLE_CS173
 	extern int cs173_init;
 	extern int cs173_query;
@@ -190,6 +196,18 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cca_query;
                 pptr->model_finalize = &cca_finalize;
                 pptr->model_version = &cca_version;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMHLABN
+        if (strcmp(conf->label, UCVM_MODEL_CVMHLABN) == 0) {
+                pptr->model_init = &cvmhlabn_init;
+                pptr->model_query = &cvmhlabn_query;
+                pptr->model_finalize = &cvmhlabn_finalize;
+                pptr->model_version = &cvmhlabn_version;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
