@@ -697,6 +697,23 @@ else
 fi
 
 if test "x$enable_static" = xyes; then
+# Check optional SCEC CVMHLABN installation
+if test "x$enable_model_cvmhlabn" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CVMHLABN_INCL $CFLAGS"
+   LDFLAGS="$CVMHLABN_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CVMHLABN"
+   AC_CHECK_HEADER(cvmhlabn.h,[],[AC_MSG_ERROR(["SCEC CVMHLABN header not found; use --with-cvmhlabn-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHLABN, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHLABN, [test x"$enable_model_cvmhlabn" = xyes])
+fi
+
+
+if test "x$enable_static" = xyes; then
 # Check optional SCEC CS173 installation
 if test "x$enable_model_cs173" = xyes; then
    # Setup compiler/linker flags
