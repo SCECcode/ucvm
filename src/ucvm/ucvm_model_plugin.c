@@ -4,7 +4,6 @@
 #include "ucvm_utils.h"
 #include "ucvm_model_plugin.h"
 
-ucvm_plugin_model_t plugin_models[UCVM_MAX_MODELS];
 
 #ifndef _UCVM_AM_STATIC
 	#include <dlfcn.h>
@@ -103,36 +102,32 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
 
 	// Load the symbols.
 	MIPTR *iptr = dlsym(handle, "get_model_init");
-	pptr->model_init = iptr();
-
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_init.\n");
 		return UCVM_CODE_ERROR;
 	}
+	pptr->model_init = iptr();
 
 	MQPTR *qptr = dlsym(handle, "get_model_query");
-	pptr->model_query = qptr();
-
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_query.\n");
 		return UCVM_CODE_ERROR;
 	}
+	pptr->model_query = qptr();
 
 	MFPTR *fptr = dlsym(handle, "get_model_finalize");
-	pptr->model_finalize = fptr();
-
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_finalize.\n");
 		return UCVM_CODE_ERROR;
 	}
+	pptr->model_finalize = fptr();
 
 	MVPTR *vptr = dlsym(handle, "get_model_version");
-	pptr->model_version = vptr();
-
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_version.\n");
 		return UCVM_CODE_ERROR;
 	}
+	pptr->model_version = vptr();
 
 	// Initialize the model.
 	if ((*pptr->model_init)(conf->config, conf->label) != 0) {
