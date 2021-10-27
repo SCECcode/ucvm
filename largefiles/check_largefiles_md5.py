@@ -93,6 +93,8 @@ for item in target_large_model_list :
     continue
   fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
   fp.write(md5sum)
+  fp.write("  ")
+  fp.write(model)
   fp.flush()
   total_ok, total_errs = check_md5file(model,fp.name,total_ok,total_errs)
   fp.close()
@@ -107,6 +109,8 @@ for item in target_large_lib_list :
     continue
   fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
   fp.write(md5sum)
+  fp.write("  ")
+  fp.write(lib)
   fp.flush()
   total_ok, total_errs = check_md5file(lib,fp.name,total_ok,total_errs)
   fp.close()
@@ -121,6 +125,8 @@ for item in target_large_etree_list :
     continue
   fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
   fp.write(md5sum)
+  fp.write("  ")
+  fp.write(etree)
   fp.flush()
   total_ok, total_errs = check_md5file(etree,fp.name,total_ok,total_errs)
   fp.close()
@@ -135,6 +141,8 @@ for item in target_large_ref_list :
     continue
   fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
   fp.write(md5sum)
+  fp.write("  ")
+  fp.write(ref)
   fp.flush()
   total_ok, total_errs = check_md5file(ref,fp.name,total_ok,total_errs)
   fp.close()
