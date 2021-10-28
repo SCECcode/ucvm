@@ -91,7 +91,7 @@ for item in target_large_model_list :
   md5sum = item['md5sum']
   if not os.path.exists(model):
     continue
-  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True)
   fp.write(md5sum)
   fp.write("  ")
   fp.write(model)
@@ -107,7 +107,7 @@ for item in target_large_lib_list :
   md5sum = item['md5sum']
   if not os.path.exists(lib):
     continue
-  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True)
   fp.write(md5sum)
   fp.write("  ")
   fp.write(lib)
@@ -123,7 +123,7 @@ for item in target_large_etree_list :
   md5sum = item['md5sum']
   if not os.path.exists(etree):
     continue
-  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True)
   fp.write(md5sum)
   fp.write("  ")
   fp.write(etree)
@@ -139,7 +139,7 @@ for item in target_large_ref_list :
   md5sum = item['md5sum']
   if not os.path.exists(ref):
     continue
-  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True)
   fp.write(md5sum)
   fp.write("  ")
   fp.write(ref)
