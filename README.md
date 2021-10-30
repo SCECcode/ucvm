@@ -3,6 +3,9 @@
 # Project name:
 The Unified Community Velocity Model (UCVM) Software
 
+
+<a href="http://www.scec.org/research"><img src="https://raw.githubusercontent.com/sceccode/ucvm/main/doc/source/_static/ucvm_logo.png" width="300"></a>
+
 # Description: 
 The SCEC Unified Community Velocity Model (UCVM) software framework is a collection of software tools that provide a standard query interface to seismic velocity models. Once a seismic velocity model is registered into UCVM, it can be queried and combined with other velocity models through the UCVM software interface.
 
@@ -26,6 +29,33 @@ UCVM was developed to support seismic simulations run on high-performance comput
 
 # Usage: 
 Once installed, UCVM provides an executable program, called ucvm_query, that implements a query interface to multiple seismic velocity models.
+
+## ucvm_query
+'ucvm_query' is the basic UCVM interface that queries velocity model of interest.
+
+<pre>
+$ ucvm_query -f /usr/local/opt/ucvm/conf/ucvm.conf -m cvmh -l 33.84007,-117.95683,0.0
+</pre>
+returns
+<pre>
+ -117.9568    33.8401      0.000     34.438    293.500       cvmh   1238.170    120.690   1450.659       none      0.000      0.000      0.000      crust   1238.170    120.690   1450.65
+</pre>
+
+The results are in a column oriented format. Abbreviations are like this:
+<pre>
+Output format is:
+   0   1  2  3    4     5       6     7     8     9   10      11    12       13     14      15     16
+  lon lat Z surf vs30 crustal cr_vp cr_vs cr_rho gtl gtl_vp gtl_vs gtl_rho cmb_algo cmb_vp cmb_vs cmb_rho
+</pre>
+
+The first three colums are the input values of lon (decimal degrees), lat (decimal degrees), and depth (meters). The other columns that are returned are information about the velocity model used provide the material properties. Crustal models, and Geotechnical Models can be stored and used seperately in UCVM. The contributions of each model are shown in columns 5-8 and 10-12, but the combined results returned in 14-16 are typically used by modelers.
+<pre>
+ -118.0000    34.0000      0.000    280.896    390.000      cvmsi    696.491    213.000   1974.976       none      0.000      0.000      0.000      crust    696.491    213.000   1974.976
+ -118.0000    34.0000     50.000    280.896    390.000      cvmsi   1669.540    548.000   2128.620       none      0.000      0.000      0.000      crust   1669.540    548.000   2128.620
+ -118.0000    34.0000    100.000    280.896    390.000      cvmsi   1683.174    603.470   2130.773       none      0.000      0.000      0.000      crust   1683.174    603.470   2130.773
+ -118.0000    34.0000    500.000    280.896    390.000      cvmsi   2701.217   1475.609   2354.105       none      0.000      0.000      0.000      crust   2701.217   1475.609   2354.105
+ -118.0000    34.0000   1000.000    280.896    390.000      cvmsi   3330.909   1945.594   2443.042       none      0.000      0.000      0.000      crust   3330.909   1945.594   2443.042
+</pre>
 
 ## Determine Available Velocity Models
 During UCVM installation, the user is asked which velocity models they want installed. As a result, UCVM users need to know which velocity models are installed in their local system. The UCVM executable program, called ucvm_query, can be used to determine which velocity models are installed, as in this following example.
@@ -83,32 +113,6 @@ Installed Resources:
    map_etree : map i/f
 </pre>
 
-## ucvm_query
-'ucvm_query' is the basic UCVM interface that queries velocity model of interest.
-
-<pre>
-$ ucvm_query -f /usr/local/opt/ucvm/conf/ucvm.conf -m cvmh -l 33.84007,-117.95683,0.0
-</pre>
-returns
-<pre>
- -117.9568    33.8401      0.000     34.438    293.500       cvmh   1238.170    120.690   1450.659       none      0.000      0.000      0.000      crust   1238.170    120.690   1450.65
-</pre>
-
-The results are in a column oriented format. Abbreviations are like this:
-<pre>
-Output format is:
-   0   1  2  3    4     5       6     7     8     9   10      11    12       13     14      15     16
-  lon lat Z surf vs30 crustal cr_vp cr_vs cr_rho gtl gtl_vp gtl_vs gtl_rho cmb_algo cmb_vp cmb_vs cmb_rho
-</pre>
-
-The first three colums are the input values of lon (decimal degrees), lat (decimal degrees), and depth (meters). The other columns that are returned are information about the velocity model used provide the material properties. Crustal models, and Geotechnical Models can be stored and used seperately in UCVM. The contributions of each model are shown in columns 5-8 and 10-12, but the combined results returned in 14-16 are typically used by modelers.
-<pre>
- -118.0000    34.0000      0.000    280.896    390.000      cvmsi    696.491    213.000   1974.976       none      0.000      0.000      0.000      crust    696.491    213.000   1974.976
- -118.0000    34.0000     50.000    280.896    390.000      cvmsi   1669.540    548.000   2128.620       none      0.000      0.000      0.000      crust   1669.540    548.000   2128.620
- -118.0000    34.0000    100.000    280.896    390.000      cvmsi   1683.174    603.470   2130.773       none      0.000      0.000      0.000      crust   1683.174    603.470   2130.773
- -118.0000    34.0000    500.000    280.896    390.000      cvmsi   2701.217   1475.609   2354.105       none      0.000      0.000      0.000      crust   2701.217   1475.609   2354.105
- -118.0000    34.0000   1000.000    280.896    390.000      cvmsi   3330.909   1945.594   2443.042       none      0.000      0.000      0.000      crust   3330.909   1945.594   2443.042
-</pre>
 
 # Support:
 Support for UCVM is provided by that Southern California Earthquake Center (SCEC) Research Computing Group. This group supports several research software distributions including UCVM. Users can report issues and feature requests using UCVM's github-based issue tracking link below. Developers will also respond to emails sent to the SCEC software contact listed below.
