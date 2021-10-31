@@ -233,6 +233,12 @@ int ucvm_cvmh_model_query(int id, ucvm_ctype_t cmode,
       /* Query CVM-H for the point */
       vx_getcoord(&entry);
 
+      fprintf(stderr,"HERE...");
+      if(entry.data_src == VX_SRC_HR) { fprintf(stderr,"XXX found a HR point\n"); }
+      if(entry.data_src == VX_SRC_LR) { fprintf(stderr,"XXX found a LR point\n"); }
+      if(entry.data_src == VX_SRC_CM) { fprintf(stderr,"XXX found a CM point\n"); }
+
+
       if (entry.data_src != VX_SRC_NR) {
 	if (entry.vp > 0.0) {
 	  data[i].crust.vp = entry.vp;
