@@ -50,23 +50,4 @@ If you want to submit a bug report, please provide the information below:
   * [NumPy and ctypes](https://scipy-cookbook.readthedocs.io/)
   * [SciPy](https://www.scipy.org/docs.html)
   * [NumPy Book](http://csc.ucdavis.edu/~chaos/courses/nlp/Software/NumPyBook.pdf)
-  * 
 
-## UCVM Software Contributors
-* Mei-Hui Su
-* Philip Maechling
-* Patrick Small
-* David Gill
-* Rasheed Ajala1
-* Patricia Persaud
-* Alan Juarez
-* Thomas Jordan
-* John Shaw
-* Andreas Plesch
-* En-Jui Lee
-* Po Chen
-* Christine Goulet
-* Ricardo Taborda 
-* Kim Olsen
-* Scott Callaghan 
-* Harold Magistrale
