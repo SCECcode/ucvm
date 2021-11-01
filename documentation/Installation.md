@@ -1,4 +1,4 @@
-# UCVMC 
+# UCVM 
 
   SCEC Unified Community Velocity Model C-language software framework.
 
