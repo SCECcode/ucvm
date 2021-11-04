@@ -26,9 +26,10 @@ One important use of UCVM is to create simulation meshes used in high resolution
 1. [Software Documentation](https://github.com/SCECcode/ucvm/wiki)
 2. [Installation](#installation)
 3. [Usage](#usage)
-4. [Contributing](#contributing)
-5. [Credits](#credits)
-6. [License](#license)
+4. [Support](#support)
+5. [Contributing](#contributing)
+6. [Credits](#credits)
+7. [License](#license)
 
 # Installation:
 UCVM was developed to support seismic simulations run on high-performance computing systems, so it is designed to compile and run on Linux-based computers. Before installing UCVM, they should be aware that there are several ways to get access to UCVM without installing the software on your own Linux computer. Below we outline several of the options:
