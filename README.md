@@ -101,7 +101,7 @@ Output format is:
 Notes:
 	- If running interactively, type Cntl-D to end input coord list.
 
-Version: 21.7.0
+Version: 21.10.0
 
 Installed Resources:
           1d : crustal model
