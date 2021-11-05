@@ -11,25 +11,44 @@
 import os
 import sys
 from shutil import copyfile
+import json
 
-UCVM_Version = "19.4"
-target_large_lib_list = ["proj-5.0.0.tar.gz",
-                  "fftw-3.3.3.tar.gz",
-                  "euclid3-1.3.tar.gz"]
-target_large_model_list = ["cvms5.tar.gz",
-                    "cca.tar.gz",
-                    "cs173.tar.gz",
-                    "cs173h.tar.gz",
-                    "cvms.tar.gz",
-                    "cvmsi.tar.gz",
-                    "cvmh.tar.gz",
-                    "cencal.tar.gz",
-                    "albacore.tar.gz",
-                    "cvlsu.tar.gz",
-                    "ivlsu.tar.gz",
-                    "wfcvm.tar.gz"]
-target_large_etree_list = ["ucvm.e","ucvm_utah.e"]
-target_large_ref_list = ["test-grid-lib-1d.ref"]
+UCVM_Version = "21.10"
+
+target_large_lib_list = []
+target_large_model_list = []
+target_large_etree_list = []
+target_large_ref_list = []
+
+try:
+    # We now have our list. Parse it.
+    f = open("../setup/setup.list", "r")
+    json_string = f.read()
+    f.close()
+    config_data = json.loads(json_string)
+except OSError as e:
+    eG(e, "Parsing setup for ucvm model list.")
+
+for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config_data["models"][k]["Order"])):
+    the_model = config_data["models"][model]
+    _model = str(the_model["Abbreviation"])+".tar.gz"
+    target_large_model_list.append(_model)
+
+for library in config_data["libraries"].keys() :
+    the_library = config_data["libraries"][library]
+    _lib = str(the_library["Lib"])+".tar.gz"
+    target_large_lib_list.append(_lib)
+
+for etree in config_data["etrees"].keys() :
+    the_etree = config_data["etrees"][etree]
+    _etree = str(the_etree["Path"])
+    target_large_etree_list.append(_etree)
+
+for ref in config_data["references"].keys() :
+    the_reference = config_data["references"][ref]
+    _ref=str(the_reference["Path"])
+    target_large_ref_list.append(_ref)
+
 
 
 # These two paths specify the location of the largefiles, and the src directory 

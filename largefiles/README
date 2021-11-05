@@ -19,8 +19,8 @@ This script prints out the number of OK files and the number of files with error
 If any files have errors, those files should be re-downloaded.
 ./check_largefiles_md5.py
 
-Third, the user runs the file stagin script:
-This copies the files from the largefiles directory into the ucvm  directory tree
+Third, the user runs the file staging script:
+This links the files from the largefiles directory into the ucvm build directory tree
 ./stage_largefiles.py
 
 

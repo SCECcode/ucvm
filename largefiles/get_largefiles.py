@@ -10,6 +10,8 @@ import sys
 import json
 import pdb
 
+UCVM_Version = "21.10"
+
 if sys.version_info.major >= (3) :
   from urllib.request import urlopen 
 else:
