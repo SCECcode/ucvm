@@ -1,7 +1,6 @@
 ## 2021-10-01  Mei-Hui Su <mei@usc.edu>
 * Rework largefiles get/check/stage to use setup.list
 
-
 ## 2021-07-01  Mei-Hui Su <mei@usc.edu>
 * Added ucvm_utah map
 * Added IVLSU/CVLSU/WFCVM models
