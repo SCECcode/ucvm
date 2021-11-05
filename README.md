@@ -4,7 +4,7 @@
 
 # The Unified Community Velocity Model (UCVM) Software
 
-<a href="http://www.scec.org/research"><img src="https://github.com/sceccode/ucvm/blob/main/documentation/ucvm_logo.png" width="300"></a>
+<a href="http://www.scec.org/research"><img src="https://github.com/sceccode/ucvm/wiki/images/ucvm_logo.png" width="300"></a>
 
 # Description: 
 The SCEC Unified Community Velocity Model (UCVM) software framework is a collection of software tools that provide a 

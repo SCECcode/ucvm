@@ -1,2 +1,0 @@
-UCVM Core Concepts:
-===================
