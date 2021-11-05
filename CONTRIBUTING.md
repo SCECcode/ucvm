@@ -7,7 +7,7 @@ This document provides an overview on how to contribute to UCVM, and will provid
 * Make sure you have an active GitHub account
 * Download and install git
 * Read the git documentation
-* Install the main branch of the sceccode/ucvm.git repository
+* Install the main branch of the SCECcode/ucvm.git repository
 * If you haven't worked with Git Forks before, make sure to read the documentation linked below.
 
 ## Submitting a Pull Request
