@@ -45,6 +45,7 @@
 	extern int cvmhlabn_query;
 	extern int cvmhlabn_finalize;
 	extern int cvmhlabn_version;
+	extern int cvmhlabn_setparam;
 #endif
 #ifdef _UCVM_ENABLE_CS173
 	extern int cs173_init;
@@ -203,6 +204,7 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cvmhlabn_query;
                 pptr->model_finalize = &cvmhlabn_finalize;
                 pptr->model_version = &cvmhlabn_version;
+                pptr->model_setparam = &cvmhlabn_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -444,7 +446,7 @@ int ucvm_plugin_get_model(const char *dir, const char *label, ucvm_model_t *m) {
 	}
 }
 
-/* Setparam CVM-S5 */
+/* Setparam */
 int ucvm_plugin_model_setparam(int id, int param, ...)
 {
   va_list ap;

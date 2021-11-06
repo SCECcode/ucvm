@@ -46,6 +46,7 @@ int (*model_init)(const char *dir, const char *label);
 int (*model_query)(basic_point_t *points, basic_properties_t *data, int numpoints);
 int (*model_finalize)();
 int (*model_version)(char *ver, int len);
+int (*model_setparam)(int id, int param, ...);
 } ucvm_plugin_model_t;
 
 ucvm_plugin_model_t *get_plugin_by_label(char *);

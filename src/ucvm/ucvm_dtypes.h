@@ -147,7 +147,7 @@ UCVM_PARAM_MODEL_CONF    : char *mlabel, char *param, char *value
     "USE_1D_BKG": "True"/"False"
 
 */
-typedef enum { UCVM_PARAM_QUERY_MODE = 0,
+typedef enum { UCVM_PARAM_QUERY_MODE = 1,
 	       UCVM_PARAM_IFUNC_ZRANGE,
 	       UCVM_PARAM_MODEL_CONF } ucvm_param_t;
 
