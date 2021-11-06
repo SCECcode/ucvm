@@ -867,9 +867,9 @@ sys.stdout.write("\nThank you for installing UCVM.\n")
 sys.stdout.flush()
 
 if platform.system() == "Darwin" or platform.system() == "Linux" or dynamic_flag == True:
-    print("Now edit your ~/.bashrc file to call "+ ucvmpath.rstrip("/") + "/conf/ucvm_env.sh ")
-    print("This script will set the required UCVM environment variables.\n")
+    print("Now edit your ~/.bashrc file to call "+ ucvmpath.rstrip("/") + "/conf/ucvm_env.sh \n")
     print("   source " + ucvmpath.rstrip("/") + "/conf/ucvm_env.sh \n")
+    print("This will set the required UCVM environment variables.")
     print("Then log out, and log in, move to tests directory, and run the tests\n")
     print("   $ cd " + ucvmpath.rstrip("/") + "/tests ")
     print("   $ ./run-tests \n")
