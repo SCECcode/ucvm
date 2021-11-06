@@ -68,7 +68,7 @@ The first three colums are the input values of lon (decimal degrees), lat (decim
 </pre>
 
 Detailed descriptions of the UCVM return parameters are listed in this UCVM parameter summary:
-<a href="http://www.scec.org/research"><img src="https://github.com/sceccode/ucvm/wiki/images/UCVM_Query_Params.png" width="300"></a>
+<a href="https://github.com/sceccode/ucvm/wiki/reference"><img src="https://github.com/sceccode/ucvm/wiki/images/UCVM_Query_Params.png" width="300"></a>
 ## Support
 Support for UCVM is provided by that Southern California Earthquake Center (SCEC) Research Computing Group. This group supports several research software distributions including UCVM. Users can report issues and feature requests using UCVM's github-based issue tracking link below. Developers will also respond to emails sent to the SCEC software contact listed below.
 1. [UCVM Github Issue Tracker](https://github.com/SCECcode/ucvm/issues)
