@@ -28,9 +28,10 @@ One important use of UCVM is to create simulation meshes used in high resolution
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [Support](#support)
-5. [Contributing](#contributing)
-6. [Credits](#credits)
-7. [License](#license)
+5. [Citation](#citation)
+6. [Contributing](#contributing)
+7. [Credits](#credits)
+8. [License](#license)
 
 ## Installation
 UCVM was developed to support seismic simulations run on high-performance computing systems, so it is designed to compile and run on Linux-based computers. Before installing UCVM, they should be aware that there are several ways to get access to UCVM without installing the software on your own Linux computer. Below we outline several of the options:
@@ -69,11 +70,22 @@ The first three colums are the input values of lon (decimal degrees), lat (decim
 </pre>
 
 Detailed descriptions of the UCVM return parameters are listed in this UCVM parameter summary:
+
 <a href="https://github.com/sceccode/ucvm/wiki/reference"><img src="https://github.com/sceccode/ucvm/wiki/images/UCVM_Query_Params.png" width="300"></a>
+
 ## Support
 Support for UCVM is provided by that Southern California Earthquake Center (SCEC) Research Computing Group. This group supports several research software distributions including UCVM. Users can report issues and feature requests using UCVM's github-based issue tracking link below. Developers will also respond to emails sent to the SCEC software contact listed below.
 1. [UCVM Github Issue Tracker](https://github.com/SCECcode/ucvm/issues)
 2. Email Contact: software@scec.usc.edu
+
+## Citation
+References, citations, and acknowledgements help us obtain continued support for the development of the UCVM software. If you use the UCVM software in your research, please include the citation of the UCVM paper in the references/bibliography section of your publication. This is more effective than you providing in-text acknowledgements. 
+
+* Preferred Reference: Small, P., Gill, D., Maechling, P. J., Taborda, R., Callaghan, S., Jordan, T. H., Ely, G. P., Olsen, K. B., & Goulet, C. A. (2017). The SCEC Unified Community Velocity Model Software Framework. Seismological Research Letters, 88(5). doi:10.1785/0220170082
+
+* Preferred Citation: The SCEC Unified Community Velocity Model Software, Release Date: 6 November 2021, https://doi.org/10.5281/zenodo.5651277
+
+* Example Acknowlegement: We would like to acknowledge the use of the SCEC Unified Community Velocity Model Software (Small 2017) in this research. 
 
 ## Contributing
 We welcome contributions to the UCVM software framework. 
