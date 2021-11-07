@@ -55,11 +55,11 @@ fi
 
 if [ "$IN" != "" ]; then
   if [ "$OUT" != "" ]; then
-      ${SCRIPT_DIR}/ucvm_query ${FLAGS} < $IN 1 >> $OUT 2>/dev/null 
+      ${SCRIPT_DIR}/../bin/ucvm_query ${FLAGS} < $IN 1 >> $OUT 2>/dev/null 
   else
-      ${SCRIPT_DIR}/ucvm_query ${FLAGS} < $IN
+      ${SCRIPT_DIR}/../bin/ucvm_query ${FLAGS} < $IN
   fi
 else
-  ${SCRIPT_DIR}/ucvm_query ${FLAGS} 
+  ${SCRIPT_DIR}/../bin/ucvm_query ${FLAGS} 
 fi
 
