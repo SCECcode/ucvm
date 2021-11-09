@@ -7,7 +7,7 @@ This document provides an overview on how to contribute to UCVM, and will provid
 * Make sure you have an active GitHub account
 * Download and install git
 * Read the git documentation
-* Install the main branch of the sceccode/ucvm.git repository
+* Install the main branch of the SCECcode/ucvm.git repository
 * If you haven't worked with Git Forks before, make sure to read the documentation linked below.
 
 ## Submitting a Pull Request
@@ -50,23 +50,4 @@ If you want to submit a bug report, please provide the information below:
   * [NumPy and ctypes](https://scipy-cookbook.readthedocs.io/)
   * [SciPy](https://www.scipy.org/docs.html)
   * [NumPy Book](http://csc.ucdavis.edu/~chaos/courses/nlp/Software/NumPyBook.pdf)
-  * 
 
-## UCVM Software Contributors
-* Mei-Hui Su
-* Philip Maechling
-* Patrick Small
-* David Gill
-* Rasheed Ajala1
-* Patricia Persaud
-* Alan Juarez
-* Thomas Jordan
-* John Shaw
-* Andreas Plesch
-* En-Jui Lee
-* Po Chen
-* Christine Goulet
-* Ricardo Taborda 
-* Kim Olsen
-* Scott Callaghan 
-* Harold Magistrale
