@@ -371,7 +371,7 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
 
 	    	if (nn == MODEL_POINT_BUFFER || i == n - 1) {
 	    		// We've reached the maximum buffer. Do the query.
-	    		(*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn);
+	    		(*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn, cmode);
 	    		// Transfer our findings.
 	    		for (j = 0; j < nn; j++) {
 	    			if (ucvm_plugin_data_buffer[j].vp >= 0 && ucvm_plugin_data_buffer[j].vs >= 0 && ucvm_plugin_data_buffer[j].rho >= 0) {
@@ -392,7 +392,7 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
 	}
         /* catch the last bits of partial chunk */
         if(nn != 0) {
-	    (*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn);
+	    (*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn, cmode);
 	    // Transfer our findings.
 	    for (j = 0; j < nn; j++) {
 	    	if (ucvm_plugin_data_buffer[j].vp >= 0 && ucvm_plugin_data_buffer[j].vs >= 0 && ucvm_plugin_data_buffer[j].rho >= 0) {
