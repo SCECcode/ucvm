@@ -8,7 +8,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/cvmhlabn.tar.gz",
                         "Flags": "--enable-model-cvmhlabn --with-cvmhlabn-lib-path=lib --with-cvmhlabn-include-path=include --with-cvmhlabn-model-path=src",
                         "Ask": "yes",
-                        "md5sum": "0d846a09d5a27c86d45fa3067309a4d1",
+                        "md5sum": "bb1a7aada479ab21c22746a96d55ba6d",
                         "Order": 13
                 },
                 "WFCVM": {
