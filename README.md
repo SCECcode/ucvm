@@ -1,11 +1,12 @@
+# The Unified Community Velocity Model (UCVM) Software
+
+<a href="https://github.com/sceccode/ucvm.git"><img src="https://github.com/sceccode/ucvm/wiki/images/ucvm_logo.png"></a>
+
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 ![GitHub repo size](https://img.shields.io/github/repo-size/sceccode/ucvm)
 [![ucvm-ci Actions Status](https://github.com/SCECcode/ucvm/workflows/ucvm-ci/badge.svg)](https://github.com/SCECcode/ucvm/actions)
 [![DOI](https://zenodo.org/badge/358720931.svg)](https://zenodo.org/badge/latestdoi/358720931)
 
-# The Unified Community Velocity Model (UCVM) Software
-
-<a href="https://github.com/sceccode/ucvm.git"><img src="https://github.com/sceccode/ucvm/wiki/images/ucvm_logo.png"></a>
 
 ## Description 
 The SCEC Unified Community Velocity Model (UCVM) software framework is a collection of software tools that provide a 
