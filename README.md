@@ -81,7 +81,7 @@ References, citations, and acknowledgements help us obtain continued support for
 
 * Example Acknowlegement: We would like to acknowledge the use of the SCEC Unified Community Velocity Model Software (Small 2017) in this research. 
 
-Along with citing the UCVM software, researchers should also cite the appropriate publication for any of the velocity models they use in their research. Citations for individual velocity models are included in the [Credits](Credits.md) file in this repository, and in the GitHub repository that has been created for each model.
+Along with citing the UCVM software, researchers should also cite the appropriate publication for any of the velocity models they use in their research. Citations for individual velocity models are included in the [Credits](CREDITS.md) file in this repository, and in the GitHub repository that has been created for each model.
 
 ## Contributing
 We welcome contributions to the UCVM software framework. 
