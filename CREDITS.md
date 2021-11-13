@@ -37,6 +37,9 @@ Researchers that use the UCVM software should cite the primary UCVM software ref
 ### CVM-S4.26 and CVM-S4.26.M01
 * Lee, E.-J., P. Chen, T. H. Jordan, P. J. Maechling, M. A. M. Denolle, and G. C.Beroza (2014), Full 3-D tomography for crustal structure in Southern California based on the scattering-integral and the adjoint-waveﬁeld methods, J. Geophys. Res. Solid Earth, 119, doi:10.1002/2014JB011346. SCEC Contribution 6093
 
+### USGS Central California Model (cencal)
+* Brocher, Tom & Aagaard, Brad & Simpson, R. & Jachens, R.. (2006). The USGS 3D Seismic Velocity Model for Northern California. AGU Fall Meeting Abstracts. -1. 1266. 
+
 ### ALBACORE Model:
 * Bowden, D. C., Kohler, M. D., Tsai, V. C., & Weeraratne, D. S. (2016). Offshore southern California lithospheric velocity structure from noise cross-correlation functions. Journal of Geophysical Research, 121(5), 3415-3427. doi: 10.1002/2016JB012919.
 
