@@ -1,5 +1,5 @@
 
-name: 'action to build ucvm from remote request'
+name: 'action to build ucvm/basin from remote request'
 description: 'invoked from external models'
 outputs:
   build-log:
@@ -20,10 +20,10 @@ runs:
     - run: ( echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV;
              echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV)
       shell: bash
-    - name: checkout ucvm
+    - name: checkout ucvm basin
       uses: actions/checkout@v2
       with: 
-        ref: main
+        ref: basin
     - name: build ucvm with no model
       run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-none.sh)
       shell: bash
