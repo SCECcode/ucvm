@@ -148,8 +148,8 @@ UCVM_PARAM_MODEL_CONF    : char *mlabel, char *param, char *value
 
 */
 typedef enum { UCVM_PARAM_QUERY_MODE = 1,
-	       UCVM_PARAM_IFUNC_ZRANGE,
-	       UCVM_PARAM_MODEL_CONF } ucvm_param_t;
+	       UCVM_PARAM_IFUNC_ZRANGE = 2,
+	       UCVM_PARAM_MODEL_CONF = 3 } ucvm_param_t;
 
 
 /* Supported model parameters. Used internally by UCVM 
@@ -160,7 +160,7 @@ UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF : Force elevation points to be
   surface and GTL.
 
 */
-typedef enum { UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF } ucvm_mparam_t;
+typedef enum { UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF = 0 } ucvm_mparam_t;
 
 
 /* Supported coordinate query modes. Used internally by UCVM */

@@ -43,7 +43,7 @@ int ucvm_plugin_model_id;
 /** Store the configuration data. */
 ucvm_modelconf_t ucvm_plugin_model_conf;
 int (*model_init)(const char *dir, const char *label);
-int (*model_query)(basic_point_t *points, basic_properties_t *data, int numpoints, int cmode);
+int (*model_query)(basic_point_t *points, basic_properties_t *data, int numpoints);
 int (*model_finalize)();
 int (*model_version)(char *ver, int len);
 int (*model_setparam)(int id, int param, ...);

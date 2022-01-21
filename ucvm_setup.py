@@ -18,7 +18,7 @@ import shlex
 # Variables
 
 # Set the version number for the installation script.
-VERSION = "21.7.0"
+VERSION = "21.10.0"
 
 # User defined variables.
 all_flag = False
@@ -575,7 +575,7 @@ for o, a in opts:
 
 print("")
 print("UCVM %s Installation" % VERSION)
-print("Copyright (C) 20%s SCEC. All rights reserved." % (VERSION.split(".")[0]))
+print("Copyright (C) 20%s University of Southern California. All rights reserved." % (VERSION.split(".")[0]))
 
 print("Using local setup.list and system.list ....")
     

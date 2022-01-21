@@ -355,6 +355,11 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
 		return UCVM_CODE_ERROR;
 	}
 
+        (*(pptr->setparam))(id, UCVM_PARAM_QUERY_MODE, cmode ) != 0) {
+                fprintf(stderr, "Failed to set query mode flag for model\n");
+                return UCVM_CODE_ERROR;
+        }
+
 	for (i = 0; i < n; i++) {
 	    if ((data[i].crust.source == UCVM_SOURCE_NONE) && ((data[i].domain == UCVM_DOMAIN_INTERP) || (data[i].domain == UCVM_DOMAIN_CRUST)) &&
 	      	(region_contains_null(&(pptr->ucvm_plugin_model_conf.region), cmode, &(pnt[i])))) {
@@ -371,7 +376,7 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
 
 	    	if (nn == MODEL_POINT_BUFFER || i == n - 1) {
 	    		// We've reached the maximum buffer. Do the query.
-	    		(*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn, cmode);
+	    		(*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn);
 	    		// Transfer our findings.
 	    		for (j = 0; j < nn; j++) {
 	    			if (ucvm_plugin_data_buffer[j].vp >= 0 && ucvm_plugin_data_buffer[j].vs >= 0 && ucvm_plugin_data_buffer[j].rho >= 0) {
@@ -392,7 +397,7 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
 	}
         /* catch the last bits of partial chunk */
         if(nn != 0) {
-	    (*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn, cmode);
+	    (*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn);
 	    // Transfer our findings.
 	    for (j = 0; j < nn; j++) {
 	    	if (ucvm_plugin_data_buffer[j].vp >= 0 && ucvm_plugin_data_buffer[j].vs >= 0 && ucvm_plugin_data_buffer[j].rho >= 0) {
