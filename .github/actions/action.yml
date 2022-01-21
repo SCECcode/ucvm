@@ -25,13 +25,14 @@ runs:
     - run: ( echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV;
              echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV)
       shell: bash
-    - name: build ucvm with cvmh
-      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-cvmh.sh)
+## 
+    - name: build ucvm with$ {{ inputs.target-models }} 
+      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-${{ inputs.target-models }}.sh)
       shell: bash
 e   - id: post-build-log
       run: echo "::set-output name=log-file::$(echo $RANDOM)"
       shell: bash
-    - name: build ucvm with cvmh
+    - name: build ucvm with ${{ inputs.target-models }} 
       run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
       shell: bash
 #    - run: pwd
