@@ -16,6 +16,7 @@ runs:
     - run: echo Hello from ucvm action_ucvm.yml 
       shell: bash
     - run: ( echo " pwd =>"; pwd;
+             echo " UCVM_SRC_PATH =>"$UCVM_SRC_PATH;
              echo " RUNNER_WORKSPACE =>"$RUNNER_WORKSPACE;
              echo " github.action_path =>"${{ github.action_path }};)
       shell: bash
