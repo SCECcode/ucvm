@@ -2,7 +2,7 @@
 name: 'action to build ucvm from remote request'
 description: 'invoked from external models'
 inputs:
-  target-models:  
+  target-model:  
     description: 'Which external model is calling this'
     required: true
     default: 'cvmhlabn'
@@ -13,7 +13,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello from ucvm action_ucvm.yml 
+    - run: echo Hello from ucvm action_ucvm.yml for ${{ inputs.target-model }}
       shell: bash
     - run: ( echo " pwd =>"; pwd;
              echo " UCVM_SRC_PATH =>"$UCVM_SRC_PATH;
