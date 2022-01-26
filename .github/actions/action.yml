@@ -2,7 +2,7 @@
 name: 'action to build ucvm from remote request'
 description: 'invoked from ucvm_plotting'
 inputs:
-  target-models:  
+  target-model:  
     description: 'Which cvm to include'
     required: true
     default: 'cvms'
@@ -13,7 +13,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello from ucvm action.yml ${{ inputs.target-models }}.
+    - run: echo Hello from ucvm action.yml ${{ inputs.target-model }}.
       shell: bash
     - run: ( echo " pwd =>"; pwd;
              echo " RUNNER_WORKSPACE =>"$RUNNER_WORKSPACE;
@@ -26,13 +26,13 @@ runs:
              echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV)
       shell: bash
 ## 
-    - name: build ucvm with$ {{ inputs.target-models }} 
-      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-${{ inputs.target-models }}.sh)
+    - name: build ucvm with$ {{ inputs.target-model }} 
+      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-${{ inputs.target-model }}.sh)
       shell: bash
 e   - id: post-build-log
       run: echo "::set-output name=log-file::$(echo $RANDOM)"
       shell: bash
-    - name: build ucvm with ${{ inputs.target-models }} 
+    - name: build ucvm with ${{ inputs.target-model }} 
       run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
       shell: bash
 #    - run: pwd
