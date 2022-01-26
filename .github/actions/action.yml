@@ -1,11 +1,15 @@
 
 name: 'action to build ucvm from remote request'
-description: 'invoked from ucvm_plotting'
+description: 'invoked from ucvm models or ucvm_plotting'
 inputs:
+  initiating-repo :
+    description: 'Which repository did the request came from'
+    required: false
+    default: 'ucvm_plotting'
   target-model:  
     description: 'Which cvm to include'
-    required: true
-    default: 'cvms'
+    required: false
+    default: 'none'
 outputs:
   build-log:
     description: "return log for ucvm_setup.py"
@@ -13,31 +17,30 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello from ucvm action.yml ${{ inputs.target-model }}.
+    - run: echo Hello from ucvm action.yml from ${{ inputs.initiating-repo }}.
       shell: bash
     - run: ( echo " pwd =>"; pwd;
+             echo " UCVM_SRC_PATH =>"$UCVM_SRC_PATH;
+             echo " UCVM_INSTALL_PATH =>"$UCVM_INSTALL_PATH;
              echo " RUNNER_WORKSPACE =>"$RUNNER_WORKSPACE;
              echo " github.action_path =>"${{ github.action_path }};)
-      shell: bash
-    - run: ( /bin/ln -s ${{ github.action_path }}/../.. $RUNNER_WORKSPACE/ucvm;
-             ls $RUNNER_WORKSPACE)
       shell: bash
     - run: ( echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV;
              echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV)
       shell: bash
-## 
-    - name: build ucvm with$ {{ inputs.target-model }} 
-      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-${{ inputs.target-model }}.sh)
-      shell: bash
-e   - id: post-build-log
-      run: echo "::set-output name=log-file::$(echo $RANDOM)"
-      shell: bash
-    - name: build ucvm with ${{ inputs.target-model }} 
-      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
-      shell: bash
-#    - run: pwd
+###### 
+#    - name: build ucvm with$ {{ inputs.target-model }} 
+#      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-${{ inputs.target-model }}.sh)
 #      shell: bash
-#    - run: env
+    - id: post-build-log
+      run: echo "::set-output name=log-file::$(echo Hello)"
+      shell: bash
+#    - name: build ucvm with ${{ inputs.target-model }} 
+#      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
 #      shell: bash
+    - run: pwd
+      shell: bash
+    - run: env
+      shell: bash
 
   
