@@ -1,6 +1,11 @@
 
 name: 'action to build ucvm from remote request'
 description: 'invoked from external models'
+inputs:
+  target-models:  
+    description: 'Which external model is calling this'
+    required: true
+    default: 'cvmhlabn'
 outputs:
   build-log:
     description: "return log for ucvm_setup.py"
@@ -14,20 +19,16 @@ runs:
              echo " RUNNER_WORKSPACE =>"$RUNNER_WORKSPACE;
              echo " github.action_path =>"${{ github.action_path }};)
       shell: bash
-    - run: ( /bin/ln -s ${{ github.action_path }}/../.. $RUNNER_WORKSPACE/ucvm;
-             ls $RUNNER_WORKSPACE)
-      shell: bash
-    - run: ( echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV;
-             echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV)
-      shell: bash
-    - name: checkout ucvm basin
-      uses: actions/checkout@v2
-      with: 
-        ref: basin
-    - name: build ucvm with no model
-      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-none.sh)
-      shell: bash
-e   - id: post-build-log
+#    - run: ( /bin/ln -s ${{ github.action_path }}/../.. $RUNNER_WORKSPACE/ucvm;
+#             ls $RUNNER_WORKSPACE)
+#      shell: bash
+#    - run: ( echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV;
+#             echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV)
+#      shell: bash
+#    - name: build ucvm with no model
+#      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-none.sh)
+#      shell: bash
+   - id: post-build-log
       run: echo "::set-output name=log-file::$(echo $RANDOM)"
       shell: bash
 #    - run: pwd
