@@ -11,14 +11,14 @@ inputs:
     required: false
     default: 'none'
 outputs:
-  build-log:
+    build-log:
     description: "return log for ucvm_setup.py"
     value: ${{ steps.post-build-log.outputs.log-file }}
 runs:
   using: "composite"
   steps:
     - id: greeting
-      run: echo Hello from ucvm's action.yml from ${{ inputs.initiating-repo }}
+      run: echo Hello from ucvm's action.yml initiated from  ${{ inputs.initiating-repo }}
       shell: bash
     - id: show_env
       run: ( echo " pwd =>"; pwd;
@@ -31,9 +31,10 @@ runs:
       if: ${{ inputs.target-model != 'none' }}
       run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-${{ inputs.target-model }}.sh)
       shell: bash
-    - id: post-build-log
-      run: echo $UCVM_SRC_PATH/ucvm_setup_install.log 
+   - id: post-build-log
+      run: echo "::set-output name=log-file::$(echo $UCVM_SRC_PATH/ucvm_setup_install.log)"
       shell: bash
+#
 
 #    - name: test_ucvm
 #      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
