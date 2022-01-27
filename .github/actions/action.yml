@@ -18,7 +18,7 @@ runs:
   using: "composite"
   steps:
     - id: greeting
-      run: echo Hello from ucvm's action.yml initiated from  ${{ inputs.initiating-repo }}
+      run: echo Hello from ucvm action.yml initiated from  ${{ inputs.initiating-repo }}
       shell: bash
     - id: show_env
       run: ( echo " pwd =>"; pwd;
