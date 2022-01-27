@@ -11,7 +11,8 @@ inputs:
     required: false
     default: 'none'
 outputs:
-    description: 'return log for ucvm_setup.py'
+  build-log:
+    description: "ucvm_setup.py log"
     value: ${{ steps.post-build-log.outputs.log-file }}
 runs:
   using: "composite"
