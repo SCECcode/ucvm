@@ -31,11 +31,10 @@ runs:
       if: ${{ inputs.target-model != 'none' }}
       run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-${{ inputs.target-model }}.sh)
       shell: bash
-   - id: post-build-log
-      run: echo "::set-output name=log-file::$(echo $UCVM_SRC_PATH/ucvm_setup_install.log)"
-      shell: bash
+#   - id: post-build-log
+#      run: echo "::set-output name=log-file::$(echo $UCVM_SRC_PATH/ucvm_setup_install.log)"
+#      shell: bash
 #
-
 #    - name: test_ucvm
 #      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
 #      shell: bash
