@@ -17,30 +17,27 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: echo Hello from ucvm action.yml from ${{ inputs.initiating-repo }}.
+    - id: greeting
+      run: echo Hello from ucvm's action.yml from ${{ inputs.initiating-repo }}
       shell: bash
-    - run: ( echo " pwd =>"; pwd;
+    - id: show_env
+      run: ( echo " pwd =>"; pwd;
              echo " UCVM_SRC_PATH =>"$UCVM_SRC_PATH;
              echo " UCVM_INSTALL_PATH =>"$UCVM_INSTALL_PATH;
              echo " RUNNER_WORKSPACE =>"$RUNNER_WORKSPACE;
              echo " github.action_path =>"${{ github.action_path }};)
       shell: bash
-    - run: ( echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV;
-             echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV)
+    - id: build_ucvm 
+      if: ${{ inputs.target-model != 'none' }}
+      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-${{ inputs.target-model }}.sh)
       shell: bash
-###### 
-#    - name: build ucvm with$ {{ inputs.target-model }} 
-#      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-${{ inputs.target-model }}.sh)
-#      shell: bash
     - id: post-build-log
-      run: echo "::set-output name=log-file::$(echo Hello)"
+      run: echo $UCVM_SRC_PATH/ucvm_setup_install.log 
       shell: bash
-#    - name: build ucvm with ${{ inputs.target-model }} 
+
+#    - name: test_ucvm
 #      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
 #      shell: bash
-    - run: pwd
-      shell: bash
-    - run: env
-      shell: bash
+     
 
   
