@@ -355,7 +355,8 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
 		return UCVM_CODE_ERROR;
 	}
 
-        (*(pptr->setparam))(id, UCVM_PARAM_QUERY_MODE, cmode ) != 0) {
+/* NOT sure when this came in.. */
+        if((*(pptr->model_setparam))(id, UCVM_PARAM_QUERY_MODE, cmode ) != 0) {
                 fprintf(stderr, "Failed to set query mode flag for model\n");
                 return UCVM_CODE_ERROR;
         }
