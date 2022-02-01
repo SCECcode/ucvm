@@ -13,7 +13,7 @@ inputs:
 outputs:
   build-log:
     description: "ucvm_setup.py log"
-    value: ${{ steps.post-build-log.outputs.log-file }}
+    value: ${{ steps.post_build_log.outputs.log-file }}
 runs:
   using: "composite"
   steps:
@@ -31,13 +31,12 @@ runs:
       if: ${{ inputs.target-model != 'none' }}
       run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build-${{ inputs.target-model }}.sh)
       shell: bash
-#   - id: post-build-log
-#      run: echo "::set-output name=log-file::$(echo $UCVM_SRC_PATH/ucvm_setup_install.log)"
-#      shell: bash
-#
-#    - name: test_ucvm
-#      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
-#      shell: bash
+    - id: post_build_log
+      run: echo "::set-output name=log-file::$(echo $UCVM_SRC_PATH/ucvm_setup_install.log)"
+      shell: bash
+    - name: test_ucvm
+      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
+      shell: bash
      
 
   
