@@ -130,6 +130,11 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
 	}
 	pptr->model_version = vptr();
 
+	MPPTR *pptr = dlsym(handle, "get_model_setparam");
+	if (dlerror() == NULL) { // this is optional
+	        pptr->model_setparam = pptr();
+	}
+
 	// Initialize the model.
 	if ((*pptr->model_init)(conf->config, conf->label) != 0) {
 		fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
@@ -205,7 +210,6 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_finalize = &cvmhlabn_finalize;
                 pptr->model_version = &cvmhlabn_version;
                 pptr->model_setparam = &cvmhlabn_setparam;
-fprintf(stderr,"XXX HERE..\n");
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
