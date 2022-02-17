@@ -130,9 +130,9 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
 	}
 	pptr->model_version = vptr();
 
-	MPPTR *pptr = dlsym(handle, "get_model_setparam");
+	MSTR *sptr = dlsym(handle, "get_model_setparam");
 	if (dlerror() == NULL) { // this is optional
-	        pptr->model_setparam = pptr();
+	        pptr->model_setparam = sptr();
 	}
 
 	// Initialize the model.
