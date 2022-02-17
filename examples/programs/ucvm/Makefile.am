@@ -8,6 +8,11 @@ bin_PROGRAMS += run_ucvm_query_cvmh.sh
 run_ucvm_query_cvmh_sh_SOURCES = run_ucvm_query_cvmh.sh
 endif
 
+if UCVM_AM_ENABLE_CVMHLABN
+bin_PROGRAMS += run_ucvm_query_cvmhlabn.sh
+run_ucvm_query_cvmhlabn_sh_SOURCES = run_ucvm_query_cvmhlabn.sh
+endif
+
 if UCVM_AM_ENABLE_CVLSU
 bin_PROGRAMS += run_ucvm_query_cvlsu.sh
 run_ucvm_query_cvlsu_sh_SOURCES = run_ucvm_query_cvlsu.sh
