@@ -57,6 +57,7 @@ typedef int (*MIPTR())(const char *, const char *);
 typedef int (*MQPTR())(basic_point_t *, basic_properties_t *, int);
 typedef int (*MFPTR())();
 typedef int (*MVPTR())(char *, int);
+typedef int (*MSPTR())(id, int, ...);
 
 // UCVM API Required Functions
 int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf);	/** Initializes the model. */
