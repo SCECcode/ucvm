@@ -6,11 +6,15 @@ bin_PROGRAMS=
 if UCVM_AM_ENABLE_CVMH
 bin_PROGRAMS += run_ucvm_query_cvmh.sh
 run_ucvm_query_cvmh_sh_SOURCES = run_ucvm_query_cvmh.sh
+bin_PROGRAMS += run_ucvm_query_cvmh_c.sh
+run_ucvm_query_cvmh_c_sh_SOURCES = run_ucvm_query_cvmh_c.sh
 endif
 
 if UCVM_AM_ENABLE_CVMHLABN
 bin_PROGRAMS += run_ucvm_query_cvmhlabn.sh
 run_ucvm_query_cvmhlabn_sh_SOURCES = run_ucvm_query_cvmhlabn.sh
+bin_PROGRAMS += run_ucvm_query_cvmhlabn_c.sh
+run_ucvm_query_cvmhlabn_c_sh_SOURCES = run_ucvm_query_cvmhlabn_c.sh
 endif
 
 if UCVM_AM_ENABLE_CVLSU
