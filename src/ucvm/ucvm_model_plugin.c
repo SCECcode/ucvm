@@ -360,11 +360,15 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
 		return UCVM_CODE_ERROR;
 	}
 
-/* NOT sure when this came in.. */
+/* setting the zmode(query by depth or elevation) 
+   ucvm.c converted all search into query-by-depth by default and no special processing is done to switch
+   back and so all plugin are query-by-depth,  cvmh being compiled in, passes in the original query-by-elevation
+   points and let underlying code to use its own surface (digital elevation value)
         if((pptr->model_setparam != 0) && (*(pptr->model_setparam))(id, UCVM_PARAM_QUERY_MODE, cmode ) != 0) {
                 fprintf(stderr, "Failed to set query mode flag for model\n");
                 return UCVM_CODE_ERROR;
         }
+*/
 
 	for (i = 0; i < n; i++) {
 	    if ((data[i].crust.source == UCVM_SOURCE_NONE) && ((data[i].domain == UCVM_DOMAIN_INTERP) || (data[i].domain == UCVM_DOMAIN_CRUST)) &&
