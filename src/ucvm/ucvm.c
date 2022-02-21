@@ -59,6 +59,8 @@
 /* Init flag */
 int ucvm_init_flag = 0;
 
+/* Debug flag */
+int ucvm_debug_flag = 0;
 
 /* Current query mode */
 ucvm_ctype_t ucvm_cur_qmode = UCVM_COORD_GEO_DEPTH;
@@ -968,6 +970,8 @@ int ucvm_query(int n, ucvm_point_t *pnt, ucvm_data_t *data)
   for (i = 0; i < n; i++) {
     ucvm_get_model_vals(&(pnt[i]), &(data[i]));
   }
+
+ if(ucvm_debug_flag) {fprintf(stderr,"    points query in.. (%lf,%lf,%lf) depth(%lf)\n", pnt[0].coord[0], pnt[0].coord[1], pnt[0].coord[2], data[0].depth); }
 
   /* Query crustal models */
   for (i = 0; i < ucvm_num_models; i++) {
