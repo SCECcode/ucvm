@@ -37,13 +37,3 @@ runs:
     - name: test_ucvm
       run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
       shell: bash
-    - name: Start SSH via Ngrok when ucvm-test.sh fails
-      if: ${{ failure() }} 
-      uses: luchihoratiu/debug-via-ssh@main
-      with:
-            NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
-            NGROK_TIMEOUT: 30 
-            SSH_PASS: ${{ secrets.NGROK_SECRET }}
-
-
-  
