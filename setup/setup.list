@@ -1,5 +1,6 @@
 {
 	"models": {
+/* THIS IS CAUSING interference with cvmsi, suppress for now
                 "WFCVM": {
                         "Version": "2.0",
                         "Abbreviation": "wfcvm",
@@ -11,6 +12,7 @@
                         "md5sum": "efb36b7f416e363be6be35bda59af4c4  wfcvm.tar.gz",
                         "Order": 12
                 },
+*/
 		"IMPERIAL": {
 			"Version": "1.0",
                         "Abbreviation": "ivlsu",
