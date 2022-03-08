@@ -1,5 +1,6 @@
 {
 	"models": {
+/**
                 "CVMHLABN": {
                         "Version": "1.0",
                         "Abbreviation": "cvmhlabn",
@@ -22,6 +23,7 @@
                         "md5sum": "efb36b7f416e363be6be35bda59af4c4",
                         "Order": 12
                 },
+**/
 		"IMPERIAL": {
 			"Version": "1.0",
                         "Abbreviation": "ivlsu",
