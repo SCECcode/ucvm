@@ -8,7 +8,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/cvmhlabn.tar.gz",
                         "Flags": "--enable-model-cvmhlabn --with-cvmhlabn-lib-path=lib --with-cvmhlabn-include-path=include --with-cvmhlabn-model-path=src",
                         "Ask": "no",
-                        "md5sum": "3af8d1cba7191f8ca53696522e7207c6",
+                        "md5sum": "4c975840447dc7cc06c0a1b18bf25612",
                         "Order": 13
                 },
                 "WFCVM": {
@@ -86,7 +86,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvmsi.tar.gz",
 			"Flags": "--enable-model-cvmsi --with-cvmsi-lib-path=lib --with-cvmsi-include-path=include --with-cvmsi-model-path=model/i26",
 			"Ask": "yes",
-                        "md5sum": "39f56489800bae3be346960ddc9e9fd5",
+                        "md5sum": "9d09659b105f93bda3a31015fedc00fd",
 			"Order": 6		
 		},
 		"CVM-S4": {
