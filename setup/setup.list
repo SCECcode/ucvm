@@ -1,6 +1,5 @@
 {
 	"models": {
-/* THIS IS CAUSING interference with cvmsi, suppress for now
                 "WFCVM": {
                         "Version": "2.0",
                         "Abbreviation": "wfcvm",
@@ -8,11 +7,10 @@
                         "Path": "wfcvm",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/wfcvm.tar.gz",
                         "Flags": "--enable-model-wfcvm --with-wfcvm-lib-path=lib --with-wfcvm-include-path=include --with-wfcvm-model-path=src",
-                        "Ask": "yes",
+                        "Ask": "no",
                         "md5sum": "efb36b7f416e363be6be35bda59af4c4  wfcvm.tar.gz",
                         "Order": 12
                 },
-*/
 		"IMPERIAL": {
 			"Version": "1.0",
                         "Abbreviation": "ivlsu",
