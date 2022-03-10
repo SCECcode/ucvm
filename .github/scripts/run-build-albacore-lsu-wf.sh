@@ -18,7 +18,6 @@ n
 y
 y
 y
-y
 EOF
 
 if [ $tmp != 'Darwin' ]; then
