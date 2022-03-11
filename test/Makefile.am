@@ -116,8 +116,8 @@ install:
 	mkdir -p ${prefix}/tests
 	cp -R -L inputs ${prefix}/tests
 	cp -R -L ref ${prefix}/tests
-	cp $(bin_PROGRAMS) ${prefix}/tests
-	cp *.py ${prefix}/tests/.
+	cp ${bin_PROGRAMS} ${prefix}/tests
+	cp *.py ${prefix}/tests
 	echo "#!/bin/bash " > ${prefix}/tests/run-testing 
 	echo "source ../conf/ucvm_env.sh" >> ${prefix}/tests/run-testing 
 	echo "./unittest" >> ${prefix}/tests/run-testing 
