@@ -86,7 +86,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvmsi.tar.gz",
 			"Flags": "--enable-model-cvmsi --with-cvmsi-lib-path=lib --with-cvmsi-include-path=include --with-cvmsi-model-path=model/i26",
 			"Ask": "yes",
-                        "md5sum": "9d09659b105f93bda3a31015fedc00fd",
+                        "md5sum": "c400eb8b8e8fcb9c062e5e749aa0338e",
 			"Order": 6		
 		},
 		"CVM-S4": {
@@ -133,7 +133,7 @@
 			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
-                        "md5sum": "9f73692fbae321e9aafd5d50ae11ac36",
+                        "md5sum": "aa5621071232c24e9c8b3ace2ada1132",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
