@@ -60,6 +60,6 @@ if [ "$IN" != "" ]; then
       ${SCRIPT_DIR}/../bin/ucvm_query ${FLAGS} < $IN
   fi
 else
-  ${SCRIPT_DIR}/../bin/ucvm_query ${FLAGS} 
+  ${SCRIPT_DIR}/../bin/ucvm_query ${FLAGS} 2>&1 
 fi
 
