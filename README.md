@@ -1,11 +1,11 @@
+# The Unified Community Velocity Model (UCVM) Software
+
+<a href="https://github.com/sceccode/ucvm.git"><img src="https://github.com/sceccode/ucvm/wiki/images/ucvm_logo.png"></a>
+
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 ![GitHub repo size](https://img.shields.io/github/repo-size/sceccode/ucvm)
 [![ucvm-ci Actions Status](https://github.com/SCECcode/ucvm/workflows/ucvm-ci/badge.svg)](https://github.com/SCECcode/ucvm/actions)
 [![DOI](https://zenodo.org/badge/358720931.svg)](https://zenodo.org/badge/latestdoi/358720931)
-
-# The Unified Community Velocity Model (UCVM) Software
-
-<a href="https://github.com/sceccode/ucvm.git"><img src="https://github.com/sceccode/ucvm/wiki/images/ucvm_logo.png"></a>
 
 ## Description 
 The SCEC Unified Community Velocity Model (UCVM) software framework is a collection of software tools that provide a 
@@ -22,6 +22,7 @@ UCVM is open-source scientific software designed to support earth scientists, ci
 and other groups interested in detailed information about earth properties. 
 UCVM is primarily used by scientists to work with earth material properties on regional scales. 
 One important use of UCVM is to create simulation meshes used in high resolution 3D wave propagation simulations.
+
 
 ## Table of Contents
 1. [Software Documentation](https://github.com/SCECcode/ucvm/wiki)
@@ -79,6 +80,8 @@ References, citations, and acknowledgements help us obtain continued support for
 * Preferred Citation: The SCEC Unified Community Velocity Model Software, Release Date: 6 November 2021, https://doi.org/10.5281/zenodo.5651277
 
 * Example Acknowlegement: We would like to acknowledge the use of the SCEC Unified Community Velocity Model Software (Small 2017) in this research. 
+
+Along with citing the UCVM software, researchers should also cite the appropriate publication for any of the velocity models they use in their research. Citations for individual velocity models are included in the [Credits](CREDITS.md) file in this repository, and in the GitHub repository that has been created for each model.
 
 ## Contributing
 We welcome contributions to the UCVM software framework. 

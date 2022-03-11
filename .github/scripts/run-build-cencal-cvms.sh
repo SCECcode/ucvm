@@ -11,13 +11,13 @@ n
 n
 n
 n
-n
-n
-n
+y
 n
 y
-y
-y
+n
+n
+n
+n
 EOF
 
 if [ $tmp != 'Darwin' ]; then

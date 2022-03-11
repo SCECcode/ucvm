@@ -1,2 +1,0 @@
-UCVM Command Reference:
-=======================
