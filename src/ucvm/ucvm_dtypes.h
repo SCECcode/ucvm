@@ -71,6 +71,7 @@
 #define UCVM_MODEL_CVLSU "cvlsu"
 #define UCVM_MODEL_ALBACORE "albacore"
 #define UCVM_MODEL_CCA "cca"
+#define UCVM_MODEL_CVMHLABN "cvmhlabn"
 #define UCVM_MODEL_CS173 "cs173"
 #define UCVM_MODEL_CS173H "cs173h"
 
@@ -146,9 +147,9 @@ UCVM_PARAM_MODEL_CONF    : char *mlabel, char *param, char *value
     "USE_1D_BKG": "True"/"False"
 
 */
-typedef enum { UCVM_PARAM_QUERY_MODE = 0,
-	       UCVM_PARAM_IFUNC_ZRANGE,
-	       UCVM_PARAM_MODEL_CONF } ucvm_param_t;
+typedef enum { UCVM_PARAM_QUERY_MODE = 1,
+	       UCVM_PARAM_IFUNC_ZRANGE = 2,
+	       UCVM_PARAM_MODEL_CONF = 3 } ucvm_param_t;
 
 
 /* Supported model parameters. Used internally by UCVM 
@@ -159,7 +160,7 @@ UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF : Force elevation points to be
   surface and GTL.
 
 */
-typedef enum { UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF } ucvm_mparam_t;
+typedef enum { UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF = 0 } ucvm_mparam_t;
 
 
 /* Supported coordinate query modes. Used internally by UCVM */

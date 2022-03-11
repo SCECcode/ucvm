@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## do not include any additional model
+
 tmp=`uname -s`
 
 #sudo apt-get install gfortran
@@ -11,7 +13,11 @@ fi
 
 mkdir $UCVM_INSTALL_PATH
 
-##["cvms5", "cca", "cs173", "cs173h", "cvms", "cvmsi", "cencal", "cvmh", "albacore", "cvlsu", "ivlsu", "wfcvm"]
+## ["cvms5", "cca", "cs173", "cs173h", "cvms", "cvmsi", "cencal", 
+##  "cvmh", "albacore", "cvlsu", "ivlsu", "wfcvm","cvmhlabn"]
+
+## "cvms5", "cca", "cs173", "cs173h", "cvms", "cvmsi", "cencal", 
+## "cvmh", "albacore", "cvlsu", "ivlsu", "wfcvm", "cvmhlabn"
 
 cd $UCVM_SRC_PATH/largefiles
 ./get_largefiles.py << EOF
@@ -22,7 +28,9 @@ n
 n
 n
 n
-y
+n
+n
+n
 n
 n
 n
@@ -38,9 +46,5 @@ cd $UCVM_SRC_PATH
 $UCVM_INSTALL_PATH
 EOF
 
-cd $UCVM_SRC_PATH
-make &> make.log
-
-more make.log
 #more ucvm_setup_install.log
 

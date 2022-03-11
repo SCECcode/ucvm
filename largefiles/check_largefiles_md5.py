@@ -47,19 +47,19 @@ for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
     _md5sum = str(the_library["md5sum"])
     _lib = str(the_library["Lib"])+".tar.gz"
-    target_large_lib_list.append({"library":_lib, "md5sum":_md5sum});
+    target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
 
 for etree in config_data["etrees"].keys() :
     the_etree = config_data["etrees"][etree]
     _md5sum = str(the_etree["md5sum"])
     _etree = str(the_etree["Path"])
-    target_large_etree_list.append({"etree":_etree, "md5sum":_md5sum});
+    target_large_etree_list.append({"etree":_etree, "md5sum":_md5sum})
 
 for ref in config_data["references"].keys() :
     the_reference = config_data["references"][ref]
     _md5sum = str(the_reference["md5sum"])
     _ref=str(the_reference["Path"])
-    target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum});
+    target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum})
 
 
 #
@@ -91,8 +91,10 @@ for item in target_large_model_list :
   md5sum = item['md5sum']
   if not os.path.exists(model):
     continue
-  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True)
   fp.write(md5sum)
+  fp.write("  ")
+  fp.write(model)
   fp.flush()
   total_ok, total_errs = check_md5file(model,fp.name,total_ok,total_errs)
   fp.close()
@@ -105,8 +107,10 @@ for item in target_large_lib_list :
   md5sum = item['md5sum']
   if not os.path.exists(lib):
     continue
-  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True)
   fp.write(md5sum)
+  fp.write("  ")
+  fp.write(lib)
   fp.flush()
   total_ok, total_errs = check_md5file(lib,fp.name,total_ok,total_errs)
   fp.close()
@@ -119,8 +123,10 @@ for item in target_large_etree_list :
   md5sum = item['md5sum']
   if not os.path.exists(etree):
     continue
-  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True)
   fp.write(md5sum)
+  fp.write("  ")
+  fp.write(etree)
   fp.flush()
   total_ok, total_errs = check_md5file(etree,fp.name,total_ok,total_errs)
   fp.close()
@@ -133,8 +139,10 @@ for item in target_large_ref_list :
   md5sum = item['md5sum']
   if not os.path.exists(ref):
     continue
-  fp = tempfile.NamedTemporaryFile(mode='w',delete=True,newline=None)
+  fp = tempfile.NamedTemporaryFile(mode='w',delete=True)
   fp.write(md5sum)
+  fp.write("  ")
+  fp.write(ref)
   fp.flush()
   total_ok, total_errs = check_md5file(ref,fp.name,total_ok,total_errs)
   fp.close()

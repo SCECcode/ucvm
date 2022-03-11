@@ -7,7 +7,6 @@
 [![ucvm-ci Actions Status](https://github.com/SCECcode/ucvm/workflows/ucvm-ci/badge.svg)](https://github.com/SCECcode/ucvm/actions)
 [![DOI](https://zenodo.org/badge/358720931.svg)](https://zenodo.org/badge/latestdoi/358720931)
 
-
 ## Description 
 The SCEC Unified Community Velocity Model (UCVM) software framework is a collection of software tools that provide a 
 standard query interface to seismic velocity models. Once a seismic velocity model is registered into UCVM, it can 
@@ -23,6 +22,7 @@ UCVM is open-source scientific software designed to support earth scientists, ci
 and other groups interested in detailed information about earth properties. 
 UCVM is primarily used by scientists to work with earth material properties on regional scales. 
 One important use of UCVM is to create simulation meshes used in high resolution 3D wave propagation simulations.
+
 
 ## Table of Contents
 1. [Software Documentation](https://github.com/SCECcode/ucvm/wiki)
@@ -61,7 +61,7 @@ Output format is:
   lon lat Z surf vs30 crustal cr_vp cr_vs cr_rho gtl gtl_vp gtl_vs gtl_rho cmb_algo cmb_vp cmb_vs cmb_rho
 </pre>
 
-The first three columns are the input values of lon (decimal degrees), lat (decimal degrees), and depth (meters). The other columns that are returned are information about the velocity model used provide the material properties. Crustal models, and Geotechnical Models can be stored and used seperately in UCVM. The contributions of each model are shown in columns 5-8 and 10-12, but the combined results returned in 14-16 are typically used by modelers.
+The first three colums are the input values of lon (decimal degrees), lat (decimal degrees), and depth (meters). The other columns that are returned are information about the velocity model used provide the material properties. Crustal models, and Geotechnical Models can be stored and used seperately in UCVM. The contributions of each model are shown in columns 5-8 and 10-12, but the combined results returned in 14-16 are typically used by modelers.
 
 Detailed descriptions of the UCVM return parameters are listed in this UCVM parameter summary provided in the [UCVM documentation](https://github.com/sceccode/ucvm/wiki).
 

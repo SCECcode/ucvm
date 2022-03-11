@@ -18,7 +18,7 @@ import shlex
 # Variables
 
 # Set the version number for the installation script.
-VERSION = "21.7.0"
+VERSION = "21.10.0"
 
 # User defined variables.
 all_flag = False
@@ -241,6 +241,9 @@ def _add2LIBRARYPATH_bash(modelsToInstall, librariesToInstall) :
     if "CVM-H" in modelsToInstall:
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmh/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmh/lib\n"
+    if "CVMHLABN" in modelsToInstall:
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhlabn/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhlabn/lib\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms/lib\n"
@@ -366,6 +369,9 @@ def _add2LIBRARYPATH_python(modelsToInstall, librariesToInstall) :
     if "CVM-H" in modelsToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmh/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmh/lib\")\n"
+    if "CVMHLABN" in modelsToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhlabn/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhlabn/lib\")\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms/lib\")\n"
@@ -467,6 +473,8 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
         str=str+"install_name_tool -change libcs173h.so ${MY_UCVM_INSTALL_PATH}/model/cs173h/lib/libcs173h.so $1\n"
     if "CVM-H" in modelsToInstall:
         str=str+"install_name_tool -change libcvmh.so ${MY_UCVM_INSTALL_PATH}/model/cvmh/lib/libcvmh.so $1\n"
+    if "CVMHLABN" in modelsToInstall:
+        str=str+"install_name_tool -change libcvmhlabn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhlabn/lib/libcvmhlabn.so $1\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"install_name_tool -change libcvms.so ${MY_UCVM_INSTALL_PATH}/model/cvms/lib/libcvms.so $1\n"
     if "WFCVM" in modelsToInstall:
@@ -567,7 +575,7 @@ for o, a in opts:
 
 print("")
 print("UCVM %s Installation" % VERSION)
-print("Copyright (C) 20%s SCEC. All rights reserved." % (VERSION.split(".")[0]))
+print("Copyright (C) 20%s University of Southern California. All rights reserved." % (VERSION.split(".")[0]))
 
 print("Using local setup.list and system.list ....")
     

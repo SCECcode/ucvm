@@ -59,6 +59,8 @@
 /* Init flag */
 int ucvm_init_flag = 0;
 
+/* Debug flag */
+int ucvm_debug_flag = 0;
 
 /* Current query mode */
 ucvm_ctype_t ucvm_cur_qmode = UCVM_COORD_GEO_DEPTH;
@@ -969,6 +971,8 @@ int ucvm_query(int n, ucvm_point_t *pnt, ucvm_data_t *data)
     ucvm_get_model_vals(&(pnt[i]), &(data[i]));
   }
 
+ if(ucvm_debug_flag) {fprintf(stderr,"    points query in.. (%lf,%lf,%lf) depth(%lf)\n", pnt[0].coord[0], pnt[0].coord[1], pnt[0].coord[2], data[0].depth); }
+
   /* Query crustal models */
   for (i = 0; i < ucvm_num_models; i++) {
     mptr = &(ucvm_model_list[i]);
@@ -1167,6 +1171,13 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
 #ifdef _UCVM_ENABLE_CVMS5
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
                      UCVM_MODEL_CVMS5, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMHLABN
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMHLABN, "", res, numinst++, *len)
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }

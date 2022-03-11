@@ -103,6 +103,12 @@ AC_ARG_ENABLE([model-cca],
         [enable_model_cca=yes],
         [enable_model_cca=no])
 
+AC_ARG_ENABLE([model-cvmhlabn],
+        [AS_HELP_STRING([--enable-model-cvmhlabn],
+        [enable model SCEC CVMHLABN])],
+        [enable_model_cvmhlabn=yes],
+        [enable_model_cvmhlabn=no])
+
 AC_ARG_ENABLE([model-cs173],
         [AS_HELP_STRING([--enable-model-cs173],
         [enable model SCEC CS173])],
@@ -345,6 +351,19 @@ AC_ARG_WITH([cca-lib-path],
   [AS_HELP_STRING([--with-cca-lib-path], [location of the SCEC CCA libraries])],
   [CCA_LIB="-L$withval -lcca -lgfortran -lproj -letree"],
   [CCA_LIB="-lcca -lgfortran -lproj -letree"])
+fi
+
+# Get SCEC CVMHLABN library and include locations
+if test "x$enable_model_cvmhlabn" = xyes; then
+AC_ARG_WITH([cvmhlabn-include-path],
+  [AS_HELP_STRING([--with-cvmhlabn-include-path],
+    [location of the SCEC CVMHLABN headers])],
+  [CVMHLABN_INCL="-I$withval"],
+  [CVMHLABN_INCL="/usr/include/cvmhlabn"])
+AC_ARG_WITH([cvmhlabn-lib-path],
+  [AS_HELP_STRING([--with-cvmhlabn-lib-path], [location of the SCEC CVMHLABN libraries])],
+  [CVMHLABN_LIB="-L$withval -lcvmhlabn"],
+  [CVMHLABN_LIB="-lcvmhlabn"])
 fi
 
 # Get SCEC CS173 library and include locations
@@ -676,6 +695,23 @@ fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CCA, [test x"$enable_model_cca" = xyes])
 fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CVMHLABN installation
+if test "x$enable_model_cvmhlabn" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CVMHLABN_INCL $CFLAGS"
+   LDFLAGS="$CVMHLABN_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CVMHLABN"
+   AC_CHECK_HEADER(cvmhlabn.h,[],[AC_MSG_ERROR(["SCEC CVMHLABN header not found; use --with-cvmhlabn-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHLABN, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHLABN, [test x"$enable_model_cvmhlabn" = xyes])
+fi
+
 
 if test "x$enable_static" = xyes; then
 # Check optional SCEC CS173 installation

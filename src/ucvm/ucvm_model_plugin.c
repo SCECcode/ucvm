@@ -4,7 +4,6 @@
 #include "ucvm_utils.h"
 #include "ucvm_model_plugin.h"
 
-ucvm_plugin_model_t plugin_models[UCVM_MAX_MODELS];
 
 #ifndef _UCVM_AM_STATIC
 	#include <dlfcn.h>
@@ -40,6 +39,13 @@ ucvm_plugin_model_t plugin_models[UCVM_MAX_MODELS];
 	extern int cca_query;
 	extern int cca_finalize;
 	extern int cca_version;
+#endif
+#ifdef _UCVM_ENABLE_CVMHLABN
+	extern int cvmhlabn_init;
+	extern int cvmhlabn_query;
+	extern int cvmhlabn_finalize;
+	extern int cvmhlabn_version;
+	extern int cvmhlabn_setparam;
 #endif
 #ifdef _UCVM_ENABLE_CS173
 	extern int cs173_init;
@@ -97,35 +103,36 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
 
 	// Load the symbols.
 	MIPTR *iptr = dlsym(handle, "get_model_init");
-	pptr->model_init = iptr();
-
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_init.\n");
 		return UCVM_CODE_ERROR;
 	}
+	pptr->model_init = iptr();
 
 	MQPTR *qptr = dlsym(handle, "get_model_query");
-	pptr->model_query = qptr();
-
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_query.\n");
 		return UCVM_CODE_ERROR;
 	}
+	pptr->model_query = qptr();
 
 	MFPTR *fptr = dlsym(handle, "get_model_finalize");
-	pptr->model_finalize = fptr();
-
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_finalize.\n");
 		return UCVM_CODE_ERROR;
 	}
+	pptr->model_finalize = fptr();
 
 	MVPTR *vptr = dlsym(handle, "get_model_version");
-	pptr->model_version = vptr();
-
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_version.\n");
 		return UCVM_CODE_ERROR;
+	}
+	pptr->model_version = vptr();
+
+	MSPTR *sptr = dlsym(handle, "get_model_setparam");
+	if (dlerror() == NULL) { // this is optional
+	        pptr->model_setparam = sptr();
 	}
 
 	// Initialize the model.
@@ -190,6 +197,19 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cca_query;
                 pptr->model_finalize = &cca_finalize;
                 pptr->model_version = &cca_version;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMHLABN
+        if (strcmp(conf->label, UCVM_MODEL_CVMHLABN) == 0) {
+                pptr->model_init = &cvmhlabn_init;
+                pptr->model_query = &cvmhlabn_query;
+                pptr->model_finalize = &cvmhlabn_finalize;
+                pptr->model_version = &cvmhlabn_version;
+                pptr->model_setparam = &cvmhlabn_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -340,6 +360,16 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
 		return UCVM_CODE_ERROR;
 	}
 
+/* setting the zmode(query by depth or elevation) 
+   ucvm.c converted all search into query-by-depth by default and no special processing is done to switch
+   back and so all plugin are query-by-depth,  cvmh being compiled in, passes in the original query-by-elevation
+   points and let underlying code to use its own surface (digital elevation value)
+*/
+        if((pptr->model_setparam != 0) && (*(pptr->model_setparam))(id, UCVM_PARAM_QUERY_MODE, cmode ) != 0) {
+                fprintf(stderr, "Failed to set query mode flag for model\n");
+                return UCVM_CODE_ERROR;
+        }
+
 	for (i = 0; i < n; i++) {
 	    if ((data[i].crust.source == UCVM_SOURCE_NONE) && ((data[i].domain == UCVM_DOMAIN_INTERP) || (data[i].domain == UCVM_DOMAIN_CRUST)) &&
 	      	(region_contains_null(&(pptr->ucvm_plugin_model_conf.region), cmode, &(pnt[i])))) {
@@ -431,7 +461,7 @@ int ucvm_plugin_get_model(const char *dir, const char *label, ucvm_model_t *m) {
 	}
 }
 
-/* Setparam CVM-S5 */
+/* Setparam */
 int ucvm_plugin_model_setparam(int id, int param, ...)
 {
   va_list ap;
