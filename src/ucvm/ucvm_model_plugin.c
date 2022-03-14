@@ -47,6 +47,13 @@
 	extern int cvmhlabn_version;
 	extern int cvmhlabn_setparam;
 #endif
+#ifdef _UCVM_ENABLE_WFCVM
+	extern int wfcvm_init;
+	extern int wfcvm_query;
+	extern int wfcvm_finalize;
+	extern int wfcvm_version;
+	extern int wfcvm_setparam;
+#endif
 #ifdef _UCVM_ENABLE_CS173
 	extern int cs173_init;
 	extern int cs173_query;
@@ -210,6 +217,19 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_finalize = &cvmhlabn_finalize;
                 pptr->model_version = &cvmhlabn_version;
                 pptr->model_setparam = &cvmhlabn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_WFCVM
+        if (strcmp(conf->label, UCVM_MODEL_WFCVM) == 0) {
+                pptr->model_init = &wfcvm_init;
+                pptr->model_query = &wfcvm_query;
+                pptr->model_finalize = &wfcvm_finalize;
+                pptr->model_version = &wfcvm_version;
+                pptr->model_setparam = &wfcvm_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;

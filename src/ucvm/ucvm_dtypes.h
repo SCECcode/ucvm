@@ -61,7 +61,6 @@
 #define UCVM_MODEL_CMUETREE "cmuetree"
 #define UCVM_MODEL_CVMSI "cvmsi"
 #define UCVM_MODEL_CVMNCI "cvmnci"
-#define UCVM_MODEL_WFCVM "wfcvm"
 #define UCVM_MODEL_CVMLT "cvmlt"
 #define UCVM_MODEL_TAPE "tape"
 #define UCVM_MODEL_JAPAN "japan"
@@ -72,6 +71,7 @@
 #define UCVM_MODEL_ALBACORE "albacore"
 #define UCVM_MODEL_CCA "cca"
 #define UCVM_MODEL_CVMHLABN "cvmhlabn"
+#define UCVM_MODEL_WFCVM "wfcvm"
 #define UCVM_MODEL_CS173 "cs173"
 #define UCVM_MODEL_CS173H "cs173h"
 
