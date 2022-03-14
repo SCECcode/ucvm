@@ -13,7 +13,6 @@ import json
 import platform
 import socket
 import shlex
-import pdb
 
 
 # Variables
@@ -536,8 +535,6 @@ def makeDyLibNameChangeScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToIns
 def process_user_path(p):
     global ucvmpath
     ucvmpath = p
-    print(">X>X> using path..",p)
-    pdb.set_trace()
     
 ## link proj-5's library to PROJ_LIB location if PROJ_LIB is defined
 def linkPROJ_5(ucvmpath) :
@@ -664,31 +661,31 @@ if skip_ask_path == False :
         ucvmpath = os.path.expanduser("~")
 
 # Append the version info to the path.
-ucvmpath = ucvmpath.rstrip("/") + "/ucvm-" + VERSION
-
-print("(Default: " + ucvmpath + ")")
-if sys.version_info.major >= (3) :
-    enteredpath = input("Enter path or blank to use the default path: ")
-else:
-    enteredpath = raw_input("Enter path or blank to use the default path: ")
-
-if enteredpath.strip() == "":
-    enteredpath = ucvmpath
-
-while enteredpath != "":
-    # Check to see that that path exists and is writable.
-    if not os.access(os.path.dirname(enteredpath.rstrip("/")), os.W_OK | os.X_OK):
-        print("\n" + enteredpath + " does not exist or is not writable.")
-        if sys.version_info.major >= (3) :
-          enteredpath = input("Exiting:Please enter a different path or blank to use the default path: ")
-        else:
-          enteredpath = raw_input("Exiting:Please enter a different path or blank to use the default path: ")
-        sys.exit(0)
+    ucvmpath = ucvmpath.rstrip("/") + "/ucvm-" + VERSION
+    
+    print("(Default: " + ucvmpath + ")")
+    if sys.version_info.major >= (3) :
+        enteredpath = input("Enter path or blank to use the default path: ")
     else:
-        break
+        enteredpath = raw_input("Enter path or blank to use the default path: ")
+
+    if enteredpath.strip() == "":
+        enteredpath = ucvmpath
+
+    while enteredpath != "":
+        # Check to see that that path exists and is writable.
+        if not os.access(os.path.dirname(enteredpath.rstrip("/")), os.W_OK | os.X_OK):
+            print("\n" + enteredpath + " does not exist or is not writable.")
+            if sys.version_info.major >= (3) :
+              enteredpath = input("Exiting:Please enter a different path or blank to use the default path: ")
+            else:
+              enteredpath = raw_input("Exiting:Please enter a different path or blank to use the default path: ")
+            sys.exit(0)
+        else:
+            break
     
 # Copy final selected path back to the UCVM path variable.
-ucvmpath = enteredpath
+    ucvmpath = enteredpath
 
 # Create necessary directories
 if not os.path.exists(ucvmpath):
