@@ -90,12 +90,6 @@ AM_CFLAGS += -D_UCVM_ENABLE_CVMNCI
 MODEL_TARGS += ucvm_model_cvmnci.o
 endif
 
-# WFCVM includes
-if UCVM_AM_ENABLE_WFCVM
-AM_CFLAGS += -D_UCVM_ENABLE_WFCVM
-MODEL_TARGS += ucvm_model_wfcvm.o
-endif
-
 # CVMLT includes
 if UCVM_AM_ENABLE_CVMLT
 AM_CFLAGS += -D_UCVM_ENABLE_CVMLT
