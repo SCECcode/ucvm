@@ -9,6 +9,7 @@ import os
 import sys
 import json
 import pdb
+import getopt
 
 UCVM_Version = "21.10"
 
@@ -19,6 +20,12 @@ else:
 
 
 ##########################
+
+# Print usage.
+def usage():
+    print("Runing using commandline options.\n")
+    print("\t-m  --model   list of models separated by comma.")
+    print("\t-h  --help    show usage.\n")
 
 def printPretty(list):
     buffer = ""
@@ -50,13 +57,21 @@ def download_urlfile(url,fname):
     raise
   return True
 
+def process_user_models(mlist) :
+    global user_large_model_list
+    user_large_model_list=mlist.split(",")
+
 ##########################
 
 optional_large_model_list = []
+user_large_model_list = []
 target_large_lib_list = []
 target_large_model_list = []
 target_large_etree_list = []
 target_large_ref_list = []
+skip_ask_model = False 
+
+########################### 
 
 try:
     # We now have our list. Parse it.
@@ -110,20 +125,47 @@ else:
 
 ######################################################################
 #
+# Check if there are arguments
+try:
+    opts, args = getopt.getopt(sys.argv[1:], "m:h", ["model","help"])
+except getopt.GetoptError as err:
+    print(str(err))
+    usage()
+    exit(1)
+
+for o, a in opts:
+    if o in ('-m', '--model'):
+        skip_ask_model = True 
+        process_user_models(a)
+    elif o in ('-h', '--help'):
+        usage()
+        exit(0)
+    else:
+        print("Invalid option %s" % (o))
+        exit(1)
+
+######################################################################
+#
 # Ask, which model file to retrieve
 for m in optional_large_model_list:
-   _model=m['model']
-   _url=m['url']
-   _size=m['size']
-   print("\nWould you like to download " + _model + ", will need "+ _size + "?") 
-   if sys.version_info.major >= (3) :
-     yesmodel = input("Enter yes or no: ")
-   else:
-     yesmodel = raw_input("Enter yes or no: ")
+    _model=m['model']
+    _url=m['url']
+    _size=m['size']
+    if skip_ask_model == False :
+        print("\nWould you like to download " + _model + ", will need "+ _size + "?") 
+        if sys.version_info.major >= (3) :
+            yesmodel = input("Enter yes or no: ")
+        else:
+            yesmodel = raw_input("Enter yes or no: ")
+    else:
+        if _model in user_large_model_list :
+            yesmodel = "yes"
+        else:
+            yesmodel = "no"
 
-   if yesmodel != "" and yesmodel.lower()[0] == "y":
-     model = _model + '.tar.gz'
-     target_large_model_list.append({"model":model,"url":_url})
+    if yesmodel != "" and yesmodel.lower()[0] == "y":
+        model = _model + '.tar.gz'
+        target_large_model_list.append({"model":model,"url":_url})
 
 print("Installing files in: %s"%(curdir))
 
