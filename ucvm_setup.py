@@ -13,6 +13,7 @@ import json
 import platform
 import socket
 import shlex
+import pdb
 
 
 # Variables
@@ -535,6 +536,8 @@ def makeDyLibNameChangeScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToIns
 def process_user_path(p):
     global ucvmpath
     ucvmpath = p
+    print(">X>X> using path..",p)
+    pdb.set_trace()
     
 ## link proj-5's library to PROJ_LIB location if PROJ_LIB is defined
 def linkPROJ_5(ucvmpath) :
