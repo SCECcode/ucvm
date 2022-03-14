@@ -368,13 +368,6 @@ int ucvm_add_model(const char *label) {
     is_predef = 1;
   }
 
-  if (strcmp(label, UCVM_MODEL_WFCVM) == 0) {
-#ifdef _UCVM_ENABLE_WFCVM
-    retval = ucvm_wfcvm_get_model(&m);
-#endif
-    is_predef = 1;
-  }
-
   if (strcmp(label, UCVM_MODEL_CVMLT) == 0) {
 #ifdef _UCVM_ENABLE_CVMLT
     retval = ucvm_cvmlt_get_model(&m);
