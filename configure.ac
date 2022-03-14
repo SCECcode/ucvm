@@ -770,7 +770,9 @@ if test "x$enable_model_wfcvm" = xyes; then
    LDFLAGS="$WFCVM_LIB $LDFLAGS"
 
    echo "Checking for WFCVM"
+   AC_CHECK_LIB(wfcvm, wfcvm_init_,[AM_CONDITIONAL(UCVM_AM_ENABLE_WFCVM, true)],[AC_MSG_ERROR(["SCEC WFCVM library requires a C compiler that can link Fortran libraries"])],[-lgfortran -lm])
    AC_CHECK_HEADER(wfcvm.h,[],[AC_MSG_ERROR(["WFCVM header not found; use --with-wfcvm-include-path"])],[AC_INCLUDES_DEFAULT])
+   AC_CHECK_FILE([$WFCVM_MODEL], [], [AC_MSG_ERROR(["WFCVM model dir not found; use --with-wfcvm-model-path"])])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_WFCVM, false)
 fi
