@@ -761,6 +761,8 @@ else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMNCI, false)
 fi
 
+
+if test "x$enable_static" = xyes; then
 # Check optional WFCVM installation
 if test "x$enable_model_wfcvm" = xyes; then
    # Setup compiler/linker flags
@@ -772,6 +774,10 @@ if test "x$enable_model_wfcvm" = xyes; then
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_WFCVM, false)
 fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_WFCVM, [test x"$enable_model_wfcvm" = xyes])
+fi
+
 
 # Check optional CVMLT installation
 if test "x$enable_model_cvmlt" = xyes; then
