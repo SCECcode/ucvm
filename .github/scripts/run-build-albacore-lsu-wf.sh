@@ -3,7 +3,7 @@
 #sudo apt-get install gfortran
 mkdir $UCVM_INSTALL_PATH
 
-##["cvms5", "cca", "cs173", "cs173h", "cvms", "cvmsi", "cencal", "cvmh", "albacore", "cvlsu", "ivlsu", "wfcvm"]
+##["cvms5", "cca", "cs173", "cs173h", "cvms", "cvmsi", "cencal", "cvmh", "albacore", "cvlsu", "ivlsu"]
 
 cd $UCVM_SRC_PATH/largefiles
 ./get_largefiles.py << EOF
