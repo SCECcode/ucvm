@@ -27,12 +27,6 @@ AM_CFLAGS += -D_UCVM_ENABLE_CVMH
 MODEL_TARGS += ucvm_model_cvmh.o
 endif
 
-# CVM-S4 includes
-if UCVM_AM_ENABLE_CVMS
-AM_CFLAGS += -D_UCVM_ENABLE_CVMS
-MODEL_TARGS += ucvm_model_cvms.o
-endif
-
 # IVLSU includes
 if UCVM_AM_ENABLE_IVLSU
 AM_CFLAGS += -D_UCVM_ENABLE_IVLSU
