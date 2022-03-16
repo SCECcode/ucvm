@@ -611,7 +611,7 @@ else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMS, false)
 fi
 else 
-   AM_CONDITIONAL(UCVM_AM_ENABLE_WFCVM, [test x"$enable_model_cvms" = xyes])
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMS, [test x"$enable_model_cvms" = xyes])
 fi
 
 # Check optional SCEC CVM-SI installation
