@@ -427,6 +427,24 @@ AC_ARG_WITH([wfcvm-model-path],
   [WFCVM_MODEL="/usr/wfcvm/src"])
 fi
 
+# Get CVMS library and include locations
+if test "x$enable_model_cvms" = xyes; then
+AC_ARG_WITH([cvms-include-path],
+  [AS_HELP_STRING([--with-cvms-include-path],
+    [location of the CVMS headers])],
+  [CVMS_INCL="-I$withval"],
+  [CVMS_INCL="/usr/include/cvms"])
+AC_ARG_WITH([cvms-lib-path],
+  [AS_HELP_STRING([--with-cvms-lib-path], [location of the CVMS libraries])],
+  [CVMS_LIB="-L$withval -lwfcvm -lgfortran"],
+  [CVMS_LIB="-lcvms -lgfortan"])
+AC_ARG_WITH([cvms-model-path],
+  [AS_HELP_STRING([--with-cvms-model-path], [location of the CVMS model files])],
+  [CVMS_MODEL="$withval"],
+  [CVMS_MODEL="/usr/cvms/src"])
+fi
+
+
 # Get CVMLT library and include locations
 if test "x$enable_model_cvmlt" = xyes; then
 AC_ARG_WITH([cvmlt-include-path],
@@ -482,7 +500,6 @@ fi
 AC_SUBST(CENCAL_MODEL)
 AC_SUBST(CENCAL_EXTMODEL)
 AC_SUBST(CVMH_MODEL)
-AC_SUBST(CVMS_MODEL)
 AC_SUBST(CVMSI_MODEL)
 AC_SUBST(CVMNCI_MODEL)
 AC_SUBST(CVMLT_MODEL)
@@ -579,6 +596,7 @@ else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMH, false)
 fi
 
+if test "x$enable_static" = xyes; 
 # Check optional SCEC CVM-S installation
 if test "x$enable_model_cvms" = xyes; then
    # Setup compiler/linker flags
@@ -591,6 +609,9 @@ if test "x$enable_model_cvms" = xyes; then
    AC_CHECK_FILE([$CVMS_MODEL], [], [AC_MSG_ERROR(["SCEC CVM-S model dir not found; use --with-cvms-model-path"])])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMS, false)
+fi
+else 
+   AM_CONDITIONAL(UCVM_AM_ENABLE_WFCVM, [test x"$enable_model_cvms" = xyes])
 fi
 
 # Check optional SCEC CVM-SI installation

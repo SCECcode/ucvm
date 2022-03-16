@@ -53,7 +53,6 @@
 /* Predefined crustal model interfaces */
 #define UCVM_MODEL_NONE "none"
 #define UCVM_MODEL_CVMH "cvmh"
-#define UCVM_MODEL_CVMS "cvms"
 #define UCVM_MODEL_CENCAL "cencal"
 #define UCVM_MODEL_1D "1d"
 #define UCVM_MODEL_BBP1D "bbp1d"
@@ -72,6 +71,7 @@
 #define UCVM_MODEL_CCA "cca"
 #define UCVM_MODEL_CVMHLABN "cvmhlabn"
 #define UCVM_MODEL_WFCVM "wfcvm"
+#define UCVM_MODEL_CVMS "cvms"
 #define UCVM_MODEL_CS173 "cs173"
 #define UCVM_MODEL_CS173H "cs173h"
 
