@@ -97,7 +97,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/cvms.tar.gz",
 			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
 			"Ask": "yes",
-                        "md5sum": "050fe89375c0e4b1a25024b2055208a6",
+                        "md5sum": "485b62f33ecfd7789e83c9e3e533d5bd",
 			"Order": 5
 		},
 		"CS173H": {
