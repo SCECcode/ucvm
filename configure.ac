@@ -596,7 +596,7 @@ else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMH, false)
 fi
 
-if test "x$enable_static" = xyes; 
+if test "x$enable_static" = xyes; then 
 # Check optional SCEC CVM-S installation
 if test "x$enable_model_cvms" = xyes; then
    # Setup compiler/linker flags
