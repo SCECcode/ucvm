@@ -19,7 +19,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/wfcvm.tar.gz",
                         "Flags": "--enable-model-wfcvm --with-wfcvm-lib-path=lib --with-wfcvm-include-path=include --with-wfcvm-model-path=src",
                         "Ask": "yes",
-                        "md5sum": "dd48ae04e753e9ba4b39b125a24184f3",
+                        "md5sum": "1d6374d6a4c99e838ff6195fb695d201",
                         "Order": 12
                 },
 		"IMPERIAL": {
