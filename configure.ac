@@ -264,7 +264,7 @@ AC_ARG_WITH([cvms-include-path],
 AC_ARG_WITH([cvms-lib-path],
   [AS_HELP_STRING([--with-cvms-lib-path], [location of the SCEC CVM-S libraries])],
   [CVMS_LIB="-L$withval -lcvms -lgfortran"],
-  [CVMS_LIB="-lcvms -gfortran"])
+  [CVMS_LIB="-lcvms -lgfortran"])
 AC_ARG_WITH([cvms-model-path],
   [AS_HELP_STRING([--with-cvms-model-path], [location of the SCEC CVM-S model files])],
   [CVMS_MODEL="$withval"],
