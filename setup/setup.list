@@ -19,7 +19,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/wfcvm.tar.gz",
                         "Flags": "--enable-model-wfcvm --with-wfcvm-lib-path=lib --with-wfcvm-include-path=include --with-wfcvm-model-path=src",
                         "Ask": "yes",
-                        "md5sum": "1d6374d6a4c99e838ff6195fb695d201",
+                        "md5sum": "f557795b3c9b5c9f3d554340561ee4b4",
                         "Order": 12
                 },
 		"IMPERIAL": {
@@ -94,10 +94,10 @@
                         "Abbreviation": "cvms",
                         "Size": "326M",
 			"Path": "cvms",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/model/cvms.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/cvms.tar.gz",
 			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
 			"Ask": "yes",
-                        "md5sum": "e5e949ade97eb8e12b5ccb252c602f3a",
+                        "md5sum": "496cabe513d3b93445a6cc7e1be169b4",
 			"Order": 5
 		},
 		"CS173H": {
