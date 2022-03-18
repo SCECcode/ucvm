@@ -20,6 +20,8 @@ endif
 if UCVM_AM_ENABLE_CCA
 bin_PROGRAMS += run_ucvm_query_cca.sh
 run_ucvm_query_cca_sh_SOURCES = run_ucvm_query_cca.sh
+bin_PROGRAMS += run_ucvm_query_cca_c.sh
+run_ucvm_query_cca_c_sh_SOURCES = run_ucvm_query_cca_c.sh
 endif
 
 if UCVM_AM_ENABLE_CVLSU
@@ -50,13 +52,6 @@ bin_PROGRAMS += run_ucvm_query_albacore_c.sh
 run_ucvm_query_albacore_c_sh_SOURCES = run_ucvm_query_albacore_c.sh
 endif
 
-if UCVM_AM_ENABLE_CENCAL 
-if UCVM_AM_ENABLE_CVMS5
-bin_PROGRAMS += run_ucvm_query_cencal_cvms5.sh
-run_ucvm_query_cencal_cvms5_sh_SOURCES = run_ucvm_query_cencal_cvms5.sh
-endif
-endif
-
 if UCVM_AM_ENABLE_CVMSI
 bin_PROGRAMS += run_ucvm_query_cvmsi.sh
 run_ucvm_query_cvmsi_sh_SOURCES = run_ucvm_query_cvmsi.sh
@@ -85,6 +80,14 @@ endif
 
 
 if UCVM_AM_ENABLE_CENCAL 
+bin_PROGRAMS += run_ucvm_query_cencal.sh
+run_ucvm_query_cencal_sh_SOURCES = run_ucvm_query_cencal.sh
+bin_PROGRAMS += run_ucvm_query_cencal_c.sh
+run_ucvm_query_cencal_c_sh_SOURCES = run_ucvm_query_cencal_c.sh
+if UCVM_AM_ENABLE_CVMS5
+bin_PROGRAMS += run_ucvm_query_cencal_cvms5.sh
+run_ucvm_query_cencal_cvms5_sh_SOURCES = run_ucvm_query_cencal_cvms5.sh
+endif
 if UCVM_AM_ENABLE_CVMS
 bin_PROGRAMS += run_ucvm_query_cencal_cvms.sh
 run_ucvm_query_cencal_cvms_sh_SOURCES = run_ucvm_query_cencal_cvms.sh
