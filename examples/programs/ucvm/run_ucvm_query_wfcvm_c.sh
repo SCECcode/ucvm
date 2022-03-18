@@ -36,7 +36,7 @@ Using Geo Elevation coordinates as z mode.
  -111.8830    40.7500   -689.399   1310.601    309.639      wfcvm   4172.050   2397.730   2523.767       none      0.000      0.000      0.000      crust   4172.050   2397.730   2523.767
 EOF_EXPECTED_RESULT
 
-echo "Running examples_programs_ucvm ucvm_query_wfcvm"
+echo "Running examples_programs_ucvm ucvm_query_wfcvm_c"
 if diff $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]
