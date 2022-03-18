@@ -45,7 +45,7 @@ if UCVM_AM_ENABLE_ALBACORE
 bin_PROGRAMS += run_ucvm_query_albacore.sh
 run_ucvm_query_albacore_sh_SOURCES = run_ucvm_query_albacore.sh
 bin_PROGRAMS += run_ucvm_query_albacore_c.sh
-run_ucvm_query_albacore_sh_SOURCES = run_ucvm_query_albacore_c.sh
+run_ucvm_query_albacore_c_sh_SOURCES = run_ucvm_query_albacore_c.sh
 endif
 
 if UCVM_AM_ENABLE_CENCAL 
