@@ -25,11 +25,15 @@ endif
 if UCVM_AM_ENABLE_CVLSU
 bin_PROGRAMS += run_ucvm_query_cvlsu.sh
 run_ucvm_query_cvlsu_sh_SOURCES = run_ucvm_query_cvlsu.sh
+bin_PROGRAMS += run_ucvm_query_cvlsu_c.sh
+run_ucvm_query_cvlsu_c_sh_SOURCES = run_ucvm_query_cvlsu_c.sh
 endif
 
 if UCVM_AM_ENABLE_IVLSU
 bin_PROGRAMS += run_ucvm_query_ivlsu.sh
 run_ucvm_query_ivlsu_sh_SOURCES = run_ucvm_query_ivlsu.sh
+bin_PROGRAMS += run_ucvm_query_ivlsu_c.sh
+run_ucvm_query_ivlsu_c_sh_SOURCES = run_ucvm_query_ivlsu_c.sh
 endif
 
 if UCVM_AM_ENABLE_WFCVM
@@ -42,6 +46,8 @@ endif
 if UCVM_AM_ENABLE_ALBACORE
 bin_PROGRAMS += run_ucvm_query_albacore.sh
 run_ucvm_query_albacore_sh_SOURCES = run_ucvm_query_albacore.sh
+bin_PROGRAMS += run_ucvm_query_albacore_c.sh
+run_ucvm_query_albacore_c_sh_SOURCES = run_ucvm_query_albacore_c.sh
 endif
 
 if UCVM_AM_ENABLE_CENCAL 
