@@ -19,7 +19,6 @@ ${BIN_DIR}/ucvm_query -m ${MODEL} -p ucvm_utah -f ${CONF_DIR}/ucvm.conf < ${TEST
 
 cat > $expect << EOF_EXPECTED_RESULT
 Using Geo Depth coordinates as default mode.
-Using Geo Depth coordinates as default mode.
  -118.0000    34.0000      0.000      0.000      0.000      wfcvm   2871.000   1435.500   2318.331       none      0.000      0.000      0.000      crust   2871.000   1435.500   2318.331
  -118.0000    34.0000     50.000      0.000      0.000      wfcvm   2910.150   1464.595   2324.513       none      0.000      0.000      0.000      crust   2910.150   1464.595   2324.513
  -118.0000    34.0000    100.000      0.000      0.000      wfcvm   2949.300   1494.073   2330.695       none      0.000      0.000      0.000      crust   2949.300   1494.073   2330.695
