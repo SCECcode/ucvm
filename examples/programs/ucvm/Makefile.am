@@ -66,8 +66,8 @@ endif
 if UCVM_AM_ENABLE_CVMS5
 bin_PROGRAMS += run_ucvm_query_cvms5.sh
 run_ucvm_query_cvms5_sh_SOURCES = run_ucvm_query_cvms5.sh
-bin_PROGRAMS += run_ucvm_query_cvms5_c.sh
-run_ucvm_query_cvms5_c_sh_SOURCES = run_ucvm_query_cvms5_c.sh
+# BAD... bin_PROGRAMS += run_ucvm_query_cvms5_c.sh
+# BAD... run_ucvm_query_cvms5_c_sh_SOURCES = run_ucvm_query_cvms5_c.sh
 endif
 
 if UCVM_AM_ENABLE_CENCAL 
