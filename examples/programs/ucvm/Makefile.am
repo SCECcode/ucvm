@@ -52,6 +52,22 @@ endif
 if UCVM_AM_ENABLE_CVMSI
 bin_PROGRAMS += run_ucvm_query_cvmsi.sh
 run_ucvm_query_cvmsi_sh_SOURCES = run_ucvm_query_cvmsi.sh
+bin_PROGRAMS += run_ucvm_query_cvmsi_c.sh
+run_ucvm_query_cvmsi_c_sh_SOURCES = run_ucvm_query_cvmsi_c.sh
+endif
+
+if UCVM_AM_ENABLE_CVMS
+bin_PROGRAMS += run_ucvm_query_cvms.sh
+run_ucvm_query_cvms_sh_SOURCES = run_ucvm_query_cvms.sh
+bin_PROGRAMS += run_ucvm_query_cvms_c.sh
+run_ucvm_query_cvms_c_sh_SOURCES = run_ucvm_query_cvms_c.sh
+endif
+
+if UCVM_AM_ENABLE_CVMS5
+bin_PROGRAMS += run_ucvm_query_cvms5.sh
+run_ucvm_query_cvms5_sh_SOURCES = run_ucvm_query_cvms5.sh
+# BAD... bin_PROGRAMS += run_ucvm_query_cvms5_c.sh
+# BAD... run_ucvm_query_cvms5_c_sh_SOURCES = run_ucvm_query_cvms5_c.sh
 endif
 
 if UCVM_AM_ENABLE_CENCAL 
