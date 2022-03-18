@@ -30,6 +30,8 @@ endif
 if UCVM_AM_ENABLE_WFCVM
 bin_PROGRAMS += run_ucvm_query_wfcvm.sh
 run_ucvm_query_wfcvm_sh_SOURCES = run_ucvm_query_wfcvm.sh
+bin_PROGRAMS += run_ucvm_query_wfcvm_c.sh
+run_ucvm_query_wfcvm_c_sh_SOURCES = run_ucvm_query_wfcvm_c.sh
 endif
 
 if UCVM_AM_ENABLE_ALBACORE
