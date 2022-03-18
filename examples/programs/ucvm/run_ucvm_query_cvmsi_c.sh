@@ -38,7 +38,7 @@ Using Geo Elevation coordinates as z mode.
  -118.0642    34.2264  10000.000   1702.281    710.100       none      0.000      0.000      0.000       none      0.000      0.000      0.000       none      0.000      0.000      0.000
 EOF_EXPECTED_RESULT
 
-echo "Running examples_programs_ucvm ucvm_query_cvmsi"
+echo "Running examples_programs_ucvm ucvm_query_cvmsi_c"
 if diff $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]
