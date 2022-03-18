@@ -14,16 +14,9 @@ MODEL=cvms5
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
 
-${BIN_DIR}/ucvm_query -m ${MODEL} -f ${CONF_DIR}/ucvm.conf < ${TEST_DIR}/test_latlons.txt  > $result 2>&1
-${BIN_DIR}/ucvm_query -m ${MODEL} -f ${CONF_DIR}/ucvm.conf < ${TEST_DIR}/test_latlons_cvms5_gd.txt  >> $result 2>&1
+${BIN_DIR}/ucvm_query -m ${MODEL} -f ${CONF_DIR}/ucvm.conf < ${TEST_DIR}/test_latlons_cvms5_gd.txt  > $result 2>&1
 
 cat > $expect << EOF_EXPECTED_RESULT
-Using Geo Depth coordinates as default mode.
- -118.0000    34.0000      0.000    281.668    468.400      cvms5   1857.303    910.278   2061.182       none      0.000      0.000      0.000      crust   1857.303    910.278   2061.182
- -118.0000    34.0000     50.000    281.668    468.400      cvms5   1924.967    949.979   2080.163       none      0.000      0.000      0.000      crust   1924.967    949.979   2080.163
- -118.0000    34.0000    100.000    281.668    468.400      cvms5   1992.631    989.680   2098.196       none      0.000      0.000      0.000      crust   1992.631    989.680   2098.196
- -118.0000    34.0000    500.000    281.668    468.400      cvms5   2533.943   1307.287   2212.444       none      0.000      0.000      0.000      crust   2533.943   1307.287   2212.444
- -118.0000    34.0000   1000.000    281.668    468.400      cvms5   3097.641   1779.642   2312.024       none      0.000      0.000      0.000      crust   3097.641   1779.642   2312.024
 Using Geo Depth coordinates as default mode.
  -118.2851    34.0223      0.000     56.230    293.500      cvms5   1786.518    902.161   2057.181       none      0.000      0.000      0.000      crust   1786.518    902.161   2057.181
  -118.2851    34.0223    100.000     56.230    293.500      cvms5   1877.227    941.105   2076.003       none      0.000      0.000      0.000      crust   1877.227    941.105   2076.003
