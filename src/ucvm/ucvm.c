@@ -949,9 +949,8 @@ int ucvm_query(int n, ucvm_point_t *pnt, ucvm_data_t *data)
   /* Compute derived values */
   for (i = 0; i < n; i++) {
     ucvm_get_model_vals(&(pnt[i]), &(data[i]));
+//if(ucvm_debug_flag) {fprintf(stderr,">>    points query in.. (%lf,%lf,%lf) depth(%lf)\n", pnt[i].coord[0], pnt[i].coord[1], pnt[i].coord[2], data[i].depth); }
   }
-
- if(ucvm_debug_flag) {fprintf(stderr,"    points query in.. (%lf,%lf,%lf) depth(%lf)\n", pnt[0].coord[0], pnt[0].coord[1], pnt[0].coord[2], data[0].depth); }
 
   /* Query crustal models */
   for (i = 0; i < ucvm_num_models; i++) {
