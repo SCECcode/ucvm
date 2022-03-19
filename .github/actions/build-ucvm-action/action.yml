@@ -1,0 +1,39 @@
+
+name: ucvm-action
+description: 'action to build ucvm from remote request, invoked from ucvm models or ucvm_plotting'
+inputs:
+  initiating-repo :
+    description: 'Which repository did the request came from'
+    required: false
+    default: 'ucvm_plotting'
+  target-model:  
+    description: 'Which cvm to include'
+    required: false
+    default: 'none'
+outputs:
+  build-log:
+    description: "ucvm_setup.py log"
+    value: ${{ steps.post_build_log.outputs.log-file }}
+runs:
+  using: "composite"
+  steps:
+    - id: greeting
+      run: echo Hello from ucvm action.yml initiated from  ${{ inputs.initiating-repo }}
+      shell: bash
+    - id: show_env
+      run: ( echo " ucvm-action:pwd =>"; pwd;
+             echo " ucvm-action:UCVM_SRC_PATH =>"$UCVM_SRC_PATH;
+             echo " ucvm-action:UCVM_INSTALL_PATH =>"$UCVM_INSTALL_PATH;
+             echo " ucvm-action:RUNNER_WORKSPACE =>"$RUNNER_WORKSPACE;
+             echo " ucvm-action:github.action_path =>"${{ github.action_path }};)
+      shell: bash
+    - id: build_ucvm 
+      if: ${{ inputs.target-model != 'none' }}
+      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build.sh ${{ inputs.target-model }})
+      shell: bash
+    - id: post_build_log
+      run: echo "::set-output name=log-file::$(echo $UCVM_SRC_PATH/ucvm_setup_install.log)"
+      shell: bash
+    - name: test_ucvm
+      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
+      shell: bash
