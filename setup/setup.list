@@ -145,7 +145,7 @@
 			"Flags": "--enable-model-cvms5 --with-cvms5-lib-path=lib --with-cvms5-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
-                        "md5sum": "aad02b6886ee6a0838895b0dad96dc7c",
+                        "md5sum": "76d68f9aa27c162d6e4239295a6c86a7",
 			"Order": 1		
 		}
 	},
