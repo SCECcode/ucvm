@@ -29,6 +29,7 @@ use_iobuf = False
 user_dynamic_flag = False
 ## track how many requeted models needs gfortran
 needs_gfortran = 1
+skip_ask_path = False
 
 # Should we abort after testing system conditions?
 error_out = False
@@ -45,7 +46,9 @@ def usage():
     print("\t-s  --static       Use static linking.")
     print("\t-d  --dynamic      Use dynamic linking.")
     print("\t-a  --all          Use all available models.")
-    print("\t-r  --restart      This is a restart of ucvm_setup.py call.\n")
+    print("\t-r  --restart      This is a restart of ucvm_setup.py call.")
+    print("\t-p  --path         use supplied installation path.")
+    print("\t-h  --help         usage.\n")
     print("UCVMC %s\n" % VERSION)
     
 # Stands for "error gracefully". Prints out a message for the error and asks to contact software@scec.org.
@@ -529,7 +532,9 @@ def makeDyLibNameChangeScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToIns
     fp.write(ldpstr)
     fp.close()
 
-
+def process_user_path(p):
+    global ucvmpath
+    ucvmpath = p
     
 ## link proj-5's library to PROJ_LIB location if PROJ_LIB is defined
 def linkPROJ_5(ucvmpath) :
@@ -544,7 +549,7 @@ def linkPROJ_5(ucvmpath) :
 # Read in the possible arguments
 #
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "asdhr", ["all", "static", "dynamic", "help", "restart"])
+    opts, args = getopt.getopt(sys.argv[1:], "asdhrp:", ["all", "static", "dynamic", "help", "restart","path"])
 except getopt.GetoptError as err:
     print(str(err))
     usage()
@@ -563,6 +568,9 @@ for o, a in opts:
     elif o in ('-d', '--dynamic'):
         user_dynamic_flag = True 
         print("dynamic Flag: True")
+    elif o in ('-p', '--path'):
+        process_user_path(a)
+        skip_ask_path = True
     elif o in ('-h', '--help'):
         usage()
         exit(0)
@@ -640,42 +648,44 @@ except OSError as e:
 print("\nPlease answer the following questions to install UCVM.\n")
 print("Note that this install and build process may take up to an hour depending on your")
 print("computer speed.")
-print("Where would you like UCVM to be installed?")
 
-try:
-    if ucvmpath[0] == "$":
-        # We want to expand that.
-        ucvmpath = os.environ(ucvmpath[1:])
-except Exception:
-    # Use default path.
-    ucvmpath = os.path.expanduser("~")
+if skip_ask_path == False :
+    print("Where would you like UCVM to be installed?")
+
+    try:
+        if ucvmpath[0] == "$":
+            # We want to expand that.
+            ucvmpath = os.environ(ucvmpath[1:])
+    except Exception:
+        # Use default path.
+        ucvmpath = os.path.expanduser("~")
 
 # Append the version info to the path.
-ucvmpath = ucvmpath.rstrip("/") + "/ucvm-" + VERSION
-
-print("(Default: " + ucvmpath + ")")
-if sys.version_info.major >= (3) :
-    enteredpath = input("Enter path or blank to use the default path: ")
-else:
-    enteredpath = raw_input("Enter path or blank to use the default path: ")
-
-if enteredpath.strip() == "":
-    enteredpath = ucvmpath
-
-while enteredpath != "":
-    # Check to see that that path exists and is writable.
-    if not os.access(os.path.dirname(enteredpath.rstrip("/")), os.W_OK | os.X_OK):
-        print("\n" + enteredpath + " does not exist or is not writable.")
-        if sys.version_info.major >= (3) :
-          enteredpath = input("Exiting:Please enter a different path or blank to use the default path: ")
-        else:
-          enteredpath = raw_input("Exiting:Please enter a different path or blank to use the default path: ")
-        sys.exit(0)
+    ucvmpath = ucvmpath.rstrip("/") + "/ucvm-" + VERSION
+    
+    print("(Default: " + ucvmpath + ")")
+    if sys.version_info.major >= (3) :
+        enteredpath = input("Enter path or blank to use the default path: ")
     else:
-        break
+        enteredpath = raw_input("Enter path or blank to use the default path: ")
+
+    if enteredpath.strip() == "":
+        enteredpath = ucvmpath
+
+    while enteredpath != "":
+        # Check to see that that path exists and is writable.
+        if not os.access(os.path.dirname(enteredpath.rstrip("/")), os.W_OK | os.X_OK):
+            print("\n" + enteredpath + " does not exist or is not writable.")
+            if sys.version_info.major >= (3) :
+              enteredpath = input("Exiting:Please enter a different path or blank to use the default path: ")
+            else:
+              enteredpath = raw_input("Exiting:Please enter a different path or blank to use the default path: ")
+            sys.exit(0)
+        else:
+            break
     
 # Copy final selected path back to the UCVM path variable.
-ucvmpath = enteredpath
+    ucvmpath = enteredpath
 
 # Create necessary directories
 if not os.path.exists(ucvmpath):
@@ -683,7 +693,7 @@ if not os.path.exists(ucvmpath):
   call(["mkdir", "-p", ucvmpath+'/work'])
   call(["mkdir", "-p", ucvmpath+'/lib'])
 
-## XXX print(config_data["models"].keys())
+## print(config_data["models"].keys())
     
 for model in sorted(iter(config_data["models"].keys()), key=lambda k: config_data["models"][k]["Order"]):
 
