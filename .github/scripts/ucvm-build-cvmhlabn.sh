@@ -22,9 +22,6 @@ n
 n
 n
 n
-n
-n
-n
 y
 EOF
 
