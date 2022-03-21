@@ -19,7 +19,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/wfcvm.tar.gz",
                         "Flags": "--enable-model-wfcvm --with-wfcvm-lib-path=lib --with-wfcvm-include-path=include --with-wfcvm-model-path=src",
                         "Ask": "yes",
-                        "md5sum": "cb66d750c7af272b4dba8138f18d6684",
+                        "md5sum": "a233621e8129c998f3cb71318fbda652",
                         "Order": 12
                 },
 		"IMPERIAL": {
@@ -97,7 +97,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/cvms.tar.gz",
 			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
 			"Ask": "yes",
-                        "md5sum": "c75759aa0e2dafd30647be37c782a39e",
+                        "md5sum": "dcabaef8512e47d07960db6168b71146",
 			"Order": 5
 		},
 		"CS173H": {
