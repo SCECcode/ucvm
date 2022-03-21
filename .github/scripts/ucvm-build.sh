@@ -12,6 +12,7 @@ fi
 if [ $tmp == 'Darwin' ]; then
 ## make sure have automake/aclocal
   brew install automake
+  brew reinstall gcc
 fi
 
 mkdir $UCVM_INSTALL_PATH
