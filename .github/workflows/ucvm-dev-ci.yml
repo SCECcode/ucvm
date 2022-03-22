@@ -49,7 +49,7 @@ jobs:
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
 
-  ucvm-build-albacore-lsu-wf:
+  ucvm-build-albacore-cvlsu-ivlsu-wfcvm:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -66,7 +66,7 @@ jobs:
         ref: basin
 
     - name: build ucvm with albacore, cvlsu, ivlsu and wfcvm
-      run: ./.github/scripts/ucvm-build.sh "albacore,ivlsu,wfcvm"
+      run: ./.github/scripts/ucvm-build.sh "albacore,cvlsu,ivlsu,wfcvm"
       shell: bash
     - name: test ucvm with albacore, cvlsu, ivlsu and wfcvm
       run: ./.github/scripts/ucvm-test.sh
