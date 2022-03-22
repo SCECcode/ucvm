@@ -66,7 +66,7 @@ jobs:
         ref: basin
 
     - name: build ucvm with albacore, cvlsu, ivlsu and wfcvm
-      run: ./.github/scripts/run-build-albacore-lsu-wf.sh
+      run: ./.github/scripts/ucvm-build.sh "albacore,ivlsu,wfcvm"
       shell: bash
     - name: test ucvm with albacore, cvlsu, ivlsu and wfcvm
       run: ./.github/scripts/ucvm-test.sh
@@ -89,7 +89,7 @@ jobs:
         ref: basin
 
     - name: build ucvm with cencal cvms
-      run: ./.github/scripts/run-build-cencal-cvms.sh
+      run: ./.github/scripts/ucvm-build.sh "cencal,cvms"
       shell: bash
     - name: test ucvm with cencal and cvms
       run: ./.github/scripts/ucvm-test.sh
