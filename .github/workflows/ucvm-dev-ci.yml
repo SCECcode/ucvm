@@ -20,7 +20,7 @@ jobs:
       with: 
         ref: basin
     - name: build ucvm with cvmh
-      run: ./.github/scripts/ucvm-build-cvmh.sh 
+      run: ./.github/scripts/ucvm-build.sh "cvmh"
       shell: bash
     - name: test ucvm with cvmh
       run: ./.github/scripts/ucvm-test.sh
@@ -43,7 +43,7 @@ jobs:
     - name: checkout ucvm toPython3
       uses: actions/checkout@v2
     - name: build ucvm with cvms and cvmh
-      run: ./.github/scripts/ucvm-build-cvms-cvmh.sh
+      run: ./.github/scripts/ucvm-build.sh "cvms,cvmh"
       shell: bash
     - name: test ucvm with cvms and cvmh
       run: ./.github/scripts/ucvm-test.sh
