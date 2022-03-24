@@ -80,7 +80,6 @@ endif
 # CVM-SI includes
 if UCVM_AM_ENABLE_CVMSI
 AM_CFLAGS += -D_UCVM_ENABLE_CVMSI
-MODEL_TARGS += ucvm_model_cvmsi.o
 endif
 
 # CVM-NCI includes
