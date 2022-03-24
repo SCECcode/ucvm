@@ -91,6 +91,12 @@ AC_ARG_ENABLE([model-albacore],
         [enable_model_albacore=yes],
         [enable_model_albacore=no])
         
+AC_ARG_ENABLE([model-cvmsi],
+        [AS_HELP_STRING([--enable-model-cvmsi],
+        [enable model SCEC CVM-SI])],
+        [enable_model_cvmsi=yes],
+        [enable_model_cvmsi=no])
+
 AC_ARG_ENABLE([model-cvms5],
         [AS_HELP_STRING([--enable-model-cvms5],
         [enable model SCEC CVM-S5])],
@@ -126,12 +132,6 @@ AC_ARG_ENABLE([model-cencal],
         [enable model USGS CenCalVM])],
         [enable_model_cencal=yes],
         [enable_model_cencal=no])
-
-AC_ARG_ENABLE([model-cvmsi],
-        [AS_HELP_STRING([--enable-model-cvmsi],
-        [enable model SCEC CVM-SI])],
-        [enable_model_cvmsi=yes],
-        [enable_model_cvmsi=no])
 
 AC_ARG_ENABLE([model-cvmnci],
         [AS_HELP_STRING([--enable-model-cvmnci],
@@ -282,10 +282,6 @@ AC_ARG_WITH([cvmsi-lib-path],
   [AS_HELP_STRING([--with-cvmsi-lib-path], [location of the SCEC CVM-SI libraries])],
   [CVMSI_LIB="-L$withval -lcvmsi -lgfortran"],
   [CVMSI_LIB="-lcvmsi -lgfortran"])
-AC_ARG_WITH([cvmsi-model-path],
-  [AS_HELP_STRING([--with-cvmsi-model-path], [location of the SCEC CVM-SI model files])],
-  [CVMSI_MODEL="$withval"],
-  [CVMSI_MODEL="/usr/cvmsi/model"])
 fi
 
 # Get SCEC IMPERIAL library and include locations
@@ -615,6 +611,7 @@ else
 fi
 
 # Check optional SCEC CVM-SI installation
+if test "x$enable_static" = xyes; then
 if test "x$enable_model_cvmsi" = xyes; then
    # Setup compiler/linker flags
    CFLAGS="$CVMSI_INCL $CFLAGS"
@@ -622,13 +619,14 @@ if test "x$enable_model_cvmsi" = xyes; then
 
    echo "Checking for SCEC CVM-SI"
    AC_CHECK_LIB(cvmsi,utm_geo_,[AM_CONDITIONAL(UCVM_AM_ENABLE_CVMSI, true)],[AC_MSG_ERROR(["SCEC CVM-SI library requires C compiler that can link Fortran libraries"])],[-lgfortran -lm])
+
    echo "Checking for SCEC CVM-SI header"
    AC_CHECK_HEADER(cvmsi.h,[],[AC_MSG_ERROR(["SCEC CVM-SI header not found; use --with-cvmsi-include-path"])],[AC_INCLUDES_DEFAULT])
-
-   echo "Checking for SCEC CVM-SI model directory"
-   AC_CHECK_FILE([$CVMSI_MODEL], [], [AC_MSG_ERROR(["SCEC CVM-SI model dir not found; use --with-cvmsi-model-path"])])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMSI, false)
+fi
+else
+    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMS5, [test x"$enable_model_cvms5" = xyes])
 fi
 
 # Check optional SCEC IMPERIAL installation
