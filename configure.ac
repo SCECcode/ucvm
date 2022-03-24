@@ -282,6 +282,10 @@ AC_ARG_WITH([cvmsi-lib-path],
   [AS_HELP_STRING([--with-cvmsi-lib-path], [location of the SCEC CVM-SI libraries])],
   [CVMSI_LIB="-L$withval -lcvmsi -lgfortran"],
   [CVMSI_LIB="-lcvmsi -lgfortran"])
+AC_ARG_WITH([cvmsi-model-path],
+  [AS_HELP_STRING([--with-cvmsi-model-path], [location of the CVM-SI model files])],
+  [CVMS_MODEL="$withval"],
+  [CVMS_MODEL="/usr/cvmsi/src"])
 fi
 
 # Get SCEC IMPERIAL library and include locations
