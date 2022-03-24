@@ -16,9 +16,6 @@
 #ifdef _UCVM_ENABLE_CENCAL
 #include "ucvm_model_cencal.h"
 #endif
-#ifdef _UCVM_ENABLE_CVMSI
-#include "ucvm_model_cvmsi.h"
-#endif
 
 #ifdef _UCVM_ENABLE_CVMNCI
 #include "ucvm_model_cvmnci.h"
@@ -340,13 +337,6 @@ int ucvm_add_model(const char *label) {
   if (strcmp(label, UCVM_MODEL_CENCAL) == 0) {
 #ifdef _UCVM_ENABLE_CENCAL
     retval = ucvm_cencal_get_model(&m);
-#endif
-    is_predef = 1;
-  }
-
-  if (strcmp(label, UCVM_MODEL_CVMSI) == 0) {
-#ifdef _UCVM_ENABLE_CVMSI
-    retval = ucvm_cvmsi_get_model(&m);
 #endif
     is_predef = 1;
   }
@@ -1108,14 +1098,6 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
   }
 #endif
 
-#ifdef _UCVM_ENABLE_CVMSI
-  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
-		     UCVM_MODEL_CVMSI, "", res, numinst++, *len) 
-      != UCVM_CODE_SUCCESS) {
-    return(UCVM_CODE_ERROR);
-  }
-#endif
-
 /*** for plugin ***/
 #ifdef _UCVM_ENABLE_IVLSU
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
@@ -1141,6 +1123,13 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
 #ifdef _UCVM_ENABLE_CVMS5
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
                      UCVM_MODEL_CVMS5, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMSI
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMSI, "", res, numinst++, *len)
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }
