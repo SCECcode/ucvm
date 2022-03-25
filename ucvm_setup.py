@@ -247,6 +247,9 @@ def _add2LIBRARYPATH_bash(modelsToInstall, librariesToInstall) :
     if "CVMHLABN" in modelsToInstall:
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhlabn/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhlabn/lib\n"
+    if "CVMHSGBN" in modelsToInstall:
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhsgbn/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhsgbn/lib\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms/lib\n"
@@ -375,6 +378,9 @@ def _add2LIBRARYPATH_python(modelsToInstall, librariesToInstall) :
     if "CVMHLABN" in modelsToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhlabn/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhlabn/lib\")\n"
+    if "CVMHSGBN" in modelsToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhsgbn/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhsgbn/lib\")\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms/lib\")\n"
@@ -478,6 +484,8 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
         str=str+"install_name_tool -change libcvmh.so ${MY_UCVM_INSTALL_PATH}/model/cvmh/lib/libcvmh.so $1\n"
     if "CVMHLABN" in modelsToInstall:
         str=str+"install_name_tool -change libcvmhlabn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhlabn/lib/libcvmhlabn.so $1\n"
+    if "CVMHSGBN" in modelsToInstall:
+        str=str+"install_name_tool -change libcvmhsgbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhlabn/lib/libcvmhsgbn.so $1\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"install_name_tool -change libcvms.so ${MY_UCVM_INSTALL_PATH}/model/cvms/lib/libcvms.so $1\n"
     if "WFCVM" in modelsToInstall:
