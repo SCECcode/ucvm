@@ -89,6 +89,11 @@ if UCVM_AM_ENABLE_CVMHLABN
 AM_CFLAGS += -D_UCVM_ENABLE_CVMHLABN
 endif
 
+# CVMHSGBN includes
+if UCVM_AM_ENABLE_CVMHSGBN
+AM_CFLAGS += -D_UCVM_ENABLE_CVMHSGBN
+endif
+
 
 # Dist sources
 unittest_SOURCES = *.c *.h

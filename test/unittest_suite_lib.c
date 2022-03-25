@@ -615,6 +615,32 @@ int test_lib_add_model_cvmhlabn()
   return(0);
 }
 
+int test_lib_add_model_cvmhsgbn()
+{
+  printf("Test: UCVM lib add model CVMHSGBN\n");
+
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CVMHSGBN) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CVMHSGBN);
+    ucvm_finalize();
+    return(1);
+  }
+
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+
 
 int suite_lib(const char *xmldir)
 {
@@ -810,6 +836,14 @@ int suite_lib(const char *xmldir)
   strcpy(suite.tests[suite.num_tests].test_name, 
   	 "test_lib_add_model_cvmhlabn");
   suite.tests[suite.num_tests].test_func = &test_lib_add_model_cvmhlabn;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHSGBN
+  strcpy(suite.tests[suite.num_tests].test_name, 
+  	 "test_lib_add_model_cvmhsgbn");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_cvmhsgbn;
   suite.tests[suite.num_tests].elapsed_time = 0.0;
   suite.num_tests++;
 #endif
