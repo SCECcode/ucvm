@@ -370,6 +370,10 @@ AC_ARG_WITH([cvmhlabn-lib-path],
   [AS_HELP_STRING([--with-cvmhlabn-lib-path], [location of the SCEC CVMHLABN libraries])],
   [CVMHLABN_LIB="-L$withval -lcvmhlabn"],
   [CVMHLABN_LIB="-lcvmhlabn"])
+AC_ARG_WITH([cvmhlabn-model-path],
+  [AS_HELP_STRING([--with-cvmhlabn-model-path], [location of the CVMHLABN  model files])],
+  [CVMHLABN_MODEL="$withval"],
+  [CVMHLABN_MODEL="/usr/cvmhlabn/src"])
 fi
 
 # Get SCEC CVMHSGBN library and include locations
@@ -383,6 +387,10 @@ AC_ARG_WITH([cvmhsgbn-lib-path],
   [AS_HELP_STRING([--with-cvmhsgbn-lib-path], [location of the SCEC CVMHSGBN libraries])],
   [CVMHSGBN_LIB="-L$withval -lcvmhsgbn"],
   [CVMHSGBN_LIB="-lcvmhsgbn"])
+AC_ARG_WITH([cvmhsgbn-model-path],
+  [AS_HELP_STRING([--with-cvmhsgbn-model-path], [location of the CVMHSGBN  model files])],
+  [CVMHSGBN_MODEL="$withval"],
+  [CVMHSGBN_MODEL="/usr/cvmhsgbn/src"])
 fi
 
 # Get SCEC CS173 library and include locations
