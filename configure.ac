@@ -380,7 +380,7 @@ fi
 if test "x$enable_model_cvmhsgbn" = xyes; then
 AC_ARG_WITH([cvmhsgbn-include-path],
   [AS_HELP_STRING([--with-cvmhsgbn-include-path],
-    [location of the SCEC CVMHLABN headers])],
+    [location of the SCEC CVMHSGBN headers])],
   [CVMHSGBN_INCL="-I$withval"],
   [CVMHSGBN_INCL="/usr/include/cvmhsgbn"])
 AC_ARG_WITH([cvmhsgbn-lib-path],
