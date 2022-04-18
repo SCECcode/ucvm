@@ -352,10 +352,11 @@ int main(int argc, char **argv)
     process_query(pnts, props, numread, output_json);
 
   } else {
-    while (!feof(stdin)) {
+    char line[UCVM_MAX_LINE_LEN]; // 1024
+    while (fgets(line, UCVM_MAX_LINE_LEN, stdin) != NULL) {
+      if(line[0]=='#') continue;  // a comment line
       memset(&(pnts[numread]), 0, sizeof(ucvm_point_t));
-
-      if (fscanf(stdin,"%lf %lf %lf",
+      if (sscanf(line,"%lf %lf %lf",
                &(pnts[numread].coord[0]),
 	       &(pnts[numread].coord[1]),
 	       &(pnts[numread].coord[2])) == 3) {

@@ -38,6 +38,9 @@
 /* Maximum model list length */
 #define UCVM_MAX_MODELLIST_LEN 1024
 
+/* Maximum stdin line length */
+#define UCVM_MAX_LINE_LEN 1024
+
 
 /* Default depth (m) for GTL/Crustal transition */
 #define UCVM_DEFAULT_INTERP_ZMIN 0.0
