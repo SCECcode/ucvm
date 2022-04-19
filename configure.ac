@@ -121,6 +121,13 @@ AC_ARG_ENABLE([model-cvmhsgbn],
         [enable_model_cvmhsgbn=yes],
         [enable_model_cvmhsgbn=no])
 
+AC_ARG_ENABLE([model-cvmhvbn],
+        [AS_HELP_STRING([--enable-model-cvmhvbn],
+        [enable model SCEC CVMHVBN])],
+        [enable_model_cvmhvbn=yes],
+        [enable_model_cvmhvbn=no])
+
+
 AC_ARG_ENABLE([model-cs173],
         [AS_HELP_STRING([--enable-model-cs173],
         [enable model SCEC CS173])],
@@ -391,6 +398,23 @@ AC_ARG_WITH([cvmhsgbn-model-path],
   [AS_HELP_STRING([--with-cvmhsgbn-model-path], [location of the CVMHSGBN  model files])],
   [CVMHSGBN_MODEL="$withval"],
   [CVMHSGBN_MODEL="/usr/cvmhsgbn/src"])
+fi
+
+# Get SCEC CVMHVBN library and include locations
+if test "x$enable_model_cvmhvbn" = xyes; then
+AC_ARG_WITH([cvmhvbn-include-path],
+  [AS_HELP_STRING([--with-cvmhvbn-include-path],
+    [location of the SCEC CVMHVBN headers])],
+  [CVMHVBN_INCL="-I$withval"],
+  [CVMHVBN_INCL="/usr/include/cvmhvbn"])
+AC_ARG_WITH([cvmhvbn-lib-path],
+  [AS_HELP_STRING([--with-cvmhvbn-lib-path], [location of the SCEC CVMHVBN libraries])],
+  [CVMHVBN_LIB="-L$withval -lcvmhvbn"],
+  [CVMHVBN_LIB="-lcvmhvbn"])
+AC_ARG_WITH([cvmhvbn-model-path],
+  [AS_HELP_STRING([--with-cvmhvbn-model-path], [location of the CVMHVBN  model files])],
+  [CVMHVBN_MODEL="$withval"],
+  [CVMHVBN_MODEL="/usr/cvmhvbn/src"])
 fi
 
 # Get SCEC CS173 library and include locations
@@ -774,6 +798,22 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSGBN, [test x"$enable_model_cvmhsgbn" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CVMHVBN installation
+if test "x$enable_model_cvmhvbn" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CVMHVBN_INCL $CFLAGS"
+   LDFLAGS="$CVMHVBN_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CVMHVBN"
+   AC_CHECK_HEADER(cvmhvbn.h,[],[AC_MSG_ERROR(["SCEC CVMHVBN header not found; use --with-cvmhvbn-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHVBN, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHVBN, [test x"$enable_model_cvmhvbn" = xyes])
 fi
 
 

@@ -1,5 +1,16 @@
 {
 	"models": {
+                "CVMHVBN": {
+                        "Version": "1.0",
+                        "Abbreviation": "cvmhvbn",
+                        "Size": "1.5G",
+                        "Path": "cvmhvbn",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/cvmhvbn.tar.gz",
+                        "Flags": "--enable-model-cvmhvbn --with-cvmhvbn-lib-path=lib --with-cvmhvbn-include-path=include --with-cvmhvbn-model-path=src",
+                        "Ask": "yes",
+                        "md5sum": "3676a1a7d651922873fd3acc83224c33",
+                        "Order": 15
+                },
                 "CVMHSGBN": {
                         "Version": "1.0",
                         "Abbreviation": "cvmhsgbn",

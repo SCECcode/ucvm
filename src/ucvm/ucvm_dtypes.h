@@ -75,6 +75,7 @@
 #define UCVM_MODEL_CCA "cca"
 #define UCVM_MODEL_CVMHLABN "cvmhlabn"
 #define UCVM_MODEL_CVMHSGBN "cvmhsgbn"
+#define UCVM_MODEL_CVMHVBN "cvmhvbn"
 #define UCVM_MODEL_WFCVM "wfcvm"
 #define UCVM_MODEL_CS173 "cs173"
 #define UCVM_MODEL_CS173H "cs173h"
