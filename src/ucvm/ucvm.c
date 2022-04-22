@@ -78,6 +78,7 @@ double ucvm_interp_zmax = UCVM_DEFAULT_INTERP_ZMAX;
 int ucvm_get_model_vals(ucvm_point_t *pnt, ucvm_data_t *data)
 {
 
+if(ucvm_debug_flag) { fprintf(stderr,"UCVM: in ucvm_get_model_vals: ucvm's surf %lf\n", data->surf); }
   /* Re-compute point depth based on query mode */
   switch (ucvm_cur_qmode) {
   case UCVM_COORD_GEO_DEPTH:
@@ -85,6 +86,7 @@ int ucvm_get_model_vals(ucvm_point_t *pnt, ucvm_data_t *data)
     break;
   case UCVM_COORD_GEO_ELEV:
     data->depth = data->surf - pnt->coord[2];
+if(ucvm_debug_flag) { fprintf(stderr,"UCVM: in ucvm_get_model_vals: reset depth..%lf\n", data->depth); }
     break;
   default:
     fprintf(stderr, "Unsupported coord type\n");
@@ -939,7 +941,10 @@ int ucvm_query(int n, ucvm_point_t *pnt, ucvm_data_t *data)
   /* Compute derived values */
   for (i = 0; i < n; i++) {
     ucvm_get_model_vals(&(pnt[i]), &(data[i]));
-//if(ucvm_debug_flag) {fprintf(stderr,">>    points query in.. (%lf,%lf,%lf) depth(%lf)\n", pnt[i].coord[0], pnt[i].coord[1], pnt[i].coord[2], data[i].depth); }
+
+// should have been swapped..
+//fprintf(stderr,">>  USING points:(%lf,%lf,%lf) depth(%lf)\n", pnt[i].coord[0], pnt[i].coord[1], pnt[i].coord[2], data[i].depth);
+
   }
 
   /* Query crustal models */
