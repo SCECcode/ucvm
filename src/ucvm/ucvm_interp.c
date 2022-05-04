@@ -102,19 +102,27 @@ int ucvm_interp_linear(double zmin, double zmax, ucvm_ctype_t cmode,
     /* Point lies in gtl/crustal interpolation zone */
     data->cmb.source = data->gtl.source;
 
+    /** MEI
     if ((data->crust.vp <= 0.0) || (data->crust.vs <= 0.0) || 
 	(data->crust.rho <= 0.0) || (data->gtl.vp <= 0.0) || 
 	(data->gtl.vs <= 0.0) || (data->gtl.rho <= 0.0)) {
       return(UCVM_CODE_NODATA);
     }
+    **/
 
     zratio = (data->depth - zmin) / (zmax - zmin);
-    data->cmb.vp = interpolate_linear(data->gtl.vp, 
+    if(data->gtl.vp > 0.0 && data->crust.vp > 0.0) {
+      data->cmb.vp = interpolate_linear(data->gtl.vp, 
 				      data->crust.vp, zratio);
-    data->cmb.vs = interpolate_linear(data->gtl.vs, 
+    }
+    if(data->gtl.vs > 0.0 && data->crust.vs > 0.0) {
+      data->cmb.vs = interpolate_linear(data->gtl.vs, 
 				      data->crust.vs, zratio);
-    data->cmb.rho = interpolate_linear(data->gtl.rho, 
+    }
+    if(data->gtl.rho > 0.0 && data->crust.rho > 0.0) {
+      data->cmb.rho = interpolate_linear(data->gtl.rho, 
 				       data->crust.rho, zratio);
+    } 
   } else {
     data->cmb.vp = data->crust.vp;
     data->cmb.vs = data->crust.vs;
