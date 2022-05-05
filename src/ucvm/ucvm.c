@@ -570,10 +570,10 @@ int ucvm_add_user_model(ucvm_model_t *m, ucvm_modelconf_t *mconf)
   case UCVM_MODEL_GTL:
     /* Enable GTL mode */
     ucvm_cur_mmode = UCVM_OPMODE_GTL;
-    /* Default to linear interpolation for this GTL */
-    if (ucvm_assoc_ifunc(mconf->label, UCVM_IFUNC_LINEAR) != 
+    /* Default to ely interpolation for this GTL */
+    if (ucvm_assoc_ifunc(mconf->label, UCVM_IFUNC_ELY) != 
 	UCVM_CODE_SUCCESS) {
-      fprintf(stderr, "Failed to associate linear interp func for %s\n",
+      fprintf(stderr, "Failed to associate ely interp func for %s\n",
 	      mconf->label);
       ucvm_num_models--;
       return(UCVM_CODE_ERROR);
@@ -611,10 +611,13 @@ int ucvm_assoc_ifunc(const char *mlabel, const char *ilabel)
     return(UCVM_CODE_ERROR);
   }
 
+/*** disable elygtl:linear option
   if (strcmp(ilabel, UCVM_IFUNC_LINEAR) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_LINEAR, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_linear;
-  } else if (strcmp(ilabel, UCVM_IFUNC_ELY) == 0) {
+  } else 
+***/
+  if (strcmp(ilabel, UCVM_IFUNC_ELY) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_ELY, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_ely;
   } else if (strcmp(ilabel, UCVM_IFUNC_CRUST) == 0) {
@@ -1272,12 +1275,15 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
     }
   }
 
-  /* Get installed ifuncs */
+  /*** SUPPRESS LINEAR ifuncs
   if (ucvm_save_resource(UCVM_RESOURCE_IFUNC, UCVM_MODEL_CRUSTAL,
 		     UCVM_IFUNC_LINEAR, "", res, numinst++, *len) 
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }
+  ***/
+
+  /* Get installed ifuncs */
   if (ucvm_save_resource(UCVM_RESOURCE_IFUNC, UCVM_MODEL_CRUSTAL,
 		     UCVM_IFUNC_ELY, "", res, numinst++, *len) 
       != UCVM_CODE_SUCCESS) {
