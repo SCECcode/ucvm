@@ -44,7 +44,7 @@
 
 /* Default depth (m) for GTL/Crustal transition */
 #define UCVM_DEFAULT_INTERP_ZMIN 0.0
-#define UCVM_DEFAULT_INTERP_ZMAX 0.0
+#define UCVM_DEFAULT_INTERP_ZMAX 350.0
 
 
 /* Special source model/ifunc flags */
