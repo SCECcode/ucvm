@@ -646,7 +646,7 @@ int suite_lib(const char *xmldir)
 {
   int numfixed;
   test_suite_t suite;
-  char logfile[256];
+  char *logfile;
   FILE *lf = NULL;
 
   /* Setup test suite */
@@ -855,6 +855,7 @@ int suite_lib(const char *xmldir)
   }
 
   if (xmldir != NULL) {
+    logfile=malloc( (strlen(xmldir)+strlen(suite.suite_name)+6) * sizeof(char));
     sprintf(logfile, "%s/%s.xml", xmldir, suite.suite_name);
     lf = init_log(logfile);
     if (lf == NULL) {
@@ -868,6 +869,7 @@ int suite_lib(const char *xmldir)
     }
     
     close_log(lf);
+    free(logfile);
   }
 
   free(suite.tests);
