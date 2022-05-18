@@ -701,7 +701,8 @@ if skip_ask_path == False :
             break
     
 # Copy final selected path back to the UCVM path variable.
-    ucvmpath = enteredpath
+# remove trailing '/' just in case
+    ucvmpath = enteredpath.rstrip("/")
 
 # Create necessary directories
 if not os.path.exists(ucvmpath):
