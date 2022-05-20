@@ -8,7 +8,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/cvmhvbn.tar.gz",
                         "Flags": "--enable-model-cvmhvbn --with-cvmhvbn-lib-path=lib --with-cvmhvbn-include-path=include --with-cvmhvbn-model-path=src",
                         "Ask": "yes",
-                        "md5sum": "ec266d40e0d5af482e16567d723ccf5c",
+                        "md5sum": "c5e783df77107da4a2620119a452060e",
                         "Order": 15
                 },
                 "CVMHSGBN": {
@@ -19,7 +19,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/cvmhsgbn.tar.gz",
                         "Flags": "--enable-model-cvmhsgbn --with-cvmhsgbn-lib-path=lib --with-cvmhsgbn-include-path=include --with-cvmhsgbn-model-path=src",
                         "Ask": "yes",
-                        "md5sum": "402f85f356e6cc8a314d18689842be25",
+                        "md5sum": "1efdbe5ea212bee6b71602ef8b476bb2",
                         "Order": 14
                 },
                 "CVMHLABN": {
@@ -30,7 +30,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/cvmhlabn.tar.gz",
                         "Flags": "--enable-model-cvmhlabn --with-cvmhlabn-lib-path=lib --with-cvmhlabn-include-path=include --with-cvmhlabn-model-path=src",
                         "Ask": "yes",
-                        "md5sum": "3daee6c1093a821b6c09781fa5a12998",
+                        "md5sum": "eb83acaa4d790b7da3caa9d51e99df05",
                         "Order": 13
                 },
                 "WFCVM": {
