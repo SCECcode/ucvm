@@ -253,6 +253,24 @@ def _add2LIBRARYPATH_bash(modelsToInstall, librariesToInstall) :
     if "CVMHVBN" in modelsToInstall:
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhvbn/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhvbn/lib\n"
+    if "CVMHSMBN" in modelsToInstall:
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhsmbn/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhsmbn/lib\n"
+    if "CVMHSBCBN" in modelsToInstall:
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhsbcbn/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhsbcbn/lib\n"
+    if "CVMHSBBN" in modelsToInstall:
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhsbbn/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhsbbn/lib\n"
+    if "CVMHSTBN" in modelsToInstall:
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhstbn/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhstbn/lib\n"
+    if "CVMHRBN" in modelsToInstall:
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhrbn/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhrbn/lib\n"
+    if "CVMHIBBN" in modelsToInstall:
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhibbn/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvmhibbn/lib\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cvms/lib\n"
@@ -387,6 +405,24 @@ def _add2LIBRARYPATH_python(modelsToInstall, librariesToInstall) :
     if "CVMHVBN" in modelsToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhvbn/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhvbn/lib\")\n"
+    if "CVMHSMBN" in modelsToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhsmbn/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhsmbn/lib\")\n"
+    if "CVMHSBCBN" in modelsToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhsbcbn/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhsbcbn/lib\")\n"
+    if "CVMHSBBN" in modelsToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhsbbn/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhsbbn/lib\")\n"
+    if "CVMHSTBN" in modelsToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhstbn/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhstbn/lib\")\n"
+    if "CVMHRBN" in modelsToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhrbn/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhrbn/lib\")\n"
+    if "CVMHIBBN" in modelsToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhibbn/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvmhibbn/lib\")\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cvms/lib\")\n"
@@ -494,6 +530,18 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
         str=str+"install_name_tool -change libcvmhsgbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhsgbn/lib/libcvmhsgbn.so $1\n"
     if "CVMHVBN" in modelsToInstall:
         str=str+"install_name_tool -change libcvmhvbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhvbn/lib/libcvmhvbn.so $1\n"
+    if "CVMHSMBN" in modelsToInstall:
+        str=str+"install_name_tool -change libcvmhsmbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhsmbn/lib/libcvmhsmbn.so $1\n"
+    if "CVMHSBCBN" in modelsToInstall:
+        str=str+"install_name_tool -change libcvmhsbcbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhsbcbn/lib/libcvmhsbcbn.so $1\n"
+    if "CVMHSBBN" in modelsToInstall:
+        str=str+"install_name_tool -change libcvmhsbbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhsbbn/lib/libcvmhsbbn.so $1\n"
+    if "CVMHSTBN" in modelsToInstall:
+        str=str+"install_name_tool -change libcvmhstbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhstbn/lib/libcvmhstbn.so $1\n"
+    if "CVMHRBN" in modelsToInstall:
+        str=str+"install_name_tool -change libcvmhrbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhrbn/lib/libcvmhrbn.so $1\n"
+    if "CVMHIBBN" in modelsToInstall:
+        str=str+"install_name_tool -change libcvmhibbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhibbn/lib/libcvmhibbn.so $1\n"
     if "CVM-S4" in modelsToInstall:
         str=str+"install_name_tool -change libcvms.so ${MY_UCVM_INSTALL_PATH}/model/cvms/lib/libcvms.so $1\n"
     if "WFCVM" in modelsToInstall:

@@ -127,6 +127,41 @@ AC_ARG_ENABLE([model-cvmhvbn],
         [enable_model_cvmhvbn=yes],
         [enable_model_cvmhvbn=no])
 
+AC_ARG_ENABLE([model-cvmhibbn],
+        [AS_HELP_STRING([--enable-model-cvmhibbn],
+        [enable model SCEC CVMHIBBN])],
+        [enable_model_cvmhibbn=yes],
+        [enable_model_cvmhibbn=no])
+
+AC_ARG_ENABLE([model-cvmhrbn],
+        [AS_HELP_STRING([--enable-model-cvmhrbn],
+        [enable model SCEC CVMHRBN])],
+        [enable_model_cvmhrbn=yes],
+        [enable_model_cvmhrbn=no])
+
+AC_ARG_ENABLE([model-cvmhstbn],
+        [AS_HELP_STRING([--enable-model-cvmhstbn],
+        [enable model SCEC CVMHSTBN])],
+        [enable_model_cvmhstbn=yes],
+        [enable_model_cvmhstbn=no])
+
+AC_ARG_ENABLE([model-cvmhsbbn],
+        [AS_HELP_STRING([--enable-model-cvmhsbbn],
+        [enable model SCEC CVMHSBBN])],
+        [enable_model_cvmhsbbn=yes],
+        [enable_model_cvmhsbbn=no])
+
+AC_ARG_ENABLE([model-cvmhsbcbn],
+        [AS_HELP_STRING([--enable-model-cvmhsbcbn],
+        [enable model SCEC CVMHSBCBN])],
+        [enable_model_cvmhsbcbn=yes],
+        [enable_model_cvmhsbcbn=no])
+
+AC_ARG_ENABLE([model-cvmhsmbn],
+        [AS_HELP_STRING([--enable-model-cvmhsmbn],
+        [enable model SCEC CVMHSMBN])],
+        [enable_model_cvmhsmbn=yes],
+        [enable_model_cvmhsmbn=no])
 
 AC_ARG_ENABLE([model-cs173],
         [AS_HELP_STRING([--enable-model-cs173],
@@ -415,6 +450,108 @@ AC_ARG_WITH([cvmhvbn-model-path],
   [AS_HELP_STRING([--with-cvmhvbn-model-path], [location of the CVMHVBN  model files])],
   [CVMHVBN_MODEL="$withval"],
   [CVMHVBN_MODEL="/usr/cvmhvbn/src"])
+fi
+
+# Get SCEC CVMHIBBN library and include locations
+if test "x$enable_model_cvmhibbn" = xyes; then
+AC_ARG_WITH([cvmhibbn-include-path],
+  [AS_HELP_STRING([--with-cvmhibbn-include-path],
+    [location of the SCEC CVMHIBBN headers])],
+  [CVMHIBBN_INCL="-I$withval"],
+  [CVMHIBBN_INCL="/usr/include/cvmhibbn"])
+AC_ARG_WITH([cvmhibbn-lib-path],
+  [AS_HELP_STRING([--with-cvmhibbn-lib-path], [location of the SCEC CVMHIBBN libraries])],
+  [CVMHIBBN_LIB="-L$withval -lcvmhibbn"],
+  [CVMHIBBN_LIB="-lcvmhibbn"])
+AC_ARG_WITH([cvmhibbn-model-path],
+  [AS_HELP_STRING([--with-cvmhibbn-model-path], [location of the CVMHIBBN  model files])],
+  [CVMHIBBN_MODEL="$withval"],
+  [CVMHIBBN_MODEL="/usr/cvmhibbn/src"])
+fi
+
+# Get SCEC CVMHRBN library and include locations
+if test "x$enable_model_cvmhrbn" = xyes; then
+AC_ARG_WITH([cvmhrbn-include-path],
+  [AS_HELP_STRING([--with-cvmhrbn-include-path],
+    [location of the SCEC CVMHRBN headers])],
+  [CVMHRBN_INCL="-I$withval"],
+  [CVMHRBN_INCL="/usr/include/cvmhrbn"])
+AC_ARG_WITH([cvmhrbn-lib-path],
+  [AS_HELP_STRING([--with-cvmhrbn-lib-path], [location of the SCEC CVMHRBN libraries])],
+  [CVMHRBN_LIB="-L$withval -lcvmhrbn"],
+  [CVMHRBN_LIB="-lcvmhrbn"])
+AC_ARG_WITH([cvmhrbn-model-path],
+  [AS_HELP_STRING([--with-cvmhrbn-model-path], [location of the CVMHRBN  model files])],
+  [CVMHRBN_MODEL="$withval"],
+  [CVMHRBN_MODEL="/usr/cvmhrbn/src"])
+fi
+
+# Get SCEC CVMHSTBN library and include locations
+if test "x$enable_model_cvmhstbn" = xyes; then
+AC_ARG_WITH([cvmhstbn-include-path],
+  [AS_HELP_STRING([--with-cvmhstbn-include-path],
+    [location of the SCEC CVMHSTBN headers])],
+  [CVMHSTBN_INCL="-I$withval"],
+  [CVMHSTBN_INCL="/usr/include/cvmhstbn"])
+AC_ARG_WITH([cvmhstbn-lib-path],
+  [AS_HELP_STRING([--with-cvmhstbn-lib-path], [location of the SCEC CVMHSTBN libraries])],
+  [CVMHSTBN_LIB="-L$withval -lcvmhstbn"],
+  [CVMHSTBN_LIB="-lcvmhstbn"])
+AC_ARG_WITH([cvmhstbn-model-path],
+  [AS_HELP_STRING([--with-cvmhstbn-model-path], [location of the CVMHSTBN  model files])],
+  [CVMHSTBN_MODEL="$withval"],
+  [CVMHSTBN_MODEL="/usr/cvmhstbn/src"])
+fi
+
+# Get SCEC CVMHSBBN library and include locations
+if test "x$enable_model_cvmhsbbn" = xyes; then
+AC_ARG_WITH([cvmhsbbn-include-path],
+  [AS_HELP_STRING([--with-cvmhsbbn-include-path],
+    [location of the SCEC CVMHSBBN headers])],
+  [CVMHSBBN_INCL="-I$withval"],
+  [CVMHSBBN_INCL="/usr/include/cvmhsbbn"])
+AC_ARG_WITH([cvmhsbbn-lib-path],
+  [AS_HELP_STRING([--with-cvmhsbbn-lib-path], [location of the SCEC CVMHSBBN libraries])],
+  [CVMHSBBN_LIB="-L$withval -lcvmhsbbn"],
+  [CVMHSBBN_LIB="-lcvmhsbbn"])
+AC_ARG_WITH([cvmhsbbn-model-path],
+  [AS_HELP_STRING([--with-cvmhsbbn-model-path], [location of the CVMHSBBN  model files])],
+  [CVMHSBBN_MODEL="$withval"],
+  [CVMHSBBN_MODEL="/usr/cvmhsbbn/src"])
+fi
+
+# Get SCEC CVMHSBCBN library and include locations
+if test "x$enable_model_cvmhsbcbn" = xyes; then
+AC_ARG_WITH([cvmhsbcbn-include-path],
+  [AS_HELP_STRING([--with-cvmhsbcbn-include-path],
+    [location of the SCEC CVMHSBCBN headers])],
+  [CVMHSBCBN_INCL="-I$withval"],
+  [CVMHSBCBN_INCL="/usr/include/cvmhsbcbn"])
+AC_ARG_WITH([cvmhsbcbn-lib-path],
+  [AS_HELP_STRING([--with-cvmhsbcbn-lib-path], [location of the SCEC CVMHSBCBN libraries])],
+  [CVMHSBCBN_LIB="-L$withval -lcvmhsbcbn"],
+  [CVMHSBCBN_LIB="-lcvmhsbcbn"])
+AC_ARG_WITH([cvmhsbcbn-model-path],
+  [AS_HELP_STRING([--with-cvmhsbcbn-model-path], [location of the CVMHSBCBN  model files])],
+  [CVMHSBCBN_MODEL="$withval"],
+  [CVMHSBCBN_MODEL="/usr/cvmhsbcbn/src"])
+fi
+
+# Get SCEC CVMHSMBN library and include locations
+if test "x$enable_model_cvmhsmbn" = xyes; then
+AC_ARG_WITH([cvmhsmbn-include-path],
+  [AS_HELP_STRING([--with-cvmhsmbn-include-path],
+    [location of the SCEC CVMHSMBN headers])],
+  [CVMHSMBN_INCL="-I$withval"],
+  [CVMHSMBN_INCL="/usr/include/cvmhsmbn"])
+AC_ARG_WITH([cvmhsmbn-lib-path],
+  [AS_HELP_STRING([--with-cvmhsmbn-lib-path], [location of the SCEC CVMHSMBN libraries])],
+  [CVMHSMBN_LIB="-L$withval -lcvmhsmbn"],
+  [CVMHSMBN_LIB="-lcvmhsmbn"])
+AC_ARG_WITH([cvmhsmbn-model-path],
+  [AS_HELP_STRING([--with-cvmhsmbn-model-path], [location of the CVMHSMBN  model files])],
+  [CVMHSMBN_MODEL="$withval"],
+  [CVMHSMBN_MODEL="/usr/cvmhsmbn/src"])
 fi
 
 # Get SCEC CS173 library and include locations
@@ -814,6 +951,102 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHVBN, [test x"$enable_model_cvmhvbn" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CVMHIBBN installation
+if test "x$enable_model_cvmhibbn" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CVMHIBBN_INCL $CFLAGS"
+   LDFLAGS="$CVMHIBBN_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CVMHIBBN"
+   AC_CHECK_HEADER(cvmhibbn.h,[],[AC_MSG_ERROR(["SCEC CVMHIBBN header not found; use --with-cvmhibbn-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHIBBN, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHIBBN, [test x"$enable_model_cvmhibbn" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CVMHRBN installation
+if test "x$enable_model_cvmhrbn" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CVMHRBN_INCL $CFLAGS"
+   LDFLAGS="$CVMHRBN_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CVMHRBN"
+   AC_CHECK_HEADER(cvmhrbn.h,[],[AC_MSG_ERROR(["SCEC CVMHRBN header not found; use --with-cvmhibbn-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHRBN, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHRBN, [test x"$enable_model_cvmhrbn" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CVMHSTBN installation
+if test "x$enable_model_cvmhstbn" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CVMHSTBN_INCL $CFLAGS"
+   LDFLAGS="$CVMHSTBN_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CVMHSTBN"
+   AC_CHECK_HEADER(cvmhstbn.h,[],[AC_MSG_ERROR(["SCEC CVMHSTBN header not found; use --with-cvmhibbn-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSTBN, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSTBN, [test x"$enable_model_cvmhstbn" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CVMHSBBN installation
+if test "x$enable_model_cvmhsbbn" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CVMHSBBN_INCL $CFLAGS"
+   LDFLAGS="$CVMHSBBN_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CVMHSBBN"
+   AC_CHECK_HEADER(cvmhsbbn.h,[],[AC_MSG_ERROR(["SCEC CVMHSBBN header not found; use --with-cvmhibbn-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSBBN, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSBBN, [test x"$enable_model_cvmhsbbn" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CVMHSBCBN installation
+if test "x$enable_model_cvmhsbcbn" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CVMHSBCBN_INCL $CFLAGS"
+   LDFLAGS="$CVMHSBCBN_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CVMHSBCBN"
+   AC_CHECK_HEADER(cvmhsbcbn.h,[],[AC_MSG_ERROR(["SCEC CVMHSBCBN header not found; use --with-cvmhibbn-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSBCBN, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSBCBN, [test x"$enable_model_cvmhsbcbn" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CVMHSMBN installation
+if test "x$enable_model_cvmhsmbn" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CVMHSMBN_INCL $CFLAGS"
+   LDFLAGS="$CVMHSMBN_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CVMHSMBN"
+   AC_CHECK_HEADER(cvmhsmbn.h,[],[AC_MSG_ERROR(["SCEC CVMHSMBN header not found; use --with-cvmhibbn-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSMBN, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSMBN, [test x"$enable_model_cvmhsmbn" = xyes])
 fi
 
 

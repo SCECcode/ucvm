@@ -73,9 +73,17 @@
 #define UCVM_MODEL_CVLSU "cvlsu"
 #define UCVM_MODEL_ALBACORE "albacore"
 #define UCVM_MODEL_CCA "cca"
+
 #define UCVM_MODEL_CVMHLABN "cvmhlabn"
 #define UCVM_MODEL_CVMHSGBN "cvmhsgbn"
 #define UCVM_MODEL_CVMHVBN "cvmhvbn"
+#define UCVM_MODEL_CVMHSMBN "cvmhsmbn"
+#define UCVM_MODEL_CVMHSBCBN "cvmhsbcbn"
+#define UCVM_MODEL_CVMHSBBN "cvmhsbbn"
+#define UCVM_MODEL_CVMHSTBN "cvmhstbn"
+#define UCVM_MODEL_CVMHRBN "cvmhrbn"
+#define UCVM_MODEL_CVMHIBBN "cvmhibbn"
+
 #define UCVM_MODEL_WFCVM "wfcvm"
 #define UCVM_MODEL_CS173 "cs173"
 #define UCVM_MODEL_CS173H "cs173h"
