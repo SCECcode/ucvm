@@ -52,7 +52,7 @@
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_12/model/cvmhrbn.tar.gz",
                         "Flags": "--enable-model-cvmhrbn --with-cvmhrbn-lib-path=lib --with-cvmhrbn-include-path=include --with-cvmhrbn-model-path=src",
                         "Ask": "yes",
-                        "md5sum": "06beb525dba3f7bb30d8d4f642c0ea97",
+                        "md5sum": "a500c862607801304ebf2cc407e8bbe8",
                         "Order": 17
                 },
                 "CVMHIBBN": {
