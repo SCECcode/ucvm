@@ -75,7 +75,6 @@
                         "Flags": "--enable-model-cvmhvbn --with-cvmhvbn-lib-path=lib --with-cvmhvbn-include-path=include --with-cvmhvbn-model-path=src",
                         "Ask": "yes",
                         "md5sum": "d1e06b09530a37376d869a08c56d5760",
-",
                         "Order": 15
                 },
                 "CVMHSGBN": {
