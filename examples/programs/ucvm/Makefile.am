@@ -10,6 +10,48 @@ bin_PROGRAMS += run_ucvm_query_cvmh_c.sh
 run_ucvm_query_cvmh_c_sh_SOURCES = run_ucvm_query_cvmh_c.sh
 endif
 
+if UCVM_AM_ENABLE_CVMHIBBN
+bin_PROGRAMS += run_ucvm_query_cvmhibbn.sh
+run_ucvm_query_cvmhibbn_sh_SOURCES = run_ucvm_query_cvmhibbn.sh
+bin_PROGRAMS += run_ucvm_query_cvmhibbn_c.sh
+run_ucvm_query_cvmhibbn_c_sh_SOURCES = run_ucvm_query_cvmhibbn_c.sh
+endif
+
+if UCVM_AM_ENABLE_CVMHRBN
+bin_PROGRAMS += run_ucvm_query_cvmhrbn.sh
+run_ucvm_query_cvmhrbn_sh_SOURCES = run_ucvm_query_cvmhrbn.sh
+bin_PROGRAMS += run_ucvm_query_cvmhrbn_c.sh
+run_ucvm_query_cvmhrbn_c_sh_SOURCES = run_ucvm_query_cvmhrbn_c.sh
+endif
+
+if UCVM_AM_ENABLE_CVMHSBBN
+bin_PROGRAMS += run_ucvm_query_cvmhsbbn.sh
+run_ucvm_query_cvmhsbbn_sh_SOURCES = run_ucvm_query_cvmhsbbn.sh
+bin_PROGRAMS += run_ucvm_query_cvmhsbbn_c.sh
+run_ucvm_query_cvmhsbbn_c_sh_SOURCES = run_ucvm_query_cvmhsbbn_c.sh
+endif
+
+if UCVM_AM_ENABLE_CVMHSBCBN
+bin_PROGRAMS += run_ucvm_query_cvmhsbcbn.sh
+run_ucvm_query_cvmhsbcbn_sh_SOURCES = run_ucvm_query_cvmhsbcbn.sh
+bin_PROGRAMS += run_ucvm_query_cvmhsbcbn_c.sh
+run_ucvm_query_cvmhsbcbn_c_sh_SOURCES = run_ucvm_query_cvmhsbcbn_c.sh
+endif
+
+if UCVM_AM_ENABLE_CVMHSMBN
+bin_PROGRAMS += run_ucvm_query_cvmhsmbn.sh
+run_ucvm_query_cvmhsmbn_sh_SOURCES = run_ucvm_query_cvmhsmbn.sh
+bin_PROGRAMS += run_ucvm_query_cvmhsmbn_c.sh
+run_ucvm_query_cvmhsmbn_c_sh_SOURCES = run_ucvm_query_cvmhsmbn_c.sh
+endif
+
+if UCVM_AM_ENABLE_CVMHSTBN
+bin_PROGRAMS += run_ucvm_query_cvmhstbn.sh
+run_ucvm_query_cvmhstbn_sh_SOURCES = run_ucvm_query_cvmhstbn.sh
+bin_PROGRAMS += run_ucvm_query_cvmhstbn_c.sh
+run_ucvm_query_cvmhstbn_c_sh_SOURCES = run_ucvm_query_cvmhstbn_c.sh
+endif
+
 if UCVM_AM_ENABLE_CVMHVBN
 bin_PROGRAMS += run_ucvm_query_cvmhvbn.sh
 run_ucvm_query_cvmhvbn_sh_SOURCES = run_ucvm_query_cvmhvbn.sh
