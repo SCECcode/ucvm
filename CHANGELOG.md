@@ -1,3 +1,9 @@
+## 2022-06-15  Mei-Hui Su <mei@usc.edu>
+* Added CVMHLABN/CVMHSGBN/CVMHVBN/CVMHIBBN/CVMHRBN and
+        CVMHSBBN/CVMHSBCBN/CVMHSMBN/CVMHSTBN models
+* Added continuous integrating testing using github action/runner
+* TODO: wills map, https://scec.usc.edu/scecpedia/Wills_Map
+
 ## 2021-10-01  Mei-Hui Su <mei@usc.edu>
 * Rework largefiles get/check/stage to use setup.list
 
