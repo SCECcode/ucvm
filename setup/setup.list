@@ -290,8 +290,8 @@
         "etrees": {
                 "UCVM": {
                         "Path": "ucvm.e",
-                        "Size": "1.1G",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/etree/ucvm.e",
+                        "Size": "1.2G",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_06/etree/ucvm.e",
                         "Required": "yes",
                         "md5sum": "b608cd925e0d5ae676394a38da50cb14",
                         "Ask": "no"
