@@ -804,6 +804,38 @@ int ucvm_model_version(int m, char *ver, int len)
   return(UCVM_CODE_SUCCESS);
 }
 
+/* Get config for a model */
+int ucvm_model_config(int m, char **config, int  *sz)
+{
+  if (ucvm_init_flag == 0) {
+    fprintf(stderr, "UCVM not initialized\n");
+    return(UCVM_CODE_ERROR);
+  }
+
+  if (m >= ucvm_num_models) {
+    fprintf(stderr, "Invalid model ID %d\n", m);
+    return(UCVM_CODE_ERROR);
+  }
+
+  switch (m) {
+  case UCVM_SOURCE_NONE:
+fprintf(stderr,"HEOO\n");
+    ucvm_strcpy(*config, "", UCVM_MAX_VERSION_LEN);
+    break;
+  default:
+fprintf(stderr,"HERE HHH..\n");
+/*
+    if (ucvm_model_list[m].getconfig(m,config,sz) != UCVM_CODE_SUCCESS) {
+      return(UCVM_CODE_ERROR);
+    }
+*/
+    break;
+  }
+
+  return(UCVM_CODE_SUCCESS);
+}
+
+
 
 /* Set parameters */
 int ucvm_setparam(ucvm_param_t param, ...)
@@ -1244,7 +1276,32 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
 	if (strcmp(res[j].label, tmplabel) == 0) {
 	  ucvm_strcpy(res[j].version, ver, UCVM_MAX_VERSION_LEN);
 	  res[j].active = 1;
-	}
+
+fprintf(stderr,"0HERE..\n");
+          /* Populate config info for active models */
+          int sz;
+          char *config;
+          if (ucvm_model_config(i, &config, &sz) == UCVM_CODE_SUCCESS) {
+fprintf(stderr,"HERE..\n");
+              int len= strlen(config)+1;
+              char *buf= calloc(len, sizeof(char));
+              char *token;
+
+              strcpy(buf,config);
+              token = strtok(buf,",");
+
+              while ((token != NULL) && (i < sz)) {
+                 char key[UCVM_CONFIG_MAX_STR];
+                 char value[UCVM_CONFIG_MAX_STR];
+                 sscanf(token,"%s=%s",key,value); 
+                 ucvm_strcpy(res[j].flags[res[j].numflags].key, key,
+                      UCVM_MAX_FLAG_LEN);
+                 ucvm_strcpy(res[j].flags[(res[j].numflags)++].value, value,
+                      UCVM_MAX_FLAG_LEN);
+                 token = strtok(NULL,",");
+              }
+          }
+        } 
       }
     }
 
