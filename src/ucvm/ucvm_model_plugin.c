@@ -585,7 +585,7 @@ int ucvm_plugin_model_config(int id, char **config, int *sz)
     return UCVM_CODE_ERROR;
   }
   
-  if ((*pptr->model_config)(config,sz) != UCVM_CODE_ERROR) {
+  if ((*pptr->model_config)(config,sz) != UCVM_CODE_SUCCESS) {
     return UCVM_CODE_ERROR;
   }
   

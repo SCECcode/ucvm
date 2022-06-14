@@ -44,6 +44,7 @@
 
 /* Constants */
 #define UCVM_MODELLIST_DELIM ","
+#define UCVM_CONFIG_DELIM ","
 #define UCVM_GTL_DELIM ":"
 
 
@@ -819,16 +820,16 @@ int ucvm_model_config(int m, char **config, int  *sz)
 
   switch (m) {
   case UCVM_SOURCE_NONE:
-fprintf(stderr,"HEOO\n");
-    ucvm_strcpy(*config, "", UCVM_MAX_VERSION_LEN);
+fprintf(stderr,"???\n");
     break;
   default:
-fprintf(stderr,"HERE HHH..\n");
-/*
-    if (ucvm_model_list[m].getconfig(m,config,sz) != UCVM_CODE_SUCCESS) {
+    if(ucvm_model_list[m].getconfig == NULL) {
       return(UCVM_CODE_ERROR);
+      } else {
+        if (ucvm_model_list[m].getconfig(m,config,sz) != UCVM_CODE_SUCCESS) {
+          return(UCVM_CODE_ERROR);
+        }
     }
-*/
     break;
   }
 
@@ -1277,28 +1278,33 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
 	  ucvm_strcpy(res[j].version, ver, UCVM_MAX_VERSION_LEN);
 	  res[j].active = 1;
 
-fprintf(stderr,"0HERE..\n");
           /* Populate config info for active models */
           int sz;
-          char *config;
+          char *config=NULL;
+          res[j].numflags = 0;
           if (ucvm_model_config(i, &config, &sz) == UCVM_CODE_SUCCESS) {
-fprintf(stderr,"HERE..\n");
-              int len= strlen(config)+1;
-              char *buf= calloc(len, sizeof(char));
-              char *token;
 
-              strcpy(buf,config);
-              token = strtok(buf,",");
+              if(config != NULL) {
+                char *token=NULL;
+                char *buf= strdup(config);
+                token = strtok(buf, UCVM_CONFIG_DELIM);
+                while (token != NULL) {
+                   char key[UCVM_CONFIG_MAX_STR];
+                   char value[UCVM_CONFIG_MAX_STR];
 
-              while ((token != NULL) && (i < sz)) {
-                 char key[UCVM_CONFIG_MAX_STR];
-                 char value[UCVM_CONFIG_MAX_STR];
-                 sscanf(token,"%s=%s",key,value); 
-                 ucvm_strcpy(res[j].flags[res[j].numflags].key, key,
-                      UCVM_MAX_FLAG_LEN);
-                 ucvm_strcpy(res[j].flags[(res[j].numflags)++].value, value,
-                      UCVM_MAX_FLAG_LEN);
-                 token = strtok(NULL,",");
+                   sscanf(token,"%s = %s",key,value); 
+
+                   if (strcmp(key, "config") == 0) {
+	             ucvm_strcpy(res[j].config, value, UCVM_MAX_PATH_LEN);
+                     } else {
+                       ucvm_strcpy(res[j].flags[res[j].numflags].key, key,
+                          UCVM_MAX_FLAG_KEY_LEN);
+                       ucvm_strcpy(res[j].flags[(res[j].numflags)++].value, value,
+                          UCVM_MAX_FLAG_VALUE_LEN);
+                   }
+                   token = strtok(NULL,",");
+                }
+                free(buf);
               }
           }
         } 
@@ -1319,15 +1325,17 @@ fprintf(stderr,"HERE..\n");
       }
       snprintf(key, UCVM_CONFIG_MAX_STR, "%s_param", res[j].label);
       cfgentry = ucvm_find_name(ucvm_cfg, key);
-      res[j].numflags = 0;
+      if(cfgentry != NULL) {
+        res[j].numflags = 0;
+      }
       while ((cfgentry != NULL) && (res[j].numflags < UCVM_MAX_FLAGS)) {
 	list_parse_s(cfgentry->value, UCVM_CONFIG_MAX_STR, 
 		     flag, 2, UCVM_CONFIG_MAX_STR);
 	cfgentry = ucvm_find_name(cfgentry->next, key);
 	ucvm_strcpy(res[j].flags[res[j].numflags].key, flag[0], 
-		    UCVM_MAX_FLAG_LEN);
+		    UCVM_MAX_FLAG_KEY_LEN);
 	ucvm_strcpy(res[j].flags[(res[j].numflags)++].value, flag[1], 
-		    UCVM_MAX_FLAG_LEN);
+		    UCVM_MAX_FLAG_VALUE_LEN);
       }
     }
   }

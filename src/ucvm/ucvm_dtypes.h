@@ -32,8 +32,10 @@
 
 
 /* Maximum model flag key length */
-#define UCVM_MAX_FLAG_LEN 64
+#define UCVM_MAX_FLAG_KEY_LEN 64
 
+/* Maximum model flag value length */
+#define UCVM_MAX_FLAG_VALUE_LEN 256
 
 /* Maximum model list length */
 #define UCVM_MAX_MODELLIST_LEN 1024
@@ -281,8 +283,8 @@ typedef struct ucvm_ifunc_t
 /* Resource flag description */
 typedef struct ucvm_flag_t 
 {
-  char key[UCVM_MAX_FLAG_LEN];
-  char value[UCVM_MAX_FLAG_LEN];
+  char key[UCVM_MAX_FLAG_KEY_LEN];
+  char value[UCVM_MAX_FLAG_VALUE_LEN];
 } ucvm_flag_t;
 
 
