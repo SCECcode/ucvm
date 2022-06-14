@@ -424,6 +424,7 @@ int ucvm_cencal_get_model(ucvm_model_t *m)
   m->init = ucvm_cencal_model_init;
   m->finalize = ucvm_cencal_model_finalize;
   m->getversion = ucvm_cencal_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_cencal_model_label;
   m->setparam = ucvm_cencal_model_setparam;
   m->query = ucvm_cencal_model_query;

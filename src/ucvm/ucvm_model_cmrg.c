@@ -191,6 +191,7 @@ int ucvm_cmrg_get_model(ucvm_model_t *m)
   m->init = ucvm_cmrg_model_init;
   m->finalize = ucvm_cmrg_model_finalize;
   m->getversion = ucvm_cmrg_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_cmrg_model_label;
   m->setparam = ucvm_cmrg_model_setparam;
   m->query = ucvm_cmrg_model_query;

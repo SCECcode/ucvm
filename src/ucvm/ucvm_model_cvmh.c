@@ -80,21 +80,6 @@ int ucvm_cvmh_model_version(int id, char *ver, int len)
   return(UCVM_CODE_SUCCESS);
 }
 
-/* placeholder Config CVM-H */
-int ucvm_cvmh_model_config(int id, char **config, int *sz)
-{
-
-  if (id != ucvm_cvmh_id) {
-    fprintf(stderr, "Invalid model id\n");
-    return(UCVM_CODE_ERROR);
-  }
-
-  sz=0;
-  return(UCVM_CODE_SUCCESS);
-}
-
-
-
 /* Label CVM-H */
 int ucvm_cvmh_model_label(int id, char *lab, int len)
 {
@@ -284,7 +269,7 @@ int ucvm_cvmh_get_model(ucvm_model_t *m)
   m->init = ucvm_cvmh_model_init;
   m->finalize = ucvm_cvmh_model_finalize;
   m->getversion = ucvm_cvmh_model_version;
-  m->getconfig = ucvm_cvmh_model_config;
+  m->getconfig = NULL;
   m->getlabel = ucvm_cvmh_model_label;
   m->setparam = ucvm_cvmh_model_setparam;
   m->query = ucvm_cvmh_model_query;

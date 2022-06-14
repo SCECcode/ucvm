@@ -188,6 +188,7 @@ int ucvm_tape_get_model(ucvm_model_t *m)
   m->init = ucvm_tape_model_init;
   m->finalize = ucvm_tape_model_finalize;
   m->getversion = ucvm_tape_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_tape_model_label;
   m->setparam = ucvm_tape_model_setparam;
   m->query = ucvm_tape_model_query;
