@@ -490,6 +490,7 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cs173_query;
                 pptr->model_finalize = &cs173_finalize;
                 pptr->model_version = &cs173_version;
+                pptr->model_config = NULL;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -502,6 +503,7 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cs173h_query;
                 pptr->model_finalize = &cs173h_finalize;
                 pptr->model_version = &cs173h_version;
+                pptr->model_config = NULL;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
