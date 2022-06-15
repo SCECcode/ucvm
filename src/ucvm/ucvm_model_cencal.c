@@ -23,13 +23,13 @@ void *query = NULL;
 void *errHandler = NULL;
 
 /* Default cache size */
-#define CC_CACHE_SIZE 64
+#define CENCAL_CACHE_SIZE 64
 
 /* Query by depth squash limit */
-#define CC_SQUASH_LIMIT -200000.0
+#define CENCAL_SQUASH_LIMIT -200000.0
 
 /* CenCal number of values */
-#define CC_NUM_VALS 9
+#define CENCAL_NUM_VALS 9
 
 /* CenCal return value buffer */
 double *cencal_pvals = NULL;
@@ -91,11 +91,11 @@ int ucvm_cencal_model_init(int id, ucvm_modelconf_t *conf)
   }
 
   /* Set cache size */
-  if (cencalvm_cacheSize(query, CC_CACHE_SIZE) != 0) {
+  if (cencalvm_cacheSize(query, CENCAL_CACHE_SIZE) != 0) {
     fprintf(stderr, "%s\n", cencalvm_error_message(errHandler));
     return(UCVM_CODE_ERROR);
   }
-  if (cencalvm_cacheSizeExt(query, CC_CACHE_SIZE) != 0) {
+  if (cencalvm_cacheSizeExt(query, CENCAL_CACHE_SIZE) != 0) {
     fprintf(stderr, "%s\n", cencalvm_error_message(errHandler));
     return(UCVM_CODE_ERROR);
   }
@@ -110,7 +110,7 @@ int ucvm_cencal_model_init(int id, ucvm_modelconf_t *conf)
   cencalvm_queryType(query, 0);
 
   /* Create array to hold values returned in queries */
-  cencal_pvals = (double*) malloc(sizeof(double)*CC_NUM_VALS);
+  cencal_pvals = (double*) malloc(sizeof(double)*CENCAL_NUM_VALS);
   if (cencal_pvals == NULL) {
     return(UCVM_CODE_ERROR);
   }
@@ -210,7 +210,7 @@ int ucvm_cencal_getsurface(ucvm_point_t *pnt, double *surf,
 
   *surf = CENCAL_NO_DATA;
 
-  for (i = 0; i < CC_NUM_VALS; i++) {
+  for (i = 0; i < CENCAL_NUM_VALS; i++) {
     cencal_pvals[i] = 0.0;
   }
   
@@ -224,7 +224,7 @@ int ucvm_cencal_getsurface(ucvm_point_t *pnt, double *surf,
   lat = pnt->coord[1];
   elev = CENCAL_MODEL_BOTTOM;
   
-  if (cencalvm_query(query, &cencal_pvals, CC_NUM_VALS, 
+  if (cencalvm_query(query, &cencal_pvals, CENCAL_NUM_VALS, 
 		     lon, lat, elev) != 0) {
     cencalvm_error_resetStatus(errHandler);
   } else {
@@ -234,7 +234,7 @@ int ucvm_cencal_getsurface(ucvm_point_t *pnt, double *surf,
 
     /* Find surface estimate by stepping down in octant increments */
     while (elev >= CENCAL_MODEL_BOTTOM) {
-      if (cencalvm_query(query, &cencal_pvals, CC_NUM_VALS, 
+      if (cencalvm_query(query, &cencal_pvals, CENCAL_NUM_VALS, 
 			 lon, lat, elev) != 0) {
 	cencalvm_error_resetStatus(errHandler);
       } else {
@@ -246,7 +246,7 @@ int ucvm_cencal_getsurface(ucvm_point_t *pnt, double *surf,
 	  resid = endelev - startelev;
 	  while (resid > accuracy) {
 	    elev = (startelev + endelev) / 2.0;
-	    if (cencalvm_query(query, &cencal_pvals, CC_NUM_VALS, 
+	    if (cencalvm_query(query, &cencal_pvals, CENCAL_NUM_VALS, 
 			       lon, lat, elev) != 0) {
 	      cencalvm_error_resetStatus(errHandler);
 	      endelev = elev;
@@ -308,12 +308,12 @@ int ucvm_cencal_model_query(int id, ucvm_ctype_t cmode,
   case UCVM_COORD_GEO_DEPTH:
     /* Turn off squashing */
     ucvm_cencal_smode = 0;
-    ucvm_cencal_slimit = -CC_SQUASH_LIMIT;
+    ucvm_cencal_slimit = -CENCAL_SQUASH_LIMIT;
     break;
   case UCVM_COORD_GEO_ELEV:
     /* Turn off squashing */
     ucvm_cencal_smode = 0;
-    ucvm_cencal_slimit = -CC_SQUASH_LIMIT;
+    ucvm_cencal_slimit = -CENCAL_SQUASH_LIMIT;
     break;
   default:
     fprintf(stderr, "Unsupported coord type\n");
@@ -379,7 +379,7 @@ int ucvm_cencal_model_query(int id, ucvm_ctype_t cmode,
       }
 
       /* Query CenCal for the point */
-      if (cencalvm_query(query, &cencal_pvals, CC_NUM_VALS, 
+      if (cencalvm_query(query, &cencal_pvals, CENCAL_NUM_VALS, 
 			 lon, lat, elev) != 0) {
 	datagap = 1;
 	cencalvm_error_resetStatus(errHandler);
