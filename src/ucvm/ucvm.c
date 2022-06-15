@@ -820,7 +820,7 @@ int ucvm_model_config(int m, char **config, int  *sz)
 
   switch (m) {
   case UCVM_SOURCE_NONE:
-fprintf(stderr,"???\n");
+fprintf(stderr,"ucvm_model_config, ???\n");
     break;
   default:
     if(ucvm_model_list[m].getconfig == NULL) {
