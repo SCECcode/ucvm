@@ -107,7 +107,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_07/model/wfcvm.tar.gz",
                         "Flags": "--enable-model-wfcvm --with-wfcvm-lib-path=lib --with-wfcvm-include-path=include --with-wfcvm-model-path=src",
                         "Ask": "yes",
-                        "md5sum": "32d998615208459eb1c5199ca83c6a77",
+                        "md5sum": "72320742325cf77c94b850c729841f46",
                         "Order": 12
                 },
 		"IMPERIAL": {
