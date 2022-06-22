@@ -873,6 +873,30 @@ int suite_lib(const char *xmldir)
 #ifdef _UCVM_ENABLE_CVMHLABN
   suite.num_tests++;
 #endif
+#ifdef _UCVM_ENABLE_CVMHSGBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHVBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHIBBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHRBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHSBBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHSBCBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHSMBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHSTBN
+  suite.num_tests++;
+#endif
 #ifdef _UCVM_ENABLE_CS173
   suite.num_tests++;
 #endif

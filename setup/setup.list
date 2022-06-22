@@ -309,9 +309,9 @@
                 "test-grid-lib-1d": {
                         "Path": "test-grid-lib-1d.ref",
                         "Size": "584M",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v21_10/ref/test-grid-lib-1d.ref",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_07/ref/test-grid-lib-1d.ref",
                         "Required": "yes",
-                        "md5sum": "5c9183008fed49989c86e7ffdc115d09",
+                        "md5sum": "fddf89be672f1fae3917a49b6820b2d1",
                         "Ask": "no"
                 }
 	}
