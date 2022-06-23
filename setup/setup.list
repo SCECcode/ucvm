@@ -221,7 +221,7 @@
 			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
-                        "md5sum": "5cce055cab718cdd62cc7ea6d29cdc46",
+                        "md5sum": "52bfae5615317e1836a619ef72e0a0ca",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
