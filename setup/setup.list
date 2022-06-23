@@ -217,11 +217,11 @@
                         "Abbreviation": "cca",
                         "Size": "9.2G",
 			"Path": "cca",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_07/model/CCA.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_07/model/cca.tar.gz",
 			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
 			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
-                        "md5sum": "d3aaa736732baa8889dec761240c0204",
+                        "md5sum": "ba4a26f76a08384f43ef52fcf2fbefe6",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
