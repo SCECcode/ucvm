@@ -27,6 +27,8 @@ jobs:
       shell: bash
 
   ucvm-build-cvms-cvmh:
+    if: ${{ always() }}
+    needs: [ucvm-build-cvmh]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -50,6 +52,8 @@ jobs:
       shell: bash
 
   ucvm-build-albacore-lsu-wf:
+    if: ${{ always() }}
+    needs: [ucvm-build-cvms-cvmh]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -73,6 +77,8 @@ jobs:
       shell: bash
 
   ucvm-build-cencal-cvms:
+    if: ${{ always() }}
+    needs: [ucvm-build-albacore-lsu-wf]
     runs-on: ubuntu-latest
     strategy:
       matrix:
