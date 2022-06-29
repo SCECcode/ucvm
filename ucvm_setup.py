@@ -955,7 +955,7 @@ if platform.system() == "Darwin" or platform.system() == "Linux" or dynamic_flag
     print("This will set the required UCVM environment variables.")
     print("Then log out, and log in, move to tests directory, and run the tests\n")
     print("   $ cd " + ucvmpath.rstrip("/") + "/tests ")
-    print("   $ ./run-tests \n")
+    print("   $ ./run-testing \n")
     print("This will run the UCVM unit and acceptance tests. If all tests pass, ")
     print("UCVM is correctly installed and ready to use on your computer.")
     print("To try out ucvm, once the tests pass, run an example query.\n")
