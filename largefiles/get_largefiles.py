@@ -189,6 +189,7 @@ for m in target_large_lib_list:
       download_urlfile(scec_url,outfilename)
     except:
       print("Error downloading (%s), or writing file (%s)" % (scec_url,outfilename))
+      exit(1)
       break
     print("Finished downloading: ",_lib)
   else:
@@ -214,6 +215,7 @@ for m in target_large_model_list:
       download_urlfile(scec_url,outfilename)
     except:
       print("Error downloading (%s), or writing file (%s)" % (scec_url,outfilename))
+      exit(1)
       break
     print("Finished downloading: ",_model)
   else:
@@ -240,6 +242,7 @@ for m in target_large_etree_list:
       download_urlfile(scec_url,outfilename)
     except:
       print("Error downloading (%s), or writing file (%s)" % (scec_url,outfilename))
+      exit(1)
       break
     print("Finished downloading: ",_etree)
   else:
@@ -265,6 +268,7 @@ for m in target_large_ref_list:
       download_urlfile(scec_url,outfilename)
     except:
       print("Error downloading (%s), or writing file (%s)" % (scec_url,outfilename))
+      exit(1)
       break
     print("Finished downloading: ",_ref)
   else:
