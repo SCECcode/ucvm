@@ -27,7 +27,7 @@ jobs:
       shell: bash
 
   ucvm-build-cvms-cvmh:
-    if: ${{ always() }}
+    if: ${{ success() }}
     needs: [ucvm-build-cvmh]
     runs-on: ubuntu-latest
     strategy:
@@ -52,7 +52,7 @@ jobs:
       shell: bash
 
   ucvm-build-albacore-cvlsu-ivlsu-wfcvm:
-    if: ${{ always() }}
+    if: ${{ success() }}
     needs: [ucvm-build-cvms-cvmh]
     runs-on: ubuntu-latest
     strategy:
@@ -77,7 +77,7 @@ jobs:
       shell: bash
 
   ucvm-build-cencal-cvms:
-    if: ${{ always() }}
+    if: ${{ success() }}
     needs: [ucvm-build-albacore-cvlsu-ivlsu-wfcvm]
     runs-on: ubuntu-latest
     strategy:
