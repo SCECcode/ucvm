@@ -119,7 +119,7 @@
 			"Flags": "--enable-model-ivlsu --with-ivlsu-lib-path=lib --with-ivlsu-include-path=include",
 			"Libraries": ["proj-5"],
 			"Ask": "yes",
-                        "md5sum": "cfea8e2909608a22ef622b5b86b78163",
+                        "md5sum": "52c22006d8fcfb49358a1afe194f27ec",
 			"Order": 11		
 		},
 		"COACHELLA": {
@@ -130,7 +130,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_07/model/cvlsu.tar.gz",
 			"Flags": "--enable-model-cvlsu --with-cvlsu-lib-path=lib --with-cvlsu-include-path=include",
 			"Ask": "yes",
-                        "md5sum": "d89e3891d2d7f0ca89d6ce8f948ee6bd",
+                        "md5sum": "86c2842332292c87699fa9cb16455817",
 			"Order": 10		
 		},
 		"ALBACORE": {
