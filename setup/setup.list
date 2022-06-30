@@ -141,7 +141,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_07/model/albacore.tar.gz",
 			"Flags": "--enable-model-albacore --with-albacore-lib-path=lib --with-albacore-include-path=include",
 			"Ask": "yes",
-                        "md5sum": "09d7d88828d461019106193cfee41654",
+                        "md5sum": "ca87ef278c939df7b4069b60c7fa1999",
 			"Order": 9		
 		},
 		"CVM-H": {
