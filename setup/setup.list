@@ -130,7 +130,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_07/model/cvlsu.tar.gz",
 			"Flags": "--enable-model-cvlsu --with-cvlsu-lib-path=lib --with-cvlsu-include-path=include",
 			"Ask": "yes",
-                        "md5sum": "86c2842332292c87699fa9cb16455817",
+                        "md5sum": "c33dd1067518808e567cc3d8a90474e8",
 			"Order": 10		
 		},
 		"ALBACORE": {
