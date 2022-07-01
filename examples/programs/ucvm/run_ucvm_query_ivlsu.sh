@@ -18,7 +18,6 @@ ${BIN_DIR}/ucvm_query -m ${MODEL} -f ${CONF_DIR}/ucvm.conf < ${TEST_DIR}/test_la
 
 cat > $expect << EOF_EXPECTED_RESULT
 Using Geo Depth coordinates as default mode.
-LOOKING at >> /Users/mei/SCEC/TARGET_UCVM/ucvm_install/model/ivlsu/data/config
  -115.8000    32.9000      0.000     13.128    228.191      ivlsu   2754.400   1197.794   2165.403       none      0.000      0.000      0.000      crust   2754.400   1197.794   2165.403
  -115.8000    32.9000   3000.000     13.128    228.191      ivlsu   5153.300   3105.437   2558.892       none      0.000      0.000      0.000      crust   5153.300   3105.437   2558.892
  -115.8000    32.9000   6000.000     13.128    228.191      ivlsu   6178.600   3630.745   2756.117       none      0.000      0.000      0.000      crust   6178.600   3630.745   2756.117

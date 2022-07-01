@@ -19,7 +19,6 @@ ${BIN_DIR}/ucvm_query -c ge -m ${MODEL} -f ${CONF_DIR}/ucvm.conf < ${TEST_DIR}/t
 
 cat > $expect << EOF_EXPECTED_RESULT
 Using Geo Depth coordinates as z mode.
-LOOKING at >> /Users/mei/SCEC/TARGET_UCVM/ucvm_install/model/ivlsu/data/config
  -115.8000    32.9000      0.000     13.128    228.191      ivlsu   2754.400   1197.794   2165.403       none      0.000      0.000      0.000      crust   2754.400   1197.794   2165.403
  -115.8000    32.9000   3000.000     13.128    228.191      ivlsu   5153.300   3105.437   2558.892       none      0.000      0.000      0.000      crust   5153.300   3105.437   2558.892
  -115.8000    32.9000   6000.000     13.128    228.191      ivlsu   6178.600   3630.745   2756.117       none      0.000      0.000      0.000      crust   6178.600   3630.745   2756.117
@@ -30,7 +29,6 @@ LOOKING at >> /Users/mei/SCEC/TARGET_UCVM/ucvm_install/model/ivlsu/data/config
  -115.7000    33.2000   3000.000    -71.002    180.000      ivlsu   4609.900   2750.054   2477.536       none      0.000      0.000      0.000      crust   4609.900   2750.054   2477.536
  -115.7000    33.2000   6000.000    -71.002    180.000      ivlsu   5941.400   3522.052   2704.210       none      0.000      0.000      0.000      crust   5941.400   3522.052   2704.210
 Using Geo Elevation coordinates as z mode.
-LOOKING at >> /Users/mei/SCEC/TARGET_UCVM/ucvm_install/model/ivlsu/data/config
  -115.8000    32.9000     13.000     13.128    228.191      ivlsu   2754.400   1197.794   2165.403       none      0.000      0.000      0.000      crust   2754.400   1197.794   2165.403
  -115.8000    32.9000  -2987.000     13.128    228.191      ivlsu   5153.300   3105.437   2558.892       none      0.000      0.000      0.000      crust   5153.300   3105.437   2558.892
  -115.8000    32.9000  -5987.000     13.128    228.191      ivlsu   6178.600   3630.745   2756.117       none      0.000      0.000      0.000      crust   6178.600   3630.745   2756.117
