@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Maechling
+  given-names: Phillip J.
+  orcid: 0000-0002-9221-7068
+keywords: UCVM, research
+license: BSD-3-Clause
+repository-code: "https://github.com/SCECcode/ucvm.git"
+title: "The Unified Community Velocity Model (UCVM)"
+version: 22.7.0
+doi: 10.5281/zenodo.1234
+date-released: 2022-07-01
+contact:
+  - email: software@scec.org
+    name: "The SCEC Software project UCVM"
+references:
+  - authors:
+      - family-names: "Small"
+        given-names: "P."
+      - family-names: "Gill"
+        given-names: "D."
+      - family-names: "Maechling"
+        given-names: "P.J."
+      - family-names: "Taborda"
+        given-names: "R."
+      - family-names: "Callaghan"
+        given-names: "S."
+      - family-names: "Jordan"
+        given-names: "T.H."
+      - family-names: "Ely"
+        given-names: "G.P."
+      - family-names: "Olsen"
+        given-names: "K.B."
+      - family-names: "Goulet"
+        given-names: "C.A."
+    doi: 10.1785/0220170082
+    keywords: CVM, UCVM, velocity models, tomography, web, basins
+    scope: "Cite this paper if you want to reference the model"
+    title: "The SCEC Unified Community Velocity Model Software Framework"
+    journal: "Seismological Research Letters"
+    type: article
+    issue: 5
+    volume: 88
+    year: 2017 
