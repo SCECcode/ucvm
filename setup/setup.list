@@ -119,7 +119,7 @@
 			"Flags": "--enable-model-ivlsu --with-ivlsu-lib-path=lib --with-ivlsu-include-path=include",
 			"Libraries": ["proj-5"],
 			"Ask": "yes",
-                        "md5sum": "52c22006d8fcfb49358a1afe194f27ec",
+                        "md5sum": "8d553860bdd90d3444396b1da590276d",
 			"Order": 11		
 		},
 		"COACHELLA": {
