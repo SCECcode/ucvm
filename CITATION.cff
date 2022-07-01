@@ -35,7 +35,7 @@ references:
       - family-names: "Goulet"
         given-names: "C.A."
     doi: 10.1785/0220170082
-    keywords: CVM, UCVM, velocity models, tomography, web, basins
+    keywords: CVM, UCVM, velocity models, tomography
     scope: "Cite this paper if you want to reference the model"
     title: "The SCEC Unified Community Velocity Model Software Framework"
     journal: "Seismological Research Letters"
