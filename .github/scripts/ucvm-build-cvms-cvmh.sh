@@ -9,8 +9,6 @@ cd $UCVM_SRC_PATH/largefiles
 ./get_largefiles.py << EOF
 n
 n
-n
-n
 y
 n
 n
