@@ -1,8 +1,8 @@
-name: ucvm-ci
+name: ucvm-dev-ci
 
 on:
   push:
-    branches: [ main ]
+    branches: [ basin ]
 
 jobs:
   ucvm-build-cvmh:
@@ -15,19 +15,19 @@ jobs:
       run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
-    - name: checkout ucvm main
+    - name: checkout ucvm basin
       uses: actions/checkout@v2
       with: 
-        ref: main
+        ref: basin
     - name: build ucvm with cvmh
-      run: ./.github/scripts/ucvm-build-cvmh.sh 
+      run: ./.github/scripts/ucvm-build.sh "cvmh"
       shell: bash
     - name: test ucvm with cvmh
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
 
   ucvm-build-cvms-cvmh:
-    if: ${{ always() }}
+    if: ${{ success() }}
     needs: [ucvm-build-cvmh]
     runs-on: ubuntu-latest
     strategy:
@@ -38,21 +38,21 @@ jobs:
       run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
-    - name: checkout ucvm main
+    - name: checkout ucvm basin
       uses: actions/checkout@v2
       with: 
-        ref: main
+        ref: basin
     - name: checkout ucvm toPython3
       uses: actions/checkout@v2
     - name: build ucvm with cvms and cvmh
-      run: ./.github/scripts/ucvm-build-cvms-cvmh.sh
+      run: ./.github/scripts/ucvm-build.sh "cvms,cvmh"
       shell: bash
     - name: test ucvm with cvms and cvmh
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
 
-  ucvm-build-albacore-lsu-wf:
-    if: ${{ always() }}
+  ucvm-build-albacore-cvlsu-ivlsu-wfcvm:
+    if: ${{ success() }}
     needs: [ucvm-build-cvms-cvmh]
     runs-on: ubuntu-latest
     strategy:
@@ -64,21 +64,21 @@ jobs:
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
 
-    - name: checkout ucvm main
+    - name: checkout ucvm basin
       uses: actions/checkout@v2
       with: 
-        ref: main
+        ref: basin
 
     - name: build ucvm with albacore, cvlsu, ivlsu and wfcvm
-      run: ./.github/scripts/run-build-albacore-lsu-wf.sh
+      run: ./.github/scripts/ucvm-build.sh "albacore,cvlsu,ivlsu,wfcvm"
       shell: bash
     - name: test ucvm with albacore, cvlsu, ivlsu and wfcvm
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
 
   ucvm-build-cencal-cvms:
-    if: ${{ always() }}
-    needs: [ucvm-build-albacore-lsu-wf]
+    if: ${{ success() }}
+    needs: [ucvm-build-albacore-cvlsu-ivlsu-wfcvm]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -89,13 +89,13 @@ jobs:
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
 
-    - name: checkout ucvm main
+    - name: checkout ucvm basin
       uses: actions/checkout@v2
       with: 
-        ref: main
+        ref: basin
 
     - name: build ucvm with cencal cvms
-      run: ./.github/scripts/run-build-cencal-cvms.sh
+      run: ./.github/scripts/ucvm-build.sh "cencal,cvms"
       shell: bash
     - name: test ucvm with cencal and cvms
       run: ./.github/scripts/ucvm-test.sh
