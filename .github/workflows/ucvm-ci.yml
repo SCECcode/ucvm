@@ -1,4 +1,4 @@
-name: ucvm-dev-ci
+name: ucvm-ci
 
 on:
   push:
