@@ -190,6 +190,7 @@ int ucvm_cvmnci_get_model(ucvm_model_t *m)
   m->init = ucvm_cvmnci_model_init;
   m->finalize = ucvm_cvmnci_model_finalize;
   m->getversion = ucvm_cvmnci_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_cvmnci_model_label;
   m->setparam = ucvm_cvmnci_model_setparam;
   m->query = ucvm_cvmnci_model_query;

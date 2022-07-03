@@ -247,6 +247,7 @@ int ucvm_cvms_get_model(ucvm_model_t *m)
   m->init = ucvm_japan_model_init;
   m->finalize = ucvm_japan_model_finalize;
   m->getversion = ucvm_japan_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_japan_model_label;
   m->setparam = ucvm_japan_model_setparam;
   m->query = ucvm_japan_model_query;

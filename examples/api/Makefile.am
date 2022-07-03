@@ -1,7 +1,7 @@
 # Autoconf/Automake binaries and headers
 #
 #
-bin_PROGRAMS = query_1d_gtl
+bin_PROGRAMS = query_1d_gtl 
 query_1d_gtl_SOURCES = *.c
 
 # General compiler/linker flags
@@ -10,6 +10,8 @@ AM_LDFLAGS = -L../../src/ucvm -lucvm $(LDFLAGS)
 
 check_PROGRAMS = run_query_1d_gtl.sh
 run_query_1d_gtl_sh_SOURCES = run_query_1d_gtl.sh
+
+all: $(bin_PROGRAMS) $(check_PROGRAMS)
 
 ############################################
 # Executables
@@ -23,7 +25,7 @@ query_1d_gtl: query_1d_gtl.o
 # Special build targets
 ############################################
 
-check: $(check_PROGRAMS)
+check: $(check_PROGRAMS) 
 	@( cd ${prefix}/tests/api; \
 	for i in $(check_PROGRAMS); do \
 		./$${i}; \

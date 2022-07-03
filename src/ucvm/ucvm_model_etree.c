@@ -276,6 +276,7 @@ int ucvm_etree_get_model(ucvm_model_t *m)
   m->finalize = ucvm_etree_model_finalize;
   m->setparam = ucvm_etree_model_setparam;
   m->getversion = ucvm_etree_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_etree_model_label;
   m->query = ucvm_etree_model_query;
 

@@ -34,6 +34,9 @@ int ucvm_ifunc_label(int f, char *label, int len);
 /* Get version for a model */
 int ucvm_model_version(int m, char *ver, int len);
 
+/* Get config for a model */
+int ucvm_model_config(int m, char **config, int *sz);
+
 /* Set parameters (see ucvm_dtypes.h for valid param flags) */
 int ucvm_setparam(ucvm_param_t param, ...);
 

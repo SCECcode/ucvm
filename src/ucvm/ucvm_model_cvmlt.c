@@ -191,6 +191,7 @@ int ucvm_cvmlt_get_model(ucvm_model_t *m)
   m->finalize = ucvm_cvmlt_model_finalize;
   m->setparam = ucvm_cvmlt_model_setparam;
   m->getversion = ucvm_cvmlt_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_cvmlt_model_label;
   m->query = ucvm_cvmlt_model_query;
 

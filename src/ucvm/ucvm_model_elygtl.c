@@ -172,6 +172,7 @@ int ucvm_elygtl_get_model(ucvm_model_t *m)
   m->finalize = ucvm_elygtl_model_finalize;
   m->setparam = ucvm_elygtl_model_setparam;
   m->getversion = ucvm_elygtl_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_elygtl_model_label;
   m->query = ucvm_elygtl_model_query;
 

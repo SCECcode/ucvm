@@ -80,7 +80,6 @@ int ucvm_cvmh_model_version(int id, char *ver, int len)
   return(UCVM_CODE_SUCCESS);
 }
 
-
 /* Label CVM-H */
 int ucvm_cvmh_model_label(int id, char *lab, int len)
 {
@@ -270,6 +269,7 @@ int ucvm_cvmh_get_model(ucvm_model_t *m)
   m->init = ucvm_cvmh_model_init;
   m->finalize = ucvm_cvmh_model_finalize;
   m->getversion = ucvm_cvmh_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_cvmh_model_label;
   m->setparam = ucvm_cvmh_model_setparam;
   m->query = ucvm_cvmh_model_query;

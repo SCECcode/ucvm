@@ -10,24 +10,15 @@
 /* Interpolation functions */
 #include "ucvm_interp.h"
 /* Crustal models */
-#ifdef _UCVM_ENABLE_CVMS
-#include "ucvm_model_cvms.h"
-#endif
 #ifdef _UCVM_ENABLE_CVMH
 #include "ucvm_model_cvmh.h"
 #endif
 #ifdef _UCVM_ENABLE_CENCAL
 #include "ucvm_model_cencal.h"
 #endif
-#ifdef _UCVM_ENABLE_CVMSI
-#include "ucvm_model_cvmsi.h"
-#endif
 
 #ifdef _UCVM_ENABLE_CVMNCI
 #include "ucvm_model_cvmnci.h"
-#endif
-#ifdef _UCVM_ENABLE_WFCVM
-#include "ucvm_model_wfcvm.h"
 #endif
 #ifdef _UCVM_ENABLE_CVMLT
 #include "ucvm_model_cvmlt.h"
@@ -53,6 +44,7 @@
 
 /* Constants */
 #define UCVM_MODELLIST_DELIM ","
+#define UCVM_CONFIG_DELIM ","
 #define UCVM_GTL_DELIM ":"
 
 
@@ -87,6 +79,7 @@ double ucvm_interp_zmax = UCVM_DEFAULT_INTERP_ZMAX;
 int ucvm_get_model_vals(ucvm_point_t *pnt, ucvm_data_t *data)
 {
 
+if(ucvm_debug_flag) { fprintf(stderr,"UCVM: in ucvm_get_model_vals: ucvm's surf %lf\n", data->surf); }
   /* Re-compute point depth based on query mode */
   switch (ucvm_cur_qmode) {
   case UCVM_COORD_GEO_DEPTH:
@@ -94,6 +87,7 @@ int ucvm_get_model_vals(ucvm_point_t *pnt, ucvm_data_t *data)
     break;
   case UCVM_COORD_GEO_ELEV:
     data->depth = data->surf - pnt->coord[2];
+if(ucvm_debug_flag) { fprintf(stderr,"UCVM: in ucvm_get_model_vals: reset depth..%lf\n", data->depth); }
     break;
   default:
     fprintf(stderr, "Unsupported coord type\n");
@@ -336,13 +330,6 @@ int ucvm_add_model(const char *label) {
 
   /* Lookup predefined models */
   /* Crustal models */
-  if (strcmp(label, UCVM_MODEL_CVMS) == 0) {
-#ifdef _UCVM_ENABLE_CVMS
-    retval = ucvm_cvms_get_model(&m);
-#endif
-    is_predef = 1;
-  }
-
   if (strcmp(label, UCVM_MODEL_CVMH) == 0) {
 #ifdef _UCVM_ENABLE_CVMH
     retval = ucvm_cvmh_get_model(&m);
@@ -357,23 +344,9 @@ int ucvm_add_model(const char *label) {
     is_predef = 1;
   }
 
-  if (strcmp(label, UCVM_MODEL_CVMSI) == 0) {
-#ifdef _UCVM_ENABLE_CVMSI
-    retval = ucvm_cvmsi_get_model(&m);
-#endif
-    is_predef = 1;
-  }
-
   if (strcmp(label, UCVM_MODEL_CVMNCI) == 0) {
 #ifdef _UCVM_ENABLE_CVMNCI
     retval = ucvm_cvmnci_get_model(&m);
-#endif
-    is_predef = 1;
-  }
-
-  if (strcmp(label, UCVM_MODEL_WFCVM) == 0) {
-#ifdef _UCVM_ENABLE_WFCVM
-    retval = ucvm_wfcvm_get_model(&m);
 #endif
     is_predef = 1;
   }
@@ -598,10 +571,10 @@ int ucvm_add_user_model(ucvm_model_t *m, ucvm_modelconf_t *mconf)
   case UCVM_MODEL_GTL:
     /* Enable GTL mode */
     ucvm_cur_mmode = UCVM_OPMODE_GTL;
-    /* Default to linear interpolation for this GTL */
-    if (ucvm_assoc_ifunc(mconf->label, UCVM_IFUNC_LINEAR) != 
+    /* Default to ely interpolation for this GTL */
+    if (ucvm_assoc_ifunc(mconf->label, UCVM_IFUNC_ELY) != 
 	UCVM_CODE_SUCCESS) {
-      fprintf(stderr, "Failed to associate linear interp func for %s\n",
+      fprintf(stderr, "Failed to associate ely interp func for %s\n",
 	      mconf->label);
       ucvm_num_models--;
       return(UCVM_CODE_ERROR);
@@ -639,10 +612,13 @@ int ucvm_assoc_ifunc(const char *mlabel, const char *ilabel)
     return(UCVM_CODE_ERROR);
   }
 
+/*** disable elygtl:linear option
   if (strcmp(ilabel, UCVM_IFUNC_LINEAR) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_LINEAR, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_linear;
-  } else if (strcmp(ilabel, UCVM_IFUNC_ELY) == 0) {
+  } else 
+***/
+  if (strcmp(ilabel, UCVM_IFUNC_ELY) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_ELY, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_ely;
   } else if (strcmp(ilabel, UCVM_IFUNC_CRUST) == 0) {
@@ -829,6 +805,38 @@ int ucvm_model_version(int m, char *ver, int len)
   return(UCVM_CODE_SUCCESS);
 }
 
+/* Get config for a model */
+int ucvm_model_config(int m, char **config, int  *sz)
+{
+  if (ucvm_init_flag == 0) {
+    fprintf(stderr, "UCVM not initialized\n");
+    return(UCVM_CODE_ERROR);
+  }
+
+  if (m >= ucvm_num_models) {
+    fprintf(stderr, "Invalid model ID %d\n", m);
+    return(UCVM_CODE_ERROR);
+  }
+
+  switch (m) {
+  case UCVM_SOURCE_NONE:
+fprintf(stderr,"ucvm_model_config, ???\n");
+    break;
+  default:
+    if(ucvm_model_list[m].getconfig == NULL) {
+      return(UCVM_CODE_ERROR);
+      } else {
+        if (ucvm_model_list[m].getconfig(m,config,sz) != UCVM_CODE_SUCCESS) {
+          return(UCVM_CODE_ERROR);
+        }
+    }
+    break;
+  }
+
+  return(UCVM_CODE_SUCCESS);
+}
+
+
 
 /* Set parameters */
 int ucvm_setparam(ucvm_param_t param, ...)
@@ -969,7 +977,10 @@ int ucvm_query(int n, ucvm_point_t *pnt, ucvm_data_t *data)
   /* Compute derived values */
   for (i = 0; i < n; i++) {
     ucvm_get_model_vals(&(pnt[i]), &(data[i]));
-//if(ucvm_debug_flag) {fprintf(stderr,">>    points query in.. (%lf,%lf,%lf) depth(%lf)\n", pnt[i].coord[0], pnt[i].coord[1], pnt[i].coord[2], data[i].depth); }
+
+// should have been swapped..
+//fprintf(stderr,">>  USING points:(%lf,%lf,%lf) depth(%lf)\n", pnt[i].coord[0], pnt[i].coord[1], pnt[i].coord[2], data[i].depth);
+
   }
 
   /* Query crustal models */
@@ -1112,15 +1123,6 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
     return(UCVM_CODE_ERROR);
   }
 
-
-#ifdef _UCVM_ENABLE_CVMS
-  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
-		     UCVM_MODEL_CVMS, "", res, numinst++, *len) 
-      != UCVM_CODE_SUCCESS) {
-    return(UCVM_CODE_ERROR);
-  }
-#endif
-
 #ifdef _UCVM_ENABLE_CVMH
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
 		     UCVM_MODEL_CVMH, "", res, numinst++, *len) 
@@ -1132,14 +1134,6 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
 #ifdef _UCVM_ENABLE_CENCAL
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
 		     UCVM_MODEL_CENCAL, "", res, numinst++, *len) 
-      != UCVM_CODE_SUCCESS) {
-    return(UCVM_CODE_ERROR);
-  }
-#endif
-
-#ifdef _UCVM_ENABLE_CVMSI
-  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
-		     UCVM_MODEL_CVMSI, "", res, numinst++, *len) 
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }
@@ -1174,9 +1168,86 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
     return(UCVM_CODE_ERROR);
   }
 #endif
+#ifdef _UCVM_ENABLE_CVMSI
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMSI, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMS
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMS, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
 #ifdef _UCVM_ENABLE_CVMHLABN
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
                      UCVM_MODEL_CVMHLABN, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMHSGBN
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMHSGBN, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMHVBN
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMHVBN, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMHSMBN
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMHSMBN, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMHSBCBN
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMHSBCBN, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMHSBBN
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMHSBBN, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMHSTBN
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMHSTBN, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMHRBN
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMHRBN, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMHIBBN
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMHIBBN, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_WFCVM
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_WFCVM, "", res, numinst++, *len)
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }
@@ -1206,14 +1277,6 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
 #ifdef _UCVM_ENABLE_CVMNCI
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
 		     UCVM_MODEL_CVMNCI, "", res, numinst++, *len) 
-      != UCVM_CODE_SUCCESS) {
-    return(UCVM_CODE_ERROR);
-  }
-#endif
-
-#ifdef _UCVM_ENABLE_WFCVM
-  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
-		     UCVM_MODEL_WFCVM, "", res, numinst++, *len) 
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }
@@ -1256,7 +1319,37 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
 	if (strcmp(res[j].label, tmplabel) == 0) {
 	  ucvm_strcpy(res[j].version, ver, UCVM_MAX_VERSION_LEN);
 	  res[j].active = 1;
-	}
+
+          /* Populate config info for active models */
+          int sz;
+          char *config=NULL;
+          res[j].numflags = 0;
+          if (ucvm_model_config(i, &config, &sz) == UCVM_CODE_SUCCESS) {
+
+              if(config != NULL) {
+                char *token=NULL;
+                char *buf= strdup(config);
+                token = strtok(buf, UCVM_CONFIG_DELIM);
+                while (token != NULL) {
+                   char key[UCVM_CONFIG_MAX_STR];
+                   char value[UCVM_CONFIG_MAX_STR];
+
+                   sscanf(token,"%s = %s",key,value); 
+
+                   if (strcmp(key, "config") == 0) {
+	             ucvm_strcpy(res[j].config, value, UCVM_MAX_PATH_LEN);
+                     } else {
+                       ucvm_strcpy(res[j].flags[res[j].numflags].key, key,
+                          UCVM_MAX_FLAG_KEY_LEN);
+                       ucvm_strcpy(res[j].flags[(res[j].numflags)++].value, value,
+                          UCVM_MAX_FLAG_VALUE_LEN);
+                   }
+                   token = strtok(NULL,",");
+                }
+                free(buf);
+              }
+          }
+        } 
       }
     }
 
@@ -1274,25 +1367,30 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
       }
       snprintf(key, UCVM_CONFIG_MAX_STR, "%s_param", res[j].label);
       cfgentry = ucvm_find_name(ucvm_cfg, key);
-      res[j].numflags = 0;
+      if(cfgentry != NULL) {
+        res[j].numflags = 0;
+      }
       while ((cfgentry != NULL) && (res[j].numflags < UCVM_MAX_FLAGS)) {
 	list_parse_s(cfgentry->value, UCVM_CONFIG_MAX_STR, 
 		     flag, 2, UCVM_CONFIG_MAX_STR);
 	cfgentry = ucvm_find_name(cfgentry->next, key);
 	ucvm_strcpy(res[j].flags[res[j].numflags].key, flag[0], 
-		    UCVM_MAX_FLAG_LEN);
+		    UCVM_MAX_FLAG_KEY_LEN);
 	ucvm_strcpy(res[j].flags[(res[j].numflags)++].value, flag[1], 
-		    UCVM_MAX_FLAG_LEN);
+		    UCVM_MAX_FLAG_VALUE_LEN);
       }
     }
   }
 
-  /* Get installed ifuncs */
+  /*** SUPPRESS LINEAR ifuncs
   if (ucvm_save_resource(UCVM_RESOURCE_IFUNC, UCVM_MODEL_CRUSTAL,
 		     UCVM_IFUNC_LINEAR, "", res, numinst++, *len) 
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }
+  ***/
+
+  /* Get installed ifuncs */
   if (ucvm_save_resource(UCVM_RESOURCE_IFUNC, UCVM_MODEL_CRUSTAL,
 		     UCVM_IFUNC_ELY, "", res, numinst++, *len) 
       != UCVM_CODE_SUCCESS) {

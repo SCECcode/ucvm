@@ -379,6 +379,7 @@ int ucvm_bbp1d_get_model(ucvm_model_t *m)
   m->finalize = ucvm_bbp1d_model_finalize;
   m->setparam = ucvm_bbp1d_model_setparam;
   m->getversion = ucvm_bbp1d_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_bbp1d_model_label;
   m->query = ucvm_bbp1d_model_query;
 

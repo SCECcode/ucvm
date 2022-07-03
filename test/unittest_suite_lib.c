@@ -615,12 +615,225 @@ int test_lib_add_model_cvmhlabn()
   return(0);
 }
 
+int test_lib_add_model_cvmhsgbn()
+{
+  printf("Test: UCVM lib add model CVMHSGBN\n");
+
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CVMHSGBN) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CVMHSGBN);
+    ucvm_finalize();
+    return(1);
+  }
+
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+int test_lib_add_model_cvmhvbn()
+{
+  printf("Test: UCVM lib add model CVMHVBN\n");
+
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CVMHVBN) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CVMHVBN);
+    ucvm_finalize();
+    return(1);
+  }
+
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+int test_lib_add_model_cvmhibbn()
+{
+  printf("Test: UCVM lib add model CVMHIBBN\n");
+
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CVMHIBBN) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CVMHIBBN);
+    ucvm_finalize();
+    return(1);
+  }
+
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+int test_lib_add_model_cvmhrbn()
+{
+  printf("Test: UCVM lib add model CVMHRBN\n");
+
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CVMHRBN) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CVMHRBN);
+    ucvm_finalize();
+    return(1);
+  }
+
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+int test_lib_add_model_cvmhsbbn()
+{
+  printf("Test: UCVM lib add model CVMHSBBN\n");
+
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CVMHSBBN) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CVMHSBBN);
+    ucvm_finalize();
+    return(1);
+  }
+
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+
+int test_lib_add_model_cvmhsbcbn()
+{
+  printf("Test: UCVM lib add model CVMHSBCBN\n");
+
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CVMHSBCBN) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CVMHSBCBN);
+    ucvm_finalize();
+    return(1);
+  }
+
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+int test_lib_add_model_cvmhsmbn()
+{
+  printf("Test: UCVM lib add model CVMHSMBN\n");
+
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CVMHSMBN) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CVMHSMBN);
+    ucvm_finalize();
+    return(1);
+  }
+
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+
+int test_lib_add_model_cvmhstbn()
+{
+  printf("Test: UCVM lib add model CVMHSTBN\n");
+
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CVMHSTBN) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CVMHSTBN);
+    ucvm_finalize();
+    return(1);
+  }
+
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 int suite_lib(const char *xmldir)
 {
   int numfixed;
   test_suite_t suite;
-  char logfile[256];
+  char *logfile;
   FILE *lf = NULL;
 
   /* Setup test suite */
@@ -658,6 +871,30 @@ int suite_lib(const char *xmldir)
   suite.num_tests++;
 #endif
 #ifdef _UCVM_ENABLE_CVMHLABN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHSGBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHVBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHIBBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHRBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHSBBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHSBCBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHSMBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CVMHSTBN
   suite.num_tests++;
 #endif
 #ifdef _UCVM_ENABLE_CS173
@@ -814,6 +1051,69 @@ int suite_lib(const char *xmldir)
   suite.num_tests++;
 #endif
 
+#ifdef _UCVM_ENABLE_CVMHSGBN
+  strcpy(suite.tests[suite.num_tests].test_name, 
+  	 "test_lib_add_model_cvmhsgbn");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_cvmhsgbn;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHVBN
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_cvmhvbn");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_cvmhvbn;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHIBBN
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_cvmhibbn");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_cvmhibbn;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHRBN
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_cvmhrbn");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_cvmhrbn;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHSBBN
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_cvmhsbbn");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_cvmhsbbn;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHSBCBN
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_cvmhsbcbn");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_cvmhsbcbn;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHSMBN
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_cvmhsmbn");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_cvmhsmbn;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHSTBN
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_cvmhstbn");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_cvmhstbn;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
 
   if (test_run_suite(&suite) != 0) {
     fprintf(stderr, "Failed to execute tests\n");
@@ -821,6 +1121,7 @@ int suite_lib(const char *xmldir)
   }
 
   if (xmldir != NULL) {
+    logfile=malloc( (strlen(xmldir)+strlen(suite.suite_name)+6) * sizeof(char));
     sprintf(logfile, "%s/%s.xml", xmldir, suite.suite_name);
     lf = init_log(logfile);
     if (lf == NULL) {
@@ -834,6 +1135,7 @@ int suite_lib(const char *xmldir)
     }
     
     close_log(lf);
+    free(logfile);
   }
 
   free(suite.tests);

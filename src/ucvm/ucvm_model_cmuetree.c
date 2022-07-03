@@ -323,6 +323,7 @@ int ucvm_cmuetree_get_model(ucvm_model_t *m)
   m->finalize = ucvm_cmuetree_model_finalize;
   m->setparam = ucvm_cmuetree_model_setparam;
   m->getversion = ucvm_cmuetree_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_cmuetree_model_label;
   m->query = ucvm_cmuetree_model_query;
 

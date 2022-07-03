@@ -16,43 +16,43 @@
 #define CENCAL_DEM_ACCURACY 1.0
 
 /* Init flag */
-int ucvm_cc_init_flag = 0;
+int ucvm_cencal_init_flag = 0;
 
 /* Query buffers */
 void *query = NULL;
 void *errHandler = NULL;
 
 /* Default cache size */
-#define CC_CACHE_SIZE 64
+#define CENCAL_CACHE_SIZE 64
 
 /* Query by depth squash limit */
-#define CC_SQUASH_LIMIT -200000.0
+#define CENCAL_SQUASH_LIMIT -200000.0
 
 /* CenCal number of values */
-#define CC_NUM_VALS 9
+#define CENCAL_NUM_VALS 9
 
 /* CenCal return value buffer */
-double *cc_pvals = NULL;
+double *cencal_pvals = NULL;
 
 /* Version string */
 const char *ucvm_cencal_version_id = "";
 
 /* Model ID */
-int ucvm_cc_id = UCVM_SOURCE_NONE;
+int ucvm_cencal_id = UCVM_SOURCE_NONE;
 
 /* Model conf */
-ucvm_modelconf_t ucvm_cc_conf;
+ucvm_modelconf_t ucvm_cencal_conf;
 
 /* Model flags */
-int ucvm_cc_force_depth = 0;
-int ucvm_cc_smode = 0;
-double ucvm_cc_slimit = 0.0;
+int ucvm_cencal_force_depth = 0;
+int ucvm_cencal_smode = 0;
+double ucvm_cencal_slimit = 0.0;
 
 
 /* Init CenCal */
 int ucvm_cencal_model_init(int id, ucvm_modelconf_t *conf)
 {
-  if (ucvm_cc_init_flag) {
+  if (ucvm_cencal_init_flag) {
     fprintf(stderr, "Model %s is already initialized\n", conf->label);
     return(UCVM_CODE_ERROR);
   }
@@ -91,11 +91,11 @@ int ucvm_cencal_model_init(int id, ucvm_modelconf_t *conf)
   }
 
   /* Set cache size */
-  if (cencalvm_cacheSize(query, CC_CACHE_SIZE) != 0) {
+  if (cencalvm_cacheSize(query, CENCAL_CACHE_SIZE) != 0) {
     fprintf(stderr, "%s\n", cencalvm_error_message(errHandler));
     return(UCVM_CODE_ERROR);
   }
-  if (cencalvm_cacheSizeExt(query, CC_CACHE_SIZE) != 0) {
+  if (cencalvm_cacheSizeExt(query, CENCAL_CACHE_SIZE) != 0) {
     fprintf(stderr, "%s\n", cencalvm_error_message(errHandler));
     return(UCVM_CODE_ERROR);
   }
@@ -110,17 +110,17 @@ int ucvm_cencal_model_init(int id, ucvm_modelconf_t *conf)
   cencalvm_queryType(query, 0);
 
   /* Create array to hold values returned in queries */
-  cc_pvals = (double*) malloc(sizeof(double)*CC_NUM_VALS);
-  if (cc_pvals == NULL) {
+  cencal_pvals = (double*) malloc(sizeof(double)*CENCAL_NUM_VALS);
+  if (cencal_pvals == NULL) {
     return(UCVM_CODE_ERROR);
   }
 
-  ucvm_cc_id = id;
+  ucvm_cencal_id = id;
 
   /* Save model conf */
-  memcpy(&ucvm_cc_conf, conf, sizeof(ucvm_modelconf_t));
+  memcpy(&ucvm_cencal_conf, conf, sizeof(ucvm_modelconf_t));
 
-  ucvm_cc_init_flag = 1;
+  ucvm_cencal_init_flag = 1;
   return(UCVM_CODE_SUCCESS);
 }
 
@@ -140,12 +140,12 @@ int ucvm_cencal_model_finalize()
   query = NULL;
 
   /* Free data buffer */
-  if (cc_pvals != NULL) {
-    free(cc_pvals);
+  if (cencal_pvals != NULL) {
+    free(cencal_pvals);
   }
-  cc_pvals = NULL;
+  cencal_pvals = NULL;
 
-  ucvm_cc_init_flag = 0;
+  ucvm_cencal_init_flag = 0;
   return(UCVM_CODE_SUCCESS);
 }
 
@@ -153,7 +153,7 @@ int ucvm_cencal_model_finalize()
 /* Version Cencal */
 int ucvm_cencal_model_version(int id, char *ver, int len)
 {
-  if (id != ucvm_cc_id) {
+  if (id != ucvm_cencal_id) {
     fprintf(stderr, "Invalid model id\n");
     return(UCVM_CODE_ERROR);
   }
@@ -166,12 +166,12 @@ int ucvm_cencal_model_version(int id, char *ver, int len)
 /* Label Cencal */
 int ucvm_cencal_model_label(int id, char *lab, int len)
 {
-  if (id != ucvm_cc_id) {
+  if (id != ucvm_cencal_id) {
     fprintf(stderr, "Invalid model id\n");
     return(UCVM_CODE_ERROR);
   }
 
-  ucvm_strcpy(lab, ucvm_cc_conf.label, len);
+  ucvm_strcpy(lab, ucvm_cencal_conf.label, len);
   return(UCVM_CODE_SUCCESS);
 }
 
@@ -181,7 +181,7 @@ int ucvm_cencal_model_setparam(int id, int param, ...)
 {
   va_list ap;
 
-  if (id != ucvm_cc_id) {
+  if (id != ucvm_cencal_id) {
     fprintf(stderr, "Invalid model id\n");
     return(UCVM_CODE_ERROR);
   }
@@ -189,7 +189,7 @@ int ucvm_cencal_model_setparam(int id, int param, ...)
   va_start(ap, param);
   switch (param) {
   case UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF:
-    ucvm_cc_force_depth = va_arg(ap, int);
+    ucvm_cencal_force_depth = va_arg(ap, int);
     break;
   default:
     break;
@@ -210,8 +210,8 @@ int ucvm_cencal_getsurface(ucvm_point_t *pnt, double *surf,
 
   *surf = CENCAL_NO_DATA;
 
-  for (i = 0; i < CC_NUM_VALS; i++) {
-    cc_pvals[i] = 0.0;
+  for (i = 0; i < CENCAL_NUM_VALS; i++) {
+    cencal_pvals[i] = 0.0;
   }
   
   /* Calculate starting z for surface search */
@@ -224,35 +224,35 @@ int ucvm_cencal_getsurface(ucvm_point_t *pnt, double *surf,
   lat = pnt->coord[1];
   elev = CENCAL_MODEL_BOTTOM;
   
-  if (cencalvm_query(query, &cc_pvals, CC_NUM_VALS, 
+  if (cencalvm_query(query, &cencal_pvals, CENCAL_NUM_VALS, 
 		     lon, lat, elev) != 0) {
     cencalvm_error_resetStatus(errHandler);
   } else {
     /* Set up one octant higher than reported depth wrt free surface */
-    elev = elev + cc_pvals[5] + CENCAL_HR_OCTANT_HEIGHT * 2;
+    elev = elev + cencal_pvals[5] + CENCAL_HR_OCTANT_HEIGHT * 2;
     prevelev = elev;
 
     /* Find surface estimate by stepping down in octant increments */
     while (elev >= CENCAL_MODEL_BOTTOM) {
-      if (cencalvm_query(query, &cc_pvals, CC_NUM_VALS, 
+      if (cencalvm_query(query, &cencal_pvals, CENCAL_NUM_VALS, 
 			 lon, lat, elev) != 0) {
 	cencalvm_error_resetStatus(errHandler);
       } else {
-	if ((cc_pvals[0] > 0.0) && (cc_pvals[1] > 0.0) && 
-	    (cc_pvals[2] > 0.0)) {
+	if ((cencal_pvals[0] > 0.0) && (cencal_pvals[1] > 0.0) && 
+	    (cencal_pvals[2] > 0.0)) {
 	  /* Refine surface estimate with logarithmic search */
 	  startelev = elev;
 	  endelev = prevelev;
 	  resid = endelev - startelev;
 	  while (resid > accuracy) {
 	    elev = (startelev + endelev) / 2.0;
-	    if (cencalvm_query(query, &cc_pvals, CC_NUM_VALS, 
+	    if (cencalvm_query(query, &cencal_pvals, CENCAL_NUM_VALS, 
 			       lon, lat, elev) != 0) {
 	      cencalvm_error_resetStatus(errHandler);
 	      endelev = elev;
 	    } else {
-	      if ((cc_pvals[0] <= 0.0) || (cc_pvals[1] <= 0.0) || 
-		  (cc_pvals[2] <= 0.0)) {
+	      if ((cencal_pvals[0] <= 0.0) || (cencal_pvals[1] <= 0.0) || 
+		  (cencal_pvals[2] <= 0.0)) {
 		endelev = elev;
 	      } else {
 		startelev = elev;
@@ -270,7 +270,7 @@ int ucvm_cencal_getsurface(ucvm_point_t *pnt, double *surf,
   }
 
   /* Restore original squash mode */
-  if (cencalvm_squash(query, ucvm_cc_smode, ucvm_cc_slimit) != 0) {
+  if (cencalvm_squash(query, ucvm_cencal_smode, ucvm_cencal_slimit) != 0) {
     fprintf(stderr, "%s\n", cencalvm_error_message(errHandler));
     return(UCVM_CODE_ERROR);
   }
@@ -293,12 +293,12 @@ int ucvm_cencal_model_query(int id, ucvm_ctype_t cmode,
   double lon, lat, elev, surf;
   int datagap = 0;
 
-  if (ucvm_cc_init_flag == 0) {
+  if (ucvm_cencal_init_flag == 0) {
     fprintf(stderr, "Model is not initialized\n");
     return(UCVM_CODE_ERROR);
   }
 
-  if (id != ucvm_cc_id) {
+  if (id != ucvm_cencal_id) {
     fprintf(stderr, "Invalid model id\n");
     return(UCVM_CODE_ERROR);
   }
@@ -307,13 +307,13 @@ int ucvm_cencal_model_query(int id, ucvm_ctype_t cmode,
   switch (cmode) {
   case UCVM_COORD_GEO_DEPTH:
     /* Turn off squashing */
-    ucvm_cc_smode = 0;
-    ucvm_cc_slimit = -CC_SQUASH_LIMIT;
+    ucvm_cencal_smode = 0;
+    ucvm_cencal_slimit = -CENCAL_SQUASH_LIMIT;
     break;
   case UCVM_COORD_GEO_ELEV:
     /* Turn off squashing */
-    ucvm_cc_smode = 0;
-    ucvm_cc_slimit = -CC_SQUASH_LIMIT;
+    ucvm_cencal_smode = 0;
+    ucvm_cencal_slimit = -CENCAL_SQUASH_LIMIT;
     break;
   default:
     fprintf(stderr, "Unsupported coord type\n");
@@ -321,7 +321,7 @@ int ucvm_cencal_model_query(int id, ucvm_ctype_t cmode,
     break;
   }
 
-  if (cencalvm_squash(query, ucvm_cc_smode, ucvm_cc_slimit) != 0) {
+  if (cencalvm_squash(query, ucvm_cencal_smode, ucvm_cencal_slimit) != 0) {
     fprintf(stderr, "%s\n", cencalvm_error_message(errHandler));
     return(UCVM_CODE_ERROR);
   }
@@ -330,11 +330,11 @@ int ucvm_cencal_model_query(int id, ucvm_ctype_t cmode,
     if ((data[i].crust.source == UCVM_SOURCE_NONE) && 
 	((data[i].domain == UCVM_DOMAIN_INTERP) || 
 	 (data[i].domain == UCVM_DOMAIN_CRUST)) &&
-	(region_contains_null(&(ucvm_cc_conf.region), cmode, &(pnt[i])))) {
+	(region_contains_null(&(ucvm_cencal_conf.region), cmode, &(pnt[i])))) {
 
       /* Force depth mode if directed and geo_elev point is 
 	 above surface */
-      if ((ucvm_cc_force_depth) && (cmode == UCVM_COORD_GEO_ELEV) && 
+      if ((ucvm_cencal_force_depth) && (cmode == UCVM_COORD_GEO_ELEV) && 
 	  (data[i].depth < 0.0)) {
 	/* Setup point to query */
 	lon = pnt[i].coord[0];
@@ -379,27 +379,27 @@ int ucvm_cencal_model_query(int id, ucvm_ctype_t cmode,
       }
 
       /* Query CenCal for the point */
-      if (cencalvm_query(query, &cc_pvals, CC_NUM_VALS, 
+      if (cencalvm_query(query, &cencal_pvals, CENCAL_NUM_VALS, 
 			 lon, lat, elev) != 0) {
 	datagap = 1;
 	cencalvm_error_resetStatus(errHandler);
       } else {
 	/* Check for model error where water found below surface */
-	if ((cmode == UCVM_COORD_GEO_DEPTH) && ((cc_pvals[0] <= 0.0) || 
-					       (cc_pvals[1] <= 0.0) || 
-					       (cc_pvals[2] <= 0.0))) {
+	if ((cmode == UCVM_COORD_GEO_DEPTH) && ((cencal_pvals[0] <= 0.0) || 
+					       (cencal_pvals[1] <= 0.0) || 
+					       (cencal_pvals[2] <= 0.0))) {
 	  datagap = 1;
 	} else {
-	  if (cc_pvals[0] > 0.0) {
-	    data[i].crust.vp = cc_pvals[0];
+	  if (cencal_pvals[0] > 0.0) {
+	    data[i].crust.vp = cencal_pvals[0];
 	  }
-	  if (cc_pvals[1] > 0.0) {
-	    data[i].crust.vs = cc_pvals[1];
+	  if (cencal_pvals[1] > 0.0) {
+	    data[i].crust.vs = cencal_pvals[1];
 	  }
-	  if (cc_pvals[2] > 0.0) {
-	    data[i].crust.rho = cc_pvals[2];
+	  if (cencal_pvals[2] > 0.0) {
+	    data[i].crust.rho = cencal_pvals[2];
 	  }
-	  data[i].crust.source = ucvm_cc_id;
+	  data[i].crust.source = ucvm_cencal_id;
 	}
       }
     } else {
@@ -424,6 +424,7 @@ int ucvm_cencal_get_model(ucvm_model_t *m)
   m->init = ucvm_cencal_model_init;
   m->finalize = ucvm_cencal_model_finalize;
   m->getversion = ucvm_cencal_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_cencal_model_label;
   m->setparam = ucvm_cencal_model_setparam;
   m->query = ucvm_cencal_model_query;

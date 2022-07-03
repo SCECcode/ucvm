@@ -5,7 +5,7 @@
 
 
 /* Maximum number of supported models */
-#define UCVM_MAX_MODELS 20
+#define UCVM_MAX_MODELS 30
 
 /* Maximum number of supported maps (topo + vs30) */
 #define UCVM_MAX_MAPS 2
@@ -32,16 +32,21 @@
 
 
 /* Maximum model flag key length */
-#define UCVM_MAX_FLAG_LEN 64
+#define UCVM_MAX_FLAG_KEY_LEN 64
 
+/* Maximum model flag value length */
+#define UCVM_MAX_FLAG_VALUE_LEN 256
 
 /* Maximum model list length */
 #define UCVM_MAX_MODELLIST_LEN 1024
 
+/* Maximum stdin line length */
+#define UCVM_MAX_LINE_LEN 1024
+
 
 /* Default depth (m) for GTL/Crustal transition */
 #define UCVM_DEFAULT_INTERP_ZMIN 0.0
-#define UCVM_DEFAULT_INTERP_ZMAX 0.0
+#define UCVM_DEFAULT_INTERP_ZMAX 350.0
 
 
 /* Special source model/ifunc flags */
@@ -53,25 +58,35 @@
 /* Predefined crustal model interfaces */
 #define UCVM_MODEL_NONE "none"
 #define UCVM_MODEL_CVMH "cvmh"
-#define UCVM_MODEL_CVMS "cvms"
 #define UCVM_MODEL_CENCAL "cencal"
 #define UCVM_MODEL_1D "1d"
 #define UCVM_MODEL_BBP1D "bbp1d"
 #define UCVM_MODEL_CMRG "cmrg"
 #define UCVM_MODEL_CMUETREE "cmuetree"
-#define UCVM_MODEL_CVMSI "cvmsi"
 #define UCVM_MODEL_CVMNCI "cvmnci"
-#define UCVM_MODEL_WFCVM "wfcvm"
 #define UCVM_MODEL_CVMLT "cvmlt"
 #define UCVM_MODEL_TAPE "tape"
 #define UCVM_MODEL_JAPAN "japan"
 /* plugin models */
 #define UCVM_MODEL_CVMS5 "cvms5"
+#define UCVM_MODEL_CVMS "cvms"
+#define UCVM_MODEL_CVMSI "cvmsi"
 #define UCVM_MODEL_IVLSU "ivlsu"
 #define UCVM_MODEL_CVLSU "cvlsu"
 #define UCVM_MODEL_ALBACORE "albacore"
 #define UCVM_MODEL_CCA "cca"
+
 #define UCVM_MODEL_CVMHLABN "cvmhlabn"
+#define UCVM_MODEL_CVMHSGBN "cvmhsgbn"
+#define UCVM_MODEL_CVMHVBN "cvmhvbn"
+#define UCVM_MODEL_CVMHSMBN "cvmhsmbn"
+#define UCVM_MODEL_CVMHSBCBN "cvmhsbcbn"
+#define UCVM_MODEL_CVMHSBBN "cvmhsbbn"
+#define UCVM_MODEL_CVMHSTBN "cvmhstbn"
+#define UCVM_MODEL_CVMHRBN "cvmhrbn"
+#define UCVM_MODEL_CVMHIBBN "cvmhibbn"
+
+#define UCVM_MODEL_WFCVM "wfcvm"
 #define UCVM_MODEL_CS173 "cs173"
 #define UCVM_MODEL_CS173H "cs173h"
 
@@ -247,6 +262,7 @@ typedef struct ucvm_model_t
   int (*init)(int id, ucvm_modelconf_t *conf);
   int (*finalize)();
   int (*getversion)(int id, char *ver, int len);
+  int (*getconfig)(int id, char **config, int *sz);
   int (*getlabel)(int id, char *lab, int len);
   int (*setparam)(int id, int param, ...);
   int (*query)(int id, ucvm_ctype_t cmode,
@@ -267,8 +283,8 @@ typedef struct ucvm_ifunc_t
 /* Resource flag description */
 typedef struct ucvm_flag_t 
 {
-  char key[UCVM_MAX_FLAG_LEN];
-  char value[UCVM_MAX_FLAG_LEN];
+  char key[UCVM_MAX_FLAG_KEY_LEN];
+  char value[UCVM_MAX_FLAG_VALUE_LEN];
 } ucvm_flag_t;
 
 
@@ -280,9 +296,11 @@ typedef struct ucvm_resource_t
   int active; /* Applicable to models/maps only */
   char label[UCVM_MAX_LABEL_LEN];
   char version[UCVM_MAX_VERSION_LEN];
+// config path
   char config[UCVM_MAX_PATH_LEN];
   char extconfig[UCVM_MAX_PATH_LEN];
   int numflags;
+// configuration flags..
   ucvm_flag_t flags[UCVM_MAX_FLAGS]; /* Applicable to models only */
 } ucvm_resource_t;
 

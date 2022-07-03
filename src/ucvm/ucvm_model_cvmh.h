@@ -15,7 +15,6 @@ int ucvm_cvmh_model_finalize();
 /* Version CVM-H */
 int ucvm_cvmh_model_version(int id, char *ver, int len);
 
-
 /* Label CVM-H */
 int ucvm_cvmh_model_label(int id, char *lab, int len);
 

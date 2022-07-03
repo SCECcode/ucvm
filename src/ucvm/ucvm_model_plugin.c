@@ -15,37 +15,139 @@
 	extern int ivlsu_query;
 	extern int ivlsu_finalize;
 	extern int ivlsu_version;
+	extern int ivlsu_config;
 #endif
 #ifdef _UCVM_ENABLE_CVLSU
 	extern int cvlsu_init;
 	extern int cvlsu_query;
 	extern int cvlsu_finalize;
 	extern int cvlsu_version;
+	extern int cvlsu_config;
 #endif
 #ifdef _UCVM_ENABLE_ALBACORE
 	extern int albacore_init;
 	extern int albacore_query;
 	extern int albacore_finalize;
 	extern int albacore_version;
+	extern int albacore_config;
 #endif
 #ifdef _UCVM_ENABLE_CVMS5
 	extern int cvms5_init;
 	extern int cvms5_query;
 	extern int cvms5_finalize;
 	extern int cvms5_version;
+	extern int cvms5_config;
+#endif
+#ifdef _UCVM_ENABLE_CVMSI
+	extern int cvmsi_init;
+	extern int cvmsi_query;
+	extern int cvmsi_finalize;
+	extern int cvmsi_version;
+	extern int cvmsi_config;
+	extern int cvmsi_setparam;
+#endif
+#ifdef _UCVM_ENABLE_CVMS
+	extern int cvms_init;
+	extern int cvms_query;
+	extern int cvms_finalize;
+	extern int cvms_version;
+	extern int cvms_config;
+	extern int cvms_setparam;
 #endif
 #ifdef _UCVM_ENABLE_CCA
 	extern int cca_init;
 	extern int cca_query;
 	extern int cca_finalize;
 	extern int cca_version;
+	extern int cca_config;
 #endif
 #ifdef _UCVM_ENABLE_CVMHLABN
 	extern int cvmhlabn_init;
 	extern int cvmhlabn_query;
 	extern int cvmhlabn_finalize;
 	extern int cvmhlabn_version;
+	extern int cvmhlabn_config;
 	extern int cvmhlabn_setparam;
+#endif
+#ifdef _UCVM_ENABLE_CVMHSGBN
+	extern int cvmhsgbn_init;
+	extern int cvmhsgbn_query;
+	extern int cvmhsgbn_finalize;
+	extern int cvmhsgbn_version;
+	extern int cvmhsgbn_config;
+	extern int cvmhsgbn_setparam;
+#endif
+#ifdef _UCVM_ENABLE_CVMHVBN
+	extern int cvmhvbn_init;
+	extern int cvmhvbn_query;
+	extern int cvmhvbn_finalize;
+	extern int cvmhvbn_version;
+	extern int cvmhvbn_config;
+	extern int cvmhvbn_setparam;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHSMBN
+        extern int cvmhsmbn_init;
+        extern int cvmhsmbn_query;
+        extern int cvmhsmbn_finalize;
+        extern int cvmhsmbn_version;
+        extern int cvmhsmbn_config;
+        extern int cvmhsmbn_setparam;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHSBCBN
+        extern int cvmhsbcbn_init;
+        extern int cvmhsbcbn_query;
+        extern int cvmhsbcbn_finalize;
+        extern int cvmhsbcbn_version;
+        extern int cvmhsbcbn_config;
+        extern int cvmhsbcbn_setparam;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHSBBN
+        extern int cvmhsbbn_init;
+        extern int cvmhsbbn_query;
+        extern int cvmhsbbn_finalize;
+        extern int cvmhsbbn_version;
+        extern int cvmhsbbn_config;
+        extern int cvmhsbbn_setparam;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHSTBN
+        extern int cvmhstbn_init;
+        extern int cvmhstbn_query;
+        extern int cvmhstbn_finalize;
+        extern int cvmhstbn_version;
+        extern int cvmhstbn_config;
+        extern int cvmhstbn_setparam;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHRBN
+        extern int cvmhrbn_init;
+        extern int cvmhrbn_query;
+        extern int cvmhrbn_finalize;
+        extern int cvmhrbn_version;
+        extern int cvmhrbn_version;
+        extern int cvmhrbn_config;
+        extern int cvmhrbn_setparam;
+#endif
+
+#ifdef _UCVM_ENABLE_CVMHIBBN
+        extern int cvmhibbn_init;
+        extern int cvmhibbn_query;
+        extern int cvmhibbn_finalize;
+        extern int cvmhibbn_version;
+        extern int cvmhibbn_config;
+        extern int cvmhibbn_setparam;
+#endif
+
+#ifdef _UCVM_ENABLE_WFCVM
+	extern int wfcvm_init;
+	extern int wfcvm_query;
+	extern int wfcvm_finalize;
+	extern int wfcvm_version;
+	extern int wfcvm_config;
+	extern int wfcvm_setparam;
 #endif
 #ifdef _UCVM_ENABLE_CS173
 	extern int cs173_init;
@@ -130,6 +232,13 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
 	}
 	pptr->model_version = vptr();
 
+	MCPTR *cptr = dlsym(handle, "get_model_config");
+	if (dlerror() != NULL) {
+		fprintf(stderr, "Could not load model_config.\n");
+		return UCVM_CODE_ERROR;
+	}
+	pptr->model_config = cptr();
+
 	MSPTR *sptr = dlsym(handle, "get_model_setparam");
 	if (dlerror() == NULL) { // this is optional
 	        pptr->model_setparam = sptr();
@@ -149,6 +258,7 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cvlsu_query;
                 pptr->model_finalize = &cvlsu_finalize;
                 pptr->model_version = &cvlsu_version;
+                pptr->model_config = &cvlsu_config;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -161,6 +271,7 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &ivlsu_query;
                 pptr->model_finalize = &ivlsu_finalize;
                 pptr->model_version = &ivlsu_version;
+                pptr->model_config = &ivlsu_config;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -173,6 +284,7 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &albacore_query;
                 pptr->model_finalize = &albacore_finalize;
                 pptr->model_version = &albacore_version;
+                pptr->model_config = &albacore_config;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -185,6 +297,34 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cvms5_query;
                 pptr->model_finalize = &cvms5_finalize;
                 pptr->model_version = &cvms5_version;
+                pptr->model_config = &cvms5_config;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMSI
+        if (strcmp(conf->label, UCVM_MODEL_CVMSI) == 0) {
+                pptr->model_init = &cvmsi_init;
+                pptr->model_query = &cvmsi_query;
+                pptr->model_finalize = &cvmsi_finalize;
+                pptr->model_version = &cvmsi_version;
+                pptr->model_config = &cvmsi_config;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMS
+        if (strcmp(conf->label, UCVM_MODEL_CVMS) == 0) {
+                pptr->model_init = &cvms_init;
+                pptr->model_query = &cvms_query;
+                pptr->model_finalize = &cvms_finalize;
+                pptr->model_version = &cvms_version;
+                pptr->model_config = &cvms_config;
+                pptr->model_setparam = &cvms_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -197,6 +337,7 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cca_query;
                 pptr->model_finalize = &cca_finalize;
                 pptr->model_version = &cca_version;
+                pptr->model_config = &cca_config;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -209,7 +350,134 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cvmhlabn_query;
                 pptr->model_finalize = &cvmhlabn_finalize;
                 pptr->model_version = &cvmhlabn_version;
+                pptr->model_config = &cvmhlabn_config;
                 pptr->model_setparam = &cvmhlabn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMHSGBN
+        if (strcmp(conf->label, UCVM_MODEL_CVMHSGBN) == 0) {
+                pptr->model_init = &cvmhsgbn_init;
+                pptr->model_query = &cvmhsgbn_query;
+                pptr->model_finalize = &cvmhsgbn_finalize;
+                pptr->model_version = &cvmhsgbn_version;
+                pptr->model_config = &cvmhsgbn_config;
+                pptr->model_setparam = &cvmhsgbn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMHVBN
+        if (strcmp(conf->label, UCVM_MODEL_CVMHVBN) == 0) {
+                pptr->model_init = &cvmhvbn_init;
+                pptr->model_query = &cvmhvbn_query;
+                pptr->model_finalize = &cvmhvbn_finalize;
+                pptr->model_version = &cvmhvbn_version;
+                pptr->model_config = &cvmhvbn_config;
+                pptr->model_setparam = &cvmhvbn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMHSMBN
+        if (strcmp(conf->label, UCVM_MODEL_CVMHSMBN) == 0) {
+                pptr->model_init = &cvmhsmbn_init;
+                pptr->model_query = &cvmhsmbn_query;
+                pptr->model_finalize = &cvmhsmbn_finalize;
+                pptr->model_version = &cvmhsmbn_version;
+                pptr->model_config = &cvmhsmbn_config;
+                pptr->model_setparam = &cvmhsmbn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMHSBCBN
+        if (strcmp(conf->label, UCVM_MODEL_CVMHSBCBN) == 0) {
+                pptr->model_init = &cvmhsbcbn_init;
+                pptr->model_query = &cvmhsbcbn_query;
+                pptr->model_finalize = &cvmhsbcbn_finalize;
+                pptr->model_version = &cvmhsbcbn_version;
+                pptr->model_config = &cvmhsbcbn_config;
+                pptr->model_setparam = &cvmhsbcbn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMHSBBN
+        if (strcmp(conf->label, UCVM_MODEL_CVMHSBBN) == 0) {
+                pptr->model_init = &cvmhsbbn_init;
+                pptr->model_query = &cvmhsbbn_query;
+                pptr->model_finalize = &cvmhsbbn_finalize;
+                pptr->model_version = &cvmhsbbn_version;
+                pptr->model_config = &cvmhsbbn_config;
+                pptr->model_setparam = &cvmhsbbn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMHSTBN
+        if (strcmp(conf->label, UCVM_MODEL_CVMHSTBN) == 0) {
+                pptr->model_init = &cvmhstbn_init;
+                pptr->model_query = &cvmhstbn_query;
+                pptr->model_finalize = &cvmhstbn_finalize;
+                pptr->model_version = &cvmhstbn_version;
+                pptr->model_config = &cvmhstbn_config;
+                pptr->model_setparam = &cvmhstbn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMHRBN
+        if (strcmp(conf->label, UCVM_MODEL_CVMHRBN) == 0) {
+                pptr->model_init = &cvmhrbn_init;
+                pptr->model_query = &cvmhrbn_query;
+                pptr->model_finalize = &cvmhrbn_finalize;
+                pptr->model_version = &cvmhrbn_version;
+                pptr->model_config = &cvmhrbn_config;
+                pptr->model_setparam = &cvmhrbn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMHIBBN
+        if (strcmp(conf->label, UCVM_MODEL_CVMHIBBN) == 0) {
+                pptr->model_init = &cvmhibbn_init;
+                pptr->model_query = &cvmhibbn_query;
+                pptr->model_finalize = &cvmhibbn_finalize;
+                pptr->model_version = &cvmhibbn_version;
+                pptr->model_config = &cvmhibbn_config;
+                pptr->model_setparam = &cvmhibbn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_WFCVM
+        if (strcmp(conf->label, UCVM_MODEL_WFCVM) == 0) {
+                pptr->model_init = &wfcvm_init;
+                pptr->model_query = &wfcvm_query;
+                pptr->model_finalize = &wfcvm_finalize;
+                pptr->model_version = &wfcvm_version;
+                pptr->model_config = &wfcvm_config;
+                pptr->model_setparam = &wfcvm_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -222,6 +490,7 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cs173_query;
                 pptr->model_finalize = &cs173_finalize;
                 pptr->model_version = &cs173_version;
+                pptr->model_config = NULL;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -234,6 +503,7 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_query = &cs173h_query;
                 pptr->model_finalize = &cs173h_finalize;
                 pptr->model_version = &cs173h_version;
+                pptr->model_config = NULL;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
@@ -300,6 +570,30 @@ int ucvm_plugin_model_version(int id, char *ver, int len)
 
   return UCVM_CODE_SUCCESS;
 }
+
+/**
+ * Retrieves the config of the model with which we're working.
+ *
+ * @param The model id.
+ * @param The config string to be returned.
+ * @param The length of the config string.
+ * @return UCVM_CODE_SUCCESS if everything works, ERROR if not.
+ */
+int ucvm_plugin_model_config(int id, char **config, int *sz)
+{ 
+  ucvm_plugin_model_t *pptr=get_plugin_by_id(id);
+  if (!pptr) {
+    fprintf(stderr, "Invalid model id.\n");
+    return UCVM_CODE_ERROR;
+  }
+  
+  if ((*pptr->model_config)(config,sz) != UCVM_CODE_SUCCESS) {
+    return UCVM_CODE_ERROR;
+  }
+  
+  return UCVM_CODE_SUCCESS;
+}
+
 
 /**
  * Retrieves the model's label.
@@ -452,6 +746,7 @@ int ucvm_plugin_get_model(const char *dir, const char *label, ucvm_model_t *m) {
 		m->init = ucvm_plugin_model_init;
 		m->finalize = ucvm_plugin_model_finalize;
 		m->getversion = ucvm_plugin_model_version;
+		m->getconfig = ucvm_plugin_model_config;
 		m->getlabel = ucvm_plugin_model_label;
 		m->setparam = ucvm_plugin_model_setparam;
 		m->query = ucvm_plugin_model_query;

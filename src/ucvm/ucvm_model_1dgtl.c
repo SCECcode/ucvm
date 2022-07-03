@@ -326,6 +326,7 @@ int ucvm_1dgtl_get_model(ucvm_model_t *m)
   m->finalize = ucvm_1dgtl_model_finalize;
   m->setparam = ucvm_1dgtl_model_setparam;
   m->getversion = ucvm_1dgtl_model_version;
+  m->getconfig = NULL;
   m->getlabel = ucvm_1dgtl_model_label;
   m->query = ucvm_1dgtl_model_query;
 
