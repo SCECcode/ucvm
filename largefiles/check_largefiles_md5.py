@@ -21,8 +21,6 @@ import subprocess
 import tempfile
 import pdb
 
-UCVM_Version = "21.10"
-
 target_large_lib_list = []
 target_large_model_list = []
 target_large_etree_list = []
@@ -36,6 +34,9 @@ try:
     config_data = json.loads(json_string)
 except OSError as e:
     eG(e, "Parsing setup for ucvm model list.")
+
+## get ucvm version
+UCVM_Version = config_data["UCVM"]["Version"]
 
 for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config_data["models"][k]["Order"])):
     the_model = config_data["models"][model]

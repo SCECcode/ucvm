@@ -11,8 +11,6 @@ import json
 import pdb
 import getopt
 
-UCVM_Version = "21.10"
-
 if sys.version_info.major >= (3) :
   from urllib.request import urlopen 
 else:
@@ -82,6 +80,9 @@ try:
 except OSError as e:
     eG(e, "Parsing setup for ucvm model list.")
 
+## get ucvm version
+UCVM_Version = config_data["UCVM"]["Version"]
+
 for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config_data["models"][k]["Order"])):
     the_model = config_data["models"][model]
     _url = str(the_model["URL"])
@@ -112,6 +113,8 @@ for ref in config_data["references"].keys() :
 #
 # Check to make sure the script is being run with outside a UCVM directory
 #
+print("Getting largefiles for UCVM version: %s"%(UCVM_Version))
+
 curdir = os.getcwd()
 if os.path.basename(os.path.normpath(curdir)) == "largefiles":
   print("Running in ./largefiles source directory. ")

@@ -1,4 +1,7 @@
 {
+        "UCVM": {
+               "Version": "22.7"
+               },
 	"models": {
                 "CVMHSMBN": {
                         "Version": "1.0",

@@ -13,8 +13,6 @@ import sys
 from shutil import copyfile
 import json
 
-UCVM_Version = "21.10"
-
 target_large_lib_list = []
 target_large_model_list = []
 target_large_etree_list = []
@@ -28,6 +26,10 @@ try:
     config_data = json.loads(json_string)
 except OSError as e:
     eG(e, "Parsing setup for ucvm model list.")
+
+## get ucvm version
+UCVM_Version = config_data["UCVM"]["Version"]
+
 
 for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config_data["models"][k]["Order"])):
     the_model = config_data["models"][model]
@@ -74,8 +76,10 @@ def link_largefile(filename, src, dst):
 
 #
 #
+print("Staging largefiles for UCVM version: %s"%(UCVM_Version))
+
 if len(sys.argv) < 2:
-  print("Using default as UCVM install directory")
+  print("Using default as UCVM directory")
   print("User can Override the default largefiles directory using the command line like this:")
   print("%stage_largefiles.py /path/to/UCVM/largefiles/directory")
   src_dir = curpath
