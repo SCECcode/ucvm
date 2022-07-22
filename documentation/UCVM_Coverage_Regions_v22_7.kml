@@ -465,6 +465,9 @@
 	</Placemark>
   </Folder>
  
+ <!--
+ This model is no longer distributed as part of the standard UCVM distribution. It is available on demand in order to
+ reproduce the composite regional velocity model used in CyberShake 17.3, which was a Central California hazard model.
  <Folder>
    <name>CS173 CyberShake Study 17.3 Velocity Model Region</name>
    <Style id="box_highlight1">
@@ -489,8 +492,31 @@
      </LineString>
    </Placemark>
  </Folder>
- 
- 
+-->
+<!--
+This basin model was embedded in CVM-17.3 to produce CVM-17.3H model created below. This basin model is not distributed
+as a standalone basin model at this point.
+ <Folder>
+ <Placemark>
+   <name>Harvard San Joaquin Basin Model</name>
+   <description>Bounding boxes for the Harvard San Jaoquin Basin Model Region</description>
+   <styleUrl>#box_style33</styleUrl>
+   <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+       -121.98481607959579,37.765476,0
+       -119.47544539570369,34.535499,0
+       -118.0879731936682,35.223012,0
+       -120.587,38.40,0
+       -121.98481607959579,37.765476,0
+     </coordinates>
+   </LineString>
+ </Placemark>
+-->
+<!--
+ This model is no longer distributed as part of the standard UCVM distribution. It is available on demand in order to
+ reproduce the composite regional velocity model used in CyberShake 17.3, which was a Central California hazard model,
+ with an embedded Harvard developed San Joaquin Valley basin model.
  <Folder>
    <name>CS173-H CyberShake Study 17.3 Velocity Model w/ Harvard Basins Region</name>
    <Style id="box_highlight1">
@@ -514,39 +540,10 @@
        </coordinates>
      </LineString>
    </Placemark>
-
-<Placemark>
-  <name>Harvard San Joaquin Basin Model</name>
-  <description>Bounding boxes for the Harvard San Jaoquin Basin Model Region</description>
-  <styleUrl>#box_style33</styleUrl>
-  <LineString>
-    <tessellate>1</tessellate>
-    <coordinates>
-      -121.98481607959579,37.765476,0
-      -119.47544539570369,34.535499,0
-      -118.0879731936682,35.223012,0
-      -120.587,38.40,0
-      -121.98481607959579,37.765476,0
-    </coordinates>
-  </LineString>
-</Placemark>
-<Placemark>
-  <name>Harvard Santa Maria Basin Model</name>
-  <description>Bounding boxes for the Harvard Santa Maria Basin Model</description>
-  <styleUrl>#box_style33</styleUrl>
-  <LineString>
-    <tessellate>1</tessellate>
-    <coordinates>
-      -121.06861217908948,35.447151,0
-      -121.0028109650184,34.097848,0
-      -119.37879716844978,34.140087,0
-      -119.41798612862107,35.491556,0
-      -121.06861217908948,35.447151,0
-    </coordinates>
-  </LineString>
-</Placemark>
- </Folder>
- 
+-->
+<!--
+ This model is no longer distributed as part of the standard UCVM distribution. It is available on demand in order to
+ reproduce the composite regional velocity model used in CyberShake 18.8, which was a Northern California hazard model.
 <Folder>
  <name>CS18.5 CyberShake Study 18.5 Velocity Model Region</name>
   <Style id="box_highlight1">
@@ -571,6 +568,7 @@
   </LineString>
 </Placemark>
  </Folder>
+-->
  
 <Folder>
  <name>Coachella Valley Velocity Model Region</name>
@@ -623,6 +621,32 @@
 </Placemark>
  </Folder>
 
+
+<Folder>
+ <name>Wasatch Front Utah Model Region</name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>fff00000</color>
+      <width>1.3</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>Wasatch Front Utah Model</name>
+  <description>Wasatch Front North-eastern Utah Velocity Model</description>
+  <styleUrl>#box_style22</styleUrl>
+  <LineString>
+     <tessellate>1</tessellate>
+     <coordinates>
+-112.699997,39.75,0
+-112.699997,42.0,0
+-111.5,42.0,0
+-111.5,39.75,0
+-112.699997,39.75,0
+     </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
 <Folder>
  <name>Albacore Offshore Velocity Model Region</name>
   <Style id="box_highlight1">
@@ -667,6 +691,238 @@
 			</LineString>
 	</Placemark>
   </Folder>
+
+<Folder>
+ <name>CVM-H Santa Maria Basin Region</name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>#4B0082</color>
+      <width>4</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>CVM-H Santa Maria Basin Model (cvmhsmbn)</name>
+  <description>Bounding Box for the Santa Maria Basin developed by Harvard Structural Geology Group</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+      -121.016139,34.457383,0
+      -121.016139,35.468350,0
+      -119.644879,35.468350,0
+      -119.644879,34.457383,0
+      -121.016139,34.457383,0
+    </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+<Folder>
+ <name>CVM-H Santa Barbara Channel Basin Region </name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>#4B0082</color>
+      <width>4</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>CVM-H Santa Barbara Channel Basin Model (cvmhsbcbn)</name>
+  <description>Bounding box for the Santa Barbara Channel Basin developed by Harvard Structural Geology Group</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+      -120.980982,33.710630,0
+      -120.980982,34.649084,0
+      -119.596757,34.649084,0
+      -119.596757,33.710630,0
+      -120.980982,33.710630,0
+    </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+<Folder>
+ <name>CVM-H Santa Bernardino Basin Region </name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>#4B0082</color>
+      <width>4</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>CVM-H Santa Bernardino Basin Model (cvmhsbbn)</name>
+  <description>Bounding box for the Santa Bernardino Basin developed by Harvard Structural Geology Group</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+      -117.357373,34.008847,0
+      -117.357373,34.153590,0
+      -117.141023,34.153590,0
+      -117.141023,34.008847,0
+      -117.357373,34.008847,0
+    </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+
+<Folder>
+ <name>CVM-H Salton Trough Basin Region </name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>#4B0082</color>
+      <width>4</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>CVM-H Salton Trough Basin Model (cvmhstbn)</name>
+  <description>Bounding box for the Salton Trough Basin developed by Harvard Structural Geology Group</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+      -116.442177,31.455197,0
+      -116.442177,33.796263,0
+      -113.792254,33.796263,0
+      -113.792254,31.455197,0
+      -116.442177,31.455197,0
+    </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+<Folder>
+ <name>CVM-H Ridge Basin Region </name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>#4B0082</color>
+      <width>4</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>CVM-H Ridge Basin Model (cvmhrbn)</name>
+  <description>Bounding box for the Ridge Basin developed by Harvard Structural Geology Group</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+      -118.881062,34.355666,0
+      -118.881062,34.877650,0
+      -118.258317,34.877650,0
+      -118.258317,34.355666,0
+      -118.881062,34.355666,0
+    </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+
+<Folder>
+ <name>CVM-H Inner Borderland Basin Region </name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>#4B0082</color>
+      <width>4</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>CVM-H Inner Borderland Basin Model (cvmhibbn)</name>
+  <description>Bounding box for the Inner Borderland Basin developed by Harvard Structural Geology Group</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+    -119.408382,32.209382,0
+    -119.408382,34.063373,0
+    -117.162546,34.063373,0
+    -117.162546,32.209382,0
+    -119.408382,32.209382,0
+    </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+
+
+<Folder>
+ <name>CVM-H Ventura Basin Region </name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>#4B0082</color>
+      <width>4</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>CVM-H Ventura Basin Model (cvmhvbbn)</name>
+  <description>Bounding box for the Ventura Basin developed by Harvard Structural Geology Group</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+    -119.56521,33.97183,0
+    -119.56521,34.52582,0
+    -118.08960,34.52582,0
+    -118.08960,33.97183,0
+    -119.56521,33.97183,0
+    </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+
+<Folder>
+ <name>CVM-H San Gabriel Basin Region </name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>#4B0082</color>
+      <width>4</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>CVM-H San Gabriel Basin Model (cvmhsgbn)</name>
+  <description>Bounding box for the San Gabriel Basin developed by Harvard Structural Geology Group</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+    -118.26439,33.82977,0
+    -118.26439,34.19044,0
+    -117.33646,34.19654,0
+    -117.33504,33.83579,0
+    -118.26439,33.82977,0
+    </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
+
+
+
+<Folder>
+ <name>CVM-H LA Basin Region </name>
+  <Style id="box_highlight1">
+    <LineStyle>
+      <color>#4B0082</color>
+      <width>4</width>
+    </LineStyle>
+  </Style>
+<Placemark>
+  <name>CVM-H LA Basin Model (cvmhlabn)</name>
+  <description>Bounding box for the LA Basin developed by Harvard Structural Geology Group</description>
+  <styleUrl>#box_style33</styleUrl>
+  <LineString>
+    <tessellate>1</tessellate>
+    <coordinates>
+    -118.60524,32.978073,0
+    -117.256881,32.988127,0
+    -117.260267,34.123581,0
+    -118.62639,34.114087,0
+    -118.60524,32.978073,0
+    </coordinates>
+  </LineString>
+</Placemark>
+ </Folder>
 
 </Document>
 </kml>
