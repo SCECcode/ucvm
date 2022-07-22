@@ -122,7 +122,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         pathname = "model"
     
     workpath = "./work/" + pathname
-    
+
     strip_level = "2"
     if config_data["Path"] == "fftw" or \
             config_data["Path"] == "proj-5" or \
@@ -820,7 +820,7 @@ try:
     if not os.path.exists("./work"):
 #       call(["rm", "-R", "./work"])
 #       call(["mkdir", "-p", "./work"])
-        print("Work directory does not exist. Error, exitting...")
+        print("Work directory does not exist. Did you remember to stage sources? Error, exitting...")
         sys.exit(1)
     if not os.path.exists("./work") or not os.access("./work", os.W_OK | os.X_OK):
         print("Could not create ./work directory.")
