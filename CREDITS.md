@@ -65,4 +65,4 @@ Researchers that use the UCVM software should cite the primary UCVM software ref
 * Wills, C. J., and K. B. Clahan (2006), Developing a map of geologically defined site-condition categories for California, Bull. Seism. Soc. Am., 96 (4A), 1483-1501, doi:10.1785/0120050179.
 
 ### Thompson California Vs30 Model
-Thompson, E.M. (2018), An Updated Vs30 Map for California with Geologic and Topographic Constraints (ver. 2.0, July 2022): U.S. Geological Survey data release, https://doi.org/10.5066/F7JQ108S.
+* Thompson, E.M. (2018), An Updated Vs30 Map for California with Geologic and Topographic Constraints (ver. 2.0, July 2022): U.S. Geological Survey data release, https://doi.org/10.5066/F7JQ108S.
