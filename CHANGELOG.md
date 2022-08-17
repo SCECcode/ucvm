@@ -1,5 +1,4 @@
 ## 2022-07-01 Mei-Hui Su <mei@usc.edu>
-* Update vs30 etree with Thompson 2020 data
 * CVMS,CVMS5,CVMSI,WFCFM are all dynamically loadable models
 * Added CVMHLABN/CVMHSGBN/CVMHVBN/CVMHIBBN/CVMHRBN and
         CVMHSBBN/CVMHSBCBN/CVMHSMBN/CVMHSTBN models
