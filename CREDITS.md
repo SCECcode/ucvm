@@ -66,3 +66,7 @@ Researchers that use the UCVM software should cite the primary UCVM software ref
 
 ### Thompson California Vs30 Model
 * Thompson, E.M. (2018), An Updated Vs30 Map for California with Geologic and Topographic Constraints (ver. 2.0, July 2022): U.S. Geological Survey data release, https://doi.org/10.5066/F7JQ108S.
+
+### CVM-H Basins
+* Plesch, A., Thurber, C. H., Tape, C., & Shaw, J. H. (2021, 08). The SCEC CVM effort: new basin models, enhanced access and tomographic updates. Oral Presentation at 2021 SCEC Annual Meeting.
+
