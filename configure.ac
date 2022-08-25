@@ -828,7 +828,7 @@ if test "x$enable_model_ivlsu" = xyes; then
    LDFLAGS="$IVLSU_LIB $LDFLAGS"
 
    echo "Checking for SCEC IMPERIAL"
-   AC_CHECK_LIB(albacore, ivlsu_init,[AM_CONDITIONAL(UCVM_AM_ENABLE_IVLSU, true)], [AC_MSG_ERROR(["SCEC IMPERIAL library not found; use --with-ivlsu-lib-path"])],[-lproj -letree -lm])
+   AC_CHECK_LIB(ivlsu, ivlsu_init,[AM_CONDITIONAL(UCVM_AM_ENABLE_IVLSU, true)], [AC_MSG_ERROR(["SCEC IMPERIAL library not found; use --with-ivlsu-lib-path"])],[-lproj -letree -lm])
    AC_CHECK_HEADER(ivlsu.h,[],[AC_MSG_ERROR(["SCEC IMPERIAL header not found; use --with-ivlsu-include-path"])],[AC_INCLUDES_DEFAULT])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_IVLSU, false)
