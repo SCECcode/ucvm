@@ -77,7 +77,8 @@ References, citations, and acknowledgements help us obtain continued support for
 
 * Preferred Reference: Small, P., Gill, D., Maechling, P. J., Taborda, R., Callaghan, S., Jordan, T. H., Ely, G. P., Olsen, K. B., & Goulet, C. A. (2017). The SCEC Unified Community Velocity Model Software Framework. Seismological Research Letters, 88(5). doi:10.1785/0220170082
 
-* Preferred Citation: The SCEC Unified Community Velocity Model Software, Release Date: 6 November 2021, https://doi.org/10.5281/zenodo.5651277
+* Preferred Citation: The SCEC Unified Community Velocity Model Software, Release Date: 30 August 2022, 
+* https://zenodo.org/record/7033687
 
 * Example Acknowlegement: We would like to acknowledge the use of the SCEC Unified Community Velocity Model Software (Small 2017) in this research. 
 
