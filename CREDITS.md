@@ -70,3 +70,6 @@ Researchers that use the UCVM software should cite the primary UCVM software ref
 ### CVM-H Basins
 * Plesch, A., C.H. Thurber, C. Tape, and  J.H. Shaw (2021, 08), The SCEC CVM effort: new basin models, enhanced access and tomographic updates. Oral Presentation at 2021 SCEC Annual Meeting.
 
+### Digital Elevation Model
+* USGS NED 1 arcsec DEM
+* https://apps.nationalmap.gov/datasets/
