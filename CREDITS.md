@@ -73,3 +73,4 @@ Researchers that use the UCVM software should cite the primary UCVM software ref
 ### Digital Elevation Model
 * USGS NED 1 arcsec DEM
 * https://apps.nationalmap.gov/datasets/
+* https://cugir.library.cornell.edu/catalog/cugir-009096
