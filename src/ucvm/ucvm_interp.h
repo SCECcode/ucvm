@@ -12,10 +12,13 @@ int ucvm_interp_ely(double zmin, double zmax, ucvm_ctype_t cmode,
 int ucvm_interp_linear(double zmin, double zmax, ucvm_ctype_t cmode,
 		       ucvm_point_t *pnt, ucvm_data_t *data);
 
+/* SVM interpolation method */
+int ucvm_interp_svm(double zmin, double zmax, ucvm_ctype_t cmode,
+                    ucvm_point_t *pnt, ucvm_data_t *data);
+
 /* Crustal pass-through method */
 int ucvm_interp_crustal(double zmin, double zmax, ucvm_ctype_t cmode,
 			ucvm_point_t *pnt, ucvm_data_t *data);
-
 
 
 #endif

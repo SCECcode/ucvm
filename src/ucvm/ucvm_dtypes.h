@@ -83,6 +83,7 @@
 /* Predefined GTL model interfaces */
 #define UCVM_MODEL_1DGTL "1dgtl"
 #define UCVM_MODEL_ELYGTL "elygtl"
+#define UCVM_MODEL_SVM "svm"
 
 
 /* These model interfaces allow user defined 
@@ -107,6 +108,7 @@
 #define UCVM_IFUNC_GTL "gtl"
 #define UCVM_IFUNC_LINEAR "linear"
 #define UCVM_IFUNC_ELY "ely"
+#define UCVM_IFUNC_SVM1D "svm1d"
 
 
 /* Predefined projection strings */
