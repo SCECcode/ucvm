@@ -134,11 +134,11 @@ all: $(lib_LIBRARIES) $(bin_PROGRAMS)
 # Executables
 ############################################
 
-#test_ucvm: test_ucvm.o ucvm.o ucvm_utils.o ucvm_config.o libucvm.a
-#	$(CC) -o $@ $^ $(AM_LDFLAGS)
+test_ucvm: test_ucvm.o ucvm.o ucvm_utils.o ucvm_config.o libucvm.a
+	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
-#test_svm: test_svm.o ucvm.o ucvm_utils.o ucvm_config.o libucvm.a
-#       $(CC) -o $@ $^ $(AM_LDFLAGS)
+test_svm: test_svm.o ucvm.o ucvm_utils.o ucvm_config.o libucvm.a
+	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
 #test_grid: test_grid.o ucvm_grid.o ucvm.o ucvm_utils.o ucvm_config.o \
 #		ucvm_proj_bilinear.o libucvm.a

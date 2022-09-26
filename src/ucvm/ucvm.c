@@ -30,6 +30,7 @@
 #ifdef _UCVM_ENABLE_TAPE
 #include "ucvm_model_tape.h"
 #endif
+
 #include "ucvm_model_1d.h"
 #include "ucvm_model_bbp1d.h"
 
@@ -38,6 +39,8 @@
 /* GTL models */
 #include "ucvm_model_elygtl.h"
 #include "ucvm_model_1dgtl.h"
+#include "ucvm_model_svm.h"
+
 /* Etree model */
 #include "ucvm_model_etree.h"
 #include "ucvm_model_cmuetree.h"
