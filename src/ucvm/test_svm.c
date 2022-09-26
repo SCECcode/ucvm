@@ -1,4 +1,26 @@
 
+/**  
+    test_svm.c
+
+    (using cvms5)
+
+    usage:
+
+    test.in
+        -118.4   34    0
+        -116.30  33.80 0
+        -116.859 33.40 0
+
+run_ucvm_query.sh -m cvms5 < test.in
+run_ucvm_query.sh -m cvms5,elygtl:ely  < test.in
+run_ucvm_query.sh -m cvms5,svm:svm1d  < test.in
+
+https://strike.scec.org/scecpedia/UCVM_svm1d_and_elygtl
+./plot_depth_profile.py -s 34,-118.4 -b 0  -e 500 -d vs -v 10 -c cvms5,svm:svm1d -z 0,350 -o cvms5_depth_nogtl_svmgtl_350.png
+./plot_depth_profile.py -s 34,-118.4 -b 0  -e 500 -d vs -v 10 -c cvms5,svm:svm1d -Z 1000 -o cvms5_depth_nogtl_svmgtl_Z1.png
+
+***/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -12,9 +12,6 @@
 #ifdef _UCVM_ENABLE_CVMH
 #include "ucvm_model_cvmh.h"
 #endif
-#ifdef _UCVM_ENABLE_CVMS
-#include "ucvm_model_cvms.h"
-#endif
 
 #define NUM_POINTS 5 
 
