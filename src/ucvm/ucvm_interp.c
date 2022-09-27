@@ -166,7 +166,7 @@ double _calc_rho (double vs, double z) {
   return rho;
 }
 
-int ucvm_interp_svm(double zmin, double zmax, ucvm_ctype_t cmode, 
+int ucvm_interp_svm1d(double zmin, double zmax, ucvm_ctype_t cmode, 
 ucvm_point_t *pnt, ucvm_data_t *data) {
 
   // curve fitting parameters for SVM model

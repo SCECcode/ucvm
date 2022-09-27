@@ -632,7 +632,7 @@ int ucvm_assoc_ifunc(const char *mlabel, const char *ilabel)
     ifunc.interp = ucvm_interp_ely;
   } else if (strcmp(ilabel, UCVM_IFUNC_SVM1D) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_SVM1D, UCVM_MAX_LABEL_LEN);
-    ifunc.interp = ucvm_interp_svm;
+    ifunc.interp = ucvm_interp_svm1d;
   } else if (strcmp(ilabel, UCVM_IFUNC_CRUST) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_CRUST, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_crustal;
