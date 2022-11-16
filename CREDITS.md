@@ -63,3 +63,14 @@ Researchers that use the UCVM software should cite the primary UCVM software ref
 
 ### Wills California Vs30 Model
 * Wills, C. J., and K. B. Clahan (2006), Developing a map of geologically defined site-condition categories for California, Bull. Seism. Soc. Am., 96 (4A), 1483-1501, doi:10.1785/0120050179.
+
+### Thompson California Vs30 Model
+* Thompson, E.M. (2018), An Updated Vs30 Map for California with Geologic and Topographic Constraints (ver. 2.0, July 2022): U.S. Geological Survey data release, doi:10.5066/F7JQ108S.
+
+### CVM-H Basins
+* Plesch, A., C.H. Thurber, C. Tape, and  J.H. Shaw (2021, 08), The SCEC CVM effort: new basin models, enhanced access and tomographic updates. Oral Presentation at 2021 SCEC Annual Meeting.
+
+### Digital Elevation Model
+* USGS NED 1 arcsec DEM
+* https://apps.nationalmap.gov/datasets/
+* https://cugir.library.cornell.edu/catalog/cugir-009096

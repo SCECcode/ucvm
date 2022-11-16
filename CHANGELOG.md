@@ -1,10 +1,9 @@
 ## 2022-07-01 Mei-Hui Su <mei@usc.edu>
-* Update vs30 etree with Thompson 2020 data
-* CVMS,CVMS5,CVMSI,WFCFM are all dynamically loadable models
+* CVMS,CVMS5,CVMSI,WFCFM are all dynamically loadable models, ucvm#39
 * Added CVMHLABN/CVMHSGBN/CVMHVBN/CVMHIBBN/CVMHRBN and
         CVMHSBBN/CVMHSBCBN/CVMHSMBN/CVMHSTBN models
 * Added continuous integrating testing using github action/runner
-* TODO: wills map, https://scec.usc.edu/scecpedia/Wills_Map
+* Replace Vs30 map with Thompson California Vs30 Model v2(2020)
 
 ## 2021-10-01  Mei-Hui Su <mei@usc.edu>
 * Rework largefiles get/check/stage to use setup.list
@@ -22,7 +21,7 @@
 ## 2019-04-15  Mei-Hui Su <mei@usc.edu>
 * Added new plotting capability of using elevation in addition to depth 
 * Replace Proj4 with Proj-5.0.0
-* Update Wills map with newer Wills 2015 map
+* Update Wills map with newer Wills 2015 map, https://scec.usc.edu/scecpedia/Wills_Map
 * Update CVMH-15.1.0 with misplaced scripts to enable standalone verification
 * Added examples directory to showcase plotting scripts and programs using UCVM
 

@@ -18,7 +18,7 @@ cp ${CONF_DIR}/ucvm.conf .
 
 sed 's ${CONF_DIR} '$CONF_DIR' ' small_cvmh.conf_template | sed 's ${SCRATCH} '$SCRATCH' ' > small_cvmh.conf
 
-salloc -Q -N 2 --ntasks=2 --time=00:20:00 srun -Q --ntasks=2  -o ${TEST}.srun.out ./ucvm2mesh_mpi -f small_cvmh.conf
+salloc ${UCVM_SALLOC_ENV} -Q --nodes=2 --ntasks=2 --time=00:20:00 srun -Q -o ${TEST}.srun.out ./ucvm2mesh_mpi -f small_cvmh.conf
 
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
