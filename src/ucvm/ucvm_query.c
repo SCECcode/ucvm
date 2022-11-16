@@ -1,7 +1,9 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <getopt.h>
+
 #include "ucvm.h"
 #include "ucvm_utils.h"
 
@@ -199,7 +201,19 @@ int main(int argc, char **argv)
   char if_label[UCVM_MAX_LABEL_LEN];
 
   cmode = UCVM_COORD_GEO_DEPTH;
+
   snprintf(configfile, UCVM_MAX_PATH_LEN, "%s", "./ucvm.conf");
+  {
+    FILE *fp;
+    if((fp = fopen(configfile,"r"))!=NULL) {
+      fclose(fp);
+      } else { //File not found
+	char *tmp;
+	if( (tmp=getenv("UCVM_INSTALL_PATH")) != NULL) {
+          snprintf(configfile, UCVM_MAX_PATH_LEN, "%s/conf/ucvm.conf", tmp);
+        }
+    }	 
+  }
   snprintf(modellist, UCVM_MAX_MODELLIST_LEN, "%s", "1d");
   snprintf(map_label, UCVM_MAX_LABEL_LEN, "%s", UCVM_MAP_UCVM);
   zrange[0] = ZRANGE_MIN;
