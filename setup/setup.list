@@ -120,7 +120,7 @@
 			"Path": "ivlsu",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/ivlsu.tar.gz",
 			"Flags": "--enable-model-ivlsu --with-ivlsu-lib-path=lib --with-ivlsu-include-path=include",
-			"Libraries": ["proj-5"],
+			"Libraries": ["proj"],
 			"Ask": "yes",
                         "md5sum": "8d553860bdd90d3444396b1da590276d",
 			"Order": 11		
@@ -198,7 +198,7 @@
 			"Path": "cs173h",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cs173h.tar.gz",
 			"Flags": "--enable-model-cs173h --with-cs173h-lib-path=lib --with-cs173h-include-path=include",
-			"Libraries": ["euclid3", "proj-5"],
+			"Libraries": ["euclid3", "proj"],
 			"Ask": "no",
                         "md5sum": "2da1cbc7e689707692764b37679bdbdf",
 			"Order": 4		
@@ -210,7 +210,7 @@
 			"Path": "cs173",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cs173.tar.gz",
 			"Flags": "--enable-model-cs173 --with-cs173-lib-path=lib --with-cs173-include-path=include",
-			"Libraries": ["euclid3", "proj-5"],
+			"Libraries": ["euclid3", "proj"],
 			"Ask": "no",
                         "md5sum": "b85205ef8d58eaa99dd3590cee9ea56d",
 			"Order": 3		
@@ -222,7 +222,7 @@
 			"Path": "cca",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cca.tar.gz",
 			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
-			"Libraries": ["euclid3", "proj-5"],
+			"Libraries": ["euclid3", "proj"],
 			"Ask": "yes",
                         "md5sum": "52bfae5615317e1836a619ef72e0a0ca",
 			"Order": 2		
@@ -234,21 +234,21 @@
 			"Path": "cvms5",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvms5.tar.gz",
 			"Flags": "--enable-model-cvms5 --with-cvms5-lib-path=lib --with-cvms5-include-path=include",
-			"Libraries": ["euclid3", "proj-5"],
+			"Libraries": ["euclid3", "proj"],
 			"Ask": "yes",
                         "md5sum": "1d7fc16b1408af17cf1dc424f19cff49",
 			"Order": 1		
 		}
 	},
 	"libraries": {
-		"Proj4": {
-			"Path": "proj-5",
-                        "Lib": "proj-5.0.0",
+		"Proj": {
+			"Path": "proj",
+                        "Lib": "proj-8.1.1",
                         "Size": "30M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/lib/proj-5.0.0.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-8.1.1.tar.gz",
 			"Required": "yes",
-			"CompileFlags": "--with-jni=no",
-                        "md5sum": "51808f2ecceaf426de3b7bf53fc8aae7",
+			"CompileFlags": "",
+                        "md5sum": "41223226e90b6a1a7909c2d5a629aa7c",
 			"Ask": "no"
 		},
 		"FFTW": {
@@ -282,11 +282,11 @@
 		},
 		"HDF5": {
 			"Path": "hdf5",
-                        "Lib": "hdf5-1.8.11",
-			"URL": "http://www.hdfgroup.org/ftp/HDF5/current/src/hdf5-1.8.11.tar.gz",
-			"Required": "no",
+                        "Lib": "hdf5-1.10.9",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/hdf5-1.10.9.tar.gz",
+			"Required": "yes",
 			"Prerequisites": "Dynamic",
-                        "md5sum": "",
+                        "md5sum": "a8191e0adabd54521a6f682bc8172737",
 			"Ask": "no"
 		}
 	},
