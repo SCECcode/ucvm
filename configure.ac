@@ -223,16 +223,16 @@ AC_ARG_WITH([etree-lib-path],
   [ETREE_LIB="-L$withval -letree"],
   [ETREE_LIB="-letree"])
 
-# Get required Proj.4 library and include locations
-AC_ARG_WITH([proj4-include-path],
-  [AS_HELP_STRING([--with-proj4-include-path],
-    [location of the Proj.4 headers])],
-  [PROJ4_INCL="-I$withval"],
-  [PROJ4_INCL=""])
-AC_ARG_WITH([proj4-lib-path],
-  [AS_HELP_STRING([--with-proj4-lib-path], [location of the Proj.4 libraries])],
-  [PROJ4_LIB="-L$withval -lproj -lpthread"],
-  [PROJ4_LIB="-lproj -lpthread"])
+# Get required Proj library and include locations
+AC_ARG_WITH([proj-include-path],
+  [AS_HELP_STRING([--with-proj-include-path],
+    [location of the Proj headers])],
+  [PROJ_INCL="-I$withval"],
+  [PROJ_INCL=""])
+AC_ARG_WITH([proj-lib-path],
+  [AS_HELP_STRING([--with-proj-lib-path], [location of the Proj libraries])],
+  [PROJ_LIB="-L$withval -lproj -lpthread"],
+  [PROJ_LIB="-lproj -lpthread"])
 
 # Get optional netCDF library and include locations
 if test "x$enable_netcdf" = xyes; then
@@ -718,11 +718,12 @@ CFLAGS="$FFTW_INCL $CHECK_CFLAGS"
 LDFLAGS="$CHECK_LDFLAGS $FFTW_LIB"
 AC_CHECK_LIB(fftw3, fftw_execute, [AC_CHECK_HEADER([fftw3.h], [], [AC_MSG_ERROR(["FFTW headers not found in $FFTW_INCL; use --with-fftw-include-path"])], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["FFTW library not found; use --with-fftw-lib-path"])])
 
-# Check required PROJ4 installation
-CFLAGS="$PROJ4_INCL $CHECK_CFLAGS"
-LDFLAGS="$CHECK_LDFLAGS $PROJ4_LIB"
-AC_CHECK_LIB(proj, pj_init_plus, [AC_CHECK_HEADER([proj_api.h], [], [AC_MSG_ERROR(["Proj4 header not found in $PROJ4_INCL; use --with-proj4-include-path"])
-  ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Proj4 library not found; use --with-proj4-lib-path"])], [-lpthread -lm])
+# Check required PROJ installation
+CFLAGS="$PROJ_INCL $CHECK_CFLAGS"
+LDFLAGS="$CHECK_LDFLAGS $PROJ_LIB"
+AC_CHECK_LIB(proj, proj_create_crs_to_crs, [AC_CHECK_HEADER([proj.h], [], [AC_MSG_ERROR(["Proj header not found in $PROJ_INCL; use --with-proj-include-path"])
+  ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Proj library not found; use --with-proj-lib-path"])], [-lpthread -lm])
+
 
 # Check optional NetCDF library
 if test "x$enable_netcdf" = xyes; then
@@ -743,8 +744,8 @@ else
 fi
 
 # Set final CFLAGS and LDFLAGS
-CFLAGS="$CHECK_CFLAGS $ETREE_INCL $PROJ4_INCL $FFTW_INCL"
-LDFLAGS="$CHECK_LDFLAGS $ETREE_LIB $PROJ4_LIB $FFTW_LIB"
+CFLAGS="$CHECK_CFLAGS $ETREE_INCL $PROJ_INCL $FFTW_INCL"
+LDFLAGS="$CHECK_LDFLAGS $ETREE_LIB $PROJ_LIB $FFTW_LIB"
 if test "x$enable_netcdf" = xyes; then
    CFLAGS="$CFLAGS $NETCDF_INCL"
    LDFLAGS="$LDFLAGS $NETCDF_LIB"
