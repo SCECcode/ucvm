@@ -298,7 +298,7 @@
 			"CompileFlags": "",
                         "md5sum": "",
 			"Ask": "no"
-		},
+		}
 	},
         "etrees": {
                 "UCVM": {
