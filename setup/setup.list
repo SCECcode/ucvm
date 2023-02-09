@@ -248,7 +248,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-8.1.1.tar.gz",
 			"Required": "yes",
 			"CompileFlags": "",
-                        "md5sum": "41223226e90b6a1a7909c2d5a629aa7c",
+                        "md5sum": "bacc3d6cd0bec1acc3e892b34b406ae6",
 			"Ask": "no"
 		},
 		"FFTW": {
@@ -286,7 +286,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/hdf5-1.10.9.tar.gz",
 			"Required": "yes",
 			"Prerequisites": "Dynamic",
-                        "md5sum": "a8191e0adabd54521a6f682bc8172737",
+                        "md5sum": "eb14d82b27c2fd962c46e56186d47107",
 			"Ask": "no"
 		},
 		"geomodelgrids": {
@@ -294,9 +294,9 @@
                         "Lib": "geomodelgrids-1.0.0rc1",
                         "Size": "30M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/geomodelgrids-1.0.0rc1.tar.gz",
-			"Required": "no",
+			"Required": "yes",
 			"CompileFlags": "",
-                        "md5sum": "",
+                        "md5sum": "1aa636a4729054c9de3014eff46807b3",
 			"Ask": "no"
 		}
 	},
