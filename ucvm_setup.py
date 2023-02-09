@@ -174,7 +174,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         if config_data["Path"] == "geomodelgrids":
             ## special call for geomodelgrids
             print("\nRunning autoreconf")
-            callAndRecord(["autoconf"])
             callAndRecord(["autoreconf", "--fi"])
         else:
             print("\nRunning autoconf")
