@@ -171,9 +171,15 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
         print("\nRunning automake")
         callAndRecord(["automake", "--add-missing", "--force-missing"])
-    
-        print("\nRunning autoconf")
-        callAndRecord(["autoconf"])
+
+        if config_data["Path"] == "geomodelgrids":
+            ## special call for geomodelgrids
+            print("\nRunning autoreconf")
+            callAndRecord(["autoconf"])
+            callAndRecord(["autoreconf", "--fi"])
+        else:
+            print("\nRunning autoconf")
+            callAndRecord(["autoconf"])
     
     print("\nRunning ./configure")
     
@@ -454,6 +460,14 @@ def _add2LIBRARYPATH_python(modelsToInstall, librariesToInstall) :
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/netcdf/lib\")\n"
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/hdf5/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/hdf5/lib\")\n"
+## geomodelgrids needs proj and hdf5
+    if "geomodelgrids" in librariesToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/geomodelgrids/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/geomodelgrids/lib\")\n"
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/proj/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/proj/lib\")\n"
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/hdf5/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/hdf5/lib\")\n"
 
     return str
 
@@ -600,7 +614,7 @@ def process_user_path(p):
     ucvmpath = p
     
 ## link proj's library to PROJ_LIB location if PROJ_LIB is defined
-def linkPROJ_5(ucvmpath) :
+def linkPROJ_LIB(ucvmpath) :
    try :
       proj_lib = os.environ['PROJ_LIB']
    except:
@@ -939,7 +953,7 @@ if platform.system() == "Darwin" or platform.system() == "Linux" or dynamic_flag
     makeBashScript(os.getcwd(), ucvmpath ,modelsToInstall, librariesToInstall)
     makePythonScript(os.getcwd(), ucvmpath ,modelsToInstall, librariesToInstall)
     makeDyLibNameChangeScript(os.getcwd(), ucvmpath, modelsToInstall, librariesToInstall)
-    linkPROJ_5(ucvmpath)
+    linkPROJ_LIB(ucvmpath)
 
 print("\nInstalling UCVM")
 callAndRecord(["make", "install"])

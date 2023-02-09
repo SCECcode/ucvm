@@ -288,7 +288,17 @@
 			"Prerequisites": "Dynamic",
                         "md5sum": "a8191e0adabd54521a6f682bc8172737",
 			"Ask": "no"
-		}
+		},
+		"geomodelgrids": {
+			"Path": "geomodelgrids",
+                        "Lib": "geomodelgrids-1.0.0rc1",
+                        "Size": "30M",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/geomodelgrids-1.0.0rc1.tar.gz",
+			"Required": "no",
+			"CompileFlags": "",
+                        "md5sum": "",
+			"Ask": "no"
+		},
 	},
         "etrees": {
                 "UCVM": {
