@@ -120,7 +120,7 @@
 			"Path": "ivlsu",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/ivlsu.tar.gz",
 			"Flags": "--enable-model-ivlsu --with-ivlsu-lib-path=lib --with-ivlsu-include-path=include",
-			"Libraries": ["proj"],
+			"Libraries": ["proj-5"],
 			"Ask": "yes",
                         "md5sum": "8d553860bdd90d3444396b1da590276d",
 			"Order": 11		
@@ -198,7 +198,7 @@
 			"Path": "cs173h",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cs173h.tar.gz",
 			"Flags": "--enable-model-cs173h --with-cs173h-lib-path=lib --with-cs173h-include-path=include",
-			"Libraries": ["euclid3", "proj"],
+			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "no",
                         "md5sum": "2da1cbc7e689707692764b37679bdbdf",
 			"Order": 4		
@@ -210,7 +210,7 @@
 			"Path": "cs173",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cs173.tar.gz",
 			"Flags": "--enable-model-cs173 --with-cs173-lib-path=lib --with-cs173-include-path=include",
-			"Libraries": ["euclid3", "proj"],
+			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "no",
                         "md5sum": "b85205ef8d58eaa99dd3590cee9ea56d",
 			"Order": 3		
@@ -222,7 +222,7 @@
 			"Path": "cca",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cca.tar.gz",
 			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
-			"Libraries": ["euclid3", "proj"],
+			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
                         "md5sum": "52bfae5615317e1836a619ef72e0a0ca",
 			"Order": 2		
@@ -234,7 +234,7 @@
 			"Path": "cvms5",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvms5.tar.gz",
 			"Flags": "--enable-model-cvms5 --with-cvms5-lib-path=lib --with-cvms5-include-path=include",
-			"Libraries": ["euclid3", "proj"],
+			"Libraries": ["euclid3", "proj-5"],
 			"Ask": "yes",
                         "md5sum": "1d7fc16b1408af17cf1dc424f19cff49",
 			"Order": 1		
@@ -242,7 +242,7 @@
 	},
 	"libraries": {
 		"Proj": {
-			"Path": "proj",
+			"Path": "proj-5",
                         "Lib": "proj-8.1.1",
                         "Size": "30M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-8.1.1.tar.gz",
