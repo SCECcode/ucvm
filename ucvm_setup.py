@@ -128,7 +128,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
             config_data["Path"] == "proj" or \
             config_data["Path"] == "euclid3" or \
             config_data["Path"] == "netcdf" or \
-            config_data["Path"] == "hdf5" or \
             config_data["Path"] == "curl":
         strip_level = "1"
     
