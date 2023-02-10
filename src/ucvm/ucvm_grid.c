@@ -5,8 +5,7 @@
 #include "ucvm_grid.h"
 #include "ucvm_proj_bilinear.h"
 #include "ucvm_utils.h"
-#include "proj_api.h"
-
+#include "proj.h"
 
 /* Maximum grid points to buffer from files */
 #define UCVM_GRID_MAX_POINTS 2048
@@ -24,8 +23,8 @@ int ucvm_grid_gen_private(ucvm_projdef_t *iproj, ucvm_trans_t *trans,
 			  ucvm_point_t *pnts, const char *filename)
 {
   int i, j, c;
-  projPJ opj = NULL;
-  projPJ ipj = NULL;
+  PJ *opj = NULL;
+  PJ *ipj = NULL;
   double x, y, z, x_offset, y_offset, theta, gridding;
   FILE *ofp;
   ucvm_point_t pbuf[UCVM_GRID_MAX_POINTS];
@@ -164,8 +163,8 @@ int ucvm_grid_convert_private(ucvm_projdef_t *iproj,
   int i;
   ucvm_point_t xy;
   ucvm_bilinear_t cmu;
-  projPJ ipj = NULL;
-  projPJ opj = NULL;
+  PJ *ipj = NULL;
+  PJ *opj = NULL;
   FILE *fp;
   ucvm_point_t pbuf[UCVM_GRID_MAX_POINTS];
   char ipdesc[UCVM_MAX_PROJ_LEN];

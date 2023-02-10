@@ -2,14 +2,14 @@
 #define UCVM_PROJ_UCVM_H
 
 #include "ucvm_dtypes.h"
-#include "proj_api.h"
+#include "proj.h"
 
 
 /* Projection parameters */
 typedef struct ucvm_proj_t 
 {
-  projPJ ipj;
-  projPJ opj;
+  PJ* ipj;
+  PJ* opj;
   ucvm_point_t p1;
   double rot;
   ucvm_point_t size;
