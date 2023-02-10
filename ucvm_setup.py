@@ -828,12 +828,12 @@ for library in config_data["libraries"]:
                  
         if dlinstlibrary.strip() != "" and dlinstlibrary.strip().lower()[0] == "y":
             if the_library["Needs"] == "" :
-              librariesToInstall.prepend(library)
+              librariesToInstall.insert(0,library)
             else:
               librariesToInstall.append(library)
     elif the_library["Required"] == "yes":
         if the_library["Needs"] == "" :
-          librariesToInstall.prepend(library)
+          librariesToInstall.insert(0,library)
         else:
           librariesToInstall.append(library)
 
