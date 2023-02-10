@@ -28,8 +28,6 @@
 
 /* Maximum projection description length */
 #define UCVM_MAX_PROJ_LEN 256
-#define DEG_TO_RAD   .017453292519943296
-#define RAD_TO_DEG   57.295779513082321
 
 /* Maximum model flag key length */
 #define UCVM_MAX_FLAG_KEY_LEN 64
