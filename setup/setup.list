@@ -295,7 +295,7 @@
                         "Size": "30M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/geomodelgrids-1.0.0rc1.tar.gz",
 			"Required": "yes",
-			"CompileFlags": "",
+                        "CompileFlags": "--with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib CXXFLAGS='-std=c++11'",
                         "md5sum": "1aa636a4729054c9de3014eff46807b3",
 			"Ask": "no"
 		}

@@ -168,16 +168,16 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
             aclocal_array += ["-I", "m4"]
         callAndRecord(aclocal_array)
 
-        print("\nRunning automake")
-        callAndRecord(["automake", "--add-missing", "--force-missing"])
-
         if config_data["Path"] == "geomodelgrids":
             ## special call for geomodelgrids
             print("\nRunning autoreconf")
-            callAndRecord(["autoreconf", "--fi"])
+            callAndRecord(["autoreconf", "-fi"])
         else:
             print("\nRunning autoconf")
             callAndRecord(["autoconf"])
+
+        print("\nRunning automake")
+        callAndRecord(["automake", "--add-missing", "--force-missing"])
     
     print("\nRunning ./configure")
     
