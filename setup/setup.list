@@ -249,7 +249,8 @@
 			"Required": "yes",
 			"CompileFlags": "",
                         "md5sum": "bacc3d6cd0bec1acc3e892b34b406ae6",
-			"Ask": "no"
+			"Ask": "no",
+                        "Needs":""
 		},
 		"FFTW": {
 			"Path": "fftw",
@@ -259,7 +260,8 @@
 			"Required": "yes",
 			"CompileFlags": "--enable-fortran=no",
                         "md5sum": "0a78f7749bd9c67b7585e163780247c0",
-			"Ask": "no"
+			"Ask": "no",
+                        "Needs":""
 		},
 		"Euclid3": {
 			"Path": "euclid3",
@@ -268,7 +270,8 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/lib/euclid3-1.3.tar.gz",
 			"Required": "yes",
                         "md5sum": "c980cfb9068c97612b7da27f37cc4a44",
-			"Ask": "no"
+			"Ask": "no",
+                        "Needs":""
 		},
 		"NetCDF": {
 			"Path": "netcdf",
@@ -278,7 +281,8 @@
 			"Prerequisites": "Dynamic",
 			"Needs": "HDF5",		
                         "md5sum": "",
-			"Ask": "no"
+			"Ask": "no",
+                        "Needs":"HDF5"
 		},
 		"HDF5": {
 			"Path": "hdf5",
@@ -287,7 +291,8 @@
 			"Required": "yes",
 			"Prerequisites": "Dynamic",
                         "md5sum": "eb14d82b27c2fd962c46e56186d47107",
-			"Ask": "no"
+			"Ask": "no",
+                        "Needs":""
 		},
 		"geomodelgrids": {
 			"Path": "geomodelgrids",
@@ -297,7 +302,8 @@
 			"Required": "yes",
                         "CompileFlags": "--with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib CXXFLAGS='-std=c++11'",
                         "md5sum": "1aa636a4729054c9de3014eff46807b3",
-			"Ask": "no"
+			"Ask": "no",
+                        "Needs":"HDF5,Proj"
 		}
 	},
         "etrees": {

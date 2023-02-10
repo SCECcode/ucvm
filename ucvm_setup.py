@@ -238,6 +238,9 @@ def _add2LIBRARYPATH_bash(modelsToInstall, librariesToInstall) :
     str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/lib/proj/lib\n"
     str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/lib/proj/lib\n"
 
+    str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/lib/hdf5/lib\n"
+    str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/lib/hdf5/lib\n"
+
     if "CS173" in modelsToInstall:
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cs173/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/cs173/lib\n"
@@ -304,8 +307,9 @@ def _add2LIBRARYPATH_bash(modelsToInstall, librariesToInstall) :
     if "NetCDF" in librariesToInstall:
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/lib/netcdf/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/lib/netcdf/lib\n"
-        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/lib/hdf5/lib\n"
-        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/lib/hdf5/lib\n"
+    if "geomodelgrids" in librariesToInstall:
+        str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/lib/geomodelgrids/lib\n"
+        str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/lib/geomodelgrids/lib\n"
 
     return str
 
@@ -797,6 +801,10 @@ print("\nYou have indicated that you would like to install")
 printPretty(modelsToInstall)
 
 
+### there are some library that requires other libraries to be installed first
+### ie, netcdf needs hdf5
+###     geomodelgrids needs hdf5 and proj
+###   very HACKY :-)
 for library in config_data["libraries"]:
     the_library = config_data["libraries"][library]
     if the_library["Ask"] == "yes" or library.lower() in unsupported_features:
@@ -819,9 +827,15 @@ for library in config_data["libraries"]:
           dlinstlibrary = raw_input("Enter yes or no: ")
                  
         if dlinstlibrary.strip() != "" and dlinstlibrary.strip().lower()[0] == "y":
-            librariesToInstall.append(library)
+            if the_library["Needs"] == "" :
+              librariesToInstall.prepend(library)
+            else:
+              librariesToInstall.append(library)
     elif the_library["Required"] == "yes":
-        librariesToInstall.append(library)
+        if the_library["Needs"] == "" :
+          librariesToInstall.prepend(library)
+        else:
+          librariesToInstall.append(library)
 
 print("\nYou have indicated that you would like to install")
 printPretty(librariesToInstall)
