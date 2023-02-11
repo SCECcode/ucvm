@@ -126,7 +126,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     strip_level = "2"
     if config_data["Path"] == "fftw" or \
             config_data["Path"] == "euclid3" or \
-            config_data["Path"] == "netcdf" \
+            config_data["Path"] == "netcdf" :
         strip_level = "1"
     
     ## skip the models that already exists and go to the ones that did not get processed yet

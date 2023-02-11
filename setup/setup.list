@@ -291,10 +291,10 @@
                         "Size": "10M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/curl-7.87.0.tar.gz",
 			"Required": "yes",
-                        "CompileFlags": "",
+                        "CompileFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
                         "md5sum": "a5381e0c012b1320070d0d99f47fbad2",
 			"Ask": "no",
-                        "Needs":""
+                        "Needs":"openssl"
 		},
 		"OpenSSL": {
 			"Path": "openssl",
