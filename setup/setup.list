@@ -285,17 +285,6 @@
 			"Ask": "no",
                         "Needs":""
 		},
-		"Curl": {
-			"Path": "curl",
-                        "Lib": "curl-7.87.0",
-                        "Size": "10M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/curl-7.87.0.tar.gz",
-			"Required": "yes",
-                        "CompileFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
-                        "md5sum": "a5381e0c012b1320070d0d99f47fbad2",
-			"Ask": "no",
-                        "Needs":"openssl"
-		},
 		"OpenSSL": {
 			"Path": "openssl",
                         "Lib": "openssl-3.0.8",
@@ -328,6 +317,17 @@
                         "md5sum": "61b8fd019d69dd7b756313d00c10d3e2",
 			"Ask": "no",
                         "Needs":""
+		},
+		"Curl": {
+			"Path": "curl",
+                        "Lib": "curl-7.87.0",
+                        "Size": "10M",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/curl-7.87.0.tar.gz",
+			"Required": "yes",
+                        "CompileFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
+                        "md5sum": "a5381e0c012b1320070d0d99f47fbad2",
+			"Ask": "no",
+                        "Needs":"openssl"
 		},
 		"Proj": {
 			"Path": "proj",

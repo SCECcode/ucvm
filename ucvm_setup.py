@@ -157,17 +157,19 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    print("\nRunning aclocal")
-    aclocal_array = ["aclocal"]
-    if os.path.exists("./m4"):
-        aclocal_array += ["-I", "m4"]
-    callAndRecord(aclocal_array)
+   
+    if config_data["Path"] != "openssl":
+      print("\nRunning aclocal")
+      aclocal_array = ["aclocal"]
+      if os.path.exists("./m4"):
+          aclocal_array += ["-I", "m4"]
+      callAndRecord(aclocal_array)
 
-    print("\nRunning autoconf")
-    callAndRecord(["autoconf"])
+      print("\nRunning autoconf")
+      callAndRecord(["autoconf"])
 
-    print("\nRunning automake")
-    callAndRecord(["automake", "--add-missing", "--force-missing"])
+      print("\nRunning automake")
+      callAndRecord(["automake", "--add-missing", "--force-missing"])
     
     print("\nRunning ./configure")
 
@@ -180,15 +182,18 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     env_string="SQLITE3_CFLAGS='-I" + ucvmpath + "/" + pathname + "/sqlite/include'"
     env_string=env_string+ " SQLITE3_LIBS='-L" + ucvmpath + "/" + pathname + "/sqlite/lib -lsqlite3'"
 
-    print("\n=====")
-    print(prefix_string)
+    print("\n\nXXX for =====")
+    print(config_data["Path"])
     print(env_string)
-    print("=====\n")
+    print("\n\n")
 
-    if config_data["Path"] == "proj":
-        configure_array = ["./configure", prefix_string]
-    else:
-        configure_array = ["./configure", prefix_string]
+    if config_data["Path"] == "openssl":
+        configure_array = ["./Configure", prefix_string]
+    else :
+        if config_data["Path"] == "proj":
+            configure_array = ["./configure", prefix_string]
+        else:
+            configure_array = ["./configure", prefix_string]
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
     
@@ -862,6 +867,8 @@ except OSError as e:
     eG(e, "Could not create ./work directory.")
 
 print("\nNow setting up the required UCVM libraries...")
+print(librariesToInstall)
+exit
 
 for library in config_data["libraries"]:
     the_library = config_data["libraries"][library]
