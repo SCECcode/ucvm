@@ -126,8 +126,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     strip_level = "2"
     if config_data["Path"] == "fftw" or \
             config_data["Path"] == "euclid3" or \
-            config_data["Path"] == "netcdf" or \
-            config_data["Path"] == "curl":
+            config_data["Path"] == "netcdf" \
         strip_level = "1"
     
     ## skip the models that already exists and go to the ones that did not get processed yet
@@ -158,30 +157,39 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    #
-    # proj library is an exception. It does not require use of aclocal, only ./configure
-    #
-    if not config_data["Path"] == "proj":
-        print("\nRunning aclocal")
-        aclocal_array = ["aclocal"]
-        if os.path.exists("./m4"):
-            aclocal_array += ["-I", "m4"]
-        callAndRecord(aclocal_array)
+    print("\nRunning aclocal")
+    aclocal_array = ["aclocal"]
+    if os.path.exists("./m4"):
+        aclocal_array += ["-I", "m4"]
+    callAndRecord(aclocal_array)
 
-        if config_data["Path"] == "geomodelgrids":
-            ## special call for geomodelgrids
-            print("\nRunning autoreconf")
-            callAndRecord(["autoreconf", "-fi"])
-        else:
-            print("\nRunning autoconf")
-            callAndRecord(["autoconf"])
+    print("\nRunning autoconf")
+    callAndRecord(["autoconf"])
 
-        print("\nRunning automake")
-        callAndRecord(["automake", "--add-missing", "--force-missing"])
+    print("\nRunning automake")
+    callAndRecord(["automake", "--add-missing", "--force-missing"])
     
     print("\nRunning ./configure")
-    
-    configure_array = ["./configure", "--prefix=" + ucvmpath + "/" + pathname + "/" + config_data["Path"]]
+
+## special case for PROJ 
+## env TIFF_LIBS='-L/usr/local/tiff/lib -ltiff' TIFF_CFLAGS='-I/usr/local/tiff/include' 
+## SQLITE3_CFLAGS='-I/usr/local/sqlite/include' SQLITE3_LIBS='-L/usr/local/sqlite/lib -lsqlite3' 
+## ./configure -v --prefix=/usr/local/proj --enable-tiff  --with-curl=/usr/local/curl/bin/curl-config
+
+    prefix_string="--prefix=" + ucvmpath + "/" + pathname + "/" + config_data["Path"]
+    env_string="SQLITE3_CFLAGS='-I" + ucvmpath + "/" + pathname + "/sqlite/include'"
+    env_string=env_string+ " SQLITE3_LIBS='-L" + ucvmpath + "/" + pathname + "/sqlite/lib -lsqlite3'"
+
+    print("\n=====")
+    print(prefix_string)
+    print(env_string)
+    print("=====\n")
+
+    if config_data["Path"] == "proj":
+        configure_array = ["./configure", prefix_string]
+    else:
+        configure_array = ["./configure", prefix_string]
+
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
     
     if "Libraries" in config_data:
