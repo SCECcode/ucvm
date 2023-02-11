@@ -241,17 +241,6 @@
 		}
 	},
 	"libraries": {
-		"Proj": {
-			"Path": "proj",
-                        "Lib": "proj-8.1.1",
-                        "Size": "30M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-8.1.1.tar.gz",
-			"Required": "yes",
-			"CompileFlags": "",
-                        "md5sum": "bacc3d6cd0bec1acc3e892b34b406ae6",
-			"Ask": "no",
-                        "Needs":"tiff openssl curl"
-		},
 		"FFTW": {
 			"Path": "fftw",
                         "Lib": "fftw-3.3.3",
@@ -269,6 +258,7 @@
                         "Size": "4.7M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/lib/euclid3-1.3.tar.gz",
 			"Required": "yes",
+                        "CompileFlags": "",
                         "md5sum": "c980cfb9068c97612b7da27f37cc4a44",
 			"Ask": "no",
                         "Needs":""
@@ -279,7 +269,7 @@
 			"URL": "http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-4.3.0.tar.gz",
 			"Required": "no",
 			"Prerequisites": "Dynamic",
-			"Needs": "HDF5",		
+                        "CompileFlags": "",
                         "md5sum": "",
 			"Ask": "no",
                         "Needs":"HDF5"
@@ -290,6 +280,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/hdf5-1.10.9.tar.gz",
 			"Required": "yes",
 			"Prerequisites": "Dynamic",
+                        "CompileFlags": "",
                         "md5sum": "eb14d82b27c2fd962c46e56186d47107",
 			"Ask": "no",
                         "Needs":""
@@ -311,8 +302,8 @@
                         "Size": "10M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/openssl-3.0.8.tar.gz",
 			"Required": "yes",
-                        "CompileFlags": "17499b65a484a528bd05e76b7e82ba3f",
-                        "md5sum": "",
+                        "CompileFlags": "",
+                        "md5sum": "17499b65a484a528bd05e76b7e82ba3f",
 			"Ask": "no",
                         "Needs":""
 		},
@@ -322,21 +313,32 @@
                         "Size": "10M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/tiff-4.5.0.tar.gz",
 			"Required": "yes",
-                        "CompileFlags": "2476aa1f6ddadeb18877e20b0c85dc92",
-                        "md5sum": "",
+                        "CompileFlags": "",
+                        "md5sum": "2476aa1f6ddadeb18877e20b0c85dc92",
 			"Ask": "no",
                         "Needs":""
 		},
-		"geomodelgrids": {
-			"Path": "geomodelgrids",
-                        "Lib": "geomodelgrids-1.0.0rc1",
-                        "Size": "30M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/geomodelgrids-1.0.0rc1.tar.gz",
-			"Required": "no",
-                        "CompileFlags": "--with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib CXXFLAGS='-std=c++11'",
-                        "md5sum": "1aa636a4729054c9de3014eff46807b3",
+		"Sqlite": {
+			"Path": "sqlite",
+                        "Lib": "sqlite-autoconf-3400100",
+                        "Size": "10M",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/sqlite-autoconf-3400100.tar.gz",
+			"Required": "yes",
+                        "CompileFlags": "",
+                        "md5sum": "61b8fd019d69dd7b756313d00c10d3e2",
 			"Ask": "no",
-                        "Needs":"HDF5 Proj"
+                        "Needs":""
+		},
+		"Proj": {
+			"Path": "proj",
+                        "Lib": "proj-8.1.1",
+                        "Size": "30M",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-8.1.1.tar.gz",
+			"Required": "yes",
+                        "CompileFlags": "--enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config",
+                        "md5sum": "4edd69456526e67cd02037b8b90593dc",
+			"Ask": "no",
+                        "Needs":"tiff openssl curl sqlite"
 		}
 	},
         "etrees": {
