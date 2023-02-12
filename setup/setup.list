@@ -327,7 +327,7 @@
                         "CompileFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
                         "md5sum": "a5381e0c012b1320070d0d99f47fbad2",
 			"Ask": "no",
-                        "Needs":"openssl"
+                        "Needs":"OpenSSL"
 		},
 		"Proj": {
 			"Path": "proj",
@@ -338,7 +338,7 @@
                         "CompileFlags": "--enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config",
                         "md5sum": "4edd69456526e67cd02037b8b90593dc",
 			"Ask": "no",
-                        "Needs":"tiff openssl curl sqlite"
+                        "Needs":"TIFF OpenSSL Curl Sqlite"
 		}
 	},
         "etrees": {

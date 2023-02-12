@@ -13,6 +13,7 @@ import json
 import platform
 import socket
 import shlex
+import pdb
 
 
 # Variables
@@ -77,7 +78,12 @@ def callAndRecord(command, nocall = False):
     if nocall == False:
         retVal = call(command)
         if not retVal == 0:
-            eG("Error executing command.", command)
+            print("Return value for the call is ",retVal)
+            if retVal == 1:
+               eG("Error executing command.", command)
+            else:
+               print("WHAT... Return value for the call is ",retVal)
+      
     shell_script += command[0]
     for cmd in command[1:]:
         shell_script += " \"" + cmd + "\""
@@ -219,7 +225,12 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     callAndRecord(configure_array)
     
     print("\nRunning make clean")
-    callAndRecord(["make", "clean"])
+
+    ## ??? ignore the return of the call ??
+    if config_data["Path"] == "tiff":
+      callAndRecord(["make", "clean"])
+    else:
+      callAndRecord(["make", "clean"])
     
     print("\nRunning make")
     if config_data["Path"] == "cencal":
@@ -879,8 +890,10 @@ for library in config_data["libraries"]:
                 #                     "Downloading" + the_library["Needs"])
                 tarname = config_data["libraries"][the_library["Needs"]]["URL"].split("/")[-1]
                 print("Calling Needs Install with tarname,ucvmpath,library:",tarname,ucvmpath)
+## might need to iterate one at a time
                 installConfigMakeInstall(tarname, ucvmpath, "library", config_data["libraries"][the_library["Needs"]])
             except Exception as e:
+                print("BBBADDD", the_library["Needs"])
                 eG(e, "Error installing library " + the_library["Needs"] + " (needed by " + library + ").")
     
         try:
