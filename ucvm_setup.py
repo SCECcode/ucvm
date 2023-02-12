@@ -129,6 +129,12 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     
     workpath = "./work/" + pathname
 
+    if(restart_flag) :
+        test_path= workpath + "/" + config_data["Path"];
+        if os.path.exists(test_path):
+            print("\nSkip building " + config_data["Path"]);
+            return 0
+
     strip_level = "2"
     if config_data["Path"] == "fftw" or \
             config_data["Path"] == "euclid3" or \
@@ -142,12 +148,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         requirements_array= config_data["Requirements"]
         if "gfortran" in requirements_array:
            needs_gfortran += 1
-
-    if(restart_flag) :
-        test_path= workpath + "/" + config_data["Path"];
-        if os.path.exists(test_path):
-            print("\nSkip building " + config_data["Path"]);
-            return
     # 
     # We need to un-tar the file.
     # The strip level determines how much of the path found in the tar file are removed.
@@ -851,15 +851,9 @@ for library in config_data["libraries"]:
           dlinstlibrary = raw_input("Enter yes or no: ")
                  
         if dlinstlibrary.strip() != "" and dlinstlibrary.strip().lower()[0] == "y":
-            if the_library["Needs"] == "" :
-              librariesToInstall.insert(0,library)
-            else:
-              librariesToInstall.append(library)
-    elif the_library["Required"] == "yes":
-        if the_library["Needs"] == "" :
-          librariesToInstall.insert(0,library)
-        else:
           librariesToInstall.append(library)
+    elif the_library["Required"] == "yes":
+        librariesToInstall.append(library)
 
 print("\nYou have indicated that you would like to install")
 printPretty(librariesToInstall)
@@ -878,28 +872,34 @@ except OSError as e:
     eG(e, "Could not create ./work directory.")
 
 print("\nNow setting up the required UCVM libraries...")
-print(librariesToInstall)
-exit
 
 for library in config_data["libraries"]:
     the_library = config_data["libraries"][library]
     if library in librariesToInstall:
+        print("\n CHECKING on ", library)
+## bring in the dependency first
         if the_library.get("Needs", "") != "":
             try:
                 #downloadWithProgress(config_data["libraries"][the_library["Needs"]]["URL"], "./work/lib", \
                 #                     "Downloading" + the_library["Needs"])
-                tarname = config_data["libraries"][the_library["Needs"]]["URL"].split("/")[-1]
-                print("Calling Needs Install with tarname,ucvmpath,library:",tarname,ucvmpath)
-## might need to iterate one at a time
-                installConfigMakeInstall(tarname, ucvmpath, "library", config_data["libraries"][the_library["Needs"]])
+                for need in needlist :
+                   print("\n >>>>> looking at ",need)
+                   tarname = config_data["libraries"][need]["URL"].split("/")[-1]
+                   print("Calling Needs Install with tarname,ucvmpath,library:",tarname,ucvmpath,config_data["libraries"][need])
+                   installConfigMakeInstall(tarname, ucvmpath, "library", config_data["libraries"][need])
+##installConfigMakeInstall(tarname, ucvmpath, "library", config_data["libraries"][the_library["Needs"]])
+
             except Exception as e:
-                print("BBBADDD", the_library["Needs"])
                 eG(e, "Error installing library " + the_library["Needs"] + " (needed by " + library + ").")
     
+## check the current one..
+        print("\n MAIN one..", library)
         try:
             #downloadWithProgress(the_library["URL"], "./work/lib", "Downloading " + library + "..." )
             tarname = the_library["URL"].split("/")[-1]
+
             print("Calling URL Install with tarname,ucvmpath,library:",tarname,ucvmpath)
+    
             installConfigMakeInstall(tarname, ucvmpath, "library", the_library)
         except Exception as e:
             eG(e, "Error installing library " + library + ".")
