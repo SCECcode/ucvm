@@ -882,6 +882,7 @@ for library in config_data["libraries"]:
             try:
                 #downloadWithProgress(config_data["libraries"][the_library["Needs"]]["URL"], "./work/lib", \
                 #                     "Downloading" + the_library["Needs"])
+                needlist=the_library["Needs"].split()
                 for need in needlist :
                    print("\n >>>>> looking at ",need)
                    tarname = config_data["libraries"][need]["URL"].split("/")[-1]
