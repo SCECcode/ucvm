@@ -129,10 +129,11 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     
     workpath = "./work/" + pathname
 
+    ## skip the models that already exists and go to the ones that did not get processed yet
     if(restart_flag) :
         test_path= workpath + "/" + config_data["Path"];
         if os.path.exists(test_path):
-            print("\nSkip building " + config_data["Path"]);
+            print("\nSkip building " + config_data["Path"] + ", already exists");
             return 0
 
     strip_level = "2"
@@ -141,9 +142,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
             config_data["Path"] == "netcdf" :
         strip_level = "1"
     
-    ## skip the models that already exists and go to the ones that did not get processed yet
     ## still needs to track needs_gfortran
-
     if "Requirements" in config_data:
         requirements_array= config_data["Requirements"]
         if "gfortran" in requirements_array:
@@ -193,13 +192,16 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     print(env_string)
     print("\n\n")
 
+    env_string="UCVM_INSTALL_PATH="+ucvmpath
+
+    pdb.set_trace()
+
     if config_data["Path"] == "openssl":
         configure_array = ["./Configure", prefix_string]
-    else :
-        if config_data["Path"] == "proj":
-            configure_array = ["./configure", prefix_string]
-        else:
-            configure_array = ["./configure", prefix_string]
+    elif config_data["Path"] == "curl":
+        configure_array = ["./configure", prefix_string, "--set", env_string]
+    else:
+        configure_array = ["./configure", prefix_string]
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
     
@@ -221,7 +223,11 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     
     if "CompileFlags" in config_data:
         configure_array += config_data["CompileFlags"].split(" ")
+        if config_data["Path"] == "XXX":
+           print(configure_array)
+           pdb.set_trace()
 
+    pdb.set_trace()
     callAndRecord(configure_array)
     
     print("\nRunning make clean")

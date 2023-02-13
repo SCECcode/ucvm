@@ -335,7 +335,7 @@
                         "Size": "30M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-8.1.1.tar.gz",
 			"Required": "yes",
-                        "CompileFlags": "--with-proj-lib-path=${UCVM_INSTALL_PATH}/lib/proj/lib --enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config",
+                        "CompileFlags": "--enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config",
                         "md5sum": "4edd69456526e67cd02037b8b90593dc",
 			"Ask": "no",
                         "Needs":"TIFF OpenSSL Curl Sqlite"
