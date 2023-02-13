@@ -19,7 +19,12 @@ import pdb
 # Variables
 
 # Set the version number for the installation script.
-VERSION = "22.7.0"
+VERSION = "23.4.0"
+
+XXX my_env = os.environ
+my_env["PATH"] = 
+"/usr/sbin:/sbin:" + my_env["PATH"]
+subprocess.Popen(my_command, env=my_env)
 
 # User defined variables.
 all_flag = False
