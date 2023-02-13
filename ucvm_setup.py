@@ -201,10 +201,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
     prefix_string="--prefix=" + ucvmpath + "/" + pathname + "/" + config_data["Path"]
 
-    if config_data["Path"] == "openssl":
-        configure_array = ["./Configure", prefix_string]
-    else:
-        configure_array = ["./configure", prefix_string]
+    configure_array = ["./configure", prefix_string]
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
 
