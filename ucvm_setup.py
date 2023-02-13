@@ -21,11 +21,6 @@ import pdb
 # Set the version number for the installation script.
 VERSION = "23.4.0"
 
-XXX my_env = os.environ
-my_env["PATH"] = 
-"/usr/sbin:/sbin:" + my_env["PATH"]
-subprocess.Popen(my_command, env=my_env)
-
 # User defined variables.
 all_flag = False
 dynamic_flag = True
@@ -36,6 +31,9 @@ user_dynamic_flag = False
 ## track how many requeted models needs gfortran
 needs_gfortran = 1
 skip_ask_path = False
+
+## track env of current model/lib etc
+needs_env = {}
 
 # Should we abort after testing system conditions?
 error_out = False
@@ -77,13 +75,32 @@ def which(file):
 
 
 # Records the command to the global shell script variable.
-def callAndRecord(command, nocall = False):
+def callAndRecord(command, nocall = False, noshell = True):
     global shell_script
     print('  ==> command used.. '+'_'.join(command))
     if nocall == False:
-        retVal = call(command)
+##        retVal = call(command)
+        if noshell == False :
+            my_env = os.environ.copy()
+            sz=len(needs_env)
+            if sz != 0 :  ## add required environment 
+              for env in needs_env : 
+                 my_env[env] = needs_env[env]
+
+##            print(my_env)
+            my_command=' '.join(command)
+            proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
+            retout, reterr = proc.communicate()
+            retVal = proc.poll()
+        else:
+            proc = Popen(command, stdout = PIPE, stderr = PIPE)
+            retout, reterr = proc.communicate()
+            retVal = proc.poll()
+
+
         if not retVal == 0:
             print("Return value for the call is ",retVal)
+            print(reterr)
             if retVal == 1:
                eG("Error executing command.", command)
             else:
@@ -111,7 +128,6 @@ def printPretty(list):
 # create matching install directory from the build directory
 # base on configure's prefix
 def createInstallTargetPath( targetpath ):
-  print('ADDING '+targetpath)
   if not os.path.exists(targetpath):
     call(["mkdir", "-p", targetpath])
 
@@ -126,6 +142,7 @@ def createInstallTargetPath( targetpath ):
 def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
     global needs_gfortran
+    global needs_env
 
     print("\nInstalling " + type + " " + tarname)
     pathname = "lib"
@@ -167,7 +184,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-   
     if config_data["Path"] != "openssl":
       print("\nRunning aclocal")
       aclocal_array = ["aclocal"]
@@ -183,32 +199,19 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     
     print("\nRunning ./configure")
 
-## special case for PROJ 
-## env TIFF_LIBS='-L/usr/local/tiff/lib -ltiff' TIFF_CFLAGS='-I/usr/local/tiff/include' 
-## SQLITE3_CFLAGS='-I/usr/local/sqlite/include' SQLITE3_LIBS='-L/usr/local/sqlite/lib -lsqlite3' 
-## ./configure -v --prefix=/usr/local/proj --enable-tiff  --with-curl=/usr/local/curl/bin/curl-config
-
     prefix_string="--prefix=" + ucvmpath + "/" + pathname + "/" + config_data["Path"]
-    env_string="SQLITE3_CFLAGS='-I" + ucvmpath + "/" + pathname + "/sqlite/include'"
-    env_string=env_string+ " SQLITE3_LIBS='-L" + ucvmpath + "/" + pathname + "/sqlite/lib -lsqlite3'"
-
-    print("\n\nXXX for =====")
-    print(config_data["Path"])
-    print(env_string)
-    print("\n\n")
-
-    env_string="UCVM_INSTALL_PATH="+ucvmpath
-
-    pdb.set_trace()
 
     if config_data["Path"] == "openssl":
         configure_array = ["./Configure", prefix_string]
-    elif config_data["Path"] == "curl":
-        configure_array = ["./configure", prefix_string, "--set", env_string]
     else:
         configure_array = ["./configure", prefix_string]
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
+
+    if "Env" in config_data: 
+        needs_env = config_data["Env"]
+    else:
+        needs_env = {}
     
     if "Libraries" in config_data:
         needs_array = config_data["Libraries"]
@@ -228,12 +231,12 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     
     if "CompileFlags" in config_data:
         configure_array += config_data["CompileFlags"].split(" ")
-        if config_data["Path"] == "XXX":
-           print(configure_array)
-           pdb.set_trace()
 
-    pdb.set_trace()
-    callAndRecord(configure_array)
+    ## both use $UCVM_INSTALL_PATH
+    if config_data["Path"] == "curl" or config_data["Path"] == "proj":
+      callAndRecord(configure_array, noshell = False)
+    else:
+      callAndRecord(configure_array)
     
     print("\nRunning make clean")
 
@@ -895,7 +898,6 @@ for library in config_data["libraries"]:
                 #                     "Downloading" + the_library["Needs"])
                 needlist=the_library["Needs"].split()
                 for need in needlist :
-                   print("\n >>>>> looking at ",need)
                    tarname = config_data["libraries"][need]["URL"].split("/")[-1]
                    print("Calling Needs Install with tarname,ucvmpath,library:",tarname,ucvmpath,config_data["libraries"][need])
                    installConfigMakeInstall(tarname, ucvmpath, "library", config_data["libraries"][need])
@@ -905,7 +907,6 @@ for library in config_data["libraries"]:
                 eG(e, "Error installing library " + the_library["Needs"] + " (needed by " + library + ").")
     
 ## check the current one..
-        print("\n MAIN one..", library)
         try:
             #downloadWithProgress(the_library["URL"], "./work/lib", "Downloading " + library + "..." )
             tarname = the_library["URL"].split("/")[-1]
