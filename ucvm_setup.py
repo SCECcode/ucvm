@@ -362,7 +362,7 @@ def makeBashScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
 ## LD_LIBRARY_PATH and DYLD_LIBRARY_PATH is setup up
 ##
 def _add2LIBRARYPATH_python(modelsToInstall, librariesToInstall) :
-
+    str=""
 #libraries
     for library in librariesToInstall:
         conf=config_data["libraries"][library]
