@@ -911,7 +911,7 @@ for library in config_data["libraries"]:
                 needlist=the_library["Needs"].split()
                 for need in needlist :
                    tarname = config_data["libraries"][need]["URL"].split("/")[-1]
-                   print("Calling Needs Install with tarname,ucvmpath,library:",tarname,ucvmpath,config_data["libraries"][need]['Path'])
+                   print("Calling Needs to Install:",need, tarname)
                    installConfigMakeInstall(tarname, ucvmpath, "library", config_data["libraries"][need])
 
             except Exception as e:
@@ -922,7 +922,7 @@ for library in config_data["libraries"]:
             #downloadWithProgress(the_library["URL"], "./work/lib", "Downloading " + library + "..." )
             tarname = the_library["URL"].split("/")[-1]
 
-            print("Calling URL Install with tarname,ucvmpath,library:",tarname,ucvmpath)
+            print("Calling URL Install with tarname,ucvmpath:",tarname,ucvmpath)
     
             installConfigMakeInstall(tarname, ucvmpath, "library", the_library)
         except Exception as e:
@@ -969,32 +969,18 @@ print("\nRunning ./configure for UCVM")
 ucvm_conf_command = ["./configure", "--enable-silent-rules" ]
 
 for library in librariesToInstall:
-    if "UCVMConfigureFlags" in library and library["UCVMConfigureFlags"] != "":
-       flags = library["UCVMConfigureFlags"].split(" ")
+    the_library = config_data["libraries"][library]
+    if "UCVMConfigureFlags" in the_library and the_library["UCVMConfigureFlags"] != "":
+       flags = the_library["UCVMConfigureFlags"].split(" ")
        ucvm_conf_command += flags
 
 for model in modelsToInstall:
     the_model = config_data["models"][model]
     
     # We need to append the ucvm configure flags.
-    flag_array = []
-    flags = the_model["UCVMConfigureFlags"].split(" ")
-     
-###XXX  this is because it is defined as 
-##"UCVMConfigureFlags": "--enable-model-cvmhsbbn --with-cvmhsbbn-lib-path=lib
-## --with-cvmhsbbn-include-path=include --with-cvmhsbbn-model-path=src",
-
-    for flag in flags:
-        flag_split = flag.split("=")
-        if len(flag_split) == 1:
-            flag_array.append(str(flag))
-        else:
-            pathToUse =  ucvmpath + "/model/" + the_model["Path"]
-            if model in modelPaths:
-                pathToUse = modelPaths[model]
-            flag_array.append(str(flag_split[0] + "=" + pathToUse + "/" + flag_split[1]))
-             
-    ucvm_conf_command += flag_array
+    if "UCVMConfigureFlags" in the_model and the_model["UCVMConfigureFlags"] != "" :
+      flags = the_model["UCVMConfigureFlags"].split(" ")
+      ucvm_conf_command += flags
      
 ucvm_conf_command.append("--prefix=" + ucvmpath)
 
