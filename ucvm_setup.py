@@ -496,19 +496,30 @@ def _add2LIBRARYPATH_python(modelsToInstall, librariesToInstall) :
     if "CCA" in modelsToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cca/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"model/cca/lib\")\n"
-    if "NetCDF" in librariesToInstall:
-        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/netcdf/lib\")\n"
-        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/netcdf/lib\")\n"
+    if "FFTW" in librariesToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/fftw/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/fftw/lib\")\n"
+    if "Euclid3" in librariesToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/euclid3/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/euclid3/lib\")\n"
+    if "HDF5" in librariesToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/hdf5/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/hdf5/lib\")\n"
-## geomodelgrids needs proj and hdf5
-    if "geomodelgrids" in librariesToInstall:
-        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/geomodelgrids/lib\")\n"
-        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/geomodelgrids/lib\")\n"
+    if "OpenSSL" in librariesToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/openssl/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/openssl/lib\")\n"
+    if "TIFF" in librariesToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/tiff/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/tiff/lib\")\n"
+    if "Sqlite" in librariesToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/sqlite/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/sqlite/lib\")\n"
+    if "Curl" in librariesToInstall:
+        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/curl/lib\")\n"
+        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/curl/lib\")\n"
+    if "Proj" in librariesToInstall:
         str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/proj/lib\")\n"
         str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/proj/lib\")\n"
-        str=str+"   add2LD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/hdf5/lib\")\n"
-        str=str+"   add2DYLD_LIBRARY_PATH(UCVM_INSTALL_PATH + \"lib/hdf5/lib\")\n"
 
     return str
 
@@ -900,9 +911,8 @@ for library in config_data["libraries"]:
                 needlist=the_library["Needs"].split()
                 for need in needlist :
                    tarname = config_data["libraries"][need]["URL"].split("/")[-1]
-                   print("Calling Needs Install with tarname,ucvmpath,library:",tarname,ucvmpath,config_data["libraries"][need])
+                   print("Calling Needs Install with tarname,ucvmpath,library:",tarname,ucvmpath,config_data["libraries"][need]['Path'])
                    installConfigMakeInstall(tarname, ucvmpath, "library", config_data["libraries"][need])
-##installConfigMakeInstall(tarname, ucvmpath, "library", config_data["libraries"][the_library["Needs"]])
 
             except Exception as e:
                 eG(e, "Error installing library " + the_library["Needs"] + " (needed by " + library + ").")
@@ -955,13 +965,13 @@ callAndRecord(["autoconf"])
 
 print("\nRunning ./configure for UCVM")
  
-ucvm_conf_command = ["./configure", "--enable-silent-rules", \
-                     "--with-etree-include-path=" + ucvmpath + "/lib/euclid3/include", \
-                     "--with-etree-lib-path=" + ucvmpath + "/lib/euclid3/lib", \
-                     "--with-proj-include-path=" + ucvmpath + "/lib/proj/include", \
-                     "--with-proj-lib-path=" + ucvmpath + "/lib/proj/lib", \
-                     "--with-fftw-include-path=" + ucvmpath + "/lib/fftw/include", \
-                     "--with-fftw-lib-path=" + ucvmpath + "/lib/fftw/lib"]
+### XX ONLY bring in libraries that were installled..
+ucvm_conf_command = ["./configure", "--enable-silent-rules" ]
+
+for library in in librariesToInstall:
+    if "UCVMConfigureFlags" in library and library["UCVMConfigureFlags"] != "":
+       flags = library["UCVMConfigureFlags"].split(" ")
+       ucvm_conf_command += flags
 
 for model in modelsToInstall:
     the_model = config_data["models"][model]
@@ -970,6 +980,10 @@ for model in modelsToInstall:
     flag_array = []
     flags = the_model["UCVMConfigureFlags"].split(" ")
      
+###XXX  this is because it is defined as 
+##"UCVMConfigureFlags": "--enable-model-cvmhsbbn --with-cvmhsbbn-lib-path=lib
+## --with-cvmhsbbn-include-path=include --with-cvmhsbbn-model-path=src",
+
     for flag in flags:
         flag_split = flag.split("=")
         if len(flag_split) == 1:

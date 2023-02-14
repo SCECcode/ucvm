@@ -248,6 +248,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/lib/fftw-3.3.3.tar.gz",
 			"Required": "yes",
 			"ConfigureFlags": "--enable-fortran=no",
+                        "UCVMConfigureFlags": "--with-fftw-include-path=${UCVM_INSTALL_PATH}/lib/fftw/include --with-fftw-lib-path=${UCVM_INSTALL_PATH}/lib/fftw/lib",
                         "md5sum": "0a78f7749bd9c67b7585e163780247c0",
 			"Ask": "no",
                         "Needs":""
@@ -259,6 +260,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/lib/euclid3-1.3.tar.gz",
 			"Required": "yes",
                         "ConfigureFlags": "",
+                        "UCVMConfigureFlags": "--with-etree-include-path=${UCVM_INSTALL_PATH}/lib/euclid3/include --with-etree-lib-path=${UCVM_INSTALL_PATH}/lib/euclid3/lib",
                         "md5sum": "c980cfb9068c97612b7da27f37cc4a44",
 			"Ask": "no",
                         "Needs":""
@@ -270,6 +272,7 @@
 			"Required": "no",
 			"Prerequisites": "Dynamic",
                         "ConfigureFlags": "",
+                        "UCVMConfigureFlags": "",
                         "md5sum": "",
 			"Ask": "no",
                         "Needs":"HDF5"
@@ -281,6 +284,7 @@
 			"Required": "yes",
 			"Prerequisites": "Dynamic",
                         "ConfigureFlags": "",
+                        "UCVMConfigureFlags": "--with-hdf5-include-path=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-lib-path=${UCVM_INSTALL_PATH}/lib/hdf5/lib",
                         "md5sum": "eb14d82b27c2fd962c46e56186d47107",
 			"Ask": "no",
                         "Needs":""
@@ -290,6 +294,7 @@
                         "Lib": "openssl-3.0.8",
                         "Size": "10M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/openssl-3.0.8.tar.gz",
+                        "UCVMConfigureFlags": "--with-openssl-include-path=${UCVM_INSTALL_PATH}/lib/openssl/include --with-openssl-lib-path=${UCVM_INSTALL_PATH}/lib/openssl/lib",
 			"Required": "yes",
                         "ConfigureFlags": "",
                         "md5sum": "478edeaed47741e1173e88d575f548ba",
@@ -303,6 +308,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/tiff-4.5.0.tar.gz",
 			"Required": "yes",
                         "ConfigureFlags": "",
+                        "UCVMConfigureFlags": "--with-tiff-include-path=${UCVM_INSTALL_PATH}/lib/tiff/include --with-tiff-lib-path=${UCVM_INSTALL_PATH}/lib/tiff/lib",
                         "md5sum": "2476aa1f6ddadeb18877e20b0c85dc92",
 			"Ask": "no",
                         "Needs":""
@@ -312,6 +318,7 @@
                         "Lib": "sqlite-autoconf-3400100",
                         "Size": "10M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/sqlite-autoconf-3400100.tar.gz",
+                        "UCVMConfigureFlags": "--with-sqlite-include-path=${UCVM_INSTALL_PATH}/lib/sqlite/include --with-sqlite-lib-path=${UCVM_INSTALL_PATH}/lib/sqlite/lib",
 			"Required": "yes",
                         "ConfigureFlags": "",
                         "md5sum": "61b8fd019d69dd7b756313d00c10d3e2",
@@ -325,6 +332,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/curl-7.87.0.tar.gz",
 			"Required": "yes",
                         "ConfigureFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
+                        "UCVMConfigureFlags": "--with-curl-include-path=${UCVM_INSTALL_PATH}/lib/curl/include --with-curl-lib-path=${UCVM_INSTALL_PATH}/lib/curl/lib",
                         "md5sum": "a5381e0c012b1320070d0d99f47fbad2",
 			"Ask": "no",
                         "Needs":"OpenSSL"
@@ -336,6 +344,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-8.1.1.tar.gz",
 			"Required": "yes",
                         "ConfigureFlags": "--enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config TIFF_LIBS='-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff' TIFF_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/tiff/include' SQLITE3_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/sqlite/include' SQLITE3_LIBS='-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3'",
+                        "UCVMConfigureFlags": "--with-proj-include-path=${UCVM_INSTALL_PATH}/lib/proj/include --with-proj-lib-path=${UCVM_INSTALL_PATH}/lib/proj/lib",
                         "md5sum": "4edd69456526e67cd02037b8b90593dc",
 			"Ask": "no",
                         "Needs":"TIFF OpenSSL Curl Sqlite"
