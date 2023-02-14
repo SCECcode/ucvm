@@ -987,7 +987,9 @@ ucvm_conf_command.append("--prefix=" + ucvmpath)
 if dynamic_flag == False:
     ucvm_conf_command.append("--enable-static")
 if user_dynamic_flag == True:
-    ucvm_conf_command.append("--enable-dynamic")
+    ## no op
+    print("no need to add dynamic flag")
+#    ucvm_conf_command.append("--enable-dynamic")
 if use_iobuf == True:
     ucvm_conf_command.append("--enable-iobuf")
  
