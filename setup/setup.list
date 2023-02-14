@@ -9,7 +9,7 @@
                         "Size": "1.6G",
                         "Path": "cvmhsmbn",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmhsmbn.tar.gz",
-                        "Flags": "--enable-model-cvmhsmbn --with-cvmhsmbn-lib-path=lib --with-cvmhsmbn-include-path=include --with-cvmhsmbn-model-path=src",
+                        "UCVMConfigureFlags": "--enable-model-cvmhsmbn --with-cvmhsmbn-lib-path=lib --with-cvmhsmbn-include-path=include --with-cvmhsmbn-model-path=src",
                         "Ask": "yes",
                         "md5sum": "409beee831aeda8356eb245687bbca7f",
                         "Order": 21 
@@ -20,7 +20,7 @@
                         "Size": "1.6G",
                         "Path": "cvmhsbcbn",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmhsbcbn.tar.gz",
-                        "Flags": "--enable-model-cvmhsbcbn --with-cvmhsbcbn-lib-path=lib --with-cvmhsbcbn-include-path=include --with-cvmhsbcbn-model-path=src",
+                        "UCVMConfigureFlags": "--enable-model-cvmhsbcbn --with-cvmhsbcbn-lib-path=lib --with-cvmhsbcbn-include-path=include --with-cvmhsbcbn-model-path=src",
                         "Ask": "yes",
                         "md5sum": "05b081b5dbbbb8b373b296782a0ed735",
                         "Order": 20 
@@ -31,7 +31,7 @@
                         "Size": "1.3G",
                         "Path": "cvmhsbbn",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmhsbbn.tar.gz",
-                        "Flags": "--enable-model-cvmhsbbn --with-cvmhsbbn-lib-path=lib --with-cvmhsbbn-include-path=include --with-cvmhsbbn-model-path=src",
+                        "UCVMConfigureFlags": "--enable-model-cvmhsbbn --with-cvmhsbbn-lib-path=lib --with-cvmhsbbn-include-path=include --with-cvmhsbbn-model-path=src",
                         "Ask": "yes",
                         "md5sum": "b21320a37c300a2b71ef572d78cbc3ca",
                         "Order": 19
@@ -42,7 +42,7 @@
                         "Size": "2.5G",
                         "Path": "cvmhstbn",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmhstbn.tar.gz",
-                        "Flags": "--enable-model-cvmhstbn --with-cvmhstbn-lib-path=lib --with-cvmhstbn-include-path=include --with-cvmhstbn-model-path=src",
+                        "UCVMConfigureFlags": "--enable-model-cvmhstbn --with-cvmhstbn-lib-path=lib --with-cvmhstbn-include-path=include --with-cvmhstbn-model-path=src",
                         "Ask": "yes",
                         "md5sum": "4d342bb02935f52533e6234c63a170c8",
                         "Order": 18
@@ -53,7 +53,7 @@
                         "Size": "1.4G",
                         "Path": "cvmhrbn",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmhrbn.tar.gz",
-                        "Flags": "--enable-model-cvmhrbn --with-cvmhrbn-lib-path=lib --with-cvmhrbn-include-path=include --with-cvmhrbn-model-path=src",
+                        "UCVMConfigureFlags": "--enable-model-cvmhrbn --with-cvmhrbn-lib-path=lib --with-cvmhrbn-include-path=include --with-cvmhrbn-model-path=src",
                         "Ask": "yes",
                         "md5sum": "feade525a6723c1d29b604b651eb9643",
                         "Order": 17
@@ -64,7 +64,7 @@
                         "Size": "2.1G",
                         "Path": "cvmhibbn",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmhibbn.tar.gz",
-                        "Flags": "--enable-model-cvmhibbn --with-cvmhibbn-lib-path=lib --with-cvmhibbn-include-path=include --with-cvmhibbn-model-path=src",
+                        "UCVMConfigureFlags": "--enable-model-cvmhibbn --with-cvmhibbn-lib-path=lib --with-cvmhibbn-include-path=include --with-cvmhibbn-model-path=src",
                         "Ask": "yes",
                         "md5sum": "17c0fc3dd3d50fcb1604dc5f5a9295c6",
                         "Order": 16
@@ -75,7 +75,7 @@
                         "Size": "1.5G",
                         "Path": "cvmhvbn",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmhvbn.tar.gz",
-                        "Flags": "--enable-model-cvmhvbn --with-cvmhvbn-lib-path=lib --with-cvmhvbn-include-path=include --with-cvmhvbn-model-path=src",
+                        "UCVMConfigureFlags": "--enable-model-cvmhvbn --with-cvmhvbn-lib-path=lib --with-cvmhvbn-include-path=include --with-cvmhvbn-model-path=src",
                         "Ask": "yes",
                         "md5sum": "1dda6139ad0a7c9cb28d4b0775c735ea",
                         "Order": 15
@@ -86,7 +86,7 @@
                         "Size": "1.4G",
                         "Path": "cvmhsgbn",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmhsgbn.tar.gz",
-                        "Flags": "--enable-model-cvmhsgbn --with-cvmhsgbn-lib-path=lib --with-cvmhsgbn-include-path=include --with-cvmhsgbn-model-path=src",
+                        "UCVMConfigureFlags": "--enable-model-cvmhsgbn --with-cvmhsgbn-lib-path=lib --with-cvmhsgbn-include-path=include --with-cvmhsgbn-model-path=src",
                         "Ask": "yes",
                         "md5sum": "1000c073b07842ff87f12bf6b07e2216",
                         "Order": 14
@@ -97,7 +97,7 @@
                         "Size": "1.6G",
                         "Path": "cvmhlabn",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmhlabn.tar.gz",
-                        "Flags": "--enable-model-cvmhlabn --with-cvmhlabn-lib-path=lib --with-cvmhlabn-include-path=include --with-cvmhlabn-model-path=src",
+                        "UCVMConfigureFlags": "--enable-model-cvmhlabn --with-cvmhlabn-lib-path=lib --with-cvmhlabn-include-path=include --with-cvmhlabn-model-path=src",
                         "Ask": "yes",
                         "md5sum": "0cb5a2fcd34d51bdbcb23c42080fb2f1",
                         "Order": 13
@@ -108,7 +108,7 @@
                         "Size": "50M",
                         "Path": "wfcvm",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/wfcvm.tar.gz",
-                        "Flags": "--enable-model-wfcvm --with-wfcvm-lib-path=lib --with-wfcvm-include-path=include --with-wfcvm-model-path=src",
+                        "UCVMConfigureFlags": "--enable-model-wfcvm --with-wfcvm-lib-path=lib --with-wfcvm-include-path=include --with-wfcvm-model-path=src",
                         "Ask": "yes",
                         "md5sum": "72320742325cf77c94b850c729841f46",
                         "Order": 12
@@ -119,7 +119,7 @@
                         "Size": "3.1M",
 			"Path": "ivlsu",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/ivlsu.tar.gz",
-			"Flags": "--enable-model-ivlsu --with-ivlsu-lib-path=lib --with-ivlsu-include-path=include",
+			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=lib --with-ivlsu-include-path=include",
 			"Libraries": ["proj"],
 			"Ask": "yes",
                         "md5sum": "8d553860bdd90d3444396b1da590276d",
@@ -131,7 +131,7 @@
                         "Size": "7.0M",
 			"Path": "cvlsu",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvlsu.tar.gz",
-			"Flags": "--enable-model-cvlsu --with-cvlsu-lib-path=lib --with-cvlsu-include-path=include",
+			"UCVMConfigureFlags": "--enable-model-cvlsu --with-cvlsu-lib-path=lib --with-cvlsu-include-path=include",
 			"Ask": "yes",
                         "md5sum": "c33dd1067518808e567cc3d8a90474e8",
 			"Order": 10		
@@ -142,7 +142,7 @@
                         "Size": "2.3M",
 			"Path": "albacore",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/albacore.tar.gz",
-			"Flags": "--enable-model-albacore --with-albacore-lib-path=lib --with-albacore-include-path=include",
+			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=lib --with-albacore-include-path=include",
 			"Ask": "yes",
                         "md5sum": "ca87ef278c939df7b4069b60c7fa1999",
 			"Order": 9		
@@ -153,7 +153,7 @@
                         "Size": "1.6G",
 			"Path": "cvmh",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmh.tar.gz",
-			"Flags": "--enable-model-cvmh --with-cvmh-include-path=include --with-cvmh-lib-path=lib --with-gctpc-lib-path=lib --with-cvmh-model-path=model",
+			"UCVMConfigureFlags": "--enable-model-cvmh --with-cvmh-include-path=include --with-cvmh-lib-path=lib --with-gctpc-lib-path=lib --with-cvmh-model-path=model",
 			"Ask": "yes",
                         "md5sum": "961a65ca7d50009585e9c718f28b999e",
 			"Order": 8
@@ -164,7 +164,7 @@
                         "Size": "21G",
 			"Path": "cencal",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cencal.tar.gz",
-			"Flags": "--enable-model-cencal --with-cencal-lib-path=lib --with-cencal-include-path=include/cencalvm/query/ --with-cencal-model-path=model/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=model/USGSBayAreaVMExt-08.3.0.etree",
+			"UCVMConfigureFlags": "--enable-model-cencal --with-cencal-lib-path=lib --with-cencal-include-path=include/cencalvm/query/ --with-cencal-model-path=model/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=model/USGSBayAreaVMExt-08.3.0.etree",
 			"Ask": "yes",
                         "md5sum": "0f6ca2e4a9ba6e32181a7e6493a39c55",
 			"Order": 7
@@ -175,7 +175,7 @@
                         "Size": "1.6G",
 			"Path": "cvmsi",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/cvmsi.tar.gz",
-			"Flags": "--enable-model-cvmsi --with-cvmsi-lib-path=lib --with-cvmsi-include-path=include --with-cvmsi-model-path=model/i26",
+			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=lib --with-cvmsi-include-path=include --with-cvmsi-model-path=model/i26",
 			"Ask": "yes",
                         "md5sum": "24c789384fb94d44f9b8c04d792e272a",
 			"Order": 6		
@@ -186,7 +186,7 @@
                         "Size": "326M",
 			"Path": "cvms",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvms.tar.gz",
-			"Flags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
+			"UCVMConfigureFlags": "--enable-model-cvms --with-cvms-include-path=include --with-cvms-lib-path=lib --with-cvms-model-path=src",
 			"Ask": "yes",
                         "md5sum": "19ce68b2b62b93016d89ea740b525f58",
 			"Order": 5
@@ -197,7 +197,7 @@
                         "Size": "72G",
 			"Path": "cs173h",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cs173h.tar.gz",
-			"Flags": "--enable-model-cs173h --with-cs173h-lib-path=lib --with-cs173h-include-path=include",
+			"UCVMConfigureFlags": "--enable-model-cs173h --with-cs173h-lib-path=lib --with-cs173h-include-path=include",
 			"Libraries": ["euclid3", "proj"],
 			"Ask": "no",
                         "md5sum": "2da1cbc7e689707692764b37679bdbdf",
@@ -209,7 +209,7 @@
                         "Size": "72G",
 			"Path": "cs173",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cs173.tar.gz",
-			"Flags": "--enable-model-cs173 --with-cs173-lib-path=lib --with-cs173-include-path=include",
+			"UCVMConfigureFlags": "--enable-model-cs173 --with-cs173-lib-path=lib --with-cs173-include-path=include",
 			"Libraries": ["euclid3", "proj"],
 			"Ask": "no",
                         "md5sum": "b85205ef8d58eaa99dd3590cee9ea56d",
@@ -221,7 +221,7 @@
                         "Size": "9.2G",
 			"Path": "cca",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cca.tar.gz",
-			"Flags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
+			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=lib --with-cca-include-path=include",
 			"Libraries": ["euclid3", "proj"],
 			"Ask": "yes",
                         "md5sum": "52bfae5615317e1836a619ef72e0a0ca",
@@ -233,7 +233,7 @@
                         "Size": "1.2G",
 			"Path": "cvms5",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvms5.tar.gz",
-			"Flags": "--enable-model-cvms5 --with-cvms5-lib-path=lib --with-cvms5-include-path=include",
+			"UCVMConfigureFlags": "--enable-model-cvms5 --with-cvms5-lib-path=lib --with-cvms5-include-path=include",
 			"Libraries": ["euclid3", "proj"],
 			"Ask": "yes",
                         "md5sum": "1d7fc16b1408af17cf1dc424f19cff49",
@@ -247,7 +247,7 @@
                         "Size": "44M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/lib/fftw-3.3.3.tar.gz",
 			"Required": "yes",
-			"CompileFlags": "--enable-fortran=no",
+			"ConfigureFlags": "--enable-fortran=no",
                         "md5sum": "0a78f7749bd9c67b7585e163780247c0",
 			"Ask": "no",
                         "Needs":""
@@ -258,7 +258,7 @@
                         "Size": "4.7M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/lib/euclid3-1.3.tar.gz",
 			"Required": "yes",
-                        "CompileFlags": "",
+                        "ConfigureFlags": "",
                         "md5sum": "c980cfb9068c97612b7da27f37cc4a44",
 			"Ask": "no",
                         "Needs":""
@@ -269,7 +269,7 @@
 			"URL": "http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-4.3.0.tar.gz",
 			"Required": "no",
 			"Prerequisites": "Dynamic",
-                        "CompileFlags": "",
+                        "ConfigureFlags": "",
                         "md5sum": "",
 			"Ask": "no",
                         "Needs":"HDF5"
@@ -280,7 +280,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/hdf5-1.10.9.tar.gz",
 			"Required": "yes",
 			"Prerequisites": "Dynamic",
-                        "CompileFlags": "",
+                        "ConfigureFlags": "",
                         "md5sum": "eb14d82b27c2fd962c46e56186d47107",
 			"Ask": "no",
                         "Needs":""
@@ -291,8 +291,8 @@
                         "Size": "10M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/openssl-3.0.8.tar.gz",
 			"Required": "yes",
-                        "CompileFlags": "",
-                        "md5sum": "17499b65a484a528bd05e76b7e82ba3f",
+                        "ConfigureFlags": "",
+                        "md5sum": "478edeaed47741e1173e88d575f548ba",
 			"Ask": "no",
                         "Needs":""
 		},
@@ -302,7 +302,7 @@
                         "Size": "10M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/tiff-4.5.0.tar.gz",
 			"Required": "yes",
-                        "CompileFlags": "",
+                        "ConfigureFlags": "",
                         "md5sum": "2476aa1f6ddadeb18877e20b0c85dc92",
 			"Ask": "no",
                         "Needs":""
@@ -313,7 +313,7 @@
                         "Size": "10M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/sqlite-autoconf-3400100.tar.gz",
 			"Required": "yes",
-                        "CompileFlags": "",
+                        "ConfigureFlags": "",
                         "md5sum": "61b8fd019d69dd7b756313d00c10d3e2",
 			"Ask": "no",
                         "Needs":""
@@ -324,7 +324,7 @@
                         "Size": "10M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/curl-7.87.0.tar.gz",
 			"Required": "yes",
-                        "CompileFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
+                        "ConfigureFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
                         "md5sum": "a5381e0c012b1320070d0d99f47fbad2",
 			"Ask": "no",
                         "Needs":"OpenSSL"
@@ -335,8 +335,7 @@
                         "Size": "30M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-8.1.1.tar.gz",
 			"Required": "yes",
-                        "Env": { "TIFF_LIBS":"-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff", "TIFF_CFLAGS":"-I${UCVM_INSTALL_PATH}/lib/tiff/include", "SQLITE3_CFLAGS":"-I${UCVM_INSTALL_PATH}/lib/sqlite/include", "SQLITE3_LIBS":"-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3" },
-                        "CompileFlags": "--enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config",
+                        "ConfigureFlags": "--enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config TIFF_LIBS='-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff' TIFF_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/tiff/include' SQLITE3_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/sqlite/include' SQLITE3_LIBS='-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3'",
                         "md5sum": "4edd69456526e67cd02037b8b90593dc",
 			"Ask": "no",
                         "Needs":"TIFF OpenSSL Curl Sqlite"

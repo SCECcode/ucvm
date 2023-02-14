@@ -199,14 +199,18 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     
     print("\nRunning ./configure")
 
+
     prefix_string="--prefix=" + ucvmpath + "/" + pathname + "/" + config_data["Path"]
 
-    configure_array = ["./configure", prefix_string]
+    if config_data["Path"] == "openssl" :
+        configure_array = ["./Configure", prefix_string]
+    else:
+        configure_array = ["./configure", prefix_string]
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
 
-    if "Env" in config_data: 
-        needs_env = config_data["Env"]
+    if "ConfigureEnv" in config_data: 
+        needs_env = config_data["ConfigureEnv"]
     else:
         needs_env = {}
     
@@ -226,8 +230,8 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
         configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
     
-    if "CompileFlags" in config_data:
-        configure_array += config_data["CompileFlags"].split(" ")
+    if "ConfigureFlags" in config_data and config_data["ConfigureFlags"] != "" :
+        configure_array += config_data["ConfigureFlags"].split(" ")
 
     ## both use $UCVM_INSTALL_PATH
     if config_data["Path"] == "curl" or config_data["Path"] == "proj":
@@ -962,9 +966,9 @@ ucvm_conf_command = ["./configure", "--enable-silent-rules", \
 for model in modelsToInstall:
     the_model = config_data["models"][model]
     
-    # We need to append the flags.
+    # We need to append the ucvm configure flags.
     flag_array = []
-    flags = the_model["Flags"].split(" ")
+    flags = the_model["UCVMConfigureFlags"].split(" ")
      
     for flag in flags:
         flag_split = flag.split("=")
