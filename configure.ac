@@ -258,6 +258,63 @@ AC_ARG_WITH([fftw-lib-path],
   [FFTW_LIB="-L$withval -lfftw3"],
   [FFTW_LIB="-lfftw3"])
 
+# Get required HDF5 library and include locations
+AC_ARG_WITH([hdf5-include-path],
+  [AS_HELP_STRING([--with-hdf5-include-path],
+    [location of the HDF5 headers])],
+  [HDF5_INCL="-I$withval"],
+  [HDF5_INCL=""])
+AC_ARG_WITH([hdf5-lib-path],
+  [AS_HELP_STRING([--with-hdf5-lib-path], [location of the HDF5 libraries])],
+  [HDF5_LIB="-L$withval -lhdf5"],
+  [HDF5_LIB="-lhdf5"])
+
+# Get required OpenSSL library and include locations
+AC_ARG_WITH([openssl-include-path],
+  [AS_HELP_STRING([--with-openssl-include-path],
+    [location of the OpenSSL headers])],
+  [OPENSSL_INCL="-I$withval"],
+  [OPENSSL_INCL=""])
+AC_ARG_WITH([openssl-lib-path],
+  [AS_HELP_STRING([--with-openssl-lib-path], [location of the OpenSSL libraries])],
+  [OPENSSL_LIB="-L$withval -lssl"],
+  [OPENSSL_LIB="-lssl"])
+
+# Get required TIFF library and include locations
+AC_ARG_WITH([tiff-include-path],
+  [AS_HELP_STRING([--with-tiff-include-path],
+    [location of the TIFF headers])],
+  [TIFF_INCL="-I$withval"],
+  [TIFF_INCL=""])
+AC_ARG_WITH([tiff-lib-path],
+  [AS_HELP_STRING([--with-tiff-lib-path], [location of the TIFF libraries])],
+  [TIFF_LIB="-L$withval -ltiff"],
+  [TIFF_LIB="-ltiff"])
+
+# Get required Sqlite library and include locations
+AC_ARG_WITH([sqlite-include-path],
+  [AS_HELP_STRING([--with-sqlite-include-path],
+    [location of the Sqlite headers])],
+  [SQLITE_INCL="-I$withval"],
+  [SQLITE_INCL=""])
+AC_ARG_WITH([sqlite-lib-path],
+  [AS_HELP_STRING([--with-sqlite-lib-path], [location of the Sqlite libraries])],
+  [SQLITE_LIB="-L$withval -lsqlite3"],
+  [SQLITE_LIB="-lsqlite3"])
+
+# Get required Curl library and include locations
+AC_ARG_WITH([curl-include-path],
+  [AS_HELP_STRING([--with-curl-include-path],
+    [location of the Curl headers])],
+  [CURL_INCL="-I$withval"],
+  [CURL_INCL=""])
+AC_ARG_WITH([curl-lib-path],
+  [AS_HELP_STRING([--with-curl-lib-path], [location of the Curl libraries])],
+  [CURL_LIB="-L$withval -lcurl"],
+  [CURL_LIB="-lcurl"])
+
+####################################################
+
 # Get USGS CenCalVM library, include, model locations
 if test "x$enable_model_cencal" = xyes; then
 AC_ARG_WITH([cencal-include-path],
