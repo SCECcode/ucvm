@@ -968,7 +968,7 @@ print("\nRunning ./configure for UCVM")
 ### XX ONLY bring in libraries that were installled..
 ucvm_conf_command = ["./configure", "--enable-silent-rules" ]
 
-for library in in librariesToInstall:
+for library in librariesToInstall:
     if "UCVMConfigureFlags" in library and library["UCVMConfigureFlags"] != "":
        flags = library["UCVMConfigureFlags"].split(" ")
        ucvm_conf_command += flags
