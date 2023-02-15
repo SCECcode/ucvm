@@ -322,7 +322,7 @@
                         "UCVMConfigureFlags": "--with-sqlite-include-path=${UCVM_INSTALL_PATH}/lib/sqlite/include --with-sqlite-lib-path=${UCVM_INSTALL_PATH}/lib/sqlite/lib",
 			"Required": "yes",
                         "ConfigureFlags": "",
-                        "md5sum": "61b8fd019d69dd7b756313d00c10d3e2",
+                        "md5sum": "7f51e415413bc30d6c2308aecb37e159",
 			"Ask": "no",
                         "Needs":""
 		},
