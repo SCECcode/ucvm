@@ -220,11 +220,11 @@
                         "Abbreviation": "cca",
                         "Size": "9.2G",
 			"Path": "cca",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cca.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/cca.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
 			"Libraries": ["euclid3", "proj"],
 			"Ask": "yes",
-                        "md5sum": "52bfae5615317e1836a619ef72e0a0ca",
+                        "md5sum": "XX",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
@@ -334,7 +334,7 @@
 			"Required": "yes",
                         "ConfigureFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
                         "UCVMConfigureFlags": "--with-curl-include-path=${UCVM_INSTALL_PATH}/lib/curl/include --with-curl-lib-path=${UCVM_INSTALL_PATH}/lib/curl/lib",
-                        "md5sum": "a5381e0c012b1320070d0d99f47fbad2",
+                        "md5sum": "469bb5815200d2707f75693721cebad6",
 			"Ask": "no",
                         "Needs":"OpenSSL"
 		},
