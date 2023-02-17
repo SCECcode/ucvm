@@ -3,6 +3,17 @@
                "Version": "22.7"
                },
 	"models": {
+                "SFCVM": {
+                        "Version": "1.0",
+                        "Abbreviation": "sfcvm",
+                        "Size": "100M",
+                        "Path": "sfcvm",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/sfcvm.tar.gz",
+                        "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/src",
+                        "Ask": "yes",
+                        "md5sum": "000",
+                        "Order": 22 
+                },
                 "CVMHSMBN": {
                         "Version": "1.0",
                         "Abbreviation": "cvmhsmbn",
@@ -13,6 +24,17 @@
                         "Ask": "yes",
                         "md5sum": "409beee831aeda8356eb245687bbca7f",
                         "Order": 21 
+                },
+                "CVMHSBCBN": {
+                        "Version": "1.0",
+                        "Abbreviation": "cvmhsbcbn",
+                        "Size": "1.6G",
+                        "Path": "cvmhsbcbn",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmhsbcbn.tar.gz",
+                        "UCVMConfigureFlags": "--enable-model-cvmhsbcbn --with-cvmhsbcbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhsbcbn/lib --with-cvmhsbcbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhsbcbn/include --with-cvmhsbcbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhsbcbn/src",
+                        "Ask": "yes",
+                        "md5sum": "05b081b5dbbbb8b373b296782a0ed735",
+                        "Order": 20 
                 },
                 "CVMHSBCBN": {
                         "Version": "1.0",

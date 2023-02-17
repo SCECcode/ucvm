@@ -1,3 +1,8 @@
+## 2023-03-01 Mei-Hui Su <mei@usc.edu>
+* Update UCVM with Proj(8) which requires inclusion of TIFF,HDF5,SQLITE,CURL,OPENSSL
+* Added SFCVM (using geomodelgrids format, Brad Aagaard)
+* Converted CCA to use Proj(remove dependency on geo fortran code, Brad Aagaard)
+
 ## 2022-07-01 Mei-Hui Su <mei@usc.edu>
 * CVMS,CVMS5,CVMSI,WFCFM are all dynamically loadable models, ucvm#39
 * Added CVMHLABN/CVMHSGBN/CVMHVBN/CVMHIBBN/CVMHRBN and

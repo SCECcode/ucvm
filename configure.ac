@@ -157,6 +157,12 @@ AC_ARG_ENABLE([model-cvmhsbcbn],
         [enable_model_cvmhsbcbn=yes],
         [enable_model_cvmhsbcbn=no])
 
+AC_ARG_ENABLE([model-sfcvm],
+        [AS_HELP_STRING([--enable-model-sfcvm],
+        [enable model SCEC SFCVM])],
+        [enable_model_sfcvm=yes],
+        [enable_model_sfcvm=no])
+
 AC_ARG_ENABLE([model-cvmhsmbn],
         [AS_HELP_STRING([--enable-model-cvmhsmbn],
         [enable model SCEC CVMHSMBN])],
@@ -592,6 +598,23 @@ AC_ARG_WITH([cvmhsbcbn-model-path],
   [AS_HELP_STRING([--with-cvmhsbcbn-model-path], [location of the CVMHSBCBN  model files])],
   [CVMHSBCBN_MODEL="$withval"],
   [CVMHSBCBN_MODEL="/usr/cvmhsbcbn/src"])
+fi
+
+# Get SCEC SFCVM library and include locations
+if test "x$enable_model_sfcvm" = xyes; then
+AC_ARG_WITH([sfcvm-include-path],
+  [AS_HELP_STRING([--with-sfcvm-include-path],
+    [location of the SCEC SFCVM headers])],
+  [SFCVM_INCL="-I$withval"],
+  [SFCVM_INCL="/usr/include/sfcvm"])
+AC_ARG_WITH([sfcvm-lib-path],
+  [AS_HELP_STRING([--with-sfcvm-lib-path], [location of the SCEC SFCVM libraries])],
+  [SFCVM_LIB="-L$withval -lsfcvm"],
+  [SFCVM_LIB="-lsfcvm"])
+AC_ARG_WITH([sfcvm-model-path],
+  [AS_HELP_STRING([--with-sfcvm-model-path], [location of the SFCVM model files])],
+  [SFCVM_MODEL="$withval"],
+  [SFCVM_MODEL="/usr/sfcvm/src"])
 fi
 
 # Get SCEC CVMHSMBN library and include locations
@@ -1092,6 +1115,22 @@ else
 fi
 
 if test "x$enable_static" = xyes; then
+# Check optional SCEC SFCVM installation
+if test "x$enable_model_sfcvm" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$SFCVM_INCL $CFLAGS"
+   LDFLAGS="$SFCVM_LIB $LDFLAGS"
+
+   echo "Checking for SCEC SFCVM"
+   AC_CHECK_HEADER(sfcvm.h,[],[AC_MSG_ERROR(["SCEC SFCVM header not found; use --with-sfcvm-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SFCVM, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SFCVM, [test x"$enable_model_sfcvm" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
 # Check optional SCEC CVMHSMBN installation
 if test "x$enable_model_cvmhsmbn" = xyes; then
    # Setup compiler/linker flags
@@ -1106,6 +1145,7 @@ fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSMBN, [test x"$enable_model_cvmhsmbn" = xyes])
 fi
+
 
 
 if test "x$enable_static" = xyes; then

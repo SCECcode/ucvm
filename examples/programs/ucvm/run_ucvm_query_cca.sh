@@ -52,6 +52,10 @@ Using Geo Depth coordinates as default mode.
  -121.8143    36.6509   5000.000     43.756    313.533        cca   5890.569   3531.039   2723.986       none      0.000      0.000      0.000      crust   5890.569   3531.039   2723.986
 EOF_EXPECTED_RESULT
 
+cp $result result
+cp $expect expect 
+
+
 echo "Running examples_programs_ucvm ucvm_query_cca"
 if diff $result $expect > /dev/null 2>&1
 then
