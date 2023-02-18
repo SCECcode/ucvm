@@ -74,6 +74,8 @@
 #define UCVM_MODEL_ALBACORE "albacore"
 #define UCVM_MODEL_CCA "cca"
 
+#define UCVM_MODEL_SFCVM "sfcvm"
+
 #define UCVM_MODEL_CVMHLABN "cvmhlabn"
 #define UCVM_MODEL_CVMHSGBN "cvmhsgbn"
 #define UCVM_MODEL_CVMHVBN "cvmhvbn"

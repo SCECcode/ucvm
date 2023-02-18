@@ -45,6 +45,13 @@ bin_PROGRAMS += run_ucvm_query_cvmhsmbn_c.sh
 run_ucvm_query_cvmhsmbn_c_sh_SOURCES = run_ucvm_query_cvmhsmbn_c.sh
 endif
 
+if UCVM_AM_ENABLE_SFCVM
+bin_PROGRAMS += run_ucvm_query_sfcvm.sh
+run_ucvm_query_sfcvm_sh_SOURCES = run_ucvm_query_sfcvm.sh
+bin_PROGRAMS += run_ucvm_query_sfcvm_c.sh
+run_ucvm_query_sfcvm_c_sh_SOURCES = run_ucvm_query_sfcvm_c.sh
+endif
+
 if UCVM_AM_ENABLE_CVMHSTBN
 bin_PROGRAMS += run_ucvm_query_cvmhstbn.sh
 run_ucvm_query_cvmhstbn_sh_SOURCES = run_ucvm_query_cvmhstbn.sh
