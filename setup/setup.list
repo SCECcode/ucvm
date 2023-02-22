@@ -11,7 +11,7 @@
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/sfcvm.tar.gz",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/src",
                         "Ask": "yes",
-                        "md5sum": "67240debfeeb959c8c86a616e7b6737d",
+                        "md5sum": "a268706416cd79cdb19b46840b4726a7",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
