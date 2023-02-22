@@ -356,7 +356,7 @@
 			"Required": "yes",
                         "ConfigureFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
                         "UCVMConfigureFlags": "--with-curl-include-path=${UCVM_INSTALL_PATH}/lib/curl/include --with-curl-lib-path=${UCVM_INSTALL_PATH}/lib/curl/lib",
-                        "md5sum": "469bb5815200d2707f75693721cebad6",
+                        "md5sum": "a5381e0c012b1320070d0d99f47fbad2",
 			"Ask": "no",
                         "Needs":"OpenSSL"
 		},
