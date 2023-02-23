@@ -158,13 +158,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
             print("\nSkip building " + config_data["Path"] + ", already exists");
             return 0
 
-## special case, this is just a data package of a library, just need to stash it at the
-## right library location
-    if config_data["Path"] == "Proj-data" :
-        print("Decompressing " + type)
-        callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/Proj/data"])
-        return
-
     strip_level = "2"
     if config_data["Path"] == "fftw" or \
             config_data["Path"] == "euclid3" or \
@@ -190,6 +183,19 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     savedPath = os.getcwd()
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
+
+## Any Preprocess needed ? ie, proj needs to grap proj-data
+## special case, this is just a data package of a library, just need to stash it at the
+## right library location
+    if "Preprocess" in config_data :
+        the_task = config_data["Preprocess"]
+        if "download" in the_task:
+            pdf.set_trace()
+            _url = the_task["URL"]
+            _path = the_task["Path"]
+            print("Decompressing add on data")
+            tarname = url.split("/")[-1]
+            callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/" + _path])
 
     if config_data["Path"] != "openssl" and config_data["Path"] != "sfcvm":
       print("\nRunning aclocal")
@@ -832,7 +838,7 @@ callAndRecord(["autoconf"])
 
 print("\nRunning ./configure for UCVM")
  
-### XX ONLY bring in libraries that were installled..
+### ONLY bring in libraries that were installled..
 ucvm_conf_command = ["./configure", "--enable-silent-rules" ]
 
 for library in librariesToInstall:

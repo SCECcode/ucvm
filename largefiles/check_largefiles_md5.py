@@ -49,6 +49,11 @@ for library in config_data["libraries"].keys() :
     _md5sum = str(the_library["md5sum"])
     _lib = str(the_library["Lib"])+".tar.gz"
     target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
+## preprocess download tasks
+    if "Preprocess" in the_library and the_library["Preprocess"]["Action"] == "download":
+        _md5sum = str(the_task["md5sum"])
+        _lib = str(the_task["Lib"])+".tar.gz"
+        target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
 
 for etree in config_data["etrees"].keys() :
     the_etree = config_data["etrees"][etree]

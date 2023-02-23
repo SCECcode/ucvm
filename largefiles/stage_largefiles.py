@@ -40,6 +40,11 @@ for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
     _lib = str(the_library["Lib"])+".tar.gz"
     target_large_lib_list.append(_lib)
+## preprocess download tasks
+    if "Preprocess" in the_library and the_library["Preprocess"]["Action"] == "download":
+        the_task = the_library["Preprocess"]
+        _lib = str(the_task["Lib"])+".tar.gz"
+        target_large_lib_list.append(_lib)
 
 for etree in config_data["etrees"].keys() :
     the_etree = config_data["etrees"][etree]
