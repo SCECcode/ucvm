@@ -11,7 +11,7 @@
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/sfcvm.tar.gz",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/src",
                         "Ask": "yes",
-                        "md5sum": "a268706416cd79cdb19b46840b4726a7",
+                        "md5sum": "0aa2a22d12555481a52840a3f2ba7b79",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
@@ -371,7 +371,18 @@
                         "md5sum": "4edd69456526e67cd02037b8b90593dc",
 			"Ask": "no",
                         "Needs":"TIFF OpenSSL Curl Sqlite"
-		}
+		},
+                "Proj-data": {
+                        "Path": "proj-data",
+                        "Lib": "proj-data-1.11",
+                        "Size": "30M",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-data-1.11.tar.gz",
+                        "Required": "yes",
+                        "md5sum": "196ea873b3980448ae570b63282949e1",
+                        "Ask": "no",
+                        "Needs":"Proj"
+                }
+
 	},
         "etrees": {
                 "UCVM": {

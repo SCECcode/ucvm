@@ -158,6 +158,13 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
             print("\nSkip building " + config_data["Path"] + ", already exists");
             return 0
 
+## special case, this is just a data package of a library, just need to stash it at the
+## right library location
+    if config_data["Path"] == "Proj-data" :
+        print("Decompressing " + type)
+        callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/Proj/data"])
+        return
+
     strip_level = "2"
     if config_data["Path"] == "fftw" or \
             config_data["Path"] == "euclid3" or \

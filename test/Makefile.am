@@ -129,6 +129,12 @@ if UCVM_AM_ENABLE_CVMHSTBN
 AM_CFLAGS += -D_UCVM_ENABLE_CVMHSTBN
 endif
 
+# SFCVM includes
+if UCVM_AM_ENABLE_SFCVM
+AM_CFLAGS += -D_UCVM_ENABLE_SFCVM
+endif
+
+
 # Dist sources
 unittest_SOURCES = *.c *.h
 accepttest_SOURCES = *.c *.h
