@@ -180,22 +180,21 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/" + config_data["Path"], \
                      "--strip", strip_level])
 
-    savedPath = os.getcwd()
-    os.chdir(workpath + "/" + config_data["Path"])
-    callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
-
-## Any Preprocess needed ? ie, proj needs to grap proj-data
+## Any Preprocess needed ? ie, proj needs to grab proj-data
 ## special case, this is just a data package of a library, just need to stash it at the
 ## right library location
     if "Preprocess" in config_data :
         the_task = config_data["Preprocess"]
-        if "download" in the_task:
-            pdf.set_trace()
+        if "Action" in the_task and the_task["Action"] == "download":
             _url = the_task["URL"]
             _path = the_task["Path"]
             print("Decompressing add on data")
-            tarname = url.split("/")[-1]
+            tarname = _url.split("/")[-1]
             callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/" + _path])
+
+    savedPath = os.getcwd()
+    os.chdir(workpath + "/" + config_data["Path"])
+    callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
     if config_data["Path"] != "openssl" and config_data["Path"] != "sfcvm":
       print("\nRunning aclocal")

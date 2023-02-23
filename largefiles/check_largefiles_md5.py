@@ -51,6 +51,7 @@ for library in config_data["libraries"].keys() :
     target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
 ## preprocess download tasks
     if "Preprocess" in the_library and the_library["Preprocess"]["Action"] == "download":
+        the_task = the_library["Preprocess"]
         _md5sum = str(the_task["md5sum"])
         _lib = str(the_task["Lib"])+".tar.gz"
         target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
