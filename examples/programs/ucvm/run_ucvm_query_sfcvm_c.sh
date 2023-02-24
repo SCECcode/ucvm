@@ -30,7 +30,7 @@ EOF_EXPECTED_RESULT
 cp $result r
 cp $expect e
 
-echo "Running examples_programs_ucvm ucvm_query_cvmhsmbn_c"
+echo "Running examples_programs_ucvm ucvm_query_sfcvm_c"
 if diff $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]
