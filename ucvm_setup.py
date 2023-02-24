@@ -173,16 +173,15 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     # We need to un-tar the file.
     # The strip level determines how much of the path found in the tar file are removed.
     # strip=1 will remove the proj.0.0/configure and output only configure.in 
-    # This enables us to untar into drictories with static names like proj
+    # This enables us to untar into directories with static names like proj
     #
     print("Decompressing " + type)
     callAndRecord(["mkdir", "-p", workpath + "/" + config_data["Path"]])
     callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/" + config_data["Path"], \
                      "--strip", strip_level])
 
-## Any Preprocess needed ? ie, proj needs to grab proj-data
-## special case, this is just a data package of a library, just need to stash it at the
-## right library location
+## Any Preprocess needed ? 
+## maybe download geomodelgrids into sfcvm source location ?
     if "Preprocess" in config_data :
         the_task = config_data["Preprocess"]
         if "Action" in the_task and the_task["Action"] == "download":
@@ -283,6 +282,18 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(savedPath)
     callAndRecord(["cd", savedPath], True)
 
+## Any Postprocess needed ? ie, proj needs to install proj-data at installed location
+## special case, this is just a data package of a library, just need to stash it at the
+## right library location
+    if "Postprocess" in config_data :
+        the_task = config_data["Postprocess"]
+        if "Action" in the_task and the_task["Action"] == "download":
+            _url = the_task["URL"]
+            _path = the_task["Path"]
+            print("Decompressing add on data")
+            tarname = _url.split("/")[-1]
+            callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", ucvmpath + "/" + pathname + "/" + _path])
+
 
 ## create the ucvm_env.sh that is approriate to go into /etc/profile.d/
 ##
@@ -372,6 +383,12 @@ def makeBashScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
     pstr="add2PATH ${UCVM_INSTALL_PATH}/utilities"
     fp.write(pstr)
     fp.write("\n")
+
+    pstr=_addPROJ_LIB_bash()
+    fp.write("\n")
+    fp.write(pstr)
+    fp.write("\n")
+
     fp.close();
 
 ## create the ucvm_env.py that is python script can be import to make sure
@@ -447,6 +464,11 @@ def makePythonScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
     fp.write(pstr)
     pstr="   add2PATH(UCVM_INSTALL_PATH + \"utilities\")\n"
     fp.write(pstr)
+
+    pstr=_addPROJ_LIB_python()
+    fp.write("\n")
+    fp.write(pstr)
+
     fp.close();
 
 def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
@@ -538,12 +560,31 @@ def process_user_path(p):
     ucvmpath = p
     
 ## link proj's library to PROJ_LIB location if PROJ_LIB is defined
+## else set it 
 def linkPROJ_LIB(ucvmpath) :
    try :
       proj_lib = os.environ['PROJ_LIB']
    except:
       return 
-   call(["ln", "-p", ucvmpath+"/lib/proj/lib/*", proj_lib])
+   _proj_lib=ucvmpath+"/lib/proj/share/proj"
+   print("\nHUM.. PROJ_LIB is defined attach",_proj_lib)
+   call(["ln", "-p", ucvmpath+"/lib/proj/share/proj", proj_lib])
+
+def _addPROJ_LIB_bash() :
+   try :
+      proj_lib = os.environ['PROJ_LIB']
+   except:
+      ret="export PROJ_LIB="+ucvmpath+"/lib/proj/share/proj"
+      return ret 
+   return ""
+
+def _addPROJ_LIB_python() :
+   try :
+      proj_lib = os.environ['PROJ_LIB']
+   except:
+      ret="PROJ_LIB=\""+ucvmpath+"/lib/proj/share/proj\""
+      return ret 
+   return ""
 
 #
 # Start of main method.
@@ -883,7 +924,6 @@ if platform.system() == "Darwin" or platform.system() == "Linux" or dynamic_flag
     makeBashScript(os.getcwd(), ucvmpath ,modelsToInstall, librariesToInstall)
     makePythonScript(os.getcwd(), ucvmpath ,modelsToInstall, librariesToInstall)
     makeDyLibNameChangeScript(os.getcwd(), ucvmpath, modelsToInstall, librariesToInstall)
-    linkPROJ_LIB(ucvmpath)
 
 print("\nInstalling UCVM")
 callAndRecord(["make", "install"])

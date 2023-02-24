@@ -6,7 +6,7 @@
                 "SFCVM": {
                         "Version": "1.0",
                         "Abbreviation": "sfcvm",
-                        "Size": "100M",
+                        "Size": "2.0G",
                         "Path": "sfcvm",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/sfcvm.tar.gz",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/src",
@@ -302,6 +302,7 @@
 		"HDF5": {
 			"Path": "hdf5",
                         "Lib": "hdf5-1.10.9",
+                        "Size": "17M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/hdf5-1.10.9.tar.gz",
 			"Required": "yes",
 			"Prerequisites": "Dynamic",
@@ -314,7 +315,7 @@
 		"OpenSSL": {
 			"Path": "openssl",
                         "Lib": "openssl-3.0.8",
-                        "Size": "10M",
+                        "Size": "33M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/openssl-3.0.8.tar.gz",
                         "ConfigureFlags": "--libdir=${UCVM_INSTALL_PATH}/lib/openssl/lib",
                         "UCVMConfigureFlags": "--with-openssl-include-path=${UCVM_INSTALL_PATH}/lib/openssl/include --with-openssl-lib-path=${UCVM_INSTALL_PATH}/lib/openssl/lib",
@@ -327,7 +328,7 @@
 		"TIFF": {
 			"Path": "tiff",
                         "Lib": "tiff-4.5.0",
-                        "Size": "10M",
+                        "Size": "4.1M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/tiff-4.5.0.tar.gz",
 			"Required": "yes",
                         "ConfigureFlags": "--disable-test --disable-contrib --disable-docs --disable-ccitt --disable-mdi",
@@ -339,7 +340,7 @@
 		"Sqlite": {
 			"Path": "sqlite",
                         "Lib": "sqlite-autoconf-3400100",
-                        "Size": "10M",
+                        "Size": "13M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/sqlite-autoconf-3400100.tar.gz",
                         "UCVMConfigureFlags": "--with-sqlite-include-path=${UCVM_INSTALL_PATH}/lib/sqlite/include --with-sqlite-lib-path=${UCVM_INSTALL_PATH}/lib/sqlite/lib",
 			"Required": "yes",
@@ -351,7 +352,7 @@
 		"Curl": {
 			"Path": "curl",
                         "Lib": "curl-7.87.0",
-                        "Size": "10M",
+                        "Size": "4.6M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/curl-7.87.0.tar.gz",
 			"Required": "yes",
                         "ConfigureFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
@@ -363,17 +364,17 @@
 		"Proj": {
 			"Path": "proj",
                         "Lib": "proj-8.1.1",
-                        "Size": "30M",
+                        "Size": "95M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-8.1.1.tar.gz",
 			"Required": "yes",
                         "ConfigureFlags": "--enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config TIFF_LIBS='-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff -L${UCVM_INSTALL_PATH}/lib/openssl/lib -lcrypto -lssl' TIFF_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/tiff/include' SQLITE3_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/sqlite/include' SQLITE3_LIBS='-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3'",
                         "UCVMConfigureFlags": "--with-proj-include-path=${UCVM_INSTALL_PATH}/lib/proj/include --with-proj-lib-path=${UCVM_INSTALL_PATH}/lib/proj/lib",
-                        "Preprocess" :
+                        "Postprocess" :
                              {
                                "Action": "download", 
-                               "Path": "proj/data",
+                               "Path": "proj/share/proj",
                                "Lib": "proj-data-1.11",
-                               "Size": "30M",
+                               "Size": "598M",
                                "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-data-1.11.tar.gz",
                                "md5sum": "196ea873b3980448ae570b63282949e1"
                              },
