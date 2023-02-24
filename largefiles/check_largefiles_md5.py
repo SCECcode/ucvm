@@ -43,6 +43,11 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config
     _md5sum = str(the_model["md5sum"])
     _model = str(the_model["Abbreviation"])+".tar.gz"
     target_large_model_list.append( {"model":_model,"md5sum":_md5sum })
+    if "Preprocess" in the_model and the_model["Preprocess"]["Action"] == "download":
+        the_task = the_model["Preprocess"]
+        _md5sum = str(the_task["md5sum"])
+        _lib = str(the_task["Lib"])+".tar.gz"
+        target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
 
 for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
@@ -50,8 +55,8 @@ for library in config_data["libraries"].keys() :
     _lib = str(the_library["Lib"])+".tar.gz"
     target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
 ## preprocess download tasks
-    if "Preprocess" in the_library and the_library["Preprocess"]["Action"] == "download":
-        the_task = the_library["Preprocess"]
+    if "Postprocess" in the_library and the_library["Postprocess"]["Action"] == "download":
+        the_task = the_library["Postprocess"]
         _md5sum = str(the_task["md5sum"])
         _lib = str(the_task["Lib"])+".tar.gz"
         target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})

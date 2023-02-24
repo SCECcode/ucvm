@@ -35,14 +35,18 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config
     the_model = config_data["models"][model]
     _model = str(the_model["Abbreviation"])+".tar.gz"
     target_large_model_list.append(_model)
+    if "Preprocess" in the_model and the_model["Preprocess"]["Action"] == "download":
+        the_task = the_model["Preprocess"]
+        _lib = str(the_task["Lib"])+".tar.gz"
+        target_large_lib_list.append(_lib)
 
 for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
     _lib = str(the_library["Lib"])+".tar.gz"
     target_large_lib_list.append(_lib)
 ## preprocess download tasks
-    if "Preprocess" in the_library and the_library["Preprocess"]["Action"] == "download":
-        the_task = the_library["Preprocess"]
+    if "Postprocess" in the_library and the_library["Postprocess"]["Action"] == "download":
+        the_task = the_library["Postprocess"]
         _lib = str(the_task["Lib"])+".tar.gz"
         target_large_lib_list.append(_lib)
 
