@@ -94,7 +94,7 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config
            the_task = the_model["Preprocess"]
            _url = str(the_task["URL"])
            _path= str(the_task["Path"])
-           target_large_lib_list.append({"libary":_path, "url":_url});
+           target_large_lib_list.append({"library":_path, "url":_url});
 
 for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
