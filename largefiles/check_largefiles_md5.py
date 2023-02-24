@@ -46,8 +46,8 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config
     if "Preprocess" in the_model and the_model["Preprocess"]["Action"] == "download":
         the_task = the_model["Preprocess"]
         _md5sum = str(the_task["md5sum"])
-        _lib = str(the_task["Lib"])+".tar.gz"
-        target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
+        _ref = str(the_task["Lib"])+".tar.gz"
+        target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum})
 
 for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
@@ -58,8 +58,8 @@ for library in config_data["libraries"].keys() :
     if "Postprocess" in the_library and the_library["Postprocess"]["Action"] == "download":
         the_task = the_library["Postprocess"]
         _md5sum = str(the_task["md5sum"])
-        _lib = str(the_task["Lib"])+".tar.gz"
-        target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
+        _ref = str(the_task["Lib"])+".tar.gz"
+        target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum})
 
 for etree in config_data["etrees"].keys() :
     the_etree = config_data["etrees"][etree]

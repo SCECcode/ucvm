@@ -14,8 +14,8 @@
                              {
                                "Action": "download",
                                "Path": "sfcvm/dependencies",
-                               "Lib": "geomodelgrids",
                                "Size": "598M",
+                               "Lib": "geomodelgrids",
                                "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/geomodelgrids.tar.gz",
                                "md5sum": "5a91640fd598e14dff6e7888038c3c2a"
                              },

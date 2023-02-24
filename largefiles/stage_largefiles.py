@@ -17,6 +17,7 @@ target_large_lib_list = []
 target_large_model_list = []
 target_large_etree_list = []
 target_large_ref_list = []
+target_large_test_ref_list = []
 
 try:
     # We now have our list. Parse it.
@@ -37,8 +38,8 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config
     target_large_model_list.append(_model)
     if "Preprocess" in the_model and the_model["Preprocess"]["Action"] == "download":
         the_task = the_model["Preprocess"]
-        _lib = str(the_task["Lib"])+".tar.gz"
-        target_large_lib_list.append(_lib)
+        _ref = str(the_task["Lib"])+".tar.gz"
+        target_large_ref_list.append(_ref)
 
 for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
@@ -47,8 +48,8 @@ for library in config_data["libraries"].keys() :
 ## preprocess download tasks
     if "Postprocess" in the_library and the_library["Postprocess"]["Action"] == "download":
         the_task = the_library["Postprocess"]
-        _lib = str(the_task["Lib"])+".tar.gz"
-        target_large_lib_list.append(_lib)
+        _ref = str(the_task["Lib"])+".tar.gz"
+        target_large_ref_list.append(_ref)
 
 for etree in config_data["etrees"].keys() :
     the_etree = config_data["etrees"][etree]
@@ -58,7 +59,7 @@ for etree in config_data["etrees"].keys() :
 for ref in config_data["references"].keys() :
     the_reference = config_data["references"][ref]
     _ref=str(the_reference["Path"])
-    target_large_ref_list.append(_ref)
+    target_large_test_ref_list.append(_ref)
 
 
 
@@ -100,10 +101,12 @@ print(src_dir)
 model_dir = src_dir + "/model"
 test_ref_dir = src_dir + "/test/ref"
 etree_dir = model_dir + "/ucvm"
+ref_dir = src_dir + "/ref"
 
 work_dir = src_dir + "/work"
 work_model_dir = src_dir + "/work/model"
 work_lib_dir = src_dir + "/work/lib"
+work_ref_dir = src_dir + "/work/ref"
 
 #
 # Make sure target build directories exists, if not create them
@@ -119,6 +122,10 @@ if not os.path.exists(work_model_dir):
 if not os.path.exists(work_lib_dir):
   print("Creating lib_dir: ", work_lib_dir)
   os.makedirs(work_lib_dir)
+
+if not os.path.exists(work_ref_dir):
+  print("Creating ref_dir: ", work_ref_dir)
+  os.makedirs(work_ref_dir)
 
 #
 # Now move files one by one to destinations
@@ -161,7 +168,27 @@ for m in target_large_model_list:
   else:
     print("Target model file already exists",target_file)
 
-for r in target_large_ref_list:
+for m in target_large_ref_list:
+  src_file = largefilepath + "/" + m
+  target_file = work_ref_dir + "/" + m
+  if not os.path.exists(src_file):
+    continue
+  if not os.path.exists(target_file):
+    print("Linking ref:",m)
+    link_largefile(m, largefilepath, work_ref_dir)
+    # 
+    # remove existing tar file so gzip doesn't ask for permisson
+    #
+    tarfile = os.path.splitext(os.path.basename(m))[0]
+    tarfilepath = work_ref_dir + "/" + tarfile
+    if os.path.exists(tarfilepath):
+      print("Removing existing ref tar file",tarfilepath)
+      os.remove(tarfilepath)
+  else:
+    print("Target ref file already exists",target_file)
+
+## test-grid-lib-1d.ref going to the test/ref directory
+for r in target_large_test_ref_list:
   src_file = largefilepath + "/" + r
   target_file = test_ref_dir + "/" + r 
   if not os.path.exists(src_file):

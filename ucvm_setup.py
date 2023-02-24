@@ -150,6 +150,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         pathname = "model"
     
     workpath = "./work/" + pathname
+    refpath = "./work/ref"
 
     ## skip the models that already exists and go to the ones that did not get processed yet
     if(restart_flag) :
@@ -189,7 +190,8 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
             _path = the_task["Path"]
             print("Decompressing add on data")
             tarname = _url.split("/")[-1]
-            callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/" + pathname + "/" + _path])
+## could be in workpath but also could be in libpath 
+            callAndRecord(["tar", "zxvf", refpath  + "/" + tarname, "-C", workpath + "/" + _path])
 
     savedPath = os.getcwd()
     os.chdir(workpath + "/" + config_data["Path"])
@@ -292,7 +294,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
             _path = the_task["Path"]
             print("Decompressing add on data")
             tarname = _url.split("/")[-1]
-            callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", ucvmpath + "/" + pathname + "/" + _path])
+            callAndRecord(["tar", "zxvf", refpath  + "/" + tarname, "-C", ucvmpath + "/" + pathname + "/" + _path])
 
 
 ## create the ucvm_env.sh that is approriate to go into /etc/profile.d/
