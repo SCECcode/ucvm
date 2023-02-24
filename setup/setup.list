@@ -10,8 +10,17 @@
                         "Path": "sfcvm",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/sfcvm.tar.gz",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/src",
+                        "Preprocess" :
+                             {
+                               "Action": "download",
+                               "Path": "sfcvm/dependencies",
+                               "Lib": "geomodelgrids",
+                               "Size": "598M",
+                               "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/geomodelgrids.tar.gz",
+                               "md5sum": "5a91640fd598e14dff6e7888038c3c2a"
+                             },
                         "Ask": "yes",
-                        "md5sum": "0aa2a22d12555481a52840a3f2ba7b79",
+                        "md5sum": "3ca22d57f44957e428c7e2cc150b0b32",
                         "Order": 22 
                 },
                 "CVMHSMBN": {

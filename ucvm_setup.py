@@ -189,7 +189,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
             _path = the_task["Path"]
             print("Decompressing add on data")
             tarname = _url.split("/")[-1]
-            callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/" + _path])
+            callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/" + pathname + "/" + _path])
 
     savedPath = os.getcwd()
     os.chdir(workpath + "/" + config_data["Path"])
