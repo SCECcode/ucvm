@@ -148,7 +148,7 @@ int ucvm_init(const char *config)
   }
 
   /* Uncomment to dump config to screen */
-  // ucvm_dump_config(ucvm_cfg);
+  //ucvm_dump_config(ucvm_cfg);
 
   /* Check that UCVM interface and map path are defined */
   /* for ucvm */

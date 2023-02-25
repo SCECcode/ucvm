@@ -830,7 +830,7 @@ int test_lib_add_model_sfcvm()
   /* Add model */
   if (ucvm_add_model(UCVM_MODEL_SFCVM) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "FAIL: Failed to enable model %s\n",
-            UCVM_MODEL_CVMHSTBN);
+            UCVM_MODEL_SFCVM);
     ucvm_finalize();
     return(1);
   }
@@ -920,6 +920,9 @@ int suite_lib(const char *xmldir)
   suite.num_tests++;
 #endif
 #ifdef _UCVM_ENABLE_CVMHSTBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_SFCVM
   suite.num_tests++;
 #endif
 #ifdef _UCVM_ENABLE_CS173
