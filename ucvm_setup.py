@@ -196,7 +196,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    if config_data["Path"] != "openssl" and config_data["Path"] != "sfcvm":
+    if config_data["Path"] != "openssl" and config_data["Path"] != "sfcvm" and config_data["Path"] != "cca":
       print("\nRunning aclocal")
       aclocal_array = ["aclocal"]
       if os.path.exists("./m4"):
@@ -209,7 +209,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
       print("\nRunning automake")
       callAndRecord(["automake", "--add-missing", "--force-missing"])
 
-    if config_data["Path"] == "sfcvm":
+    if config_data["Path"] == "sfcvm" or config_data["Path"] == "cca" :
       print("\nRunning autoreconf")
       callAndRecord(["autoreconf", "-i"])
     
