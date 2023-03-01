@@ -235,19 +235,9 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         if "euclid3" in needs_array:
           configure_array.append("--with-etree-lib-path=" + ucvmpath + "/lib/euclid3/lib")
           configure_array.append("--with-etree-include-path=" + ucvmpath + "/lib/euclid3/include")
-          configure_array.append("--with-etree-libdr=" + ucvmpath + "/lib/euclid3/lib")
-          configure_array.append("--with-etree-incdir=" + ucvmpath + "/lib/euclid3/include")
         if "proj" in needs_array:
           configure_array.append("--with-proj-lib-path=" + ucvmpath + "/lib/proj/lib")
           configure_array.append("--with-proj-include-path=" + ucvmpath + "/lib/proj/include")
-          configure_array.append("--with-proj-libdir=" + ucvmpath + "/lib/proj/lib")
-          configure_array.append("--with-proj-incdir=" + ucvmpath + "/lib/proj/include")
-        if "tiff" in needs_array:
-          configure_array.append("--with-tiff-libdir=" + ucvmpath + "/lib/tiff/lib")
-          configure_array.append("--with-tiff-incdir=" + ucvmpath + "/lib/tiff/include")
-        if "sqlite" in needs_array:
-          configure_array.append("--with-sqlite-libdir=" + ucvmpath + "/lib/sqlite/lib")
-          configure_array.append("--with-sqlite-incdir=" + ucvmpath + "/lib/sqlite/include")
                     
     if config_data["Path"] == "cencal":
         configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/euclid3/lib -L" + ucvmpath + "/lib/proj/lib")
