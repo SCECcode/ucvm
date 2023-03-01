@@ -242,7 +242,7 @@
 			"Path": "cca",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/cca.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
-			"Libraries": ["euclid3", "proj"],
+			"Libraries": ["euclid3", "proj", "openssl", "tiff", "sqlite"],
 			"Ask": "yes",
                         "md5sum": "921f0c4e0c6f517a1fb017c7a96bbcd6",
 			"Order": 2		
