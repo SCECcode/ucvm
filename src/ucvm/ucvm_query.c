@@ -379,7 +379,6 @@ int main(int argc, char **argv)
 	  (pnts[numread].coord[1] == 0.0)) {
 	  break;
         }
-
         numread++;
         if (numread == NUM_POINTS) {
 	  /* Query the UCVM */
