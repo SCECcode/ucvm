@@ -230,7 +230,9 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     else:
         needs_env = {}
     
-    if "Libraries" in config_data:
+    if "ConfigureFlags" in config_data and config_data["ConfigureFlags"] != "" :
+        configure_array += config_data["ConfigureFlags"].split(" ")
+    elif "Libraries" in config_data:
         needs_array = config_data["Libraries"]
         if "euclid3" in needs_array:
           configure_array.append("--with-etree-lib-path=" + ucvmpath + "/lib/euclid3/lib")
@@ -239,16 +241,13 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
           configure_array.append("--with-proj-lib-path=" + ucvmpath + "/lib/proj/lib")
           configure_array.append("--with-proj-include-path=" + ucvmpath + "/lib/proj/include")
                     
-    if config_data["Path"] == "cencal":
-        configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/euclid3/lib -L" + ucvmpath + "/lib/proj/lib")
-        configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/euclid3/include -I" + ucvmpath + "/lib/proj/include")
-    elif config_data["Path"] == "netcdf":
-        configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
-        configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
+        if config_data["Path"] == "cencal":
+            configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/euclid3/lib -L" + ucvmpath + "/lib/proj/lib")
+            configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/euclid3/include -I" + ucvmpath + "/lib/proj/include")
+        elif config_data["Path"] == "netcdf":
+            configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
+            configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
     
-    if "ConfigureFlags" in config_data and config_data["ConfigureFlags"] != "" :
-        configure_array += config_data["ConfigureFlags"].split(" ")
-
     ## both use $UCVM_INSTALL_PATH
     if config_data["Path"] == "curl" or config_data["Path"] == "proj":
       callAndRecord(configure_array, noshell = False)
