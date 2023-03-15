@@ -13,6 +13,7 @@ import json
 import platform
 import socket
 import shlex
+import pdb
 
 
 # Variables
@@ -91,14 +92,16 @@ def callAndRecord(command, nocall = False, noshell = True):
 
     print('  ==> command used.. '+'_'.join(command))
     if nocall == False:
-##        retVal = call(command)
         if noshell == False :
             my_command=' '.join(command)
-            proc = Popen([ my_command ], env=new_env, shell=True, stdout = PIPE, stderr = PIPE)
+            if len(needs_env) != 0 :  ## add required environment 
+              proc = Popen([ my_command ], env=new_env, shell=True, stdout = PIPE, stderr = PIPE)
+            else:
+              proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
             retout, reterr = proc.communicate()
             retVal = proc.poll()
         else:
-            proc = Popen(command, env=my_env, stdout = PIPE, stderr = PIPE)
+            proc = Popen(command, stdout = PIPE, stderr = PIPE)
             retout, reterr = proc.communicate()
             retVal = proc.poll()
 
