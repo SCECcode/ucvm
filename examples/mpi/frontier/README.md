@@ -1,5 +1,5 @@
 Configure frontier environment with this .bashrc file
-
+<pre>
 # This is the .bashrc. This runs on non-interactive sessions. Define
 #  paths and others here. The interactive shell calls this one.
 #
@@ -27,4 +27,5 @@ module unload darshan-runtime
 tils/batch:$PATH
 #ulimit -s unlimited
 export PATH="/lustre/orion/geo112/proj-shared/pmaech/miniconda_frontier/bin:$PATH"
-source /lustre/orion/geo112/proj-shared/pmaech/ucvm227/conf/ucvm_env.s
+source /lustre/orion/geo112/proj-shared/pmaech/ucvm227/conf/ucvm_env.sh
+</pre>
