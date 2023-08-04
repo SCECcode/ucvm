@@ -29,3 +29,15 @@ tils/batch:$PATH
 export PATH="/lustre/orion/geo112/proj-shared/pmaech/miniconda_frontier/bin:$PATH"
 source /lustre/orion/geo112/proj-shared/pmaech/ucvm227/conf/ucvm_env.sh
 </pre>
+
+Resulting module list
+<pre>
+[pmaech@login09.frontier ~]$ module list
+
+Currently Loaded Modules:
+  1) craype-x86-trento        5) xpmem/2.6.2-2.5_2.22__gd067c3f.shasta   9) cray-dsmml/0.2.2       13) hsi/default
+  2) libfabric/1.15.2.0       6) cray-pmi/6.1.8                         10) cray-mpich/8.1.23      14) DefApps/default
+  3) craype-network-ofi       7) gcc/12.2.0                             11) cray-libsci/22.12.1.1
+  4) perftools-base/22.12.0   8) craype/2.7.19                          12) PrgEnv-gnu/8.3.3
+  
+</pre>
