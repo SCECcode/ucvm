@@ -1,0 +1,14 @@
+#!/bin/bash
+#BSUB -P geo112
+#BSUB -W 6:00
+#BSUB -nnodes 140
+#BSUB -J cvmsi25Mesh
+#BSUB -oo cvmsi25Mesh.o
+#BSUB -eo cvmsi25Mesh.e
+
+#source ./ucvm_env.sh
+
+cd $LS_SUBCWD
+date
+jsrun -n 5600 -r 40 -a 1 -c 1 /gpfs/alpine/proj-shared/geo112/CyberShake/software/UCVM/ucvm-22.7.0/bin/ucvm2mesh_mpi -f cvmsi25.conf
+date
