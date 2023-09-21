@@ -213,42 +213,42 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
 	}
 
 	// Load the symbols.
-	MIPTR *iptr = dlsym(handle, "get_model_init");
+	MIPTR *iptr = (MIPTR *) dlsym(handle, "get_model_init");
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_init.\n");
 		return UCVM_CODE_ERROR;
 	}
 	pptr->model_init = iptr();
 
-	MQPTR *qptr = dlsym(handle, "get_model_query");
+	MQPTR *qptr = (MQPTR *) dlsym(handle, "get_model_query");
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_query.\n");
 		return UCVM_CODE_ERROR;
 	}
 	pptr->model_query = qptr();
 
-	MFPTR *fptr = dlsym(handle, "get_model_finalize");
+	MFPTR *fptr = (MFPTR *) dlsym(handle, "get_model_finalize");
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_finalize.\n");
 		return UCVM_CODE_ERROR;
 	}
 	pptr->model_finalize = fptr();
 
-	MVPTR *vptr = dlsym(handle, "get_model_version");
+	MVPTR *vptr = (MVPTR *) dlsym(handle, "get_model_version");
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_version.\n");
 		return UCVM_CODE_ERROR;
 	}
 	pptr->model_version = vptr();
 
-	MCPTR *cptr = dlsym(handle, "get_model_config");
+	MCPTR *cptr = (MCPTR *) dlsym(handle, "get_model_config");
 	if (dlerror() != NULL) {
 		fprintf(stderr, "Could not load model_config.\n");
 		return UCVM_CODE_ERROR;
 	}
 	pptr->model_config = cptr();
 
-	MSPTR *sptr = dlsym(handle, "get_model_setparam");
+	MSPTR *sptr = (MSPTR *) dlsym(handle, "get_model_setparam");
 	if (dlerror() == NULL) { // this is optional
 	        pptr->model_setparam = sptr();
 	}
@@ -667,11 +667,11 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
 
         /** Stores the points in in WGS84 format. */
         /** The returned data from the plugin model. */
-        basic_point_t *ucvm_plugin_pnts_buffer = malloc(MODEL_POINT_BUFFER * sizeof(basic_point_t));
-        basic_properties_t *ucvm_plugin_data_buffer = malloc(MODEL_POINT_BUFFER * sizeof(basic_properties_t));
+        basic_point_t *ucvm_plugin_pnts_buffer = (basic_point_t *) malloc(MODEL_POINT_BUFFER * sizeof(basic_point_t));
+        basic_properties_t *ucvm_plugin_data_buffer = (basic_properties_t *) malloc(MODEL_POINT_BUFFER * sizeof(basic_properties_t));
 
         /** Stores the mapping between data array and query buffer array */
-	int* index_mapping = malloc(sizeof(int)*MODEL_POINT_BUFFER);
+	int* index_mapping = (int *) malloc(sizeof(int)*MODEL_POINT_BUFFER);
 	if (index_mapping==NULL || ucvm_plugin_pnts_buffer == NULL || ucvm_plugin_data_buffer == NULL) {
 		fprintf(stderr, "Memory allocation of pnts_buffer, data_buffer or index_mapping failed, aborting.\n");
 		return UCVM_CODE_ERROR;
