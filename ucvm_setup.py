@@ -33,7 +33,7 @@ needs_gfortran = 1
 skip_ask_path = False
 
 ## track env of current model/lib etc
-needs_env = {}
+needs_env = []
 
 # Should we abort after testing system conditions?
 error_out = False
@@ -77,19 +77,27 @@ def which(file):
 # Records the command to the global shell script variable.
 def callAndRecord(command, nocall = False, noshell = True):
     global shell_script
+
+    new_env = {}
+    my_env = os.environ.copy()
+    new_env["PATH"]=my_env["PATH"]
+    if len(needs_env) != 0 :  ## add required environment 
+      for env in needs_env:
+        ## pick it up from current environment
+        if env in my_env.keys(): 
+          new_env[env] = my_env[env]
+        else:
+          print("ERROR..",env," is not available");
+          exit(1)
+
     print('  ==> command used.. '+'_'.join(command))
     if nocall == False:
-##        retVal = call(command)
         if noshell == False :
-            my_env = os.environ.copy()
-            sz=len(needs_env)
-            if sz != 0 :  ## add required environment 
-              for env in needs_env : 
-                 my_env[env] = needs_env[env]
-
-##            print(my_env)
             my_command=' '.join(command)
-            proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
+            if len(needs_env) != 0 :  ## add required environment 
+              proc = Popen([ my_command ], env=new_env, shell=True, stdout = PIPE, stderr = PIPE)
+            else:
+              proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
             retout, reterr = proc.communicate()
             retVal = proc.poll()
         else:
@@ -105,6 +113,7 @@ def callAndRecord(command, nocall = False, noshell = True):
                eG("Error executing command.", command)
             else:
                print("WHAT... Return value for the call is ",retVal)
+            exit(1)
       
     shell_script += command[0]
     for cmd in command[1:]:
@@ -225,12 +234,14 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
 
-    if "ConfigureEnv" in config_data: 
+    if "ConfigureEnv" in config_data.keys(): 
         needs_env = config_data["ConfigureEnv"]
     else:
-        needs_env = {}
+        needs_env = [] 
     
-    if "Libraries" in config_data:
+    if "ConfigureFlags" in config_data and config_data["ConfigureFlags"] != "" :
+        configure_array += config_data["ConfigureFlags"].split(" ")
+    elif "Libraries" in config_data:
         needs_array = config_data["Libraries"]
         if "euclid3" in needs_array:
           configure_array.append("--with-etree-lib-path=" + ucvmpath + "/lib/euclid3/lib")
@@ -239,18 +250,15 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
           configure_array.append("--with-proj-lib-path=" + ucvmpath + "/lib/proj/lib")
           configure_array.append("--with-proj-include-path=" + ucvmpath + "/lib/proj/include")
                     
-    if config_data["Path"] == "cencal":
-        configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/euclid3/lib -L" + ucvmpath + "/lib/proj/lib")
-        configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/euclid3/include -I" + ucvmpath + "/lib/proj/include")
-    elif config_data["Path"] == "netcdf":
-        configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
-        configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
+        if config_data["Path"] == "cencal":
+            configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/euclid3/lib -L" + ucvmpath + "/lib/proj/lib")
+            configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/euclid3/include -I" + ucvmpath + "/lib/proj/include")
+        elif config_data["Path"] == "netcdf":
+            configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
+            configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
     
-    if "ConfigureFlags" in config_data and config_data["ConfigureFlags"] != "" :
-        configure_array += config_data["ConfigureFlags"].split(" ")
-
     ## both use $UCVM_INSTALL_PATH
-    if config_data["Path"] == "curl" or config_data["Path"] == "proj":
+    if config_data["Path"] == "curl" or config_data["Path"] == "proj" or config_data["Path"] == "cca" :
       callAndRecord(configure_array, noshell = False)
     else:
       callAndRecord(configure_array)
