@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # This script symbolic links large files from current directory to
 # the target directory so that they are ready for processing with 
