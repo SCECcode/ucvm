@@ -279,10 +279,10 @@
 			"Path": "euclid3",
                         "Lib": "euclid3-1.3",
                         "Size": "4.7M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/lib/euclid3-1.3.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/euclid3-1.3.tar.gz",
 			"Required": "yes",
                         "UCVMConfigureFlags": "--with-etree-include-path=${UCVM_INSTALL_PATH}/lib/euclid3/include --with-etree-lib-path=${UCVM_INSTALL_PATH}/lib/euclid3/lib",
-                        "md5sum": "c980cfb9068c97612b7da27f37cc4a44",
+                        "md5sum": "c40e27200c974ecbebd15cb20b206aee",
 			"Ask": "no",
                         "Needs":""
 		},
