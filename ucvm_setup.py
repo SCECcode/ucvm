@@ -170,7 +170,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
     strip_level = "2"
     if config_data["Path"] == "fftw" or \
-            config_data["Path"] == "euclid3" or \
             config_data["Path"] == "netcdf" :
         strip_level = "1"
     
