@@ -857,7 +857,7 @@ int ucvm_setparam(ucvm_param_t param, ...)
   va_start(ap, param);
   switch (param) {
   case UCVM_PARAM_QUERY_MODE:
-    ucvm_cur_qmode = va_arg(ap, int);
+    ucvm_cur_qmode = va_arg(ap, ucvm_ctype_t);
     if (ucvm_cur_mmode == UCVM_OPMODE_GTL) {
       if (ucvm_cur_qmode == UCVM_COORD_GEO_ELEV) {
 	/* Set force depth flag for all active models */

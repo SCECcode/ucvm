@@ -89,7 +89,7 @@ int list_parse(const char *lstr, int llen, double *arr, int an)
     return(UCVM_CODE_ERROR);
   }
 
-  strbuf = malloc(llen);
+  strbuf = (char *) malloc(llen);
   if (strbuf == NULL) {
     return(UCVM_CODE_ERROR);
   }
@@ -119,7 +119,7 @@ int list_parse_s(const char *lstr, int llen,
     return(UCVM_CODE_ERROR);
   }
 
-  strbuf = malloc(llen);
+  strbuf = (char *) malloc(llen);
   if (strbuf == NULL) {
     return(UCVM_CODE_ERROR);
   }

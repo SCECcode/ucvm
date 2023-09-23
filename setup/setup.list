@@ -376,7 +376,7 @@
                                "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-data-1.11.tar.gz",
                                "md5sum": "196ea873b3980448ae570b63282949e1"
                              },
-                        "md5sum": "4edd69456526e67cd02037b8b90593dc",
+                        "md5sum": "266803a10a6e7c5baef5b608f3d29a7d",
 			"Ask": "no",
                         "Needs":"TIFF OpenSSL Curl Sqlite"
 		}
