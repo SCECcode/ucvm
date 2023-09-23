@@ -282,7 +282,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/euclid3-1.3.tar.gz",
 			"Required": "yes",
                         "UCVMConfigureFlags": "--with-etree-include-path=${UCVM_INSTALL_PATH}/lib/euclid3/include --with-etree-lib-path=${UCVM_INSTALL_PATH}/lib/euclid3/lib",
-                        "md5sum": "c40e27200c974ecbebd15cb20b206aee",
+                        "md5sum": "e8de5d96fb82665fc718eede8eb3e0cf",
 			"Ask": "no",
                         "Needs":""
 		},
