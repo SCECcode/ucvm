@@ -179,12 +179,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         if "gfortran" in requirements_array:
            needs_gfortran += 1
 
-    if(restart_flag) :
-        test_path= workpath + "/" + config_data["Path"];
-        if os.path.exists(test_path):
-            print("\nSkip building " + config_data["Path"]);
-            return
-
     # 
     # We need to un-tar the file.
     # The strip level determines how much of the path found in the tar file are removed.
