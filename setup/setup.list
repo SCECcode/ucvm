@@ -197,7 +197,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/cvmsi.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/model/i26",
 			"Ask": "yes",
-                        "md5sum": "24c789384fb94d44f9b8c04d792e272a",
+                        "md5sum": "cee8a1619f9c34e6ddd852fe0950fbd5",
 			"Order": 6		
 		},
 		"CVM-S4": {
