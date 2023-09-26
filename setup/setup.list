@@ -317,7 +317,7 @@
                         "ConfigureFlags": "--libdir=lib",
                         "UCVMConfigureFlags": "--with-openssl-include-path=${UCVM_INSTALL_PATH}/lib/openssl/include --with-openssl-lib-path=${UCVM_INSTALL_PATH}/lib/openssl/lib",
 			"Required": "yes",
-                        "md5sum": "478edeaed47741e1173e88d575f548ba",
+                        "md5sum": "2e0aa617fb80a891b023eae0dddb14bd",
 			"Ask": "no",
                         "Needs":""
 		},
