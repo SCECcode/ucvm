@@ -29,6 +29,14 @@ bin_PROGRAMS += run_ucvm2mesh_mpi_layer_cvms.sh
 run_ucvm2mesh_mpi_layer_cvms_sh_SOURCES = run_ucvm2mesh_mpi_layer_cvms.sh
 endif
 
+if UCVM_AM_ENABLE_SFCVM
+bin_PROGRAMS += run_ucvm2mesh_mpi_sfcvm.sh
+run_ucvm2mesh_mpi_sfcvm_sh_SOURCES = run_ucvm2mesh_mpi_sfcvm.sh
+
+bin_PROGRAMS += run_ucvm2mesh_mpi_layer_sfcvm.sh
+run_ucvm2mesh_mpi_layer_sfcvm_sh_SOURCES = run_ucvm2mesh_mpi_layer_sfcvm.sh
+endif
+
 endif #MPI
 
 
