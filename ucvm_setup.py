@@ -308,7 +308,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 ##
 def _add2LIBRARYPATH_bash(modelsToInstall, librariesToInstall) :
     str=""
-
 #libraries
     for library in librariesToInstall:
         conf=config_data["libraries"][library]
@@ -320,7 +319,14 @@ def _add2LIBRARYPATH_bash(modelsToInstall, librariesToInstall) :
         conf = config_data["models"][model]
         str=str+"add2LD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/"+conf['Path']+"/lib\n"
         str=str+"add2DYLD_LIBRARY_PATH ${UCVM_INSTALL_PATH}/model/"+conf['Path']+"/lib\n"
+    return str
 
+def _add2PATH_bash(modelsToInstall, librariesToInstall) :
+    str=""
+    model="SFCVM"
+    if model in modelsToInstall:
+        conf = config_data["models"][model]
+        str=str+"add2PATH ${UCVM_INSTALL_PATH}/model/"+conf['Path']+"/bin\n"
     return str
 
 def _add2path_bash(master):
@@ -392,6 +398,10 @@ def makeBashScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
     pstr="add2PATH ${UCVM_INSTALL_PATH}/utilities"
     fp.write(pstr)
     fp.write("\n")
+
+## add model specific BIN 
+    pstr=_add2PATH_bash(modelsToInstall, librariesToInstall)
+    fp.write(pstr)
 
     pstr=_addPROJ_LIB_bash()
     fp.write("\n")
