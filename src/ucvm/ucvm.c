@@ -74,6 +74,18 @@ ucvm_config_t *ucvm_cfg = NULL;
 double ucvm_interp_zmin = UCVM_DEFAULT_INTERP_ZMIN;
 double ucvm_interp_zmax = UCVM_DEFAULT_INTERP_ZMAX;
 
+/* Taper interp floors defaults */
+double ucvm_interp_vs_floor = UCVM_DEFAULT_VS_FLOOR;
+double ucvm_interp_vp_floor = UCVM_DEFAULT_VP_FLOOR;
+double ucvm_interp_density_floor = UCVM_DEFAULT_DENSITY_FLOOR;
+
+/* Set floor, only if it is not -1 */
+int ucvm_setfloor(double *llvals) {
+  ucvm_interp_vs_floor = llvals[0];
+  ucvm_interp_vp_floor = llvals[1];
+  ucvm_interp_density_floor = llvals[2];
+  return(UCVM_CODE_SUCCESS);
+}
 
 /* Get topo and vs30 values from UCVM models */
 int ucvm_get_model_vals(ucvm_point_t *pnt, ucvm_data_t *data)
@@ -621,6 +633,11 @@ int ucvm_assoc_ifunc(const char *mlabel, const char *ilabel)
   if (strcmp(ilabel, UCVM_IFUNC_ELY) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_ELY, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_ely;
+  } else if (strcmp(ilabel, UCVM_IFUNC_TAPER) == 0) {
+    ucvm_strcpy(ifunc.label, UCVM_IFUNC_TAPER, UCVM_MAX_LABEL_LEN);
+    ifunc.interp = ucvm_interp_taper;
+    // need to reset the zrange
+    ucvm_setparam(UCVM_PARAM_IFUNC_ZRANGE, 0.0, 700.0);
   } else if (strcmp(ilabel, UCVM_IFUNC_CRUST) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_CRUST, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_crustal;
@@ -957,6 +974,10 @@ int ucvm_query(int n, ucvm_point_t *pnt, ucvm_data_t *data)
     data[i].crust.vp = 0.0;
     data[i].crust.vs = 0.0;
     data[i].crust.rho = 0.0;
+    // special for taper
+    data[i].interp_crust.vp = 0.0;
+    data[i].interp_crust.vs = 0.0;
+    data[i].interp_crust.rho = 0.0;
     data[i].gtl.source = UCVM_SOURCE_NONE;
     data[i].gtl.vp = 0.0;
     data[i].gtl.vs = 0.0;
@@ -1400,6 +1421,12 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
   /* Get installed ifuncs */
   if (ucvm_save_resource(UCVM_RESOURCE_IFUNC, UCVM_MODEL_CRUSTAL,
 		     UCVM_IFUNC_ELY, "", res, numinst++, *len) 
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+
+  if (ucvm_save_resource(UCVM_RESOURCE_IFUNC, UCVM_MODEL_CRUSTAL,
+                     UCVM_IFUNC_TAPER, "", res, numinst++, *len)
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }

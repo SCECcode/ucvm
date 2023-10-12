@@ -7,6 +7,9 @@
 int ucvm_interp_ely(double zmin, double zmax, ucvm_ctype_t cmode,
 		    ucvm_point_t *pnt, ucvm_data_t *data);
 
+/* Taper interpolation method */
+int ucvm_interp_taper(double zmin, double zmax, ucvm_ctype_t cmode,
+                    ucvm_point_t *pnt, ucvm_data_t *data);
 
 /* Linear interpolation method */
 int ucvm_interp_linear(double zmin, double zmax, ucvm_ctype_t cmode,

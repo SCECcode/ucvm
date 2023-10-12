@@ -46,6 +46,11 @@
 #define UCVM_DEFAULT_INTERP_ZMIN 0.0
 #define UCVM_DEFAULT_INTERP_ZMAX 350.0
 
+/* Default depth (m) floors for Ely/Taper interploation */
+#define UCVM_DEFAULT_VS_FLOOR 500.0
+#define UCVM_DEFAULT_VP_FLOOR 1700.0
+#define UCVM_DEFAULT_DENSITY_FLOOR 1700.0
+#define UCVM_DEFAULT_NULL_FLOOR -1
 
 /* Special source model/ifunc flags */
 #define UCVM_SOURCE_NONE -1
@@ -117,6 +122,7 @@
 #define UCVM_IFUNC_GTL "gtl"
 #define UCVM_IFUNC_LINEAR "linear"
 #define UCVM_IFUNC_ELY "ely"
+#define UCVM_IFUNC_TAPER "taper"
 
 
 /* Predefined projection strings */
