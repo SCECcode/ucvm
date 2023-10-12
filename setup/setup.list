@@ -129,7 +129,7 @@
                         "Path": "wfcvm",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/wfcvm.tar.gz",
                         "UCVMConfigureFlags": "--enable-model-wfcvm --with-wfcvm-lib-path=${UCVM_INSTALL_PATH}/model/wfcvm/lib --with-wfcvm-include-path=${UCVM_INSTALL_PATH}/model/wfcvm/include --with-wfcvm-model-path=${UCVM_INSTALL_PATH}/model/wfcvm/src",
-                        "Ask": "yes",
+                        "Ask": "no",
                         "md5sum": "72320742325cf77c94b850c729841f46",
                         "Order": 12
                 },
@@ -141,7 +141,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/ivlsu.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=${UCVM_INSTALL_PATH}/model/ivlsu/lib --with-ivlsu-include-path=${UCVM_INSTALL_PATH}/model/ivlsu/include --with-ivlsu-model-path=${UCVM_INSTALL_PATH}/model/ivlsu/src",
 			"Libraries": ["proj"],
-			"Ask": "yes",
+			"Ask": "no",
                         "md5sum": "8d553860bdd90d3444396b1da590276d",
 			"Order": 11		
 		},
@@ -152,7 +152,7 @@
 			"Path": "cvlsu",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvlsu.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvlsu --with-cvlsu-lib-path=${UCVM_INSTALL_PATH}/model/cvlsu/lib --with-cvlsu-include-path=${UCVM_INSTALL_PATH}/model/cvlsu/include --with-cvlsu-model-path=${UCVM_INSTALL_PATH}/model/cvlsu/src",
-			"Ask": "yes",
+			"Ask": "no",
                         "md5sum": "c33dd1067518808e567cc3d8a90474e8",
 			"Order": 10		
 		},
@@ -163,7 +163,7 @@
 			"Path": "albacore",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/albacore.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=${UCVM_INSTALL_PATH}/model/albacore/lib --with-albacore-include-path=${UCVM_INSTALL_PATH}/model/albacore/include --with-albacore-model-path=${UCVM_INSTALL_PATH}/model/albacore/src",
-			"Ask": "yes",
+			"Ask": "no",
                         "md5sum": "ca87ef278c939df7b4069b60c7fa1999",
 			"Order": 9		
 		},
@@ -185,7 +185,7 @@
 			"Path": "cencal",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cencal.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cencal --with-cencal-lib-path=${UCVM_INSTALL_PATH}/model/cencal/lib --with-cencal-include-path=${UCVM_INSTALL_PATH}/model/cencal/include/cencalvm/query/ --with-cencal-model-path=${UCVM_INSTALL_PATH}/model/cencal/model/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=${UCVM_INSTALL_PATH}/model/cencal/model/USGSBayAreaVMExt-08.3.0.etree",
-			"Ask": "yes",
+			"Ask": "no",
                         "md5sum": "0f6ca2e4a9ba6e32181a7e6493a39c55",
 			"Order": 7
 		},
