@@ -1,3 +1,6 @@
+## 2023-11-01 Mei-Hui Su <mei@usc.edu>
+* Transfer Tapering to SFCVM branch
+
 ## 2023-03-01 Mei-Hui Su <mei@usc.edu>
 * Update UCVM with Proj(8) which requires inclusion of TIFF,HDF5,SQLITE,CURL,OPENSSL
 * Added SFCVM (using geomodelgrids format, Brad Aagaard)
