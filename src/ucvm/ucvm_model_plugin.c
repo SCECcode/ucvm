@@ -653,8 +653,7 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
      int datagap = 0;
 
         ucvm_plugin_model_t *pptr=get_plugin_by_id(id);
-        if (!pptr) {
-     // Check the model id.
+        if (!pptr) { // Check the model id.
           fprintf(stderr, "Invalid model id.\n");
           return UCVM_CODE_ERROR;
      }
@@ -700,45 +699,45 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
              /* Modify pre-computed depth to account for GTL interp range */
              depth = data[i].depth + data[i].shift_cr;
 
-                index_mapping[nn]=i;
+             index_mapping[nn]=i;
 
-              ucvm_plugin_pnts_buffer[nn].longitude = pnt[i].coord[0];
-              ucvm_plugin_pnts_buffer[nn].latitude = pnt[i].coord[1];
-              ucvm_plugin_pnts_buffer[nn].depth = depth;
+             ucvm_plugin_pnts_buffer[nn].longitude = pnt[i].coord[0];
+             ucvm_plugin_pnts_buffer[nn].latitude = pnt[i].coord[1];
+             ucvm_plugin_pnts_buffer[nn].depth = depth;
 
-                // need to make a separate query using original depth - taper
-                if(data[i].domain == UCVM_DOMAIN_INTERP) {
-                  ucvm_plugin_interp_pnts_buffer[0].longitude = pnt[i].coord[0];
-                  ucvm_plugin_interp_pnts_buffer[0].latitude = pnt[i].coord[1];
-                  ucvm_plugin_interp_pnts_buffer[0].depth = data[i].depth;
+             // need to make a separate query using original depth - taper
+             if(data[i].domain == UCVM_DOMAIN_INTERP) {
+                 ucvm_plugin_interp_pnts_buffer[0].longitude = pnt[i].coord[0];
+                 ucvm_plugin_interp_pnts_buffer[0].latitude = pnt[i].coord[1];
+                 ucvm_plugin_interp_pnts_buffer[0].depth = data[i].depth;
 //fprintf(stderr,"XXX -- crustal with depth of %lf\n", data[i].depth);
-                  (*(pptr->model_query))(ucvm_plugin_interp_pnts_buffer, ucvm_plugin_interp_data_buffer, 1);
+                 (*(pptr->model_query))(ucvm_plugin_interp_pnts_buffer, ucvm_plugin_interp_data_buffer, 1);
                        // Transfer our findings.
-                       if (ucvm_plugin_interp_data_buffer[0].vp >= 0 && ucvm_plugin_interp_data_buffer[0].vs >= 0
+                 if (ucvm_plugin_interp_data_buffer[0].vp >= 0 && ucvm_plugin_interp_data_buffer[0].vs >= 0
                                                  && ucvm_plugin_interp_data_buffer[0].rho >= 0) {
-                           data[i].interp_crust.vp = ucvm_plugin_interp_data_buffer[0].vp;
-                           data[i].interp_crust.vs = ucvm_plugin_interp_data_buffer[0].vs;
-                           data[i].interp_crust.rho = ucvm_plugin_interp_data_buffer[0].rho;
-                  }
-              }
-              nn++;
+                     data[i].interp_crust.vp = ucvm_plugin_interp_data_buffer[0].vp;
+                     data[i].interp_crust.vs = ucvm_plugin_interp_data_buffer[0].vs;
+                     data[i].interp_crust.rho = ucvm_plugin_interp_data_buffer[0].rho;
+                 }
+             }
+             nn++;
 
-              if (nn == MODEL_POINT_BUFFER || i == n - 1) {
-                   // We've reached the maximum buffer. Do the query.
-                   (*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn);
-                   // Transfer our findings.
-                   for (j = 0; j < nn; j++) {
-                        if (ucvm_plugin_data_buffer[j].vp >= 0 && ucvm_plugin_data_buffer[j].vs >= 0 && ucvm_plugin_data_buffer[j].rho >= 0) {
-                             data[index_mapping[j]].crust.source = pptr->ucvm_plugin_model_id;
-                             data[index_mapping[j]].crust.vp = ucvm_plugin_data_buffer[j].vp;
-                             data[index_mapping[j]].crust.vs = ucvm_plugin_data_buffer[j].vs;
-                             data[index_mapping[j]].crust.rho = ucvm_plugin_data_buffer[j].rho;
-                        } else {
+             if (nn == MODEL_POINT_BUFFER || i == n - 1) {
+                 // We've reached the maximum buffer. Do the query.
+                 (*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn);
+                 // Transfer our findings.
+                 for (j = 0; j < nn; j++) {
+                     if (ucvm_plugin_data_buffer[j].vp >= 0 && ucvm_plugin_data_buffer[j].vs >= 0 && ucvm_plugin_data_buffer[j].rho >= 0) {
+                         data[index_mapping[j]].crust.source = pptr->ucvm_plugin_model_id;
+                         data[index_mapping[j]].crust.vp = ucvm_plugin_data_buffer[j].vp;
+                         data[index_mapping[j]].crust.vs = ucvm_plugin_data_buffer[j].vs;
+                         data[index_mapping[j]].crust.rho = ucvm_plugin_data_buffer[j].rho;
+                         } else {
                              datagap = 1;
-                        }
-                   }
-                   // After query, reset nn.
-                   nn = 0;
+                     }
+                 }
+                 // After query, reset nn.
+                 nn = 0;
              }
              } else {
                  if (data[i].crust.source == UCVM_SOURCE_NONE) datagap = 1;
