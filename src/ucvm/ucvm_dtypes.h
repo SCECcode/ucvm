@@ -237,6 +237,7 @@ typedef struct ucvm_data_t
   double shift_cr;
   double shift_gtl;
   ucvm_prop_t crust;
+  ucvm_prop_t interp_crust;
   ucvm_prop_t gtl;
   ucvm_prop_t cmb;
 } ucvm_data_t;
