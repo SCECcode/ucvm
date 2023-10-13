@@ -4,7 +4,7 @@
 FLAGS=""
 
 # Pass along any arguments to UCVM
-while getopts 'm:p:c:f:z:' OPTION
+while getopts 'm:p:c:f:z:l:L:b' OPTION
 do
   if [ "$OPTARG" != "" ]; then
       FLAGS="${FLAGS} -$OPTION $OPTARG"

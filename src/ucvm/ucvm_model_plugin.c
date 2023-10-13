@@ -652,10 +652,10 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
      double depth = 0;
      int datagap = 0;
 
-        ucvm_plugin_model_t *pptr=get_plugin_by_id(id);
-        if (!pptr) { // Check the model id.
-          fprintf(stderr, "Invalid model id.\n");
-          return UCVM_CODE_ERROR;
+     ucvm_plugin_model_t *pptr=get_plugin_by_id(id);
+     if (!pptr) { // Check the model id.
+         fprintf(stderr, "Invalid model id.\n");
+         return UCVM_CODE_ERROR;
      }
 
      // Ensure we're using depth or elevation queries.
@@ -727,7 +727,8 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
                  (*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn);
                  // Transfer our findings.
                  for (j = 0; j < nn; j++) {
-                     if (ucvm_plugin_data_buffer[j].vp >= 0 && ucvm_plugin_data_buffer[j].vs >= 0 && ucvm_plugin_data_buffer[j].rho >= 0) {
+                     if (ucvm_plugin_data_buffer[j].vp >= 0 && ucvm_plugin_data_buffer[j].vs >= 0 
+				             && ucvm_plugin_data_buffer[j].rho >= 0) {
                          data[index_mapping[j]].crust.source = pptr->ucvm_plugin_model_id;
                          data[index_mapping[j]].crust.vp = ucvm_plugin_data_buffer[j].vp;
                          data[index_mapping[j]].crust.vs = ucvm_plugin_data_buffer[j].vs;
@@ -748,7 +749,8 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
          (*(pptr->model_query))(ucvm_plugin_pnts_buffer, ucvm_plugin_data_buffer, nn);
          // Transfer our findings.
          for (j = 0; j < nn; j++) {
-             if (ucvm_plugin_data_buffer[j].vp >= 0 && ucvm_plugin_data_buffer[j].vs >= 0 && ucvm_plugin_data_buffer[j].rho >= 0) {
+             if (ucvm_plugin_data_buffer[j].vp >= 0 && ucvm_plugin_data_buffer[j].vs >= 0 
+			      && ucvm_plugin_data_buffer[j].rho >= 0) {
                  data[index_mapping[j]].crust.source = pptr->ucvm_plugin_model_id;
                  data[index_mapping[j]].crust.vp = ucvm_plugin_data_buffer[j].vp;
                  data[index_mapping[j]].crust.vs = ucvm_plugin_data_buffer[j].vs;
