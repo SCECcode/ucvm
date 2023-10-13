@@ -116,7 +116,7 @@ void usage_detail() {
   printf("\t-v Display model version information only.\n");
   printf("\t-z Optional depth range for gtl/crust interpolation.\n\n");
   printf("\t-b Optional output in json format\n\n");
-  printf("\t-l Optional input lon,lat,Z(depth/elevation)\n\n");
+  printf("\t-l Optional input lat,lon,Z(depth/elevation)\n\n");
   printf("\t-L Optional interpolation floor limit vs,vp,density(meter in depth mode)\n\n");
   printf("Input format is:\n");
   printf("\tlon lat Z\n\n");
@@ -227,7 +227,7 @@ int main(int argc, char **argv)
     case 'l':  // lon,lat,Z
       if (list_parse(optarg, UCVM_MAX_PATH_LEN,
                      lvals, 3) != UCVM_CODE_SUCCESS) {
-        fprintf(stderr, "Invalid -l lon,lat,depth/elevation: %s.\n", optarg);
+        fprintf(stderr, "Invalid -l lat,lon,depth/elevation: %s.\n", optarg);
         usage();
         exit(1);
       }
