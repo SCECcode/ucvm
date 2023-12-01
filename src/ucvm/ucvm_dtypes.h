@@ -168,9 +168,9 @@ UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF : Force elevation points to be
 UCVM_MODEL_PARAM_PLUGIN_MODE : Tell the backend model that it is being 
   invoked as plugin module and is always expected to be 'query by depth'
 
-*/
 typedef enum { UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF = 0,
                UCVM_MODEL_PARAM_PLUGIN_MODE = 1} ucvm_mparam_t;
+*/
 
 /* Supported coordinate query modes */
 typedef enum { UCVM_COORD_GEO_DEPTH = 0, 

@@ -20,7 +20,9 @@ indexing takes in account for ucvm_model_mparam_t
 
 typedef enum { UCVM_MODEL_PARAM_QUERY_MODE = 1,
                UCVM_MODEL_PARAM_IFUNC_ZRANGE = 2,
-               UCVM_MODEL_PARAM_MODEL_CONF = 3 } ucvm_model_param_t;
+               UCVM_MODEL_PARAM_MODEL_CONF = 3,
+               UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF = 4,
+               UCVM_MODEL_PARAM_PLUGIN_MODE = 5 } ucvm_model_param_t;
 
 /* Supported model parameters. Used internally by UCVM
 UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF : Force elevation points to be
@@ -31,8 +33,6 @@ UCVM_MODEL_PARAM_PLUGIN_MODE : Tell the backend model that it is being
   invoked as plugin module and is always expected to be 'query by depth'
 
 */
-typedef enum { UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF = 0,
-               UCVM_MODEL_PARAM_PLUGIN_MODE = 1 } ucvm_model_mparam_t;
 
 /* Supported coordinate query modes */
 typedef enum { UCVM_MODEL_COORD_GEO_DEPTH = 0,
