@@ -1,3 +1,6 @@
+/* example
+run_ucvm_query.sh -l 32,-118,0 -m sfcvm -f ../../conf/ucvm.conf -P 'sfcvm_param=SquashMinElev,-5000.0' -P 'sfcvm_param=SquashMaxElev,5000.0'
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
