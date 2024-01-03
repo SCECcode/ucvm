@@ -98,6 +98,7 @@ void usage() {
   printf("\t-b Optional output in json format\n\n");
   printf("\t-l Optional input lat,lon,Z(depth/elevation)\n\n");
   printf("\t-L Optional interpolation floor limit vs,vp,density(meter in depth mode)\n\n");
+  printf("\t-P Optional model configuration\n\n");
   exit (0);
 }
 
@@ -118,6 +119,7 @@ void usage_detail() {
   printf("\t-b Optional output in json format\n\n");
   printf("\t-l Optional input lat,lon,Z(depth/elevation)\n\n");
   printf("\t-L Optional interpolation floor limit vs,vp,density(meter in depth mode)\n\n");
+  printf("\t-P Optional model configuration\n\n");
   printf("Input format is:\n");
   printf("\tlon lat Z\n\n");
   printf("Output format is:\n");
@@ -180,6 +182,7 @@ int main(int argc, char **argv)
   int opt;
   char modellist[UCVM_MAX_MODELLIST_LEN];
   char configfile[UCVM_MAX_PATH_LEN];
+  char modelconfiglist[10][UCVM_MAX_MODELCONFIGLIST_LEN];
   double zrange[2];
   double lvals[3];
   int use_cmdline=0;
@@ -188,6 +191,7 @@ int main(int argc, char **argv)
 
   ucvm_ctype_t cmode;
   int have_model = 0;
+  int have_modelconfig = 0; // tracks number of modelconfig strings
   int have_cmode = 0;
   int have_zrange = 0;
   int have_map = 0;
@@ -219,7 +223,7 @@ int main(int argc, char **argv)
   snprintf(map_label, UCVM_MAX_LABEL_LEN, "%s", UCVM_MAP_UCVM);
 
   /* Parse options */
-  while ((opt = getopt(argc, argv, "c:f:Hhm:p:vbz:l:L:")) != -1) {
+  while ((opt = getopt(argc, argv, "c:f:Hhm:p:vbz:l:L:P:")) != -1) {
     switch (opt) {
     case 'b':
       output_json=1;
@@ -241,6 +245,16 @@ int main(int argc, char **argv)
         exit(1);
       }
       ucvm_setfloor(llvals);
+      break;
+    case 'P':  // allows multiple,  -P sfcvm_param=squashminelev,-5000.0
+      if (strlen(optarg) >= UCVM_MAX_MODELCONFIGLIST_LEN - 1) {
+	fprintf(stderr, "Model param config is too long.\n");
+	usage();
+	exit(1);
+      } else {
+	snprintf(modelconfiglist[have_modelconfig],UCVM_MAX_MODELCONFIGLIST_LEN, "%s", optarg);
+	have_modelconfig ++;
+      }
       break;
     case 'c':
       if (strcmp(optarg, "gd") == 0) {
@@ -273,7 +287,7 @@ int main(int argc, char **argv)
       usage_detail();
       exit(0);
       break;
-    case 'm':
+    case 'm': // -m cvms,cvmh  or -m cvms5,elgtl:ely
       if (strlen(optarg) >= UCVM_MAX_MODELLIST_LEN - 1) {
 	fprintf(stderr, "Model list is too long.\n");
 	usage();
@@ -315,6 +329,11 @@ int main(int argc, char **argv)
   if (ucvm_init(configfile) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "Failed to initialize UCVM API\n");
     return(1);
+  }
+
+  /* Collect up additional model configs */
+  for(int i=0; i< have_modelconfig; i++) {
+    ucvm_add_model_config(modelconfiglist[i]);
   }
 
   /* Add models */

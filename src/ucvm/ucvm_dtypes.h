@@ -40,6 +40,9 @@
 /* Maximum model list length */
 #define UCVM_MAX_MODELLIST_LEN 1024
 
+/* Maximum model config list length */
+#define UCVM_MAX_MODELCONFIGLIST_LEN  5000
+
 /* Maximum stdin line length */
 #define UCVM_MAX_LINE_LEN 1024
 

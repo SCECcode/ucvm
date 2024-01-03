@@ -14,6 +14,9 @@ typedef struct ucvm_config_t {
 /* Parse config file */
 ucvm_config_t *ucvm_parse_config(const char *file);
 
+/* add additional config entry */
+ucvm_config_t *ucvm_add_config(ucvm_config_t *head, char *line);
+
 /* Return next entry containing name as a key */
 ucvm_config_t *ucvm_find_name(ucvm_config_t *chead, const char *name);
 

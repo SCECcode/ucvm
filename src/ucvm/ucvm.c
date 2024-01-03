@@ -613,6 +613,19 @@ int ucvm_add_user_model(ucvm_model_t *m, ucvm_modelconf_t *mconf)
   return(UCVM_CODE_SUCCESS);
 }
 
+int ucvm_add_model_config(char *line) {
+  
+  if(strlen(line) > 0) {
+    ucvm_cfg=ucvm_add_config(ucvm_cfg,line);
+    } else {
+      return(UCVM_CODE_ERROR);
+  }
+
+  ucvm_dump_config(ucvm_cfg);
+
+  return(UCVM_CODE_SUCCESS);
+}
+
 
 /* Associate specific interp func with GTL model */
 int ucvm_assoc_ifunc(const char *mlabel, const char *ilabel)

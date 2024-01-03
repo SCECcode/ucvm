@@ -9,7 +9,7 @@ FLAGS=""
 CONF=""
 
 # Pass along any arguments to UCVM
-while getopts 'hHm:p:c:f:z:bl:I:O:L:' OPTION
+while getopts 'hHm:p:c:f:z:bl:I:O:L:P:' OPTION
 do
   if [ "$OPTION" == "O" ]; then
       OUT=$OPTARG

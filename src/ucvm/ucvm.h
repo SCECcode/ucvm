@@ -16,6 +16,7 @@ int ucvm_finalize();
 int ucvm_add_model_list(const char *list);
 int ucvm_add_model(const char *label);
 int ucvm_add_user_model(ucvm_model_t *m, ucvm_modelconf_t *mconf);
+int ucvm_add_model_config(char *line);
 
 /* Associate specific interp func with GTL model, by label 
    or by ucvm_ifunc_t */
