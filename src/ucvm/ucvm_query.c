@@ -362,14 +362,14 @@ int main(int argc, char **argv)
     cmode = UCVM_COORD_GEO_DEPTH;
     fprintf(stderr, "Using Geo Depth coordinates as default mode.\n");
   }
-  if (ucvm_setparam(UCVM_PARAM_QUERY_MODE, cmode) != UCVM_CODE_SUCCESS) {
+  if (ucvm_setparam(UCVM_MODEL_PARAM_QUERY_MODE, cmode) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "Failed to set z mode\n");
     return(1);
    }
 
   /* Set interpolation z range */
   if (have_zrange) {
-    if (ucvm_setparam(UCVM_PARAM_IFUNC_ZRANGE, 
+    if (ucvm_setparam(UCVM_MODEL_PARAM_IFUNC_ZRANGE, 
 		      zrange[0], zrange[1]) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "Failed to set interpolation z range\n");
     return(1);

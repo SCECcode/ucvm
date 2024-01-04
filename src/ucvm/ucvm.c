@@ -563,7 +563,7 @@ fprintf(stderr,"SETTING PARAM..key %s\n", key);
 		 flag, 2, UCVM_CONFIG_MAX_STR);
     cfgentry = ucvm_find_name(cfgentry->next, key);
 fprintf(stderr,"SETTING PARAM..%s : (%s) (%s)\n", mconf->label, flag[0], flag[1]);
-    if (ucvm_setparam(UCVM_PARAM_MODEL_CONF, mconf->label, 
+    if (ucvm_setparam(UCVM_MODEL_PARAM_MODEL_CONF, mconf->label, 
 		      flag[0], flag[1]) != UCVM_CODE_SUCCESS) {
       fprintf(stderr, "Warning: Failed to set conf %s=%s for model %s\n", 
 	      flag[0], flag[1], mconf->label);
@@ -652,7 +652,7 @@ int ucvm_assoc_ifunc(const char *mlabel, const char *ilabel)
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_TAPER, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_taper;
     // need to reset the zrange
-    ucvm_setparam(UCVM_PARAM_IFUNC_ZRANGE, 0.0, 700.0);
+    ucvm_setparam(UCVM_MODEL_PARAM_IFUNC_ZRANGE, 0.0, 700.0);
   } else if (strcmp(ilabel, UCVM_IFUNC_CRUST) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_CRUST, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_crustal;
@@ -871,7 +871,7 @@ fprintf(stderr,"ucvm_model_config, ???\n");
 
 
 /* Set parameters */
-int ucvm_setparam(ucvm_param_t param, ...)
+int ucvm_setparam(ucvm_model_param_t param, ...)
 {
   int i;
   ucvm_model_t *mptr;
@@ -888,7 +888,7 @@ int ucvm_setparam(ucvm_param_t param, ...)
 
   va_start(ap, param);
   switch (param) {
-  case UCVM_PARAM_QUERY_MODE:
+  case UCVM_MODEL_PARAM_QUERY_MODE:
     ucvm_cur_qmode = va_arg(ap, ucvm_ctype_t);
     if (ucvm_cur_mmode == UCVM_OPMODE_GTL) {
       if (ucvm_cur_qmode == UCVM_COORD_GEO_ELEV) {
@@ -910,7 +910,7 @@ int ucvm_setparam(ucvm_param_t param, ...)
       }
     }
     break;
-  case UCVM_PARAM_IFUNC_ZRANGE:
+  case UCVM_MODEL_PARAM_IFUNC_ZRANGE:
     dval = va_arg(ap, double);
     dval2 = va_arg(ap, double);
     if (dval > dval2) {
@@ -924,7 +924,7 @@ int ucvm_setparam(ucvm_param_t param, ...)
     ucvm_interp_zmin = dval;
     ucvm_interp_zmax = dval2;
     break;
-  case UCVM_PARAM_MODEL_CONF:
+  case UCVM_MODEL_PARAM_MODEL_CONF:
     str = va_arg(ap, char *);
     str2 = va_arg(ap, char *);
     str3 = va_arg(ap, char *);
@@ -932,7 +932,7 @@ int ucvm_setparam(ucvm_param_t param, ...)
       mptr = &(ucvm_model_list[i]);
       mptr->getlabel(i, mlabel, UCVM_MAX_LABEL_LEN);
       if (strcmp(mlabel, str) == 0) {
-	if (mptr->setparam(i, UCVM_PARAM_MODEL_CONF, str2, str3) != 0) {
+	if (mptr->setparam(i, UCVM_MODEL_PARAM_MODEL_CONF, str2, str3) != 0) {
 	  fprintf(stderr, "Failed to set param %s for model %s\n", 
 		  str2, mlabel);
 	  return(UCVM_CODE_ERROR);

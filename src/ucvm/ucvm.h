@@ -42,7 +42,7 @@ int ucvm_model_config(int m, char **config, int *sz);
 int ucvm_setfloor(double *llvals);
 
 /* Set parameters (see ucvm_dtypes.h for valid param flags) */
-int ucvm_setparam(ucvm_param_t param, ...);
+int ucvm_setparam(ucvm_model_param_t param, ...);
 
 /* Query underlying models */
 int ucvm_query(int n, ucvm_point_t *pnt, ucvm_data_t *data);

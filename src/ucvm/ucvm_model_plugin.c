@@ -686,7 +686,7 @@ int ucvm_plugin_model_query(int id, ucvm_ctype_t cmode, int n, ucvm_point_t *pnt
    back and so all plugin are query-by-depth,  cvmh being compiled in, passes in the original query-by-elevation
    points and let underlying code to use its own surface (digital elevation value)
 */
-     if((pptr->model_setparam != 0) && (*(pptr->model_setparam))(id, UCVM_PARAM_QUERY_MODE, cmode ) != 0) {
+     if((pptr->model_setparam != 0) && (*(pptr->model_setparam))(id, UCVM_MODEL_PARAM_QUERY_MODE, cmode ) != 0) {
          fprintf(stderr, "Failed to set query mode flag for model\n");
          return UCVM_CODE_ERROR;
      }
