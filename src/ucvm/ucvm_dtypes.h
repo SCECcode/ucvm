@@ -62,7 +62,6 @@
 #define UCVM_SOURCE_CRUST -2
 #define UCVM_SOURCE_GTL -3
 
-
 /* Predefined crustal model interfaces */
 #define UCVM_MODEL_NONE "none"
 #define UCVM_MODEL_CVMH "cvmh"
@@ -156,10 +155,11 @@ UCVM_PARAM_MODEL_CONF    : char *mlabel, char *param, char *value
 
 index takes in account for ucvm_mparam_t
 */
-typedef enum { UCVM_PARAM_QUERY_MODE = 2,
-	       UCVM_PARAM_IFUNC_ZRANGE = 3,
-	       UCVM_PARAM_MODEL_CONF = 4 } ucvm_param_t;
+typedef enum { UCVM_PARAM_QUERY_MODE = 1,
+	       UCVM_PARAM_IFUNC_ZRANGE = 2,
+	       UCVM_PARAM_MODEL_CONF = 3 } ucvm_param_t;
 
+XXX
 
 /* Supported model parameters. Used internally by UCVM 
 
