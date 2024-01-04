@@ -27,7 +27,7 @@ int main(int argc, char **argv)
   }
   
   printf("Query Mode\n");
-  if (ucvm_setparam(UCVM_PARAM_QUERY_MODE, 
+  if (ucvm_setparam(UCVM_MODEL_PARAM_QUERY_MODE, 
 		    UCVM_COORD_GEO_DEPTH) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "Failed to set z mode\n");
     return(1);
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
   }
 
   /* Change interpolation z range from 0,0 to 0,350 */
-  if (ucvm_setparam(UCVM_PARAM_IFUNC_ZRANGE, 0.0, 
+  if (ucvm_setparam(UCVM_MODEL_PARAM_IFUNC_ZRANGE, 0.0, 
 		    350.0) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "Failed to set interpolation range\n");
     return(1);

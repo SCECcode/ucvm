@@ -178,7 +178,7 @@ int test_lib_setparam_querymode_gd_1d()
   }
 
   /* Set query model */
-  if (ucvm_setparam(UCVM_PARAM_QUERY_MODE, 
+  if (ucvm_setparam(UCVM_MODEL_PARAM_QUERY_MODE, 
 		    UCVM_COORD_GEO_DEPTH) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "FAIL: Failed to set query mode to geo depth\n");
     ucvm_finalize();
@@ -211,7 +211,7 @@ int test_lib_setparam_querymode_ge_1d()
   }
 
   /* Set query model */
-  if (ucvm_setparam(UCVM_PARAM_QUERY_MODE, 
+  if (ucvm_setparam(UCVM_MODEL_PARAM_QUERY_MODE, 
 		    UCVM_COORD_GEO_ELEV) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "FAIL: Failed to set query mode to geo elev\n");
     ucvm_finalize();

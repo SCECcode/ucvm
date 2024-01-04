@@ -39,7 +39,7 @@ int main(int argc, char **argv)
   
   printf("set Query Mode\n");
   ucvm_ctype_t cmode = UCVM_COORD_GEO_DEPTH; 
-  if (ucvm_setparam(UCVM_PARAM_QUERY_MODE, cmode) != UCVM_CODE_SUCCESS) {
+  if (ucvm_setparam(UCVM_MODEL_PARAM_QUERY_MODE, cmode) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "Failed to set z mode\n");
     return(1);
   }

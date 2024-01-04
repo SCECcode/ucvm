@@ -474,14 +474,14 @@ int main(int argc, char **argv)
   }
 
   /* Set depth query mode */
-  if (ucvm_setparam(UCVM_PARAM_QUERY_MODE, cfg.querymode) 
+  if (ucvm_setparam(UCVM_MODEL_PARAM_QUERY_MODE, cfg.querymode) 
       != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "[%d] Set query mode failed\n", myid);
     return(1);
   }
 
   /* Set interpolation z range */
-  if (ucvm_setparam(UCVM_PARAM_IFUNC_ZRANGE, 
+  if (ucvm_setparam(UCVM_MODEL_PARAM_IFUNC_ZRANGE, 
 		    cfg.ucvm_zrange[0], 
 		    cfg.ucvm_zrange[1]) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "[%d] Failed to set interpolation z range\n", myid);

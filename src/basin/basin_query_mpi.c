@@ -249,7 +249,7 @@ int main(int argc, char **argv) {
 	}
 
 	/* Set z mode for depth*/
-	if (ucvm_setparam(UCVM_PARAM_QUERY_MODE, cmode) != UCVM_CODE_SUCCESS) {
+	if (ucvm_setparam(UCVM_MODEL_PARAM_QUERY_MODE, cmode) != UCVM_CODE_SUCCESS) {
 		fprintf(stderr, "Failed to set z mode\n");
 		return (1);
 	}

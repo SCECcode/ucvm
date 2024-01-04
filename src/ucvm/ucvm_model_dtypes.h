@@ -9,13 +9,15 @@ typedef enum { UCVM_MODEL_CODE_SUCCESS = 0,
                UCVM_MODEL_CODE_ERROR = 1,
                UCVM_MODEL_CODE_NODATA = 2 } ucvm_model_code_t;
 
-/* Supported UCVM parameters visible to user. Argument list:
+/* 
+parameters visible to user. Argument list:
 
 UCVM_MODEL_PARAM_QUERY_MODE    : ucvm_ctype_t qmode
 UCVM_MODEL_PARAM_IFUNC_ZRANGE  : double min, double max (meters)
 UCVM_MODEL_PARAM_MODEL_CONF    : char *mlabel, char *param, char *value
 
-Supported model parameters. Used internally by UCVM
+model parameters. Used internally by UCVM
+
 UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF : Force elevation points to be
           treated as offset relative to regional model surface when it is
           above the ucvm dem surface. Removes discontinuities between model
@@ -33,10 +35,10 @@ for cvmh,
    { "USE_1D_BKG" : "True", "USE_GTL" : "False" } 
 for sfcvm,
    { "SQUASH_MIN_ELEV" : -5000.0 }  
+
 */
 
-typedef enum { 
-               UCVM_MODEL_PARAM_QUERY_MODE = 1,
+typedef enum { UCVM_MODEL_PARAM_QUERY_MODE = 1,
                UCVM_MODEL_PARAM_IFUNC_ZRANGE = 2,
                UCVM_MODEL_PARAM_MODEL_CONF = 3,
 

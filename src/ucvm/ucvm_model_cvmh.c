@@ -109,7 +109,7 @@ int ucvm_cvmh_model_setparam(int id, int param, ...)
   case UCVM_MODEL_PARAM_FORCE_DEPTH_ABOVE_SURF:
     ucvm_cvmh_force_depth = va_arg(ap, int);
     break;
-  case UCVM_PARAM_MODEL_CONF:
+  case UCVM_MODEL_PARAM_MODEL_CONF:
     pstr = va_arg(ap, char *);
     pval = va_arg(ap, char *);
     if (strcmp(pstr, "USE_1D_BKG") == 0) {
