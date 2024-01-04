@@ -556,13 +556,12 @@ int ucvm_add_user_model(ucvm_model_t *m, ucvm_modelconf_t *mconf)
   flag[0] = param;
   flag[1] = setting;
   snprintf(key, UCVM_CONFIG_MAX_STR, "%s_param", mconf->label);
-fprintf(stderr,"SETTING PARAM..key %s\n", key);
   cfgentry = ucvm_find_name(ucvm_cfg, key);
   while (cfgentry != NULL) {
     list_parse_s(cfgentry->value, UCVM_CONFIG_MAX_STR, 
 		 flag, 2, UCVM_CONFIG_MAX_STR);
     cfgentry = ucvm_find_name(cfgentry->next, key);
-fprintf(stderr,"SETTING PARAM..%s : (%s) (%s)\n", mconf->label, flag[0], flag[1]);
+fprintf(stderr,"SETTING PARAM..key(%s) %s : (%s) (%s)\n", key, mconf->label, flag[0], flag[1]);
     if (ucvm_setparam(UCVM_MODEL_PARAM_MODEL_CONF, mconf->label, 
 		      flag[0], flag[1]) != UCVM_CODE_SUCCESS) {
       fprintf(stderr, "Warning: Failed to set conf %s=%s for model %s\n", 
