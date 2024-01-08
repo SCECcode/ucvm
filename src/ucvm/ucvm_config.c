@@ -96,7 +96,7 @@ ucvm_config_t *ucvm_parse_config(const char *file)
 }
 
 /* add additional config entry 
-    -P sfcvm_param=squashminelev,-5000.0
+    -P sfcvm_param:SquashMinElev,-5000.0
 */
 ucvm_config_t *ucvm_add_config(ucvm_config_t *head, char *line)
 {
@@ -105,11 +105,13 @@ ucvm_config_t *ucvm_add_config(ucvm_config_t *head, char *line)
   ucvm_config_t *cnew;
 
   memset(&celem, 0, sizeof(ucvm_config_t));
-  name = strtok(line, "=");
 
+//first one
+  name = strtok(line, ":"); 
   ucvm_strcpy(celem.name, name, UCVM_CONFIG_MAX_STR);
   ucvm_strip_whitespace(celem.name);
 
+//second part
   value = name + strlen(name) + 1;
   ucvm_strcpy(celem.value, value, UCVM_CONFIG_MAX_STR);
   ucvm_strip_trailing_whitespace(celem.value);

@@ -1,5 +1,5 @@
 /* example
-run_ucvm_query.sh -l 32,-118,0 -m sfcvm -f ../../conf/ucvm.conf -P 'sfcvm_param=SquashMinElev,-5000.0' -P 'sfcvm_param=SquashMaxElev,5000.0'
+run_ucvm_query.sh -l 37.455000,-121.941000,3000 -m sfcvm -f ../../conf/ucvm.conf -P sfcvm_param:SquashMinElev,-5000.0
 */
 
 #include <stdio.h>
@@ -101,7 +101,7 @@ void usage() {
   printf("\t-b Optional output in json format\n\n");
   printf("\t-l Optional input lat,lon,Z(depth/elevation)\n\n");
   printf("\t-L Optional interpolation floor limit vs,vp,density(meter in depth mode)\n\n");
-  printf("\t-P Optional model configuration\n\n");
+  printf("\t-P Optional model configuration(model_param:key,value)\n\n");
   exit (0);
 }
 
@@ -122,7 +122,7 @@ void usage_detail() {
   printf("\t-b Optional output in json format\n\n");
   printf("\t-l Optional input lat,lon,Z(depth/elevation)\n\n");
   printf("\t-L Optional interpolation floor limit vs,vp,density(meter in depth mode)\n\n");
-  printf("\t-P Optional model configuration\n\n");
+  printf("\t-P Optional model configuration(model_param:key,value)\n\n");
   printf("Input format is:\n");
   printf("\tlon lat Z\n\n");
   printf("Output format is:\n");
@@ -249,7 +249,7 @@ int main(int argc, char **argv)
       }
       ucvm_setfloor(llvals);
       break;
-    case 'P':  // allows multiple,  -P sfcvm_param=squashminelev,-5000.0
+    case 'P':  // allows multiple,  -P sfcvm_param:SquashMinElev,-5000.0
       if (strlen(optarg) >= UCVM_MAX_MODELCONFIGLIST_LEN - 1) {
 	fprintf(stderr, "Model param config is too long.\n");
 	usage();
