@@ -327,7 +327,7 @@
                         "Size": "4.1M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/tiff-4.5.0.tar.gz",
 			"Required": "yes",
-                        "ConfigureFlags": "--disable-test --disable-jpeg --disable-contrib --disable-docs --disable-ccitt --disable-mdi --disable-webp --disable-zstd --disable-tools --disable-tests --disable-contrib --disable-docs",
+                        "ConfigureFlags": "--disable-test --disable-jpeg --disable-contrib --disable-docs --disable-ccitt --disable-mdi --disable-webp --disable-zstd --disable-tools --disable-win32-io",
                         "UCVMConfigureFlags": "--with-tiff-include-path=${UCVM_INSTALL_PATH}/lib/tiff/include --with-tiff-lib-path=${UCVM_INSTALL_PATH}/lib/tiff/lib",
                         "md5sum": "2476aa1f6ddadeb18877e20b0c85dc92",
 			"Ask": "no",
