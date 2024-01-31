@@ -149,6 +149,7 @@ int ucvm_interp_taper(double zmin, double zmax, ucvm_ctype_t cmode,
 
     double ratio = (data->cmb.vp/data->cmb.vs);
 
+//    fprintf(stderr, "XXX using interp_vs_floor %lf\n", ucvm_interp_vs_floor);
     if(ucvm_interp_vs_floor != UCVM_DEFAULT_NULL_FLOOR &&
           data->cmb.vs < ucvm_interp_vs_floor)
     { 

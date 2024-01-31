@@ -81,9 +81,9 @@ double ucvm_interp_density_floor = UCVM_DEFAULT_DENSITY_FLOOR;
 
 /* Set floor, only if it is not -1 */
 int ucvm_setfloor(double *llvals) {
-  ucvm_interp_vs_floor = llvals[0];
-  ucvm_interp_vp_floor = llvals[1];
-  ucvm_interp_density_floor = llvals[2];
+  if(llvals[0] != -1) { ucvm_interp_vs_floor = llvals[0]; }
+  if(llvals[1] != -1) { ucvm_interp_vp_floor = llvals[1]; }
+  if(llvals[2] != -1) { ucvm_interp_density_floor = llvals[2]; }
   return(UCVM_CODE_SUCCESS);
 }
 
