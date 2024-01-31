@@ -16,7 +16,7 @@ rm -rf southbay_sfcvm_layer.grid southbay_sfcvm_layer.media southbay_sfcvm_layer
 cp ${BIN_DIR}/ucvm2mesh_mpi_layer .
 cp ${CONF_DIR}/ucvm.conf .
 
-sed 's ${CONF_DIR} '$CONF_DIR' ' southbay_sfcvm.conf_template | sed ${TYPE}' '_layer' ' | sed 's ${SCRATCH} '$SCRATCH' ' > southbay_sfcvm_layer.conf
+sed 's ${CONF_DIR} '$CONF_DIR' ' southbay_sfcvm.conf_template | sed 's ${TYPE} '_layer' ' | sed 's ${SCRATCH} '$SCRATCH' ' > southbay_sfcvm_layer.conf
 
 salloc ${UCVM_SALLOC_ENV} -Q --nodes=2 --ntasks=4 --ntasks=4 --time=00:30:00 srun -Q -o ${TEST}_1.srun.out ./ucvm2mesh_mpi_layer -f southbay_sfcvm_layer.conf -l 1 -c 3
 salloc ${UCVM_SALLOC_ENV} -Q --nodes=1 --ntasks=4 --time=00:30:00 srun -Q -o ${TEST}_2.srun.out ./ucvm2mesh_mpi_layer -f southbay_sfcvm_layer.conf -l 4 -c 3 
