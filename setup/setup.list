@@ -6,7 +6,7 @@
                 "SFCVM": {
                         "Version": "1.0",
                         "Abbreviation": "sfcvm",
-                        "Size": "2.0G",
+                        "Size": "2.9G",
                         "Path": "sfcvm",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_1/model/sfcvm.tar.gz",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/src",
@@ -20,7 +20,7 @@
                                "md5sum": "79e5f55d9c145da9173f0d2abd0109f0"
                              },
                         "Ask": "yes",
-                        "md5sum": "7a68daf106af0dc6944aac4d45cb066e",
+                        "md5sum": "71d29f51b28773ff3d282497a7407279",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
@@ -254,7 +254,7 @@
                         "Abbreviation": "cvms5",
                         "Size": "1.2G",
 			"Path": "cvms5",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvms5.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_1/model/cvms5.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvms5 --with-cvms5-lib-path=${UCVM_INSTALL_PATH}/model/cvms5/lib --with-cvms5-include-path=${UCVM_INSTALL_PATH}/model/cvms5/include",
 			"Libraries": ["euclid3", "proj"],
 			"Ask": "yes",
