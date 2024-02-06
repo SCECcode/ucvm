@@ -18,11 +18,22 @@ UCVM_CVMS = {"1d":"1D(1d)", \
              "cs173":"CyperShake 17.3(cs173)", \
              "cs173h":"CyperShake 17.3 with San Joaquin and Santa Maria Basins data(cs173h)", \
              "cvmh":"CVM-H 15.1.1(cvmh1511)", \
+             "cvmhlabn":"CVM-H Los Angeles Basin(cvmhlabn)",\
+             "cvmhsgbn":"CVM-H San Gabriel Basin(cvmhsgbn)",\
+             "cvmhvbn":"CVM-H Ventura Basin(cvmhvbn)",\
+             "cvmhibbn":"CVM-H Inner Borderland(cvmhibbn)",\
+             "cvmhrbn":"CVM-H Ridge Basin(cvmhrbn)",\
+             "cvmhstbn":"CVM-H Salton Trough Basin(cvmhstbn)",\
+             "cvmhsbbn":"CVM-H San Bernardino Basin(cvmhsbbn)",\
+             "cvmhsbcbn":"CVM-H Santa Barbara Channel Basin(cvmhsbcbn)",\
+             "cvmhsmbn":"CVM-H Santa Maria Basin(cvmhsmbn)",\
              "albacore":"ALBACORE(albacore)", \
              "wfcvm":"Wasatch Front Utah(wfcvm)", \
              "ivlsu":"SSIP Imperial Valley(ivlsu)", \
              "cvlsu":"SSIP Coachella Valley(cvlsu)", \
-             "cencal":"USGS Bay Area Model(cencal)"}
+             "cencal":"USGS Bay Area Model(cencal)", \
+             "sjfz":"San Jacinto Fault Zone(sjfz)", \
+             "sfcvm":"USGS San Francisco Bay Region 3D Seismic Velocity Model(sfcvm)"}
 
 # get installed models
 mypath=os.environ.get('UCVM_INSTALL_PATH')
