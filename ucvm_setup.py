@@ -205,7 +205,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    if config_data["Path"] != "openssl" and config_data["Path"] != "sfcvm" and config_data["Path"] != "cca":
+    if config_data["Path"] != "openssl" and config_data["Path"] != "sfcvm" and config_data["Path"] != "cca" and config_data["Path"] != "cvms5" :
       print("\nRunning aclocal")
       aclocal_array = ["aclocal"]
       if os.path.exists("./m4"):
@@ -218,7 +218,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
       print("\nRunning automake")
       callAndRecord(["automake", "--add-missing", "--force-missing"])
 
-    if config_data["Path"] == "sfcvm" or config_data["Path"] == "cca" :
+    if config_data["Path"] == "sfcvm" or config_data["Path"] == "cca" or config_data["Path"] == "cvms5" :
       print("\nRunning autoreconf")
       callAndRecord(["autoreconf", "-i"])
     
@@ -258,7 +258,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
             configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
     
     ## both use $UCVM_INSTALL_PATH
-    if config_data["Path"] == "curl" or config_data["Path"] == "proj" or config_data["Path"] == "cca" :
+    if config_data["Path"] == "curl" or config_data["Path"] == "proj" or config_data["Path"] == "cca"  or config_data["Path"] == "cvms5":
       callAndRecord(configure_array, noshell = False)
     else:
       callAndRecord(configure_array)
