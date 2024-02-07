@@ -3,6 +3,13 @@
 #
 bin_PROGRAMS=
 
+if UCVM_AM_ENABLE_CVMS5
+bin_PROGRAMS += run_ucvm2mesh_cvms5.sh
+run_ucvm2mesh_cvms5_sh_SOURCES = run_ucvm2mesh_cvms5.sh
+
+endif
+
+
 if UCVM_AM_ENABLE_CVMH
 bin_PROGRAMS += run_ucvm2mesh_cvmh.sh
 run_ucvm2mesh_cvmh_sh_SOURCES = run_ucvm2mesh_cvmh.sh
