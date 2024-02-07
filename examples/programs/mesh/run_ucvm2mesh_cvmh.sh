@@ -124,7 +124,6 @@ fi
 
 
 echo "Running examples_programs_ucvm2mesh ucvm2mesh_cvmh"
-diff $result $expect
 if diff $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]
