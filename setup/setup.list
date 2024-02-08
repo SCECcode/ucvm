@@ -20,7 +20,7 @@
                                "md5sum": "79e5f55d9c145da9173f0d2abd0109f0"
                              },
                         "Ask": "yes",
-                        "md5sum": "b53121329cc62edd20472919ee010934",
+                        "md5sum": "8de42675f71fc4f59a03121722f50b6f",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
@@ -240,13 +240,13 @@
                         "Abbreviation": "cca",
                         "Size": "9.2G",
 			"Path": "cca",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/cca.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_1/model/cca.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
 			"Libraries": ["euclid3", "proj"],
 			"Ask": "yes",
-                        "md5sum": "fef63572dc417cdfa914db3954b1d510",
+                        "md5sum": "c4363e060234b2eaaa0319aca67e2293",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
@@ -261,7 +261,7 @@
 
 			"Libraries": ["euclid3", "proj"],
 			"Ask": "yes",
-                        "md5sum": "a83789a501de1e222640a9f0ddd4784b",
+                        "md5sum": "b0bdfa3890d5429209f1360e4d3f11a2",
 			"Order": 1		
 		}
 	},
