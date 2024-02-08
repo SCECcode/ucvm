@@ -3,6 +3,20 @@
                "Version": "22.7"
                },
 	"models": {
+                "CS242": {
+                        "Version": "1.0",
+                        "Abbreviation": "cs242",
+                        "Size": "4.7M",
+                        "Path": "cs242",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_1/model/cs242.tar.gz",
+                        "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
+                        "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
+                        "UCVMConfigureFlags": "--enable-model-cs242 --with-cs242-lib-path=${UCVM_INSTALL_PATH}/model/cs242/lib --with-cs242-include-path=${UCVM_INSTALL_PATH}/model/cs242/include",
+                        "Libraries": ["euclid3", "proj"],
+                        "Ask": "yes",
+                        "md5sum": "3954b55a9f6e2ae8e7cb147efd409901",
+                        "Order": 23
+                },
                 "SFCVM": {
                         "Version": "1.0",
                         "Abbreviation": "sfcvm",

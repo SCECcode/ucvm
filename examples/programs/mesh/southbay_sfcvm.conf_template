@@ -35,9 +35,10 @@ vp_min=0
 vs_min=0
 
 # Mesh and grid files, format
-meshfile=southbay_sfcvm${TYPE}.media
-gridfile=southbay_sfcvm${TYPE}.grid
-meshtype=IJK-12
+meshfile=southbay_sfcvm.media
+gridfile=southbay_sfcvm.grid
+#meshtype=IJK-12
+meshtype=SORD
 
 # Location of scratch dir
 scratch=${SCRATCH}
