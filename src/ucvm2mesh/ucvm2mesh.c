@@ -160,6 +160,18 @@ int extract(mesh_config_t *cfg)
     return(1);
   }
 
+
+  printf("Grid 4 corners:\n");
+  int dimx=cfg->dims.dim[0];
+  // first one
+  printf("  %lf %lf (%d)\n",pntbuf[0].coord[0],pntbuf[0].coord[1],0);
+  // x-1
+  printf("  %lf %lf (%d)\n",pntbuf[dimx-1].coord[0],pntbuf[dimx-1].coord[1],dimx-1);
+  // num_grid - x
+  printf("  %lf %lf (%d)\n",pntbuf[num_grid-dimx].coord[0],pntbuf[num_grid-dimx].coord[1],num_grid-dimx);
+  // num_grid - 1
+  printf("  %lf %lf (%d)\n",pntbuf[num_grid-1].coord[0],pntbuf[num_grid-1].coord[1],num_grid-1);
+
   /* Close grid file */
   fclose(ifp);
 

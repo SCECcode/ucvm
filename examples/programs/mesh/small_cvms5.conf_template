@@ -9,7 +9,7 @@ ucvmconf=${CONF_DIR}/ucvm.conf
 gridtype=CENTER
 
 # Spacing of cells
-spacing=10.0
+spacing=100.0
 
 ## 32 to 37 latitude degrees and -121 to -115 longitude degrees. 
 ## for every 10km depth from 0-110km.

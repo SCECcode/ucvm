@@ -68,6 +68,6 @@ install: $(bin_PROGRAMS)
 	done
 
 clean: 
-	rm -f *.o *~ *.conf *.grid *.media ucvm2mesh_mpi*
+	rm -f *.o *.out *~ *.conf *.grid *.media.* ucvm2mesh_mpi*
 
 
