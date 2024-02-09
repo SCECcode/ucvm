@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs242 --with-cs242-lib-path=${UCVM_INSTALL_PATH}/model/cs242/lib --with-cs242-include-path=${UCVM_INSTALL_PATH}/model/cs242/include",
                         "Libraries": ["euclid3", "proj"],
                         "Ask": "yes",
-                        "md5sum": "38c9eb7538244eb88f949237bfa25e23",
+                        "md5sum": "ed32d2c78f2db14a79a5f7edfe1f3c3f",
                         "Order": 23
                 },
                 "SFCVM": {
