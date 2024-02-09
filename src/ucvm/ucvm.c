@@ -160,7 +160,7 @@ int ucvm_init(const char *config)
   }
 
   /* Uncomment to dump config to screen */
-  //ucvm_dump_config(ucvm_cfg);
+  ucvm_dump_config(ucvm_cfg);
 
   /* Check that UCVM interface and map path are defined */
   /* for ucvm */
@@ -622,7 +622,7 @@ int ucvm_add_model_config(char *line) {
       return(UCVM_CODE_ERROR);
   }
 
-  ucvm_dump_config(ucvm_cfg);
+  //ucvm_dump_config(ucvm_cfg);
 
   return(UCVM_CODE_SUCCESS);
 }
