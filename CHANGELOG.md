@@ -1,8 +1,13 @@
+## 2024-02-15 Mei-Hui Su <mei@usc.edu>
+* Converted cvms5 to use Proj
+* Added CS242 to 'accept' generated ucvm2mesh SORD triplet dat file for UCVM plugin model module 
+        (fast-Y, bottom-up axis access)
+
 ## 2023-11-01 Mei-Hui Su <mei@usc.edu>
-* Transfer Tapering to SFCVM branch
+* Transfer Taper to toPROJ branch
 
 ## 2023-03-01 Mei-Hui Su <mei@usc.edu>
-* Update UCVM with Proj(8) which requires inclusion of TIFF,HDF5,SQLITE,CURL,OPENSSL
+* Update UCVM with Proj(8) which requires inclusion of TIFF,HDF5,SQLITE,CURL,OPENSSL(toPROJ branch)
 * Added SFCVM (using geomodelgrids format, Brad Aagaard)
 * Converted CCA to use Proj(remove dependency on geo fortran code, Brad Aagaard)
 
