@@ -23,6 +23,8 @@ extern char *optarg;
 extern int optind, opterr, optopt;
 
 
+int mesh_debug=0;
+
 /* Display usage information */
 void usage(char *arg)
 {
@@ -171,6 +173,14 @@ int extract(mesh_config_t *cfg)
   printf("  %lf %lf (%d)\n",pntbuf[num_grid-dimx].coord[0],pntbuf[num_grid-dimx].coord[1],num_grid-dimx);
   // num_grid - 1
   printf("  %lf %lf (%d)\n",pntbuf[num_grid-1].coord[0],pntbuf[num_grid-1].coord[1],num_grid-1);
+  if(mesh_debug) {
+    printf("grid size %d, %d, %d\n", cfg->dims.dim[0], cfg->dims.dim[1], cfg->dims.dim[2]);
+    printf("indexing at 0->%d->%d->%d\n",dimx-1, num_grid-dimx, num_grid-1); 
+    printf("Xaxis row:\n");
+    for(int i=0; i<dimx; i++) {
+      printf("  %lf %lf\n",pntbuf[i].coord[0],pntbuf[i].coord[1]);
+    }
+  }
 
   /* Close grid file */
   fclose(ifp);
@@ -180,6 +190,7 @@ int extract(mesh_config_t *cfg)
     fprintf(stderr, "Error: mesh_open_serial reported failure\n");
     return(1);
   }
+
 
   num_points = 0;
   for (k = 0; k < cfg->dims.dim[2]; k++) {
@@ -251,7 +262,7 @@ int extract(mesh_config_t *cfg)
 	      k, num_grid, elapsed);
     }
   }
-  
+
   fprintf(stdout, "Extracted %d points\n", num_points);
 
   /* Close the mesh writer */

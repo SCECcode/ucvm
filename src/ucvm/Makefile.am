@@ -180,7 +180,7 @@ all: $(lib_LIBRARIES) $(bin_PROGRAMS)
 #	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
 #test_grid: test_grid.o ucvm_grid.o ucvm.o ucvm_utils.o ucvm_config.o \
-#		ucvm_proj_bilinear.o libucvm.a
+#	ucvm_proj_bilinear.o libucvm.a
 #	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
 libucvm.a: ucvm.o ucvm_config.o ucvm_grid.o \
