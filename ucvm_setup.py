@@ -538,6 +538,8 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
         str=str+"install_name_tool -change libcencal.so ${MY_UCVM_INSTALL_PATH}/model/cencal/lib/libcencal.so $1\n"
     if "CCA" in modelsToInstall:
         str=str+"install_name_tool -change libcca.so ${MY_UCVM_INSTALL_PATH}/model/cca/lib/libcca.so $1\n"
+    if "CS242" in modelsToInstall:
+        str=str+"install_name_tool -change libcs242.so ${MY_UCVM_INSTALL_PATH}/model/cs242/lib/libcs242.so $1\n"
     return str
 
 def makeDyLibNameChangeScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :

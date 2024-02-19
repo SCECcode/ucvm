@@ -27,8 +27,6 @@ double cmu_xi[4] = { -121.0, -118.951292, -113.943965, -116.032285 };
 double cmu_yi[4] = {   34.5,   36.621696,   33.122341,   31.082920 };
 double cmu_dims[2] = {600000.0, 300000.0};
 
-int ucvm_debug=1;
-int ucvm_debug_debug=0;
 
 /* Private: Generate grid from projection and dimensions */
 int
@@ -128,21 +126,6 @@ ucvm_grid_gen_private(ucvm_projdef_t *iproj,
         }
         if (c > 0) {
             fwrite(pbuf, sizeof(ucvm_point_t), c, ofp);
-        }
-
-        if(ucvm_debug) {
-          FILE *oofp = fopen("ucvm_grid_gen_grid_points", "wb");
-	  int dimx=dims->dim[0];
-          // just 4 corners
-	  // first point
-          fprintf(oofp,"%lf %lf\n", pbuf[0].coord[0], pbuf[0].coord[1]);
-          // x-1
-          fprintf(oofp,"%lf %lf\n", pbuf[dimx-1].coord[0], pbuf[dimx-1].coord[1]);
-	  // c-x
-          fprintf(oofp,"%lf %lf\n", pbuf[c-dimx].coord[0], pbuf[c-dimx].coord[1]);
-          // last point
-          fprintf(oofp,"%lf %lf\n", pbuf[c-1].coord[0], pbuf[c-1].coord[1]);
-	  fclose(oofp);
         }
 
         /* Close file */
@@ -317,13 +300,6 @@ ucvm_grid_convert_private(ucvm_projdef_t *iproj,
                 fwrite(&pbuf, sizeof(ucvm_point_t), num_buffered, fp);
                 fflush(fp);
                 num_read = num_read + num_buffered;
-            }
-	    if(ucvm_debug_debug) {
-                FILE *oofp = fopen("ucvm_grid_gen_latlon_points", "wb");
-                for(int i=0; i<num_read; i++) {
-                    fprintf(oofp,"%lf %lf %lf\n", pbuf[i].coord[0], pbuf[i].coord[1], pbuf[i].coord[2]);
-                }
-                fclose(oofp);
             }
         }
 

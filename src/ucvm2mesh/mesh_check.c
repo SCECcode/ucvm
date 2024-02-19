@@ -159,6 +159,7 @@ int main(int argc, char **argv)
 	  dumpNode((node_buf + (a * rec_size)), rec_size);
 	  exit(1);
 	}
+        if(a == 0) { dumpNode((node_buf + (a * rec_size)), rec_size); }
       }
       
     }

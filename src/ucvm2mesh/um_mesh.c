@@ -26,7 +26,6 @@ void *node_buf_serial2 = NULL;
 void *node_buf_serial3 = NULL;
 int node_buf_size_serial = 0;
 
-
 /* Check if node is valid */
 int mesh_node_valid(int i, int j, int k, mesh_ijk32_t *node)
 {
@@ -193,6 +192,22 @@ int mesh_open_serial(ucvm_dim_t *mesh_dims, char *output,
   return(0);
 }
 
+int mesh_transform_serial(mesh_ijk32_t *nodes, ucvm_dim_t *mesh_dims) {
+  int dimx=mesh_dims->dim[0];
+  int dimy=mesh_dims->dim[1];
+  int dimz=mesh_dims->dim[2];
+  int total=dimx * dimy * dimz;
+  mesh_ijk32_t *fastx_nodes= (mesh_ijk32_t *) malloc(total * sizeof(mesh_ijk32_t));
+
+  for(int z=0; z<dimz; z++) {
+    // go a layer at a time
+    int zsz= (dimx * dimy); 
+    for(int i=0; i< zsz; i++) {
+    }
+  }
+  return 1;
+}
+
 
 int mesh_write_serial(mesh_ijk32_t *nodes, int node_count)
 {
@@ -271,6 +286,7 @@ int mesh_write_serial(mesh_ijk32_t *nodes, int node_count)
       ptr2_sord[i].val = nodes[i].vs;
       ptr3_sord[i].val = nodes[i].rho;
     }
+
     if (fwrite(node_buf_serial1, meshrecsize_serial, node_count,
 	       meshfp1) != node_count) {
       fprintf(stderr, "Failed to write to vp mesh file\n");

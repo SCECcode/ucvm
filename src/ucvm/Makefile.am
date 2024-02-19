@@ -112,6 +112,12 @@ endif
 if UCVM_AM_ENABLE_CCA
 AM_CFLAGS += -D_UCVM_ENABLE_CCA
 endif
+ 
+# CS242 includes
+if UCVM_AM_ENABLE_CS242
+AM_CFLAGS += -D_UCVM_ENABLE_CS242
+endif
+
 
 # CS173 includes
 if UCVM_AM_ENABLE_CS173
@@ -174,7 +180,7 @@ all: $(lib_LIBRARIES) $(bin_PROGRAMS)
 #	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
 #test_grid: test_grid.o ucvm_grid.o ucvm.o ucvm_utils.o ucvm_config.o \
-#		ucvm_proj_bilinear.o libucvm.a
+#	ucvm_proj_bilinear.o libucvm.a
 #	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
 libucvm.a: ucvm.o ucvm_config.o ucvm_grid.o \

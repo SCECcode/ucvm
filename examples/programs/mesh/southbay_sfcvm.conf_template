@@ -13,16 +13,17 @@ spacing=20.0
 # Projection
 proj=+proj=utm +datum=WGS84 +zone=10
 rot=-39.9
-#x0=-122.4976
-#y0=37.0957
-#z0=0.0
-x0=-121.8384
-y0=37.2533
+#x0=-121.8384
+#y0=37.2533
 z0=0.0
+
+## gabbro
+x0=-122.1384
+y0=37.7888
 
 # Number of cells along each dim
 nx=140
-ny=140
+ny=70
 nz=60
 
 # Partitioning of grid among processors
