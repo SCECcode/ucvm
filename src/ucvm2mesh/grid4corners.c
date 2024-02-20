@@ -47,10 +47,6 @@ int get_grid(char *file, size_t nx, size_t ny, ucvm_point_t *grid)
 }
 
 int main(int argc, char **argv) {
-  /* dimension ids */
-  int nlon_dim;
-  int nlat_dim;
-  
   /* grid variables */
   ucvm_point_t *grid = NULL;
 
@@ -71,7 +67,7 @@ int main(int argc, char **argv) {
 
   /* Check arguments */
   if ((nx <= 0) || (ny <= 0)) {
-    fprintf(stderr, "Invalid grid dims %ld,%ld\n", nx, ny);
+    fprintf(stderr, "Invalid grid dims %d,%d\n", nx, ny);
     exit(1);
   }
 
