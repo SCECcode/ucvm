@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include "ucvm.h"
 
+int grid_debug=0;
+
 /* Usage */
 void usage(char *arg)
 {
@@ -87,19 +89,19 @@ int main(int argc, char **argv) {
 
   printf("Grid 4 corners:\n");
   // first one
-  printf("  %lf %lf (%d)\n",pntbuf[0].coord[0],pntbuf[0].coord[1],0);
+  printf("  %lf %lf (%d)\n",grid[0].coord[0],grid[0].coord[1],0);
   // x-1
-  printf("  %lf %lf (%d)\n",pntbuf[nx-1].coord[0],pntbuf[nx-1].coord[1],nx-1);
+  printf("  %lf %lf (%d)\n",grid[nx-1].coord[0],grid[nx-1].coord[1],nx-1);
   // num_grid - x
-  printf("  %lf %lf (%d)\n",pntbuf[num_grid-nx].coord[0],pntbuf[num_grid-nx].coord[1],num_grid-nx);
+  printf("  %lf %lf (%d)\n",grid[num_grid-nx].coord[0],grid[num_grid-nx].coord[1],num_grid-nx);
   // num_grid - 1
-  printf("  %lf %lf (%d)\n",pntbuf[num_grid-1].coord[0],pntbuf[num_grid-1].coord[1],num_grid-1);
+  printf("  %lf %lf (%d)\n",grid[num_grid-1].coord[0],grid[num_grid-1].coord[1],num_grid-1);
   if(grid_debug) {
-      printf("grid size %d, %d, %d\n", cfg->dims.dim[0], cfg->dims.dim[1], cfg->dims.dim[2]);
+      printf("grid size %d, %d\n", nx, ny);
       printf("indexing at 0->%d->%d->%d\n",nx-1, num_grid-nx, num_grid-1);
       printf("Xaxis row:\n");
       for(int i=0; i<nx; i++) {
-        printf("  %lf %lf\n",pntbuf[i].coord[0],pntbuf[i].coord[1]);
+        printf("  %lf %lf\n",grid[i].coord[0],grid[i].coord[1]);
       }
   }
 
