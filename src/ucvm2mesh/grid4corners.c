@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
   int nx, ny, num_grid;
 
   /* Parse args */
-  if(argc != 3) {
+  if(argc != 4) {
     usage(argv[0]);
     exit(1);
   }
