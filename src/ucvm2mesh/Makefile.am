@@ -1,6 +1,6 @@
 # Autoconf/Automake binaries and headers
 
-bin_PROGRAMS = ucvm2mesh mesh_strip_ijk mesh_op mesh_check
+bin_PROGRAMS = ucvm2mesh mesh_strip_ijk mesh_op mesh_check 
 
 if UCVM_HAVE_MPI
 bin_PROGRAMS += ucvm2mesh_mpi ucvm2mesh_mpi_layer
@@ -29,6 +29,7 @@ mesh_strip_ijk_SOURCES = mesh_strip_ijk.c um_mesh.c um_mesh.h
 mesh_op_SOURCES = mesh_op.c um_mesh.c um_mesh.h
 mesh_check_SOURCES = mesh_check.c um_mesh.c um_mesh.h
 mesh2netcdf_SOURCES = mesh2netcdf.c um_mesh.c um_mesh.h
+grid4corners_SOURCES = grid4corners.c 
 
 
 all: $(bin_PROGRAMS)
@@ -60,6 +61,9 @@ mesh_check: mesh_check.o um_mesh.o
 	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
 mesh2netcdf: mesh2netcdf.o um_mesh.o
+	$(CC) -o $@ $^ $(AM_LDFLAGS)
+
+grid4corners: grid4corners.o
 	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
 

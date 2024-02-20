@@ -5,9 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <netcdf.h>
 #include "ucvm.h"
-#include "um_mesh.h"
 
 /* Usage */
 void usage(char *arg)
@@ -15,7 +13,7 @@ void usage(char *arg)
   printf("Usage: %s ingrid nx ny\n\n", arg);
   printf("where:\n");
   printf("\tingrid: input grid file\n");
-  printf("\tnx,ny: mesh dimensions\n\n");
+  printf("\tnx,ny: grid dimensions\n\n");
 
   printf("Version: %s\n\n", VERSION);
 }
