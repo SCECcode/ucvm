@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "ucvm.h"
 
 int grid_debug=0;
@@ -70,7 +71,7 @@ int main(int argc, char **argv) {
 
   /* Check arguments */
   if ((nx <= 0) || (ny <= 0)) {
-    fprintf(stderr, "Invalid grid dims %lud,%lud\n", nx, ny);
+    fprintf(stderr, "Invalid grid dims %ld,%ld\n", nx, ny);
     exit(1);
   }
 
