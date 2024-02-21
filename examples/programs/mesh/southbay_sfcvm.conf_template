@@ -18,8 +18,8 @@ rot=-39.9
 z0=0.0
 
 ## gabbro
-x0=-122.1384
-y0=37.7888
+x0=-122.171
+y0=37.7922
 
 # Number of cells along each dim
 nx=140
