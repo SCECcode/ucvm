@@ -255,8 +255,8 @@ if test "x$enable_netcdf" = xyes; then
    [NETCDF_INCL=""])
    AC_ARG_WITH([netcdf-lib-path],
    [AS_HELP_STRING([--with-netcdf-lib-path], [location of the netCDF libraries])],
-   [NETCDF_LIB="-L$withval -lnetcdf -lhdf5_hl -lhdf5 -lz -lm -lcurl -ldl"],
-   [NETCDF_LIB="-lnetcdf -lhdf5_hl -lhdf5 -lz -lm -lcurl -ldl"])
+   [NETCDF_LIB="-L$withval -lnetcdf -lm -ldl -lxml2"],
+   [NETCDF_LIB="-lnetcdf -lm -ldl -lxml2"])
 fi
 
 # Get required FFTW library and include locations
@@ -832,7 +832,7 @@ if test "x$enable_netcdf" = xyes; then
    AC_CHECK_LIB(netcdf, nc_create,
 	[AM_CONDITIONAL(UCVM_HAVE_NETCDF, true)], 
 	[AC_MSG_ERROR([NetCDF library not found; use --with-netcdf-include-path"])],
-	[-lhdf5_hl -lhdf5 -lz -lm -lcurl -ldl])
+	[-lm -ldl -lxml2])
    AC_CHECK_HEADER(netcdf.h,
 	[],
 	[AC_MSG_ERROR([NetCDF header not found; use --with-netcdf-lib-path"])],

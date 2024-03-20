@@ -52,7 +52,7 @@ void usage(char *arg)
   printf("\tvp_min: vp minimum (m/s), enforced on vs_min conditions\n");
   printf("\tvs_min: vs minimum (m/s)\n");
   printf("\tmeshfile: path and basename to output mesh files\n");
-  printf("\tgridfile: path and filename to output grid filesfiles\n");
+  printf("\tgridfile: path and filename to output grid files\n");
   printf("\tmeshtype: mesh format: IJK-12, IJK-20, IJK-32, or SORD\n");
   printf("\tscratch: path to scratch space\n\n");
 
@@ -186,6 +186,7 @@ int extract(mesh_config_t *cfg)
   fclose(ifp);
 
   /* Open the mesh file */
+fprintf(stderr,"OOOO %s\n", cfg->meshfile);
   if (mesh_open_serial(&(cfg->dims), cfg->meshfile, cfg->meshtype, num_grid) != 0) {
     fprintf(stderr, "Error: mesh_open_serial reported failure\n");
     return(1);

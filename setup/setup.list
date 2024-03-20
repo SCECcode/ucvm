@@ -305,14 +305,15 @@
 		},
 		"NetCDF": {
 			"Path": "netcdf",
-                        "Lib": "netcdf-4.3.0",
-			"URL": "http://www.unidata.ucar.edu/downloads/netcdf/ftp/netcdf-4.3.0.tar.gz",
-			"Required": "no",
+                        "Lib": "netcdf-c-4.9.2",
+			"URL": "https://downloads.unidata.ucar.edu/netcdf-c/4.9.2/netcdf-c-4.9.2.tar.gz",
+			"Required": "yes",
 			"Prerequisites": "Dynamic",
-                        "UCVMConfigureFlags": "",
-                        "md5sum": "",
+                        "ConfigureFlags": "--disable-byterange --disable-hdf5",
+                        "UCVMConfigureFlags": "--enable-netcdf --with-netcdf-include-path=${UCVM_INSTALL_PATH}/lib/netcdf/include --with-netcdf-lib-path=${UCVM_INSTALL_PATH}/lib/netcdf/lib",
+                        "md5sum": "f48ee01534365006934f0c63d4055ea0",
 			"Ask": "no",
-                        "Needs":"HDF5"
+                        "Needs":"HDF5 Curl"
 		},
 		"HDF5": {
 			"Path": "hdf5",

@@ -249,13 +249,14 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         if "proj" in needs_array:
           configure_array.append("--with-proj-lib-path=" + ucvmpath + "/lib/proj/lib")
           configure_array.append("--with-proj-include-path=" + ucvmpath + "/lib/proj/include")
+        if "netcdf" in needs_array:
+          configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/netcdf/lib")
+          configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/netcdf/include")
                     
-        if config_data["Path"] == "cencal":
-            configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/euclid3/lib -L" + ucvmpath + "/lib/proj/lib")
-            configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/euclid3/include -I" + ucvmpath + "/lib/proj/include")
-        elif config_data["Path"] == "netcdf":
-            configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
-            configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
+## special case ??
+    if config_data["Path"] == "cencal":
+        configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/euclid3/lib -L" + ucvmpath + "/lib/proj/lib")
+        configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/euclid3/include -I" + ucvmpath + "/lib/proj/include")
     
     ## both use $UCVM_INSTALL_PATH
     if config_data["Path"] == "curl" or config_data["Path"] == "proj" or config_data["Path"] == "cca"  or config_data["Path"] == "cvms5":
@@ -597,7 +598,8 @@ def _addPROJ_LIB_bash() :
    except:
       ret="export PROJ_LIB="+ucvmpath+"/lib/proj/share/proj"
       return ret 
-   return ""
+#   return "export PROJ_LIB="+proj_lib
+   return  "export PROJ_LIB="+ucvmpath+"/lib/proj/share/proj"
 
 def _addPROJ_LIB_python() :
    try :
