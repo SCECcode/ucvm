@@ -93,7 +93,6 @@ void usage() {
   printf("\t-m Comma delimited list of crustal/GTL models to query in order\n");
   printf("\t   of preference. GTL models may optionally be suffixed with ':ifunc'\n");
   printf("\t   to specify interpolation function.\n");
-  printf("\t      example:  -m cvms5,elygtl:taper\n");
   printf("\t-c Z coordinate mode: geo-depth (gd, default), geo-elev (ge).\n");
   printf("\t-f Configuration file. Default is ./ucvm.conf.\n");
   printf("\t-p User-defined map to use for elevation and vs30 data.\n");
@@ -101,10 +100,8 @@ void usage() {
   printf("\t-z Optional depth range for gtl/crust interpolation.\n");
   printf("\t-b Optional output in json format\n");
   printf("\t-l Optional input lat,lon,Z(depth/elevation)\n");
-  printf("\t      example:  -l 34.455,-121.941,100\n");
   printf("\t-L Optional interpolation floor limit vs,vp,density(meter in depth mode)\n");
   printf("\t-P Optional model configuration(model_param:key,value)\n");
-  printf("\t      example:  -P sfcvm_param:SquashMinElev,-5000.0\n");
   exit (0);
 }
 
@@ -117,15 +114,20 @@ void usage_detail() {
   printf("\t-m Comma delimited list of crustal/GTL models to query in order\n");
   printf("\t   of preference. GTL models may optionally be suffixed with ':ifunc'\n");
   printf("\t   to specify interpolation function.\n");
+  printf("\t   example:  -m cvms5,elygtl:taper\n");
   printf("\t-c Z coordinate mode: geo-depth (gd, default), geo-elev (ge).\n");
   printf("\t-f Configuration file. Default is ./ucvm.conf.\n");
   printf("\t-p User-defined map to use for elevation and vs30 data.\n");
   printf("\t-v Display model version information only.\n");
-  printf("\t-z Optional depth range for gtl/crust interpolation.\n\n");
-  printf("\t-b Optional output in json format\n\n");
-  printf("\t-l Optional input lat,lon,Z(depth/elevation)\n\n");
-  printf("\t-L Optional interpolation floor limit vs,vp,density(meter in depth mode)\n\n");
-  printf("\t-P Optional model configuration(model_param:key,value)\n\n");
+  printf("\t-z Optional depth range for gtl/crust interpolation(in meter).\n");
+  printf("\t   example:  -z 0,450\n");
+  printf("\t-b Optional output in json format\n");
+  printf("\t-l Optional input lat,lon,Z(depth/elevation, in meter)\n");
+  printf("\t   example:  -l 34.455,-121.941,100, or -l 34.455,-121.941,-100\n");
+  printf("\t-L Optional interpolation floor limit vs,vp,density(meter in depth mode)\n");
+  printf("\t   example:  -L 500,1700,1700\n");
+  printf("\t-P Optional model configuration(model_param:key,value)\n");
+  printf("\t   example:  -P sfcvm_param:SquashMinElev,-5000.0\n");
   printf("Input format is:\n");
   printf("\tlon lat Z\n\n");
   printf("Output format is:\n");
