@@ -186,7 +186,7 @@ int extract(mesh_config_t *cfg)
   fclose(ifp);
 
   /* Open the mesh file */
-fprintf(stderr,"OOOO %s\n", cfg->meshfile);
+
   if (mesh_open_serial(&(cfg->dims), cfg->meshfile, cfg->meshtype, num_grid) != 0) {
     fprintf(stderr, "Error: mesh_open_serial reported failure\n");
     return(1);
@@ -220,6 +220,7 @@ fprintf(stderr,"OOOO %s\n", cfg->meshfile);
     /* it is possible to have 'invalid' mesh node for UCVM_COORD_GEO_ELEVATION */
     if (icnt != 0) {
       if (cfg->querymode == UCVM_COORD_GEO_DEPTH) {
+        fprintf(stderr, "Invalid Mesh nodes -- %d\n",icnt);
         return(1);
       }
     }

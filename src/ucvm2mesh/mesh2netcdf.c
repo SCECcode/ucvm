@@ -64,7 +64,7 @@ int get_grid(char *file, size_t nx, size_t ny, ucvm_point_t *grid)
   fclose(ifp);
 
   if (retval != num_grid) {
-    fprintf(stderr, "Failed to read grid file\n");
+    fprintf(stderr, "Failed to read grid file %ld and %ld\n",retval, num_grid);
     return(1);
   }
 

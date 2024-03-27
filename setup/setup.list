@@ -8,7 +8,7 @@
                         "Abbreviation": "cs242",
                         "Size": "4.7M",
                         "Path": "cs242",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_1/model/cs242.tar.gz",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_3/model/cs242.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
                         "UCVMConfigureFlags": "--enable-model-cs242 --with-cs242-lib-path=${UCVM_INSTALL_PATH}/model/cs242/lib --with-cs242-include-path=${UCVM_INSTALL_PATH}/model/cs242/include",
@@ -22,7 +22,7 @@
                         "Abbreviation": "sfcvm",
                         "Size": "2.9G",
                         "Path": "sfcvm",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_1/model/sfcvm.tar.gz",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_3/model/sfcvm.tar.gz",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/src",
                         "Preprocess" :
                              {
@@ -30,11 +30,11 @@
                                "Path": "sfcvm/dependencies",
                                "Size": "598M",
                                "Lib": "geomodelgrids",
-                               "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/geomodelgrids.tar.gz",
-                               "md5sum": "79e5f55d9c145da9173f0d2abd0109f0"
+                               "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_3/lib/geomodelgrids.tar.gz",
+                               "md5sum": "052b47ce42b3bcc9253501ff79413259"
                              },
                         "Ask": "yes",
-                        "md5sum": "0edda84b1a739a81574b07b6236331f6",
+                        "md5sum": "aa2403e93662690f402032f48716aa76",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
@@ -254,7 +254,7 @@
                         "Abbreviation": "cca",
                         "Size": "9.2G",
 			"Path": "cca",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_1/model/cca.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_3/model/cca.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
@@ -268,7 +268,7 @@
                         "Abbreviation": "cvms5",
                         "Size": "1.2G",
 			"Path": "cvms5",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_1/model/cvms5.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_3/model/cvms5.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
 			"UCVMConfigureFlags": "--enable-model-cvms5 --with-cvms5-lib-path=${UCVM_INSTALL_PATH}/model/cvms5/lib --with-cvms5-include-path=${UCVM_INSTALL_PATH}/model/cvms5/include",
