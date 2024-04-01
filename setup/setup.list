@@ -307,7 +307,7 @@
 			"Path": "netcdf",
                         "Lib": "netcdf-c-4.9.2",
 			"URL": "https://downloads.unidata.ucar.edu/netcdf-c/4.9.2/netcdf-c-4.9.2.tar.gz",
-			"Required": "yes",
+			"Required": "no",
 			"Prerequisites": "Dynamic",
                         "ConfigureFlags": "--disable-byterange --disable-hdf5",
                         "UCVMConfigureFlags": "--enable-netcdf --with-netcdf-include-path=${UCVM_INSTALL_PATH}/lib/netcdf/include --with-netcdf-lib-path=${UCVM_INSTALL_PATH}/lib/netcdf/lib",
