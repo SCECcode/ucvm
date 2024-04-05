@@ -40,6 +40,7 @@ error_out = False
 
 modelsToInstall = []
 librariesToInstall = []
+orderedLibrariesToInstall = []
 modelPaths = {}
 unsupported_features = []
 shell_script = ""
@@ -835,25 +836,26 @@ except OSError as e:
 
 print("\nNow setting up the required UCVM libraries...")
 
-for library in config_data["libraries"]:
+#orderedLibrariesToInstall = []
+for library in config_data["libraries"]: 
     the_library = config_data["libraries"][library]
     if library in librariesToInstall:
-        print("\n CHECKING on ", library)
-## bring in the dependency first
+## bring in the dependency 
         if the_library.get("Needs", "") != "":
-            try:
-                #downloadWithProgress(config_data["libraries"][the_library["Needs"]]["URL"], "./work/lib", \
-                #                     "Downloading" + the_library["Needs"])
-                needlist=the_library["Needs"].split()
-                for need in needlist :
-                   tarname = config_data["libraries"][need]["URL"].split("/")[-1]
-                   print("Calling Needs to Install:",need, tarname)
-                   installConfigMakeInstall(tarname, ucvmpath, "library", config_data["libraries"][need])
+            needlist=the_library["Needs"].split()
+            for need in needlist:
+                if need in orderedLibrariesToInstall:
+                   # no need to do anything
+                   pass
+                else:
+                   orderedLibrariesToInstall.append(need)
+        orderedLibrariesToInstall.append(library)
 
-            except Exception as e:
-                eG(e, "Error installing library " + the_library["Needs"] + " (needed by " + library + ").")
-    
-## check the current one..
+
+for library in config_data["libraries"]:
+    the_library = config_data["libraries"][library]
+    if library in orderedLibrariesToInstall:
+        print("\n CHECKING on ", library)
         try:
             #downloadWithProgress(the_library["URL"], "./work/lib", "Downloading " + library + "..." )
             tarname = the_library["URL"].split("/")[-1]
@@ -929,10 +931,10 @@ if user_dynamic_flag == True:
 if use_iobuf == True:
     ucvm_conf_command.append("--enable-iobuf")
  
-#if "NetCDF" in librariesToInstall:
-#    ucvm_conf_command.append("--enable-netcdf")
-#    ucvm_conf_command.append("--with-netcdf-include-path=" + ucvmpath + "/lib/netcdf/include")
-#    ucvm_conf_command.append("--with-netcdf-lib-path=" + ucvmpath + "/lib/netcdf/lib")
+if "NetCDF" in librariesToInstall:
+    ucvm_conf_command.append("--enable-netcdf")
+    ucvm_conf_command.append("--with-netcdf-include-path=" + ucvmpath + "/lib/netcdf/include")
+    ucvm_conf_command.append("--with-netcdf-lib-path=" + ucvmpath + "/lib/netcdf/lib")
 #    ucvm_conf_command.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
     
 #ucvm_conf_command.append("UCVM_INSTALL_PATH=" + ucvmpath)
