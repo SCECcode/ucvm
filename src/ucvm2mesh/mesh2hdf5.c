@@ -1,17 +1,19 @@
 /**
    mesh2hdf5.c
+
 **/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <XXX>
 #include "ucvm.h"
 #include "um_mesh.h"
 #include "ucvm_config.h"
 #include "um_dtypes.h"
 #include "um_config.h"
 #include "um_utils.h"
+
+#include "um_hdf5.h"
 
 /* Valid ranges for properties */
 #define MIN_VP_VALUE -9000
@@ -29,12 +31,11 @@
 #define RANK_Vs 3
 #define RANK_density 3
 
-
 /* Usage */
 //  printf("Usage: %s inmesh ingrid format spacing nx ny nz outfile\n\n", arg);
 void usage(char *arg)
 {
-  printf("Usage: %s -f mesh2hdf5.conf\n\n", arg);
+  printf("Usage: %s -f ucvm2mesh.conf -m mesh2hdf5.conf\n\n", arg);
   printf("Version: %s\n\n", VERSION);
 }
 
@@ -191,6 +192,7 @@ void check_err(const int stat, const int line, const char *file) {
   }
 }
 
+
 /***************************/
 int main(int argc, char **argv) {
 
@@ -199,7 +201,8 @@ int main(int argc, char **argv) {
   int  h5id;  /* HDF5 id */
 
   /* Config params */
-  mesh_config_t cfg;
+  mesh_config_t cfg_um;
+  hdf5_config_t cfg_mh;
 
   /* dimension ids */
   int nlon_dim;
@@ -230,11 +233,30 @@ int main(int argc, char **argv) {
   float *depth_data, *longitude_data, *latitude_data;
   float *Vp_data, *Vs_data, *density_data;
 
-  /* Arguments */
-  char inmesh[256], ingrid[256], outfile[256], formatstr[256];
+  /* ucvm2mesh */
+  char *inmesh, *ingrid;
+  char *proj, *rot;
   int spacing;
   size_t nx, ny, nz;
+  float x0, y0, z0;
   mesh_format_t format;
+ 
+  /* mesh2hdf5 */
+  char *outfile=NULL;
+  char *title=NULL;
+  char *id=NULL;
+  char *description=NULL;
+  char *keywords=NULL;
+  char *history=NULL;
+  char *comment=NULL;
+  char *version=NULL;
+  char *creator_name=NULL;
+  char *creator_email=NULL;
+  char *creator_institution=NULL;
+  char *authors=NULL;
+  char *acknowledgement=NULL;
+  char *references=NULL;
+  char *license=NULL;
 
   /* Parse args */
   if(argc != 2) {
@@ -244,13 +266,20 @@ int main(int argc, char **argv) {
 
   /* Options */
   int opt;
-  char configfile[UCVM_MAX_PATH_LEN];
+  char configfile_um[UCVM_MAX_PATH_LEN]; // ucvm2mesh
+  char configfile_mh[UCVM_MAX_PATH_LEN]; // mesh2hdf5
   /* Parse options */
-  strcpy(configfile, "");
-  while ((opt = getopt(argc, argv, "hf:")) != -1) {
+  strcpy(configfile_um, "");
+  strcpy(configfile_mh, "");
+
+  /* Parse options */
+  while ((opt = getopt(argc, argv, "hf:m:")) != -1) {
     switch (opt) {
     case 'f':
-      strcpy(configfile, optarg);
+      strcpy(configfile_um, optarg);
+      break;
+    case 'm':
+      strcpy(configfile_mh, optarg);
       break;
     case 'h':
       usage(argv[0]);
@@ -263,43 +292,47 @@ int main(int argc, char **argv) {
     }
   }
 
-  /* Read in config */
-  if (read_config(0, -1, cfgfile, cfg, 1 /* old-style */) != 0) {
+  /* Read in config_um */
+  if (read_config(0, -1, configfile_um, cfg_um, 1 /* old-style */) != 0) {
     return(1);
   }
- 
-  disp_config(cfg);
+  disp_config(cfg_um);
+  inmesh=cfg_um.meshfile;
+  ingrid=cfg_um.gridfile;
+  format=cfg_um.meshtype;
+  proj=cfg_um.proj;
+  rot=cfg_um.rot;
+  spacing = atoi(cfg_um.spacing);
+  x0 = cfg_um.origin.coord[0];
+  y0 = cfg_um.origin.coord[1];
+  z0 = cfg_um.origin.coord[2];
+  nx = cfg_um.dims.dim[0];
+  ny = cfg_um.dims.dim[1];
+  nz = cfg_um.dims.dim[2];
 
-  format = MESH_FORMAT_UNKNOWN;
+  /* Read in config_mh */
+  if (read_hdf5_config(0, -1, configfile_mh, cfg_mh) != 0) {
+    return(1);
+  }
+  disp_hdf5_config(cfg_mh);
+  outfile=cfg_mh.outfile;
+  title=cfg_mh.title;
+  description=cfg_mh.description;
+  keywords=cfg_mh.keywords;
+  history=cfg_mh.history;
+  comment=cfg_mh.comment;
+  version=cfg_mh.version;
+  creator_name=cfg_mh.creator_name;
+  creator_email=cfg_mh.creator_email;
+  creator_institution=cfg_mh.creator_institution;
+  authors=cfg_mh.authors;
+  acknowledgement=cfg_mh.acknowledgement;
+  references=cfg_mh.references;
+  license=cfg_mh.license;
 
-  strcpy(inmesh, argv[1]);
-  strcpy(ingrid, argv[2]);
-  strcpy(formatstr, argv[3]);
-  spacing = atoi(argv[4]);
-  nx = atoi(argv[5]);
-  ny = atoi(argv[6]);
-  nz = atoi(argv[7]);
-  strcpy(outfile, argv[8]);
 
-  /* Check arguments */
-  for (i = 0; i < MAX_MESH_FORMATS; i++) {
-    if (strcmp(formatstr, MESH_FORMAT_NAMES[i]) == 0) {
-      format = i;
-      break;
-    }
-  }
-  if (format == MESH_FORMAT_UNKNOWN) {
-    fprintf(stderr, "Unsupported mesh format %s\n", formatstr);
-    exit(1);
-  }
-  if ((nx <= 0) || (ny <= 0) || (nz <= 0)) {
-    fprintf(stderr, "Invalid mesh dims %lud,%lud,%lud\n", nx, ny, nz);
-    exit(1);
-  }
-  if (spacing <= 0) {
-    fprintf(stderr, "Invalid spacing %d\n", spacing);
-    exit(1);
-  }
+// HDF5
+XXX
 
   /* enter define mode */
   stat = nc_create(outfile, NC_CLOBBER, &ncid);
