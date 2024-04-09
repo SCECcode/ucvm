@@ -289,8 +289,8 @@ AC_ARG_WITH([openssl-include-path],
   [OPENSSL_INCL=""])
 AC_ARG_WITH([openssl-lib-path],
   [AS_HELP_STRING([--with-openssl-lib-path], [location of the OpenSSL libraries])],
-  [OPENSSL_LIB="-L$withval -lssl"],
-  [OPENSSL_LIB="-lssl"])
+  [OPENSSL_LIB="-L$withval -lssl -lcrypto"],
+  [OPENSSL_LIB="-lssl -lcrypto"])
 
 # Get required TIFF library and include locations
 AC_ARG_WITH([tiff-include-path],
@@ -823,11 +823,11 @@ LDFLAGS="$CHECK_LDFLAGS $PROJ_LIB"
 AC_CHECK_LIB(proj, proj_create_crs_to_crs, [AC_CHECK_HEADER([proj.h], [], [AC_MSG_ERROR(["Proj header not found in $PROJ_INCL; use --with-proj-include-path"])
   ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Proj library not found; use --with-proj-lib-path"])], [-lpthread -lm])
 
-# Check required CURL installation
-CFLAGS="$CURL_INCL $CHECK_CFLAGS"
-LDFLAGS="$CHECK_LDFLAGS $CURL_LIB"
-AC_CHECK_LIB(curl, curl_global_init, [AC_CHECK_HEADER([curl.h], [], [AC_MSG_ERROR(["Curl header not found in $CURL_INCL; use --with-curl-include-path"])
-  ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Curl library not found; use --with-curl-lib-path"])], ["$CURL_LIB" -lssl -lcrypto])
+# TODO: Check required CURL installation
+#CFLAGS="$CURL_INCL $CHECK_CFLAGS"
+#LDFLAGS="$CHECK_LDFLAGS $CURL_LIB"
+#AC_CHECK_LIB(curl, curl_global_init, [AC_CHECK_HEADER([curl.h], [], [AC_MSG_ERROR(["Curl header not found in $CURL_INCL; use --with-curl-include-path"])
+#  ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Curl library not found; use --with-curl-lib-path"])], [???? -lssl -lcrypto])
 
 
 # Check optional NetCDF library
