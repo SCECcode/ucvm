@@ -255,8 +255,8 @@ if test "x$enable_netcdf" = xyes; then
    [NETCDF_INCL=""])
    AC_ARG_WITH([netcdf-lib-path],
    [AS_HELP_STRING([--with-netcdf-lib-path], [location of the netCDF libraries])],
-   [NETCDF_LIB="-L$withval -lnetcdf -lm -ldl -lxml2 -lcurl"],
-   [NETCDF_LIB="-lnetcdf -lm -ldl -lxml2 -lcurl])
+   [NETCDF_LIB="-L$withval -lnetcdf -lm -ldl -lxml2"],
+   [NETCDF_LIB="-lnetcdf -lm -ldl -lxml2])
 fi
 
 # Get required FFTW library and include locations
@@ -318,11 +318,11 @@ AC_ARG_WITH([sqlite-lib-path],
 AC_ARG_WITH([curl-include-path],
   [AS_HELP_STRING([--with-curl-include-path],
     [location of the Curl headers])],
-  [CURL_INCL="-I$withval"],
+  [CURL_INCL="-I$withval -IMEI"],
   [CURL_INCL=""])
 AC_ARG_WITH([curl-lib-path],
   [AS_HELP_STRING([--with-curl-lib-path], [location of the Curl libraries])],
-  [CURL_LIB="-L$withval -lcurl"],
+  [CURL_LIB="-L$withval -lMEI -lcurl"],
   [CURL_LIB="-lcurl"])
 
 ####################################################
@@ -845,12 +845,6 @@ fi
 # Set final CFLAGS and LDFLAGS
 CFLAGS="$CHECK_CFLAGS $ETREE_INCL $PROJ_INCL $FFTW_INCL"
 LDFLAGS="$CHECK_LDFLAGS $ETREE_LIB $PROJ_LIB $FFTW_LIB"
-
-#if test "x$enable_netcdf" = xyes; then
-#   CFLAGS="$CFLAGS $NETCDF_INCL"
-#   LDFLAGS="$LDFLAGS $NETCDF_LIB"
-#fi
-
 LDFLAGS="$LDFLAGS -lm"
 
 # Check optional USGS CenCalVM installation
