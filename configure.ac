@@ -255,8 +255,8 @@ if test "x$enable_netcdf" = xyes; then
    [NETCDF_INCL=""])
    AC_ARG_WITH([netcdf-lib-path],
    [AS_HELP_STRING([--with-netcdf-lib-path], [location of the netCDF libraries])],
-   [NETCDF_LIB="-L$withval -lnetcdf -lm -ldl -lxml2"],
-   [NETCDF_LIB="-lnetcdf -lm -ldl -lxml2])
+   [NETCDF_LIB="-L$withval -lnetcdf -lm -ldl -lxml2 -lcurl"],
+   [NETCDF_LIB="-lnetcdf -lm -ldl -lxml2 -lcurl])
 fi
 
 # Get required FFTW library and include locations
@@ -845,10 +845,12 @@ fi
 # Set final CFLAGS and LDFLAGS
 CFLAGS="$CHECK_CFLAGS $ETREE_INCL $PROJ_INCL $FFTW_INCL"
 LDFLAGS="$CHECK_LDFLAGS $ETREE_LIB $PROJ_LIB $FFTW_LIB"
-if test "x$enable_netcdf" = xyes; then
-   CFLAGS="$CFLAGS $NETCDF_INCL"
-   LDFLAGS="$LDFLAGS $NETCDF_LIB"
-fi
+
+#if test "x$enable_netcdf" = xyes; then
+#   CFLAGS="$CFLAGS $NETCDF_INCL"
+#   LDFLAGS="$LDFLAGS $NETCDF_LIB"
+#fi
+
 LDFLAGS="$LDFLAGS -lm"
 
 # Check optional USGS CenCalVM installation
