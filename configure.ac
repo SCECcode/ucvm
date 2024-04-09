@@ -318,11 +318,11 @@ AC_ARG_WITH([sqlite-lib-path],
 AC_ARG_WITH([curl-include-path],
   [AS_HELP_STRING([--with-curl-include-path],
     [location of the Curl headers])],
-  [CURL_INCL="-I$withval -IMEI"],
+  [CURL_INCL="-I$withval"],
   [CURL_INCL=""])
 AC_ARG_WITH([curl-lib-path],
   [AS_HELP_STRING([--with-curl-lib-path], [location of the Curl libraries])],
-  [CURL_LIB="-L$withval -lMEI -lcurl"],
+  [CURL_LIB="-L$withval -lcurl"],
   [CURL_LIB="-lcurl"])
 
 ####################################################
@@ -822,6 +822,12 @@ CFLAGS="$PROJ_INCL $CHECK_CFLAGS"
 LDFLAGS="$CHECK_LDFLAGS $PROJ_LIB"
 AC_CHECK_LIB(proj, proj_create_crs_to_crs, [AC_CHECK_HEADER([proj.h], [], [AC_MSG_ERROR(["Proj header not found in $PROJ_INCL; use --with-proj-include-path"])
   ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Proj library not found; use --with-proj-lib-path"])], [-lpthread -lm])
+
+# Check required CURL installation
+CFLAGS="$CURL_INCL $CHECK_CFLAGS"
+LDFLAGS="$CHECK_LDFLAGS $CURL_LIB"
+AC_CHECK_LIB(curl, curl_global_init, [AC_CHECK_HEADER([curl.h], [], [AC_MSG_ERROR(["Curl header not found in $CURL_INCL; use --with-curl-include-path"])
+  ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Curl library not found; use --with-curl-lib-path"])])
 
 
 # Check optional NetCDF library
