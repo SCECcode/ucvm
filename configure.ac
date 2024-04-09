@@ -838,7 +838,7 @@ if test "x$enable_netcdf" = xyes; then
    AC_CHECK_LIB(netcdf, nc_create,
 	[AM_CONDITIONAL(UCVM_HAVE_NETCDF, true)], 
 	[AC_MSG_ERROR([NetCDF library not found; use --with-netcdf-include-path"])],
-	[-lm -ldl -lxml2 -lcurl])
+	[-lm -ldl -lxml2])
    AC_CHECK_HEADER(netcdf.h,
 	[],
 	[AC_MSG_ERROR([NetCDF header not found; use --with-netcdf-lib-path"])],
