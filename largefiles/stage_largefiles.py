@@ -36,20 +36,24 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config
     the_model = config_data["models"][model]
     _model = str(the_model["Abbreviation"])+".tar.gz"
     target_large_model_list.append(_model)
-    if "Preprocess" in the_model and the_model["Preprocess"]["Action"] == "download":
-        the_task = the_model["Preprocess"]
-        _ref = str(the_task["Lib"])+".tar.gz"
-        target_large_ref_list.append(_ref)
+    if "Preprocess" in the_model :
+        pre_tasks = the_model["Preprocess"]
+        for the_task in pre_tasks :
+            if "Action" in the_task and the_task["Action"] == "download":
+                _ref = str(the_task["Lib"])+".tar.gz"
+                target_large_ref_list.append(_ref)
 
 for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
     _lib = str(the_library["Lib"])+".tar.gz"
     target_large_lib_list.append(_lib)
-## preprocess download tasks
-    if "Postprocess" in the_library and the_library["Postprocess"]["Action"] == "download":
-        the_task = the_library["Postprocess"]
-        _ref = str(the_task["Lib"])+".tar.gz"
-        target_large_ref_list.append(_ref)
+## postprocess download tasks
+    if "Postprocess" in the_library :
+       post_tasks = the_library["Postprocess"]
+       for the_task in post_tasks :
+           if "Action" in the_task and the_task["Action"] == "download":
+               _ref = str(the_task["Lib"])+".tar.gz"
+               target_large_ref_list.append(_ref)
 
 for etree in config_data["etrees"].keys() :
     the_etree = config_data["etrees"][etree]
