@@ -827,7 +827,7 @@ AC_CHECK_LIB(proj, proj_create_crs_to_crs, [AC_CHECK_HEADER([proj.h], [], [AC_MS
 CFLAGS="$CURL_INCL $CHECK_CFLAGS"
 LDFLAGS="$CHECK_LDFLAGS $CURL_LIB"
 AC_CHECK_LIB(curl, curl_global_init, [AC_CHECK_HEADER([curl.h], [], [AC_MSG_ERROR(["Curl header not found in $CURL_INCL; use --with-curl-include-path"])
-  ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Curl library not found; use --with-curl-lib-path"])], [LDFLAGS -lssl -lcrypto])
+  ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Curl library not found; use --with-curl-lib-path"])], ["$CURL_LIB" -lssl -lcrypto])
 
 
 # Check optional NetCDF library
