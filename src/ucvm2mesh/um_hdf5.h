@@ -20,7 +20,7 @@ typedef struct hdf5_config_t
   char acknowledgement[UCVM_MAX_LINE_LEN];
   char references[UCVM_MAX_LINE_LEN];
   char license[UCVM_MAX_LINE_LEN];
-};
+} hdf5_config_t;
 
 /* Read in configuration file and populate hdf5 config structure */
 int read_hdf5_config(int myid, int nproc, const char *cfgfile,hdf5_config_t *cfg);

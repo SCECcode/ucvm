@@ -576,6 +576,10 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
   }
   cfg->ecfg.max_level = ceil(log(cfg->ecfg.max_length/
 				 cfg->ecfg.min_edgesize) /log(2.0));
+
+printf("XXX calcing max_level.. %d\n",cfg->ecfg.max_level );
+printf("XXX  max_length %lf, min_edgesize %lf\n",cfg->ecfg.max_length, cfg->ecfg.min_edgesize);
+
   cfg->ecfg.min_level = ceil(log(cfg->ecfg.max_length/
 				 cfg->ecfg.max_edgesize) /log(2.0));
   for (i = 0; i < 3; i++) {

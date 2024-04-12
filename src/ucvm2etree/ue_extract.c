@@ -257,8 +257,8 @@ int extract(ue_cfg_t *cfg,
   }
   if (num_points > max_points) {
     fprintf(stderr, 
-	    "[%d] Num points exceeds max points at %d,%d,ztics=%u\n",
-	    cfg->rank, i, j, ztics);
+	    "[%d] Num points exceeds max points at %d,%d,ztics=%u (%d > %d)\n",
+	    cfg->rank, i, j, ztics, num_points, max_points);
     return(UCVM_CODE_ERROR);
   }
   

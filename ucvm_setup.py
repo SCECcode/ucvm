@@ -931,10 +931,10 @@ if user_dynamic_flag == True:
 if use_iobuf == True:
     ucvm_conf_command.append("--enable-iobuf")
  
-if "NetCDF" in librariesToInstall:
-    ucvm_conf_command.append("--enable-netcdf")
-    ucvm_conf_command.append("--with-netcdf-include-path=" + ucvmpath + "/lib/netcdf/include")
-    ucvm_conf_command.append("--with-netcdf-lib-path=" + ucvmpath + "/lib/netcdf/lib")
+#if "NetCDF" in librariesToInstall:
+#    ucvm_conf_command.append("--enable-netcdf")
+#    ucvm_conf_command.append("--with-netcdf-include-path=" + ucvmpath + "/lib/netcdf/include")
+#    ucvm_conf_command.append("--with-netcdf-lib-path=" + ucvmpath + "/lib/netcdf/lib")
 #    ucvm_conf_command.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
     
 #ucvm_conf_command.append("UCVM_INSTALL_PATH=" + ucvmpath)

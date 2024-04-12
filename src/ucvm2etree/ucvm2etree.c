@@ -174,6 +174,7 @@ int main(int argc, char **argv)
   etree_tick_t maxrez, max_points;
   
   maxrez = (etree_tick_t)1 << (ETREE_MAXLEVEL - cfg.ecfg.max_level);
+printf("XXA maxrez %u\n", maxrez);
   max_points = (cfg.ecfg.col_ticks[0]/maxrez) * 
     (cfg.ecfg.col_ticks[1]/maxrez);
   printf("Allocating buffers to hold %u points\n", max_points);

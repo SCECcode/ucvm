@@ -186,7 +186,7 @@ int get_props(char *file, mesh_format_t format,
 void check_err(const int stat, const int line, const char *file) {
   if (stat != NC_NOERR) {
     (void)fprintf(stderr,"line %d of %s: %s\n", line, file, 
-		  nc_strerror(stat));
+		  HDstrerror(stat));
     fflush(stderr);
     exit(1);
   }
