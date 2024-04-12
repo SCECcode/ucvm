@@ -194,13 +194,14 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 ## Any Preprocess needed ? 
 ## maybe download geomodelgrids into sfcvm source location ?
     if "Preprocess" in config_data :
-        the_task = config_data["Preprocess"]
-        if "Action" in the_task and the_task["Action"] == "download":
-            _url = the_task["URL"]
-            _path = the_task["Path"]
-            print("Decompressing add on data")
-            tarname = _url.split("/")[-1]
-            callAndRecord(["tar", "zxvf", refpath  + "/" + tarname, "-C", workpath + "/" + _path])
+        pre_tasks = config_data["Preprocess"]
+        for the_task in pre_tasks :
+            if "Action" in the_task and the_task["Action"] == "download":
+                _url = the_task["URL"]
+                _path = the_task["Path"]
+                print("Decompressing add on data")
+                tarname = _url.split("/")[-1]
+                callAndRecord(["tar", "zxvf", refpath  + "/" + tarname, "-C", workpath + "/" + _path])
 
     savedPath = os.getcwd()
     os.chdir(workpath + "/" + config_data["Path"])
@@ -297,13 +298,14 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 ## special case, this is just a data package of a library, just need to stash it at the
 ## right library location
     if "Postprocess" in config_data :
-        the_task = config_data["Postprocess"]
-        if "Action" in the_task and the_task["Action"] == "download":
-            _url = the_task["URL"]
-            _path = the_task["Path"]
-            print("Decompressing add on data")
-            tarname = _url.split("/")[-1]
-            callAndRecord(["tar", "zxvf", refpath  + "/" + tarname, "-C", ucvmpath + "/" + pathname + "/" + _path])
+        post_tasks = config_data["Postprocess"]
+        for the_task in post_tasks :
+            if "Action" in the_task and the_task["Action"] == "download":
+                _url = the_task["URL"]
+                _path = the_task["Path"]
+                print("Decompressing add on data")
+                tarname = _url.split("/")[-1]
+                callAndRecord(["tar", "zxvf", refpath  + "/" + tarname, "-C", ucvmpath + "/" + pathname + "/" + _path])
 
 
 ## create the ucvm_env.sh that is approriate to go into /etc/profile.d/

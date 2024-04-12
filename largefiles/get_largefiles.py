@@ -90,11 +90,13 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config
     _sz= str(the_model["Size"])
     if config_data["models"][model]["Ask"] == "yes":
        optional_large_model_list.append( {"model":_abb,"url":_url,"size":_sz })
-       if "Preprocess" in the_model and the_model["Preprocess"]["Action"] == "download":
-           the_task = the_model["Preprocess"]
-           _url = str(the_task["URL"])
-           _path= str(the_task["Path"])
-           target_large_lib_list.append({"library":_path, "url":_url});
+       if "Preprocess" in the_model :
+           pre_tasks = the_model["Preprocess"]
+           for the_task in pre_tasks :
+               if "Action" in the_task and the_task["Action"] == "download":
+                   _url = str(the_task["URL"])
+                   _path= str(the_task["Path"])
+                   target_large_lib_list.append({"library":_path, "url":_url});
 
 for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
@@ -102,12 +104,14 @@ for library in config_data["libraries"].keys() :
     _path= str(the_library["Path"])
     if config_data["libraries"][library]["Required"] == "yes":
        target_large_lib_list.append({"library":_path, "url":_url});
-## preprocessing download tasks
-       if "Postprocess" in the_library and the_library["Postprocess"]["Action"] == "download":
-           the_task = the_library["Postprocess"]
-           _url = str(the_task["URL"])
-           _path= str(the_task["Path"])
-           target_large_lib_list.append({"library":_path, "url":_url});
+## postprocessing download tasks
+       if "Postprocess" in the_library :
+           post_tasks = the_library["Postprocess"]
+           for the_task in post_tasks :
+               if "Action" in the_task and the_task["Action"] == "download":
+                   _url = str(the_task["URL"])
+                   _path= str(the_task["Path"])
+                   target_large_lib_list.append({"library":_path, "url":_url});
 
 for etree in config_data["etrees"].keys() :
     the_etree = config_data["etrees"][etree]

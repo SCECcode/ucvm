@@ -24,7 +24,7 @@
                         "Path": "sfcvm",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_3/model/sfcvm.tar.gz",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/src",
-                        "Preprocess" :
+                        "Preprocess" : [
                              {
                                "Action": "download",
                                "Path": "sfcvm/dependencies",
@@ -32,7 +32,8 @@
                                "Lib": "geomodelgrids",
                                "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_3/lib/geomodelgrids.tar.gz",
                                "md5sum": "052b47ce42b3bcc9253501ff79413259"
-                             },
+                             }
+                        ],
                         "Ask": "yes",
                         "md5sum": "f20c25a92aed7709a612c6e64897708b",
                         "Order": 22 
@@ -309,8 +310,8 @@
 			"URL": "https://downloads.unidata.ucar.edu/netcdf-c/4.9.2/netcdf-c-4.9.2.tar.gz",
 			"Required": "yes",
 			"Prerequisites": "Dynamic",
-                        "ConfigureFlags": "--disable-byterange",
-                        "oConfigureFlags": "--disable-byterange --disable-hdf5",
+                        "oConfigureFlags": "--disable-byterange",
+                        "ConfigureFlags": "--disable-byterange --disable-hdf5",
                         "UCVMConfigureFlags": "--enable-netcdf --with-netcdf-include-path=${UCVM_INSTALL_PATH}/lib/netcdf/include --with-netcdf-lib-path=${UCVM_INSTALL_PATH}/lib/netcdf/lib",
                         "md5sum": "f48ee01534365006934f0c63d4055ea0",
 			"Ask": "no",
@@ -371,7 +372,7 @@
 			"Required": "yes",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--with-openssl=${UCVM_INSTALL_PATH}/lib/openssl",
-                        "UCVMConfigureFlags": "--with-curl-include-path=${UCVM_INSTALL_PATH}/lib/curl/include --with-curl-lib-path=${UCVM_INSTALL_PATH}/lib/curl/lib",
+                        "UCVMConfigureFlags": "--with-curl-include-path=${UCVM_INSTALL_PATH}/lib/curl/include/curl --with-curl-lib-path=${UCVM_INSTALL_PATH}/lib/curl/lib",
                         "md5sum": "a5381e0c012b1320070d0d99f47fbad2",
 			"Ask": "no",
                         "Needs":"OpenSSL"
@@ -386,15 +387,16 @@
                         "ConfigureFlags": "--enable-tiff --without-curl TIFF_LIBS='-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff -L${UCVM_INSTALL_PATH}/lib/openssl/lib -lcrypto -lssl' TIFF_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/tiff/include' SQLITE3_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/sqlite/include' SQLITE3_LIBS='-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3' SQLITE3='${UCVM_INSTALL_PATH}/lib/sqlite/bin/sqlite3'",
                         "oldConfigureFlags": "--enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config TIFF_LIBS='-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff -L${UCVM_INSTALL_PATH}/lib/openssl/lib -lcrypto -lssl' TIFF_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/tiff/include' SQLITE3_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/sqlite/include' SQLITE3_LIBS='-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3' SQLITE3='${UCVM_INSTALL_PATH}/lib/sqlite/bin/sqlite3'",
                         "UCVMConfigureFlags": "--with-proj-include-path=${UCVM_INSTALL_PATH}/lib/proj/include --with-proj-lib-path=${UCVM_INSTALL_PATH}/lib/proj/lib",
-                        "Postprocess" :
+                        "Postprocess" : [
                              {
                                "Action": "download", 
                                "Path": "proj/share/proj",
                                "Lib": "proj-data-1.11",
                                "Size": "598M",
                                "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-data-1.11.tar.gz",
-                               "md5sum": "196ea873b3980448ae570b63282949e1"
-                             },
+                               "md5sum": "20d3ffeea0c4107baeb93e9e82ff53db"
+                             }
+                        ],
                         "md5sum": "2d984eea6b8b04c146499aa3c5210f42",
 			"Ask": "no",
                         "Needs":"TIFF OpenSSL Curl Sqlite"

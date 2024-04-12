@@ -255,8 +255,8 @@ if test "x$enable_netcdf" = xyes; then
    [NETCDF_INCL=""])
    AC_ARG_WITH([netcdf-lib-path],
    [AS_HELP_STRING([--with-netcdf-lib-path], [location of the netCDF libraries])],
-   [NETCDF_LIB="-L$withval -lnetcdf -lm -ldl -lxml2"],
-   [NETCDF_LIB="-lnetcdf -lm -ldl -lxml2"])
+   [NETCDF_LIB="-L$withval -lnetcdf -lm -ldl -lxml2 -lcurl"],
+   [NETCDF_LIB="-lnetcdf -lm -ldl -lxml2 -lcurl"])
 fi
 
 # Get required FFTW library and include locations
@@ -289,8 +289,8 @@ AC_ARG_WITH([openssl-include-path],
   [OPENSSL_INCL=""])
 AC_ARG_WITH([openssl-lib-path],
   [AS_HELP_STRING([--with-openssl-lib-path], [location of the OpenSSL libraries])],
-  [OPENSSL_LIB="-L$withval -lssl"],
-  [OPENSSL_LIB="-lssl"])
+  [OPENSSL_LIB="-L$withval -lssl -lcrypto"],
+  [OPENSSL_LIB="-lssl -lcrypto"])
 
 # Get required TIFF library and include locations
 AC_ARG_WITH([tiff-include-path],
@@ -823,6 +823,12 @@ LDFLAGS="$CHECK_LDFLAGS $PROJ_LIB"
 AC_CHECK_LIB(proj, proj_create_crs_to_crs, [AC_CHECK_HEADER([proj.h], [], [AC_MSG_ERROR(["Proj header not found in $PROJ_INCL; use --with-proj-include-path"])
   ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Proj library not found; use --with-proj-lib-path"])], [-lpthread -lm])
 
+# TODO: Check required CURL installation
+#CFLAGS="$CURL_INCL $CHECK_CFLAGS"
+#LDFLAGS="$CHECK_LDFLAGS $CURL_LIB"
+#AC_CHECK_LIB(curl, curl_global_init, [AC_CHECK_HEADER([curl.h], [], [AC_MSG_ERROR(["Curl header not found in $CURL_INCL; use --with-curl-include-path"])
+#  ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Curl library not found; use --with-curl-lib-path"])], [???? -lssl -lcrypto])
+
 
 # Check optional NetCDF library
 if test "x$enable_netcdf" = xyes; then
@@ -832,7 +838,7 @@ if test "x$enable_netcdf" = xyes; then
    AC_CHECK_LIB(netcdf, nc_create,
 	[AM_CONDITIONAL(UCVM_HAVE_NETCDF, true)], 
 	[AC_MSG_ERROR([NetCDF library not found; use --with-netcdf-include-path"])],
-	[-lm -ldl -lxml2])
+	[-lm -ldl -lxml2 -lcurl])
    AC_CHECK_HEADER(netcdf.h,
 	[],
 	[AC_MSG_ERROR([NetCDF header not found; use --with-netcdf-lib-path"])],
@@ -843,12 +849,10 @@ else
 fi
 
 # Set final CFLAGS and LDFLAGS
-CFLAGS="$CHECK_CFLAGS $ETREE_INCL $PROJ_INCL $FFTW_INCL"
-LDFLAGS="$CHECK_LDFLAGS $ETREE_LIB $PROJ_LIB $FFTW_LIB"
-if test "x$enable_netcdf" = xyes; then
-   CFLAGS="$CFLAGS $NETCDF_INCL"
-   LDFLAGS="$LDFLAGS $NETCDF_LIB"
-fi
+#
+
+CFLAGS="$CHECK_CFLAGS $ETREE_INCL $PROJ_INCL $FFTW_INCL $NETCDF_INCL"
+LDFLAGS="$CHECK_LDFLAGS $ETREE_LIB $PROJ_LIB $FFTW_LIB $NETCDF_LIB"
 LDFLAGS="$LDFLAGS -lm"
 
 # Check optional USGS CenCalVM installation
