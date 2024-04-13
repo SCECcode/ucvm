@@ -30,12 +30,12 @@
                                "Path": "sfcvm/dependencies",
                                "Size": "598M",
                                "Lib": "geomodelgrids",
-                               "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_3/lib/geomodelgrids.tar.gz",
-                               "md5sum": "052b47ce42b3bcc9253501ff79413259"
+                               "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_4/lib/geomodelgrids.tar.gz",
+                               "md5sum": "a815fd617311f3a2c3ad003f49fdced4"
                              }
                         ],
                         "Ask": "yes",
-                        "md5sum": "f20c25a92aed7709a612c6e64897708b",
+                        "md5sum": "ddb7e09d8533b547e23a5e9ea70c125e",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
