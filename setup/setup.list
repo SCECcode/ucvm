@@ -22,8 +22,9 @@
                         "Abbreviation": "sfcvm",
                         "Size": "2.9G",
                         "Path": "sfcvm",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_3/model/sfcvm.tar.gz",
-                        "UCVMConfigureFlags": "CXX=gcc10-g++ --enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/src",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_4/model/sfcvm.tar.gz",
+                        "ConfigureFlags": "CC=gcc10=gcc CXX=gcc10-g++",
+                        "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/src",
                         "Preprocess" : [
                              {
                                "Action": "download",
@@ -35,7 +36,7 @@
                              }
                         ],
                         "Ask": "yes",
-                        "md5sum": "ddb7e09d8533b547e23a5e9ea70c125e",
+                        "md5sum": "47079f8e79d6846695430ae113bf066b",
                         "Order": 22 
                 },
                 "CVMHSMBN": {

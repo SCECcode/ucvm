@@ -221,6 +221,9 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
       callAndRecord(["automake", "--add-missing", "--force-missing"])
 
     if config_data["Path"] == "sfcvm" or config_data["Path"] == "cca" or config_data["Path"] == "cvms5" :
+      if config_data["Path"] == "sfcvm" :
+        print("\nRunning libtoolize")
+        callAndRecord(["libtoolize"])
       print("\nRunning autoreconf")
       callAndRecord(["autoreconf", "-i"])
     
