@@ -14,6 +14,7 @@ import platform
 import socket
 import shlex
 import pdb
+import shutil
 
 
 # Variables
@@ -237,13 +238,22 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     else:
         configure_array = ["./configure", prefix_string]
 
+    ## special case
+    if config_data["Path"] == "sfcvm" :
+        gcc10path=shutil.which("gcc10-gcc")
+        if gcc10path is None:
+          pass
+        else:
+          configure_array += "CC=gcc10-gcc CXX=gcc10-g++".split(" ")
+
+
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
 
     if "ConfigureEnv" in config_data.keys(): 
         needs_env = config_data["ConfigureEnv"]
     else:
         needs_env = [] 
-    
+
     if "ConfigureFlags" in config_data and config_data["ConfigureFlags"] != "" :
         configure_array += config_data["ConfigureFlags"].split(" ")
     elif "Libraries" in config_data:
