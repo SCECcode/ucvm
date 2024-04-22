@@ -68,6 +68,7 @@
 #define UCVM_MODEL_CENCAL "cencal"
 #define UCVM_MODEL_1D "1d"
 #define UCVM_MODEL_BBP1D "bbp1d"
+#define UCVM_MODEL_NC1D "nc1d"
 #define UCVM_MODEL_CMRG "cmrg"
 #define UCVM_MODEL_CMUETREE "cmuetree"
 #define UCVM_MODEL_CVMNCI "cvmnci"

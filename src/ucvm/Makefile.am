@@ -11,7 +11,7 @@ AM_CFLAGS =
 AM_LDFLAGS = ${LDFLAGS}
 
 # Default set of cvms to include
-MODEL_TARGS = ucvm_model_1d.o ucvm_model_1dgtl.o ucvm_model_bbp1d.o \
+MODEL_TARGS = ucvm_model_1d.o ucvm_model_1dgtl.o ucvm_model_bbp1d.o ucvm_model_nc1d.o \
 		ucvm_model_plugin.o ucvm_model_elygtl.o ucvm_model_etree.o \
 		ucvm_model_cmuetree.o ucvm_model_patch.o
 

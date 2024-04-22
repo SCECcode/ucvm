@@ -31,6 +31,7 @@
 #endif
 #include "ucvm_model_1d.h"
 #include "ucvm_model_bbp1d.h"
+#include "ucvm_model_nc1d.h"
 
 #include "ucvm_model_plugin.h"
 
@@ -391,6 +392,11 @@ int ucvm_add_model(const char *label) {
 
   if (strcmp(label, UCVM_MODEL_BBP1D) == 0) {
     retval = ucvm_bbp1d_get_model(&m);
+    is_predef = 1;
+  }
+
+  if (strcmp(label, UCVM_MODEL_NC1D) == 0) {
+    retval = ucvm_nc1d_get_model(&m);
     is_predef = 1;
   }
 
