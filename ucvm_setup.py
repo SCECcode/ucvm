@@ -954,7 +954,13 @@ if use_iobuf == True:
     
 #ucvm_conf_command.append("UCVM_INSTALL_PATH=" + ucvmpath)
 
-callAndRecord(ucvm_conf_command, noshell = False) 
+##needs to replace all ${UCVM_INSTALL_PATH} with ucvmpath
+ucvm_conf_command_new = []
+for cterm in ucvm_conf_command :
+   n_cterm = cterm.replace('${UCVM_INSTALL_PATH}', ucvmpath)
+   ucvm_conf_command_new.append(n_cterm)
+
+callAndRecord(ucvm_conf_command_new, noshell = False) 
 
 print("\nMaking UCVM")
 callAndRecord(["make", "clean"])
