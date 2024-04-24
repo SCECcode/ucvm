@@ -1143,6 +1143,13 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
     return(UCVM_CODE_ERROR);
   }
 
+  /* NC1D */
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+			 UCVM_MODEL_NC1D, "", res, numinst++, *len) 
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+
   /* CMU CVM-Etree */
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
 		     UCVM_MODEL_CMUETREE, "", res, numinst++, *len) 

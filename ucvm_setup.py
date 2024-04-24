@@ -230,7 +230,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     
     print("\nRunning ./configure")
 
-
     prefix_string="--prefix=" + ucvmpath + "/" + pathname + "/" + config_data["Path"]
 
     if config_data["Path"] == "openssl" :
@@ -245,7 +244,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
           pass
         else:
           configure_array += "CC=gcc10-gcc CXX=gcc10-g++".split(" ")
-
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
 
@@ -272,12 +270,18 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     if config_data["Path"] == "cencal":
         configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/euclid3/lib -L" + ucvmpath + "/lib/proj/lib")
         configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/euclid3/include -I" + ucvmpath + "/lib/proj/include")
-    
+
+##needs to replace all ${UCVM_INSTALL_PATH} with ucvmpath in configure_array
+    configure_array_new = []
+    for cterm in configure_array :
+        n_cterm = cterm.replace('${UCVM_INSTALL_PATH}', ucvmpath)
+        configure_array_new.append(n_cterm)
+
     ## both use $UCVM_INSTALL_PATH
     if config_data["Path"] == "curl" or config_data["Path"] == "proj" or config_data["Path"] == "cca"  or config_data["Path"] == "cvms5":
-      callAndRecord(configure_array, noshell = False)
+      callAndRecord(configure_array_new, noshell = False)
     else:
-      callAndRecord(configure_array)
+      callAndRecord(configure_array_new)
     
     print("\nRunning make clean")
 
