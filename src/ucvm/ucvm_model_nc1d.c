@@ -53,7 +53,7 @@ double ucvm_nc1d_vp(double depth) {
 	// Find out which layer we're in.
 	for (i = 0; i < ucvm_nc1d_z_dim; i++) {
 		if (cumulativeDepth + ucvm_nc1d_layer_depths[i] > depth) {
-			if (interptype == NONE || i == 0) {
+			if (interptype == nc1d_NONE || i == 0) {
 				vp = ucvm_nc1d_layer_vp[i];
 			} else {
 		        depth_ratio = (depth - cumulativeDepth) / ucvm_nc1d_layer_depths[i];
@@ -91,7 +91,7 @@ double ucvm_nc1d_vs(double depth) {
 	// Find out which layer we're in.
 	for (i = 0; i < ucvm_nc1d_z_dim; i++) {
 		if (cumulativeDepth + ucvm_nc1d_layer_depths[i] > depth) {
-			if (interptype == NONE || i == 0) {
+			if (interptype == nc1d_NONE || i == 0) {
 				vs = ucvm_nc1d_layer_vs[i];
 			} else {
 		        depth_ratio = (depth - cumulativeDepth) / ucvm_nc1d_layer_depths[i];
@@ -129,7 +129,7 @@ double ucvm_nc1d_rho(double depth) {
 	// Find out which layer we're in.
 	for (i = 0; i < ucvm_nc1d_z_dim; i++) {
 		if (cumulativeDepth + ucvm_nc1d_layer_depths[i] > depth) {
-			if (interptype == NONE || i == 0) {
+			if (interptype == nc1d_NONE || i == 0) {
 				rho = ucvm_nc1d_layer_rho[i];
 			} else {
 		        depth_ratio = (depth - cumulativeDepth) / ucvm_nc1d_layer_depths[i];
@@ -217,9 +217,9 @@ int ucvm_nc1d_model_init(int m, ucvm_modelconf_t *conf)
   }
 
   if (strcmp(cptr->value, "none") == 0) {
-	  interptype = NONE;
+	  interptype = nc1d_NONE;
   } else if (strcmp(cptr->value, "linear") == 0) {
-	  interptype = LINEAR;
+	  interptype = nc1d_LINEAR;
   } else {
 	  fprintf(stderr, "Invalid interpolation method defined\n");
 	  return 1;

@@ -33,6 +33,6 @@ int ucvm_nc1d_model_query(int id, ucvm_ctype_t cmode,
 /* Fill model structure with NC 1D */
 int ucvm_nc1d_get_model(ucvm_model_t *m);
 
-typedef enum { NONE = 0, LINEAR = 1 } ucvm_nc1d_interpolation_t;
+typedef enum { nc1d_NONE = 0, nc1d_LINEAR = 1 } ucvm_nc1d_interpolation_t;
 
 #endif
