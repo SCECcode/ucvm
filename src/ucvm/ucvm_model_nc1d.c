@@ -151,7 +151,7 @@ double ucvm_nc1d_rho(double depth) {
 	return rho;
 }
 
-/* Init 1D */
+/* Init NC1D */
 int ucvm_nc1d_model_init(int m, ucvm_modelconf_t *conf)
 {
   int len;
@@ -174,7 +174,7 @@ int ucvm_nc1d_model_init(int m, ucvm_modelconf_t *conf)
   }
 
   if (!ucvm_is_file(conf->config)) {
-    fprintf(stderr, "BBP 1D conf file %s is not a valid file\n", conf->config);
+    fprintf(stderr, "NC1D conf file %s is not a valid file\n", conf->config);
     return(UCVM_CODE_ERROR);
   }
 
@@ -206,7 +206,7 @@ int ucvm_nc1d_model_init(int m, ucvm_modelconf_t *conf)
   }
   ucvm_nc1d_z_dim = atoi(cptr->value);
   if ((ucvm_nc1d_z_dim <= 0) || (ucvm_nc1d_z_dim > UCVM_NC1D_MAX_Z_DIM)) {
-    fprintf(stderr, "Invalid 1D Z dimension size\n");
+    fprintf(stderr, "Invalid NC1D Z dimension size\n");
     return(UCVM_CODE_ERROR);
   }
 
@@ -259,7 +259,7 @@ int ucvm_nc1d_model_init(int m, ucvm_modelconf_t *conf)
 }
 
 
-/* Finalize 1D */
+/* Finalize NC1D */
 int ucvm_nc1d_model_finalize()
 {
   ucvm_nc1d_z_dim = 0;
@@ -274,7 +274,7 @@ int ucvm_nc1d_model_finalize()
 }
 
 
-/* Version 1D */
+/* Version NC1D */
 int ucvm_nc1d_model_version(int id, char *ver, int len)
 {
   if (id != ucvm_nc1d_id) {
@@ -287,7 +287,7 @@ int ucvm_nc1d_model_version(int id, char *ver, int len)
 }
 
 
-/* Label 1D */
+/* Label NC1D */
 int ucvm_nc1d_model_label(int id, char *lab, int len)
 {
   if (id != ucvm_nc1d_id) {
@@ -300,7 +300,7 @@ int ucvm_nc1d_model_label(int id, char *lab, int len)
 }
 
 
-/* Setparam 1D */
+/* Setparam NC1D */
 int ucvm_nc1d_model_setparam(int id, int param, ...)
 {
   va_list ap;
@@ -322,7 +322,7 @@ int ucvm_nc1d_model_setparam(int id, int param, ...)
 }
 
 
-/* Query 1D */
+/* Query NC1D */
 int ucvm_nc1d_model_query(int id, ucvm_ctype_t cmode,
 			int n, ucvm_point_t *pnt, ucvm_data_t *data)
 {
@@ -354,7 +354,7 @@ int ucvm_nc1d_model_query(int id, ucvm_ctype_t cmode,
       /* Modify pre-computed depth to account for GTL interp range */
       depth = data[i].depth + data[i].shift_cr;
 
-      /* 1D extends from free surface on down */
+      /* NC1D extends from free surface on down */
       if (depth >= 0.0) {
     	  data[i].crust.vp = ucvm_nc1d_vp(depth);
     	  data[i].crust.rho = ucvm_nc1d_rho(depth);
@@ -378,7 +378,7 @@ int ucvm_nc1d_model_query(int id, ucvm_ctype_t cmode,
 }
 
 
-/* Fill model structure with 1D */
+/* Fill model structure with NC1D */
 int ucvm_nc1d_get_model(ucvm_model_t *m)
 {
   m->mtype = UCVM_MODEL_CRUSTAL;
