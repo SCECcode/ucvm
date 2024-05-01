@@ -14,7 +14,7 @@
 #include "ucvm_utils.h"
 #include "proj.h"
 
-int ucvm_grid_debug=1;
+int ucvm_grid_debug=0;
 
 /* Maximum grid points to buffer from files */
 #define UCVM_GRID_MAX_POINTS 2048
