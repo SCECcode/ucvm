@@ -130,7 +130,7 @@ int extract(int myid, int nproc, mesh_config_t *cfg)
     fprintf(stdout, "[%d] Opening output mesh file %s\n", 
 	    myid, cfg->meshfile);
   }
-  if (mesh_open_mpi(myid, nproc, \
+  if (mesh_openempi(myid, nproc, \
 		       &(cfg->dims), &(cfg->proc_dims),
 		       cfg->meshfile, cfg->meshtype, num_grid) != 0) {
     fprintf(stderr, "[%d] Error: mesh_open_mpi reported failure\n", myid);

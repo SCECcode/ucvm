@@ -10,6 +10,7 @@ install:
 		cp 1d* ${prefix}/model/1d; \
 		cp bbp1d* ${prefix}/model/1d; \
 		cp nc1d* ${prefix}/model/1d; \
+		cp sf1d* ${prefix}/model/1d; \
         fi
 
 clean:
