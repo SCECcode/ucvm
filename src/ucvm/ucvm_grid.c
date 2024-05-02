@@ -133,6 +133,7 @@ int num_grid=0;
             num_grid=num_grid+c;
         }
 
+/*****
 {
 printf("ucvm_grid: Grid 4 corners:\n");
 
@@ -155,6 +156,7 @@ if(ucvm_grid_debug) {
     }
 }
 }
+****/
 
         /* Close file */
         fclose(ofp);
