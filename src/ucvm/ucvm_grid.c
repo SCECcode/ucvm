@@ -14,8 +14,6 @@
 #include "ucvm_utils.h"
 #include "proj.h"
 
-int ucvm_grid_debug=0;
-
 /* Maximum grid points to buffer from files */
 #define UCVM_GRID_MAX_POINTS 2048
 
@@ -132,31 +130,6 @@ int num_grid=0;
             fwrite(pbuf, sizeof(ucvm_point_t), c, ofp);
             num_grid=num_grid+c;
         }
-
-/*****
-{
-printf("ucvm_grid: Grid 4 corners:\n");
-
-int dimx=dims->dim[0];
-// first one
-printf("  %lf %lf (%d)\n",pbuf[0].coord[0],pbuf[0].coord[1],0);
-// x-1
-printf("  %lf %lf (%d)\n",pbuf[dimx-1].coord[0],pbuf[dimx-1].coord[1],dimx-1);
-// num_grid - x
-printf("  %lf %lf (%d)\n",pbuf[num_grid-dimx].coord[0],pbuf[num_grid-dimx].coord[1],num_grid-dimx);
-// num_grid - 1
-printf("  %lf %lf (%d)\n",pbuf[num_grid-1].coord[0],pbuf[num_grid-1].coord[1],num_grid-1);
-
-if(ucvm_grid_debug) {
-    printf("grid size %d, %d, %d\n", dims->dim[0], dims->dim[1], dims->dim[2]);
-    printf("indexing at 0->%d->%d->%d\n",dimx-1, num_grid-dimx, num_grid-1);
-    printf("Xaxis row:\n");
-    for(int i=0; i<dimx; i++) {
-      printf("  %lf %lf\n",pbuf[i].coord[0],pbuf[i].coord[1]);
-    }
-}
-}
-****/
 
         /* Close file */
         fclose(ofp);

@@ -284,6 +284,15 @@ int mesh_open_mpi(int myrank, int nrank,
     return(1);
   }
 
+/** FAILED in Frontier
+PMPI_Type_create_darray(700): MPI_Type_create_darray(
+size=420, rank=240, ndims=3, array_of_gsizes=0x7fffffff4710,
+array_of_distribs=0x7fffffff4730, array_of_dargs=0x7fffffff4740,
+       array_of_psizes=0x7fffffff4720, order=56,
+ dtype=USER<struct>, newtype=0x41a49c) failed
+PMPI_Type_create_darray(448): Invalid argument array_of_psizes
+**/
+
   /* Create file view data type */
   retval = MPI_Type_create_darray(nrank, myrank, 3, mdim, 
 				  distribs, dargs, pdim, MPI_ORDER_C,
