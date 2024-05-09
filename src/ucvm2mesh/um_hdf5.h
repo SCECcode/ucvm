@@ -1,6 +1,9 @@
 #ifndef UM_HDF5_H
 #define UM_HDF5_H
 
+
+#include <hdf5.h>
+
 /* Mesh Config */
 //  UCVM_MAX_LINE_LEN  1024
 typedef struct hdf5_config_t

@@ -182,23 +182,10 @@ int get_props(char *file, mesh_format_t format,
 }
 
 
-/* Net2CDF error handler */
-void check_err(const int stat, const int line, const char *file) {
-  if (stat != NC_NOERR) {
-    (void)fprintf(stderr,"line %d of %s: %s\n", line, file, 
-		  HDstrerror(stat));
-    fflush(stderr);
-    exit(1);
-  }
-}
-
-
 /***************************/
 int main(int argc, char **argv) {
 
   int i, j, k;
-  int  stat;  /* return status */
-  int  h5id;  /* HDF5 id */
 
   /* Config params */
   mesh_config_t cfg_um;
@@ -331,163 +318,133 @@ int main(int argc, char **argv) {
   license=cfg_mh.license;
 
 
-// HDF5
-XXX
+// HDF5 --
+  hid_t file_id; // file handles
+  herr_t status;
 
-  /* enter define mode */
-  stat = nc_create(outfile, NC_CLOBBER, &ncid);
-  check_err(stat,__LINE__,__FILE__);
+  // Create a new file
+  file_id = H5Fcreate(outfile, H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT);
 
   /* define dimensions */
   stat = nc_def_dim(ncid, "nlon", nx, &nlon_dim);
-  check_err(stat,__LINE__,__FILE__);
   stat = nc_def_dim(ncid, "nlat", ny, &nlat_dim);
-  check_err(stat,__LINE__,__FILE__);
   stat = nc_def_dim(ncid, "depth", nz, &depth_dim);
-  check_err(stat,__LINE__,__FILE__);
 
   /* define variables */
   depth_dims[0] = depth_dim;
   stat = nc_def_var(ncid, "depth", NC_FLOAT, RANK_depth, 
 		    depth_dims, &depth_id);
-  check_err(stat,__LINE__,__FILE__);
 
   longitude_dims[0] = nlat_dim;
   longitude_dims[1] = nlon_dim;
   stat = nc_def_var(ncid, "longitude", NC_FLOAT, RANK_longitude, 
 		    longitude_dims, &longitude_id);
-  check_err(stat,__LINE__,__FILE__);
   
   latitude_dims[0] = nlat_dim;
   latitude_dims[1] = nlon_dim;
   stat = nc_def_var(ncid, "latitude", NC_FLOAT, RANK_latitude, 
 		    latitude_dims, &latitude_id);
-  check_err(stat,__LINE__,__FILE__);
   
   Vp_dims[0] = depth_dim;
   Vp_dims[1] = nlat_dim;
   Vp_dims[2] = nlon_dim;
   stat = nc_def_var(ncid, "Vp", NC_FLOAT, RANK_Vp, Vp_dims, &Vp_id);
-  check_err(stat,__LINE__,__FILE__);
 
   Vs_dims[0] = depth_dim;
   Vs_dims[1] = nlat_dim;
   Vs_dims[2] = nlon_dim;
   stat = nc_def_var(ncid, "Vs", NC_FLOAT, RANK_Vs, Vs_dims, &Vs_id);
-  check_err(stat,__LINE__,__FILE__);
 
   density_dims[0] = depth_dim;
   density_dims[1] = nlat_dim;
   density_dims[2] = nlon_dim;
   stat = nc_def_var(ncid, "density", NC_FLOAT, RANK_density, 
 		    density_dims, &density_id);
-  check_err(stat,__LINE__,__FILE__);
 
   /* assign per-variable attributes */
 
   /* units */
   stat = nc_put_att_text(ncid, depth_id, "units", 5, "meter");
-  check_err(stat,__LINE__,__FILE__);
 
   /* positive */
   stat = nc_put_att_text(ncid, depth_id, "positive", 4, "down");
-  check_err(stat,__LINE__,__FILE__);
 
   /* long_name */
   stat = nc_put_att_text(ncid, longitude_id, "long_name", 24, 
 			 "Longitude, positive East");
-  check_err(stat,__LINE__,__FILE__);
 
   /* units */
   stat = nc_put_att_text(ncid, longitude_id, "units", 12, 
 			 "degrees_east");
-  check_err(stat,__LINE__,__FILE__);
 
   /* standard_name */
   stat = nc_put_att_text(ncid, longitude_id, "standard_name", 9, 
 			 "longitude");
-  check_err(stat,__LINE__,__FILE__);
 
   /* long_name */
   stat = nc_put_att_text(ncid, latitude_id, "long_name", 24, 
 			 "Latitude, positive north");
-  check_err(stat,__LINE__,__FILE__);
 
   /* units */
   stat = nc_put_att_text(ncid, latitude_id, "units", 13, 
 			 "degrees_north");
-  check_err(stat,__LINE__,__FILE__);
 
   /* standard_name */
   stat = nc_put_att_text(ncid, latitude_id, "standard_name", 8, 
 			 "latitude");
-  check_err(stat,__LINE__,__FILE__);
 
   /* long_name */
   stat = nc_put_att_text(ncid, Vp_id, "long_name", 15, 
 			 "P wave velocity");
-  check_err(stat,__LINE__,__FILE__);
 
   /* valid_range */
   static const float Vp_valid_range_att[2] = {MIN_VP_VALUE, MAX_VP_VALUE} ;
   stat = nc_put_att_float(ncid, Vp_id, "valid_range", NC_FLOAT, 2, 
 			  Vp_valid_range_att);
-  check_err(stat,__LINE__,__FILE__);
 
   /* units */
   stat = nc_put_att_text(ncid, Vp_id, "units", 12, "meter sec^-1");
-  check_err(stat,__LINE__,__FILE__);
 
   /* coordinates */
   stat = nc_put_att_text(ncid, Vp_id, "coordinates", 24, 
 			 "longitude latitude depth");
-  check_err(stat,__LINE__,__FILE__);
 
   /* long_name */
   stat = nc_put_att_text(ncid, Vs_id, "long_name", 15, 
 			 "S wave velocity");
-  check_err(stat,__LINE__,__FILE__);
 
   /* valid_range */
   static const float Vs_valid_range_att[2] = {MIN_VS_VALUE, MAX_VS_VALUE} ;
   stat = nc_put_att_float(ncid, Vs_id, "valid_range", NC_FLOAT, 2, 
 			  Vs_valid_range_att);
-  check_err(stat,__LINE__,__FILE__);
 
   /* units */
   stat = nc_put_att_text(ncid, Vs_id, "units", 12, "meter sec^-1");
-  check_err(stat,__LINE__,__FILE__);
 
   /* coordinates */
   stat = nc_put_att_text(ncid, Vs_id, "coordinates", 24, 
 			 "longitude latitude depth");
-  check_err(stat,__LINE__,__FILE__);
 
   /* long_name */
   stat = nc_put_att_text(ncid, density_id, "long_name", 7, 
 			 "density");
-  check_err(stat,__LINE__,__FILE__);
 
   /* valid_range */
   static const float density_valid_range_att[2] = 
     {MIN_RHO_VALUE, MAX_RHO_VALUE} ;
   stat = nc_put_att_float(ncid, density_id, "valid_range", NC_FLOAT, 2, 
 			  density_valid_range_att);
-  check_err(stat,__LINE__,__FILE__);
 
   /* units */
   stat = nc_put_att_text(ncid, density_id, "units", 17, 
 			 "kilogram meter^-3");
-  check_err(stat,__LINE__,__FILE__);
 
   /* coordinates */
   stat = nc_put_att_text(ncid, density_id, "coordinates", 24, 
 			 "longitude latitude depth");
-  check_err(stat,__LINE__,__FILE__);
   
   /* leave define mode */
   stat = nc_enddef (ncid);
-  check_err(stat,__LINE__,__FILE__);
     
   /* Allocate buffers */
   grid = malloc(nx * ny * sizeof(ucvm_point_t));
@@ -528,7 +485,6 @@ XXX
 		     depth_data);
   stat = nc_put_vara(ncid, depth_id, depth_startset, depth_countset, 
 		     depth_data);
-  check_err(stat,__LINE__,__FILE__);
   
   /* Store longitude */
   for (j = 0; j < ny; j++) {
@@ -542,7 +498,6 @@ XXX
 		     longitude_countset, longitude_data);
   stat = nc_put_vara(ncid, longitude_id, longitude_startset, 
 		     longitude_countset, longitude_data);
-  check_err(stat,__LINE__,__FILE__);
   
   /* Store latitudes */
   for (j = 0; j < ny; j++) {
@@ -556,7 +511,6 @@ XXX
 		     latitude_countset, latitude_data);
   stat = nc_put_vara(ncid, latitude_id, latitude_startset, 
 		     latitude_countset, latitude_data);
-  check_err(stat,__LINE__,__FILE__);
   
   /* Store Vp */
   for (k = 0; k < nz; k++) {
@@ -571,7 +525,6 @@ XXX
   size_t Vp_countset[3] = {nz, ny, nx} ;
   stat = nc_put_vara(ncid, Vp_id, Vp_startset, Vp_countset, Vp_data);
   stat = nc_put_vara(ncid, Vp_id, Vp_startset, Vp_countset, Vp_data);
-  check_err(stat,__LINE__,__FILE__);
   
   /* Store Vs */
   for (k = 0; k < nz; k++) {
@@ -586,7 +539,6 @@ XXX
   size_t Vs_countset[3] = {nz, ny, nx} ;
   stat = nc_put_vara(ncid, Vs_id, Vs_startset, Vs_countset, Vs_data);
   stat = nc_put_vara(ncid, Vs_id, Vs_startset, Vs_countset, Vs_data);
-  check_err(stat,__LINE__,__FILE__);
 
   /* Store density */
   for (k = 0; k < nz; k++) {
@@ -603,7 +555,6 @@ XXX
 		     density_countset, density_data);
   stat = nc_put_vara(ncid, density_id, density_startset, 
 		     density_countset, density_data);
-  check_err(stat,__LINE__,__FILE__);
   
   /* Free memory */
   free(depth_data);
