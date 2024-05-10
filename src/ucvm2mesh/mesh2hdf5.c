@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <getopt.h>
+
 #include "ucvm.h"
 #include "um_mesh.h"
 #include "ucvm_config.h"
@@ -32,7 +34,6 @@
 #define RANK_density 3
 
 /* Usage */
-//  printf("Usage: %s inmesh ingrid format spacing nx ny nz outfile\n\n", arg);
 void usage(char *arg)
 {
   printf("Usage: %s -f ucvm2mesh.conf -m mesh2hdf5.conf\n\n", arg);
@@ -222,8 +223,9 @@ int main(int argc, char **argv) {
 
   /* ucvm2mesh */
   char *inmesh, *ingrid;
-  char *proj, *rot;
-  int spacing;
+  char *proj;
+  double rot;
+  double spacing;
   size_t nx, ny, nz;
   float x0, y0, z0;
   mesh_format_t format;
@@ -246,7 +248,7 @@ int main(int argc, char **argv) {
   char *license=NULL;
 
   /* Parse args */
-  if(argc != 2) {
+  if(argc != 5) {
     usage(argv[0]);
     exit(1);
   }
@@ -280,16 +282,16 @@ int main(int argc, char **argv) {
   }
 
   /* Read in config_um */
-  if (read_config(0, -1, configfile_um, cfg_um, 1 /* old-style */) != 0) {
+  if (read_config(0, -1, configfile_um, &cfg_um, 1 /* old-style */) != 0) {
     return(1);
   }
-  disp_config(cfg_um);
+  disp_config(&cfg_um);
   inmesh=cfg_um.meshfile;
   ingrid=cfg_um.gridfile;
   format=cfg_um.meshtype;
   proj=cfg_um.proj;
   rot=cfg_um.rot;
-  spacing = atoi(cfg_um.spacing);
+  spacing = cfg_um.spacing;
   x0 = cfg_um.origin.coord[0];
   y0 = cfg_um.origin.coord[1];
   z0 = cfg_um.origin.coord[2];
@@ -298,10 +300,10 @@ int main(int argc, char **argv) {
   nz = cfg_um.dims.dim[2];
 
   /* Read in config_mh */
-  if (read_hdf5_config(0, -1, configfile_mh, cfg_mh) != 0) {
+  if (read_hdf5_config(0, -1, configfile_mh, &cfg_mh) != 0) {
     return(1);
   }
-  disp_hdf5_config(cfg_mh);
+  disp_hdf5_config(&cfg_mh);
   outfile=cfg_mh.outfile;
   title=cfg_mh.title;
   description=cfg_mh.description;
@@ -318,19 +320,19 @@ int main(int argc, char **argv) {
   license=cfg_mh.license;
 
 
-// HDF5 --
+/*** HDF5 --
   hid_t file_id; // file handles
   herr_t status;
 
   // Create a new file
   file_id = H5Fcreate(outfile, H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT);
 
-  /* define dimensions */
+  // define dimensions 
   stat = nc_def_dim(ncid, "nlon", nx, &nlon_dim);
   stat = nc_def_dim(ncid, "nlat", ny, &nlat_dim);
   stat = nc_def_dim(ncid, "depth", nz, &depth_dim);
 
-  /* define variables */
+  // define variables 
   depth_dims[0] = depth_dim;
   stat = nc_def_var(ncid, "depth", NC_FLOAT, RANK_depth, 
 		    depth_dims, &depth_id);
@@ -361,92 +363,79 @@ int main(int argc, char **argv) {
   stat = nc_def_var(ncid, "density", NC_FLOAT, RANK_density, 
 		    density_dims, &density_id);
 
-  /* assign per-variable attributes */
+  // assign per-variable attributes 
 
-  /* units */
+  // units 
   stat = nc_put_att_text(ncid, depth_id, "units", 5, "meter");
-
-  /* positive */
+  // positive 
   stat = nc_put_att_text(ncid, depth_id, "positive", 4, "down");
-
-  /* long_name */
+  // long_name 
   stat = nc_put_att_text(ncid, longitude_id, "long_name", 24, 
 			 "Longitude, positive East");
 
-  /* units */
+  // units 
   stat = nc_put_att_text(ncid, longitude_id, "units", 12, 
 			 "degrees_east");
-
-  /* standard_name */
+  // standard_name 
   stat = nc_put_att_text(ncid, longitude_id, "standard_name", 9, 
 			 "longitude");
-
-  /* long_name */
+  // long_name 
   stat = nc_put_att_text(ncid, latitude_id, "long_name", 24, 
 			 "Latitude, positive north");
 
-  /* units */
+  // units 
   stat = nc_put_att_text(ncid, latitude_id, "units", 13, 
 			 "degrees_north");
-
-  /* standard_name */
+  // standard_name 
   stat = nc_put_att_text(ncid, latitude_id, "standard_name", 8, 
 			 "latitude");
-
-  /* long_name */
+  // long_name 
   stat = nc_put_att_text(ncid, Vp_id, "long_name", 15, 
 			 "P wave velocity");
 
-  /* valid_range */
+  // valid_range 
   static const float Vp_valid_range_att[2] = {MIN_VP_VALUE, MAX_VP_VALUE} ;
   stat = nc_put_att_float(ncid, Vp_id, "valid_range", NC_FLOAT, 2, 
 			  Vp_valid_range_att);
-
-  /* units */
+  // units 
   stat = nc_put_att_text(ncid, Vp_id, "units", 12, "meter sec^-1");
-
-  /* coordinates */
+  // coordinates 
   stat = nc_put_att_text(ncid, Vp_id, "coordinates", 24, 
 			 "longitude latitude depth");
-
-  /* long_name */
+  // long_name 
   stat = nc_put_att_text(ncid, Vs_id, "long_name", 15, 
 			 "S wave velocity");
-
-  /* valid_range */
+  // valid_range 
   static const float Vs_valid_range_att[2] = {MIN_VS_VALUE, MAX_VS_VALUE} ;
   stat = nc_put_att_float(ncid, Vs_id, "valid_range", NC_FLOAT, 2, 
 			  Vs_valid_range_att);
 
-  /* units */
+  // units 
   stat = nc_put_att_text(ncid, Vs_id, "units", 12, "meter sec^-1");
-
-  /* coordinates */
+  // coordinates 
   stat = nc_put_att_text(ncid, Vs_id, "coordinates", 24, 
 			 "longitude latitude depth");
-
-  /* long_name */
+  // long_name 
   stat = nc_put_att_text(ncid, density_id, "long_name", 7, 
 			 "density");
 
-  /* valid_range */
+  // valid_range 
   static const float density_valid_range_att[2] = 
     {MIN_RHO_VALUE, MAX_RHO_VALUE} ;
   stat = nc_put_att_float(ncid, density_id, "valid_range", NC_FLOAT, 2, 
 			  density_valid_range_att);
-
-  /* units */
+  // units
   stat = nc_put_att_text(ncid, density_id, "units", 17, 
 			 "kilogram meter^-3");
-
-  /* coordinates */
+  // coordinates
   stat = nc_put_att_text(ncid, density_id, "coordinates", 24, 
 			 "longitude latitude depth");
-  
-  /* leave define mode */
+  // leave define mode 
   stat = nc_enddef (ncid);
+
+HDF5 ***/
     
-  /* Allocate buffers */
+  // Allocate buffers 
   grid = malloc(nx * ny * sizeof(ucvm_point_t));
   props = malloc(nx * ny * nz * sizeof(mesh_ijk12_t));
   if ((grid == NULL) || (props == NULL)) {
@@ -475,7 +464,8 @@ int main(int argc, char **argv) {
 
   /* assign variable data */
 
-  /* Store depth */
+/*** HDF5
+  // Store depth 
   for (i = 0; i < nz; i++) {
     depth_data[i] = i * spacing;
   }
@@ -486,7 +476,7 @@ int main(int argc, char **argv) {
   stat = nc_put_vara(ncid, depth_id, depth_startset, depth_countset, 
 		     depth_data);
   
-  /* Store longitude */
+  // Store longitude 
   for (j = 0; j < ny; j++) {
     for (i = 0; i < nx; i++) {
       longitude_data[j*nx+i] = grid[j*nx+i].coord[0];
@@ -499,7 +489,7 @@ int main(int argc, char **argv) {
   stat = nc_put_vara(ncid, longitude_id, longitude_startset, 
 		     longitude_countset, longitude_data);
   
-  /* Store latitudes */
+  // Store latitudes 
   for (j = 0; j < ny; j++) {
     for (i = 0; i < nx; i++) {
       latitude_data[j*nx+i] = grid[j*nx+i].coord[1];
@@ -512,7 +502,7 @@ int main(int argc, char **argv) {
   stat = nc_put_vara(ncid, latitude_id, latitude_startset, 
 		     latitude_countset, latitude_data);
   
-  /* Store Vp */
+// Store Vp 
   for (k = 0; k < nz; k++) {
     for (j = 0; j < ny; j++) {
       for (i = 0; i < nx; i++) {
@@ -526,7 +516,7 @@ int main(int argc, char **argv) {
   stat = nc_put_vara(ncid, Vp_id, Vp_startset, Vp_countset, Vp_data);
   stat = nc_put_vara(ncid, Vp_id, Vp_startset, Vp_countset, Vp_data);
   
-  /* Store Vs */
+// Store Vs 
   for (k = 0; k < nz; k++) {
     for (j = 0; j < ny; j++) {
       for (i = 0; i < nx; i++) {
@@ -540,7 +530,7 @@ int main(int argc, char **argv) {
   stat = nc_put_vara(ncid, Vs_id, Vs_startset, Vs_countset, Vs_data);
   stat = nc_put_vara(ncid, Vs_id, Vs_startset, Vs_countset, Vs_data);
 
-  /* Store density */
+// Store density 
   for (k = 0; k < nz; k++) {
     for (j = 0; j < ny; j++) {
       for (i = 0; i < nx; i++) {
@@ -555,6 +545,8 @@ int main(int argc, char **argv) {
 		     density_countset, density_data);
   stat = nc_put_vara(ncid, density_id, density_startset, 
 		     density_countset, density_data);
+
+HDF5 ***/
   
   /* Free memory */
   free(depth_data);
@@ -566,8 +558,7 @@ int main(int argc, char **argv) {
   free(grid);
   free(props);
   
-  stat = nc_close(ncid);
-  check_err(stat,__LINE__,__FILE__);
+// HDF5  stat = nc_close(ncid);
   return 0;
 }
 

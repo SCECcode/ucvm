@@ -4,8 +4,8 @@
 
 #include <hdf5.h>
 
-/* Mesh Config */
 //  UCVM_MAX_LINE_LEN  1024
+
 typedef struct hdf5_config_t
 {
   int rank;
