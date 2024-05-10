@@ -31,6 +31,7 @@ mesh_check_SOURCES = mesh_check.c um_mesh.c um_mesh.h
 mesh2netcdf_SOURCES = mesh2netcdf.c um_mesh.c um_mesh.h
 grid4corners_SOURCES = grid4corners.c 
 mesh2hdf5_SOURCES = mesh2hdf5.c um_hdf5.c um_hdf5.h um_config.c um_config.h um_mesh.c um_mesh.h
+mesh2csv = mesh2csv.c um_config.c um_config.h um_mesh.c um_mesh.h
 
 
 all: $(bin_PROGRAMS)
@@ -68,6 +69,9 @@ grid4corners: grid4corners.o
 	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
 mesh2hdf5: mesh2hdf5.o um_hdf5.o um_config.o um_mesh.o
+	$(CC) -o $@ $^ $(AM_LDFLAGS)
+
+mesh2csv: mesh2csv.o um_config.o um_mesh.o
 	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
 
