@@ -1,7 +1,6 @@
 /**
     mesh2csv.c
 
-    expect IJK-12 IJK-20 or IJK-32
 **/
 
 #include <stdio.h>
@@ -9,15 +8,6 @@
 #include <string.h>
 #include "ucvm.h"
 #include "um_mesh.h"
-
-/* Valid ranges for properties */
-#define MIN_VP_VALUE -9000
-#define MAX_VP_VALUE 9000
-#define MIN_VS_VALUE -7500
-#define MAX_VS_VALUE 7500
-#define MIN_RHO_VALUE -6000
-#define MAX_RHO_VALUE 6000
-
 
 /* Usage */
 void usage(char *arg)
@@ -231,7 +221,7 @@ int main(int argc, char **argv) {
     exit(1);
   }
 
-  FILE *ofp = fopen(file, "w+");
+  FILE *ofp = fopen(outfile, "w+");
   if (ofp == NULL) {
     fprintf(stderr, "Failed to open csv mesh file\n");
     return(1);
@@ -332,7 +322,7 @@ int main(int argc, char **argv) {
       for (i = 0; i < nx; i++) {
         density_data[k*(nx*ny)+j*(nx)+i] =
           props[k*(nx*ny)+j*(nx)+i].rho;
-        fwrite(ofp,"%d %d %d %lf %lf %lf\n",
+        fprintf(ofp,"%d %d %d %lf %lf %lf\n",
             j,i,k,
             density_data[k*(nx*ny)+j*(nx)+i],
             Vp_data[k*(nx*ny)+j*(nx)+i],
