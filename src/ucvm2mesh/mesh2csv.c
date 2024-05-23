@@ -336,7 +336,7 @@ int main(int argc, char **argv) {
             j,i,k,
             density_data[k*(nx*ny)+j*(nx)+i],
             Vp_data[k*(nx*ny)+j*(nx)+i],
-            Vs_data[k*(nx*ny)+j*(nx)+i])
+            Vs_data[k*(nx*ny)+j*(nx)+i]);
       }
     }
   }
