@@ -368,7 +368,7 @@ ucvm_grid_convert_file(ucvm_projdef_t *iproj,
 
 /* Private: origin from north-west to south-west */
 int
-ucvm_grid_flip_private(size_t x, size_t y, size_t z, const char *filename) {
+ucvm_grid_translate_data_private(int type,size_t x, size_t y, size_t z, const char *filename) {
     int i,j;
     FILE *fp;
     size_t num_read;
@@ -377,8 +377,16 @@ ucvm_grid_flip_private(size_t x, size_t y, size_t z, const char *filename) {
     size_t source;
     int err = UCVM_CODE_SUCCESS;
     int num_grid = x * y;
-    ucvm_prop_t *propbuf = malloc(num_grid * sizeof(ucvm_prop_t));
-    ucvm_prop_t *newbuf = malloc(num_grid * sizeof(ucvm_prop_t));
+    void *oldbuf;
+    void *newbuf;
+
+    if(type==0) {
+      oldbuf = (ucvm_prop_t *)malloc(num_grid * sizeof(ucvm_prop_t));
+      newbuf = (ucvm_prop_t *)malloc(num_grid * sizeof(ucvm_prop_t));
+      } else {
+        oldbuf = (double *)malloc(num_grid * sizeof(double));
+        newbuf = (double *) malloc(num_grid * sizeof(double));
+    }
 
     if (filename != NULL) {
          /* Open file */
@@ -390,8 +398,11 @@ ucvm_grid_flip_private(size_t x, size_t y, size_t z, const char *filename) {
 
          num_read = 0;
          while (!feof(fp)) {
-                num_buffered = fread(propbuf, sizeof(ucvm_prop_t),
-                                     num_grid, fp);
+                if(type == 0) {
+                    num_buffered = fread(oldbuf, sizeof(ucvm_prop_t), num_grid, fp);
+                    } else {
+                        num_buffered = fread(oldbuf, sizeof(double), num_grid, fp);
+                }
 
                 if (num_buffered == num_grid) {
                     for(j=0; j<y; j++) {
@@ -399,34 +410,52 @@ ucvm_grid_flip_private(size_t x, size_t y, size_t z, const char *filename) {
                           target=(x-i)+(x*j);
                           source=i+(x* j);
 //       fprintf(stderr,"target= %d, source= %d\n", target,source);
-
-                          newbuf[target].source=propbuf[source].source;
-                          newbuf[target].vp=propbuf[source].vp;
-                          newbuf[target].vs=propbuf[source].vs;
-                          newbuf[target].rho=propbuf[source].rho;
+//
+                          if(type == 0) {
+                              ucvm_prop_t *nptr=(ucvm_prop_t *) newbuf;
+                              ucvm_prop_t *optr=(ucvm_prop_t *) oldbuf;
+			      nptr[target].source=optr[source].source;
+                              nptr[target].vp=optr[source].vp;
+                              nptr[target].vs=optr[source].vs;
+                              nptr[target].rho=optr[source].rho;
+                              } else {
+                                double *nptr=(double *) newbuf;
+                                double *optr=(double *) oldbuf;
+                                nptr[target]= optr[source];
+                          }
                        }
                     }
 
                     /* Write points */
-                    fseek(fp, num_read * sizeof(ucvm_prop_t), SEEK_SET);
-                    fwrite(&newbuf, sizeof(ucvm_prop_t), num_buffered, fp);
+                    if(type == 0) {
+                        fseek(fp, num_read * sizeof(ucvm_prop_t), SEEK_SET);
+                        fwrite(&newbuf, sizeof(ucvm_prop_t), num_buffered, fp);
+		        } else { 
+                          fseek(fp, num_read * sizeof(double), SEEK_SET);
+                          fwrite(&newbuf, sizeof(double), num_buffered, fp);
+                    }
                     fflush(fp);
                     num_read = num_read + num_buffered;
                  }
           }
           fclose(fp);
     }
+    free(oldbuf);
+    free(newbuf);
     return err;
 }
 
 
-/* flip prop list from one origin to another,
-   north-west corner to south-west corner */
+/* translate prop list from one origin to another,
+   north-west corner to south-west corner 
+   type=0 material properties
+   type=1 double
+*/
 int
-ucvm_grid_flip_file(size_t x,
+ucvm_grid_transplat_data_file(int type, size_t x,
                size_t y,
                size_t z,
                const char *filename) {
-    return (ucvm_grid_flip_private(x,y,z,filename));
+    return (ucvm_grid_translate_data_private(type,x,y,z,filename));
 }
 
