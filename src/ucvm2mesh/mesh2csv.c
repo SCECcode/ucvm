@@ -264,32 +264,37 @@ int main(int argc, char **argv) {
   size_t depth_countset[1] = {nz} ;
   
   /* Store longitude */
-  for (j = 0; j < ny; j++) {
-    for (i = 0; i < nx; i++) {
-      longitude_data[j*nx+i] = grid[j*nx+i].coord[0];
-    }
+  int long_cnt=0;
+  for (i = 0; i < nx; i++) {
+    longitude_data[i] = grid[i].coord[0];
+    long_cnt++;
   }
-  size_t longitude_startset[2] = {0, 0} ;
-  size_t longitude_countset[2] = {ny, nx} ;
+//  fprintf(stderr,"long_cnt is %ld\n",long_cnt);
+  size_t longitude_startset[1] = {longitude_data[0]} ;
+  size_t longitude_countset[1] = {nx} ;
   
   /* Store latitudes */
+  int lat_cnt=0;
   for (j = 0; j < ny; j++) {
-    for (i = 0; i < nx; i++) {
-      latitude_data[j*nx+i] = grid[j*nx+i].coord[1];
-    }
+    latitude_data[j] = grid[j*nx].coord[1];
+    lat_cnt++;
   }
-  size_t latitude_startset[2] = {0, 0} ;
-  size_t latitude_countset[2] = {ny, nx} ;
+//  fprintf(stderr,"lat_cnt is %ld\n",lat_cnt);
+  size_t latitude_startset[1] = {latitude_data[0]} ;
+  size_t latitude_countset[2] = {ny} ;
   
   /* Store Vp */
+  int total_cnt=0;
   for (k = 0; k < nz; k++) {
     for (j = 0; j < ny; j++) {
       for (i = 0; i < nx; i++) {
 	Vp_data[k*(nx*ny)+j*(nx)+i] = 
 	  props[k*(nx*ny)+j*(nx)+i].vp;
+	total_cnt++;
       }
     }
   }
+  fprintf(stderr,"total_cnt is %ld\n",total_cnt);
   size_t Vp_startset[3] = {0, 0, 0} ;
   size_t Vp_countset[3] = {nz, ny, nx} ;
   
@@ -332,10 +337,26 @@ int main(int argc, char **argv) {
   }
   fclose(ofp);
 
-  fprintf(stdout,"x_coordinates = [");
-  fprintf(stdout,"y_coordinates = [");
-  fprintf(stdout,"z_coordinates = [");
-  
+
+  int ll;
+  fprintf(stdout,"x_coordinates = [\n");
+  for(ll=0;ll< nx; ll++) {
+     fprintf(stdout,"%lf, ", longitude_data[ll]);
+  }
+  fprintf(stdout,"]\n");
+
+  fprintf(stdout,"y_coordinates = [\n");
+  for(ll=0;ll< ny; ll++) {
+     fprintf(stdout,"%lf, ", latitude_data[ll]);
+  }
+  fprintf(stdout,"]\n");
+
+  fprintf(stdout,"z_coordinates = [\n");
+  for(ll=0;ll< nz; ll++) {
+     fprintf(stdout,"%lf, ", depth_data[ll]);
+  }
+  fprintf(stdout,"]\n");
+
   /* Free memory */
   free(depth_data);
   free(longitude_data);

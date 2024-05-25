@@ -260,7 +260,6 @@ ucvm_grid_convert_private(ucvm_projdef_t *iproj,
                 pnts[i].coord[0] = xy.coord[0];
                 pnts[i].coord[1] = xy.coord[1];
             }
-
         }
     }
 
