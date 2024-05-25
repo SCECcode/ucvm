@@ -367,3 +367,67 @@ ucvm_grid_convert_file(ucvm_projdef_t *iproj,
     return (ucvm_grid_convert_private(iproj, oproj, n, NULL, filename));
 }
 
+/* Private: origin from north-west to south-west */
+int
+ucvm_grid_flip_private(size_t x, size_t y, size_t z, const char *filename) {
+    int i,j;
+    FILE *fp;
+    size_t num_read;
+    size_t num_buffered;
+    size_t target;
+    size_t source;
+    int err = UCVM_CODE_SUCCESS;
+    int num_grid = x * y;
+    ucvm_prop_t *propbuf = malloc(num_grid * sizeof(ucvm_prop_t));
+    ucvm_prop_t *newbuf = malloc(num_grid * sizeof(ucvm_prop_t));
+
+    if (filename != NULL) {
+         /* Open file */
+         fp = fopen(filename, "rb+");
+         if (fp == NULL) {
+            fprintf(stderr, "Failed to open material properties file %s\n", filename);
+            return (UCVM_CODE_ERROR);
+         }
+
+         num_read = 0;
+         while (!feof(fp)) {
+                num_buffered = fread(propbuf, sizeof(ucvm_prop_t),
+                                     num_grid, fp);
+
+                if (num_buffered == num_grid) {
+                    for(j=0; j<y; j++) {
+                      for(i=0; i<x; i++) {
+                          target=(x-i)+(x*j);
+                          source=i+(x* j);
+//       fprintf(stderr,"target= %d, source= %d\n", target,source);
+
+                          newbuf[target].source=propbuf[source].source;
+                          newbuf[target].vp=propbuf[source].vp;
+                          newbuf[target].vs=propbuf[source].vs;
+                          newbuf[target].rho=propbuf[source].rho;
+                       }
+                    }
+
+                    /* Write points */
+                    fseek(fp, num_read * sizeof(ucvm_prop_t), SEEK_SET);
+                    fwrite(&newbuf, sizeof(ucvm_prop_t), num_buffered, fp);
+                    fflush(fp);
+                    num_read = num_read + num_buffered;
+                 }
+          }
+          fclose(fp);
+    }
+    return err;
+}
+
+
+/* flip prop list from one origin to another,
+   north-west corner to south-west corner */
+int
+ucvm_grid_flip_file(size_t x,
+               size_t y,
+               size_t z,
+               const char *filename) {
+    return (ucvm_grid_flip_private(x,y,z,filename));
+}
+
