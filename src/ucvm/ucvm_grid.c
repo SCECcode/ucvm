@@ -377,15 +377,17 @@ ucvm_grid_translate_data_private(size_t type, size_t seek_type, size_t x, size_t
     size_t source;
     int err = UCVM_CODE_SUCCESS;
     int num_grid = x * y;
-    void *oldbuf;
-    void *newbuf;
+    ucvm_prop_t *npbuf;
+    ucvm_prop_t *opbuf;
+    double *ndbuf;
+    double *odbuf;
 
     if(type==0) {
-      oldbuf = (ucvm_prop_t *)malloc(num_grid * sizeof(ucvm_prop_t));
-      newbuf = (ucvm_prop_t *)malloc(num_grid * sizeof(ucvm_prop_t));
+      opbuf = (ucvm_prop_t *)malloc(num_grid * sizeof(ucvm_prop_t));
+      npbuf = (ucvm_prop_t *)malloc(num_grid * sizeof(ucvm_prop_t));
       } else {
-        oldbuf = (double *)malloc(num_grid * sizeof(double));
-        newbuf = (double *) malloc(num_grid * sizeof(double));
+        odbuf = (double *)malloc(num_grid * sizeof(double));
+        ndbuf = (double *) malloc(num_grid * sizeof(double));
     }
 
     if (filename != NULL) {
@@ -396,13 +398,12 @@ ucvm_grid_translate_data_private(size_t type, size_t seek_type, size_t x, size_t
             return (UCVM_CODE_ERROR);
          }
 
-int print=0;
          num_read = 0;
          while (!feof(fp)) {
                 if(type == 0) {
-                    num_buffered = fread(oldbuf, sizeof(ucvm_prop_t), num_grid, fp);
+                    num_buffered = fread(opbuf, sizeof(ucvm_prop_t), num_grid, fp);
                     } else {
-                        num_buffered = fread(oldbuf, sizeof(double), num_grid, fp);
+                        num_buffered = fread(odbuf, sizeof(double), num_grid, fp);
                 }
 
                 if (num_buffered == num_grid) {
@@ -410,19 +411,15 @@ int print=0;
                       for(i=0; i<x; i++) {
                           target=(x-i)+(x*j);
                           source=i+(x* j);
-if(print) fprintf(stderr,"target= %ld, source= %ld\n", target,source);
+//fprintf(stderr,"target= %ld, source= %ld\n", target,source);
 
                           if(type == 0) {
-                              ucvm_prop_t *nptr=(ucvm_prop_t *) newbuf;
-                              ucvm_prop_t *optr=(ucvm_prop_t *) oldbuf;
-			      nptr[target].source=optr[source].source;
-                              nptr[target].vp=optr[source].vp;
-                              nptr[target].vs=optr[source].vs;
-                              nptr[target].rho=optr[source].rho;
+			      npbuf[target].source=opbuf[source].source;
+                              npbuf[target].vp=opbuf[source].vp;
+                              npbuf[target].vs=opbuf[source].vs;
+                              npbuf[target].rho=opbuf[source].rho;
                               } else {
-                                double *nptr=(double *) newbuf;
-                                double *optr=(double *) oldbuf;
-                                nptr[target]= optr[source];
+                                ndbuf[target]= odbuf[source];
                           }
                        }
                     }
@@ -430,20 +427,25 @@ if(print) fprintf(stderr,"target= %ld, source= %ld\n", target,source);
                     /* Write points */
                     if(type == 0) {
                         fseek(fp, num_read * sizeof(ucvm_prop_t), SEEK_SET);
-                        fwrite(&newbuf, sizeof(ucvm_prop_t), num_buffered, fp);
+                        fwrite(&npbuf, sizeof(ucvm_prop_t), num_buffered, fp);
 		        } else { 
                           fseek(fp, num_read * sizeof(double), SEEK_SET);
-                          fwrite(&newbuf, sizeof(double), num_buffered, fp);
+                          fwrite(&ndbuf, sizeof(double), num_buffered, fp);
                     }
                     fflush(fp);
                     num_read = num_read + num_buffered;
-print=0;
                  }
           }
           fclose(fp);
     }
-    free(oldbuf);
-    free(newbuf);
+
+    if(type==0) {
+      free(opbuf);
+      free(npbuf);
+      } else {
+        free(odbuf);
+        free(ndbuf);
+    }
     return err;
 }
 
