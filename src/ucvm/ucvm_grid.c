@@ -368,7 +368,7 @@ ucvm_grid_convert_file(ucvm_projdef_t *iproj,
 
 /* Private: origin from north-west to south-west */
 int
-ucvm_grid_translate_data_private(int type,size_t x, size_t y, size_t z, const char *filename) {
+ucvm_grid_translate_data_private(size_t type, size_t seek_type, size_t x, size_t y, size_t z, const char *filename) {
     int i,j;
     FILE *fp;
     size_t num_read;
@@ -396,6 +396,7 @@ ucvm_grid_translate_data_private(int type,size_t x, size_t y, size_t z, const ch
             return (UCVM_CODE_ERROR);
          }
 
+int print=0;
          num_read = 0;
          while (!feof(fp)) {
                 if(type == 0) {
@@ -409,8 +410,8 @@ ucvm_grid_translate_data_private(int type,size_t x, size_t y, size_t z, const ch
                       for(i=0; i<x; i++) {
                           target=(x-i)+(x*j);
                           source=i+(x* j);
-//       fprintf(stderr,"target= %d, source= %d\n", target,source);
-//
+if(print) fprintf(stderr,"target= %ld, source= %ld\n", target,source);
+
                           if(type == 0) {
                               ucvm_prop_t *nptr=(ucvm_prop_t *) newbuf;
                               ucvm_prop_t *optr=(ucvm_prop_t *) oldbuf;
@@ -436,6 +437,7 @@ ucvm_grid_translate_data_private(int type,size_t x, size_t y, size_t z, const ch
                     }
                     fflush(fp);
                     num_read = num_read + num_buffered;
+print=0;
                  }
           }
           fclose(fp);
@@ -452,10 +454,12 @@ ucvm_grid_translate_data_private(int type,size_t x, size_t y, size_t z, const ch
    type=1 double
 */
 int
-ucvm_grid_transplat_data_file(int type, size_t x,
+ucvm_grid_translate_data_file(size_t type, 
+	       size_t seek_type,
+	       size_t x,
                size_t y,
                size_t z,
                const char *filename) {
-    return (ucvm_grid_translate_data_private(type,x,y,z,filename));
+    return (ucvm_grid_translate_data_private(type, seek_type, x,y,z,filename));
 }
 

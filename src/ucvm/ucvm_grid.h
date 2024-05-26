@@ -50,7 +50,9 @@ int ucvm_grid_convert_file(ucvm_projdef_t *iproj,
 			   ucvm_projdef_t *oproj, 
 			   size_t n, const char *filename);
 
-int ucvm_grid_flip_file(size_t x,
+int ucvm_grid_translate_data_file(size_t type,
+		        size_t seek_type,
+			size_t x,
                         size_t y,
                         size_t z,
 		        const char *filename);

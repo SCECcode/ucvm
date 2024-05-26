@@ -12,6 +12,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <math.h>
+#include "um_dtypes.h"
 #include "um_mesh.h"
 
 
@@ -27,28 +28,24 @@ void usage(char *arg)
   printf("\tnx: nx matching ucvm2mesh call\n");
   printf("\tny: ny matching ucvm2mesh call\n");
   printf("\tnz: nz matching ucvm2mesh call\n");
-
-  printf("Version: %s\n\n", VERSION);
 }
 
 
 int main(int argc, char **argv)
 {
-  int i, type, seek_type;
+  int type, seek_type;
   char seek_type_str[20];
   char mesh[40];
-  size_t nx,ny,nz;
+  int nx,ny,nz;
   
   /* Parse args */
-  printf("Usage: %s type seek-type nx ny nz imesh\n\n",arg);
   if(argc != 7) {
     usage(argv[0]);
     exit(1);
   }
 
-  format = MESH_FORMAT_UNKNOWN;
   type=atoi(argv[1]);
-  strcpy(seek_typestr, argv[2]);
+  strcpy(seek_type_str, argv[2]);
   nx=atoi(argv[3]);
   ny=atoi(argv[4]);
   nz=atoi(argv[5]);
@@ -59,6 +56,8 @@ int main(int argc, char **argv)
     } else {
       seek_type = 1;
   }
+
+  ucvm_grid_translate_data_file(type, seek_type, nx,ny,nz, mesh);
 
   return 0;
 }
