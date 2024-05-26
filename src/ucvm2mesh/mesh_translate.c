@@ -57,6 +57,7 @@ int main(int argc, char **argv)
       seek_type = 1;
   }
 
+//  ucvm_grid_peek_data_file(type, seek_type, nx,ny,nz, mesh);
   ucvm_grid_translate_data_file(type, seek_type, nx,ny,nz, mesh);
 
   return 0;

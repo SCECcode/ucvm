@@ -56,4 +56,11 @@ int ucvm_grid_translate_data_file(size_t type,
                         size_t y,
                         size_t z,
 		        const char *filename);
+
+int ucvm_grid_peek_data_file(size_t type,
+		        size_t seek_type,
+			size_t x,
+                        size_t y,
+                        size_t z,
+		        const char *filename);
 #endif

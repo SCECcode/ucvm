@@ -100,7 +100,7 @@ ucvm_grid_gen_private(ucvm_projdef_t *iproj,
 int num_grid=0;
     if (filename != NULL) {
         /* Open file */
-        ofp = fopen(filename, "wb");
+        ofp = fopen(filename, "rb+");
         if (ofp == NULL) {
             fprintf(stderr, "Failed to open gridfile %s\n", filename);
             return (UCVM_CODE_ERROR);
@@ -377,22 +377,33 @@ ucvm_grid_translate_data_private(size_t type, size_t seek_type, size_t x, size_t
     size_t source;
     int err = UCVM_CODE_SUCCESS;
     int num_grid = x * y;
-    ucvm_prop_t *npbuf;
-    ucvm_prop_t *opbuf;
-    double *ndbuf;
-    double *odbuf;
+    ucvm_prop_t *npbuf=NULL;
+    ucvm_prop_t *opbuf=NULL;
+    float *ndbuf=NULL;
+    float *odbuf=NULL;
+    size_t inner;
+    size_t outer;
+
+    if(seek_type == 0) {
+       inner=y;
+       outer=x;
+       } else {
+         inner=x;
+	 outer=y;
+    }
 
     if(type==0) {
       opbuf = (ucvm_prop_t *)malloc(num_grid * sizeof(ucvm_prop_t));
       npbuf = (ucvm_prop_t *)malloc(num_grid * sizeof(ucvm_prop_t));
       } else {
-        odbuf = (double *)malloc(num_grid * sizeof(double));
-        ndbuf = (double *) malloc(num_grid * sizeof(double));
+        odbuf = (float *)malloc(num_grid * sizeof(float));
+        ndbuf = (float *) malloc(num_grid * sizeof(float));
     }
 
+int  print=0;
     if (filename != NULL) {
          /* Open file */
-         fp = fopen(filename, "rb+");
+         fp = fopen(filename, "r+");
          if (fp == NULL) {
             fprintf(stderr, "Failed to open material properties file %s\n", filename);
             return (UCVM_CODE_ERROR);
@@ -403,15 +414,15 @@ ucvm_grid_translate_data_private(size_t type, size_t seek_type, size_t x, size_t
                 if(type == 0) {
                     num_buffered = fread(opbuf, sizeof(ucvm_prop_t), num_grid, fp);
                     } else {
-                        num_buffered = fread(odbuf, sizeof(double), num_grid, fp);
+                        num_buffered = fread(odbuf, sizeof(float), num_grid, fp);
                 }
 
                 if (num_buffered == num_grid) {
-                    for(j=0; j<y; j++) {
-                      for(i=0; i<x; i++) {
-                          target=(x-i)+(x*j);
-                          source=i+(x* j);
-//fprintf(stderr,"target= %ld, source= %ld\n", target,source);
+                    for(j=0; j<outer; j++) {
+                      for(i=0; i<outer ; i++) {
+                          target=(inner-i)+(inner*j);
+                          source=i+(inner * j);
+if(print < 10) { fprintf(stderr,"XXX target= %ld, source= %ld\n", target,source); }
 
                           if(type == 0) {
 			      npbuf[target].source=opbuf[source].source;
@@ -420,19 +431,24 @@ ucvm_grid_translate_data_private(size_t type, size_t seek_type, size_t x, size_t
                               npbuf[target].rho=opbuf[source].rho;
                               } else {
                                 ndbuf[target]= odbuf[source];
+if(print < 10) { fprintf(stderr,"XXX new= %f, old= %f\n", ndbuf[target],odbuf[source]); }
                           }
+print++;
                        }
                     }
 
                     /* Write points */
+if(1) {
+fprintf(stderr,"XXX num_read...  %ld\n", num_read);
                     if(type == 0) {
                         fseek(fp, num_read * sizeof(ucvm_prop_t), SEEK_SET);
                         fwrite(&npbuf, sizeof(ucvm_prop_t), num_buffered, fp);
 		        } else { 
-                          fseek(fp, num_read * sizeof(double), SEEK_SET);
-                          fwrite(&ndbuf, sizeof(double), num_buffered, fp);
+                          fseek(fp, num_read * sizeof(float), SEEK_SET);
+                          fwrite(&ndbuf, sizeof(float), num_buffered, fp);
                     }
                     fflush(fp);
+}
                     num_read = num_read + num_buffered;
                  }
           }
@@ -454,6 +470,8 @@ ucvm_grid_translate_data_private(size_t type, size_t seek_type, size_t x, size_t
    north-west corner to south-west corner 
    type=0 material properties
    type=1 double
+   seek_type  0 fast-Y
+   seek_type  1 fast-X
 */
 int
 ucvm_grid_translate_data_file(size_t type, 
@@ -465,3 +483,112 @@ ucvm_grid_translate_data_file(size_t type,
     return (ucvm_grid_translate_data_private(type, seek_type, x,y,z,filename));
 }
 
+int
+ucvm_grid_peek_data_private(size_t type, size_t seek_type, size_t x, size_t y, size_t z, const char *filename) {
+    int i,j;
+    FILE *fp;
+    size_t num_read;
+    size_t num_buffered;
+    size_t target;
+    size_t source;
+    int err = UCVM_CODE_SUCCESS;
+    int num_grid = x * y;
+    ucvm_prop_t *npbuf=NULL;
+    ucvm_prop_t *opbuf=NULL;
+    float *ndbuf=NULL;
+    float *odbuf=NULL;
+    size_t inner;
+    size_t outer;
+
+    if(seek_type == 0) {
+       inner=y;
+       outer=x;
+       } else {
+         inner=x;
+	 outer=y;
+    }
+
+    if(type==0) {
+      opbuf = malloc(num_grid * sizeof(ucvm_prop_t));
+      npbuf = malloc(num_grid * sizeof(ucvm_prop_t));
+      } else {
+        odbuf = malloc(num_grid * sizeof(float));
+        ndbuf = malloc(num_grid * sizeof(float));
+    }
+
+    if (filename != NULL) {
+         /* Open file */
+         fp = fopen(filename, "r+");
+         if (fp == NULL) {
+            fprintf(stderr, "Failed to open material properties file %s\n", filename);
+            return (UCVM_CODE_ERROR);
+         }
+
+         num_read = 0;
+         while (!feof(fp)) {
+                if(type == 0) {
+                    num_buffered = fread(opbuf, sizeof(ucvm_prop_t), num_grid, fp);
+                    } else {
+                        num_buffered = fread(odbuf, sizeof(float), num_grid, fp);
+                }
+
+                if (num_buffered == num_grid) {
+                    for(j=0; j<outer; j++) {
+                      for(i=0; i<inner ; i++) {
+
+                          target=(inner-i)+(inner*j);
+                          source=i+(inner * j);
+if(j<1) { 
+fprintf(stderr,"XXX target= %ld, source= %ld\n", target,source); 
+
+                          if(type == 0) {
+fprintf(stderr,"peak: %ld \n", source); 
+fprintf(stderr,"  source:%d \n", opbuf[source].source); 
+fprintf(stderr,"  vp:%f \n", opbuf[source].vp); 
+fprintf(stderr,"  vs:%f \n", opbuf[source].vs); 
+fprintf(stderr,"  rho:%f \n", opbuf[source].rho); 
+                              } else {
+fprintf(stderr,"peak: %ld \n", source);
+fprintf(stderr,"  val:%f \n", odbuf[source]); 
+                          }
+}
+                       }
+                    }
+
+                    /* Write points */
+if(1) {
+//fprintf(stderr,"XXX num_read...  %ld\n", num_read);
+                    if(type == 0) {
+                        fseek(fp, num_read * sizeof(ucvm_prop_t), SEEK_SET);
+                        fwrite(&npbuf, sizeof(ucvm_prop_t), num_buffered, fp);
+		        } else { 
+                          fseek(fp, num_read * sizeof(float), SEEK_SET);
+                          fwrite(&ndbuf, sizeof(float), num_buffered, fp);
+                    }
+                    fflush(fp);
+}
+                    num_read = num_read + num_buffered;
+                 }
+          }
+          fclose(fp);
+    }
+
+    if(type==0) {
+      free(opbuf);
+      free(npbuf);
+      } else {
+        free(odbuf);
+        free(ndbuf);
+    }
+    return err;
+}
+
+int
+ucvm_grid_peek_data_file(size_t type, 
+	       size_t seek_type,
+	       size_t x,
+               size_t y,
+               size_t z,
+               const char *filename) {
+    return (ucvm_grid_peek_data_private(type, seek_type, x,y,z,filename));
+}
