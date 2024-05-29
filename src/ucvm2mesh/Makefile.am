@@ -1,6 +1,6 @@
 # Autoconf/Automake binaries and headers
 
-bin_PROGRAMS = ucvm2mesh mesh_strip_ijk mesh_op mesh_check mesh_translate
+bin_PROGRAMS = ucvm2mesh mesh_strip_ijk mesh_op mesh_check mesh_translate grid4corners latlon2utm
 
 if UCVM_HAVE_MPI
 bin_PROGRAMS += ucvm2mesh_mpi ucvm2mesh_mpi_layer
@@ -71,6 +71,15 @@ mesh2netcdf: mesh2netcdf.o um_mesh.o
 
 grid4corners: grid4corners.o
 	$(CC) -o $@ $^ $(AM_LDFLAGS)
+
+laton2utm.o: laton2utm.c
+	$(CC) -o $@ -c $^ $(AM_CFLAGS) ${PROJ_INCLUDES}
+
+	$(CC) -o $@ $^ $(AM_LDFLAGS) ${PROJ_LDFLAGS}
+
+laton2utm: laton2utm.o
+	$(CC) -o $@ $^ $(AM_LDFLAGS) ${PROJ_LDFLAGS}
+
 
 mesh2hdf5: mesh2hdf5.o um_hdf5.o um_config.o um_mesh.o
 	$(CC) -o $@ $^ $(AM_LDFLAGS)

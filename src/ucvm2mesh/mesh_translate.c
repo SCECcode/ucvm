@@ -21,13 +21,14 @@
 /* Usage information */
 void usage(char *arg)
 {
-  printf("Usage: %s type seek-type nx ny nz imesh\n\n",arg);
+  printf("Usage: %s type seek-type nx ny nz mesh\n\n",arg);
   printf("where:\n");
   printf("\ttype: data type, material properties or doubles\n");
   printf("\tseek-type: which axis to seek : fast-Y or fast-X\n");
   printf("\tnx: nx matching ucvm2mesh call\n");
   printf("\tny: ny matching ucvm2mesh call\n");
   printf("\tnz: nz matching ucvm2mesh call\n");
+  printf("\tmesh: n mesh filename\n");
 }
 
 
@@ -57,8 +58,9 @@ int main(int argc, char **argv)
       seek_type = 1;
   }
 
-//  ucvm_grid_peek_data_file(type, seek_type, nx,ny,nz, mesh);
-  ucvm_grid_translate_data_file(type, seek_type, nx,ny,nz, mesh);
+  ucvm_grid_peek_data_file(type, seek_type, nx,ny,0, mesh);
+  ucvm_grid_translate_data_file(type, seek_type, nx,ny,nz,mesh);
+  ucvm_grid_peek_data_file(type, seek_type, nx,ny,0, mesh);
 
   return 0;
 }
