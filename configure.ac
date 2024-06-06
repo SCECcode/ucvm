@@ -818,8 +818,8 @@ LDFLAGS="$CHECK_LDFLAGS $FFTW_LIB"
 AC_CHECK_LIB(fftw3, fftw_execute, [AC_CHECK_HEADER([fftw3.h], [], [AC_MSG_ERROR(["FFTW headers not found in $FFTW_INCL; use --with-fftw-include-path"])], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["FFTW library not found; use --with-fftw-lib-path"])])
 
 # Check required PROJ installation
-CFLAGS="$PROJ_INCL $CHECK_CFLAGS"
-LDFLAGS="$CHECK_LDFLAGS $PROJ_LIB"
+CFLAGS="$CURL_INCL $OPENSSL_INCL $PROJ_INCL $CHECK_CFLAGS"
+LDFLAGS="$CURL_LIB $OPENSSL_INCL $CHECK_LDFLAGS $PROJ_LIB"
 AC_CHECK_LIB(proj, proj_create_crs_to_crs, [AC_CHECK_HEADER([proj.h], [], [AC_MSG_ERROR(["Proj header not found in $PROJ_INCL; use --with-proj-include-path"])
   ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Proj library not found; use --with-proj-lib-path"])], [-lpthread -lm])
 
@@ -851,8 +851,8 @@ fi
 # Set final CFLAGS and LDFLAGS
 #
 
-CFLAGS="$CHECK_CFLAGS $ETREE_INCL $PROJ_INCL $FFTW_INCL $NETCDF_INCL"
-LDFLAGS="$CHECK_LDFLAGS $ETREE_LIB $PROJ_LIB $FFTW_LIB $NETCDF_LIB"
+CFLAGS="$CHECK_CFLAGS $ETREE_INCL $OPENSSL_INCL $PROJ_INCL $FFTW_INCL $NETCDF_INCL"
+LDFLAGS="$CHECK_LDFLAGS $ETREE_LIB $OPENSSL_LIB $PROJ_LIB $FFTW_LIB $NETCDF_LIB"
 LDFLAGS="$LDFLAGS -lm"
 
 # Check optional USGS CenCalVM installation
