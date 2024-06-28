@@ -819,7 +819,7 @@ AC_CHECK_LIB(fftw3, fftw_execute, [AC_CHECK_HEADER([fftw3.h], [], [AC_MSG_ERROR(
 
 # Check required PROJ installation
 CFLAGS="$CURL_INCL $OPENSSL_INCL $PROJ_INCL $CHECK_CFLAGS"
-LDFLAGS="$CHECK_LDFLAGS $CURL_LIB $OPENSSL_LIB $PROJ_LIB"
+LDFLAGS="$CURL_LIB $OPENSSL_LIB $CHECK_LDFLAGS $PROJ_LIB"
 AC_CHECK_LIB(proj, proj_create_crs_to_crs, [AC_CHECK_HEADER([proj.h], [], [AC_MSG_ERROR(["Proj header not found in $PROJ_INCL; use --with-proj-include-path"])
   ], [AC_INCLUDES_DEFAULT])],[AC_MSG_ERROR(["Proj library not found; use --with-proj-lib-path"])], [-lpthread -lm])
 
