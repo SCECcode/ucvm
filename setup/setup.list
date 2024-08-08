@@ -309,14 +309,14 @@
 			"Path": "netcdf",
                         "Lib": "netcdf-c-4.9.2",
 			"URL": "https://downloads.unidata.ucar.edu/netcdf-c/4.9.2/netcdf-c-4.9.2.tar.gz",
-			"Required": "no",
+			"Required": "yes",
 			"Prerequisites": "Dynamic",
                         "oConfigureFlags": "--disable-byterange",
                         "ConfigureFlags": "--disable-byterange --disable-hdf5",
                         "UCVMConfigureFlags": "--enable-netcdf --with-netcdf-include-path=${UCVM_INSTALL_PATH}/lib/netcdf/include --with-netcdf-lib-path=${UCVM_INSTALL_PATH}/lib/netcdf/lib",
                         "md5sum": "f48ee01534365006934f0c63d4055ea0",
 			"Ask": "no",
-                        "Needs":"HDF5 Curl"
+                        "Needs":"Curl"
 		},
 		"HDF5": {
 			"Path": "hdf5",
@@ -328,7 +328,7 @@
                         "UCVMConfigureFlags": "--with-hdf5-include-path=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-lib-path=${UCVM_INSTALL_PATH}/lib/hdf5/lib",
                         "md5sum": "eb14d82b27c2fd962c46e56186d47107",
 			"Ask": "no",
-                        "Needs":""
+                        "Needs":"Curl"
 		},
 		"OpenSSL": {
 			"Path": "openssl",
