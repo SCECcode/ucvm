@@ -3,18 +3,18 @@
                "Version": "22.7"
                },
 	"models": {
-                "CS241": {
+                "CS248": {
                         "Version": "1.0",
-                        "Abbreviation": "cs241",
+                        "Abbreviation": "cs248",
                         "Size": "72G",
-                        "Path": "cs241",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_4/model/cs241.tar.gz",
+                        "Path": "cs248",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_4/model/cs248.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
-                        "UCVMConfigureFlags": "--enable-model-cs241 --with-cs241-lib-path=${UCVM_INSTALL_PATH}/model/cs241/lib --with-cs241-include-path=${UCVM_INSTALL_PATH}/model/cs241/include",
+                        "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Libraries": ["euclid3", "proj"],
                         "Ask": "yes",
-                        "md5sum": "7cd5f9849f787da39c2a09f4a04ba019",
+                        "md5sum": "caf755353cc6a3bba3fab9d7c9f58b01",
                         "Order": 24
                 },
                 "CS242": {
