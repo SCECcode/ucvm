@@ -1,3 +1,6 @@
+## 2024-08-15 Mei-Hui Su <mei@usc.edu>
+* Added CS248 similar to CS242
+
 ## 2024-02-15 Mei-Hui Su <mei@usc.edu>
 * Converted cvms5 to use Proj
 * Added CS242 to 'accept' generated ucvm2mesh SORD triplet dat file for UCVM plugin model module 
