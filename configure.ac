@@ -109,6 +109,12 @@ AC_ARG_ENABLE([model-cca],
         [enable_model_cca=yes],
         [enable_model_cca=no])
 
+AC_ARG_ENABLE([model-cs248],
+        [AS_HELP_STRING([--enable-model-cs248],
+        [enable model SCEC CS248])],
+        [enable_model_cs248=yes],
+        [enable_model_cs248=no])
+
 AC_ARG_ENABLE([model-cs242],
         [AS_HELP_STRING([--enable-model-cs242],
         [enable model SCEC CS242])],
@@ -235,6 +241,17 @@ AC_ARG_WITH([etree-lib-path],
   [ETREE_LIB="-L$withval -letree"],
   [ETREE_LIB="-letree"])
 
+# Get required OpenSSL library and include locations
+AC_ARG_WITH([openssl-include-path],
+  [AS_HELP_STRING([--with-openssl-include-path],
+    [location of the OpenSSL headers])],
+  [OPENSSL_INCL="-I$withval"],
+  [OPENSSL_INCL=""])
+AC_ARG_WITH([openssl-lib-path],
+  [AS_HELP_STRING([--with-openssl-lib-path], [location of the OpenSSL libraries])],
+  [OPENSSL_LIB="-L$withval -lssl -lcrypto"],
+  [OPENSSL_LIB="-lssl -lcrypto"])
+
 # Get required Proj library and include locations
 AC_ARG_WITH([proj-include-path],
   [AS_HELP_STRING([--with-proj-include-path],
@@ -280,17 +297,6 @@ AC_ARG_WITH([hdf5-lib-path],
   [AS_HELP_STRING([--with-hdf5-lib-path], [location of the HDF5 libraries])],
   [HDF5_LIB="-L$withval -lhdf5"],
   [HDF5_LIB="-lhdf5"])
-
-# Get required OpenSSL library and include locations
-AC_ARG_WITH([openssl-include-path],
-  [AS_HELP_STRING([--with-openssl-include-path],
-    [location of the OpenSSL headers])],
-  [OPENSSL_INCL="-I$withval"],
-  [OPENSSL_INCL=""])
-AC_ARG_WITH([openssl-lib-path],
-  [AS_HELP_STRING([--with-openssl-lib-path], [location of the OpenSSL libraries])],
-  [OPENSSL_LIB="-L$withval -lssl -lcrypto"],
-  [OPENSSL_LIB="-lssl -lcrypto"])
 
 # Get required TIFF library and include locations
 AC_ARG_WITH([tiff-include-path],
@@ -468,6 +474,19 @@ AC_ARG_WITH([cca-lib-path],
   [AS_HELP_STRING([--with-cca-lib-path], [location of the SCEC CCA libraries])],
   [CCA_LIB="-L$withval -lcca -lproj -letree"],
   [CCA_LIB="-lcca -lproj -letree"])
+fi
+
+# Get SCEC CS248 library and include locations
+if test "x$enable_model_cs248" = xyes; then
+AC_ARG_WITH([cs248-include-path],
+  [AS_HELP_STRING([--with-cs248-include-path],
+    [location of the SCEC CS248 headers])],
+  [CS242_INCL="-I$withval"],
+  [CS242_INCL="/usr/include/cs248"])
+AC_ARG_WITH([cs248-lib-path],
+  [AS_HELP_STRING([--with-cs248-lib-path], [location of the SCEC CS248 libraries])],
+  [CS242_LIB="-L$withval -lcs248 -lproj -letree"],
+  [CS242_LIB="-lcs248 -lproj -letree"])
 fi
 
 # Get SCEC CS242 library and include locations
@@ -1005,6 +1024,22 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CCA, [test x"$enable_model_cca" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CS248 installation
+if test "x$enable_model_cs248" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CS248_INCL $CFLAGS"
+   LDFLAGS="$CS248_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CS248"
+   AC_CHECK_HEADER(cs248.h,[],[AC_MSG_ERROR(["SCEC CS248 header not found; use --with-cs248-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CS248, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CS248, [test x"$enable_model_cs248" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then
