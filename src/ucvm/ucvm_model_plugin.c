@@ -61,12 +61,12 @@
      extern int cca_version;
      extern int cca_config;
 #endif
-#ifdef _UCVM_ENABLE_CS241
-     extern int cs241_init;
-     extern int cs241_query;
-     extern int cs241_finalize;
-     extern int cs241_version;
-     extern int cs241_config;
+#ifdef _UCVM_ENABLE_CS248
+     extern int cs248_init;
+     extern int cs248_query;
+     extern int cs248_finalize;
+     extern int cs248_version;
+     extern int cs248_config;
 #endif
 #ifdef _UCVM_ENABLE_CS242
      extern int cs242_init;
@@ -367,13 +367,13 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 }
         }
 #endif
-#ifdef _UCVM_ENABLE_CS241
-        if (strcmp(conf->label, UCVM_MODEL_CS241) == 0) {
-                pptr->model_init = &cs241_init;
-                pptr->model_query = &cs241_query;
-                pptr->model_finalize = &cs241_finalize;
-                pptr->model_version = &cs241_version;
-                pptr->model_config = &cs241_config;
+#ifdef _UCVM_ENABLE_CS248
+        if (strcmp(conf->label, UCVM_MODEL_CS248) == 0) {
+                pptr->model_init = &cs248_init;
+                pptr->model_query = &cs248_query;
+                pptr->model_finalize = &cs248_finalize;
+                pptr->model_version = &cs248_version;
+                pptr->model_config = &cs248_config;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
