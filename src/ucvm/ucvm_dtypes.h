@@ -84,6 +84,7 @@
 #define UCVM_MODEL_CVLSU "cvlsu"
 #define UCVM_MODEL_ALBACORE "albacore"
 #define UCVM_MODEL_CCA "cca"
+#define UCVM_MODEL_CS241 "cs241"
 #define UCVM_MODEL_CS242 "cs242"
 
 #define UCVM_MODEL_SFCVM "sfcvm"

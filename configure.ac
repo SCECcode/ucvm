@@ -109,6 +109,12 @@ AC_ARG_ENABLE([model-cca],
         [enable_model_cca=yes],
         [enable_model_cca=no])
 
+AC_ARG_ENABLE([model-cs241],
+        [AS_HELP_STRING([--enable-model-cs241],
+        [enable model SCEC CS241])],
+        [enable_model_cs241=yes],
+        [enable_model_cs241=no])
+
 AC_ARG_ENABLE([model-cs242],
         [AS_HELP_STRING([--enable-model-cs242],
         [enable model SCEC CS242])],
@@ -468,6 +474,19 @@ AC_ARG_WITH([cca-lib-path],
   [AS_HELP_STRING([--with-cca-lib-path], [location of the SCEC CCA libraries])],
   [CCA_LIB="-L$withval -lcca -lproj -letree"],
   [CCA_LIB="-lcca -lproj -letree"])
+fi
+
+# Get SCEC CS241 library and include locations
+if test "x$enable_model_cs241" = xyes; then
+AC_ARG_WITH([cs241-include-path],
+  [AS_HELP_STRING([--with-cs241-include-path],
+    [location of the SCEC CS241 headers])],
+  [CS242_INCL="-I$withval"],
+  [CS242_INCL="/usr/include/cs241"])
+AC_ARG_WITH([cs241-lib-path],
+  [AS_HELP_STRING([--with-cs241-lib-path], [location of the SCEC CS241 libraries])],
+  [CS242_LIB="-L$withval -lcs241 -lproj -letree"],
+  [CS242_LIB="-lcs241 -lproj -letree"])
 fi
 
 # Get SCEC CS242 library and include locations
@@ -1005,6 +1024,22 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CCA, [test x"$enable_model_cca" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CS241 installation
+if test "x$enable_model_cs241" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CS241_INCL $CFLAGS"
+   LDFLAGS="$CS241_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CS241"
+   AC_CHECK_HEADER(cs241.h,[],[AC_MSG_ERROR(["SCEC CS241 header not found; use --with-cs241-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CS241, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CS241, [test x"$enable_model_cs241" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then
