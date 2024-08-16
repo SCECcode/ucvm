@@ -1,8 +1,10 @@
 #ifndef UM_HDF5_H
 #define UM_HDF5_H
 
-
+#include <stddef.h>
 #include <hdf5.h>
+#include "ucvm_config.h"
+#include "um_dtypes.h"
 
 //  UCVM_MAX_LINE_LEN  1024
 

@@ -34,7 +34,7 @@ int read_hdf5_config(int myid, int nproc, const char *cfgfile,hdf5_config_t *cfg
 
 /* Dump config to stdout */
 int disp_hdf5_config(hdf5_config_t *cfg) {
-  return 0
+  return 0;
 };
 
 
