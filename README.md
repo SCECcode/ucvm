@@ -70,7 +70,7 @@ Detailed descriptions of the UCVM return parameters are listed in this UCVM para
 ## Support
 Support for UCVM is provided by that Southern California Earthquake Center (SCEC) Research Computing Group. This group supports several research software distributions including UCVM. Users can report issues and feature requests using UCVM's github-based issue tracking link below. Developers will also respond to emails sent to the SCEC software contact listed below.
 1. [UCVM Github Issue Tracker](https://github.com/SCECcode/ucvm/issues)
-2. Email Contact: software@scec.usc.edu
+2. Email Contact: software@scec.org
 
 ## Citation
 References, citations, and acknowledgements help us obtain continued support for the development of the UCVM software. If you use the UCVM software in your research, please include the citation of the UCVM paper in the references/bibliography section of your publication. This is more effective than you providing in-text acknowledgements. 
