@@ -327,7 +327,8 @@
 			"Prerequisites": "Dynamic",
                         "oConfigureFlags": "--disable-byterange",
                         "ConfigureFlags": "--disable-byterange --disable-hdf5",
-                        "UCVMConfigureFlags": "--enable-netcdf --with-netcdf-include-path=${UCVM_INSTALL_PATH}/lib/netcdf/include --with-netcdf-lib-path=${UCVM_INSTALL_PATH}/lib/netcdf/lib",
+                        "oUCVMConfigureFlags": "--enable-netcdf --with-netcdf-include-path=${UCVM_INSTALL_PATH}/lib/netcdf/include --with-netcdf-lib-path=${UCVM_INSTALL_PATH}/lib/netcdf/lib",
+                        "UCVMConfigureFlags": "--with-netcdf-include-path=${UCVM_INSTALL_PATH}/lib/netcdf/include --with-netcdf-lib-path=${UCVM_INSTALL_PATH}/lib/netcdf/lib",
                         "md5sum": "f48ee01534365006934f0c63d4055ea0",
 			"Ask": "no",
                         "Needs":"Curl"
