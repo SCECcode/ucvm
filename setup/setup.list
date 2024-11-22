@@ -27,7 +27,7 @@
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
                         "UCVMConfigureFlags": "--enable-model-cs242 --with-cs242-lib-path=${UCVM_INSTALL_PATH}/model/cs242/lib --with-cs242-include-path=${UCVM_INSTALL_PATH}/model/cs242/include",
                         "Libraries": ["euclid3", "proj"],
-                        "Ask": "yes",
+                        "Ask": "no",
                         "md5sum": "9861b6ccbde582807a1488bbd696fb25",
                         "Order": 23
                 },
@@ -249,7 +249,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cs173h.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cs173h --with-cs173h-lib-path=${UCVM_INSTALL_PATH}/model/cs173h/lib --with-cs173h-include-path=${UCVM_INSTALL_PATH}/model/cs173h/include",
 			"Libraries": ["euclid3", "proj"],
-			"Ask": "yes",
+			"Ask": "no",
                         "md5sum": "2da1cbc7e689707692764b37679bdbdf",
 			"Order": 4		
 		},
@@ -375,6 +375,7 @@
                         "Lib": "sqlite-autoconf-3400100",
                         "Size": "13M",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/sqlite-autoconf-3400100.tar.gz",
+                        "ConfigureFlags": "CFLAGS=-DSQLITE_ENABLE_COLUMN_METADATA",
                         "UCVMConfigureFlags": "--with-sqlite-include-path=${UCVM_INSTALL_PATH}/lib/sqlite/include --with-sqlite-lib-path=${UCVM_INSTALL_PATH}/lib/sqlite/lib",
 			"Required": "yes",
                         "md5sum": "7f51e415413bc30d6c2308aecb37e159",
