@@ -237,13 +237,13 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     else:
         configure_array = ["./configure", prefix_string]
 
-    ## special case
-    if config_data["Path"] == "sfcvm" :
-        gcc10path=shutil.which("gcc10-gcc")
-        if gcc10path is None:
-          pass
-        else:
-          configure_array += "CC=gcc10-gcc CXX=gcc10-g++".split(" ")
+    ## special case, move to setup/setup.list
+    #if config_data["Path"] == "sfcvm" :
+    #    gcc10path=shutil.which("gcc10-gcc")
+    #    if gcc10path is None:
+    #      pass
+    #    else:
+    #      configure_array += "CC=gcc10-gcc CXX=gcc10-g++".split(" ")
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
 
