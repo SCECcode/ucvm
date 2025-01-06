@@ -1,13 +1,11 @@
-#ifndef UM_HDF5_H
-#define UM_HDF5_H
+/**  
+*
+*   um_hdf5.c
+**/
 
-#include <stddef.h>
-#include <hdf5.h>
-#include "ucvm_config.h"
-#include "um_dtypes.h"
+#include "um_hdf5.h"
 
-//  UCVM_MAX_LINE_LEN  1024
-
+/*
 typedef struct hdf5_config_t
 {
   int rank;
@@ -27,12 +25,16 @@ typedef struct hdf5_config_t
   char license[UCVM_MAX_LINE_LEN];
 } hdf5_config_t;
 
+*/
+
 /* Read in configuration file and populate hdf5 config structure */
-int read_hdf5_config(int myid, int nproc, const char *cfgfile,hdf5_config_t *cfg);
+int read_hdf5_config(int myid, int nproc, const char *cfgfile,hdf5_config_t *cfg) {
+  return 0;
+};
 
 /* Dump config to stdout */
-int disp_hdf5_config(hdf5_config_t *cfg);
-
-#endif
+int disp_hdf5_config(hdf5_config_t *cfg) {
+  return 0;
+};
 
 

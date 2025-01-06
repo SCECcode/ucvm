@@ -6,7 +6,7 @@
 #include "ucvm_model_dtypes.h"
 
 /* Maximum number of supported models */
-#define UCVM_MAX_MODELS 30
+#define UCVM_MAX_MODELS 40
 
 /* Maximum number of supported maps (topo + vs30) */
 #define UCVM_MAX_MAPS 2
@@ -84,6 +84,7 @@
 #define UCVM_MODEL_CVLSU "cvlsu"
 #define UCVM_MODEL_ALBACORE "albacore"
 #define UCVM_MODEL_CCA "cca"
+#define UCVM_MODEL_CS248 "cs248"
 #define UCVM_MODEL_CS242 "cs242"
 
 #define UCVM_MODEL_SFCVM "sfcvm"

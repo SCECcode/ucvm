@@ -55,6 +55,12 @@ AC_ARG_ENABLE([netcdf],
         [enable_netcdf=yes],
         [enable_netcdf=no])
 
+AC_ARG_ENABLE([hdf5],
+        [AS_HELP_STRING([--enable-hdf5],
+        [enable HDF5 module])],
+        [enable_hdf5=yes],
+        [enable_hdf5=no])
+
 AC_ARG_ENABLE([iobuf],
         [AS_HELP_STRING([--enable-iobuf],
         [enable IOBUF module])],
@@ -108,6 +114,12 @@ AC_ARG_ENABLE([model-cca],
         [enable model SCEC CCA])],
         [enable_model_cca=yes],
         [enable_model_cca=no])
+
+AC_ARG_ENABLE([model-cs248],
+        [AS_HELP_STRING([--enable-model-cs248],
+        [enable model SCEC CS248])],
+        [enable_model_cs248=yes],
+        [enable_model_cs248=no])
 
 AC_ARG_ENABLE([model-cs242],
         [AS_HELP_STRING([--enable-model-cs242],
@@ -270,6 +282,19 @@ if test "x$enable_netcdf" = xyes; then
    [NETCDF_LIB="-lnetcdf -lm -ldl -lxml2 -lcurl"])
 fi
 
+# Get optional HDF5 library and include locations
+if test "x$enable_hdf5" = xyes; then
+   AC_ARG_WITH([hdf5-include-path],
+   [AS_HELP_STRING([--with-hdf5-include-path],
+   [location of the HDF5 headers])],
+   [HDF5_INCL="-I$withval"],
+   [HDF5_INCL=""])
+   AC_ARG_WITH([hdf5-lib-path],
+   [AS_HELP_STRING([--with-hdf5-lib-path], [location of the HDF5 libraries])],
+   [HDF5_LIB="-L$withval -lhdf5 -lz -ldl -lm"],
+   [HDF5_LIB="-lhdf5 -lz -ldl -lm"])
+fi
+
 # Get required FFTW library and include locations
 AC_ARG_WITH([fftw-include-path],
   [AS_HELP_STRING([--with-fftw-include-path],
@@ -289,8 +314,8 @@ AC_ARG_WITH([hdf5-include-path],
   [HDF5_INCL=""])
 AC_ARG_WITH([hdf5-lib-path],
   [AS_HELP_STRING([--with-hdf5-lib-path], [location of the HDF5 libraries])],
-  [HDF5_LIB="-L$withval -lhdf5"],
-  [HDF5_LIB="-lhdf5"])
+  [HDF5_LIB="-L$withval -lhdf5 -lz -ldl -lm"],
+  [HDF5_LIB="-lhdf5 -lz -ldl -lm"])
 
 # Get required TIFF library and include locations
 AC_ARG_WITH([tiff-include-path],
@@ -468,6 +493,19 @@ AC_ARG_WITH([cca-lib-path],
   [AS_HELP_STRING([--with-cca-lib-path], [location of the SCEC CCA libraries])],
   [CCA_LIB="-L$withval -lcca -lproj -letree"],
   [CCA_LIB="-lcca -lproj -letree"])
+fi
+
+# Get SCEC CS248 library and include locations
+if test "x$enable_model_cs248" = xyes; then
+AC_ARG_WITH([cs248-include-path],
+  [AS_HELP_STRING([--with-cs248-include-path],
+    [location of the SCEC CS248 headers])],
+  [CS242_INCL="-I$withval"],
+  [CS242_INCL="/usr/include/cs248"])
+AC_ARG_WITH([cs248-lib-path],
+  [AS_HELP_STRING([--with-cs248-lib-path], [location of the SCEC CS248 libraries])],
+  [CS242_LIB="-L$withval -lcs248 -lproj -letree"],
+  [CS242_LIB="-lcs248 -lproj -letree"])
 fi
 
 # Get SCEC CS242 library and include locations
@@ -848,11 +886,29 @@ else
 	AM_CONDITIONAL(UCVM_HAVE_NETCDF, false)
 fi
 
+# Check optional HDF5 library
+if test "x$enable_hdf5" = xyes; then
+   echo "Checking for HDF5 library"
+   CFLAGS="$HDF5_INCL $CHECK_CFLAGS"
+   LDFLAGS="$CHECK_LDFLAGS $HDF5_LIB"
+   AC_CHECK_LIB(hdf5, H5Fcreate,
+	[AM_CONDITIONAL(UCVM_HAVE_HDF5, true)], 
+	[AC_MSG_ERROR([HDF5 library not found; use --with-hdf5-include-path"])],
+	[-lz -ldl -lm])
+   AC_CHECK_HEADER(hdf5.h,
+	[],
+	[AC_MSG_ERROR([HDF5 header not found; use --with-hdf5-lib-path"])],
+	[AC_INCLUDES_DEFAULT])
+
+else
+	AM_CONDITIONAL(UCVM_HAVE_HDF5, false)
+fi
+
 # Set final CFLAGS and LDFLAGS
 #
 
-CFLAGS="$CHECK_CFLAGS $ETREE_INCL $CURL_INCL $OPENSSL_INCL $PROJ_INCL $FFTW_INCL $NETCDF_INCL"
-LDFLAGS="$CHECK_LDFLAGS $ETREE_LIB $CURL_LIB $OPENSSL_LIB $PROJ_LIB $FFTW_LIB $NETCDF_LIB"
+CFLAGS="$CHECK_CFLAGS $ETREE_INCL $CURL_INCL $OPENSSL_INCL $PROJ_INCL $FFTW_INCL $NETCDF_INCL $HDF5_INCL"
+LDFLAGS="$CHECK_LDFLAGS $ETREE_LIB $CURL_LIB $OPENSSL_LIB $PROJ_LIB $FFTW_LIB $NETCDF_LIB $HDF5_LIB"
 LDFLAGS="$LDFLAGS -lm"
 
 # Check optional USGS CenCalVM installation
@@ -1005,6 +1061,22 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CCA, [test x"$enable_model_cca" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CS248 installation
+if test "x$enable_model_cs248" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CS248_INCL $CFLAGS"
+   LDFLAGS="$CS248_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CS248"
+   AC_CHECK_HEADER(cs248.h,[],[AC_MSG_ERROR(["SCEC CS248 header not found; use --with-cs248-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CS248, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CS248, [test x"$enable_model_cs248" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then

@@ -3,6 +3,20 @@
                "Version": "22.7"
                },
 	"models": {
+                "CS248": {
+                        "Version": "1.0",
+                        "Abbreviation": "cs248",
+                        "Size": "72G",
+                        "Path": "cs248",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_4/model/cs248.tar.gz",
+                        "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
+                        "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
+                        "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
+                        "Libraries": ["euclid3", "proj"],
+                        "Ask": "yes",
+                        "md5sum": "b87bac6ebc02630c8ca8a162d906a384",
+                        "Order": 24
+                },
                 "CS242": {
                         "Version": "1.0",
                         "Abbreviation": "cs242",
@@ -235,7 +249,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cs173h.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cs173h --with-cs173h-lib-path=${UCVM_INSTALL_PATH}/model/cs173h/lib --with-cs173h-include-path=${UCVM_INSTALL_PATH}/model/cs173h/include",
 			"Libraries": ["euclid3", "proj"],
-			"Ask": "no",
+			"Ask": "yes",
                         "md5sum": "2da1cbc7e689707692764b37679bdbdf",
 			"Order": 4		
 		},
@@ -325,8 +339,8 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/hdf5-1.10.9.tar.gz",
 			"Required": "yes",
 			"Prerequisites": "Dynamic",
-                        "ConfigureFlags": "--enable-parallel",
-                        "UCVMConfigureFlags": "--with-hdf5-include-path=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-lib-path=${UCVM_INSTALL_PATH}/lib/hdf5/lib",
+                        "sw4ConfigureFlags": "--enable-parallel",
+                        "UCVMConfigureFlags": "--enable-hdf5 --with-hdf5-include-path=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-lib-path=${UCVM_INSTALL_PATH}/lib/hdf5/lib",
                         "md5sum": "eb14d82b27c2fd962c46e56186d47107",
 			"Ask": "no",
                         "Needs":"Curl"

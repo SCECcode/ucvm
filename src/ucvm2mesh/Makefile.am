@@ -7,7 +7,11 @@ bin_PROGRAMS += ucvm2mesh_mpi ucvm2mesh_mpi_layer
 endif
 
 if UCVM_HAVE_NETCDF
-bin_PROGRAMS += mesh2netcdf mesh2hdf5
+bin_PROGRAMS += mesh2netcdf
+endif
+
+if UCVM_HAVE_HDF5
+bin_PROGRAMS += mesh2hdf5
 endif
 
 # General compiler/linker flags
