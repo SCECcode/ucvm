@@ -172,7 +172,7 @@
 			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=${UCVM_INSTALL_PATH}/model/ivlsu/lib --with-ivlsu-include-path=${UCVM_INSTALL_PATH}/model/ivlsu/include --with-ivlsu-model-path=${UCVM_INSTALL_PATH}/model/ivlsu/src",
 			"Libraries": ["proj"],
 			"Ask": "yes",
-                        "md5sum": "8d553860bdd90d3444396b1da590276d",
+                        "md5sum": "a484048bdaef93afd827882b2aa12b0e",
 			"Order": 11		
 		},
 		"COACHELLA": {
@@ -183,7 +183,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/cvlsu.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvlsu --with-cvlsu-lib-path=${UCVM_INSTALL_PATH}/model/cvlsu/lib --with-cvlsu-include-path=${UCVM_INSTALL_PATH}/model/cvlsu/include --with-cvlsu-model-path=${UCVM_INSTALL_PATH}/model/cvlsu/src",
 			"Ask": "yes",
-                        "md5sum": "c33dd1067518808e567cc3d8a90474e8",
+                        "md5sum": "bdb8448d169c744274ff1f071412e7e9",
 			"Order": 10		
 		},
 		"ALBACORE": {
@@ -194,7 +194,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/albacore.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=${UCVM_INSTALL_PATH}/model/albacore/lib --with-albacore-include-path=${UCVM_INSTALL_PATH}/model/albacore/include --with-albacore-model-path=${UCVM_INSTALL_PATH}/model/albacore/src",
 			"Ask": "yes",
-                        "md5sum": "ca87ef278c939df7b4069b60c7fa1999",
+                        "md5sum": "9fc351081d97b714dc795ea0c35487fe",
 			"Order": 9		
 		},
 		"CVM-H": {
@@ -402,7 +402,7 @@
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-tiff --without-curl TIFF_LIBS='-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff -L${UCVM_INSTALL_PATH}/lib/openssl/lib -lcrypto -lssl' TIFF_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/tiff/include' SQLITE3_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/sqlite/include' SQLITE3_LIBS='-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3' SQLITE3='${UCVM_INSTALL_PATH}/lib/sqlite/bin/sqlite3'",
                         "oldConfigureFlags": "--enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config TIFF_LIBS='-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff -L${UCVM_INSTALL_PATH}/lib/openssl/lib -lcrypto -lssl' TIFF_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/tiff/include' SQLITE3_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/sqlite/include' SQLITE3_LIBS='-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3' SQLITE3='${UCVM_INSTALL_PATH}/lib/sqlite/bin/sqlite3'",
-                        "UCVMConfigureFlags": "--with-proj-include-path=${UCVM_INSTALL_PATH}/lib/proj/include --with-proj-lib-path=${UCVM_INSTALL_PATH}/lib/proj/lib",
+                        "UCVMConfigureFlags": "--with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib",
                         "Postprocess" : [
                              {
                                "Action": "download", 
