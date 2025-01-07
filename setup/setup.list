@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Libraries": ["euclid3", "proj"],
                         "Ask": "yes",
-                        "md5sum": "caf755353cc6a3bba3fab9d7c9f58b01",
+                        "md5sum": "b87bac6ebc02630c8ca8a162d906a384",
                         "Order": 24
                 },
                 "CS242": {
@@ -168,11 +168,12 @@
                         "Abbreviation": "ivlsu",
                         "Size": "3.1M",
 			"Path": "ivlsu",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/ivlsu.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/ivlsu.tar.gz",
+                        "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
 			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=${UCVM_INSTALL_PATH}/model/ivlsu/lib --with-ivlsu-include-path=${UCVM_INSTALL_PATH}/model/ivlsu/include --with-ivlsu-model-path=${UCVM_INSTALL_PATH}/model/ivlsu/src",
 			"Libraries": ["proj"],
-			"Ask": "no",
-                        "md5sum": "8d553860bdd90d3444396b1da590276d",
+			"Ask": "yes",
+                        "md5sum": "a484048bdaef93afd827882b2aa12b0e",
 			"Order": 11		
 		},
 		"COACHELLA": {
@@ -180,10 +181,10 @@
                         "Abbreviation": "cvlsu",
                         "Size": "7.0M",
 			"Path": "cvlsu",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvlsu.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/cvlsu.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvlsu --with-cvlsu-lib-path=${UCVM_INSTALL_PATH}/model/cvlsu/lib --with-cvlsu-include-path=${UCVM_INSTALL_PATH}/model/cvlsu/include --with-cvlsu-model-path=${UCVM_INSTALL_PATH}/model/cvlsu/src",
-			"Ask": "no",
-                        "md5sum": "c33dd1067518808e567cc3d8a90474e8",
+			"Ask": "yes",
+                        "md5sum": "bdb8448d169c744274ff1f071412e7e9",
 			"Order": 10		
 		},
 		"ALBACORE": {
@@ -191,10 +192,10 @@
                         "Abbreviation": "albacore",
                         "Size": "2.3M",
 			"Path": "albacore",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/albacore.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/albacore.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=${UCVM_INSTALL_PATH}/model/albacore/lib --with-albacore-include-path=${UCVM_INSTALL_PATH}/model/albacore/include --with-albacore-model-path=${UCVM_INSTALL_PATH}/model/albacore/src",
-			"Ask": "no",
-                        "md5sum": "ca87ef278c939df7b4069b60c7fa1999",
+			"Ask": "yes",
+                        "md5sum": "9fc351081d97b714dc795ea0c35487fe",
 			"Order": 9		
 		},
 		"CVM-H": {
@@ -340,7 +341,8 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/hdf5-1.10.9.tar.gz",
 			"Required": "yes",
 			"Prerequisites": "Dynamic",
-                        "oConfigureFlags": "--enable-parallel",
+                        "sw4ConfigureFlags": "--enable-parallel",
+                        "sw4UCVMConfigureFlags": "--enable-hdf5 --with-hdf5-include-path=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-lib-path=${UCVM_INSTALL_PATH}/lib/hdf5/lib",
                         "UCVMConfigureFlags": "--with-hdf5-include-path=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-lib-path=${UCVM_INSTALL_PATH}/lib/hdf5/lib",
                         "md5sum": "eb14d82b27c2fd962c46e56186d47107",
 			"Ask": "no",
