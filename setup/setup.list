@@ -159,7 +159,7 @@
                         "Path": "wfcvm",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/wfcvm.tar.gz",
                         "UCVMConfigureFlags": "--enable-model-wfcvm --with-wfcvm-lib-path=${UCVM_INSTALL_PATH}/model/wfcvm/lib --with-wfcvm-include-path=${UCVM_INSTALL_PATH}/model/wfcvm/include --with-wfcvm-model-path=${UCVM_INSTALL_PATH}/model/wfcvm/src",
-                        "Ask": "no",
+                        "Ask": "yes",
                         "md5sum": "72320742325cf77c94b850c729841f46",
                         "Order": 12
                 },
