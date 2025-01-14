@@ -174,7 +174,7 @@
 			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=${UCVM_INSTALL_PATH}/model/ivlsu/lib --with-ivlsu-include-path=${UCVM_INSTALL_PATH}/model/ivlsu/include --with-ivlsu-model-path=${UCVM_INSTALL_PATH}/model/ivlsu/src",
 			"Libraries": ["proj"],
 			"Ask": "yes",
-                        "md5sum": "a484048bdaef93afd827882b2aa12b0e",
+                        "md5sum": "5481b3e10898de4d39a224ebcd4870bf",
 			"Order": 11		
 		},
 		"COACHELLA": {
@@ -185,7 +185,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/cvlsu.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvlsu --with-cvlsu-lib-path=${UCVM_INSTALL_PATH}/model/cvlsu/lib --with-cvlsu-include-path=${UCVM_INSTALL_PATH}/model/cvlsu/include --with-cvlsu-model-path=${UCVM_INSTALL_PATH}/model/cvlsu/src",
 			"Ask": "yes",
-                        "md5sum": "bdb8448d169c744274ff1f071412e7e9",
+                        "md5sum": "e9e1e1f53c748ff63cdb07448465dad4",
 			"Order": 10		
 		},
 		"ALBACORE": {
@@ -196,7 +196,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/albacore.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=${UCVM_INSTALL_PATH}/model/albacore/lib --with-albacore-include-path=${UCVM_INSTALL_PATH}/model/albacore/include --with-albacore-model-path=${UCVM_INSTALL_PATH}/model/albacore/src",
 			"Ask": "yes",
-                        "md5sum": "9fc351081d97b714dc795ea0c35487fe",
+                        "md5sum": "fc8bf743659d76f90c2d2d2d0c63adcc",
 			"Order": 9		
 		},
 		"CVM-H": {
@@ -204,10 +204,10 @@
                         "Abbreviation": "cvmh",
                         "Size": "1.6G",
 			"Path": "cvmh",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmh.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/cvmh.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
-                        "md5sum": "961a65ca7d50009585e9c718f28b999e",
+                        "md5sum": "f2137b7ccad8ee0801e87ff003e62c98",
 			"Order": 8
 		},
 		"CenCalVM": {
