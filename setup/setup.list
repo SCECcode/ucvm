@@ -3,6 +3,20 @@
                "Version": "22.7"
                },
 	"models": {
+                "LINTHURBER": {
+                        "Version": "1.0.1",
+                        "Abbreviation": "linthurber",
+                        "Size": "2G",
+                        "Path": "linthurber",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_4/model/linthurber.tar.gz",
+                        "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
+                        "ConfigureFlags": "",
+                        "UCVMConfigureFlags": "--enable-model-linthurber --with-linthurber-lib-path=${UCVM_INSTALL_PATH}/model/linthurber/lib --with-linthurber-include-path=${UCVM_INSTALL_PATH}/model/linthurber/include",
+                        "Libraries": [],
+                        "Ask": "yes",
+                        "md5sum": "0000000",
+                        "Order": 25
+                },
                 "CS248": {
                         "Version": "1.0",
                         "Abbreviation": "cs248",

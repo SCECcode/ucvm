@@ -118,6 +118,15 @@
         extern int sfcvm_setparam;
 #endif
 
+#ifdef _UCVM_ENABLE_LINTHURBER
+        extern int linthurber_init;
+        extern int linthurber_query;
+        extern int linthurber_finalize;
+        extern int linthurber_version;
+        extern int linthurber_config;
+        extern int linthurber_setparam;
+#endif
+
 #ifdef _UCVM_ENABLE_CVMHSBCBN
         extern int cvmhsbcbn_init;
         extern int cvmhsbcbn_query;
@@ -443,6 +452,20 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_version = &sfcvm_version;
                 pptr->model_config = &sfcvm_config;
                 pptr->model_setparam = &sfcvm_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_LINTHURBER
+        if (strcmp(conf->label, UCVM_MODEL_LINTHURBER) == 0) {
+                pptr->model_init = &linthurber_init;
+                pptr->model_query = &linthurber_query;
+                pptr->model_finalize = &linthurber_finalize;
+                pptr->model_version = &linthurber_version;
+                pptr->model_config = &linthurber_config;
+                pptr->model_setparam = &linthurber_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;

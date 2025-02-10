@@ -175,6 +175,12 @@ AC_ARG_ENABLE([model-sfcvm],
         [enable_model_sfcvm=yes],
         [enable_model_sfcvm=no])
 
+AC_ARG_ENABLE([model-linthurber],
+        [AS_HELP_STRING([--enable-model-linthurber],
+        [enable model SCEC LINTHURBER])],
+        [enable_model_linthurber=yes],
+        [enable_model_linthurber=no])
+
 AC_ARG_ENABLE([model-cvmhsmbn],
         [AS_HELP_STRING([--enable-model-cvmhsmbn],
         [enable model SCEC CVMHSMBN])],
@@ -653,6 +659,23 @@ AC_ARG_WITH([sfcvm-model-path],
   [AS_HELP_STRING([--with-sfcvm-model-path], [location of the SFCVM model files])],
   [SFCVM_MODEL="$withval"],
   [SFCVM_MODEL="/usr/sfcvm/src"])
+fi
+
+# Get SCEC LINTHURBER library and include locations
+if test "x$enable_model_linthurber" = xyes; then
+AC_ARG_WITH([linthurber-include-path],
+  [AS_HELP_STRING([--with-linthurber-include-path],
+    [location of the SCEC LINTHURBER headers])],
+  [LINTHURBER_INCL="-I$withval"],
+  [LINTHURBER_INCL="/usr/include/linthurber"])
+AC_ARG_WITH([linthurber-lib-path],
+  [AS_HELP_STRING([--with-linthurber-lib-path], [location of the SCEC LINTHURBER libraries])],
+  [LINTHURBER_LIB="-L$withval -llinthurber"],
+  [LINTHURBER_LIB="-llinthurber"])
+AC_ARG_WITH([linthurber-model-path],
+  [AS_HELP_STRING([--with-linthurber-model-path], [location of the LINTHURBER model files])],
+  [LINTHURBER_MODEL="$withval"],
+  [LINTHURBER_MODEL="/usr/linthurber/src"])
 fi
 
 # Get SCEC CVMHSMBN library and include locations
@@ -1200,6 +1223,22 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_SFCVM, [test x"$enable_model_sfcvm" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC LINTHURBER installation
+if test "x$enable_model_linthurber" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$LINTHURBER_INCL $CFLAGS"
+   LDFLAGS="$LINTHURBER_LIB $LDFLAGS"
+
+   echo "Checking for SCEC LINTHURBER"
+   AC_CHECK_HEADER(linthurber.h,[],[AC_MSG_ERROR(["SCEC LINTHURBER header not found; use --with-linthurber-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_LINTHURBER, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_LINTHURBER, [test x"$enable_model_linthurber" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then
