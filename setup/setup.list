@@ -8,7 +8,7 @@
                         "Abbreviation": "linthurber",
                         "Size": "2G",
                         "Path": "linthurber",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_4/model/linthurber.tar.gz",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/linthurber.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "",
                         "UCVMConfigureFlags": "--enable-model-linthurber --with-linthurber-lib-path=${UCVM_INSTALL_PATH}/model/linthurber/lib --with-linthurber-include-path=${UCVM_INSTALL_PATH}/model/linthurber/include",
