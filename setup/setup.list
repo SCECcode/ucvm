@@ -1,4 +1,4 @@
- {
+{
         "UCVM": {
                "Version": "22.7"
                },
@@ -28,7 +28,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Libraries": ["euclid3", "proj"],
                         "Ask": "yes",
-                        "md5sum": "caf755353cc6a3bba3fab9d7c9f58b01",
+                        "md5sum": "b87bac6ebc02630c8ca8a162d906a384",
                         "Order": 24
                 },
                 "CS242": {
@@ -50,8 +50,9 @@
                         "Abbreviation": "sfcvm",
                         "Size": "2.9G",
                         "Path": "sfcvm",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v24_4/model/sfcvm.tar.gz",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/sfcvm.tar.gz",
                         "ConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
+                        "macConfigureFlags": "CC=gcc-10 CXX=g++-10",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/data/sfcvm",
                         "Preprocess" : [
                              {
@@ -64,7 +65,7 @@
                              }
                         ],
                         "Ask": "yes",
-                        "md5sum": "03092fbbc15c74ac255ddb3f186608f9",
+                        "md5sum": "1461cb36a2975760e7be7caec91d6ff5",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
@@ -173,7 +174,7 @@
                         "Path": "wfcvm",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/wfcvm.tar.gz",
                         "UCVMConfigureFlags": "--enable-model-wfcvm --with-wfcvm-lib-path=${UCVM_INSTALL_PATH}/model/wfcvm/lib --with-wfcvm-include-path=${UCVM_INSTALL_PATH}/model/wfcvm/include --with-wfcvm-model-path=${UCVM_INSTALL_PATH}/model/wfcvm/src",
-                        "Ask": "no",
+                        "Ask": "yes",
                         "md5sum": "72320742325cf77c94b850c729841f46",
                         "Order": 12
                 },
@@ -182,11 +183,12 @@
                         "Abbreviation": "ivlsu",
                         "Size": "3.1M",
 			"Path": "ivlsu",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/ivlsu.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/ivlsu.tar.gz",
+                        "ConfigureFlags": "--with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
 			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=${UCVM_INSTALL_PATH}/model/ivlsu/lib --with-ivlsu-include-path=${UCVM_INSTALL_PATH}/model/ivlsu/include --with-ivlsu-model-path=${UCVM_INSTALL_PATH}/model/ivlsu/src",
 			"Libraries": ["proj"],
-			"Ask": "no",
-                        "md5sum": "8d553860bdd90d3444396b1da590276d",
+			"Ask": "yes",
+                        "md5sum": "82aec341f6ce7b21380f0093fa377b82",
 			"Order": 11		
 		},
 		"COACHELLA": {
@@ -194,10 +196,10 @@
                         "Abbreviation": "cvlsu",
                         "Size": "7.0M",
 			"Path": "cvlsu",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvlsu.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/cvlsu.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvlsu --with-cvlsu-lib-path=${UCVM_INSTALL_PATH}/model/cvlsu/lib --with-cvlsu-include-path=${UCVM_INSTALL_PATH}/model/cvlsu/include --with-cvlsu-model-path=${UCVM_INSTALL_PATH}/model/cvlsu/src",
-			"Ask": "no",
-                        "md5sum": "c33dd1067518808e567cc3d8a90474e8",
+			"Ask": "yes",
+                        "md5sum": "81435ed676fdef9d64157a439802b80c",
 			"Order": 10		
 		},
 		"ALBACORE": {
@@ -205,10 +207,10 @@
                         "Abbreviation": "albacore",
                         "Size": "2.3M",
 			"Path": "albacore",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/albacore.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/albacore.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=${UCVM_INSTALL_PATH}/model/albacore/lib --with-albacore-include-path=${UCVM_INSTALL_PATH}/model/albacore/include --with-albacore-model-path=${UCVM_INSTALL_PATH}/model/albacore/src",
-			"Ask": "no",
-                        "md5sum": "ca87ef278c939df7b4069b60c7fa1999",
+			"Ask": "yes",
+                        "md5sum": "a559e4583f7b83424058b4211f1210e4",
 			"Order": 9		
 		},
 		"CVM-H": {
@@ -216,10 +218,10 @@
                         "Abbreviation": "cvmh",
                         "Size": "1.6G",
 			"Path": "cvmh",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cvmh.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/cvmh.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
-                        "md5sum": "961a65ca7d50009585e9c718f28b999e",
+                        "md5sum": "90f284411c102df7ebaa2fd8d92033e2",
 			"Order": 8
 		},
 		"CenCalVM": {
@@ -354,7 +356,8 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/hdf5-1.10.9.tar.gz",
 			"Required": "yes",
 			"Prerequisites": "Dynamic",
-                        "oConfigureFlags": "--enable-parallel",
+                        "sw4ConfigureFlags": "--enable-parallel",
+                        "sw4UCVMConfigureFlags": "--enable-hdf5 --with-hdf5-include-path=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-lib-path=${UCVM_INSTALL_PATH}/lib/hdf5/lib",
                         "UCVMConfigureFlags": "--with-hdf5-include-path=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-hdf5-lib-path=${UCVM_INSTALL_PATH}/lib/hdf5/lib",
                         "md5sum": "eb14d82b27c2fd962c46e56186d47107",
 			"Ask": "no",

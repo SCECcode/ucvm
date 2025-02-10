@@ -225,6 +225,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
       if config_data["Path"] == "sfcvm" :
         print("\nRunning libtoolize")
         callAndRecord(["libtoolize"])
+
       print("\nRunning autoreconf")
       callAndRecord(["autoreconf", "-i"])
     

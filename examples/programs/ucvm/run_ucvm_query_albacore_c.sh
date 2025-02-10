@@ -1,4 +1,15 @@
 #!/bin/bash
+#
+# These test points are:
+# at sea, in ucvm topo, in albacore
+# at sea, outside ucvm top, in albacore
+# at sea, outside ucvm topo, at edge of albacore
+# on land at catalina, in albacore
+# at sea, in redondo canyon, in albacore
+# on land at usc, in albacore
+# on land at mt wilson, presumably outside albacore region
+# palm springs airport, outside albacore region
+#
 
 if [ -z "$UCVM_INSTALL_PATH" ]; then
   echo "Need to set UCVM_INSTALL_PATH to run >" ${0##*/} 
