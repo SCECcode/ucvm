@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-linthurber --with-linthurber-lib-path=${UCVM_INSTALL_PATH}/model/linthurber/lib --with-linthurber-include-path=${UCVM_INSTALL_PATH}/model/linthurber/include",
                         "Libraries": [],
                         "Ask": "yes",
-                        "md5sum": "01b81f10990181ac70c47cff33af3dfa",
+                        "md5sum": "c0200c3b75b984f73fc17763a8afcf84",
                         "Order": 25
                 },
                 "CS248": {
