@@ -115,6 +115,12 @@ AC_ARG_ENABLE([model-cca],
         [enable_model_cca=yes],
         [enable_model_cca=no])
 
+AC_ARG_ENABLE([model-sjfz],
+        [AS_HELP_STRING([--enable-model-sjfz],
+        [enable model SCEC SJFZ])],
+        [enable_model_sjfz=yes],
+        [enable_model_fjfz=no])
+
 AC_ARG_ENABLE([model-cs248],
         [AS_HELP_STRING([--enable-model-cs248],
         [enable model SCEC CS248])],
@@ -499,6 +505,23 @@ AC_ARG_WITH([cca-lib-path],
   [AS_HELP_STRING([--with-cca-lib-path], [location of the SCEC CCA libraries])],
   [CCA_LIB="-L$withval -lcca -lproj -letree"],
   [CCA_LIB="-lcca -lproj -letree"])
+fi
+
+# Get SCEC SJFZ library and include locations
+if test "x$enable_model_sjfz" = xyes; then
+AC_ARG_WITH([sjfz-include-path],
+  [AS_HELP_STRING([--with-sjfz-include-path],
+    [location of the SCEC SJFZ headers])],
+  [SJFZ_INCL="-I$withval"],
+  [SJFZ_INCL="/usr/include/sjfz"])
+AC_ARG_WITH([sjfz-lib-path],
+  [AS_HELP_STRING([--with-sjfz-lib-path], [location of the SCEC SJFZ libraries])],
+  [SJFZ_LIB="-L$withval -lsjfz"],
+  [SJFZ_LIB="-lsjfz"])
+AC_ARG_WITH([sjfz-model-path],
+  [AS_HELP_STRING([--with-sjfz-model-path], [location of the SJFZ model files])],
+  [CVMS_MODEL="$withval"],
+  [CVMS_MODEL="/usr/sjfz/src"])
 fi
 
 # Get SCEC CS248 library and include locations
@@ -1084,6 +1107,23 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CCA, [test x"$enable_model_cca" = xyes])
+fi
+
+# Check optional SCEC SJFZ installation
+if test "x$enable_static" = xyes; then
+if test "x$enable_model_sjfz" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$SJFZ_INCL $CFLAGS"
+   LDFLAGS="$SJFZ_LIB $LDFLAGS"
+
+   echo "Checking for SCEC SJFZ"
+   AC_CHECK_LIB(sjfz, sjfz_init,[AM_CONDITIONAL(UCVM_AM_ENABLE_SJFZ, true)], [AC_MSG_ERROR(["SCEC SJFZ library not found; use --with-sjfz-lib-path"])],[-lm])
+   AC_CHECK_HEADER(sjfz.h,[],[AC_MSG_ERROR(["SCEC SJFZ header not found; use --with-sjfz-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SJFZ, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SJFZ, [test x"$enable_model_sjfz" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then
