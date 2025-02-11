@@ -232,7 +232,7 @@
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/cvmh.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
-                        "md5sum": "faa1381157e8b9a126ca99a624dd794c",
+                        "md5sum": "854aaa00f6b36b79d17612c98848edb7",
 			"Order": 8
 		},
 		"CenCalVM": {
