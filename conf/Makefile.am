@@ -2,8 +2,6 @@
 
 # Customizes ucvm.conf with configured models.
 
-EXTRA_DIST = ucvm_template.conf
-
 CHANGE_LIST=ucvm.conf
 
 # USGS CenCalVM config
@@ -51,7 +49,7 @@ endif
 
 all: ${CHANGE_LIST}
 
-ucvm.conf: ucvm_template.conf
+ucvm.conf: template/ucvm.conf
 	cp $^ $@
 	${SED} "s,PREFIX,${prefix},g" $@
 
