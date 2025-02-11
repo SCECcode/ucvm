@@ -566,6 +566,8 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
         str=str+"install_name_tool -change libcs248.so ${MY_UCVM_INSTALL_PATH}/model/cs248/lib/libcs248.so $1\n"
     if "CS242" in modelsToInstall:
         str=str+"install_name_tool -change libcs242.so ${MY_UCVM_INSTALL_PATH}/model/cs242/lib/libcs242.so $1\n"
+    if "SJFZ" in modelsToInstall:
+        str=str+"install_name_tool -change libsjfz.so ${MY_UCVM_INSTALL_PATH}/model/sjfz/lib/libsjfz.so $1\n"
     return str
 
 def makeDyLibNameChangeScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
