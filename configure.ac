@@ -119,7 +119,7 @@ AC_ARG_ENABLE([model-sjfz],
         [AS_HELP_STRING([--enable-model-sjfz],
         [enable model SCEC SJFZ])],
         [enable_model_sjfz=yes],
-        [enable_model_fjfz=no])
+        [enable_model_sjfz=no])
 
 AC_ARG_ENABLE([model-cs248],
         [AS_HELP_STRING([--enable-model-cs248],
