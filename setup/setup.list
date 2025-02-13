@@ -3,6 +3,19 @@
                "Version": "22.7"
                },
 	"models": {
+               "CANVAS": {
+                        "Version": "1.0",
+                        "Abbreviation": "canvas",
+                        "Size": "1.0M",
+                        "Path": "canvas",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/canvas.tar.gz",
+                        "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
+                        "ConfigureFlags": "",
+                        "UCVMConfigureFlags": "--enable-model-canvas --with-canvas-lib-path=${UCVM_INSTALL_PATH}/model/canvas/lib --with-canvas-include-path=${UCVM_INSTALL_PATH}/model/canvas/include",
+                        "Ask": "no",
+                        "md5sum": "abc",
+                        "Order": 27
+                },
                "SJFZ": {
                         "Version": "1.0",
                         "Abbreviation": "sjfz",
@@ -201,7 +214,7 @@
 			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=${UCVM_INSTALL_PATH}/model/ivlsu/lib --with-ivlsu-include-path=${UCVM_INSTALL_PATH}/model/ivlsu/include --with-ivlsu-model-path=${UCVM_INSTALL_PATH}/model/ivlsu/src",
 			"Libraries": ["proj"],
 			"Ask": "yes",
-                        "md5sum": "82aec341f6ce7b21380f0093fa377b82",
+                        "md5sum": "e0b66a079d01911525e1a36d3ae809f1",
 			"Order": 11		
 		},
 		"COACHELLA": {

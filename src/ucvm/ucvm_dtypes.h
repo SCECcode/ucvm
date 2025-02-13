@@ -90,6 +90,7 @@
 
 #define UCVM_MODEL_SFCVM "sfcvm"
 #define UCVM_MODEL_LINTHURBER "linthurber"
+#define UCVM_MODEL_LINTHURBER "canvas"
 
 #define UCVM_MODEL_CVMHLABN "cvmhlabn"
 #define UCVM_MODEL_CVMHSGBN "cvmhsgbn"

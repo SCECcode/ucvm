@@ -193,6 +193,12 @@ AC_ARG_ENABLE([model-linthurber],
         [enable_model_linthurber=yes],
         [enable_model_linthurber=no])
 
+AC_ARG_ENABLE([model-canvas],
+        [AS_HELP_STRING([--enable-model-canvas],
+        [enable model SCEC LINTHURBER])],
+        [enable_model_canvas=yes],
+        [enable_model_canvas=no])
+
 AC_ARG_ENABLE([model-cvmhsmbn],
         [AS_HELP_STRING([--enable-model-cvmhsmbn],
         [enable model SCEC CVMHSMBN])],
@@ -718,6 +724,23 @@ AC_ARG_WITH([linthurber-model-path],
   [AS_HELP_STRING([--with-linthurber-model-path], [location of the LINTHURBER model files])],
   [LINTHURBER_MODEL="$withval"],
   [LINTHURBER_MODEL="/usr/linthurber/src"])
+fi
+
+# Get SCEC CANVAS library and include locations
+if test "x$enable_model_canvas" = xyes; then
+AC_ARG_WITH([canvas-include-path],
+  [AS_HELP_STRING([--with-canvas-include-path],
+    [location of the SCEC CANVAS headers])],
+  [LINTHURBER_INCL="-I$withval"],
+  [LINTHURBER_INCL="/usr/include/canvas"])
+AC_ARG_WITH([canvas-lib-path],
+  [AS_HELP_STRING([--with-canvas-lib-path], [location of the SCEC CANVAS libraries])],
+  [LINTHURBER_LIB="-L$withval -lcanvas"],
+  [LINTHURBER_LIB="-lcanvas"])
+AC_ARG_WITH([canvas-model-path],
+  [AS_HELP_STRING([--with-canvas-model-path], [location of the CANVAS model files])],
+  [LINTHURBER_MODEL="$withval"],
+  [LINTHURBER_MODEL="/usr/canvas/src"])
 fi
 
 # Get SCEC CVMHSMBN library and include locations
@@ -1316,6 +1339,22 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_LINTHURBER, [test x"$enable_model_linthurber" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC CANVAS installation
+if test "x$enable_model_canvas" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CANVAS_INCL $CFLAGS"
+   LDFLAGS="$CANVAS_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CANVAS"
+   AC_CHECK_HEADER(canvas.h,[],[AC_MSG_ERROR(["SCEC CANVAS header not found; use --with-canvas-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CANVAS, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CANVAS, [test x"$enable_model_canvas" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then

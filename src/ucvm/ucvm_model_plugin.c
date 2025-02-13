@@ -134,6 +134,15 @@
         extern int linthurber_setparam;
 #endif
 
+#ifdef _UCVM_ENABLE_CANVAS
+        extern int canvas_init;
+        extern int canvas_query;
+        extern int canvas_finalize;
+        extern int canvas_version;
+        extern int canvas_config;
+        extern int canvas_setparam;
+#endif
+
 #ifdef _UCVM_ENABLE_CVMHSBCBN
         extern int cvmhsbcbn_init;
         extern int cvmhsbcbn_query;
@@ -486,6 +495,20 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_version = &linthurber_version;
                 pptr->model_config = &linthurber_config;
                 pptr->model_setparam = &linthurber_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CANVAS
+        if (strcmp(conf->label, UCVM_MODEL_CANVAS) == 0) {
+                pptr->model_init = &canvas_init;
+                pptr->model_query = &canvas_query;
+                pptr->model_finalize = &canvas_finalize;
+                pptr->model_version = &canvas_version;
+                pptr->model_config = &canvas_config;
+                pptr->model_setparam = &canvas_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
