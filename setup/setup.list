@@ -480,7 +480,7 @@
                         ],
                         "md5sum": "2d984eea6b8b04c146499aa3c5210f42",
 			"Ask": "no",
-                        "Needs":"TIFF OpenSSL Sqlite"
+                        "Needs":"TIFF OpenSSL Sqlite",
                         "oldNeeds":"TIFF OpenSSL Curl Sqlite"
 		}
 	},
