@@ -10,9 +10,6 @@
 /* Interpolation functions */
 #include "ucvm_interp.h"
 /* Crustal models */
-#ifdef _UCVM_ENABLE_CVMH
-#include "ucvm_model_cvmh.h"
-#endif
 #ifdef _UCVM_ENABLE_CENCAL
 #include "ucvm_model_cencal.h"
 #endif
@@ -1281,6 +1278,13 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
 #ifdef _UCVM_ENABLE_CANVAS
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
                      UCVM_MODEL_CANVAS, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
+#ifdef _UCVM_ENABLE_CVMH
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_CVMH, "", res, numinst++, *len)
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }

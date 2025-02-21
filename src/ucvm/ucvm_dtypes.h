@@ -64,7 +64,6 @@
 
 /* Predefined crustal model interfaces */
 #define UCVM_MODEL_NONE "none"
-#define UCVM_MODEL_CVMH "cvmh"
 #define UCVM_MODEL_CENCAL "cencal"
 #define UCVM_MODEL_1D "1d"
 #define UCVM_MODEL_BBP1D "bbp1d"
@@ -76,6 +75,7 @@
 #define UCVM_MODEL_CVMLT "cvmlt"
 #define UCVM_MODEL_TAPE "tape"
 #define UCVM_MODEL_JAPAN "japan"
+
 /* plugin models */
 #define UCVM_MODEL_CVMS5 "cvms5"
 #define UCVM_MODEL_CVMS "cvms"
@@ -95,6 +95,7 @@
 #define UCVM_MODEL_CVMHLABN "cvmhlabn"
 #define UCVM_MODEL_CVMHSGBN "cvmhsgbn"
 #define UCVM_MODEL_CVMHVBN "cvmhvbn"
+#define UCVM_MODEL_CVMH "cvmh"
 #define UCVM_MODEL_CVMHSMBN "cvmhsmbn"
 #define UCVM_MODEL_CVMHSBCBN "cvmhsbcbn"
 #define UCVM_MODEL_CVMHSBBN "cvmhsbbn"
@@ -142,10 +143,7 @@
 
 /* Byte order */
 typedef enum { UCVM_BYTEORDER_LSB = 0, 
-               UCVM_BYTEORDER_MSB } ucvm_byteorder_t;
-
-
-/* XX */
+               UCVM_BYTEORDER_MSB = 1 } ucvm_byteorder_t;
 
 /* Supported error codes */
 typedef enum { UCVM_CODE_SUCCESS = 0, 
@@ -159,27 +157,27 @@ typedef enum { UCVM_COORD_GEO_DEPTH = 0,
 
 /* Supported model types */
 typedef enum { UCVM_MODEL_CRUSTAL = 0, 
-	       UCVM_MODEL_GTL } ucvm_mtype_t;
+	       UCVM_MODEL_GTL = 1} ucvm_mtype_t;
 
 
 /* Supported resource types */
 typedef enum { UCVM_RESOURCE_MODEL = 0, 
-	       UCVM_RESOURCE_IFUNC,
-	       UCVM_RESOURCE_MAP,
-	       UCVM_RESOURCE_MODEL_IF,
-	       UCVM_RESOURCE_MAP_IF} ucvm_rtype_t;
+	       UCVM_RESOURCE_IFUNC = 1,
+	       UCVM_RESOURCE_MAP = 2,
+	       UCVM_RESOURCE_MODEL_IF = 3,
+	       UCVM_RESOURCE_MAP_IF = 4 } ucvm_rtype_t;
 
 
 /* Supported coordinate query modes. Used internally by UCVM */
 typedef enum { UCVM_OPMODE_CRUSTAL = 0, 
-	       UCVM_OPMODE_GTL } ucvm_opmode_t;
+	       UCVM_OPMODE_GTL = 1} ucvm_opmode_t;
 
 
 /* Supported domains for query points. Used internally by UCVM */
 typedef enum { UCVM_DOMAIN_NONE = 0,
-	       UCVM_DOMAIN_GTL, 
-	       UCVM_DOMAIN_INTERP,
-	       UCVM_DOMAIN_CRUST} ucvm_domain_t;
+	       UCVM_DOMAIN_GTL = 1, 
+	       UCVM_DOMAIN_INTERP = 2,
+	       UCVM_DOMAIN_CRUST =3} ucvm_domain_t;
 
 
 /* For swapping endian */
