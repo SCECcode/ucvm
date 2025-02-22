@@ -341,13 +341,6 @@ int ucvm_add_model(const char *label) {
 
   /* Lookup predefined models */
   /* Crustal models */
-  if (strcmp(label, UCVM_MODEL_CVMH) == 0) {
-#ifdef _UCVM_ENABLE_CVMH
-    retval = ucvm_cvmh_get_model(&m);
-#endif
-    is_predef = 1;
-  }
-
   if (strcmp(label, UCVM_MODEL_CENCAL) == 0) {
 #ifdef _UCVM_ENABLE_CENCAL
     retval = ucvm_cencal_get_model(&m);
