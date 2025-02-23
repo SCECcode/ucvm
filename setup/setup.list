@@ -259,11 +259,11 @@
                         "Abbreviation": "cvmh",
                         "Size": "1.6G",
 			"Path": "cvmh",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/cvmh.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/cvmh.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "854aaa00f6b36b79d17612c98848edb7",
+                        "md5sum": "0522b7e6d15708b18e350a73659486a4",
 			"Order": 8
 		},
 		"CenCalVM": {
