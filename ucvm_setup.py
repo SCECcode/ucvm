@@ -226,8 +226,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         print("\nRunning libtoolize")
         callAndRecord(["libtoolize"])
 
-      print("\n HERE..")
-      print(config_data["Path"])
       print("\nRunning autoreconf")
       callAndRecord(["autoreconf", "-i"])
 
