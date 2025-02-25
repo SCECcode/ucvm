@@ -24,7 +24,6 @@ endif
 # CVM-H includes
 if UCVM_AM_ENABLE_CVMH
 AM_CFLAGS += -D_UCVM_ENABLE_CVMH
-MODEL_TARGS += ucvm_model_cvmh.o
 endif
 
 # IVLSU includes

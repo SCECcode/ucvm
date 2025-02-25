@@ -208,7 +208,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    if config_data["Path"] != "openssl" and config_data["Path"] != "sfcvm" and config_data["Path"] != "cca" and config_data["Path"] != "cvms5" :
+    if config_data["Path"] != "openssl" and config_data["Path"] != "sfcvm" and config_data["Path"] != "cca" and config_data["Path"] != "cvms5" and config_data["Path"] != "cvmh" :
       print("\nRunning aclocal")
       aclocal_array = ["aclocal"]
       if os.path.exists("./m4"):
@@ -221,14 +221,14 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
       print("\nRunning automake")
       callAndRecord(["automake", "--add-missing", "--force-missing"])
 
-    if config_data["Path"] == "sfcvm" or config_data["Path"] == "cca" or config_data["Path"] == "cvms5" :
-      if config_data["Path"] == "sfcvm" :
+    if config_data["Path"] == "sfcvm" or config_data["Path"] == "cca" or config_data["Path"] == "cvms5" or config_data["Path"] == "cvmh" :
+      if config_data["Path"] == "sfcvm" or config_data["Path"] == "cvmh":
         print("\nRunning libtoolize")
         callAndRecord(["libtoolize"])
 
       print("\nRunning autoreconf")
       callAndRecord(["autoreconf", "-i"])
-    
+
     print("\nRunning ./configure")
 
     prefix_string="--prefix=" + ucvmpath + "/" + pathname + "/" + config_data["Path"]

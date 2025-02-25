@@ -107,6 +107,15 @@
      extern int cvmhvbn_setparam;
 #endif
 
+#ifdef _UCVM_ENABLE_CVMH
+        extern int cvmh_init;
+        extern int cvmh_query;
+        extern int cvmh_finalize;
+        extern int cvmh_version;
+        extern int cvmh_config;
+        extern int cvmh_setparam;
+#endif
+
 #ifdef _UCVM_ENABLE_CVMHSMBN
         extern int cvmhsmbn_init;
         extern int cvmhsmbn_query;
@@ -509,6 +518,20 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_version = &canvas_version;
                 pptr->model_config = &canvas_config;
                 pptr->model_setparam = &canvas_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_CVMH
+        if (strcmp(conf->label, UCVM_MODEL_CVMH) == 0) {
+                pptr->model_init = &cvmh_init;
+                pptr->model_query = &cvmh_query;
+                pptr->model_finalize = &cvmh_finalize;
+                pptr->model_version = &cvmh_version;
+                pptr->model_config = &cvmh_config;
+                pptr->model_setparam = &cvmh_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;

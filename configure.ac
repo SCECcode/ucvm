@@ -67,12 +67,6 @@ AC_ARG_ENABLE([iobuf],
         [enable_iobuf=yes],
         [enable_iobuf=no])
 
-AC_ARG_ENABLE([model-cvmh],
-        [AS_HELP_STRING([--enable-model-cvmh],
-        [enable model SCEC CVM-H])],
-        [enable_model_cvmh=yes],
-        [enable_model_cvmh=no])
-
 AC_ARG_ENABLE([model-cvms],
         [AS_HELP_STRING([--enable-model-cvms],
         [enable model SCEC CVM-S])],
@@ -198,6 +192,12 @@ AC_ARG_ENABLE([model-canvas],
         [enable model SCEC LINTHURBER])],
         [enable_model_canvas=yes],
         [enable_model_canvas=no])
+
+AC_ARG_ENABLE([model-cvmh],
+        [AS_HELP_STRING([--enable-model-cvmh],
+        [enable model SCEC CVMH])],
+        [enable_model_cvmh=yes],
+        [enable_model_cvmh=no])
 
 AC_ARG_ENABLE([model-cvmhsmbn],
         [AS_HELP_STRING([--enable-model-cvmhsmbn],
@@ -389,29 +389,6 @@ AC_ARG_WITH([cencal-extmodel-path],
   [AS_HELP_STRING([--with-cencal-extmodel-path], [location of the USGS CenCalVM extended etree])],
   [CENCAL_EXTMODEL="$withval"],
   [CENCAL_EXTMODEL="/usr/cencalvm/ext-model.e"])
-fi
-
-# Get SCEC CVM-H library and include locations
-if test "x$enable_model_cvmh" = xyes; then
-AC_ARG_WITH([cvmh-include-path],
-  [AS_HELP_STRING([--with-cvmh-include-path],
-    [location of the SCEC CVM-H headers])],
-  [CVMH_INCL="-I$withval"],
-  [CVMH_INCL="/usr/include/cvmh"])
-AC_ARG_WITH([cvmh-lib-path],
-  [AS_HELP_STRING([--with-cvmh-lib-path], [location of the SCEC CVM-H libraries])],
-  [CVMH_LIB="-L$withval -lvxapi"],
-  [CVMH_LIB="-lvxapi"])
-AC_ARG_WITH([cvmh-model-path],
-  [AS_HELP_STRING([--with-cvmh-model-path], [location of the SCEC CVM-H model files])],
-  [CVMH_MODEL="$withval"],
-  [CVMH_MODEL="/usr/cvmh/bin"])
-
-# Get GCTPC projection library location (CVM-H dependency)
-AC_ARG_WITH([gctpc-lib-path],
-  [AS_HELP_STRING([--with-gctpc-lib-path], [location of the CVM-H GCTPC libraries (CVM-H 11.2.0)])],
-  [CVMH_LIB="$CVMH_LIB -L$withval -lgeo"],
-  [CVMH_LIB="$CVMH_LIB"])
 fi
 
 # Get SCEC CVM-S library and include locations
@@ -743,6 +720,23 @@ AC_ARG_WITH([canvas-model-path],
   [LINTHURBER_MODEL="/usr/canvas/src"])
 fi
 
+# Get SCEC CVMH library and include locations
+if test "x$enable_model_cvmh" = xyes; then
+AC_ARG_WITH([cvmh-include-path],
+  [AS_HELP_STRING([--with-cvmh-include-path],
+    [location of the SCEC CVMH headers])],
+  [CVMH_INCL="-I$withval"],
+  [CVMH_INCL="/usr/include/cvmh"])
+AC_ARG_WITH([cvmh-lib-path],
+  [AS_HELP_STRING([--with-cvmh-lib-path], [location of the SCEC CVMH libraries])],
+  [CVMH_LIB="-L$withval -lcvmh"],
+  [CVMH_LIB="-lcvmh"])
+AC_ARG_WITH([cvmh-model-path],
+  [AS_HELP_STRING([--with-cvmh-model-path], [location of the CVMH model files])],
+  [CVMH_MODEL="$withval"],
+  [CVMH_MODEL="/usr/cvmh/src"])
+fi
+
 # Get SCEC CVMHSMBN library and include locations
 if test "x$enable_model_cvmhsmbn" = xyes; then
 AC_ARG_WITH([cvmhsmbn-include-path],
@@ -995,21 +989,6 @@ if test "x$enable_model_cencal" = xyes; then
 
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CENCAL, false)
-fi
-
-# Check optional SCEC CVM-H installation
-if test "x$enable_model_cvmh" = xyes; then
-   # Setup compiler/linker flags
-   CFLAGS="$CVMH_INCL $CFLAGS"
-   LDFLAGS="$CVMH_LIB $LDFLAGS"
-
-   echo "Checking for SCEC CVM-H"
-   AC_CHECK_LIB(vxapi, vx_getcoord,[AM_CONDITIONAL(UCVM_AM_ENABLE_CVMH, true)], [AC_MSG_ERROR(["SCEC CVM-H / GCTPC library not found; use --with-cvmh-lib-path and --with-gctpc-lib-path"])], [-lgeo -lm])
-   AC_CHECK_HEADER(vx_sub.h, [], [AC_MSG_ERROR(["SCEC CVM-H header not found; use --with-cvmh-include-path"])], [AC_INCLUDES_DEFAULT])
-
-   AC_CHECK_FILE([$CVMH_MODEL], [], [AC_MSG_ERROR(["SCEC CVM-H model dir not found; use --with-cvmh-model-path"])])
-else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMH, false)
 fi
 
 if test "x$enable_static" = xyes; then 
@@ -1358,6 +1337,22 @@ else
 fi
 
 if test "x$enable_static" = xyes; then
+# Check optional SCEC CVMH installation
+if test "x$enable_model_cvmh" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$CVMH_INCL $CFLAGS"
+   LDFLAGS="$CVMH_LIB $LDFLAGS"
+
+   echo "Checking for SCEC CVMH"
+   AC_CHECK_HEADER(cvmh.h,[],[AC_MSG_ERROR(["SCEC CVMH header not found; use --with-cvmh-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMH, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_CVMH, [test x"$enable_model_cvmh" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
 # Check optional SCEC CVMHSMBN installation
 if test "x$enable_model_cvmhsmbn" = xyes; then
    # Setup compiler/linker flags
@@ -1365,7 +1360,7 @@ if test "x$enable_model_cvmhsmbn" = xyes; then
    LDFLAGS="$CVMHSMBN_LIB $LDFLAGS"
 
    echo "Checking for SCEC CVMHSMBN"
-   AC_CHECK_HEADER(cvmhsmbn.h,[],[AC_MSG_ERROR(["SCEC CVMHSMBN header not found; use --with-cvmhibbn-include-path"])],[AC_INCLUDES_DEFAULT])
+   AC_CHECK_HEADER(cvmhsmbn.h,[],[AC_MSG_ERROR(["SCEC CVMHSMBN header not found; use --with-cvmhsmbn-include-path"])],[AC_INCLUDES_DEFAULT])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSMBN, false)
 fi
