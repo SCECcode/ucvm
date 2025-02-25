@@ -1,0 +1,17 @@
+
+setup.list 
+   specify configuration/setup parameters that is module specific
+   module = cvm models, libraries, etrees, references
+
+GENERAL:
+   ConfigureEnv and ConfigureFlags: set for in module's configuration call
+
+   UCVMConfigureFlags: included during UCVM's configure call when the module is being used
+
+   Libraries: library depedency
+
+   Preprocess: Action dependency (example: bring in external code)
+
+NOTE:
+   SFCVM
+
