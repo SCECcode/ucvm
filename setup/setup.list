@@ -56,7 +56,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Ask": "yes",
                         "Libraries": ["euclid3", "proj"],
-                        "md5sum": "c81ef61c1f74f629b8c1404ecb8bb963",
+                        "md5sum": "1c292b2bd9e60b2fc83923fc161ad914",
                         "Order": 24
                 },
                 "CS242": {
@@ -78,7 +78,7 @@
                         "Abbreviation": "sfcvm",
                         "Size": "2.9G",
                         "Path": "sfcvm",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/sfcvm.tar.gz",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/sfcvm.tar.gz",
                         "ConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
                         "macConfigureFlags": "CC=gcc-10 CXX=g++-10",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/data/sfcvm",
@@ -94,7 +94,7 @@
                         ],
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "1461cb36a2975760e7be7caec91d6ff5",
+                        "md5sum": "4f23367483d596a2e27b840df415d5b9",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
