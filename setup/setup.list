@@ -287,7 +287,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/data/i26",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "c4cc268104738a32ca8e3467f61e76b2",
+                        "md5sum": "ae093c3772ac053742bb3a9f845996da",
 			"Order": 6		
 		},
 		"CVM-S4": {
@@ -337,7 +337,7 @@
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "9c7ad3bbb4dae8a511ecf5b815761031",
+                        "md5sum": "bcfe44546dc94a05f0ab201e22ea99f8",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
