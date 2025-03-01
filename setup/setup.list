@@ -283,11 +283,11 @@
                         "Abbreviation": "cvmsi",
                         "Size": "1.6G",
 			"Path": "cvmsi",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/cvmsi.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/cvmsi.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/data/i26",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "cee8a1619f9c34e6ddd852fe0950fbd5",
+                        "md5sum": "c4cc268104738a32ca8e3467f61e76b2",
 			"Order": 6		
 		},
 		"CVM-S4": {
@@ -337,7 +337,7 @@
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "84a61dd4099d7ed2c22a119d9fe3ead4",
+                        "md5sum": "9c7ad3bbb4dae8a511ecf5b815761031",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
