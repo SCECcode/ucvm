@@ -56,7 +56,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Ask": "yes",
                         "Libraries": ["euclid3", "proj"],
-                        "md5sum": "1c292b2bd9e60b2fc83923fc161ad914",
+                        "md5sum": "30090fbd79a21bbf65ae19aae14a9040",
                         "Order": 24
                 },
                 "CS242": {
@@ -94,7 +94,7 @@
                         ],
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "4f23367483d596a2e27b840df415d5b9",
+                        "md5sum": "64c667ebb5ad9a48b2fe81e7a5999f31",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
@@ -263,7 +263,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "4341cd69bc6dd1294cf4bab98fc884f5",
+                        "md5sum": "226ef23304004acd56e5c8724c62cd42",
 			"Order": 8
 		},
 		"CenCalVM": {
