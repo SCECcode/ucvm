@@ -208,26 +208,31 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    if config_data["Path"] != "openssl" and config_data["Path"] != "sfcvm" and config_data["Path"] != "cca" and config_data["Path"] != "cvms5" and config_data["Path"] != "cvmh" and config_data["Path"] != "cs248":
-      print("\nRunning aclocal")
-      aclocal_array = ["aclocal"]
-      if os.path.exists("./m4"):
-          aclocal_array += ["-I", "m4"]
-      callAndRecord(aclocal_array)
+    libtoolize_list=["sfcvm","cvmh","cs248","cvmsi"]
+    autoreconf_list=["sfcvm","cca","cvms5","cvmh","cs248"]
+    skip_conf_list = "openssl"]
 
-      print("\nRunning autoconf")
-      callAndRecord(["autoconf"])
+    if config_data["Path"] in skip_conf_list :
+        print("\nNo need to configure -- ", config_data["Path"]);
+    else:
+        if config_data["Path"] in libtoolize_list :
+          print("\nRunning libtoolize")
+          callAndRecord(["libtoolize"])
+        if config_data["Path"] in autoreconf_list :
+          print("\nRunning autoreconf")
+          callAndRecord(["autoreconf", "-i"])
+        else:
+          print("\nRunning aclocal")
+          aclocal_array = ["aclocal"]
+          if os.path.exists("./m4"):
+              aclocal_array += ["-I", "m4"]
+          callAndRecord(aclocal_array)
 
-      print("\nRunning automake")
-      callAndRecord(["automake", "--add-missing", "--force-missing"])
+          print("\nRunning autoconf")
+          callAndRecord(["autoconf"])
 
-    if config_data["Path"] == "sfcvm" or config_data["Path"] == "cca" or config_data["Path"] == "cvms5" or config_data["Path"] == "cvmh" or config_data["Path"] == "cs248":
-      if config_data["Path"] == "sfcvm" or config_data["Path"] == "cvmh" or config_data["Path"] == "cs248":
-        print("\nRunning libtoolize")
-        callAndRecord(["libtoolize"])
-
-      print("\nRunning autoreconf")
-      callAndRecord(["autoreconf", "-i"])
+          print("\nRunning automake")
+          callAndRecord(["automake", "--add-missing", "--force-missing"])
 
     print("\nRunning ./configure")
 
