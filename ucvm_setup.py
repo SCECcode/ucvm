@@ -210,7 +210,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
     libtoolize_list=["sfcvm","cvmh","cs248","cvmsi"]
     autoreconf_list=["sfcvm","cca","cvms5","cvmh","cs248"]
-    skip_conf_list = "openssl"]
+    skip_conf_list = ["openssl"]
 
     if config_data["Path"] in skip_conf_list :
         print("\nNo need to configure -- ", config_data["Path"]);
