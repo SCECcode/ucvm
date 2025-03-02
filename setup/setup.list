@@ -352,7 +352,7 @@
 
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "5e2499413e9176cb22f8b3507d67e802",
+                        "md5sum": "49ee9def9e7e8793b5410dd6bbfb3022",
 			"Order": 1		
 		}
 	},
