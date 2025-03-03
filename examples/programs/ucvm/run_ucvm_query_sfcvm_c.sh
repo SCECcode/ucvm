@@ -1,11 +1,4 @@
 #!/bin/bash
-#
-#  ucvm_query_sfcvm_c
-#
-#    -c ge : query by elevation
-#    -c gd : query by depth
-#
-
 
 if [ -z "$UCVM_INSTALL_PATH" ]; then
   echo "Need to set UCVM_INSTALL_PATH to run >" ${0##*/} 
