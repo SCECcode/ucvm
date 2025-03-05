@@ -12,7 +12,7 @@
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "",
                         "UCVMConfigureFlags": "--enable-model-sfbcvm --with-sfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfbcvm/lib --with-sfbcvm-include-path=${UCVM_INSTALL_PATH}/model/sfbcvm/include",
-                        "Ask": "no",
+                        "Ask": "yes",
                         "Libraries": [],
                         "md5sum": "abc",
                         "Order": 28 

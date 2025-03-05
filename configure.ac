@@ -1354,6 +1354,22 @@ else
 fi
 
 if test "x$enable_static" = xyes; then
+# Check optional SCEC SFBCVM installation
+if test "x$enable_model_canvas" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$SFBCVM_INCL $CFLAGS"
+   LDFLAGS="$SFBCVM_LIB $LDFLAGS"
+
+   echo "Checking for SCEC SFBCVM"
+   AC_CHECK_HEADER(sfbcvm.h,[],[AC_MSG_ERROR(["SCEC SFBCVM header not found; use --with-sfbcvm-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SFBCVM, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SFBCVM, [test x"$enable_model_sfbcvm" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
 # Check optional SCEC CVMH installation
 if test "x$enable_model_cvmh" = xyes; then
    # Setup compiler/linker flags

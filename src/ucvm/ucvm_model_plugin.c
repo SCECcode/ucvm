@@ -534,7 +534,7 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
         }
 #endif
 #ifdef _UCVM_ENABLE_SFBCVM
-        if (strcmp(conf->label, UCVM_MODEL_CANVAS) == 0) {
+        if (strcmp(conf->label, UCVM_MODEL_SFBCVM) == 0) {
                 pptr->model_init = &sfbcvm_init;
                 pptr->model_query = &sfbcvm_query;
                 pptr->model_finalize = &sfbcvm_finalize;
