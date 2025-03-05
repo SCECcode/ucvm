@@ -708,16 +708,33 @@ if test "x$enable_model_canvas" = xyes; then
 AC_ARG_WITH([canvas-include-path],
   [AS_HELP_STRING([--with-canvas-include-path],
     [location of the SCEC CANVAS headers])],
-  [LINTHURBER_INCL="-I$withval"],
-  [LINTHURBER_INCL="/usr/include/canvas"])
+  [CANVAS_INCL="-I$withval"],
+  [CANVAS_INCL="/usr/include/canvas"])
 AC_ARG_WITH([canvas-lib-path],
   [AS_HELP_STRING([--with-canvas-lib-path], [location of the SCEC CANVAS libraries])],
-  [LINTHURBER_LIB="-L$withval -lcanvas"],
-  [LINTHURBER_LIB="-lcanvas"])
+  [CANVAS_LIB="-L$withval -lcanvas"],
+  [CANVAS_LIB="-lcanvas"])
 AC_ARG_WITH([canvas-model-path],
   [AS_HELP_STRING([--with-canvas-model-path], [location of the CANVAS model files])],
-  [LINTHURBER_MODEL="$withval"],
-  [LINTHURBER_MODEL="/usr/canvas/src"])
+  [CANVAS_MODEL="$withval"],
+  [CANVAS_MODEL="/usr/canvas/src"])
+fi
+
+# Get SCEC SFBCVM library and include locations
+if test "x$enable_model_sfbcvm" = xyes; then
+AC_ARG_WITH([sfbcvm-include-path],
+  [AS_HELP_STRING([--with-sfbcvm-include-path],
+    [location of the SCEC SFBCVM headers])],
+  [SFBCVM_INCL="-I$withval"],
+  [SFBCVM_INCL="/usr/include/sfbcvm"])
+AC_ARG_WITH([sfbcvm-lib-path],
+  [AS_HELP_STRING([--with-sfbcvm-lib-path], [location of the SCEC SFBCVM libraries])],
+  [SFBCVM_LIB="-L$withval -lsfbcvm"],
+  [SFBCVM_LIB="-lsfbcvm"])
+AC_ARG_WITH([canvas-model-path],
+  [AS_HELP_STRING([--with-sfbcvm-model-path], [location of the SFBCVM model files])],
+  [SFBCVM_MODEL="$withval"],
+  [SFBCVM_MODEL="/usr/sfbcvm/src"])
 fi
 
 # Get SCEC CVMH library and include locations

@@ -152,6 +152,15 @@
         extern int canvas_setparam;
 #endif
 
+#ifdef _UCVM_ENABLE_SFBCVM
+        extern int sfbcvm_init;
+        extern int sfbcvm_query;
+        extern int sfbcvm_finalize;
+        extern int sfbcvm_version;
+        extern int sfbcvm_config;
+        extern int sfbcvm_setparam;
+#endif
+
 #ifdef _UCVM_ENABLE_CVMHSBCBN
         extern int cvmhsbcbn_init;
         extern int cvmhsbcbn_query;
@@ -518,6 +527,20 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_version = &canvas_version;
                 pptr->model_config = &canvas_config;
                 pptr->model_setparam = &canvas_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_SFBCVM
+        if (strcmp(conf->label, UCVM_MODEL_CANVAS) == 0) {
+                pptr->model_init = &sfbcvm_init;
+                pptr->model_query = &sfbcvm_query;
+                pptr->model_finalize = &sfbcvm_finalize;
+                pptr->model_version = &sfbvm_version;
+                pptr->model_config = &sfbcvm_config;
+                pptr->model_setparam = &sfbcvm_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;

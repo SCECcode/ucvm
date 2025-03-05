@@ -3,6 +3,20 @@
                "Version": "22.7"
                },
 	"models": {
+               "SFBCVM": {
+                        "Version": "1.0",
+                        "Abbreviation": "sfbcvm",
+                        "Size": "1.0M",
+                        "Path": "sfbcvm",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/sfbcvm.tar.gz",
+                        "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
+                        "ConfigureFlags": "",
+                        "UCVMConfigureFlags": "--enable-model-sfbcvm --with-sfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfbcvm/lib --with-sfbcvm-include-path=${UCVM_INSTALL_PATH}/model/sfbcvm/include",
+                        "Ask": "no",
+                        "Libraries": [],
+                        "md5sum": "abc",
+                        "Order": 28 
+                },
                "CANVAS": {
                         "Version": "1.0",
                         "Abbreviation": "canvas",
