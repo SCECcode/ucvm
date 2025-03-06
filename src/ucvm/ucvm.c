@@ -1267,9 +1267,9 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
     return(UCVM_CODE_ERROR);
   }
 #endif
-#ifdef _UCVM_ENABLE_SFBCVM
+#ifdef _UCVM_ENABLE_UWSFBCVM
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
-                     UCVM_MODEL_SFBCVM, "", res, numinst++, *len)
+                     UCVM_MODEL_UWSFBCVM, "", res, numinst++, *len)
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }

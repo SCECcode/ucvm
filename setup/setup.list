@@ -3,15 +3,15 @@
                "Version": "22.7"
                },
 	"models": {
-               "SFBCVM": {
+               "UWSFBCVM": {
                         "Version": "1.0",
-                        "Abbreviation": "sfbcvm",
+                        "Abbreviation": "uwsfbcvm",
                         "Size": "1.0M",
-                        "Path": "sfbcvm",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/sfbcvm.tar.gz",
+                        "Path": "uwsfbcvm",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/uwsfbcvm.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "",
-                        "UCVMConfigureFlags": "--enable-model-sfbcvm --with-sfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfbcvm/lib --with-sfbcvm-include-path=${UCVM_INSTALL_PATH}/model/sfbcvm/include",
+                        "UCVMConfigureFlags": "--enable-model-uwsfbcvm --with-uwsfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/lib --with-uwsfbcvm-include-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/include",
                         "Ask": "yes",
                         "Libraries": [],
                         "md5sum": "abc",

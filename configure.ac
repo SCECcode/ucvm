@@ -720,21 +720,21 @@ AC_ARG_WITH([canvas-model-path],
   [CANVAS_MODEL="/usr/canvas/src"])
 fi
 
-# Get SCEC SFBCVM library and include locations
-if test "x$enable_model_sfbcvm" = xyes; then
-AC_ARG_WITH([sfbcvm-include-path],
-  [AS_HELP_STRING([--with-sfbcvm-include-path],
-    [location of the SCEC SFBCVM headers])],
-  [SFBCVM_INCL="-I$withval"],
-  [SFBCVM_INCL="/usr/include/sfbcvm"])
-AC_ARG_WITH([sfbcvm-lib-path],
-  [AS_HELP_STRING([--with-sfbcvm-lib-path], [location of the SCEC SFBCVM libraries])],
-  [SFBCVM_LIB="-L$withval -lsfbcvm"],
-  [SFBCVM_LIB="-lsfbcvm"])
+# Get SCEC UWSFBCVM library and include locations
+if test "x$enable_model_uwsfbcvm" = xyes; then
+AC_ARG_WITH([uwsfbcvm-include-path],
+  [AS_HELP_STRING([--with-uwsfbcvm-include-path],
+    [location of the SCEC UWSFBCVM headers])],
+  [UWSFBCVM_INCL="-I$withval"],
+  [UWSFBCVM_INCL="/usr/include/uwsfbcvm"])
+AC_ARG_WITH([uwsfbcvm-lib-path],
+  [AS_HELP_STRING([--with-uwsfbcvm-lib-path], [location of the SCEC UWSFBCVM libraries])],
+  [UWSFBCVM_LIB="-L$withval -luwsfbcvm"],
+  [UWSFBCVM_LIB="-luwsfbcvm"])
 AC_ARG_WITH([canvas-model-path],
-  [AS_HELP_STRING([--with-sfbcvm-model-path], [location of the SFBCVM model files])],
-  [SFBCVM_MODEL="$withval"],
-  [SFBCVM_MODEL="/usr/sfbcvm/src"])
+  [AS_HELP_STRING([--with-uwsfbcvm-model-path], [location of the UWSFBCVM model files])],
+  [UWSFBCVM_MODEL="$withval"],
+  [UWSFBCVM_MODEL="/usr/uwsfbcvm/src"])
 fi
 
 # Get SCEC CVMH library and include locations
@@ -1354,19 +1354,19 @@ else
 fi
 
 if test "x$enable_static" = xyes; then
-# Check optional SCEC SFBCVM installation
+# Check optional SCEC UWSFBCVM installation
 if test "x$enable_model_canvas" = xyes; then
    # Setup compiler/linker flags
-   CFLAGS="$SFBCVM_INCL $CFLAGS"
-   LDFLAGS="$SFBCVM_LIB $LDFLAGS"
+   CFLAGS="$UWSFBCVM_INCL $CFLAGS"
+   LDFLAGS="$UWSFBCVM_LIB $LDFLAGS"
 
-   echo "Checking for SCEC SFBCVM"
-   AC_CHECK_HEADER(sfbcvm.h,[],[AC_MSG_ERROR(["SCEC SFBCVM header not found; use --with-sfbcvm-include-path"])],[AC_INCLUDES_DEFAULT])
+   echo "Checking for SCEC UWSFBCVM"
+   AC_CHECK_HEADER(uwsfbcvm.h,[],[AC_MSG_ERROR(["SCEC UWSFBCVM header not found; use --with-uwsfbcvm-include-path"])],[AC_INCLUDES_DEFAULT])
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_SFBCVM, false)
+   AM_CONDITIONAL(UCVM_AM_ENABLE_UWSFBCVM, false)
 fi
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_SFBCVM, [test x"$enable_model_sfbcvm" = xyes])
+   AM_CONDITIONAL(UCVM_AM_ENABLE_UWSFBCVM, [test x"$enable_model_uwsfbcvm" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then
