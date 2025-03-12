@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwsfbcvm --with-uwsfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/lib --with-uwsfbcvm-include-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "abc",
+                        "md5sum": "3a4cd51049e3a4d5ccf5bcca27ceeb47",
                         "Order": 28 
                 },
                "CANVAS": {
@@ -22,13 +22,13 @@
                         "Abbreviation": "canvas",
                         "Size": "1.0M",
                         "Path": "canvas",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/canvas.tar.gz",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/canvas.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "",
                         "UCVMConfigureFlags": "--enable-model-canvas --with-canvas-lib-path=${UCVM_INSTALL_PATH}/model/canvas/lib --with-canvas-include-path=${UCVM_INSTALL_PATH}/model/canvas/include",
                         "Ask": "no",
                         "Libraries": [],
-                        "md5sum": "abc",
+                        "md5sum": "f330a9556b8e6cf9829cbc3d5b7c2c0d",
                         "Order": 27
                 },
                "SJFZ": {
