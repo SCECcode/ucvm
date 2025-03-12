@@ -1,3 +1,8 @@
+## 2025-03-15 Mei-Hui Su <mei@usc.edu>
+* Added CANVAS 
+* Added UWSFBCVM
+* Added CVM_LARGEDATA_DIR option to reduce data file transfers
+
 ## 2024-08-15 Mei-Hui Su <mei@usc.edu>
 * Added CS248 similar to CS242
 
