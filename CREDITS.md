@@ -52,8 +52,20 @@ Researchers that use the UCVM software should cite the primary UCVM software ref
 ### Wasatch Model:
 * Magistrale, H, Olsen, KB, Pechmann, JC (2008) Construction and verification of a Wasatch front community velocity model. Technical report no. HQGR.060012, 14 pp. Reston, VA: US Geological Survey.
 
-### Lin-Thurber Model
+### Lin-Thurber Model:
 * Lin, G., C. H. Thurber, H. Zhang, E. Hauksson, P. Shearer, F. Waldhauser, T. M. Brocher, and J. Hardebeck (2010), A California statewide three-dimensional seismic velocity model from both absolute and differential times. Bulletin of the Seismological Society of America, 100, 225-240. doi: 10.1785/0120090028. SCEC Contribution 1360
+
+### USGS San Francisco Bay Model:
+
+### UW San Francisco Bay Model:
+
+### CANVAS Model:
+* Doody, C., Rodgers, A., Afanasiev, M., Boehm, C., Krischer, L., Chiang, A., & Simmons, N. (2023). 
+       CANVAS: An adjoint waveform tomography model of California and Nevada.
+       Journal of Geophysical Research: Solid Earth, 128(12). https://doi.org/10.1029/2023JB027583
+* Doody, C. (2023). Dataset for "CANVAS: An adjoint waveform tomography model of California and Nevada"
+       [Data set]. In Journal of Geophysical Research: Solid Earth (Vol. 128, Number 12). 
+       Zenodo. https://doi.org/10.5281/zenodo.8415562
 
 ### Ely/Jordan GTL 
 * Ely, G., T. H. Jordan, P. Small, P. J. Maechling (2010), A Vs30-derived Near-surface Seismic Velocity Model Abstract S51A-1907, presented at 2010 Fall Meeting, AGU, San Francisco, Calif., 13-17 Dec.
