@@ -26,7 +26,7 @@
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "",
                         "UCVMConfigureFlags": "--enable-model-canvas --with-canvas-lib-path=${UCVM_INSTALL_PATH}/model/canvas/lib --with-canvas-include-path=${UCVM_INSTALL_PATH}/model/canvas/include",
-                        "Ask": "no",
+                        "Ask": "yes",
                         "Libraries": [],
                         "md5sum": "f330a9556b8e6cf9829cbc3d5b7c2c0d",
                         "Order": 27
