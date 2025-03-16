@@ -1510,6 +1510,11 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
     return(UCVM_CODE_ERROR);
   }
   if (ucvm_save_resource(UCVM_RESOURCE_MAP, UCVM_MODEL_CRUSTAL,
+		     UCVM_MAP_UCVM_UTAH, "", res, numinst++, *len) 
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+  if (ucvm_save_resource(UCVM_RESOURCE_MAP, UCVM_MODEL_CRUSTAL,
 		     UCVM_MAP_YONG, "", res, numinst++, *len) 
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
