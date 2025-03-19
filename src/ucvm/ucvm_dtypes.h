@@ -121,6 +121,7 @@
 
 /* Predefined map interfaces */
 #define UCVM_MAP_UCVM "ucvm"
+#define UCVM_MAP_UCVM_UTAH "ucvm_utah"
 #define UCVM_MAP_YONG "yong"
 
 
