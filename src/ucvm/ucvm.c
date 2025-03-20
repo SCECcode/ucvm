@@ -212,13 +212,6 @@ int ucvm_init(const char *config)
     return(UCVM_CODE_ERROR);
   }
 
-  if (ucvm_map_init(UCVM_MAP_UCVM_UTAH,
-                    ucvm_find_name(ucvm_cfg, "ucvm_utah_mappath")->value)
-      != UCVM_CODE_SUCCESS) {
-    fprintf(stderr, "Failed to initialize UCVM map\n");
-    return(UCVM_CODE_ERROR);
-  }
-
   ucvm_init_flag = 1;
   return(UCVM_CODE_SUCCESS);
 }
