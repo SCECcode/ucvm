@@ -89,7 +89,7 @@
 #define UCVM_MODEL_CS242 "cs242"
 
 #define UCVM_MODEL_SFCVM "sfcvm"
-#define UCVM_MODEL_LINTHURBER "linthurber"
+#define UCVM_MODEL_UWLINCA "uwlinca"
 #define UCVM_MODEL_CANVAS "canvas"
 #define UCVM_MODEL_UWSFBCVM "uwsfbcvm"
 

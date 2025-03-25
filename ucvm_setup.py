@@ -535,8 +535,8 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
         str=str+"install_name_tool -change libcvmhvbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhvbn/lib/libcvmhvbn.so $1\n"
     if "SFCVM" in modelsToInstall:
         str=str+"install_name_tool -change libsfcvm.so ${MY_UCVM_INSTALL_PATH}/model/sfcvm/lib/libsfcvm.so $1\n"
-    if "LINTHURBER" in modelsToInstall:
-        str=str+"install_name_tool -change liblinthurber.so ${MY_UCVM_INSTALL_PATH}/model/linthurber/lib/liblinthurber.so $1\n"
+    if "UWLINCA" in modelsToInstall:
+        str=str+"install_name_tool -change libuwlinca.so ${MY_UCVM_INSTALL_PATH}/model/uwlinca/lib/libuwlinca.so $1\n"
     if "CVMHSMBN" in modelsToInstall:
         str=str+"install_name_tool -change libcvmhsmbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhsmbn/lib/libcvmhsmbn.so $1\n"
     if "CVMHSBCBN" in modelsToInstall:

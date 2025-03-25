@@ -134,13 +134,13 @@
         extern int sfcvm_setparam;
 #endif
 
-#ifdef _UCVM_ENABLE_LINTHURBER
-        extern int linthurber_init;
-        extern int linthurber_query;
-        extern int linthurber_finalize;
-        extern int linthurber_version;
-        extern int linthurber_config;
-        extern int linthurber_setparam;
+#ifdef _UCVM_ENABLE_UWLINCA
+        extern int uwlinca_init;
+        extern int uwlinca_query;
+        extern int uwlinca_finalize;
+        extern int uwlinca_version;
+        extern int uwlinca_config;
+        extern int uwlinca_setparam;
 #endif
 
 #ifdef _UCVM_ENABLE_CANVAS
@@ -505,14 +505,14 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 }
         }
 #endif
-#ifdef _UCVM_ENABLE_LINTHURBER
-        if (strcmp(conf->label, UCVM_MODEL_LINTHURBER) == 0) {
-                pptr->model_init = &linthurber_init;
-                pptr->model_query = &linthurber_query;
-                pptr->model_finalize = &linthurber_finalize;
-                pptr->model_version = &linthurber_version;
-                pptr->model_config = &linthurber_config;
-                pptr->model_setparam = &linthurber_setparam;
+#ifdef _UCVM_ENABLE_UWLINCA
+        if (strcmp(conf->label, UCVM_MODEL_UWLINCA) == 0) {
+                pptr->model_init = &uwlinca_init;
+                pptr->model_query = &uwlinca_query;
+                pptr->model_finalize = &uwlinca_finalize;
+                pptr->model_version = &uwlinca_version;
+                pptr->model_config = &uwlinca_config;
+                pptr->model_setparam = &uwlinca_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;

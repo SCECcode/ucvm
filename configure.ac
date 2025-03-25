@@ -181,15 +181,15 @@ AC_ARG_ENABLE([model-sfcvm],
         [enable_model_sfcvm=yes],
         [enable_model_sfcvm=no])
 
-AC_ARG_ENABLE([model-linthurber],
-        [AS_HELP_STRING([--enable-model-linthurber],
-        [enable model SCEC LINTHURBER])],
-        [enable_model_linthurber=yes],
-        [enable_model_linthurber=no])
+AC_ARG_ENABLE([model-uwlinca],
+        [AS_HELP_STRING([--enable-model-uwlinca],
+        [enable model SCEC UWLINCA])],
+        [enable_model_uwlinca=yes],
+        [enable_model_uwlinca=no])
 
 AC_ARG_ENABLE([model-canvas],
         [AS_HELP_STRING([--enable-model-canvas],
-        [enable model SCEC LINTHURBER])],
+        [enable model SCEC UWLINCA])],
         [enable_model_canvas=yes],
         [enable_model_canvas=no])
 
@@ -686,21 +686,21 @@ AC_ARG_WITH([sfcvm-model-path],
   [SFCVM_MODEL="/usr/sfcvm/src"])
 fi
 
-# Get SCEC LINTHURBER library and include locations
-if test "x$enable_model_linthurber" = xyes; then
-AC_ARG_WITH([linthurber-include-path],
-  [AS_HELP_STRING([--with-linthurber-include-path],
-    [location of the SCEC LINTHURBER headers])],
-  [LINTHURBER_INCL="-I$withval"],
-  [LINTHURBER_INCL="/usr/include/linthurber"])
-AC_ARG_WITH([linthurber-lib-path],
-  [AS_HELP_STRING([--with-linthurber-lib-path], [location of the SCEC LINTHURBER libraries])],
-  [LINTHURBER_LIB="-L$withval -llinthurber"],
-  [LINTHURBER_LIB="-llinthurber"])
-AC_ARG_WITH([linthurber-model-path],
-  [AS_HELP_STRING([--with-linthurber-model-path], [location of the LINTHURBER model files])],
-  [LINTHURBER_MODEL="$withval"],
-  [LINTHURBER_MODEL="/usr/linthurber/src"])
+# Get SCEC UWLINCA library and include locations
+if test "x$enable_model_uwlinca" = xyes; then
+AC_ARG_WITH([uwlinca-include-path],
+  [AS_HELP_STRING([--with-uwlinca-include-path],
+    [location of the SCEC UWLINCA headers])],
+  [UWLINCA_INCL="-I$withval"],
+  [UWLINCA_INCL="/usr/include/uwlinca"])
+AC_ARG_WITH([uwlinca-lib-path],
+  [AS_HELP_STRING([--with-uwlinca-lib-path], [location of the SCEC UWLINCA libraries])],
+  [UWLINCA_LIB="-L$withval -luwlinca"],
+  [UWLINCA_LIB="-luwlinca"])
+AC_ARG_WITH([uwlinca-model-path],
+  [AS_HELP_STRING([--with-uwlinca-model-path], [location of the UWLINCA model files])],
+  [UWLINCA_MODEL="$withval"],
+  [UWLINCA_MODEL="/usr/uwlinca/src"])
 fi
 
 # Get SCEC CANVAS library and include locations
@@ -1322,19 +1322,19 @@ else
 fi
 
 if test "x$enable_static" = xyes; then
-# Check optional SCEC LINTHURBER installation
-if test "x$enable_model_linthurber" = xyes; then
+# Check optional SCEC UWLINCA installation
+if test "x$enable_model_uwlinca" = xyes; then
    # Setup compiler/linker flags
-   CFLAGS="$LINTHURBER_INCL $CFLAGS"
-   LDFLAGS="$LINTHURBER_LIB $LDFLAGS"
+   CFLAGS="$UWLINCA_INCL $CFLAGS"
+   LDFLAGS="$UWLINCA_LIB $LDFLAGS"
 
-   echo "Checking for SCEC LINTHURBER"
-   AC_CHECK_HEADER(linthurber.h,[],[AC_MSG_ERROR(["SCEC LINTHURBER header not found; use --with-linthurber-include-path"])],[AC_INCLUDES_DEFAULT])
+   echo "Checking for SCEC UWLINCA"
+   AC_CHECK_HEADER(uwlinca.h,[],[AC_MSG_ERROR(["SCEC UWLINCA header not found; use --with-uwlinca-include-path"])],[AC_INCLUDES_DEFAULT])
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_LINTHURBER, false)
+   AM_CONDITIONAL(UCVM_AM_ENABLE_UWLINCA, false)
 fi
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_LINTHURBER, [test x"$enable_model_linthurber" = xyes])
+   AM_CONDITIONAL(UCVM_AM_ENABLE_UWLINCA, [test x"$enable_model_uwlinca" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then

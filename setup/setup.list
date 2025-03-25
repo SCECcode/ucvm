@@ -45,18 +45,18 @@
                         "md5sum": "9eed07e958b71c7c9004dec7f0f9137f",
                         "Order": 26
                 },
-                "LINTHURBER": {
+                "UWLINCA": {
                         "Version": "1.0.1",
-                        "Abbreviation": "linthurber",
+                        "Abbreviation": "uwlinca",
                         "Size": "2G",
-                        "Path": "linthurber",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/linthurber.tar.gz",
+                        "Path": "uwlinca",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/uwlinca.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
-                        "ConfigureFlags": "",
-                        "UCVMConfigureFlags": "--enable-model-linthurber --with-linthurber-lib-path=${UCVM_INSTALL_PATH}/model/linthurber/lib --with-linthurber-include-path=${UCVM_INSTALL_PATH}/model/linthurber/include",
-                        "Ask": "no",
-                        "Libraries": [],
-                        "md5sum": "c0200c3b75b984f73fc17763a8afcf84",
+                        "ConfigureFlags": "--with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
+                        "UCVMConfigureFlags": "--enable-model-uwlinca --with-uwlinca-lib-path=${UCVM_INSTALL_PATH}/model/uwlinca/lib --with-uwlinca-include-path=${UCVM_INSTALL_PATH}/model/uwlinca/include",
+                        "Ask": "yes",
+                        "Libraries": ["proj"],
+                        "md5sum": "70cffa5b1bb59b449ee9cd5b83dfdb44",
                         "Order": 25
                 },
                 "CS248": {
