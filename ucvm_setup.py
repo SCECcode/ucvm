@@ -82,24 +82,20 @@ def callAndRecord(command, nocall = False, noshell = True):
 
     new_env = {}
     my_env = os.environ.copy()
-    new_env["PATH"]=my_env["PATH"]
-    if len(needs_env) != 0 :  ## add required environment 
+    if len(needs_env) != 0 :  ## check on required environment 
       for env in needs_env:
         ## pick it up from current environment
         if env in my_env.keys(): 
           new_env[env] = my_env[env]
         else:
-          print("ERROR..",env," is not available");
+          print("ERROR>>",env,"<< expected env is not available");
           exit(1)
 
     print('  ==> command used.. '+'_'.join(command))
     if nocall == False:
         if noshell == False :
             my_command=' '.join(command)
-            if len(needs_env) != 0 :  ## add required environment 
-              proc = Popen([ my_command ], env=new_env, shell=True, stdout = PIPE, stderr = PIPE)
-            else:
-              proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
+            proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
             retout, reterr = proc.communicate()
             retVal = proc.poll()
         else:

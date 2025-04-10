@@ -94,7 +94,7 @@
                         "Path": "sfcvm",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/sfcvm.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","CVM_LARGEDATA_DIR"],
-                        "ConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
+                        "mohoConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
                         "macConfigureFlags": "CC=gcc-10 CXX=g++-10",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/data/sfcvm",
                         "Preprocess" : [
@@ -490,7 +490,7 @@
 			"Path": "proj",
                         "Lib": "proj-8.1.1",
                         "Size": "95M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/proj-8.1.1.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/lib/proj-8.1.1.tar.gz",
 			"Required": "yes",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-tiff --without-curl TIFF_LIBS='-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff -L${UCVM_INSTALL_PATH}/lib/openssl/lib -lcrypto -lssl' TIFF_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/tiff/include' SQLITE3_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/sqlite/include' SQLITE3_LIBS='-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3' SQLITE3='${UCVM_INSTALL_PATH}/lib/sqlite/bin/sqlite3'",
@@ -506,7 +506,7 @@
                                "md5sum": "b97c14d7f9843cb22d40682822f0b2f6"
                              }
                         ],
-                        "md5sum": "2d984eea6b8b04c146499aa3c5210f42",
+                        "md5sum": "5939f3dbfd0388c5d2b8e2830597f8e5",
 			"Ask": "no",
                         "Needs":"TIFF OpenSSL Sqlite",
                         "oldNeeds":"TIFF OpenSSL Curl Sqlite"
