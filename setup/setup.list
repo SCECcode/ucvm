@@ -440,11 +440,11 @@
 			"Path": "openssl",
                         "Lib": "openssl-3.0.8",
                         "Size": "33M",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/lib/openssl-3.0.8.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/lib/openssl-3.0.8.tar.gz",
                         "ConfigureFlags": "--libdir=lib",
                         "UCVMConfigureFlags": "--with-openssl-include-path=${UCVM_INSTALL_PATH}/lib/openssl/include --with-openssl-lib-path=${UCVM_INSTALL_PATH}/lib/openssl/lib",
 			"Required": "yes",
-                        "md5sum": "2e0aa617fb80a891b023eae0dddb14bd",
+                        "md5sum": "ca5e72b220b60ccdcc351e468f8d2252",
 			"Ask": "no",
                         "Needs":""
 		},
