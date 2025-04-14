@@ -1,4 +1,4 @@
-#!/usr/bin/env python3 -u
+#!/usr/bin/env python3
 #
 # This is the install script for the UCVM software framework.
 # This work in conjuction with scripts in the largefiles directory. The largefile scripts will download and distribute
