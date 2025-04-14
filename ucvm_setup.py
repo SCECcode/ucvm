@@ -35,6 +35,7 @@ skip_ask_path = False
 
 ## track env of current model/lib etc
 needs_env = []
+needs_optional_env = []
 
 # Should we abort after testing system conditions?
 error_out = False
@@ -90,6 +91,14 @@ def callAndRecord(command, nocall = False, noshell = True):
         else:
           print("ERROR>>",env,"<< expected env is not available");
           exit(1)
+
+    if len(needs_optional_env) != 0 :  ## check on optional environment 
+      for env in needs_optional_env:
+        ## pick it up from current environment
+        if env in my_env.keys(): 
+          new_env[env] = my_env[env]
+        else:
+          print("WARN>>",env,"<< optional env is not set");
 
     print('  ==> command used.. '+'_'.join(command))
     if nocall == False:
