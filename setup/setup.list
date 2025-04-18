@@ -384,7 +384,7 @@
 
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "49ee9def9e7e8793b5410dd6bbfb3022",
+                        "md5sum": "d493f94f048a73eec11c40c762ee8469",
 			"Order": 1		
 		}
 	},
