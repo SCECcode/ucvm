@@ -3,6 +3,9 @@
 #
 bin_PROGRAMS=
 
+if UCVM_AM_ENABLE_CANVAS
+endif
+
 if UCVM_AM_ENABLE_CVMH
 bin_PROGRAMS += run_ucvm_query_cvmh.sh
 run_ucvm_query_cvmh_sh_SOURCES = run_ucvm_query_cvmh.sh

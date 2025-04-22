@@ -28,7 +28,7 @@
                         "UCVMConfigureFlags": "--enable-model-canvas --with-canvas-lib-path=${UCVM_INSTALL_PATH}/model/canvas/lib --with-canvas-include-path=${UCVM_INSTALL_PATH}/model/canvas/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "53563bded0ce729eaed86c15bde2f238",
+                        "md5sum": "2c8661b39bcf40f999422b75ba132b89",
                         "Order": 27
                 },
                "SJFZ": {
@@ -71,7 +71,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Ask": "yes",
                         "Libraries": ["euclid3", "proj"],
-                        "md5sum": "30090fbd79a21bbf65ae19aae14a9040",
+                        "md5sum": "80f4d01074a0c5bd8a8bbdb7b596f9c5",
                         "Order": 24
                 },
                 "CS242": {
@@ -274,11 +274,11 @@
                         "Abbreviation": "albacore",
                         "Size": "2.3M",
 			"Path": "albacore",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_2/model/albacore.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/albacore.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=${UCVM_INSTALL_PATH}/model/albacore/lib --with-albacore-include-path=${UCVM_INSTALL_PATH}/model/albacore/include --with-albacore-model-path=${UCVM_INSTALL_PATH}/model/albacore/src",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "a559e4583f7b83424058b4211f1210e4",
+                        "md5sum": "c077a5b8251c6aa53d0cea1b5a780d8e",
 			"Order": 9		
 		},
 		"CVM-H": {
@@ -368,7 +368,7 @@
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "37700a32dc1326156badb1f36937944a",
+                        "md5sum": "f78a4613de0cf698840f50fd42b39570",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
