@@ -6,7 +6,7 @@
                "UWSFBCVM": {
                         "Version": "1.0",
                         "Abbreviation": "uwsfbcvm",
-                        "Size": "1.0M",
+                        "Size": "864K",
                         "Path": "uwsfbcvm",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/uwsfbcvm.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
@@ -20,7 +20,7 @@
                "CANVAS": {
                         "Version": "1.0",
                         "Abbreviation": "canvas",
-                        "Size": "1.0M",
+                        "Size": "39M",
                         "Path": "canvas",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/canvas.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
@@ -34,7 +34,7 @@
                "SJFZ": {
                         "Version": "1.0",
                         "Abbreviation": "sjfz",
-                        "Size": "2.9M",
+                        "Size": "12M",
                         "Path": "sjfz",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/sjfz.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
@@ -48,7 +48,7 @@
                 "UWLINCA": {
                         "Version": "1.0.1",
                         "Abbreviation": "uwlinca",
-                        "Size": "2G",
+                        "Size": "700K",
                         "Path": "uwlinca",
                         "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/uwlinca.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
@@ -359,7 +359,7 @@
 		"CCA": {
 			"Version": "0.6",
                         "Abbreviation": "cca",
-                        "Size": "9.2G",
+                        "Size": "1.1G",
 			"Path": "cca",
 			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/cca.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
