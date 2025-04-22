@@ -28,7 +28,7 @@
                         "UCVMConfigureFlags": "--enable-model-canvas --with-canvas-lib-path=${UCVM_INSTALL_PATH}/model/canvas/lib --with-canvas-include-path=${UCVM_INSTALL_PATH}/model/canvas/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "2c8661b39bcf40f999422b75ba132b89",
+                        "md5sum": "f757104355df9b21abdef15656e037a3",
                         "Order": 27
                 },
                "SJFZ": {
@@ -71,7 +71,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Ask": "yes",
                         "Libraries": ["euclid3", "proj"],
-                        "md5sum": "80f4d01074a0c5bd8a8bbdb7b596f9c5",
+                        "md5sum": "43b7193a94f2ea9d34a310d84c6524b2",
                         "Order": 24
                 },
                 "CS242": {
@@ -368,7 +368,7 @@
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "f78a4613de0cf698840f50fd42b39570",
+                        "md5sum": "c5fb6886c4ab4953aa4e1e6bbe90b7f5",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
