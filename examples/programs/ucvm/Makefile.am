@@ -5,12 +5,12 @@ bin_PROGRAMS=
 
 if UCVM_AM_ENABLE_CS248
 bin_PROGRAMS += run_ucvm_query_cs248.sh
-run_ucvm_query_cvmh_sh_SOURCES = run_ucvm_query_cs248.sh
+run_ucvm_query_cs248_sh_SOURCES = run_ucvm_query_cs248.sh
 endif
 
 if UCVM_AM_ENABLE_CANVAS
 bin_PROGRAMS += run_ucvm_query_canvas.sh
-run_ucvm_query_cvmh_sh_SOURCES = run_ucvm_query_canvas.sh
+run_ucvm_query_canvas_sh_SOURCES = run_ucvm_query_canvas.sh
 endif
 
 if UCVM_AM_ENABLE_CVMH

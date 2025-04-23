@@ -441,7 +441,7 @@ fi
 # Get SCEC COACHELLA library and include locations
 if test "x$enable_model_cvlsu" = xyes; then
 AC_ARG_WITH([cvlsu-include-path],
-  [AS_HELP_STRING([--with-coachell-include-path],
+  [AS_HELP_STRING([--with-cvlsu-include-path],
     [location of the SCEC COACHELLA headers])],
   [CVLSU_INCL="-I$withval"],
   [CVLSU_INCL="/usr/include/cvlsu"])
@@ -460,8 +460,8 @@ AC_ARG_WITH([albacore-include-path],
   [ALBACORE_INCL="/usr/include/albacore"])
 AC_ARG_WITH([albacore-lib-path],
   [AS_HELP_STRING([--with-albacore-lib-path], [location of the SCEC ALBACORE libraries])],
-  [ALBACORE_LIB="-L$withval -lalbacore -lproj -letree"],
-  [ALBACORE_LIB="-lalbacore -lproj -letree"])
+  [ALBACORE_LIB="-L$withval -lalbacore"],
+  [ALBACORE_LIB="-lalbacore"])
 fi
 
 # Get SCEC CVM-S5 library and include locations
