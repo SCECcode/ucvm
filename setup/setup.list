@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwsfbcvm --with-uwsfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/lib --with-uwsfbcvm-include-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "3a4cd51049e3a4d5ccf5bcca27ceeb47",
+                        "md5sum": "41614363241e3b41b674d969e1103927",
                         "Order": 28 
                 },
                "CANVAS": {
@@ -36,13 +36,13 @@
                         "Abbreviation": "sjfz",
                         "Size": "12M",
                         "Path": "sjfz",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v23_4/model/sjfz.tar.gz",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/sjfz.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "",
                         "UCVMConfigureFlags": "--enable-model-sjfz --with-sjfz-lib-path=${UCVM_INSTALL_PATH}/model/sjfz/lib --with-sjfz-include-path=${UCVM_INSTALL_PATH}/model/sjfz/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "9eed07e958b71c7c9004dec7f0f9137f",
+                        "md5sum": "fe2db4da427d2cd82899dff9ef4f4651",
                         "Order": 26
                 },
                 "UWLINCA": {
@@ -56,7 +56,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwlinca --with-uwlinca-lib-path=${UCVM_INSTALL_PATH}/model/uwlinca/lib --with-uwlinca-include-path=${UCVM_INSTALL_PATH}/model/uwlinca/include",
                         "Ask": "yes",
                         "Libraries": ["proj"],
-                        "md5sum": "a2edeec439e92c03d8ef43051600abe6",
+                        "md5sum": "972e3d79fedfcd18f1ac186d8f0fce11",
                         "Order": 25
                 },
                 "CS248": {
@@ -111,7 +111,7 @@
                         ],
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "64c667ebb5ad9a48b2fe81e7a5999f31",
+                        "md5sum": "5aa328144902a463ce47694237890f06",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
@@ -241,7 +241,7 @@
                         "UCVMConfigureFlags": "--enable-model-wfcvm --with-wfcvm-lib-path=${UCVM_INSTALL_PATH}/model/wfcvm/lib --with-wfcvm-include-path=${UCVM_INSTALL_PATH}/model/wfcvm/include --with-wfcvm-model-path=${UCVM_INSTALL_PATH}/model/wfcvm/src",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "72320742325cf77c94b850c729841f46",
+                        "md5sum": "0112a026ed4d55a0d89edbd97aa75b02",
                         "Order": 12
                 },
 		"IMPERIAL": {

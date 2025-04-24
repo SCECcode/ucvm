@@ -3,6 +3,11 @@
 #
 bin_PROGRAMS=
 
+if UCVM_AM_ENABLE_SJFZ
+bin_PROGRAMS += run_ucvm_query_sjfz.sh
+run_ucvm_query_sjfz_sh_SOURCES = run_ucvm_query_sjfz.sh
+endif
+
 if UCVM_AM_ENABLE_CS248
 bin_PROGRAMS += run_ucvm_query_cs248.sh
 run_ucvm_query_cs248_sh_SOURCES = run_ucvm_query_cs248.sh
