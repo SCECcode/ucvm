@@ -187,9 +187,15 @@ AC_ARG_ENABLE([model-uwlinca],
         [enable_model_uwlinca=yes],
         [enable_model_uwlinca=no])
 
+AC_ARG_ENABLE([model-uwsfbcvm],
+        [AS_HELP_STRING([--enable-model-uwsfbcvm],
+        [enable model SCEC UWSFBCVM])],
+        [enable_model_uwsfbcvm=yes],
+        [enable_model_uwsfbcvm=no])
+
 AC_ARG_ENABLE([model-canvas],
         [AS_HELP_STRING([--enable-model-canvas],
-        [enable model SCEC UWLINCA])],
+        [enable model SCEC CANVAS])],
         [enable_model_canvas=yes],
         [enable_model_canvas=no])
 

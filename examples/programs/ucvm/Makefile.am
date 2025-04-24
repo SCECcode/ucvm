@@ -3,6 +3,16 @@
 #
 bin_PROGRAMS=
 
+if UCVM_AM_ENABLE_UWSFBCVM
+bin_PROGRAMS += run_ucvm_query_uwsfbcvm.sh
+run_ucvm_query_uwsfbcvm_sh_SOURCES = run_ucvm_query_uwsfbcvm.sh
+endif
+
+if UCVM_AM_ENABLE_UWLINCA
+bin_PROGRAMS += run_ucvm_query_uwlinca.sh
+run_ucvm_query_uwsfbcvm_sh_SOURCES = run_ucvm_query_uwlinca.sh
+endif
+
 if UCVM_AM_ENABLE_SJFZ
 bin_PROGRAMS += run_ucvm_query_sjfz.sh
 run_ucvm_query_sjfz_sh_SOURCES = run_ucvm_query_sjfz.sh
