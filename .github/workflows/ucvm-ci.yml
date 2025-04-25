@@ -2,7 +2,7 @@ name: ucvm-ci
 
 on:
   push:
-    branches: [ main ]
+    branches: [ testMei ]
 
 jobs:
   ucvm-build-cvmh:
