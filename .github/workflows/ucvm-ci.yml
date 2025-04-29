@@ -6,7 +6,8 @@ on:
 
 jobs:
   ucvm-build-cvmh:
-    runs-on: macos-latest
+#    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.7]
