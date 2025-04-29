@@ -26,7 +26,9 @@ fi
 cd $UCVM_SRC_PATH/largefiles; ./stage_largefiles.py
 
 cd $UCVM_SRC_PATH
+
+export PYTHONUNBUFFERED=TRUE
 ./ucvm_setup.py -d -a -p $UCVM_INSTALL_PATH  &> ucvm_setup_install.log
 
-#more ucvm_setup_install.log
+more ucvm_setup_install.log
 
