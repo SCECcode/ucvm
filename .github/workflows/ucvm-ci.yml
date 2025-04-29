@@ -15,10 +15,10 @@ jobs:
       run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
-    - name: checkout ucvm main
+    - name: checkout ucvm testMei
       uses: actions/checkout@v2
       with: 
-        ref: main
+        ref: testMei
     - name: build ucvm with cvmh
       run: ./.github/scripts/ucvm-build.sh "cvmh"
       shell: bash
@@ -38,10 +38,10 @@ jobs:
       run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
-    - name: checkout ucvm main
+    - name: checkout ucvm testMei 
       uses: actions/checkout@v2
       with: 
-        ref: main
+        ref: testMei
     - name: checkout ucvm toPython3
       uses: actions/checkout@v2
     - name: build ucvm with cvms and cvmh
@@ -64,10 +64,10 @@ jobs:
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
 
-    - name: checkout ucvm main
+    - name: checkout ucvm testMei
       uses: actions/checkout@v2
       with: 
-        ref: main
+        ref: testMei
 
     - name: build ucvm with albacore, cvlsu, ivlsu and wfcvm
       run: ./.github/scripts/ucvm-build.sh "albacore,cvlsu,ivlsu,wfcvm"
@@ -76,7 +76,7 @@ jobs:
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
 
-  ucvm-build-cencal-cvms:
+  ucvm-build-sfcvm:
     if: ${{ success() }}
     needs: [ucvm-build-albacore-cvlsu-ivlsu-wfcvm]
     runs-on: ubuntu-latest
@@ -89,14 +89,14 @@ jobs:
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
 
-    - name: checkout ucvm main
+    - name: checkout ucvm testMei
       uses: actions/checkout@v2
       with: 
-        ref: main
+        ref: testMain
 
-    - name: build ucvm with cencal cvms
-      run: ./.github/scripts/ucvm-build.sh "cencal,cvms"
+    - name: build ucvm with sfcvm
+      run: ./.github/scripts/ucvm-build.sh "sfcvm"
       shell: bash
-    - name: test ucvm with cencal and cvms
+    - name: test ucvm with sfcvm
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
