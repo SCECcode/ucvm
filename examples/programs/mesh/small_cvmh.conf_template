@@ -38,7 +38,8 @@ vs_min=0
 # Mesh and grid files, format
 meshfile=./small_cvmh.media
 gridfile=./small_cvmh.grid
-meshtype=IJK-12
+#meshtype=IJK-12
+meshtype=SORD
 
 # Location of scratch dir
 scratch=${SCRATCH}
