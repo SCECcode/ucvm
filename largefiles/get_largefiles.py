@@ -22,7 +22,7 @@ else:
 # Print usage.
 def usage():
     print("Runing using commandline options.\n")
-    print("\t-m  --model   list of models separated by comma.")
+    print("\t-m  --model   list of models separated by comma (or 'none').")
     print("\t-h  --help    show usage.\n")
 
 def printPretty(list):
@@ -57,7 +57,8 @@ def download_urlfile(url,fname):
 
 def process_user_models(mlist) :
     global user_large_model_list
-    user_large_model_list=mlist.split(",")
+    if(mlist != "none") :
+      user_large_model_list=mlist.split(",")
 
 ##########################
 
