@@ -1133,8 +1133,8 @@ int suite_lib(const char *xmldir)
 
 #ifdef _UCVM_ENABLE_UWSFBCVM
   strcpy(suite.tests[suite.num_tests].test_name,
-         "test_lib_add_model_uwsbcvm");
-  suite.tests[suite.num_tests].test_func = &test_lib_add_model_uwsbcvm;
+         "test_lib_add_model_uwsfbcvm");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_uwsfbcvm;
   suite.tests[suite.num_tests].elapsed_time = 0.0;
   suite.num_tests++;
 #endif
