@@ -23,10 +23,10 @@ jobs:
     - name: build ucvm with cvmh
       run: ./.github/scripts/ucvm-build.sh "cvmh"
       shell: bash
-   - name: Start SSH via Ngrok
-     if: ${{ success() }}
-     uses: luchihoratiu/debug-via-ssh@main
-     with:
+    - name: Start SSH via Ngrok
+      if: ${{ success() }}
+      uses: luchihoratiu/debug-via-ssh@main
+      with:
            NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
            NGROK_TIMEOUT: 3000
            SSH_PASS: ${{ secrets.NGROK_SECRET }}
