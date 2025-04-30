@@ -10,7 +10,7 @@ endif
 
 if UCVM_AM_ENABLE_UWLINCA
 bin_PROGRAMS += run_ucvm_query_uwlinca.sh
-run_ucvm_query_uwsfbcvm_sh_SOURCES = run_ucvm_query_uwlinca.sh
+run_ucvm_query_uwlinca_sh_SOURCES = run_ucvm_query_uwlinca.sh
 endif
 
 if UCVM_AM_ENABLE_SJFZ
