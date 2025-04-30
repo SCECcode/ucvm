@@ -286,6 +286,138 @@ int test_lib_model_version_1d()
   return(0);
 }
 
+
+int test_lib_add_model_cs248()
+{
+  printf("Test: UCVM lib add model CS248\n");
+  
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CS248) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CS248);
+    ucvm_finalize();
+    return(1);
+  } 
+  
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+
+int test_lib_add_model_uwlinca()
+{
+  printf("Test: UCVM lib add model UWLINCA\n");
+  
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_UWLINCA) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_UWLINCA);
+    ucvm_finalize();
+    return(1);
+  } 
+  
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+
+int test_lib_add_model_sjfz()
+{
+  printf("Test: UCVM lib add model SJFZ\n");
+  
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_SJFZ) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_SJFZ);
+    ucvm_finalize();
+    return(1);
+  } 
+  
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+
+int test_lib_add_model_uwsfbcvm()
+{
+  printf("Test: UCVM lib add model UWSFBCVM\n");
+  
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_UWSFBCVM) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_UWSFBCVM);
+    ucvm_finalize();
+    return(1);
+  } 
+  
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+
+int test_lib_add_model_canvas()
+{
+  printf("Test: UCVM lib add model CANVAS\n");
+  
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_CANVAS) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_CANVAS);
+    ucvm_finalize();
+    return(1);
+  } 
+  
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+
+
 int test_lib_add_model_cencal()
 {
   printf("Test: UCVM lib add model USGS CenCal\n");
@@ -974,6 +1106,46 @@ int suite_lib(const char *xmldir)
   	 "test_lib_model_version_1d");
   suite.tests[6].test_func = &test_lib_model_version_1d;
   suite.tests[6].elapsed_time = 0.0;
+
+#ifdef _UCVM_ENABLE_CS248
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_cs248");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_cs248;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_UWLINCA
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_uwlinca");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_uwlinca;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_SJFZ
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_sjfz");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_sjfz;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_UWSFBCVM
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_uwsbcvm");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_uwsbcvm;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_CANVAS
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_canvas");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_canvas;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
 
 #ifdef _UCVM_ENABLE_CENCAL
   strcpy(suite.tests[suite.num_tests].test_name, 
