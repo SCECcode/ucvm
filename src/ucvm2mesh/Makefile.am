@@ -76,12 +76,7 @@ mesh2netcdf: mesh2netcdf.o um_mesh.o
 grid4corners: grid4corners.o
 	$(CC) -o $@ $^ $(AM_LDFLAGS)
 
-laton2utm.o: laton2utm.c
-	$(CC) -o $@ -c $^ $(AM_CFLAGS) ${PROJ_INCLUDES}
-
-	$(CC) -o $@ $^ $(AM_LDFLAGS) ${PROJ_LDFLAGS}
-
-laton2utm: laton2utm.o
+latlon2utm: latlon2utm.o
 	$(CC) -o $@ $^ $(AM_LDFLAGS) ${PROJ_LDFLAGS}
 
 
