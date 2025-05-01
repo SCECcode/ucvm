@@ -23,14 +23,13 @@ jobs:
     - name: build ucvm with cvmh
       run: ./.github/scripts/ucvm-build.sh "cvmh"
       shell: bash
-    - name: Start SSH via Ngrok
-      if: ${{ success() }}
-      uses: luchihoratiu/debug-via-ssh@main
-      with:
-           NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
-           NGROK_TIMEOUT: 3000
-           SSH_PASS: ${{ secrets.NGROK_SECRET }}
-
+#   - name: Start SSH via Ngrok
+#     if: ${{ success() }}
+#     uses: luchihoratiu/debug-via-ssh@main
+#     with:
+#          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
+#          NGROK_TIMEOUT: 3000
+#          SSH_PASS: ${{ secrets.NGROK_SECRET }}
     - name: test ucvm with cvmh
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
@@ -106,6 +105,13 @@ jobs:
     - name: build ucvm with sfcvm
       run: ./.github/scripts/ucvm-build.sh "sfcvm"
       shell: bash
+    - name: Start SSH via Ngrok
+      if: ${{ success() }}
+      uses: luchihoratiu/debug-via-ssh@main
+      with:
+           NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
+           NGROK_TIMEOUT: 3000
+           SSH_PASS: ${{ secrets.NGROK_SECRET }}
     - name: test ucvm with sfcvm
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
