@@ -347,7 +347,7 @@ int pow3iso(double dx, double hurst, double l1, double seed, double n1iso_bigger
 
 	size_t totalsize = 0;
 
-	FILE *fp;
+	FILE *fp = NULL;
 
 	dk1 = 1 / (n1iso_bigger * dx);
 	dk2 = 1 / (n2iso_bigger * dx);
@@ -544,7 +544,7 @@ int main(int argc, char **argv) {
 
 	size_t totalsize = 0;
 
-	FILE *fp;
+	FILE *fp = NULL;
 
 	// Define all the possible options.
 	static struct option long_options[] =
@@ -649,6 +649,8 @@ int main(int argc, char **argv) {
 	printf("\tOutputting to file: %s\n", mesh_file);
 
 	d23 = d1 * st23;
+	printf("\td1 * st23: %f\n", d23);
+
 	n1iso = n1;
 	n2iso = ceil(n2/st23);
 	n3iso = ceil(n3/st23);
@@ -728,6 +730,6 @@ int main(int argc, char **argv) {
 
 	printf("\nAll finished!\n");
 
-	return 0;
+	return retVal;
 
 }
