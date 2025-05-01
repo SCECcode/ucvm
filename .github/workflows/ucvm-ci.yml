@@ -5,7 +5,7 @@ on:
     branches: [ testMei ]
 
 jobs:
-  ucvm-build-cvmh:
+  ucvm-build-cvmh-taper:
 #    runs-on: macos-latest
     runs-on: ubuntu-latest
     strategy:
@@ -36,7 +36,7 @@ jobs:
 
   ucvm-build-cvms-cvmh:
     if: ${{ success() }}
-    needs: [ucvm-build-sfcvm]
+    needs: [ucvm-build-cvmh-taper]
     runs-on: ubuntu-latest
     strategy:
       matrix:
