@@ -1,0 +1,117 @@
+name: ucvm-ci
+
+on:
+  push:
+    branches: [ foo ]
+
+jobs:
+  ucvm-build-cvmh:
+#    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+    steps:
+    - name: set UCVM_SRC_PATH 
+      run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
+    - name: set UCVM_INSTALL_PATH 
+      run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
+    - name: checkout ucvm testMei
+      uses: actions/checkout@v2
+      with: 
+        ref: testMei
+    - name: build ucvm with cvmh
+      run: ./.github/scripts/ucvm-build.sh "cvmh"
+      shell: bash
+#   - name: Start SSH via Ngrok
+#     if: ${{ success() }}
+#     uses: luchihoratiu/debug-via-ssh@main
+#     with:
+#          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
+#          NGROK_TIMEOUT: 3000
+#          SSH_PASS: ${{ secrets.NGROK_SECRET }}
+    - name: test ucvm with cvmh
+      run: ./.github/scripts/ucvm-test.sh
+      shell: bash
+
+  ucvm-build-cvms-cvmh:
+    if: ${{ success() }}
+    needs: [ucvm-build-cvmh]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+    steps:
+    - name: set UCVM_SRC_PATH 
+      run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
+    - name: set UCVM_INSTALL_PATH 
+      run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
+    - name: checkout ucvm testMei 
+      uses: actions/checkout@v2
+      with: 
+        ref: testMei
+    - name: checkout ucvm toPython3
+      uses: actions/checkout@v2
+    - name: build ucvm with cvms and cvmh
+      run: ./.github/scripts/ucvm-build.sh "cvms,cvmh"
+      shell: bash
+    - name: test ucvm with cvms and cvmh
+      run: ./.github/scripts/ucvm-test.sh
+      shell: bash
+
+  ucvm-build-albacore-cvlsu-ivlsu-wfcvm:
+    if: ${{ success() }}
+    needs: [ucvm-build-cvms-cvmh]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+    steps:
+    - name: set UCVM_SRC_PATH 
+      run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
+    - name: set UCVM_INSTALL_PATH 
+      run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
+
+    - name: checkout ucvm testMei
+      uses: actions/checkout@v2
+      with: 
+        ref: testMei
+
+    - name: build ucvm with albacore, cvlsu, ivlsu and wfcvm
+      run: ./.github/scripts/ucvm-build.sh "albacore,cvlsu,ivlsu,wfcvm"
+      shell: bash
+    - name: test ucvm with albacore, cvlsu, ivlsu and wfcvm
+      run: ./.github/scripts/ucvm-test.sh
+      shell: bash
+
+  ucvm-build-sfcvm:
+    if: ${{ success() }}
+    needs: [ucvm-build-albacore-cvlsu-ivlsu-wfcvm]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+    steps:
+    - name: set UCVM_SRC_PATH 
+      run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
+    - name: set UCVM_INSTALL_PATH 
+      run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
+
+    - name: checkout ucvm testMei
+      uses: actions/checkout@v2
+      with: 
+        ref: testMain
+
+    - name: build ucvm with sfcvm
+      run: ./.github/scripts/ucvm-build.sh "sfcvm"
+      shell: bash
+    - name: Start SSH via Ngrok
+      if: ${{ success() }}
+      uses: luchihoratiu/debug-via-ssh@main
+      with:
+           NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
+           NGROK_TIMEOUT: 3000
+           SSH_PASS: ${{ secrets.NGROK_SECRET }}
+    - name: test ucvm with sfcvm
+      run: ./.github/scripts/ucvm-test.sh
+      shell: bash
