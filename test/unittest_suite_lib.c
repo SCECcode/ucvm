@@ -1063,6 +1063,22 @@ int suite_lib(const char *xmldir)
 #ifdef _UCVM_ENABLE_CS173H
   suite.num_tests++;
 #endif
+#ifdef _UCVM_ENABLE_CS248
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_UWLINCA
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_SJFZ
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_UWSFBCVM
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_CANVAS
+  suite.num_tests++;
+#endif
+
 
   suite.tests = malloc(suite.num_tests * sizeof(test_info_t));
   if (suite.tests == NULL) {
