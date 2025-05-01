@@ -5,7 +5,7 @@ on:
     branches: [ testMei ]
 
 jobs:
-  ucvm-build-sfcvm:
+  ucvm-build-cvmh:
 #    runs-on: macos-latest
     runs-on: ubuntu-latest
     strategy:
@@ -20,8 +20,8 @@ jobs:
       uses: actions/checkout@v2
       with: 
         ref: testMei
-    - name: build ucvm with sfcvm
-      run: ./.github/scripts/ucvm-build.sh "sfcvm"
+    - name: build ucvm with cvmh and elygtl:taper
+      run: ./.github/scripts/ucvm-build.sh "cvmh,elygtl:taper"
       shell: bash
     - name: Start SSH via Ngrok
       if: ${{ success() }}
@@ -30,7 +30,7 @@ jobs:
           NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
           NGROK_TIMEOUT: 3000
           SSH_PASS: ${{ secrets.NGROK_SECRET }}
-    - name: test ucvm with sfcvm
+    - name: test ucvm with cvmh and elygtl:taper
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
 
@@ -76,7 +76,6 @@ jobs:
       uses: actions/checkout@v2
       with: 
         ref: testMei
-
     - name: build ucvm with albacore, cvlsu, ivlsu and wfcvm
       run: ./.github/scripts/ucvm-build.sh "albacore,cvlsu,ivlsu,wfcvm"
       shell: bash
