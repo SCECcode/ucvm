@@ -75,9 +75,6 @@ Using Geo Elevation coordinates as z mode.
  -121.8143    36.6509  -4956.269     43.756    313.533        cca   5890.744   3531.135   2724.029       none      0.000      0.000      0.000      crust   5890.744   3531.135   2724.029
 EOF_EXPECTED_RESULT
 
-cp $result rr
-cp $expect ee
-
 echo "Running examples_programs_ucvm ucvm_query_cca_c"
 if diff $result $expect > /dev/null 2>&1
 then

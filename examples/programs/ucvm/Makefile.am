@@ -82,6 +82,8 @@ endif
 if UCVM_AM_ENABLE_CVMS
 bin_PROGRAMS += run_ucvm_query_sfcvm_cvms.sh
 run_ucvm_query_sfcvm_cvms_sh_SOURCES = run_ucvm_query_sfcvm_cvms.sh
+bin_PROGRAMS += run_ucvm_query_cvms_sfcvm.sh
+run_ucvm_query_cvms_sfcvm_sh_SOURCES = run_ucvm_query_cvms_sfcvm.sh
 endif
 endif
 
