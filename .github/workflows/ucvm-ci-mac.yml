@@ -1,0 +1,34 @@
+name: ucvm-ci
+
+on:
+  push:
+    branches: [ foo ]
+
+jobs:
+  ucvm-build-cvmh-mac:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+    steps:
+    - name: set UCVM_SRC_PATH 
+      run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
+    - name: set UCVM_INSTALL_PATH 
+      run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
+    - name: checkout ucvm testMei
+      uses: actions/checkout@v2
+      with: 
+        ref: testMei
+    - name: build ucvm with cvmh
+      run: ./.github/scripts/ucvm-build.sh "cvmh"
+      shell: bash
+#   - name: Start SSH via Ngrok
+#     if: ${{ success() }}
+#     uses: luchihoratiu/debug-via-ssh@main
+#     with:
+#          NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
+#          NGROK_TIMEOUT: 3000
+#          SSH_PASS: ${{ secrets.NGROK_SECRET }}
+    - name: test ucvm with cvmh
+      run: ./.github/scripts/ucvm-test.sh
+      shell: bash
