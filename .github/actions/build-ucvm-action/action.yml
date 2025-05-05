@@ -10,16 +10,16 @@ inputs:
     description: 'Which cvm to include'
     required: false
     default: 'none'
-  target-branch:  
+  target-branch:
     description: 'Which branch of ucvm to use'
     required: false
     default: 'main'
 outputs:
   build-log:
-    description: "ucvm_setup.py log"
+    description: 'ucvm_setup.py log'
     value: ${{ steps.post_build_log.outputs.log-file }}
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - id: greeting
       run: echo Hello from ucvm action.yml initiated from  ${{ inputs.initiating-repo }}

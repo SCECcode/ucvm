@@ -17,8 +17,8 @@ jobs:
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
     - name: checkout ucvm testMei
       uses: actions/checkout@v2
-      with: 
-        ref: testMei
+#     with: 
+#       ref: testMei
     - name: build ucvm with cvmh
       run: ./.github/scripts/ucvm-build.sh "cvmh"
       shell: bash
