@@ -10,6 +10,10 @@ inputs:
     description: 'Which cvm to include'
     required: false
     default: 'none'
+  target-branch:  
+    description: 'Which branch of ucvm to use'
+    required: false
+    default: 'main'
 outputs:
   build-log:
     description: "ucvm_setup.py log"
@@ -29,7 +33,7 @@ runs:
       shell: bash
     - id: build_ucvm 
       if: ${{ inputs.target-model != 'none' }}
-      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build.sh ${{ inputs.target-model }})
+      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-build.sh ${{ inputs.target-model }} ${{ inputs.target-branch }})
       shell: bash
     - id: post_build_log
       run: echo "::set-output name=log-file::$(echo $UCVM_SRC_PATH/ucvm_setup_install.log)"

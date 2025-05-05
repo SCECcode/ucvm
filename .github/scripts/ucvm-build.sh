@@ -3,6 +3,11 @@
 tmp=`uname -s`
 
 MODEL=$1
+BRANCH=$2
+
+cd $UCVM_SRC_PATH/largefiles
+git checkout -b $BRANCH
+
 
 if [ "$MODEL" == "" ]; then
    echo "FAIL: needs to supply a model name .."
