@@ -6,7 +6,11 @@ MODEL=$1
 BRANCH=$2
 
 cd $UCVM_SRC_PATH/largefiles
-git checkout -b $BRANCH
+
+
+if [ "$BRANCH" != "" ]; then
+   git checkout -b $BRANCH
+fi
 
 
 if [ "$MODEL" == "" ]; then
