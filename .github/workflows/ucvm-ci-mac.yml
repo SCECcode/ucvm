@@ -15,7 +15,7 @@ jobs:
       run: echo "UCVM_SRC_PATH=$RUNNER_WORKSPACE/ucvm" >> $GITHUB_ENV
     - name: set UCVM_INSTALL_PATH 
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
-    - name: checkout ucvm testMei
+    - name: checkout ucvm 
       uses: actions/checkout@v2
 #     with: 
 #       ref: testMei
