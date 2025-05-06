@@ -236,12 +236,12 @@
                         "Abbreviation": "wfcvm",
                         "Size": "50M",
                         "Path": "wfcvm",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/wfcvm.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_7/model/wfcvm.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-wfcvm --with-wfcvm-lib-path=${UCVM_INSTALL_PATH}/model/wfcvm/lib --with-wfcvm-include-path=${UCVM_INSTALL_PATH}/model/wfcvm/include --with-wfcvm-model-path=${UCVM_INSTALL_PATH}/model/wfcvm/src",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "0112a026ed4d55a0d89edbd97aa75b02",
+                        "md5sum": "b751f3a2cea5ddd2df23e38c90fd0d5b",
                         "Order": 12
                 },
 		"IMPERIAL": {
