@@ -36,13 +36,13 @@
                         "Abbreviation": "sjfz",
                         "Size": "12M",
                         "Path": "sjfz",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/sjfz.tar.gz",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_7/model/sjfz.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "",
                         "UCVMConfigureFlags": "--enable-model-sjfz --with-sjfz-lib-path=${UCVM_INSTALL_PATH}/model/sjfz/lib --with-sjfz-include-path=${UCVM_INSTALL_PATH}/model/sjfz/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "fe2db4da427d2cd82899dff9ef4f4651",
+                        "md5sum": "f0b92b001c496082fe6be0ca4b010534",
                         "Order": 26
                 },
                 "UWLINCA": {
