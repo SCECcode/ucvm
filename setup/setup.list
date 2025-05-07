@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwsfbcvm --with-uwsfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/lib --with-uwsfbcvm-include-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "6204f2db4f1e188e624d0ba7a0336815",
+                        "md5sum": "e4199bc2a9685953b38f3c999c1152eb",
                         "Order": 28 
                 },
                "CANVAS": {
