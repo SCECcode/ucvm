@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwsfbcvm --with-uwsfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/lib --with-uwsfbcvm-include-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "a93139e5331c55a69ca9a71f91061599",
+                        "md5sum": "204e842198ddb461f905476b7c587922",
                         "Order": 28 
                 },
                "CANVAS": {
@@ -93,7 +93,7 @@
                         "Abbreviation": "sfcvm",
                         "Size": "2.9G",
                         "Path": "sfcvm",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/sfcvm.tar.gz",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_7/model/sfcvm.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "mohoConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
