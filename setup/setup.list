@@ -56,7 +56,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwlinca --with-uwlinca-lib-path=${UCVM_INSTALL_PATH}/model/uwlinca/lib --with-uwlinca-include-path=${UCVM_INSTALL_PATH}/model/uwlinca/include",
                         "Ask": "yes",
                         "Libraries": ["proj"],
-                        "md5sum": "bd1bbee13ee00bf6ea5361f4b1e33ce6",
+                        "md5sum": "4d95f6ce06abbb8c8a9f02c5200ec6f7",
                         "Order": 25
                 },
                 "CS248": {
