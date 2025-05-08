@@ -254,7 +254,7 @@
 			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=${UCVM_INSTALL_PATH}/model/ivlsu/lib --with-ivlsu-include-path=${UCVM_INSTALL_PATH}/model/ivlsu/include",
 			"Ask": "yes",
 			"Libraries": ["proj"],
-                        "md5sum": "d27c6485516b5fddfe8582d3f3720214",
+                        "md5sum": "5baafebbe47575717b6388c23b9e9494",
 			"Order": 11		
 		},
 		"COACHELLA": {
