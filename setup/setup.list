@@ -249,12 +249,12 @@
                         "Abbreviation": "ivlsu",
                         "Size": "3.1M",
 			"Path": "ivlsu",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/ivlsu.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_7/model/ivlsu.tar.gz",
                         "ConfigureFlags": "--with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
 			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=${UCVM_INSTALL_PATH}/model/ivlsu/lib --with-ivlsu-include-path=${UCVM_INSTALL_PATH}/model/ivlsu/include",
 			"Ask": "yes",
 			"Libraries": ["proj"],
-                        "md5sum": "1eaf47dec1b6396795da8a71f061053a",
+                        "md5sum": "3ac84c0e02300b2aa171ee3c9d146518",
 			"Order": 11		
 		},
 		"COACHELLA": {
