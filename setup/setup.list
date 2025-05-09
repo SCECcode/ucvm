@@ -311,12 +311,12 @@
                         "Abbreviation": "cvmsi",
                         "Size": "1.6G",
 			"Path": "cvmsi",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/cvmsi.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_7/model/cvmsi.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/data/i26",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "a3b85d67ebbea6df41af0a2365ce71ef",
+                        "md5sum": "61d1b28040deded76bf6ed74ff8acb48",
 			"Order": 6		
 		},
 		"CVM-S4": {
