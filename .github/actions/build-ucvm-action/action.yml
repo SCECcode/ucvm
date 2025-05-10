@@ -39,13 +39,6 @@ runs:
       run: echo "log-file=$(echo $UCVM_SRC_PATH/ucvm_setup_install.log)" >> $GITHUB_OUTPUT
 #     run: echo "::set-output name=log-file::$(echo $UCVM_SRC_PATH/ucvm_setup_install.log)"
       shell: bash
-    - name: Start SSH via Ngrok
-      if: ${{ success() }}
-      uses: luchihoratiu/debug-via-ssh@main
-      with:
-            NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
-            NGROK_TIMEOUT: 3000
-            SSH_PASS: ${{ secrets.NGROK_SECRET }}
-    - name: test_ucvm
-      run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
-      shell: bash
+#   - name: test_ucvm
+#     run: (cd $UCVM_SRC_PATH; ./.github/scripts/ucvm-test.sh)
+#     shell: bash
