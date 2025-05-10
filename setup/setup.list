@@ -316,7 +316,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/data/i26",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "f695d68ef7474bcbfd020336a18a06cc",
+                        "md5sum": "ea8e96620fdda168dadce9a2b58bc10e",
 			"Order": 6		
 		},
 		"CVM-S4": {
