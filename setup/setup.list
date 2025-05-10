@@ -329,7 +329,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvms --with-cvms-include-path=${UCVM_INSTALL_PATH}/model/cvms/include --with-cvms-lib-path=${UCVM_INSTALL_PATH}/model/cvms/lib --with-cvms-model-path=${UCVM_INSTALL_PATH}/model/cvms/data/cvms",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "60a554758e615c82f3d528c0960d240f",
+                        "md5sum": "1410c4ce6a1707968cc3fe7a3172482b",
 			"Order": 5
 		},
 		"CS173H": {
