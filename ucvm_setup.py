@@ -20,7 +20,7 @@ import shutil
 # Variables
 
 # Set the version number for the installation script.
-VERSION = "23.4.0"
+VERSION = "25.7.0"
 
 # User defined variables.
 all_flag = False
