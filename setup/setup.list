@@ -278,7 +278,7 @@
 			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=${UCVM_INSTALL_PATH}/model/albacore/lib --with-albacore-include-path=${UCVM_INSTALL_PATH}/model/albacore/include",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "a161ad868171ef30d1b1bf099a727bf4",
+                        "md5sum": "baf7bd34f80f1ff2541a952e5958c102",
 			"Order": 9		
 		},
 		"CVM-H": {
