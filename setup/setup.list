@@ -274,11 +274,11 @@
                         "Abbreviation": "albacore",
                         "Size": "2.3M",
 			"Path": "albacore",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_3/model/albacore.tar.gz",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_7/model/albacore.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=${UCVM_INSTALL_PATH}/model/albacore/lib --with-albacore-include-path=${UCVM_INSTALL_PATH}/model/albacore/include",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "c077a5b8251c6aa53d0cea1b5a780d8e",
+                        "md5sum": "9c0915f9015ea46537aba9f4fa1a49ec",
 			"Order": 9		
 		},
 		"CVM-H": {
