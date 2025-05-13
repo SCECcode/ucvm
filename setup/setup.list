@@ -266,7 +266,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvlsu --with-cvlsu-lib-path=${UCVM_INSTALL_PATH}/model/cvlsu/lib --with-cvlsu-include-path=${UCVM_INSTALL_PATH}/model/cvlsu/include",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "c4ce958da680fd831b95630589573aa8",
+                        "md5sum": "7c7de89bc4afa49694dc3fc6404b7ab0",
 			"Order": 10		
 		},
 		"ALBACORE": {
