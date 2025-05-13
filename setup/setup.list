@@ -368,7 +368,7 @@
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "cb96d9c3f754fbcb32d70944c92d6e39",
+                        "md5sum": "acbae3bd43dcc480512510454d1e342a",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
