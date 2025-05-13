@@ -28,7 +28,7 @@
                         "UCVMConfigureFlags": "--enable-model-canvas --with-canvas-lib-path=${UCVM_INSTALL_PATH}/model/canvas/lib --with-canvas-include-path=${UCVM_INSTALL_PATH}/model/canvas/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "61be7c80dae6f8aaf72261d112f556a0",
+                        "md5sum": "86041550a0f4e96acd22af08e7eb8612",
                         "Order": 27
                 },
                "SJFZ": {
