@@ -213,7 +213,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    libtoolize_list=["sfcvm","cca","cvms5","cvmh","cs248","cvmsi","uwlinca"]
+    libtoolize_list=["sfcvm","cvms5","cvmh","cs248","cvmsi","uwlinca"]
     autoreconf_list=["sfcvm","cca","cvmh","cs248"]
     skip_conf_list = ["openssl"]
 
@@ -223,9 +223,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         if config_data["Path"] in libtoolize_list :
           print("\nRunning libtoolize")
           callAndRecord(["libtoolize"])
-        if config_data["Path"] in autoreconf_list :
-          print("\nRunning autoreconf")
-          callAndRecord(["autoreconf", "-i"])
         else:
           print("\nRunning aclocal")
           aclocal_array = ["aclocal"]
@@ -233,11 +230,15 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
               aclocal_array += ["-I", "m4"]
           callAndRecord(aclocal_array)
 
+        if config_data["Path"] in autoreconf_list :
+          print("\nRunning autoreconf")
+          callAndRecord(["autoreconf", "-i", "-f"])
+        else:
           print("\nRunning autoconf")
           callAndRecord(["autoconf"])
 
-          print("\nRunning automake")
-          callAndRecord(["automake", "--add-missing", "--force-missing"])
+        print("\nRunning automake")
+        callAndRecord(["automake", "--add-missing", "--force-missing"])
 
     print("\nRunning ./configure")
 
