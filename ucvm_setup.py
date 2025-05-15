@@ -213,7 +213,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    libtoolize_list=["sfcvm","cvms5","cvmh","cs248","cvmsi","uwlinca"]
+    libtoolize_list=["sfcvm","cvms5","cvmh","cs248","uwlinca"]
     autoreconf_list=["sfcvm","cca","cvmh","cs248"]
     skip_conf_list = ["openssl"]
 
