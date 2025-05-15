@@ -223,12 +223,12 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         if config_data["Path"] in libtoolize_list :
           print("\nRunning libtoolize")
           callAndRecord(["libtoolize"])
-        else:
-          print("\nRunning aclocal")
-          aclocal_array = ["aclocal"]
-          if os.path.exists("./m4"):
-              aclocal_array += ["-I", "m4"]
-          callAndRecord(aclocal_array)
+
+        print("\nRunning aclocal")
+        aclocal_array = ["aclocal"]
+        if os.path.exists("./m4"):
+            aclocal_array += ["-I", "m4"]
+        callAndRecord(aclocal_array)
 
         if config_data["Path"] in autoreconf_list :
           print("\nRunning autoreconf")
