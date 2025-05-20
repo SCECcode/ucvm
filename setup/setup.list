@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwsfbcvm --with-uwsfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/lib --with-uwsfbcvm-include-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "1302f8e19efc025d042bd669230f3060",
+                        "md5sum": "efdeb632014480274d251d2f8b01c470",
                         "Order": 28 
                 },
                "CANVAS": {
@@ -56,7 +56,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwlinca --with-uwlinca-lib-path=${UCVM_INSTALL_PATH}/model/uwlinca/lib --with-uwlinca-include-path=${UCVM_INSTALL_PATH}/model/uwlinca/include",
                         "Ask": "yes",
                         "Libraries": ["proj"],
-                        "md5sum": "e9fdeb08145586da99e71996f5b225fd",
+                        "md5sum": "e57ed8b1da24fcad31add474b2f330dd",
                         "Order": 25
                 },
                 "CS248": {
