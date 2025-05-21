@@ -37,8 +37,8 @@ vs_min=0
 # Mesh and grid files, format
 meshfile=southbay_cca.media
 gridfile=southbay_cca.grid
-meshtype=IJK-12
-#meshtype=SORD
+#meshtype=IJK-12
+meshtype=SORD
 
 # Location of scratch dir
 scratch=${SCRATCH}
