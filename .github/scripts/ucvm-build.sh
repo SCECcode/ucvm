@@ -20,7 +20,8 @@ if [ "$MODEL" == "" ]; then
 fi
 
 if [ $tmp == 'Darwin' ]; then
-## make sure have automake/aclocal
+## make sure have automake/aclocal/libtool
+  brew install libtool
   brew install automake
   brew reinstall gcc
 fi
