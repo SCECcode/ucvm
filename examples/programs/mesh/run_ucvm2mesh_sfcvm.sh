@@ -17,7 +17,7 @@ ${BIN_DIR}/ucvm2mesh -f southbay_sfcvm.conf > southbay_sfcvm.out 2>& 1
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
 
-od southbay_sfcvm.media_vs |head -10 | sed 's/ //g' > $result 2>& 1
+od -N 100 southbay_sfcvm.media_vs |head -10 | sed 's/ //g' > $result 2>& 1
 
 cat > $expect << EOF_EXPECTED_RESULT
 0000000047666042225047666042225047666042225047666042225
@@ -32,6 +32,7 @@ cat > $expect << EOF_EXPECTED_RESULT
 0001060047666042225047666042225047666042225047666042225
 EOF_EXPECTED_RESULT
 
+cp $result res 
 echo "Running examples_programs_ucvm2mesh ucvm2mesh_sfcvm"
 if diff $result $expect > /dev/null 2>&1
 then
