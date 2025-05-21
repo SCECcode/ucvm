@@ -11,6 +11,7 @@ if [ $tmp == 'Darwin' ]; then
   brew install libtool
   brew install automake
   brew reinstall gcc
+  PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
 fi
 
 mkdir $UCVM_INSTALL_PATH
