@@ -22,9 +22,12 @@ x0=-122.171
 y0=37.7922
 
 # Number of cells along each dim
-nx=140
-ny=70
-nz=60
+#nx=140
+#ny=70
+#nz=60
+nx=14
+ny=7
+nz=6
 
 # Partitioning of grid among processors
 px=2
