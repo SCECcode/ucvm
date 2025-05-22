@@ -9,6 +9,7 @@ tmp=`uname -s`
 if [ $tmp == 'Darwin' ]; then
 ## make sure have automake/aclocal
   brew install libtool
+  brew install pipx
   brew install automake
   brew reinstall gcc
   PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
