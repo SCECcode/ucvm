@@ -26,8 +26,6 @@ if [ $tmp == 'Darwin' ]; then
   brew install pipx
   brew reinstall gcc
   export PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
-  export CC=gcc-13
-  export CXX=gcc-13
 fi
 
 mkdir $UCVM_INSTALL_PATH
