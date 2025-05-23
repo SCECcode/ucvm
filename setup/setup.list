@@ -316,7 +316,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/data/i26",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "f98394659c1fbd546f9dd04bf323c3b9",
+                        "md5sum": "dc534c1eef29c13d85a9d53c52d1af97",
 			"Order": 6		
 		},
 		"CVM-S4": {
@@ -329,7 +329,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvms --with-cvms-include-path=${UCVM_INSTALL_PATH}/model/cvms/include --with-cvms-lib-path=${UCVM_INSTALL_PATH}/model/cvms/lib --with-cvms-model-path=${UCVM_INSTALL_PATH}/model/cvms/data/cvms",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "df57b057d19f3312a64b3d7d6caf5d75",
+                        "md5sum": "5ca9ea5674fe28219d147d22feaa976f",
 			"Order": 5
 		},
 		"CS173H": {
@@ -384,7 +384,7 @@
 
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "8717a976da4782408b819bc349ae2393",
+                        "md5sum": "4e7332a24da7f8cf52db97a494ce8334",
 			"Order": 1		
 		}
 	},
