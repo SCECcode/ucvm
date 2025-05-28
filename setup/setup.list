@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwsfbcvm --with-uwsfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/lib --with-uwsfbcvm-include-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "6be0cf49efc2be19827d8708517325f0",
+                        "md5sum": "dac72f88c2485a2e59e6e4078efd42c2",
                         "Order": 28 
                 },
                "CANVAS": {
@@ -28,7 +28,7 @@
                         "UCVMConfigureFlags": "--enable-model-canvas --with-canvas-lib-path=${UCVM_INSTALL_PATH}/model/canvas/lib --with-canvas-include-path=${UCVM_INSTALL_PATH}/model/canvas/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "86041550a0f4e96acd22af08e7eb8612",
+                        "md5sum": "5919f2eca109350037f8980062b3c742",
                         "Order": 27
                 },
                "SJFZ": {
@@ -42,7 +42,7 @@
                         "UCVMConfigureFlags": "--enable-model-sjfz --with-sjfz-lib-path=${UCVM_INSTALL_PATH}/model/sjfz/lib --with-sjfz-include-path=${UCVM_INSTALL_PATH}/model/sjfz/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "a95e88035915e82042f2679db0ea0d66",
+                        "md5sum": "b805aaf664e29958b2ce8f1ae8d41fbf",
                         "Order": 26
                 },
                 "UWLINCA": {
@@ -56,7 +56,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwlinca --with-uwlinca-lib-path=${UCVM_INSTALL_PATH}/model/uwlinca/lib --with-uwlinca-include-path=${UCVM_INSTALL_PATH}/model/uwlinca/include",
                         "Ask": "yes",
                         "Libraries": ["proj"],
-                        "md5sum": "c9bf476a3a2fccd05fbca6a59bba2216",
+                        "md5sum": "e691c1c37dcb1e7c51bc0388132cbfea",
                         "Order": 25
                 },
                 "CS248": {
@@ -71,7 +71,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Ask": "yes",
                         "Libraries": ["euclid3", "proj"],
-                        "md5sum": "d0e2c8345fb85a7d1612f00b3dc42b6b",
+                        "md5sum": "1a7a7a445b30c1ec6a1e2776cab8d569",
                         "Order": 24
                 },
                 "CS242": {
@@ -111,7 +111,7 @@
                         ],
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "0d45e5835bae2e6bd88cd19015627857",
+                        "md5sum": "74c69f92121145383f37c9835e7f375c",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
@@ -241,7 +241,7 @@
                         "UCVMConfigureFlags": "--enable-model-wfcvm --with-wfcvm-lib-path=${UCVM_INSTALL_PATH}/model/wfcvm/lib --with-wfcvm-include-path=${UCVM_INSTALL_PATH}/model/wfcvm/include --with-wfcvm-model-path=${UCVM_INSTALL_PATH}/model/wfcvm/src",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "ca816b1e463e31f05576f4c72ae5e068",
+                        "md5sum": "9bf5784c963250c67534d1e5bada5c86",
                         "Order": 12
                 },
 		"IMPERIAL": {
@@ -254,7 +254,7 @@
 			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=${UCVM_INSTALL_PATH}/model/ivlsu/lib --with-ivlsu-include-path=${UCVM_INSTALL_PATH}/model/ivlsu/include",
 			"Ask": "yes",
 			"Libraries": ["proj"],
-                        "md5sum": "7305e14c7952dc6197ec78f3b1596147",
+                        "md5sum": "5abfb45662a7075938378cb90622444a",
 			"Order": 11		
 		},
 		"COACHELLA": {
@@ -266,7 +266,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvlsu --with-cvlsu-lib-path=${UCVM_INSTALL_PATH}/model/cvlsu/lib --with-cvlsu-include-path=${UCVM_INSTALL_PATH}/model/cvlsu/include",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "bd3848d01de4f5cbc81aaab2d0af0d58",
+                        "md5sum": "38a350470c571ab8108f4cab6dc9e315",
 			"Order": 10		
 		},
 		"ALBACORE": {
@@ -278,7 +278,7 @@
 			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=${UCVM_INSTALL_PATH}/model/albacore/lib --with-albacore-include-path=${UCVM_INSTALL_PATH}/model/albacore/include",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "a8f6a5221c9440d1cb5a316ce587b204",
+                        "md5sum": "4f19e827510cbbfea8ec49740c95c6de",
 			"Order": 9		
 		},
 		"CVM-H": {
@@ -291,7 +291,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "0bd23ef373e22942daa5171745bc1ab2",
+                        "md5sum": "8d411a787b91c21972ce9b939b33e8f7",
 			"Order": 8
 		},
 		"CenCalVM": {
@@ -316,7 +316,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/data/i26",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "11e6d763837e221f5aebdb5d5c783346",
+                        "md5sum": "86800d7c6233aa490440ee6f368171b2",
 			"Order": 6		
 		},
 		"CVM-S4": {
@@ -329,7 +329,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvms --with-cvms-include-path=${UCVM_INSTALL_PATH}/model/cvms/include --with-cvms-lib-path=${UCVM_INSTALL_PATH}/model/cvms/lib --with-cvms-model-path=${UCVM_INSTALL_PATH}/model/cvms/data/cvms",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "5ca9ea5674fe28219d147d22feaa976f",
+                        "md5sum": "b05e828a245a89f2b1960330a09b311d",
 			"Order": 5
 		},
 		"CS173H": {
@@ -368,7 +368,7 @@
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "60aff44d04b5d53d8136eb32ae789290",
+                        "md5sum": "217c0d34f77a682590c9febbead9996a",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
@@ -384,7 +384,7 @@
 
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "4e7332a24da7f8cf52db97a494ce8334",
+                        "md5sum": "db4a2595339d3ebf2e0bd20577b21dfb",
 			"Order": 1		
 		}
 	},
