@@ -101,6 +101,10 @@
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/data/sfcvm",
                         "Preprocess" : [
                              {
+                               "Action": "install",
+                               "CMD": ["pip3","install","pybind11","numpy","h5py"]
+                             },
+                             {
                                "Action": "download",
                                "Path": "sfcvm/dependencies",
                                "Size": "598M",
