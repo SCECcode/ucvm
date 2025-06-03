@@ -34,7 +34,8 @@ vs_min=0
 # Mesh and grid files, format
 meshfile=la_habra_cvms.media
 gridfile=la_habra_cvms.grid
-meshtype=IJK-12
+#meshtype=IJK-12
+meshtype=SORD
 
 # Location of scratch dir
 scratch=${SCRATCH}
