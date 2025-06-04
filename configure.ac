@@ -28,6 +28,9 @@ esac
 #: ${CFLAGS=""}
 AX_PROG_CC_MPI([true],[use_mpi=yes],[use_mpi=no])
 
+# Determine Running USC discovery cluster
+SCEC_CHECK_USC_DISCOVERY_HOST([true],[use_usc_discovery=yes],[use_usc_discovery=no])
+
 # Check for GNU compiler
 if test "x$ac_compiler_gnu" = "xno"; then
 AC_MSG_ERROR(["GNU C compiler or MPI wrapper based on GNU is required. Please check your programming environment."])
@@ -35,6 +38,9 @@ fi
 
 # Set UCVM_HAVE_MPI flag
 AM_CONDITIONAL(UCVM_HAVE_MPI, [test x"$use_mpi" = xyes])
+
+# Set UCVM_ON_USC_DISCOVERY flag
+AM_CONDITIONAL(UCVM_ON_USC_DISCOVERY, [test x"$use_usc_discovery" = xyes])
 
 # Parse command-line arguments
 AC_ARG_ENABLE([static],
