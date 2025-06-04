@@ -14,7 +14,7 @@ bin_PROGRAMS += run_basin_query_cvmsi_taper.sh
 run_basin_query_cvmi_taper_sh_SOURCES = run_basin_query_cvmsi_taper.sh
 endif
 
-if UCVM_HAVE_MPI
+if UCVM_ON_USC_DISCOVERY
 
 if UCVM_AM_ENABLE_CVMS5
 bin_PROGRAMS += run_basin_query_mpi_cvms5.sh
@@ -70,7 +70,7 @@ bin_PROGRAMS += run_basin_query_mpi_cvmsi_taper.sh
 run_basin_query_mpi_cvmsi_taper_sh_SOURCES = run_basin_query_mpi_cvmsi_taper.sh
 endif
 
-endif #MPI
+endif #UCVM_ON_USC_DISCOVERY
 
 
 all: $(bin_PROGRAMS)

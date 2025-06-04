@@ -39,8 +39,10 @@ fi
 # Set UCVM_HAVE_MPI flag
 AM_CONDITIONAL(UCVM_HAVE_MPI, [test x"$use_mpi" = xyes])
 
+if test "x$use_mpi" = "xyes"; then
 # Set UCVM_ON_USC_DISCOVERY flag
 AM_CONDITIONAL(UCVM_ON_USC_DISCOVERY, [test x"$use_usc_discovery" = xyes])
+fi
 
 # Parse command-line arguments
 AC_ARG_ENABLE([static],

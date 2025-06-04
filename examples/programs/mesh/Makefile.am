@@ -17,14 +17,14 @@ endif
 if UCVM_AM_ENABLE_CVMH
 bin_PROGRAMS += run_ucvm2mesh_cvmh.sh
 run_ucvm2mesh_cvmh_sh_SOURCES = run_ucvm2mesh_cvmh.sh
-if UCVM_HAVE_MPI
+if UCVM_ON_USC_DISCOVERY
 bin_PROGRAMS += run_ucvm2mesh_mpi_cvmh.sh
 run_ucvm2mesh_mpi_cvmh_sh_SOURCES = run_ucvm2mesh_mpi_cvmh.sh
 endif 
 endif
 
 if UCVM_AM_ENABLE_CVMSI
-if UCVM_HAVE_MPI
+if UCVM_ON_USC_DISCOVERY
 bin_PROGRAMS += run_ucvm2mesh_mpi_cvmsi.sh
 run_ucvm2mesh_mpi_cvmsi_sh_SOURCES = run_ucvm2mesh_mpi_cvmsi.sh
 bin_PROGRAMS += run_ucvm2mesh_mpi_layer_cvmsi.sh
@@ -33,7 +33,7 @@ endif
 endif
 
 if UCVM_AM_ENABLE_CVMS
-if UCVM_HAVE_MPI
+if UCVM_ON_USC_DISCOVERY
 bin_PROGRAMS += run_ucvm2mesh_mpi_layer_cvms.sh
 run_ucvm2mesh_mpi_layer_cvms_sh_SOURCES = run_ucvm2mesh_mpi_layer_cvms.sh
 endif
@@ -43,7 +43,7 @@ if UCVM_AM_ENABLE_SFCVM
 bin_PROGRAMS += run_ucvm2mesh_sfcvm.sh
 run_ucvm2mesh_sfcvm_sh_SOURCES = run_ucvm2mesh_sfcvm.sh
 
-if UCVM_HAVE_MPI
+if UCVM_ON_USC_DISCOVERY
 bin_PROGRAMS += run_ucvm2mesh_mpi_sfcvm.sh
 run_ucvm2mesh_mpi_sfcvm_sh_SOURCES = run_ucvm2mesh_mpi_sfcvm.sh
 bin_PROGRAMS += run_ucvm2mesh_mpi_layer_sfcvm.sh
