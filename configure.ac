@@ -2,6 +2,7 @@
 
 AC_INIT([UCVM], [25.7.0], [software@scec.org])
 AC_CONFIG_AUX_DIR([./aux-config])
+AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign no-exeext])
 AC_PROG_RANLIB
 
