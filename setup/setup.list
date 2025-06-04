@@ -102,7 +102,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["pip3","install","pybind11","numpy","h5py"]
+                               "CMD": ["pip","install","pybind11","numpy","h5py"]
                              },
                              {
                                "Action": "download",
