@@ -3,7 +3,6 @@
 #
 bin_PROGRAMS=
 
-# CVM-H includes
 if UCVM_AM_ENABLE_CVMH
 bin_PROGRAMS += run_basin_query_cvmh.sh
 run_basin_query_cvmh_sh_SOURCES = run_basin_query_cvmh.sh
@@ -11,7 +10,7 @@ endif
 
 if UCVM_AM_ENABLE_CVMSI
 bin_PROGRAMS += run_basin_query_cvmsi_taper.sh
-run_basin_query_cvmi_taper_sh_SOURCES = run_basin_query_cvmsi_taper.sh
+run_basin_query_cvmsi_taper_sh_SOURCES = run_basin_query_cvmsi_taper.sh
 endif
 
 if UCVM_ON_USC_DISCOVERY
