@@ -196,7 +196,7 @@ Using Geo Depth coordinates as default mode.
  -121.0000    36.0000      0.000    367.707    385.093      sfcvm   1506.043    340.594   2669.734       none      0.000      0.000      0.000      crust   1506.043    340.594   2669.734
 EOF_EXPECTED_RESULT
 
-echo "Running examples_programs_ucvm ucvm_query_cencal_cvms"
+echo "Running examples_programs_ucvm ucvm_query_sfcvm_cvms"
 if diff $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]

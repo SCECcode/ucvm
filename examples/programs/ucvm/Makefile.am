@@ -172,6 +172,7 @@ run_ucvm_query_cvms5_c_sh_SOURCES = run_ucvm_query_cvms5_c.sh
 endif
 
 if UCVM_AM_ENABLE_CENCAL 
+
 bin_PROGRAMS += run_ucvm_query_cencal.sh
 run_ucvm_query_cencal_sh_SOURCES = run_ucvm_query_cencal.sh
 bin_PROGRAMS += run_ucvm_query_cencal_c.sh
@@ -184,6 +185,7 @@ if UCVM_AM_ENABLE_CVMS
 bin_PROGRAMS += run_ucvm_query_cencal_cvms.sh
 run_ucvm_query_cencal_cvms_sh_SOURCES = run_ucvm_query_cencal_cvms.sh
 endif
+
 endif
 
 
