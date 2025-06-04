@@ -18,9 +18,14 @@ salloc ${UCVM_SALLOC_ENV} -Q --nodes=1 --ntasks=2 --time=00:10:00 srun -Q -o ${T
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
 
-od ${TEST}.first > $result 2>& 1
+od -N 100 ${TEST}.first | head -20 > $result 2>& 1
 
 cat > $expect << EOF_EXPECTED_RESULT
+0000000 000000 000000 000000 000000 000000 000000 000000 000000
+*
+0000120 000000 000000 000000 000000 000000 042160 000000 000000
+0000140 000000 000000
+0000144
 EOF_EXPECTED_RESULT
 
 echo "Running examples_programs_basin basin_query_mpi_complete_sfcvm_cvmsi"
