@@ -12,6 +12,12 @@
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "",
                         "UCVMConfigureFlags": "--enable-model-uwsfbcvm --with-uwsfbcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/lib --with-uwsfbcvm-include-path=${UCVM_INSTALL_PATH}/model/uwsfbcvm/include",
+                        "Preprocess" : [
+                             {
+                               "Action": "install",
+                               "CMD": ["pip","install","certifi"]
+                             }
+                        ],
                         "Ask": "yes",
                         "Libraries": [],
                         "md5sum": "dac72f88c2485a2e59e6e4078efd42c2",
