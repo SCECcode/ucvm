@@ -77,7 +77,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Ask": "yes",
                         "Libraries": ["euclid3", "proj"],
-                        "md5sum": "1a7a7a445b30c1ec6a1e2776cab8d569",
+                        "md5sum": "41fcae2eaefda5611f76f7876d7a6a37",
                         "Order": 24
                 },
                 "CS242": {
@@ -309,11 +309,13 @@
                         "Abbreviation": "cencal",
                         "Size": "21G",
 			"Path": "cencal",
-			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/model/cencal.tar.gz",
-			"UCVMConfigureFlags": "--enable-model-cencal --with-cencal-lib-path=${UCVM_INSTALL_PATH}/model/cencal/lib --with-cencal-include-path=${UCVM_INSTALL_PATH}/model/cencal/include/cencalvm/query/ --with-cencal-model-path=${UCVM_INSTALL_PATH}/model/cencal/model/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=${UCVM_INSTALL_PATH}/model/cencal/model/USGSBayAreaVMExt-08.3.0.etree",
+			"URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_7/model/cencal.tar.gz",
+			"UCVMConfigureFlags": "--enable-model-cencal --with-cencal-lib-path=${UCVM_INSTALL_PATH}/model/cencal/lib --with-cencal-include-path=${UCVM_INSTALL_PATH}/model/cencal/include/cencalvm/query/ --with-cencal-model-path=${UCVM_INSTALL_PATH}/model/cencal/data/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=${UCVM_INSTALL_PATH}/model/cencal/data/USGSBayAreaVMExt-08.3.0.etree",
+
 			"Ask": "no",
-                        "Libraries": [],
-                        "md5sum": "0f6ca2e4a9ba6e32181a7e6493a39c55",
+                        "NOTE": "this model needs older proj4 libraries",
+                        "Libraries": ["euclid3", "proj4"],
+                        "md5sum": "1079d048528f1888772da524d891ba72",
 			"Order": 7
 		},
 		"CVM-S4.26.M01": {
