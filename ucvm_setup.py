@@ -182,6 +182,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     ## skip the models that already exists and go to the ones that did not get processed yet
     if(restart_flag) :
         test_path= workpath + "/" + config_data["Path"];
+        print("Skip checking --",test_path)
         if os.path.exists(test_path):
             print("\nSkip building " + config_data["Path"] + ", already exists");
             return 0
