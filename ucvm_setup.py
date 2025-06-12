@@ -782,17 +782,21 @@ print("computer speed.")
 if skip_ask_path == False :
     print("Where would you like UCVM to be installed?")
 
-    try:
-        if ucvmpath[0] == "$":
-            # We want to expand that.
-            ucvmpath = os.environ(ucvmpath[1:])
-    except Exception:
-        # Use default path.
-        ucvmpath = os.path.expanduser("~")
+    my_ucvmpath=getSpecialEnvSetting('UCVM_INSTALL_PATH')
 
-# Append the version info to the path.
-    ucvmpath = ucvmpath.rstrip("/") + "/ucvm-" + VERSION
-    
+    if(my_ucvmpath != None):
+        ucvmpath=my_ucvmpath
+    else:
+        try:
+          if ucvmpath[0] == "$":
+              # We want to expand that.
+              ucvmpath = os.environ(ucvmpath[1:])
+        except Exception:
+          # Use default path.
+          ucvmpath = os.path.expanduser("~")
+
+        ucvmpath = ucvmpath.rstrip("/") + "/ucvm-" + VERSION
+
     print("(Default: " + ucvmpath + ")")
     if sys.version_info.major >= (3) :
         enteredpath = input("Enter path or blank to use the default path: ")
