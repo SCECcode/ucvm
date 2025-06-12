@@ -76,6 +76,17 @@ def which(file):
             return path + "/" + file
     return None
 
+# Check and return the value for a special environment variable
+# export CVM_LARGEDATA_DIR=/var/www/html/CVM_DATASET_DIRECTORY
+def getSpecialEnvSetting(envstr) :
+
+    my_env = os.environ.copy()
+    if envstr in my_env.keys() :
+        env_val=my_env[envstr]
+        return env_val
+        env[env] = my_env[env]
+
+    return None
 
 # Records the command to the global shell script variable.
 def callAndRecord(command, nocall = False, noshell = True):
@@ -404,6 +415,12 @@ def makeBashScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
     fp.write("\n")
     str="export UCVM_INSTALL_PATH="+ucvmpath.rstrip("/")
     fp.write(str)
+    envval=getSpecialEnvSetting('CVM_LARGEDATA_DIR')
+    if(envval != None) :
+      str="export CVM_LARGEDATA_DIR="+envval.rstrip("/")
+      fp.write(str)
+      fp.write("\n")
+
     fp.write("\n")
     fp.write("\n")
 
@@ -504,6 +521,11 @@ def makePythonScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
     fp.write(str)
     str="UCVM_INSTALL_PATH=\""+ucvmpath.rstrip("/")+"\"\n"
     fp.write(str)
+    envval=getSpecialEnvSetting('CVM_LARGEDATA_DIR')
+    if(envval != None) :
+      str="CVM_LARGEDATA_DIR="+envval.rstrip("/")
+      fp.write(str)
+      fp.write("\n")
     str="my_env=os.environ\n\n"
     fp.write(str)
 
