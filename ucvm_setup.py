@@ -184,7 +184,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         test_path= workpath + "/" + config_data["Path"];
         print("Skip checking --",test_path)
         if os.path.exists(test_path):
-            print("\nSkip building " + config_data["Path"] + ", already exists");
+            print("\nSkip building " + config_data["Path"] + ", already exists")
             return 0
 
     strip_level = "2"
