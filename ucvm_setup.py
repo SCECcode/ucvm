@@ -933,9 +933,9 @@ for library in config_data["libraries"]:
 print("\nNow setting up CVM models...")
 
 for model in config_data["models"]:
-    print("Install model_name: ", model)
     the_model = config_data["models"][model]
     if model in modelsToInstall:
+        print("Install model_name: ", model)
         try:
            #
             # Currently, this test for existing tar file will always fail because of the
