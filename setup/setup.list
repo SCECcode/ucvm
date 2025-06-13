@@ -77,7 +77,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Ask": "yes",
                         "Libraries": ["euclid3", "proj"],
-                        "md5sum": "182d94d683858d94cf4f3e70ebe0d30c",
+                        "md5sum": "680d0d62f4478efb86913c5709b3ad09",
                         "Order": 24
                 },
                 "CS242": {
