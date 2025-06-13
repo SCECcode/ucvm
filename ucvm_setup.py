@@ -525,7 +525,7 @@ def makePythonScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
     fp.write(str)
     envval=getSpecialEnvSetting('CVM_LARGEDATA_DIR')
     if(envval != None) :
-      str="CVM_LARGEDATA_DIR="+envval.rstrip("/")+"\"\n"
+      str="CVM_LARGEDATA_DIR=\""+envval.rstrip("/")+"\"\n"
       fp.write(str)
       fp.write("\n")
     str="my_env=os.environ\n\n"
