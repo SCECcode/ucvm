@@ -22,6 +22,10 @@ import shutil
 # Set the version number for the installation script.
 VERSION = "25.7.0"
 
+# UCVM_INSTALL_PATH and UCVM_SRC_PATH
+UCVM_SRC_PATH = os.getcwd()
+UCVM_INSTALL_PATH = os.getcwd() 
+
 # User defined variables.
 all_flag = False
 dynamic_flag = True
@@ -775,6 +779,13 @@ try:
 except OSError as e:
     eG(e, "Parsing available model list.")
 
+
+### set UCVM_SRC_PATH and UCVM_SRC_PATH from the environment string..
+    my_srcpath=getSpecialEnvSetting('UCVM_SRC_PATH')
+    if(my_srcpath != None):
+        UCVM_SRC_PATH=my_srcpath
+
+
 print("\nPlease answer the following questions to install UCVM.\n")
 print("Note that this install and build process may take up to an hour depending on your")
 print("computer speed.")
@@ -827,6 +838,8 @@ if not os.path.exists(ucvmpath):
   call(["mkdir", "-p", ucvmpath])
   call(["mkdir", "-p", ucvmpath+'/work'])
   call(["mkdir", "-p", ucvmpath+'/lib'])
+
+SRC_INSTALL_PATH = ucvmpath
 
 ## print(config_data["models"].keys())
     
@@ -1020,9 +1033,9 @@ callAndRecord(["make", "clean"])
 callAndRecord(["make"])
 
 if platform.system() == "Darwin" or platform.system() == "Linux" or dynamic_flag == True:
-    makeBashScript(os.getcwd(), ucvmpath ,modelsToInstall, librariesToInstall)
-    makePythonScript(os.getcwd(), ucvmpath ,modelsToInstall, librariesToInstall)
-    makeDyLibNameChangeScript(os.getcwd(), ucvmpath, modelsToInstall, librariesToInstall)
+    makeBashScript(UCVM_SRC_PATH, ucvmpath ,modelsToInstall, librariesToInstall)
+    makePythonScript(UCVM_SRC_PATH, ucvmpath ,modelsToInstall, librariesToInstall)
+    makeDyLibNameChangeScript(UCVM_SRC_PATH, ucvmpath, modelsToInstall, librariesToInstall)
 
 print("\nInstalling UCVM")
 callAndRecord(["make", "install"])
