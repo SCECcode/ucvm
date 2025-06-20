@@ -426,6 +426,11 @@ def makeBashScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
       str="export CVM_LARGEDATA_DIR="+envval.rstrip("/")
       fp.write(str)
       fp.write("\n")
+    envval=getSpecialEnvSetting('CVM_IN_DOCKER')
+    if(envval != None) :
+      str="export CVM_IN_DOCKER="+envval
+      fp.write(str)
+      fp.write("\n")
 
     fp.write("\n")
     fp.write("\n")
@@ -530,6 +535,11 @@ def makePythonScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
     envval=getSpecialEnvSetting('CVM_LARGEDATA_DIR')
     if(envval != None) :
       str="CVM_LARGEDATA_DIR=\""+envval.rstrip("/")+"\"\n"
+      fp.write(str)
+      fp.write("\n")
+    envval=getSpecialEnvSetting('CVM_IN_DOCKER')
+    if(envval != None) :
+      str="CVM_IN_DOCKER=\""+envval+"\"\n"
       fp.write(str)
       fp.write("\n")
     str="my_env=os.environ\n\n"
