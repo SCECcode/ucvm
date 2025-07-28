@@ -1,3 +1,6 @@
+## 2025-07-31 Mei-Hui Su <mei@usc.edu>
+* Tag UCVM v25.7 version
+
 ## 2025-03-15 Mei-Hui Su <mei@usc.edu>
 * Added CANVAS 
 * Added UWSFBCVM
