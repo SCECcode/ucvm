@@ -694,7 +694,7 @@ def _addPROJ_LIB_python() :
 # Read in the possible arguments
 #
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "asdhrp:", ["all", "static", "dynamic", "help", "restart", "force", "path"])
+    opts, args = getopt.getopt(sys.argv[1:], "asdhrfp:", ["all", "static", "dynamic", "help", "restart", "force", "path"])
 except getopt.GetoptError as err:
     print(str(err))
     usage()
