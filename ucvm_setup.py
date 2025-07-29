@@ -28,6 +28,7 @@ UCVM_INSTALL_PATH = os.getcwd()
 
 # User defined variables.
 all_flag = False
+force_flag = False
 dynamic_flag = True
 restart_flag = False
 use_iobuf = False
@@ -693,7 +694,7 @@ def _addPROJ_LIB_python() :
 # Read in the possible arguments
 #
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "asdhrp:", ["all", "static", "dynamic", "help", "restart","path"])
+    opts, args = getopt.getopt(sys.argv[1:], "asdhrp:", ["all", "static", "dynamic", "help", "restart", "force", "path"])
 except getopt.GetoptError as err:
     print(str(err))
     usage()
@@ -703,6 +704,9 @@ for o, a in opts:
     if o in ('-r', '--restart'):
         restart_flag = True
         print("Restart Flag: True")
+    if o in ('-f', '--force'):
+        force_flag = True
+        print("Force Flag: True")
     elif o in ('-a', '--all'):
         all_flag = True
         print("All Flag: True")
@@ -865,7 +869,7 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: config_dat
         modelsToInstall.append(model)
         continue
 
-    if config_data["models"][model]["Ask"] != "no":
+    if config_data["models"][model]["Ask"] != "no" or force_flag :
         print("\nWould you like to install " + model + "?")
         if sys.version_info.major >= (3) :
           dlinstmodel = input("Enter yes or no: ")
