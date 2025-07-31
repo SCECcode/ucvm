@@ -7,7 +7,7 @@
 * Added CVM_LARGEDATA_DIR option to reduce data file transfers
 
 ## 2024-08-15 Mei-Hui Su <mei@usc.edu>
-* Added CS248 similar to CS242
+* Added CS248 
 
 ## 2024-02-15 Mei-Hui Su <mei@usc.edu>
 * Converted cvms5 to use Proj
@@ -18,7 +18,7 @@
 * Transfer Taper to toPROJ branch
 
 ## 2023-03-01 Mei-Hui Su <mei@usc.edu>
-* Update UCVM with Proj(8) which requires inclusion of TIFF,HDF5,SQLITE,CURL,OPENSSL(toPROJ branch)
+* Update UCVM with Proj(8) which requires inclusion of TIFF,HDF5,SQLITE,CURL,OPENSSL
 * Added SFCVM (using geomodelgrids format, Brad Aagaard)
 * Converted CCA to use Proj(remove dependency on geo fortran code, Brad Aagaard)
 
