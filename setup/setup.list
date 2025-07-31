@@ -20,7 +20,7 @@
                         ],
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "525bf8bd221a01a6d7223fcfdf88d9b3",
+                        "md5sum": "be8eeaf124361bc6c7d6380f327599f9",
                         "Order": 28 
                 },
                "CANVAS": {
@@ -34,7 +34,7 @@
                         "UCVMConfigureFlags": "--enable-model-canvas --with-canvas-lib-path=${UCVM_INSTALL_PATH}/model/canvas/lib --with-canvas-include-path=${UCVM_INSTALL_PATH}/model/canvas/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "10ae3c4134955fee7f0b7690194d1ebd",
+                        "md5sum": "915143f3770b67c87dc3baba67d5afef",
                         "Order": 27
                 },
                "SJFZ": {
@@ -62,7 +62,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwlinca --with-uwlinca-lib-path=${UCVM_INSTALL_PATH}/model/uwlinca/lib --with-uwlinca-include-path=${UCVM_INSTALL_PATH}/model/uwlinca/include",
                         "Ask": "yes",
                         "Libraries": ["proj"],
-                        "md5sum": "bcdf982ee0fd792bbe06c37deced2398",
+                        "md5sum": "9c32103124379418740e947812355802",
                         "Order": 25
                 },
                 "CS248": {
@@ -77,7 +77,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Ask": "no",
                         "Libraries": ["euclid3", "proj"],
-                        "md5sum": "77c186433f8ed9d872b3ca43efb4d6b2",
+                        "md5sum": "a2d70e732fb874238ceac40c91394c06",
                         "Order": 24
                 },
                 "CS242": {
