@@ -396,7 +396,7 @@
 
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "816e9d96bd3a4b656a26c8a07dd3d04",
+                        "md5sum": "816e9d96bd3a4b656a26c8a07dd3d045",
 			"Order": 1		
 		}
 	},
@@ -550,7 +550,7 @@
                 "test-grid-lib-1d": {
                         "Path": "test-grid-lib-1d.ref",
                         "Size": "584M",
-                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v22_7/ref/test-grid-lib-1d.ref",
+                        "URL": "https://g-c662a6.a78b8.36fe.data.globus.org/ucvm/v25_7/ref/test-grid-lib-1d.ref",
                         "Required": "yes",
                         "md5sum": "627b85c39a0c7cca1d46443ffb0cfca1",
                         "Ask": "no"

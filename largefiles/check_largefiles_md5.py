@@ -85,7 +85,7 @@ def check_md5file(nm,filename,total_ok,total_errs):
   proc = subprocess.Popen(["md5sum", "-c", filename], stdout=subprocess.PIPE,stderr=subprocess.PIPE)
   out,err = proc.communicate()
   res = out.split()
-  if res[1].decode("utf-8") == "OK":
+  if len(res) > 1 and res[1].decode("utf-8") == "OK":
     print("File: %s OK"%(nm))
     total_ok += 1
   else:
@@ -112,7 +112,6 @@ for item in target_large_model_list :
   fp.write("  ")
   fp.write(model)
   fp.flush()
-  pdb.set_trace() 
   total_ok, total_errs = check_md5file(model,fp.name,total_ok,total_errs)
   fp.close()
 
