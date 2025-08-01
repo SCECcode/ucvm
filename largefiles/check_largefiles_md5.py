@@ -112,6 +112,7 @@ for item in target_large_model_list :
   fp.write("  ")
   fp.write(model)
   fp.flush()
+  pdb.set_trace() 
   total_ok, total_errs = check_md5file(model,fp.name,total_ok,total_errs)
   fp.close()
 
