@@ -251,7 +251,7 @@
                         "UCVMConfigureFlags": "--enable-model-wfcvm --with-wfcvm-lib-path=${UCVM_INSTALL_PATH}/model/wfcvm/lib --with-wfcvm-include-path=${UCVM_INSTALL_PATH}/model/wfcvm/include --with-wfcvm-model-path=${UCVM_INSTALL_PATH}/model/wfcvm/src",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "9d4d7786c5b2e01c32fea8e31b670134",
+                        "md5sum": "6062ca271201a8ec2fe2df5133259d2a",
                         "Order": 12
                 },
 		"IMPERIAL": {
@@ -264,7 +264,7 @@
 			"UCVMConfigureFlags": "--enable-model-ivlsu --with-ivlsu-lib-path=${UCVM_INSTALL_PATH}/model/ivlsu/lib --with-ivlsu-include-path=${UCVM_INSTALL_PATH}/model/ivlsu/include",
 			"Ask": "yes",
 			"Libraries": ["proj"],
-                        "md5sum": "7c89c243e105fd400000e1644a84943e",
+                        "md5sum": "bb3f1a26d594ea6b2e2b7fe1d2088425",
 			"Order": 11		
 		},
 		"COACHELLA": {
@@ -276,7 +276,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvlsu --with-cvlsu-lib-path=${UCVM_INSTALL_PATH}/model/cvlsu/lib --with-cvlsu-include-path=${UCVM_INSTALL_PATH}/model/cvlsu/include",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "de16419dfede3f688280aa13ac0c0079",
+                        "md5sum": "42f5d16cbdaa72d2bd750861842d6f75",
 			"Order": 10		
 		},
 		"ALBACORE": {
@@ -288,7 +288,7 @@
 			"UCVMConfigureFlags": "--enable-model-albacore --with-albacore-lib-path=${UCVM_INSTALL_PATH}/model/albacore/lib --with-albacore-include-path=${UCVM_INSTALL_PATH}/model/albacore/include",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "c7b86392652731178744cacbf12e7168",
+                        "md5sum": "08848787707d828abd0dcd09e377b880",
 			"Order": 9		
 		},
 		"CVM-H": {
