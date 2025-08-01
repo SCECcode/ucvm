@@ -704,7 +704,7 @@ for o, a in opts:
     if o in ('-r', '--restart'):
         restart_flag = True
         print("Restart Flag: True")
-    if o in ('-f', '--force'):
+    elif o in ('-f', '--force'):
         force_flag = True
         print("Force Flag: True")
     elif o in ('-a', '--all'):

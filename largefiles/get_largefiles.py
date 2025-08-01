@@ -89,7 +89,7 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config
     _url = str(the_model["URL"])
     _abb= str(the_model["Abbreviation"])
     _sz= str(the_model["Size"])
-    if config_data["models"][model]["Ask"] == "yes":
+    if config_data["models"][model]["Ask"] == "yes" or config_data["models"][model]["Ask"] == "maybe" :
        optional_large_model_list.append( {"model":_abb,"url":_url,"size":_sz })
        if "Preprocess" in the_model :
            pre_tasks = the_model["Preprocess"]
@@ -146,7 +146,7 @@ else:
 #
 # Check if there are arguments
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "m:h", ["model","help"])
+    opts, args = getopt.getopt(sys.argv[1:], "m:hf", ["model","help"])
 except getopt.GetoptError as err:
     print(str(err))
     usage()
