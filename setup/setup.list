@@ -48,7 +48,7 @@
                         "UCVMConfigureFlags": "--enable-model-sjfz --with-sjfz-lib-path=${UCVM_INSTALL_PATH}/model/sjfz/lib --with-sjfz-include-path=${UCVM_INSTALL_PATH}/model/sjfz/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "a752a6b8f18a6d9681436fbd11bb7302",
+                        "md5sum": "e0d038088a2c31eb691a0916f011500c",
                         "Order": 26
                 },
                 "UWLINCA": {
@@ -328,11 +328,11 @@
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/data/i26",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "310bf19b711115846b237599d7efd3b3",
+                        "md5sum": "1368bcc4d82ef1ea118257b4b0e9c711",
 			"Order": 6		
 		},
 		"CVM-S4": {
-			"Version": "4",
+			"Version": "1.0",
                         "Abbreviation": "cvms",
                         "Size": "326M",
 			"Path": "cvms",
@@ -341,7 +341,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvms --with-cvms-include-path=${UCVM_INSTALL_PATH}/model/cvms/include --with-cvms-lib-path=${UCVM_INSTALL_PATH}/model/cvms/lib --with-cvms-model-path=${UCVM_INSTALL_PATH}/model/cvms/data/cvms",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "a640c4474ff18f3c71b77d9e1870f3d1",
+                        "md5sum": "ae93a7427fa6bfd8c49c449518b3b0a3f",
 			"Order": 5
 		},
 		"CS173H": {
@@ -396,7 +396,7 @@
 
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "121184222f0decb8e4fd6a892a474760",
+                        "md5sum": "e9cccab795427b67ceeff4f28e18c7ac",
 			"Order": 1		
 		}
 	},
