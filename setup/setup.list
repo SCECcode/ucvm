@@ -301,7 +301,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "98a53517c431f9ed2fb4f744cfaa22e6",
+                        "md5sum": "9b5482788d2c44b93b93b6de5bb9421b",
 			"Order": 8
 		},
 		"CenCalVM": {
@@ -380,7 +380,7 @@
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "0af789480adcaec194fbd45695597e80",
+                        "md5sum": "1a7e23bde8a6bb73d3e6df4d64a34e24",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
