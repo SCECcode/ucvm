@@ -44,10 +44,14 @@ Researchers that use the UCVM software should cite the primary UCVM software ref
 ### USGS Central California Model (cencal)
 * Brocher, Tom & Aagaard, Brad & Simpson, R. & Jachens, R.. (2006). The USGS 3D Seismic Velocity Model for Northern California. AGU Fall Meeting Abstracts. -1. 1266. 
 
+### CCA-06 (cca)
+* Jordan, T. H., Callaghan, S. (2018) SCEC Central Coast Seismic Velocity Model,  USGS 2018 San Francisco Bay Region Seismic Velocity Models for Seismic Hazard Assessment Workshop, Oral Presentation, March 18, 2018
+
 ### ALBACORE
 * Bowden, D. C., Kohler, M. D., Tsai, V. C., & Weeraratne, D. S. (2016). Offshore southern California lithospheric velocity structure from noise cross-correlation functions. Journal of Geophysical Research, 121(5), 3415-3427. doi: 10.1002/2016JB012919.
 
 ### SSIP Imperial Valley Model
+* Persaud P., (2016) Integrated 3-D Seismotectonic-Velocity Model of the Salton Trough Region based on Seismicity and Explosive Shots from the Salton Seismic Imaging Project Final Technical Report to U.S. Geological Survey NEHRP, Award G15AP00062.
 * Persaud P., Y. Ma, J. M. Stock, J. Hole, G. Fuis and L. Han (2016), Fault zone characteristics and basin complexity in the southern Salton Trough, California , Geology, 44(9), p. 747-750, doi:10.1130/G38033.1.
 
 ### SSIP Coachella Valley Model
