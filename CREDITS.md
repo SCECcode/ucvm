@@ -2,10 +2,10 @@
 The following developers have contributed to the development of the UCVM software framework. 
 Along with these UCVM developers, each velocity model accessible through UCVM has its own list of contributors
 which can be found in the git repositories for each model.
-* Mei-Hui Su, Southern California Earthquake Center
-* Philip Maechling, Southern California Earthquake Center
-* David Gill, Microsoft
-* Patrick Small, University of Southern California
+* Mei-Hui Su
+* Philip Maechling
+* David Gill
+* Patrick Small
 * Rasheed Ajala
 * Patricia Persaud
 * Alan Juarez
