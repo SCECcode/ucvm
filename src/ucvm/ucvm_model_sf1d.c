@@ -1,7 +1,7 @@
 /**
    ucm_model_sf1d.c
 
-   SFCVM Sierra Foothills 1D Velocity Model
+   Sierra Foothills 1D Velocity Model
 **/
 
 
