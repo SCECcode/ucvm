@@ -48,7 +48,7 @@
                         "UCVMConfigureFlags": "--enable-model-sjfz --with-sjfz-lib-path=${UCVM_INSTALL_PATH}/model/sjfz/lib --with-sjfz-include-path=${UCVM_INSTALL_PATH}/model/sjfz/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "3aba65c6ff2f2471e5d6c19b98a9a050",
+                        "md5sum": "a78bc2bf231829deceac4e27d60045bd",
                         "Order": 26
                 },
                 "UWLINCA": {
