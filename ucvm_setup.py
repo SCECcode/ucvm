@@ -59,8 +59,9 @@ def usage():
     print("\t-d  --dynamic      Use dynamic linking.")
     print("\t-a  --all          Use all available models.")
     print("\t-r  --restart      This is a restart of ucvm_setup.py call.")
-    print("\t-p  --path         use supplied installation path.")
-    print("\t-h  --help         usage.\n")
+    print("\t-p  --path         Use supplied installation path.")
+    print("\t-f  --force        Force all available models.")
+    print("\t-h  --help         Usage.\n")
     print("UCVMC %s\n" % VERSION)
     
 # Stands for "error gracefully". Prints out a message for the error and asks to contact software@scec.org.
@@ -865,11 +866,14 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: config_dat
 ## continue only if the model is in work_model_dir 
     if not os.path.isfile(ltarname):
         continue
+    ask_v = config_data["models"][model]["Ask"]
+
     if all_flag == True:
-        modelsToInstall.append(model)
+        if ask_v == "yes" or (ask_v == "maybe" and force_flag) :
+          modelsToInstall.append(model)
         continue
 
-    if config_data["models"][model]["Ask"] == "yes" or force_flag :
+    if ask_v == "yes" or (ask_v == "maybe" and force_flag) :
         print("\nWould you like to install " + model + "?")
         if sys.version_info.major >= (3) :
           dlinstmodel = input("Enter yes or no: ")
