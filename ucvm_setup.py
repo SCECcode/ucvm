@@ -869,7 +869,7 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: config_dat
         modelsToInstall.append(model)
         continue
 
-    if config_data["models"][model]["Ask"] != "no" or force_flag :
+    if config_data["models"][model]["Ask"] == "yes" or force_flag :
         print("\nWould you like to install " + model + "?")
         if sys.version_info.major >= (3) :
           dlinstmodel = input("Enter yes or no: ")
