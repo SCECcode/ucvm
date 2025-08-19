@@ -1,69 +1,80 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+title: The Unified Community Velocity Model (UCVM)
+message: 'If you use this software, please cite it as below.'
+type: software
 authors:
-- family-names: Small
-  given-names: Patrick E.
-- family-names: Maechling
-  given-names: Philip J.
-  orcid: https://orcid.org/0000-0002-9221-7068
-- family-names: Su
-  given-names: Mei-Hui
+  - family-names: Small
+    given-names: Patrick E.
+  - family-names: Maechling
+    given-names: Philip J.
+    orcid: 'https://orcid.org/0000-0002-9221-7068'
+  - family-names: Su
+    given-names: Mei-Hui
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.5651276
+repository-code: 'https://github.com/SCECcode/ucvm.git'
+abstract: >-
+  The SCEC UCVM (Unified Community Velocity Model) software
+  framework is a collection of software tools that provide a
+  standard query interface for accessing, comparing, and
+  using community seismic velocity models in ground motion
+  modeling and wave propagation simulations. 
 keywords:
-- earth
-- earthquake
-- earth model
-- seismology
-- geophysics
-- earth science
-- seismic velocity model
-- seismic wave velocity
-- Vp
-- Vs
-- density
-- ground motion
-- California
-- geology
+  - earth
+  - earthquake
+  - earth model
+  - seismology
+  - geophysics
+  - earth science
+  - seismic velocity model
+  - seismic wave velocity
+  - Vp
+  - Vs
+  - density
+  - ground motion
+  - California
+  - geology
 license: BSD-3-Clause
-repository-code: "https://github.com/SCECcode/ucvm.git"
-title: "The Unified Community Velocity Model (UCVM)"
 version: 25.7.0
-doi: 10.5281/zenodo.5651276
-date-released: 2025-08-16
+date-released: '2025-08-16'
 contact:
   - email: software@scec.org
-    name: "The SCEC UCVM Software project"
+    name: The SCEC UCVM Software project
 references:
   - authors:
-      - family-names: "Small"
-        given-names: "P."
-      - family-names: "Gill"
-        given-names: "D."
-      - family-names: "Maechling"
-        given-names: "P.J."
-      - family-names: "Taborda"
-        given-names: "R."
-      - family-names: "Callaghan"
-        given-names: "S."
-      - family-names: "Jordan"
-        given-names: "T.H."
-      - family-names: "Ely"
-        given-names: "G.P."
-      - family-names: "Olsen"
-        given-names: "K.B."
-      - family-names: "Goulet"
-        given-names: "C.A."
+      - family-names: Small
+        given-names: P.
+      - family-names: Gill
+        given-names: D.
+      - family-names: Maechling
+        given-names: P.J.
+      - family-names: Taborda
+        given-names: R.
+      - family-names: Callaghan
+        given-names: S.
+      - family-names: Jordan
+        given-names: T.H.
+      - family-names: Ely
+        given-names: G.P.
+      - family-names: Olsen
+        given-names: K.B.
+      - family-names: Goulet
+        given-names: C.A
     doi: 10.1785/0220170082
     keywords:
-    - seismology
-    - earth
-    - geophysics
-    - velocity models
-    - tomography
-    scope: "Cite this paper if you want to reference the model"
-    title: "The SCEC Unified Community Velocity Model Software Framework"
-    journal: "Seismological Research Letters"
+      - seismology
+      - earth
+      - geophysics
+      - velocity models
+      - tomography
+    scope: Cite this paper if you want to reference the model
+    title: The SCEC Unified Community Velocity Model Software Framework
+    journal: Seismological Research Letters
     type: article
     issue: 5
     volume: 88
     year: 2017
- 
