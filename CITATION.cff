@@ -8,7 +8,7 @@ authors:
   orcid: https://orcid.org/0000-0002-9221-7068
 - family-names: Su
   given-names: Mei-Hui
-keywords: 
+keywords:
 - earth
 - earthquake
 - earth model
@@ -53,7 +53,7 @@ references:
       - family-names: "Goulet"
         given-names: "C.A."
     doi: 10.1785/0220170082
-    keywords: 
+    keywords:
     - seismology
     - earth
     - geophysics
@@ -65,4 +65,5 @@ references:
     type: article
     issue: 5
     volume: 88
-    year: 2017 
+    year: 2017
+ 
