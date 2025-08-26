@@ -28,13 +28,13 @@
                         "Abbreviation": "canvas",
                         "Size": "39M",
                         "Path": "canvas",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/canvas.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/model/canvas.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "",
                         "UCVMConfigureFlags": "--enable-model-canvas --with-canvas-lib-path=${UCVM_INSTALL_PATH}/model/canvas/lib --with-canvas-include-path=${UCVM_INSTALL_PATH}/model/canvas/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "e69561f08e2f3a509ab0b932008058a1",
+                        "md5sum": "96d3ccd7b40abdae93806af35031daad",
                         "Order": 27
                 },
                "SJFZ": {
