@@ -1,0 +1,62 @@
+
+ucvm2mesh directory :
+
+grid4corners.c
+   grid4corners  ingrid  nx  ny
+   --> takes a regular mesh (ucvm_point_t from ucvm2mesh)
+       // first one
+       // x-1
+       // num_grid - x
+       // num_grid - 1
+
+latlon2utm.c
+   "+proj=utm +ellps=clrk66 +zone=%d +datum=NAD27 +units=m +no_defs"
+   zone is 10 or 11
+   proj_create_crs_to_crs,  EPSG:4326
+
+   latlon2utm zone < data_file
+       data_file 
+          0 lon lat
+          1 utm_e utm_n
+
+mesh2csv.c
+
+mesh2hdf5.c
+mesh2hdf5.conf
+mesh2hdf5-save.c
+
+mesh2netcdf.c
+
+mesh_check.c
+mesh_op.c
+
+mesh_strip_ijk.c
+
+mesh_translate.c
+
+ucvm2mesh.c
+ucvm2mesh.conf
+
+ucvm2mesh_mpi.c
+ucvm2mesh_mpi_layer.c
+
+um_config.c
+um_config.h
+
+um_dtypes.h
+
+um_hdf5_2.c
+um_hdf5.c
+um_hdf5.h
+
+um_mesh.c
+um_mesh.h
+
+um_mpi.c
+um_mpi.h
+
+um_stat.c
+um_stat.h
+
+um_utils.c
+um_utils.h

@@ -1,5 +1,7 @@
 // latlon2ucvm.c
-//
+// convert latlon to utm
+//         or
+//         utm to latlon
 
 #include <stdio.h>
 #include <stdlib.h>
