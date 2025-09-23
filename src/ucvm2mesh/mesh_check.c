@@ -1,5 +1,6 @@
 /**
- * mesh_strip_ijk.c - Strip fields from existing mesh
+ * mesh_check.c 
+ * based on mesh_strip_ijk.c - Strip fields from existing mesh
  *
  * Based on code written by Ricardo Taborda 
  * <ricardotaborda@gmail.com> and Tiankai Tu

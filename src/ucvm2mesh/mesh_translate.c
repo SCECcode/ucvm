@@ -1,7 +1,8 @@
 /**
- * mesh_translate.c - Perform origin tranlate operation on a mesh,
- * north-west to south-west
- *   fast-Y
+ * mesh_translate.c - 
+ *    Perform origin translate operation on a mesh,
+ *    from north-west corner to south-west corner
+ *       fast-Y
  */
 
 #include <stdio.h>

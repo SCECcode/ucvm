@@ -1,44 +1,94 @@
-
-ucvm2mesh directory :
+ucvm2mesh and friends
+---------------------
 
 grid4corners.c
-   grid4corners  ingrid  nx  ny
-   --> takes a regular mesh (ucvm_point_t from ucvm2mesh)
-       // first one
-       // x-1
-       // num_grid - x
-       // num_grid - 1
+--> takes ucvm2mesh's grid (ucvm_point_t from ucvm2mesh)
+    output coord of,
+       first one
+       x-1
+       num_grid - x
+       num_grid - 1
+USAGE: grid4corners ingrid  nx  ny
+    ( from here, we will know if mesh is iterating in fast-x/fast-y and
+      also where is the origin )
 
 latlon2utm.c
    "+proj=utm +ellps=clrk66 +zone=%d +datum=NAD27 +units=m +no_defs"
    zone is 10 or 11
    proj_create_crs_to_crs,  EPSG:4326
-
-   latlon2utm zone < data_file
-       data_file 
+USAGE: latlon2utm zone < data_file
+       data_file format, 
           0 lon lat
           1 utm_e utm_n
 
 mesh2csv.c
+--> takes ucvm2mesh's output files
+USAGE: mesh2csv inmesh ingrid format spacing nx ny nz outfile
+  input mesh file, local defined struct that holds vs/vp/rho and maybe more 
+  input grid file, ucvm_point_t containing coord[3]
+  format of file, IJK-12, IJK-20, IJK-32, or SORD
+  spacing, mesh spacing
+  mesh dimensions, nx,ny,nz
+  output csv file
 
-mesh2hdf5.c
+mesh2hdf5.c 
 mesh2hdf5.conf
-mesh2hdf5-save.c
+  TO_DO
+--> takes ucvm2mesh's output files and create hdf5 output file
+USAGE: -f ucvm2mesh.conf -m mesh2hdf5.conf
 
 mesh2netcdf.c
+--> takes ucvm2mesh's output files (like mesh2csv.c)
+  generate a simple netcdf with  3 blocks of data 
+USAGE: mesh2netcdf inmesh ingrid format spacing nx ny nz outfile
 
-mesh_check.c
+mesh_check.c  (um_mesh.h)
+--> check mesh 'float' content (max node 10000) 
+USAGE: mesh_check inmesh format
+   format, IJK-12, IJK-20, IJK-32
+
 mesh_op.c
+--> perform 'OP' on 2 meshes and write out a new mesh
+USAGE: mesh_op op immesh1 inmesh2 format outmesh
+   op, diff(subtract)
+   format, IJK-12, IJK-20, IJK-32
+
 
 mesh_strip_ijk.c
+--> Strip fields from existing AWP-20, AWP-32 mesh (max node 10000)
+    rewrite into a mesh file with IJK-12 format
+USAGE: mesh_strip_ijk inmesh format outmesh
+   format, IJK-20, IJK-32
 
-mesh_translate.c
+mesh_translate.c (ucvm/uvm_grid.c)
+-->  Perform origin translate operation on a ucvm2mesh mesh (max node 10000)
+     north-west corner to south-west corner with seek-type(fast-Y)
+     inmesh and outmesh would have same seek-type
+USAGE: mesh_translate type seek-type nx ny n mesh
+     type, 0(material properties), 1(double)
+     seek-type, 0(fast-Y), 1(fast-X)
 
-ucvm2mesh.c
 ucvm2mesh.conf
+ucvm2mesh.c
+--> Create a mesh making ucvm_query call. Origin is at north-west and fast-Y 
+    use ucvm/ucvm_grid_gen_file to create 'grid file'
+    pickup grid points from the 'grid file' and extract the mesh data
+USAGE: ucvm2mesh -f configfile 
 
 ucvm2mesh_mpi.c
+USAGE: ucvm2mesh_mpi -f configfile 
+
 ucvm2mesh_mpi_layer.c
+--> in config file,  px * py * pz = total rank process unit(mpi sense)
+                     px * py = set of ranks clustered as a layer
+                     pz = number of layers defined on the mesh 
+USAGE: ucvm2mesh_mpi_layer -f configfile -l layer -c count
+   layer, which layer to start processing
+   count, how many rank layer to process
+
+
+utilities routines
+------------------
 
 um_config.c
 um_config.h
