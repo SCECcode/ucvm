@@ -56,13 +56,13 @@
                         "Abbreviation": "uwlinca",
                         "Size": "700K",
                         "Path": "uwlinca",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/uwlinca.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/model/uwlinca.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "--with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
                         "UCVMConfigureFlags": "--enable-model-uwlinca --with-uwlinca-lib-path=${UCVM_INSTALL_PATH}/model/uwlinca/lib --with-uwlinca-include-path=${UCVM_INSTALL_PATH}/model/uwlinca/include",
                         "Ask": "yes",
                         "Libraries": ["proj"],
-                        "md5sum": "0e1bc421e98aaadef0f673e41e4a5750",
+                        "md5sum": "6a12777ad01986a2cea6ea88b27f0899",
                         "Order": 25
                 },
                 "CS248": {
