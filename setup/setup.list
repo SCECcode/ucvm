@@ -373,14 +373,14 @@
                         "Abbreviation": "cca",
                         "Size": "1.1G",
 			"Path": "cca",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/cca.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/model/cca.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
 			"UCVMConfigureFlags": "--enable-model-cca --with-cca-lib-path=${UCVM_INSTALL_PATH}/model/cca/lib --with-cca-include-path=${UCVM_INSTALL_PATH}/model/cca/include",
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "777f89182e57cb475db3d3b622905ec8",
+                        "md5sum": "828a50dea61f0f187a5ca8585564c9c8",
 			"Order": 2		
 		},
 		"CVM-S4.26": {
