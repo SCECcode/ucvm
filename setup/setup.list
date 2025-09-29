@@ -70,14 +70,14 @@
                         "Abbreviation": "cs248",
                         "Size": "72G",
                         "Path": "cs248",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/cs248.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/model/cs248.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Ask": "maybe",
                         "Libraries": ["euclid3", "proj"],
-                        "md5sum": "30c7813db174772a6333eec5fbecfe24",
+                        "md5sum": "de57c7cd33f6a17a787198f0d4dea033",
                         "Order": 24
                 },
                 "CS242": {
@@ -388,7 +388,7 @@
                         "Abbreviation": "cvms5",
                         "Size": "1.2G",
 			"Path": "cvms5",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/cvms5.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/model/cvms5.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
@@ -396,7 +396,7 @@
 
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "2258b7b30e58540940c829fce42ac7b4",
+                        "md5sum": "5dff7dfca9de92f1e8cd0c3ca9e3b0cf",
 			"Order": 1		
 		}
 	},
