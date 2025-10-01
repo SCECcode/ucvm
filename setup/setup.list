@@ -17,6 +17,10 @@
                                "Action": "install",
                                "CMD": ["python","-m","pip","install","certifi"]
                              }
+                             {
+                               "Action": "install",
+                               "CMD": ["pip","install","certifi"]
+                             }
                         ],
                         "Ask": "yes",
                         "Libraries": [],
@@ -109,6 +113,10 @@
                              {
                                "Action": "install",
                                "CMD": ["python","-m","pip","install","pybind11","numpy","h5py"]
+                             },
+                             {
+                               "Action": "install",
+                               "CMD": ["pip","install","pybind11","numpy","h5py"]
                              },
                              {
                                "Action": "download",
