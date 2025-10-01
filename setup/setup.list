@@ -15,7 +15,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["pip","install","certifi"]
+                               "CMD": ["python","-m","pip","install","certifi"]
                              }
                         ],
                         "Ask": "yes",
@@ -108,7 +108,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["pip","install","pybind11","numpy","h5py"]
+                               "CMD": ["python","-m","pip","install","pybind11","numpy","h5py"]
                              },
                              {
                                "Action": "download",
