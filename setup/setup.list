@@ -16,7 +16,7 @@
                              {
                                "Action": "install",
                                "CMD": ["python","-m","pip","install","certifi"]
-                             }
+                             },
                              {
                                "Action": "install",
                                "CMD": ["pip","install","certifi"]
