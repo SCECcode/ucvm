@@ -13,12 +13,20 @@ CONF_DIR=${UCVM_INSTALL_PATH}/conf
 
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
+expect_meta=$(mktemp) || (trap 'rm -f "$expect" "result"'; exit 1)
+result_meta=$(mktemp) || (trap 'rm -f "$expect" "result" "expect_meta" '; exit 1)
 
 sed 's ${CONF_DIR} '$CONF_DIR' ' garnervalley_cvmh.conf_template > garnervalley_cvmh.conf
 
 ${BIN_DIR}/ucvm2etree -f ./garnervalley_cvmh.conf > garnervalley_cvmh.out
 
+grep "Saving metadata" garnervalley_cvmh.out > $result_meta 
+
 head -1 garnervalley_cvmh_nogtl_0.5hz_10pts_1000ms.e |od |head -20 | sed 's/ //g' > $result
+
+cat > $expect_meta << EOF_EXPECTED_META
+Saving metadata: Title:GarnerValley_0.5hz_10pts_1000ms Author:Elnza Date:02/27/2019 3 Vp(float);Vs(float);density(float) 33.640300 -116.859300 26250.000000 35000.000000 0.000000 4375.000000 1610612736 2147483648 268435456
+EOF_EXPECTED_META
 
 if [ $tmp == 'Darwin' ]; then
 ##for macOS,
@@ -74,6 +82,13 @@ EOF_EXPECTED_RESULT
 fi
 
 echo "Running examples_programs_ucvm2etree ucvm2etree_cvmh"
+if diff $result_meta $expect_meta > /dev/null 2>&1
+then
+  echo [SUCCESS meta]
+else
+  echo [FAILURE meta]
+fi
+
 if diff $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]
@@ -81,5 +96,5 @@ else
   echo [FAILURE]
 fi
 
-trap 'rm -f "$expect" "$result"' exit
+trap 'rm -f "$expect" "$result" "$expect_meta" "result_meta"' exit
 
