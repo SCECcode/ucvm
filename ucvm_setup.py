@@ -247,14 +247,18 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
 
+## mainly to pass environment variable available the in setup environment
+## to the configure environment
     if "ConfigureEnv" in config_data.keys(): 
         needs_env = config_data["ConfigureEnv"]
     else:
         needs_env = [] 
 
+    pdb.set_trace()
     if "ConfigureFlags" in config_data and config_data["ConfigureFlags"] != "" :
         configure_array += config_data["ConfigureFlags"].split(" ")
     elif "Libraries" in config_data:
+## this is to work with our embedded libraries being installed in UCVM_INSTALL_PATH
         needs_array = config_data["Libraries"]
         if "euclid3" in needs_array:
           configure_array.append("--with-etree-lib-path=" + ucvmpath + "/lib/euclid3/lib")
@@ -265,6 +269,10 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         if "netcdf" in needs_array:
           configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/netcdf/lib")
           configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/netcdf/include")
+        if "hdf5" in needs_array:
+          pdb.set_trace()
+          configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
+          configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
                     
 ## special case ??
     if config_data["Path"] == "cencal":
@@ -278,6 +286,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         configure_array_new.append(n_cterm)
 
     ## both use $UCVM_INSTALL_PATH
+    pdb.set_trace()
     if config_data["Path"] == "curl" or config_data["Path"] == "proj" or config_data["Path"] == "cca"  or config_data["Path"] == "cvms5":
       callAndRecord(configure_array_new, noshell = False)
     else:
@@ -855,6 +864,8 @@ except OSError as e:
 
 print("\nNow setting up the required UCVM libraries...")
 
+## 'Needs' determines which order the libraries needs to be
+## installed
 #orderedLibrariesToInstall = []
 for library in config_data["libraries"]: 
     the_library = config_data["libraries"][library]
@@ -950,12 +961,13 @@ if user_dynamic_flag == True:
 if use_iobuf == True:
     ucvm_conf_command.append("--enable-iobuf")
  
-#if "NetCDF" in librariesToInstall:
+if "NetCDF" in librariesToInstall:
 #    ucvm_conf_command.append("--enable-netcdf")
 #    ucvm_conf_command.append("--with-netcdf-include-path=" + ucvmpath + "/lib/netcdf/include")
 #    ucvm_conf_command.append("--with-netcdf-lib-path=" + ucvmpath + "/lib/netcdf/lib")
-#    ucvm_conf_command.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
-    
+    ucvm_conf_command.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
+    ucvm_conf_command.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
+
 #ucvm_conf_command.append("UCVM_INSTALL_PATH=" + ucvmpath)
 
 ##needs to replace all ${UCVM_INSTALL_PATH} with ucvmpath

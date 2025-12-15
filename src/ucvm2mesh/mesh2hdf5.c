@@ -1,6 +1,7 @@
 /**
    mesh2hdf5.c
 
+   to mimick geomodelgrids' hdf5 file
 **/
 
 #include <stdio.h>
