@@ -254,7 +254,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     else:
         needs_env = [] 
 
-    pdb.set_trace()
+#XX    pdb.set_trace()
     if "ConfigureFlags" in config_data and config_data["ConfigureFlags"] != "" :
         configure_array += config_data["ConfigureFlags"].split(" ")
     elif "Libraries" in config_data:
@@ -286,7 +286,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         configure_array_new.append(n_cterm)
 
     ## both use $UCVM_INSTALL_PATH
-    pdb.set_trace()
+#XX    pdb.set_trace()
     if config_data["Path"] == "curl" or config_data["Path"] == "proj" or config_data["Path"] == "cca"  or config_data["Path"] == "cvms5":
       callAndRecord(configure_array_new, noshell = False)
     else:
