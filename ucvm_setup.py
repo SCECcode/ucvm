@@ -280,14 +280,18 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
 
+## mainly to pass environment variable available in setup.list environment
+## to the configure environment
     if "ConfigureEnv" in config_data.keys(): 
         needs_env = config_data["ConfigureEnv"]
     else:
         needs_env = [] 
 
     if "ConfigureFlags" in config_data and config_data["ConfigureFlags"] != "" :
-        configure_array += config_data["ConfigureFlags"].split(" ")
+        tmp = config_data["ConfigureFlags"].split(" ")
+        configure_array +=shlex.split(config_data["ConfigureFlags"])
     elif "Libraries" in config_data:
+## this is to work with our embedded libraries being installed in UCVM_INSTALL_PATH
         needs_array = config_data["Libraries"]
         if "euclid3" in needs_array:
           configure_array.append("--with-etree-lib-path=" + ucvmpath + "/lib/euclid3/lib")
@@ -296,8 +300,11 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
           configure_array.append("--with-proj-lib-path=" + ucvmpath + "/lib/proj/lib")
           configure_array.append("--with-proj-include-path=" + ucvmpath + "/lib/proj/include")
         if "netcdf" in needs_array:
-          configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/netcdf/lib")
-          configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/netcdf/include")
+          configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/netcdf/lib -L" + ucvmpath + "/lib/hdf5/lib")
+          configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/netcdf/include -I" + ucvmpath + "/lib/hdf5/include")
+        if "hdf5" in needs_array:
+          configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
+          configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
                     
 ## special case ??
     if config_data["Path"] == "cencal":
@@ -1030,11 +1037,11 @@ if user_dynamic_flag == True:
 if use_iobuf == True:
     ucvm_conf_command.append("--enable-iobuf")
  
-#if "NetCDF" in librariesToInstall:
-#    ucvm_conf_command.append("--enable-netcdf")
-#    ucvm_conf_command.append("--with-netcdf-include-path=" + ucvmpath + "/lib/netcdf/include")
-#    ucvm_conf_command.append("--with-netcdf-lib-path=" + ucvmpath + "/lib/netcdf/lib")
-#    ucvm_conf_command.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
+if "NetCDF" in librariesToInstall:
+    ucvm_conf_command.append("--enable-netcdf")
+    ucvm_conf_command.append("--with-netcdf-include-path=" + ucvmpath + "/lib/netcdf/include")
+    ucvm_conf_command.append("--with-netcdf-lib-path=" + ucvmpath + "/lib/netcdf/lib")
+    ucvm_conf_command.append("--with-netcdf-extra-libs=" + ucvmpath + "/lib/hdf5/lib")
     
 #ucvm_conf_command.append("UCVM_INSTALL_PATH=" + ucvmpath)
 
