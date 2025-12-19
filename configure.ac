@@ -128,11 +128,11 @@ AC_ARG_ENABLE([model-cs248],
         [enable_model_cs248=yes],
         [enable_model_cs248=no])
 
-AC_ARG_ENABLE([model-cs242],
-        [AS_HELP_STRING([--enable-model-cs242],
-        [enable model SCEC CS242])],
-        [enable_model_cs242=yes],
-        [enable_model_cs242=no])
+AC_ARG_ENABLE([model-mscal],
+        [AS_HELP_STRING([--enable-model-mscal],
+        [enable model SCEC MSCAL])],
+        [enable_model_mscal=yes],
+        [enable_model_mscal=no])
 
 AC_ARG_ENABLE([model-cvmhlabn],
         [AS_HELP_STRING([--enable-model-cvmhlabn],
@@ -544,25 +544,25 @@ if test "x$enable_model_cs248" = xyes; then
 AC_ARG_WITH([cs248-include-path],
   [AS_HELP_STRING([--with-cs248-include-path],
     [location of the SCEC CS248 headers])],
-  [CS242_INCL="-I$withval"],
-  [CS242_INCL="/usr/include/cs248"])
+  [CS248_INCL="-I$withval"],
+  [CS248_INCL="/usr/include/cs248"])
 AC_ARG_WITH([cs248-lib-path],
   [AS_HELP_STRING([--with-cs248-lib-path], [location of the SCEC CS248 libraries])],
-  [CS242_LIB="-L$withval -lcs248 -lproj -letree"],
-  [CS242_LIB="-lcs248 -lproj -letree"])
+  [CS248_LIB="-L$withval -lcs248 -lproj -letree"],
+  [CS248_LIB="-lcs248 -lproj -letree"])
 fi
 
-# Get SCEC CS242 library and include locations
-if test "x$enable_model_cs242" = xyes; then
-AC_ARG_WITH([cs242-include-path],
-  [AS_HELP_STRING([--with-cs242-include-path],
-    [location of the SCEC CS242 headers])],
-  [CS242_INCL="-I$withval"],
-  [CS242_INCL="/usr/include/cs242"])
-AC_ARG_WITH([cs242-lib-path],
-  [AS_HELP_STRING([--with-cs242-lib-path], [location of the SCEC CS242 libraries])],
-  [CS242_LIB="-L$withval -lcs242 -lproj -letree"],
-  [CS242_LIB="-lcs242 -lproj -letree"])
+# Get SCEC MSCAL library and include locations
+if test "x$enable_model_mscal" = xyes; then
+AC_ARG_WITH([mscal-include-path],
+  [AS_HELP_STRING([--with-mscal-include-path],
+    [location of the SCEC MSCAL headers])],
+  [MSCAL_INCL="-I$withval"],
+  [MSCAL_INCL="/usr/include/mscal"])
+AC_ARG_WITH([mscal-lib-path],
+  [AS_HELP_STRING([--with-mscal-lib-path], [location of the SCEC MSCAL libraries])],
+  [MSCAL_LIB="-L$withval -lmscal -lproj -letree"],
+  [MSCAL_LIB="-lmscal -lproj -letree"])
 fi
 
 # Get SCEC CVMHLABN library and include locations
@@ -1193,19 +1193,19 @@ else
 fi
 
 if test "x$enable_static" = xyes; then
-# Check optional SCEC CS242 installation
-if test "x$enable_model_cs242" = xyes; then
+# Check optional SCEC MSCAL installation
+if test "x$enable_model_mscal" = xyes; then
    # Setup compiler/linker flags
-   CFLAGS="$CS242_INCL $CFLAGS"
-   LDFLAGS="$CS242_LIB $LDFLAGS"
+   CFLAGS="$MSCAL_INCL $CFLAGS"
+   LDFLAGS="$MSCAL_LIB $LDFLAGS"
 
-   echo "Checking for SCEC CS242"
-   AC_CHECK_HEADER(cs242.h,[],[AC_MSG_ERROR(["SCEC CS242 header not found; use --with-cs242-include-path"])],[AC_INCLUDES_DEFAULT])
+   echo "Checking for SCEC MSCAL"
+   AC_CHECK_HEADER(mscal.h,[],[AC_MSG_ERROR(["SCEC MSCAL header not found; use --with-mscal-include-path"])],[AC_INCLUDES_DEFAULT])
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_CS242, false)
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MSCAL, false)
 fi
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_CS242, [test x"$enable_model_cs242" = xyes])
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MSCAL, [test x"$enable_model_mscal" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then
