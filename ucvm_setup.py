@@ -943,34 +943,40 @@ except OSError as e:
 print("\nNow setting up the required UCVM libraries...")
 
 #orderedLibrariesToInstall = []
-for library in config_data["libraries"]: 
+def _add2orderedToInstallList(library):
     the_library = config_data["libraries"][library]
-    if library in librariesToInstall:
-## bring in the dependency 
+    if library in orderedLibrariesToInstall:
+        # no need to do anything
+        pass
+    else:
         if the_library.get("Needs", "") != "":
             needlist=the_library["Needs"].split()
             for need in needlist:
-                if need in orderedLibrariesToInstall:
-                   # no need to do anything
-                   pass
-                else:
-                   orderedLibrariesToInstall.append(need)
-        orderedLibrariesToInstall.append(library)
+               _add2orderedToInstallList(need)     
 
+            orderedLibrariesToInstall.append(library)
+        else:
+            orderedLibrariesToInstall.append(library)
 
-for library in config_data["libraries"]:
+#orderedLibrariesToInstall = []
+for library in config_data["libraries"]: 
+    if library in librariesToInstall:
+      _add2orderedToInstallList(library)
+#print(orderedLibrariesToInstall)
+
+## 
+for library in orderedLibrariesToInstall:
     the_library = config_data["libraries"][library]
-    if library in orderedLibrariesToInstall:
-        print("\n CHECKING on ", library)
-        try:
-            #downloadWithProgress(the_library["URL"], "./work/lib", "Downloading " + library + "..." )
-            tarname = the_library["URL"].split("/")[-1]
+    print("\n CHECKING on ", library)
+    try:
+        #downloadWithProgress(the_library["URL"], "./work/lib", "Downloading " + library + "..." )
+        tarname = the_library["URL"].split("/")[-1]
 
-            print("Calling URL Install with tarname,ucvmpath:",tarname,ucvmpath)
+        print("Calling URL Install with tarname,ucvmpath:",tarname,ucvmpath)
     
-            installConfigMakeInstall(tarname, ucvmpath, "library", the_library)
-        except Exception as e:
-            eG(e, "Error installing library " + library + ".")
+        installConfigMakeInstall(tarname, ucvmpath, "library", the_library)
+    except Exception as e:
+        eG(e, "Error installing library " + library + ".")
 
 print("\nNow setting up CVM models...")
 
