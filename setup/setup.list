@@ -518,6 +518,7 @@
 			"Required": "yes",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-tiff --without-curl TIFF_LIBS='-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff -L${UCVM_INSTALL_PATH}/lib/openssl/lib -lcrypto -lssl' TIFF_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/tiff/include' SQLITE3_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/sqlite/include' SQLITE3_LIBS='-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3' SQLITE3='${UCVM_INSTALL_PATH}/lib/sqlite/bin/sqlite3'",
+
                         "oldConfigureFlags": "--enable-tiff --with-curl=${UCVM_INSTALL_PATH}/lib/curl/bin/curl-config TIFF_LIBS='-L${UCVM_INSTALL_PATH}/lib/tiff/lib -ltiff -L${UCVM_INSTALL_PATH}/lib/openssl/lib -lcrypto -lssl' TIFF_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/tiff/include' SQLITE3_CFLAGS='-I${UCVM_INSTALL_PATH}/lib/sqlite/include' SQLITE3_LIBS='-L${UCVM_INSTALL_PATH}/lib/sqlite/lib -lsqlite3' SQLITE3='${UCVM_INSTALL_PATH}/lib/sqlite/bin/sqlite3'",
                         "UCVMConfigureFlags": "--with-proj-include-path=${UCVM_INSTALL_PATH}/lib/proj/include --with-proj-lib-path=${UCVM_INSTALL_PATH}/lib/proj/lib",
                         "Postprocess" : [

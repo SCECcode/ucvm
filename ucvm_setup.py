@@ -117,10 +117,12 @@ def callAndRecord(command, nocall = False, noshell = True):
         else:
           print("WARN>>",env,"<< optional env is not set");
 
-    print('  ==> command used.. '+'_'.join(command))
+##    print('  ==> command used.. '+'_'.join(command))
+    print('  ==> command used.. '+ shlex.join(command))
     if nocall == False:
         if noshell == False :
-            my_command=' '.join(command)
+##            my_command=' '.join(command)
+            my_command=shlex.join(command)
             proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
             retout, reterr = proc.communicate()
             retVal = proc.poll()
@@ -289,7 +291,9 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
     if "ConfigureFlags" in config_data and config_data["ConfigureFlags"] != "" :
         tmp = config_data["ConfigureFlags"].split(" ")
-        configure_array +=shlex.split(config_data["ConfigureFlags"])
+        flags = shlex.split(config_data["ConfigureFlags"])
+        configure_array += flags
+
     elif "Libraries" in config_data:
 ## this is to work with our embedded libraries being installed in UCVM_INSTALL_PATH
         needs_array = config_data["Libraries"]
@@ -1021,7 +1025,8 @@ ucvm_conf_command = ["./configure", "--enable-silent-rules" ]
 for library in librariesToInstall:
     the_library = config_data["libraries"][library]
     if "UCVMConfigureFlags" in the_library and the_library["UCVMConfigureFlags"] != "":
-       flags = the_library["UCVMConfigureFlags"].split(" ")
+       tmp_flags = the_library["UCVMConfigureFlags"].split(" ")
+       flags = shlex.split(the_library["UCVMConfigureFlags"])
        ucvm_conf_command += flags
 
 for model in modelsToInstall:
@@ -1029,7 +1034,8 @@ for model in modelsToInstall:
     
     # We need to append the ucvm configure flags.
     if "UCVMConfigureFlags" in the_model and the_model["UCVMConfigureFlags"] != "" :
-      flags = the_model["UCVMConfigureFlags"].split(" ")
+      tmp_flags = the_model["UCVMConfigureFlags"].split(" ")
+      flags=shlex.split(the_model["UCVMConfigureFlags"])
       ucvm_conf_command += flags
      
 ucvm_conf_command.append("--prefix=" + ucvmpath)
