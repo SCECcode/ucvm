@@ -238,10 +238,10 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
     libtoolize_list=["sfcvm","cvms5","cvmh","cs248","uwlinca"]
     autoreconf_list=["sfcvm","cca","cs248"]
-    skip_conf_list = ["openssl"]
+    skip_conf_list = ["openssl","netcdf"]
 
     if config_data["Path"] in skip_conf_list :
-        print("\nNo need to configure -- ", config_data["Path"]);
+        print("\nNo need to boostrap autotools -- ", config_data["Path"]);
     else:
         if config_data["Path"] in libtoolize_list :
           print("\nRunning libtoolize")

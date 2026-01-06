@@ -434,13 +434,13 @@
 		},
 		"NetCDF": {
 			"Path": "netcdf",
+                        "Note": "src tarball contains a working configure script and libtool ecosystem, skip bootstrapping",
                         "Lib": "netcdf-c-4.9.2",
 			"URL": "https://downloads.unidata.ucar.edu/netcdf-c/4.9.2/netcdf-c-4.9.2.tar.gz",
 			"Required": "yes",
                         "Libraries": ["hdf5"],
 			"Prerequisites": "Dynamic",
                         "ConfigureFlags": "--enable-shared --disable-static --enable-netcdf4 --disable-dap --disable-byterange --disable-doxygen CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/hdf5/lib' PKG_CONFIG_PATH='${UCVM_INSTALL_PATH}/lib/hdf5/lib/pkgconfig:${PKG_CONFIG_PATH}'",
-                        "oUCVMConfigureFlags": "--enable-netcdf --with-netcdf-include-path=${UCVM_INSTALL_PATH}/lib/netcdf/include --with-netcdf-lib-path=${UCVM_INSTALL_PATH}/lib/netcdf/lib",
                         "UCVMConfigureFlags": "--with-netcdf-include-path=${UCVM_INSTALL_PATH}/lib/netcdf/include --with-netcdf-lib-path=${UCVM_INSTALL_PATH}/lib/netcdf/lib",
                         "md5sum": "f48ee01534365006934f0c63d4055ea0",
 			"Ask": "no",
@@ -462,6 +462,7 @@
 		},
 		"OpenSSL": {
 			"Path": "openssl",
+                        "Note": "src tarball contains a working configure script and libtool ecosystem, skip bootstrapping",
                         "Lib": "openssl-3.0.8",
                         "Size": "33M",
 			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_3/lib/openssl-3.0.8.tar.gz",
