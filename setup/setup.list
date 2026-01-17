@@ -92,11 +92,12 @@
                         "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_1/model/mscal.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "",
-"ConfigureFlags": "CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -lhdf5 -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -lnetcdf'",
+"ConfigureFlags": "CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' 
+LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/netcdf/lib' LIBS='-lhdf5 -lnetcdf'",
                         "UCVMConfigureFlags": "--enable-model-mscal --with-mscal-lib-path=${UCVM_INSTALL_PATH}/model/mscal/lib --with-mscal-include-path=${UCVM_INSTALL_PATH}/model/mscal/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
-                        "md5sum": "f76559b80a1024da327982d866f48ddd",
+                        "md5sum": "78aadf78227b9ed633eb82ba688f6ea1",
                         "Order": 23
                 },
                 "SFCVM": {
