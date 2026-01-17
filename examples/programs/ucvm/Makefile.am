@@ -3,6 +3,11 @@
 #
 bin_PROGRAMS=
 
+if UCVM_AM_ENABLE_MSCAL
+bin_PROGRAMS += run_ucvm_query_mscal.sh
+run_ucvm_query_mscal_sh_SOURCES = run_ucvm_query_mscal.sh
+endif
+
 if UCVM_AM_ENABLE_UWSFBCVM
 bin_PROGRAMS += run_ucvm_query_uwsfbcvm.sh
 run_ucvm_query_uwsfbcvm_sh_SOURCES = run_ucvm_query_uwsfbcvm.sh
