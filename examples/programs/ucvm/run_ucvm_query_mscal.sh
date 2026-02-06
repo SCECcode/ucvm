@@ -26,6 +26,7 @@ Using Geo Depth coordinates as default mode.
  -116.9050    36.7250   5000.000   1185.364    710.100      mscal   5704.692   3237.023   2611.861       none      0.000      0.000      0.000      crust   5704.692   3237.023   2611.861
 EOF_EXPECTED_RESULT
 
+
 echo "Running examples_programs_ucvm ucvm_query_mscal"
 if diff $result $expect > /dev/null 2>&1
 then
