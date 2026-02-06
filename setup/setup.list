@@ -96,7 +96,7 @@
                         "UCVMConfigureFlags": "--enable-model-mscal --with-mscal-lib-path=${UCVM_INSTALL_PATH}/model/mscal/lib --with-mscal-include-path=${UCVM_INSTALL_PATH}/model/mscal/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
-                        "md5sum": "e42d98972318d2541df770737c08b3dc",
+                        "md5sum": "be5a5600313f4ea216382cd4ad2c06ba",
                         "Order": 23
                 },
                 "SFCVM": {
