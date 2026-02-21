@@ -143,6 +143,15 @@
         extern int uwlinca_setparam;
 #endif
 
+#ifdef _UCVM_ENABLE_UWPKFCVM
+        extern int uwpkfcvm_init;
+        extern int uwpkfcvm_query;
+        extern int uwpkfcvm_finalize;
+        extern int uwpkfcvm_version;
+        extern int uwpkfcvm_config;
+        extern int uwpkfcvm_setparam;
+#endif
+
 #ifdef _UCVM_ENABLE_CANVAS
         extern int canvas_init;
         extern int canvas_query;
@@ -513,6 +522,20 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_version = &uwlinca_version;
                 pptr->model_config = &uwlinca_config;
                 pptr->model_setparam = &uwlinca_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_UWPKFCVM
+        if (strcmp(conf->label, UCVM_MODEL_UWPKFCVM) == 0) {
+                pptr->model_init = &uwpkfcvm_init;
+                pptr->model_query = &uwpkfcvm_query;
+                pptr->model_finalize = &uwpkfcvm_finalize;
+                pptr->model_version = &uwpkfcvm_version;
+                pptr->model_config = &uwpkfcvm_config;
+                pptr->model_setparam = &uwpkfcvm_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;

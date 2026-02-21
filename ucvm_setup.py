@@ -236,7 +236,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    libtoolize_list=["sfcvm","cvms5","cvmh","cs248","uwlinca"]
+    libtoolize_list=["sfcvm","cvms5","cvmh","cs248","uwlinca","uwpkfcvm"]
     autoreconf_list=["sfcvm","cca","cs248"]
     skip_conf_list = ["openssl","netcdf"]
 
@@ -595,6 +595,8 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
         str=str+"install_name_tool -change libcvmhvbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhvbn/lib/libcvmhvbn.so $1\n"
     if "SFCVM" in modelsToInstall:
         str=str+"install_name_tool -change libsfcvm.so ${MY_UCVM_INSTALL_PATH}/model/sfcvm/lib/libsfcvm.so $1\n"
+    if "UWPKFCVM" in modelsToInstall:
+        str=str+"install_name_tool -change libuwpkfcvm.so ${MY_UCVM_INSTALL_PATH}/model/uwpkfcvm/lib/libuwpkfcvm.so $1\n"
     if "UWLINCA" in modelsToInstall:
         str=str+"install_name_tool -change libuwlinca.so ${MY_UCVM_INSTALL_PATH}/model/uwlinca/lib/libuwlinca.so $1\n"
     if "CVMHSMBN" in modelsToInstall:

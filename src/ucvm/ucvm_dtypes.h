@@ -90,6 +90,7 @@
 
 #define UCVM_MODEL_SFCVM "sfcvm"
 #define UCVM_MODEL_UWLINCA "uwlinca"
+#define UCVM_MODEL_UWPKFCVM "uwpkfcvm"
 #define UCVM_MODEL_CANVAS "canvas"
 #define UCVM_MODEL_UWSFBCVM "uwsfbcvm"
 

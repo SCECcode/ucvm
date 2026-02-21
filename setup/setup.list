@@ -3,6 +3,20 @@
                "Version": "25.7"
                },
 	"models": {
+                "UWPKFCVM": {
+                        "Version": "1.0.0",
+                        "Abbreviation": "uwpkfcvm",
+                        "Size": "8.2M",
+                        "Path": "uwpkfcvm",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_2/model/uwpkfcvm.tar.gz",
+                        "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
+                        "ConfigureFlags": "--with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
+                        "UCVMConfigureFlags": "--enable-model-uwpkfcvm --with-uwpkfcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwpkfcvm/lib --with-uwpkfcvm-include-path=${UCVM_INSTALL_PATH}/model/uwpkfcvm/include",
+                        "Ask": "yes",
+                        "Libraries": ["proj"],
+                        "md5sum": "26544214e1ca416b300faf31dbcf9b9e",
+                        "Order": 29 
+               },
                "UWSFBCVM": {
                         "Version": "1.0",
                         "Abbreviation": "uwsfbcvm",

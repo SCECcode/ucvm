@@ -194,6 +194,12 @@ AC_ARG_ENABLE([model-uwlinca],
         [enable_model_uwlinca=yes],
         [enable_model_uwlinca=no])
 
+AC_ARG_ENABLE([model-uwpkfcvm],
+        [AS_HELP_STRING([--enable-model-uwpkfcvm],
+        [enable model SCEC UWLINCA])],
+        [enable_model_uwpkfcvm=yes],
+        [enable_model_uwpkfcvm=no])
+
 AC_ARG_ENABLE([model-uwsfbcvm],
         [AS_HELP_STRING([--enable-model-uwsfbcvm],
         [enable model SCEC UWSFBCVM])],
@@ -734,6 +740,23 @@ AC_ARG_WITH([uwlinca-model-path],
   [UWLINCA_MODEL="$withval"],
   [UWLINCA_MODEL="/usr/uwlinca/src"])
 fi
+
+# Get SCEC UWPKFCVM library and include locations
+if test "x$enable_model_uwpkfcvm" = xyes; then
+AC_ARG_WITH([uwpkfcvm-include-path],
+  [AS_HELP_STRING([--with-uwpkfcvm-include-path],
+    [location of the SCEC UWPKFCVM headers])],
+  [UWLINCA_INCL="-I$withval"],
+  [UWLINCA_INCL="/usr/include/uwpkfcvm"])
+AC_ARG_WITH([uwpkfcvm-lib-path],
+  [AS_HELP_STRING([--with-uwpkfcvm-lib-path], [location of the SCEC UWPKFCVM libraries])],
+  [UWLINCA_LIB="-L$withval -luwpkfcvm"],
+  [UWLINCA_LIB="-luwpkfcvm"])
+AC_ARG_WITH([uwpkfcvm-model-path],
+  [AS_HELP_STRING([--with-uwpkfcvm-model-path], [location of the UWPKFCVM model files])],
+  [UWLINCA_MODEL="$withval"],
+  [UWLINCA_MODEL="/usr/uwpkfcvm/src"])
+fi      
 
 # Get SCEC CANVAS library and include locations
 if test "x$enable_model_canvas" = xyes; then
@@ -1367,6 +1390,23 @@ fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_UWLINCA, [test x"$enable_model_uwlinca" = xyes])
 fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC UWPKFCVM installation
+if test "x$enable_model_uwpkfcvm" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$UWPKFCVM_INCL $CFLAGS"
+   LDFLAGS="$UWPKFCVM_LIB $LDFLAGS"
+
+   echo "Checking for SCEC UWPKFCVM"
+   AC_CHECK_HEADER(uwpkfcvm.h,[],[AC_MSG_ERROR(["SCEC UWPKFCVM header not found; use --with-uwpkfcvm-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_UWPKFCVM, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_UWPKFCVM, [test x"$enable_model_uwpkfcvm" = xyes])
+fi
+
 
 if test "x$enable_static" = xyes; then
 # Check optional SCEC CANVAS installation
