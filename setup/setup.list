@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-uwpkfcvm --with-uwpkfcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwpkfcvm/lib --with-uwpkfcvm-include-path=${UCVM_INSTALL_PATH}/model/uwpkfcvm/include",
                         "Ask": "yes",
                         "Libraries": ["proj"],
-                        "md5sum": "be26fbc406c149498d5d1b4509c076d3",
+                        "md5sum": "9a06ba3beb6cf0793b87b9c7c330e5d9",
                         "Order": 29 
                },
                "UWSFBCVM": {
