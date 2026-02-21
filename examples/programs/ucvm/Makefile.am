@@ -19,7 +19,7 @@ run_ucvm_query_uwlinca_sh_SOURCES = run_ucvm_query_uwlinca.sh
 endif
 
 if UCVM_AM_ENABLE_UWPKFCVM
-bin_PROGRAMS += run_ucvm_query_UWPKFCVM.sh
+bin_PROGRAMS += run_ucvm_query_uwpkfcvm.sh
 run_ucvm_query_uwpkfcvm_sh_SOURCES = run_ucvm_query_uwpkfcvm.sh
 endif
 
