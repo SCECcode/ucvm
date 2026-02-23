@@ -18,6 +18,15 @@ ${BIN_DIR}/ucvm_query -m ${MODEL} -f ${CONF_DIR}/ucvm.conf < ${TEST_DIR}/test_la
 ${BIN_DIR}/ucvm_query -m ${MODEL} -f ${CONF_DIR}/ucvm.conf < ${TEST_DIR}/test_latlons_uwpkfcvm_gd.txt  >> $result 2>&1
 
 cat > $expect << EOF_EXPECTED_RESULT
+Using Geo Depth coordinates as default mode.
+ -120.6295    35.8431      0.000    391.599    446.958   uwpkfcvm   1200.000   7260.000   1420.912       none      0.000      0.000      0.000      crust   1200.000   7260.000   1420.912
+ -120.6295    35.8431    500.000    391.599    446.958   uwpkfcvm   1200.000   7260.000   1420.912       none      0.000      0.000      0.000      crust   1200.000   7260.000   1420.912
+ -120.6295    35.8431   1000.000    391.599    446.958   uwpkfcvm   1200.000   7260.000   1420.912       none      0.000      0.000      0.000      crust   1200.000   7260.000   1420.912
+ -120.6295    35.8431   3000.000    391.599    446.958   uwpkfcvm   2400.000      0.000   2060.951       none      0.000      0.000      0.000      crust   2400.000      0.000   2060.951
+ -120.0239    35.9312      0.000    192.672    351.900   uwpkfcvm   1280.000   7300.000   1482.388       none      0.000      0.000      0.000      crust   1280.000   7300.000   1482.388
+ -120.0239    35.9312    500.000    192.672    351.900   uwpkfcvm   1280.000   7300.000   1482.388       none      0.000      0.000      0.000      crust   1280.000   7300.000   1482.388
+ -120.0239    35.9312   1000.000    192.672    351.900   uwpkfcvm   1280.000   7300.000   1482.388       none      0.000      0.000      0.000      crust   1280.000   7300.000   1482.388
+ -120.0239    35.9312   3000.000    192.672    351.900   uwpkfcvm   1930.000   2566.774   1873.153       none      0.000      0.000      0.000      crust   1930.000   2566.774   1873.153
 EOF_EXPECTED_RESULT
 
 echo "Running examples_programs_ucvm ucvm_query_uwpkfcvm"
