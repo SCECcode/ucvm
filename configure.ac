@@ -128,6 +128,12 @@ AC_ARG_ENABLE([model-cs248],
         [enable_model_cs248=yes],
         [enable_model_cs248=no])
 
+AC_ARG_ENABLE([model-sjqbn],
+        [AS_HELP_STRING([--enable-model-sjqbn],
+        [enable model SCEC SJQBN])],
+        [enable_model_sjqbn=yes],
+        [enable_model_sjqbn=no])
+
 AC_ARG_ENABLE([model-mscal],
         [AS_HELP_STRING([--enable-model-mscal],
         [enable model SCEC MSCAL])],
@@ -556,6 +562,19 @@ AC_ARG_WITH([cs248-lib-path],
   [AS_HELP_STRING([--with-cs248-lib-path], [location of the SCEC CS248 libraries])],
   [CS248_LIB="-L$withval -lcs248 -lproj -letree"],
   [CS248_LIB="-lcs248 -lproj -letree"])
+fi
+
+# Get SCEC SJQBN library and include locations
+if test "x$enable_model_sjqbn" = xyes; then
+AC_ARG_WITH([sjqbn-include-path],
+  [AS_HELP_STRING([--with-sjqbn-include-path],
+    [location of the SCEC SJQBN headers])],
+  [SJQBN_INCL="-I$withval"],
+  [SJQBN_INCL="/usr/include/sjqbn"])
+AC_ARG_WITH([mscal-lib-path],
+  [AS_HELP_STRING([--with-sjqbn-lib-path], [location of the SCEC SJQBN libraries])],
+  [SJQBN_LIB="-L$withval -lsjqbn -lproj -letree"],
+  [SJQBN_LIB="-lsjqbn -lproj -letree"])
 fi
 
 # Get SCEC MSCAL library and include locations
@@ -1213,6 +1232,22 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CS248, [test x"$enable_model_cs248" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC SJQBN installation
+if test "x$enable_model_sjqbn" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$SJQBN_INCL $CFLAGS"
+   LDFLAGS="$SJQBN_LIB $LDFLAGS"
+
+   echo "Checking for SCEC SJQBN"
+   AC_CHECK_HEADER(sjqbn.h,[],[AC_MSG_ERROR(["SCEC SJQBN header not found; use --with-mscal-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SJQBN, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SJQBN, [test x"$enable_model_sjqbn" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then

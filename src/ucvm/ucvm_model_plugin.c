@@ -75,6 +75,13 @@
      extern int cs248_version;
      extern int cs248_config;
 #endif
+#ifdef _UCVM_ENABLE_SJQBN
+     extern int sjqbn_init;
+     extern int sjqbn_query;
+     extern int sjqbn_finalize;
+     extern int sjqbn_version;
+     extern int sjqbn_config;
+#endif
 #ifdef _UCVM_ENABLE_MSCAL
      extern int mscal_init;
      extern int mscal_query;
@@ -439,6 +446,19 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_finalize = &cs248_finalize;
                 pptr->model_version = &cs248_version;
                 pptr->model_config = &cs248_config;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_SJQBN
+        if (strcmp(conf->label, UCVM_MODEL_SJQBN) == 0) {
+                pptr->model_init = &sjqbn_init;
+                pptr->model_query = &sjqbn_query;
+                pptr->model_finalize = &sjqbn_finalize;
+                pptr->model_version = &sjqbn_version;
+                pptr->model_config = &sjqbn_config;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;

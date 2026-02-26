@@ -87,6 +87,7 @@
 #define UCVM_MODEL_CS248 "cs248"
 
 #define UCVM_MODEL_MSCAL "mscal"
+#define UCVM_MODEL_SJQBN "sjqbn"
 
 #define UCVM_MODEL_SFCVM "sfcvm"
 #define UCVM_MODEL_UWLINCA "uwlinca"
