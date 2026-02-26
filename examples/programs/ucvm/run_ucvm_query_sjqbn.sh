@@ -19,6 +19,8 @@ ${BIN_DIR}/ucvm_query -m ${MODEL} -f ${CONF_DIR}/ucvm.conf < ${TEST_DIR}/test_la
 cat > $expect << EOF_EXPECTED_RESULT
 EOF_EXPECTED_RESULT
 
+cp $result rr
+
 echo "Running examples_programs_ucvm ucvm_query_sjqbn"
 if diff $result $expect > /dev/null 2>&1
 then
