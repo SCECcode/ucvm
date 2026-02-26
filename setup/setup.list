@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-sjqbn --with-sjqbn-lib-path=${UCVM_INSTALL_PATH}/model/sjqbn/lib --with-sjqbn-include-path=${UCVM_INSTALL_PATH}/model/sjqbn/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
-                        "md5sum": "78aa3c537867cebabfb0dffbe4e9093e",
+                        "md5sum": "20d551ab8db97009a84e626968b2d351",
                         "Order": 30
                 },
                 "UWPKFCVM": {
