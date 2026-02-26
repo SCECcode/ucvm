@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-sjqbn --with-sjqbn-lib-path=${UCVM_INSTALL_PATH}/model/sjqbn/lib --with-sjqbn-include-path=${UCVM_INSTALL_PATH}/model/sjqbn/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
-                        "md5sum": "20d551ab8db97009a84e626968b2d351",
+                        "md5sum": "ff3b88f05b5e1b4babb2d6545ab43b19",
                         "Order": 30
                 },
                 "UWPKFCVM": {
@@ -123,7 +123,7 @@
                         "UCVMConfigureFlags": "--enable-model-mscal --with-mscal-lib-path=${UCVM_INSTALL_PATH}/model/mscal/lib --with-mscal-include-path=${UCVM_INSTALL_PATH}/model/mscal/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
-                        "md5sum": "86273a5aca851aefabc9d98512d05dae",
+                        "md5sum": "441330bb1d569f4b5f4ffd1969f75640",
                         "Order": 23
                 },
                 "SFCVM": {

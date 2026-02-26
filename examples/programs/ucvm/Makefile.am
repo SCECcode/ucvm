@@ -3,6 +3,11 @@
 #
 bin_PROGRAMS=
 
+if UCVM_AM_ENABLE_SJQBN
+bin_PROGRAMS += run_ucvm_query_sjqbn.sh
+run_ucvm_query_sjqbn_sh_SOURCES = run_ucvm_query_sjqbn.sh
+endif
+
 if UCVM_AM_ENABLE_MSCAL
 bin_PROGRAMS += run_ucvm_query_mscal.sh
 run_ucvm_query_mscal_sh_SOURCES = run_ucvm_query_mscal.sh
