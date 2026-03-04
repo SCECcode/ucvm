@@ -236,7 +236,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    libtoolize_list=["sfcvm","cvms5","cvmh","cs248","uwlinca","uwpkfcvm"]
+    libtoolize_list=["sfcvm","cvms5","cvmh","cs248","uwlinca","uwpkfcvm","mscal"]
     autoreconf_list=["sfcvm","cca","cs248"]
     skip_conf_list = ["openssl","netcdf"]
 
@@ -245,7 +245,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     else:
         if config_data["Path"] in libtoolize_list :
           print("\nRunning libtoolize")
-          callAndRecord(["libtoolize"])
+          callAndRecord(["libtoolize", "--copy", "--force"])
 
         print("\nRunning aclocal")
         aclocal_array = ["aclocal"]
