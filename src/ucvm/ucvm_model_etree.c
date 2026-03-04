@@ -37,7 +37,7 @@ int ucvm_etree_model_init(int id, ucvm_modelconf_t *conf)
     memset(ucvm_etree_list, 0, sizeof(ucvm_etree_t) * UCVM_MAX_MODELS);
   }
 
-  if ((conf->config == NULL) || (strlen(conf->config) == 0)) {
+  if ((config == NULL) || (conf->config[0] == '\0')) {
     fprintf(stderr, "No config path defined for model %s\n", conf->label);
     return(UCVM_CODE_ERROR);
   }

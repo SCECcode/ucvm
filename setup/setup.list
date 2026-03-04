@@ -387,7 +387,7 @@
 			"Path": "cs173h",
 			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/cs173h.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cs173h --with-cs173h-lib-path=${UCVM_INSTALL_PATH}/model/cs173h/lib --with-cs173h-include-path=${UCVM_INSTALL_PATH}/model/cs173h/include",
-			"Ask": "no",
+			"Ask": "",
 			"Libraries": ["euclid3", "proj"],
                         "md5sum": "eb6a15a7328bcd1df658866e34578c4a",
 			"Order": 4		
