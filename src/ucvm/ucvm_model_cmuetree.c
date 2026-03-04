@@ -54,7 +54,7 @@ int ucvm_cmuetree_model_init(int id, ucvm_modelconf_t *conf)
     return(UCVM_CODE_ERROR);
   }
 
-  if ((config == NULL) || (conf->config[0] == '\0')) {
+  if ((conf == NULL) || (conf->config[0] == '\0')) {
     fprintf(stderr, "No config path defined for model %s\n", conf->label);
     return(UCVM_CODE_ERROR);
   }
