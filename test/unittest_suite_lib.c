@@ -286,6 +286,82 @@ int test_lib_model_version_1d()
   return(0);
 }
 
+/***** cvm models *****/
+
+int test_lib_add_model_sjqbn()
+{
+  printf("Test: UCVM lib add model SJQBN\n");
+  
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_SJQBN) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_SJQBN);
+    ucvm_finalize();
+    return(1);
+  } 
+  
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+int test_lib_add_model_uwpkfcvm()
+{
+  printf("Test: UCVM lib add model UWPKFCVM\n");
+  
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_UWPKFCVM) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_UWPKFCVM);
+    ucvm_finalize();
+    return(1);
+  } 
+  
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
+int test_lib_add_model_mscal()
+{
+  printf("Test: UCVM lib add model MSCAL\n");
+  
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_MSCAL) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_MSCAL);
+    ucvm_finalize();
+    return(1);
+  } 
+  
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
 
 int test_lib_add_model_cs248()
 {
@@ -1063,6 +1139,15 @@ int suite_lib(const char *xmldir)
 #ifdef _UCVM_ENABLE_CS173H
   suite.num_tests++;
 #endif
+#ifdef _UCVM_ENABLE_SJQBN
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_UWPKFCVM
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_MSCAL
+  suite.num_tests++;
+#endif
 #ifdef _UCVM_ENABLE_CS248
   suite.num_tests++;
 #endif
@@ -1122,6 +1207,30 @@ int suite_lib(const char *xmldir)
   	 "test_lib_model_version_1d");
   suite.tests[6].test_func = &test_lib_model_version_1d;
   suite.tests[6].elapsed_time = 0.0;
+
+#ifdef _UCVM_ENABLE_SJQBN
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_sjqbn");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_sjqbn;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_UWPKFCVM
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_uwpkfcvm");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_uwpkfcvm;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_MSCAL
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_mscal");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_mscal;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
 
 #ifdef _UCVM_ENABLE_CS248
   strcpy(suite.tests[suite.num_tests].test_name,

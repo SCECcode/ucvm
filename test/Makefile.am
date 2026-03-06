@@ -4,6 +4,22 @@ bin_PROGRAMS = unittest accepttest
 AM_CFLAGS = -I../src/ucvm
 AM_LDFLAGS = -L../src/ucvm -lucvm ${LDFLAGS}
 
+# SJQBN includes
+if UCVM_AM_ENABLE_SJQBN
+AM_CFLAGS += -D_UCVM_ENABLE_SJQBN
+endif
+
+# UWPKFCVM includes
+if UCVM_AM_ENABLE_UWPKFCVM
+AM_CFLAGS += -D_UCVM_ENABLE_UWPKFCVM
+endif
+
+# MSCAL includes
+if UCVM_AM_ENABLE_MSCAL
+AM_CFLAGS += -D_UCVM_ENABLE_MSCAL
+endif
+
+# UWLINCA includes
 # CS248 includes
 if UCVM_AM_ENABLE_CS248
 AM_CFLAGS += -D_UCVM_ENABLE_CS248
