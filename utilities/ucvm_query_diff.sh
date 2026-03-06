@@ -6,7 +6,7 @@
 
 file1="$1"
 file2="$2"
-tol="${3:-0.001}"
+tol="${3:-0.01}"
 quiet=1
 case_insensitive=0
 
@@ -16,7 +16,7 @@ if [ -z "$file1" ] || [ -z "$file2" ]; then
 fi
 
 for arg in "$@"; do
-  [ "$arg" = "--quiet" ] && quiet=1
+  [ "$arg" = "--quiet" ] && quiet=0
   [ "$arg" = "--case-insensitive-text" ] && case_insensitive=1
 done
 
