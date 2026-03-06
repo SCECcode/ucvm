@@ -9,6 +9,7 @@ source $UCVM_INSTALL_PATH/conf/ucvm_env.sh
 BIN_DIR=${UCVM_INSTALL_PATH}/bin
 CONF_DIR=${UCVM_INSTALL_PATH}/conf
 TEST_DIR=${UCVM_INSTALL_PATH}/tests/inputs
+DIFF=${UCVM_INSTALL_PATH}/utilities/ucvm_query_diff.sh
 MODEL=cvmhsbcbn
 
 expect=$(mktemp) || exit 1
@@ -34,7 +35,7 @@ Using Geo Depth coordinates as default mode.
 EOF_EXPECTED_RESULT
 
 echo "Running examples_programs_ucvm ucvm_query_cvmhsbcbn"
-if diff $result $expect > /dev/null 2>&1
+if $DIFF $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]
 else

@@ -1,4 +1,4 @@
-EXTRA_DIST = installed_models makegrid.sh run_ucvm.sh run_ucvm_query.sh time_mesh_generation.py
+EXTRA_DIST = installed_models makegrid.sh run_ucvm.sh run_ucvm_query.sh time_mesh_generation.py ucvm_query_diff.sh
 
 install: $(install_PROGRAMS)
 	mkdir -p ${prefix}/utilities
