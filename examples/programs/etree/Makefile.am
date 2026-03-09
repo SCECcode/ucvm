@@ -15,10 +15,17 @@ all: $(bin_PROGRAMS)
 # Special build targets
 ############################################
 check: $(bin_PROGRAMS)
-	@( cd ${prefix}/tests/etree; \
+	@( cd ${UCVM_SRC_PATH}/work/lib/euclid3/tools; \
+	make etreeinfo; \
+	cd ${prefix}/tests/etree; \
+	ln -s ${UCVM_SRC_PATH}/work/lib/euclid3/tools/etreeinfo .; \
+	ln -s ${UCVM_SRC_PATH}/work/lib/euclid3/libsrc ../.; \
+	pwd; \
 	for i in $(bin_PROGRAMS); do \
 		./$${i}; \
-	done \
+	done;\
+	rm etreeinfo; \
+	rm ../libsrc; \
 	)
 
 install: $(bin_PROGRAMS)
