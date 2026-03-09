@@ -23,7 +23,7 @@ ${BIN_DIR}/ucvm2etree -f ./garnervalley_cvmh.conf > garnervalley_cvmh.out
 grep "Saving metadata" garnervalley_cvmh.out > $result_meta 
 
 #head -1 garnervalley_cvmh_nogtl_0.5hz_10pts_1000ms.e |od |head -20 | sed 's/ //g' > $result
-./etreeinfo garnervalley_cvmh_nogtl_0.5hz_10pts_1000ms.e > $result
+./etreeinfo garnervalley_cvmh_nogtl_0.5hz_10pts_1000ms.e | sed 's/Status of etree.*garnervalley/Status of etree garnervalley/g' > $result
 
 cat > $expect_meta << EOF_EXPECTED_META
 Saving metadata: Title:GarnerValley_0.5hz_10pts_1000ms Author:Elnza Date:02/27/2019 3 Vp(float);Vs(float);density(float) 33.640300 -116.859300 26250.000000 35000.000000 0.000000 4375.000000 1610612736 2147483648 268435456
@@ -31,7 +31,7 @@ EOF_EXPECTED_META
 
 cat > $expect << EOF_EXPECTED_RESULT
 
-Status of etree /var/www/html/UCVM_rel/web/model/UCVM_TARGET/tests/etree/garnervalley_cvmh_nogtl_0.5hz_10pts_1000ms.e
+Status of etree garnervalley_cvmh_nogtl_0.5hz_10pts_1000ms.e
 
 Dimension:	3
 Payload size:	12
