@@ -33,6 +33,17 @@ jobs:
     - name: test ucvm with cvmh and elygtl:taper
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
+    - name: Notify Slack on failure
+      if: ${{ failure() }}
+      uses: slackapi/slack-github-action@v2
+      with:
+        webhook: ${{ secrets.SLACK_WEBHOOK }}
+        webhook-type: incoming-webhook
+        payload: >
+          {
+            "text": ":x: *Workflow failed*\nRepo: `${{ github.repository }}`\nWorkflow: `${{ github.workflow }}`\nRun: <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
+          }
+
 
   ucvm-build-cvms-cvmh:
     if: ${{ success() }}
@@ -58,6 +69,16 @@ jobs:
     - name: test ucvm with cvms and cvmh
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
+    - name: Notify Slack on failure
+      if: ${{ failure() }}
+      uses: slackapi/slack-github-action@v2
+      with:
+        webhook: ${{ secrets.SLACK_WEBHOOK }}
+        webhook-type: incoming-webhook
+        payload: >
+          {
+            "text": ":x: *Workflow failed*\nRepo: `${{ github.repository }}`\nWorkflow: `${{ github.workflow }}`\nRun: <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
+          }
 
   ucvm-build-albacore-cvlsu-ivlsu-wfcvm:
     if: ${{ success() }}
@@ -82,3 +103,14 @@ jobs:
     - name: test ucvm with albacore, cvlsu, ivlsu and wfcvm
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
+    - name: Notify Slack on failure
+      if: ${{ failure() }}
+      uses: slackapi/slack-github-action@v2
+      with:
+        webhook: ${{ secrets.SLACK_WEBHOOK }}
+        webhook-type: incoming-webhook
+        payload: >
+          {
+            "text": ":x: *Workflow failed*\nRepo: `${{ github.repository }}`\nWorkflow: `${{ github.workflow }}`\nRun: <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>"
+          }
+
