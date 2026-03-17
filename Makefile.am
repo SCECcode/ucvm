@@ -1,7 +1,7 @@
 # GNU Automake config
 #
 
-EXTRA_DIST = configure LICENSE
+EXTRA_DIST = configure 
 
 SUBDIRS = aux-config conf \
 	model/ucvm model/1d src/ucvm src/ucvm2etree \

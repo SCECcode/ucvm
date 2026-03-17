@@ -82,12 +82,12 @@
      extern int sjqbn_version;
      extern int sjqbn_config;
 #endif
-#ifdef _UCVM_ENABLE_MSCAL
-     extern int mscal_init;
-     extern int mscal_query;
-     extern int mscal_finalize;
-     extern int mscal_version;
-     extern int mscal_config;
+#ifdef _UCVM_ENABLE_MUSCAL
+     extern int muscal_init;
+     extern int muscal_query;
+     extern int muscal_finalize;
+     extern int muscal_version;
+     extern int muscal_config;
 #endif
 #ifdef _UCVM_ENABLE_CVMHLABN
      extern int cvmhlabn_init;
@@ -465,13 +465,13 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 }
         }
 #endif
-#ifdef _UCVM_ENABLE_MSCAL
-        if (strcmp(conf->label, UCVM_MODEL_MSCAL) == 0) {
-                pptr->model_init = &mscal_init;
-                pptr->model_query = &mscal_query;
-                pptr->model_finalize = &mscal_finalize;
-                pptr->model_version = &mscal_version;
-                pptr->model_config = &mscal_config;
+#ifdef _UCVM_ENABLE_MUSCAL
+        if (strcmp(conf->label, UCVM_MODEL_MUSCAL) == 0) {
+                pptr->model_init = &muscal_init;
+                pptr->model_query = &muscal_query;
+                pptr->model_finalize = &muscal_finalize;
+                pptr->model_version = &muscal_version;
+                pptr->model_config = &muscal_config;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;

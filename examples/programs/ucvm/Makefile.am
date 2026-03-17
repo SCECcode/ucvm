@@ -8,9 +8,9 @@ bin_PROGRAMS += run_ucvm_query_sjqbn.sh
 run_ucvm_query_sjqbn_sh_SOURCES = run_ucvm_query_sjqbn.sh
 endif
 
-if UCVM_AM_ENABLE_MSCAL
-bin_PROGRAMS += run_ucvm_query_mscal.sh
-run_ucvm_query_mscal_sh_SOURCES = run_ucvm_query_mscal.sh
+if UCVM_AM_ENABLE_MUSCAL
+bin_PROGRAMS += run_ucvm_query_muscal.sh
+run_ucvm_query_muscal_sh_SOURCES = run_ucvm_query_muscal.sh
 endif
 
 if UCVM_AM_ENABLE_UWSFBCVM

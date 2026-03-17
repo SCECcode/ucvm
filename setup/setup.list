@@ -26,7 +26,7 @@
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "--with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
                         "UCVMConfigureFlags": "--enable-model-uwpkfcvm --with-uwpkfcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwpkfcvm/lib --with-uwpkfcvm-include-path=${UCVM_INSTALL_PATH}/model/uwpkfcvm/include",
-                        "Ask": "yes",
+                        "Ask": "no",
                         "Libraries": ["proj"],
                         "md5sum": "ba07b1c3cdcfcc4916b81774fa075883",
                         "Order": 29 
@@ -112,15 +112,15 @@
                         "md5sum": "de57c7cd33f6a17a787198f0d4dea033",
                         "Order": 24
                 },
-                "MSCAL": {
+                "MUSCAL": {
                         "Version": "1.0",
-                        "Abbreviation": "mscal",
+                        "Abbreviation": "muscal",
                         "Size": "82M",
-                        "Path": "mscal",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_2/model/mscal.tar.gz",
+                        "Path": "muscal",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_2/model/muscal.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-shared CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/netcdf/lib' LIBS='-lhdf5 -lnetcdf'",
-                        "UCVMConfigureFlags": "--enable-model-mscal --with-mscal-lib-path=${UCVM_INSTALL_PATH}/model/mscal/lib --with-mscal-include-path=${UCVM_INSTALL_PATH}/model/mscal/include",
+                        "UCVMConfigureFlags": "--enable-model-muscal --with-muscal-lib-path=${UCVM_INSTALL_PATH}/model/muscal/lib --with-muscal-include-path=${UCVM_INSTALL_PATH}/model/muscal/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
                         "md5sum": "ae913557f7f15dbc4482d979a23f21e5",

@@ -134,11 +134,11 @@ AC_ARG_ENABLE([model-sjqbn],
         [enable_model_sjqbn=yes],
         [enable_model_sjqbn=no])
 
-AC_ARG_ENABLE([model-mscal],
-        [AS_HELP_STRING([--enable-model-mscal],
-        [enable model SCEC MSCAL])],
-        [enable_model_mscal=yes],
-        [enable_model_mscal=no])
+AC_ARG_ENABLE([model-muscal],
+        [AS_HELP_STRING([--enable-model-muscal],
+        [enable model SCEC MUSCAL])],
+        [enable_model_muscal=yes],
+        [enable_model_muscal=no])
 
 AC_ARG_ENABLE([model-cvmhlabn],
         [AS_HELP_STRING([--enable-model-cvmhlabn],
@@ -571,23 +571,23 @@ AC_ARG_WITH([sjqbn-include-path],
     [location of the SCEC SJQBN headers])],
   [SJQBN_INCL="-I$withval"],
   [SJQBN_INCL="/usr/include/sjqbn"])
-AC_ARG_WITH([mscal-lib-path],
+AC_ARG_WITH([muscal-lib-path],
   [AS_HELP_STRING([--with-sjqbn-lib-path], [location of the SCEC SJQBN libraries])],
   [SJQBN_LIB="-L$withval -lsjqbn -lproj -letree"],
   [SJQBN_LIB="-lsjqbn -lproj -letree"])
 fi
 
-# Get SCEC MSCAL library and include locations
-if test "x$enable_model_mscal" = xyes; then
-AC_ARG_WITH([mscal-include-path],
-  [AS_HELP_STRING([--with-mscal-include-path],
-    [location of the SCEC MSCAL headers])],
-  [MSCAL_INCL="-I$withval"],
-  [MSCAL_INCL="/usr/include/mscal"])
-AC_ARG_WITH([mscal-lib-path],
-  [AS_HELP_STRING([--with-mscal-lib-path], [location of the SCEC MSCAL libraries])],
-  [MSCAL_LIB="-L$withval -lmscal -lproj -letree"],
-  [MSCAL_LIB="-lmscal -lproj -letree"])
+# Get SCEC MUSCAL library and include locations
+if test "x$enable_model_muscal" = xyes; then
+AC_ARG_WITH([muscal-include-path],
+  [AS_HELP_STRING([--with-muscal-include-path],
+    [location of the SCEC MUSCAL headers])],
+  [MUSCAL_INCL="-I$withval"],
+  [MUSCAL_INCL="/usr/include/muscal"])
+AC_ARG_WITH([muscal-lib-path],
+  [AS_HELP_STRING([--with-muscal-lib-path], [location of the SCEC MUSCAL libraries])],
+  [MUSCAL_LIB="-L$withval -lmuscal -lproj -letree"],
+  [MUSCAL_LIB="-lmuscal -lproj -letree"])
 fi
 
 # Get SCEC CVMHLABN library and include locations
@@ -1242,7 +1242,7 @@ if test "x$enable_model_sjqbn" = xyes; then
    LDFLAGS="$SJQBN_LIB $LDFLAGS"
 
    echo "Checking for SCEC SJQBN"
-   AC_CHECK_HEADER(sjqbn.h,[],[AC_MSG_ERROR(["SCEC SJQBN header not found; use --with-mscal-include-path"])],[AC_INCLUDES_DEFAULT])
+   AC_CHECK_HEADER(sjqbn.h,[],[AC_MSG_ERROR(["SCEC SJQBN header not found; use --with-muscal-include-path"])],[AC_INCLUDES_DEFAULT])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_SJQBN, false)
 fi
@@ -1251,19 +1251,19 @@ else
 fi
 
 if test "x$enable_static" = xyes; then
-# Check optional SCEC MSCAL installation
-if test "x$enable_model_mscal" = xyes; then
+# Check optional SCEC MUSCAL installation
+if test "x$enable_model_muscal" = xyes; then
    # Setup compiler/linker flags
-   CFLAGS="$MSCAL_INCL $CFLAGS"
-   LDFLAGS="$MSCAL_LIB $LDFLAGS"
+   CFLAGS="$MUSCAL_INCL $CFLAGS"
+   LDFLAGS="$MUSCAL_LIB $LDFLAGS"
 
-   echo "Checking for SCEC MSCAL"
-   AC_CHECK_HEADER(mscal.h,[],[AC_MSG_ERROR(["SCEC MSCAL header not found; use --with-mscal-include-path"])],[AC_INCLUDES_DEFAULT])
+   echo "Checking for SCEC MUSCAL"
+   AC_CHECK_HEADER(muscal.h,[],[AC_MSG_ERROR(["SCEC MUSCAL header not found; use --with-muscal-include-path"])],[AC_INCLUDES_DEFAULT])
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_MSCAL, false)
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL, false)
 fi
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_MSCAL, [test x"$enable_model_mscal" = xyes])
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL, [test x"$enable_model_muscal" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then

@@ -86,7 +86,7 @@
 #define UCVM_MODEL_SJFZ "sjfz"
 #define UCVM_MODEL_CS248 "cs248"
 
-#define UCVM_MODEL_MSCAL "mscal"
+#define UCVM_MODEL_MUSCAL "muscal"
 #define UCVM_MODEL_SJQBN "sjqbn"
 
 #define UCVM_MODEL_SFCVM "sfcvm"

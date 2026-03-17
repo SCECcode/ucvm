@@ -338,9 +338,9 @@ int test_lib_add_model_uwpkfcvm()
   return(0);
 }
 
-int test_lib_add_model_mscal()
+int test_lib_add_model_muscal()
 {
-  printf("Test: UCVM lib add model MSCAL\n");
+  printf("Test: UCVM lib add model MUSCAL\n");
   
   /* Setup UCVM */
   if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
@@ -349,9 +349,9 @@ int test_lib_add_model_mscal()
   }
 
   /* Add model */
-  if (ucvm_add_model(UCVM_MODEL_MSCAL) != UCVM_CODE_SUCCESS) {
+  if (ucvm_add_model(UCVM_MODEL_MUSCAL) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "FAIL: Failed to enable model %s\n",
-            UCVM_MODEL_MSCAL);
+            UCVM_MODEL_MUSCAL);
     ucvm_finalize();
     return(1);
   } 
@@ -1145,7 +1145,7 @@ int suite_lib(const char *xmldir)
 #ifdef _UCVM_ENABLE_UWPKFCVM
   suite.num_tests++;
 #endif
-#ifdef _UCVM_ENABLE_MSCAL
+#ifdef _UCVM_ENABLE_MUSCAL
   suite.num_tests++;
 #endif
 #ifdef _UCVM_ENABLE_CS248
@@ -1224,10 +1224,10 @@ int suite_lib(const char *xmldir)
   suite.num_tests++;
 #endif
 
-#ifdef _UCVM_ENABLE_MSCAL
+#ifdef _UCVM_ENABLE_MUSCAL
   strcpy(suite.tests[suite.num_tests].test_name,
-         "test_lib_add_model_mscal");
-  suite.tests[suite.num_tests].test_func = &test_lib_add_model_mscal;
+         "test_lib_add_model_muscal");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_muscal;
   suite.tests[suite.num_tests].elapsed_time = 0.0;
   suite.num_tests++;
 #endif
