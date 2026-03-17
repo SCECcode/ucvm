@@ -6,7 +6,7 @@
                 "SJQBN": {
                         "Version": "1.0",
                         "Abbreviation": "sjqbn",
-                        "Size": "1M",
+                        "Size": "4.4M",
                         "Path": "sjqbn",
                         "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_2/model/sjqbn.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
@@ -115,7 +115,7 @@
                 "MSCAL": {
                         "Version": "1.0",
                         "Abbreviation": "mscal",
-                        "Size": "1M",
+                        "Size": "82M",
                         "Path": "mscal",
                         "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_2/model/mscal.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
@@ -123,7 +123,7 @@
                         "UCVMConfigureFlags": "--enable-model-mscal --with-mscal-lib-path=${UCVM_INSTALL_PATH}/model/mscal/lib --with-mscal-include-path=${UCVM_INSTALL_PATH}/model/mscal/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
-                        "md5sum": "54d6f9b3de759d70e7df9c81717b6b61",
+                        "md5sum": "ae913557f7f15dbc4482d979a23f21e5",
                         "Order": 23
                 },
                 "SFCVM": {
