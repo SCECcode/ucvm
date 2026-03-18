@@ -11,6 +11,16 @@ tmp=`uname -s`
 BIN_DIR=${UCVM_INSTALL_PATH}/bin
 CONF_DIR=${UCVM_INSTALL_PATH}/conf
 
+PWD_DIR=`pwd`
+## build etreeinfo if not avail
+if [ ! -x etreeinfo ]; then
+   cd ${UCVM_SRC_PATH}/work/lib/euclid3/tools; \
+	make etreeinfo; \
+	cd ${PWD_DIR}; \
+	ln -s ${UCVM_SRC_PATH}/work/lib/euclid3/tools/etreeinfo .; \
+	ln -s ${UCVM_SRC_PATH}/work/lib/euclid3/libsrc ../.;
+fi
+
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
 expect_meta=$(mktemp) || (trap 'rm -f "$expect" "result"'; exit 1)
@@ -60,5 +70,8 @@ else
   echo [FAILURE]
 fi
 
+if [ -x etreeinfo ]; then
+    rm etreeinfo; rm ../libsrc;
+fi
 trap 'rm -f "$expect" "$result" "$expect_meta" "result_meta"' exit
 
