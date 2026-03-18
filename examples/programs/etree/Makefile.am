@@ -15,8 +15,10 @@ all: $(bin_PROGRAMS)
 # Special build targets
 ############################################
 check: $(bin_PROGRAMS)
-	@( for i in $(bin_PROGRAMS); do \
+	@( cd ${prefix}/tests/etree; \
+	for i in $(bin_PROGRAMS); do \
 		./$${i}; \
+	done \
 	)
 
 install: $(bin_PROGRAMS)
