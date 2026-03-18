@@ -115,7 +115,7 @@
                 "MUSCAL": {
                         "Version": "1.0",
                         "Abbreviation": "muscal",
-                        "Size": "82M",
+                        "Size": "35M",
                         "Path": "muscal",
                         "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_2/model/muscal.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
