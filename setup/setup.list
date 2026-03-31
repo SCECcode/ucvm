@@ -14,7 +14,7 @@
                         "UCVMConfigureFlags": "--enable-model-sjqbn --with-sjqbn-lib-path=${UCVM_INSTALL_PATH}/model/sjqbn/lib --with-sjqbn-include-path=${UCVM_INSTALL_PATH}/model/sjqbn/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
-                        "md5sum": "b464e51a434ee806c147fd2631eea5a3",
+                        "md5sum": "e5653932f94ebd2d3a15fa1571f80295",
                         "Order": 30
                 },
                 "UWPKFCVM": {
@@ -123,7 +123,7 @@
                         "UCVMConfigureFlags": "--enable-model-muscal --with-muscal-lib-path=${UCVM_INSTALL_PATH}/model/muscal/lib --with-muscal-include-path=${UCVM_INSTALL_PATH}/model/muscal/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
-                        "md5sum": "ea8e657cb1d6c61be912f32b8402a58d",
+                        "md5sum": "5a05b71b25186b5682b5c39873719702",
                         "Order": 23
                 },
                 "SFCVM": {
