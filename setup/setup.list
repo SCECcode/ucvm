@@ -14,6 +14,16 @@
                         "UCVMConfigureFlags": "--enable-model-sjqbn --with-sjqbn-lib-path=${UCVM_INSTALL_PATH}/model/sjqbn/lib --with-sjqbn-include-path=${UCVM_INSTALL_PATH}/model/sjqbn/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
+                        "Preprocess" : [
+                             {
+                               "Action": "install",
+                               "CMD": ["python","-m","pip","netCDF4"]
+                             },
+                             {
+                               "Action": "install",
+                               "CMD": ["pip","install","netCDF4"]
+                             }
+                        ],
                         "md5sum": "e5653932f94ebd2d3a15fa1571f80295",
                         "Order": 30
                 },
@@ -123,6 +133,16 @@
                         "UCVMConfigureFlags": "--enable-model-muscal --with-muscal-lib-path=${UCVM_INSTALL_PATH}/model/muscal/lib --with-muscal-include-path=${UCVM_INSTALL_PATH}/model/muscal/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
+                        "Preprocess" : [
+                             {
+                               "Action": "install",
+                               "CMD": ["python","-m","pip","netCDF4"]
+                             },
+                             {
+                               "Action": "install",
+                               "CMD": ["pip","install","netCDF4"]
+                             }
+                        ],
                         "md5sum": "5a05b71b25186b5682b5c39873719702",
                         "Order": 23
                 },
@@ -347,7 +367,6 @@
 			"Path": "cencal",
 			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/cencal.tar.gz",
 			"UCVMConfigureFlags": "--enable-model-cencal --with-cencal-lib-path=${UCVM_INSTALL_PATH}/model/cencal/lib --with-cencal-include-path=${UCVM_INSTALL_PATH}/model/cencal/include/cencalvm/query/ --with-cencal-model-path=${UCVM_INSTALL_PATH}/model/cencal/data/USGSBayAreaVM-08.3.0.etree --with-cencal-extmodel-path=${UCVM_INSTALL_PATH}/model/cencal/data/USGSBayAreaVMExt-08.3.0.etree",
-
 			"Ask": "no",
                         "NOTE": "this model needs older proj4 libraries",
                         "Libraries": ["euclid3", "proj4"],
