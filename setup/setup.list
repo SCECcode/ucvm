@@ -136,7 +136,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","netCDF4"]
+                               "CMD": ["python","-m","pip","install","netCDF4"]
                              },
                              {
                                "Action": "install",
