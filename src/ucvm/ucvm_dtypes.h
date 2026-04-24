@@ -68,6 +68,7 @@
 #define UCVM_MODEL_1D "1d"
 #define UCVM_MODEL_BBP1D "bbp1d"
 #define UCVM_MODEL_SF1D "sf1d"
+#define UCVM_MODEL_MUSCAL1D "muscal1d"
 #define UCVM_MODEL_CMRG "cmrg"
 #define UCVM_MODEL_CMUETREE "cmuetree"
 #define UCVM_MODEL_CVMNCI "cvmnci"

@@ -29,6 +29,7 @@
 #include "ucvm_model_1d.h"
 #include "ucvm_model_bbp1d.h"
 #include "ucvm_model_sf1d.h"
+#include "ucvm_model_muscal1d.h"
 
 #include "ucvm_model_plugin.h"
 
@@ -387,6 +388,11 @@ int ucvm_add_model(const char *label) {
 
   if (strcmp(label, UCVM_MODEL_SF1D) == 0) {
     retval = ucvm_sf1d_get_model(&m);
+    is_predef = 1;
+  }
+
+  if (strcmp(label, UCVM_MODEL_MUSCAL1D) == 0) {
+    retval = ucvm_muscal1d_get_model(&m);
     is_predef = 1;
   }
 
@@ -1136,6 +1142,13 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
   /* SF1D */
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
 			 UCVM_MODEL_SF1D, "", res, numinst++, *len) 
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+
+  /* MUSCAL1D */
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+			 UCVM_MODEL_MUSCAL1D, "", res, numinst++, *len) 
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }
