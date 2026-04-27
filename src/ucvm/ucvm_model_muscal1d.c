@@ -19,7 +19,7 @@
 int ucvm_muscal1d_init_flag = 0;
 
 /* Model dimensions */
-#define UCVM_MUSCAL1D_MAX_Z_DIM 64
+#define UCVM_MUSCAL1D_MAX_Z_DIM 500
 int ucvm_muscal1d_z_dim = 0;
 char ucvm_muscal1d_version_id[UCVM_MAX_VERSION_LEN];
 double ucvm_muscal1d_layer_depths[UCVM_MUSCAL1D_MAX_Z_DIM];
