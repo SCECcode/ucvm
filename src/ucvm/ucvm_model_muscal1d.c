@@ -361,6 +361,8 @@ int ucvm_muscal1d_model_query(int id, ucvm_ctype_t cmode,
     	  data[i].crust.vp = ucvm_muscal1d_vp(depth);
     	  data[i].crust.rho = ucvm_muscal1d_rho(depth);
     	  data[i].crust.vs = ucvm_muscal1d_vs(depth);
+          /* top 300m, setup for elygetl */
+          if(depth <= 300.0) { data[i].crust.vs = data[i].vs30; }
     	  data[i].crust.source = ucvm_muscal1d_id;
       } else {
 	datagap = 1;
