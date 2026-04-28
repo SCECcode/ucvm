@@ -54,6 +54,7 @@ int ucvm_interp_ely(double zmin, double zmax, ucvm_ctype_t cmode,
     data->cmb.source = UCVM_SOURCE_CRUST;
   } else {
     /* Point lies in gtl/crustal interpolation zone */
+
     data->cmb.source = data->gtl.source;
 
     /* Check that all crust properties and gtl vs are defined */
@@ -72,6 +73,7 @@ int ucvm_interp_ely(double zmin, double zmax, ucvm_ctype_t cmode,
       (ucvm_interp_ely_a - ucvm_interp_ely_a*z + 
        ucvm_interp_ely_c*g)*ucvm_brocher_vp(data->gtl.vs);
     data->cmb.rho = ucvm_nafe_drake_rho(data->cmb.vp);
+
   }
 
   return(UCVM_CODE_SUCCESS);

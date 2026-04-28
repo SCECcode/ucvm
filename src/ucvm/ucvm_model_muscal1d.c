@@ -15,6 +15,13 @@
 #include "ucvm_utils.h"
 #include "ucvm_config.h"
 
+/* Ely interp coefficients */
+double ucvm_muscal1d_ely_a = 0.5;
+double ucvm_muscal1d_ely_b = 0.66666666666;
+double ucvm_muscal1d_ely_c = 1.5;
+double muscal1d_zmin=0;
+double muscal1d_zmax=300;
+
 /* Init flag */
 int ucvm_muscal1d_init_flag = 0;
 
@@ -26,6 +33,7 @@ double ucvm_muscal1d_layer_depths[UCVM_MUSCAL1D_MAX_Z_DIM];
 double ucvm_muscal1d_layer_vp[UCVM_MUSCAL1D_MAX_Z_DIM];
 double ucvm_muscal1d_layer_vs[UCVM_MUSCAL1D_MAX_Z_DIM];
 double ucvm_muscal1d_layer_rho[UCVM_MUSCAL1D_MAX_Z_DIM];
+int enable_ely=1;
 
 /* Model ID */
 int ucvm_muscal1d_id = UCVM_SOURCE_NONE;
@@ -49,9 +57,6 @@ double ucvm_muscal1d_vp(double depth) {
 	vp = 0.0;
 	cumulativeDepth = 0.0;
 
-	// Convert from m to km
-	depth = depth / 1000.0;
-
 	// Find out which layer we're in.
 	for (i = 0; i < ucvm_muscal1d_z_dim; i++) {
 		if (cumulativeDepth + ucvm_muscal1d_layer_depths[i] > depth) {
@@ -72,8 +77,6 @@ double ucvm_muscal1d_vp(double depth) {
 		vp = ucvm_muscal1d_layer_vp[ucvm_muscal1d_z_dim - 1];
 	}
 
-	vp = vp * 1000.0;
-
 	return vp;
 }
 
@@ -86,9 +89,6 @@ double ucvm_muscal1d_vs(double depth) {
 
 	vs = 0.0;
 	cumulativeDepth = 0.0;
-
-	// Convert from m to km
-	depth = depth / 1000.0;
 
 	// Find out which layer we're in.
 	for (i = 0; i < ucvm_muscal1d_z_dim; i++) {
@@ -110,8 +110,6 @@ double ucvm_muscal1d_vs(double depth) {
 		vs = ucvm_muscal1d_layer_vs[ucvm_muscal1d_z_dim - 1];
 	}
 
-	vs = vs * 1000.0;
-
 	return vs;
 }
 
@@ -124,9 +122,6 @@ double ucvm_muscal1d_rho(double depth) {
 
 	rho = 0.0;
 	cumulativeDepth = 0.0;
-
-	// Convert from m to km
-	depth = depth / 1000.0;
 
 	// Find out which layer we're in.
 	for (i = 0; i < ucvm_muscal1d_z_dim; i++) {
@@ -147,8 +142,6 @@ double ucvm_muscal1d_rho(double depth) {
 	if (i == ucvm_muscal1d_z_dim - 1) {
 		rho = ucvm_muscal1d_layer_rho[ucvm_muscal1d_z_dim - 1];
 	}
-
-	rho = rho * 1000.0;
 
 	return rho;
 }
@@ -211,6 +204,13 @@ int ucvm_muscal1d_model_init(int m, ucvm_modelconf_t *conf)
     fprintf(stderr, "Invalid MUSCAL1D Z dimension size\n");
     return(UCVM_CODE_ERROR);
   }
+
+  cptr = ucvm_find_name(chead, "enable_ely");
+  if (cptr == NULL) {
+    fprintf(stderr, "Failed to find enable_ely key\n");
+    return(1);
+  }
+  enable_ely= atoi(cptr->value);
 
   cptr = ucvm_find_name(chead, "interpolation");
   if (cptr == NULL) {
@@ -301,7 +301,6 @@ int ucvm_muscal1d_model_label(int id, char *lab, int len)
   return(UCVM_CODE_SUCCESS);
 }
 
-
 /* Setparam MUSCAL1D */
 int ucvm_muscal1d_model_setparam(int id, int param, ...)
 {
@@ -314,8 +313,8 @@ int ucvm_muscal1d_model_setparam(int id, int param, ...)
 
   va_start(ap, param);
   switch (param) {
-  default:
-    break;
+    default:
+      break;
   }
 
   va_end(ap);
@@ -361,8 +360,35 @@ int ucvm_muscal1d_model_query(int id, ucvm_ctype_t cmode,
     	  data[i].crust.vp = ucvm_muscal1d_vp(depth);
     	  data[i].crust.rho = ucvm_muscal1d_rho(depth);
     	  data[i].crust.vs = ucvm_muscal1d_vs(depth);
-          /* top 300m, setup for elygetl */
-          if(depth <= 300.0) { data[i].crust.vs = data[i].vs30; }
+
+//fprintf(stderr,"start crust data.. %lf %lf %lf \n", data[i].crust.vs, data[i].crust.vp, data[i].crust.rho);
+//fprintf(stderr,"start gtl data.. %lf %lf %lf \n", data[i].gtl.vs, data[i].gtl.vp, data[i].gtl.rho);
+
+          /* setup for elygtl */
+            if(enable_ely && depth <= muscal1d_zmax && depth >= muscal1d_zmin) { 
+              // setup vs
+              data[i].gtl.vs = data[i].vs30;
+
+// ely from ucvm_interp.c
+              double z,f,g;
+
+//fprintf(stderr," init gtl data.. %lf %lf %lf \n", data[i].gtl.vs, data[i].gtl.vp, data[i].gtl.rho);
+
+              z = (depth - muscal1d_zmin) / (muscal1d_zmax - muscal1d_zmin);
+              f = z - pow(z, 2.0);
+              g = pow(z, 2.0) + 2*pow(z, 0.5) - 3*z;
+              data[i].crust.vs = (z + ucvm_muscal1d_ely_b*f)*(data[i].crust.vs) +
+                (ucvm_muscal1d_ely_a - ucvm_muscal1d_ely_a*z +
+                 ucvm_muscal1d_ely_c*g)*data[i].gtl.vs;
+
+              data[i].crust.vp = (z + ucvm_muscal1d_ely_b*f)*(data[i].crust.vp) +
+                (ucvm_muscal1d_ely_a - ucvm_muscal1d_ely_a*z +
+                 ucvm_muscal1d_ely_c*g)*ucvm_brocher_vp(data[i].gtl.vs);
+
+              data[i].crust.rho = ucvm_nafe_drake_rho(data[i].cmb.vp);
+//fprintf(stderr,"  new crust data.. %lf %lf %lf \n", data[i].crust.vs, data[i].crust.vp, data[i].crust.rho);
+//fprintf(stderr,"  new cmb data.. %lf %lf %lf \n", data[i].cmb.vs, data[i].cmb.vp, data[i].cmb.rho);
+          }	  
     	  data[i].crust.source = ucvm_muscal1d_id;
       } else {
 	datagap = 1;
