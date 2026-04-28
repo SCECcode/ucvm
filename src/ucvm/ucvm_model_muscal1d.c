@@ -19,8 +19,8 @@
 double ucvm_muscal1d_ely_a = 0.5;
 double ucvm_muscal1d_ely_b = 0.66666666666;
 double ucvm_muscal1d_ely_c = 1.5;
-double muscal1d_zmin=0;
-double muscal1d_zmax=300;
+double muscal1d_zmin=0.0;
+double muscal1d_zmax=300.0;
 
 /* Init flag */
 int ucvm_muscal1d_init_flag = 0;
@@ -211,6 +211,21 @@ int ucvm_muscal1d_model_init(int m, ucvm_modelconf_t *conf)
     return(1);
   }
   enable_ely= atoi(cptr->value);
+
+  cptr = ucvm_find_name(chead, "ely_zmin");
+  if (cptr == NULL) {
+    fprintf(stderr, "Failed to find ely_zmin key\n");
+    return(1);
+  }
+  muscal1d_zmin= atof(cptr->value);
+
+  cptr = ucvm_find_name(chead, "ely_zmax");
+  if (cptr == NULL) {
+    fprintf(stderr, "Failed to find ely_zmax key\n");
+    return(1);
+  }
+  muscal1d_zmax= atof(cptr->value);
+
 
   cptr = ucvm_find_name(chead, "interpolation");
   if (cptr == NULL) {
