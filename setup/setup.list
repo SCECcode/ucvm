@@ -127,7 +127,7 @@
                         "Abbreviation": "muscal",
                         "Size": "35M",
                         "Path": "muscal",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_2/model/muscal.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_5/model/muscal.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-shared CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/netcdf/lib' LIBS='-lhdf5 -lnetcdf'",
                         "UCVMConfigureFlags": "--enable-model-muscal --with-muscal-lib-path=${UCVM_INSTALL_PATH}/model/muscal/lib --with-muscal-include-path=${UCVM_INSTALL_PATH}/model/muscal/include",
@@ -143,7 +143,7 @@
                                "CMD": ["pip","install","netCDF4"]
                              }
                         ],
-                        "md5sum": "5a05b71b25186b5682b5c39873719702",
+                        "md5sum": "6eade6c5663f42578e9d546a7ea2fbc5",
                         "Order": 23
                 },
                 "SFCVM": {
