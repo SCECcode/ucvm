@@ -17,11 +17,11 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","netCDF4"]
+                               "CMD": ["python","-m","pip","install","netCDF4","--only-binary=:all:"]
                              },
                              {
                                "Action": "install",
-                               "CMD": ["pip","install","netCDF4"]
+                               "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
                         "md5sum": "ef2ed1720f4f5eaacc0935b8d9fd652a",
@@ -136,11 +136,11 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","netCDF4"]
+                               "CMD": ["python","-m","pip","install","netCDF4","--only-binary=:all:"]
                              },
                              {
                                "Action": "install",
-                               "CMD": ["pip","install","netCDF4"]
+                               "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
                         "md5sum": "6eade6c5663f42578e9d546a7ea2fbc5",
