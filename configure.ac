@@ -140,6 +140,12 @@ AC_ARG_ENABLE([model-muscal],
         [enable_model_muscal=yes],
         [enable_model_muscal=no])
 
+AC_ARG_ENABLE([model-muscal2],
+        [AS_HELP_STRING([--enable-model-muscal2],
+        [enable model SCEC MUSCAL2])],
+        [enable_model_muscal2=yes],
+        [enable_model_muscal2=no])
+
 AC_ARG_ENABLE([model-cvmhlabn],
         [AS_HELP_STRING([--enable-model-cvmhlabn],
         [enable model SCEC CVMHLABN])],
@@ -588,6 +594,19 @@ AC_ARG_WITH([muscal-lib-path],
   [AS_HELP_STRING([--with-muscal-lib-path], [location of the SCEC MUSCAL libraries])],
   [MUSCAL_LIB="-L$withval -lmuscal -lproj -letree"],
   [MUSCAL_LIB="-lmuscal -lproj -letree"])
+fi
+
+# Get SCEC MUSCAL2 library and include locations
+if test "x$enable_model_muscal2" = xyes; then
+AC_ARG_WITH([muscal2-include-path],
+  [AS_HELP_STRING([--with-muscal2-include-path],
+    [location of the SCEC MUSCAL2 headers])],
+  [MUSCAL2_INCL="-I$withval"],
+  [MUSCAL2_INCL="/usr/include/muscal2"])
+AC_ARG_WITH([muscal2-lib-path],
+  [AS_HELP_STRING([--with-muscal2-lib-path], [location of the SCEC MUSCAL2 libraries])],
+  [MUSCAL2_LIB="-L$withval -lmuscal2 -lproj -letree"],
+  [MUSCAL2_LIB="-lmuscal2 -lproj -letree"])
 fi
 
 # Get SCEC CVMHLABN library and include locations
@@ -1256,7 +1275,6 @@ if test "x$enable_model_muscal" = xyes; then
    # Setup compiler/linker flags
    CFLAGS="$MUSCAL_INCL $CFLAGS"
    LDFLAGS="$MUSCAL_LIB $LDFLAGS"
-
    echo "Checking for SCEC MUSCAL"
    AC_CHECK_HEADER(muscal.h,[],[AC_MSG_ERROR(["SCEC MUSCAL header not found; use --with-muscal-include-path"])],[AC_INCLUDES_DEFAULT])
 else
@@ -1264,6 +1282,21 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL, [test x"$enable_model_muscal" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC MUSCAL2 installation
+if test "x$enable_model_muscal2" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$MUSCAL2_INCL $CFLAGS"
+   LDFLAGS="$MUSCAL2_LIB $LDFLAGS"
+   echo "Checking for SCEC MUSCAL2"
+   AC_CHECK_HEADER(muscal2.h,[],[AC_MSG_ERROR(["SCEC MUSCAL2 header not found; use --with-muscal-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL2, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL2, [test x"$enable_model_muscal2" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then

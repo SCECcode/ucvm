@@ -3,6 +3,31 @@
                "Version": "25.7"
                },
 	"models": {
+                "MUSCAL2": {
+                        "Version": "1.0",
+                        "Abbreviation": "muscal2",
+                        "Size": "35M",
+                        "Path": "muscal2",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/model/muscal2.tar.gz",
+                        "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
+                        "ConfigureFlags": "--enable-shared --with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
+                        "OldConfigureFlags": "--enable-shared CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -Wl,-rpath, ${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/netcdf/lib' LIBS='-lhdf5 -lnetcdf'",
+                        "UCVMConfigureFlags": "--enable-model-muscal2 --with-muscal2-lib-path=${UCVM_INSTALL_PATH}/model/muscal2/lib --with-muscal2-include-path=${UCVM_INSTALL_PATH}/model/muscal2/include",
+                        "Ask": "yes",
+                        "Libraries": ["netcdf", "euclid3", "proj"],
+                        "Preprocess" : [
+                             {
+                               "Action": "install",
+                               "CMD": ["python","-m","pip","install","netCDF4","--only-binary=:all:"]
+                             },
+                             {
+                               "Action": "install",
+                               "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
+                             }
+                        ],
+                        "md5sum": "d7df2022ef54f5e7c0f19a0a027e7017",
+                        "Order": 31
+                },
                 "SJQBN": {
                         "Version": "1.0",
                         "Abbreviation": "sjqbn",
@@ -30,7 +55,7 @@
                 "UWPKFCVM": {
                         "Version": "1.0.0",
                         "Abbreviation": "uwpkfcvm",
-                        "Size": "8.2M",
+                        "Size": "5.3M",
                         "Path": "uwpkfcvm",
                         "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_5/model/uwpkfcvm.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
@@ -127,9 +152,11 @@
                         "Abbreviation": "muscal",
                         "Size": "35M",
                         "Path": "muscal",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_5/model/muscal.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/model/muscal.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
-                        "ConfigureFlags": "--enable-shared CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/netcdf/lib' LIBS='-lhdf5 -lnetcdf'",
+                        "ConfigureFlags": "--enable-shared
+--with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
+                        "OldConfigureFlags": "--enable-shared CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -Wl,-rpath, ${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/netcdf/lib' LIBS='-lhdf5 -lnetcdf'",
                         "UCVMConfigureFlags": "--enable-model-muscal --with-muscal-lib-path=${UCVM_INSTALL_PATH}/model/muscal/lib --with-muscal-include-path=${UCVM_INSTALL_PATH}/model/muscal/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
@@ -143,7 +170,7 @@
                                "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
-                        "md5sum": "d7df2022ef54f5e7c0f19a0a027e7017",
+                        "md5sum": "d28a33d487fbb6ebdbe113c27215c4ab4",
                         "Order": 23
                 },
                 "SFCVM": {
