@@ -263,11 +263,13 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         print("\nRunning automake")
         callAndRecord(["automake", "--add-missing", "--force-missing"])
 
-    print("\nRunning ./configure")
+    print("\nRunning configure (Configure or cmake)")
 
     prefix_string="--prefix=" + ucvmpath + "/" + pathname + "/" + config_data["Path"]
 
-    if config_data["Path"] == "openssl" :
+    if config_data["Path"] == "tiledb" :
+        configure_array = ["cmake", prefix_string]
+    else if config_data["Path"] == "openssl" :
         configure_array = ["./Configure", prefix_string]
     else:
         configure_array = ["./configure", prefix_string]
@@ -309,6 +311,9 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         if "hdf5" in needs_array:
           configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/hdf5/lib")
           configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/hdf5/include")
+        if "tiledb" in needs_array:
+          configure_array.append("LDFLAGS=-L" + ucvmpath + "/lib/tiledb/lib")
+          configure_array.append("CPPFLAGS=-I" + ucvmpath + "/lib/tiledb/include")
                     
 ## special case ??
     if config_data["Path"] == "cencal":
@@ -326,34 +331,36 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
       callAndRecord(configure_array_new, noshell = False)
     else:
       callAndRecord(configure_array_new)
-    
-    print("\nRunning make clean")
 
-    ## ??? ignore the return of the call ??
-    if config_data["Path"] == "tiff":
+// special case : TileDB is cmake based
+
+    if config_data["Path"] == "tiledb":
+      print("\nRunning cmake build")
+      cterm= "--build build --clean-first  --target "+ ucvmpath +"/lib/tiledb";
+      callAndRecord(["cmake", cterm])
+    else :
+      print("\nRunning make clean")
       callAndRecord(["make", "clean"])
-    else:
-      callAndRecord(["make", "clean"])
     
-    print("\nRunning make")
-    if config_data["Path"] == "cencal":
-        os.chdir("./libsrc")
-        callAndRecord(["make"])
-    else:
-        callAndRecord(["make"])
+      print("\nRunning make")
+      if config_data["Path"] == "cencal":
+          os.chdir("./libsrc")
+          callAndRecord(["make"])
+      else:
+          callAndRecord(["make"])
     
-    print("\nInstalling...")
-    callAndRecord(["make", "install"])
+      print("\nInstalling...")
+      callAndRecord(["make", "install"])
     
-    if config_data["Path"] == "cencal":
-        os.chdir("../")
-        callAndRecord(["mkdir", "-p", ucvmpath + "/model/" + config_data["Path"] + "/model"])
-        callAndRecord(["mv", "./model/USGSBayAreaVM-08.3.0.etree", ucvmpath + "/model/" + config_data["Path"] + "/model/"])
-        callAndRecord(["mv", "./model/USGSBayAreaVMExt-08.3.0.etree", ucvmpath + "/model/" + config_data["Path"] + "/model/"])
+      if config_data["Path"] == "cencal":
+          os.chdir("../")
+          callAndRecord(["mkdir", "-p", ucvmpath + "/model/" + config_data["Path"] + "/model"])
+          callAndRecord(["mv", "./model/USGSBayAreaVM-08.3.0.etree", ucvmpath + "/model/" + config_data["Path"] + "/model/"])
+          callAndRecord(["mv", "./model/USGSBayAreaVMExt-08.3.0.etree", ucvmpath + "/model/" + config_data["Path"] + "/model/"])
     
-    config_data["Install"]="true"
-    os.chdir(savedPath)
-    callAndRecord(["cd", savedPath], True)
+      config_data["Install"]="true"
+      os.chdir(savedPath)
+      callAndRecord(["cd", savedPath], True)
 
 ## Any Postprocess needed ? ie, proj needs to install proj-data at installed location
 ## special case, this is just a data package of a library, just need to stash it at the

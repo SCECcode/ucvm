@@ -10,11 +10,10 @@
                         "Path": "muscal2",
                         "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/model/muscal2.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
-                        "ConfigureFlags": "--enable-shared --with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
-                        "OldConfigureFlags": "--enable-shared CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -Wl,-rpath, ${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/netcdf/lib' LIBS='-lhdf5 -lnetcdf'",
+                        "ConfigureFlags": "--enable-shared --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
                         "UCVMConfigureFlags": "--enable-model-muscal2 --with-muscal2-lib-path=${UCVM_INSTALL_PATH}/model/muscal2/lib --with-muscal2-include-path=${UCVM_INSTALL_PATH}/model/muscal2/include",
                         "Ask": "yes",
-                        "Libraries": ["netcdf", "euclid3", "proj"],
+                        "Libraries": ["netcdf", "tiledb" ],
                         "Preprocess" : [
                              {
                                "Action": "install",
@@ -503,6 +502,34 @@
                         "UCVMConfigureFlags": "--with-etree-include-path=${UCVM_INSTALL_PATH}/lib/euclid3/include --with-etree-lib-path=${UCVM_INSTALL_PATH}/lib/euclid3/lib",
                         "md5sum": "cdaee3dadaa139bd3588559f4222c436",
 			"Ask": "no",
+                        "Needs":""
+		},
+		"TileDB": {
+			"Path": "tiledb",
+                        "Note": "https://github.com/TileDB-Inc/TileDB/releases v2.30.1 release (cmake based)",
+                        "Lib": "tiledb-2.30.1",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/lib/TileDB-2.30.1.tar.gz",
+			"Required": "yes",
+                        "Libraries": [],
+			"Prerequisites": "Dynamic",
+                        "mohoConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
+                        "macConfigureFlags": "CC=gcc-10 CXX=g++-10",
+                        "ConfigureFlags": "-S ${UCVM_INSTALL_PATH}/lib/tiledb -B build  -G "Unix Makefiles"  -DCMAKE_BUILD_TYPE=Release  -DBUILD_SHARED_LIBS=ON -DCOMPILER_SUPPORTS_AVX2=OFF -DTILEDB_S3=OFF  -DTILEDB_AZURE=OFF  -DTILEDB_GCS=OFF -DCMAKE_INSTALL_PREFIX=${UCVM_INSTALL_PATH}/lib/tiledb",
+                        "cmakeBuildFlags": "--build build --clean-first --target ${UCVM_INSTALL_PATH}/lib/tiledb",
+                        "OLDcmakeBuildFlags": "--build build --clean-first -j$(nproc) --target ${UCVM_INSTALL_PATH}/lib/tiledb",
+                        "UCVMConfigureFlags": " --with-tiledb-include-path=${UCVM_INSTALL_PATH}/lib/tiledb/include --with-tiledb-lib-path='${UCVM_INSTALL_PATH}/lib/tiledb/lib64 -ltiledb -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/tiledb/lib64'",
+                        "Preprocess" : [
+                             {
+                               "Action": "install",
+                               "CMD": ["python","-m","pip","install","cmake"]
+                             },
+                             {
+                               "Action": "install",
+                               "CMD": ["pip","install","cmake"]
+                             }
+                        ],
+                        "md5sum": "f17180244d4385c8a6b123cc4b2b8da5",
+			"Ask": "yes",
                         "Needs":""
 		},
 		"NetCDF": {
