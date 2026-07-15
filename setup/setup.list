@@ -506,15 +506,17 @@
 		},
 		"TileDB": {
 			"Path": "tiledb",
-                        "Note": "https://github.com/TileDB-Inc/TileDB/releases v2.30.1 release (cmake based)",
-                        "Lib": "tiledb-2.30.1",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/lib/TileDB-2.30.1.tar.gz",
+                        "Note": "https://github.com/TileDB-Inc/TileDB.git (cmake based)",
+                        "Lib": "TileDB-2.30.0",
+                        "Size": "1.0M",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/lib/TileDB-2.30.0.tar.gz",
 			"Required": "yes",
                         "Libraries": [],
+                        "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
 			"Prerequisites": "Dynamic",
                         "mohoConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
                         "macConfigureFlags": "CC=gcc-10 CXX=g++-10",
-                        "ConfigureFlags": "-S ${UCVM_INSTALL_PATH}/lib/tiledb -B build  -G "Unix Makefiles"  -DCMAKE_BUILD_TYPE=Release  -DBUILD_SHARED_LIBS=ON -DCOMPILER_SUPPORTS_AVX2=OFF -DTILEDB_S3=OFF  -DTILEDB_AZURE=OFF  -DTILEDB_GCS=OFF -DCMAKE_INSTALL_PREFIX=${UCVM_INSTALL_PATH}/lib/tiledb",
+                        "ConfigureFlags": "-S . -B build  -G 'Unix Makefiles'  -DCMAKE_BUILD_TYPE=Release  -DBUILD_SHARED_LIBS=ON -DCOMPILER_SUPPORTS_AVX2=OFF -DTILEDB_S3=OFF  -DTILEDB_AZURE=OFF  -DTILEDB_GCS=OFF -DCMAKE_INSTALL_PREFIX=${UCVM_INSTALL_PATH}/lib/tiledb",
                         "cmakeBuildFlags": "--build build --clean-first --target ${UCVM_INSTALL_PATH}/lib/tiledb",
                         "OLDcmakeBuildFlags": "--build build --clean-first -j$(nproc) --target ${UCVM_INSTALL_PATH}/lib/tiledb",
                         "UCVMConfigureFlags": " --with-tiledb-include-path=${UCVM_INSTALL_PATH}/lib/tiledb/include --with-tiledb-lib-path='${UCVM_INSTALL_PATH}/lib/tiledb/lib64 -ltiledb -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/tiledb/lib64'",
@@ -528,8 +530,8 @@
                                "CMD": ["pip","install","cmake"]
                              }
                         ],
-                        "md5sum": "f17180244d4385c8a6b123cc4b2b8da5",
-			"Ask": "yes",
+                        "md5sum": "3aa11750391386a5a44c28c6fd273b8b",
+			"Ask": "no",
                         "Needs":""
 		},
 		"NetCDF": {

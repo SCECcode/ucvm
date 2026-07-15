@@ -238,7 +238,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
 
     libtoolize_list=["sfcvm","cvms5","cvmh","cs248","uwlinca","uwpkfcvm","muscal","muscal2","sjqbn"]
     autoreconf_list=["sfcvm","cca","cs248"]
-    skip_conf_list = ["openssl","netcdf"]
+    skip_conf_list = ["openssl","netcdf","tiledb"]
 
     if config_data["Path"] in skip_conf_list :
         print("\nNo need to boostrap autotools -- ", config_data["Path"]);
@@ -263,15 +263,20 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         print("\nRunning automake")
         callAndRecord(["automake", "--add-missing", "--force-missing"])
 
-    print("\nRunning configure (Configure or cmake)")
-
-    prefix_string="--prefix=" + ucvmpath + "/" + pathname + "/" + config_data["Path"]
-
     if config_data["Path"] == "tiledb" :
-        configure_array = ["cmake", prefix_string]
-    else if config_data["Path"] == "openssl" :
+
+      print("\nRunning cmake")
+
+      configure_array = ["cmake"]
+
+    else :
+      prefix_string="--prefix=" + ucvmpath + "/" + pathname + "/" + config_data["Path"]
+
+      print("\nRunning ./configure")
+
+      if config_data["Path"] == "openssl" :
         configure_array = ["./Configure", prefix_string]
-    else:
+      else:
         configure_array = ["./configure", prefix_string]
 
     ## special case, move to setup/setup.list
@@ -332,12 +337,10 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     else:
       callAndRecord(configure_array_new)
 
-// special case : TileDB is cmake based
-
+## special case : TileDB is cmake based
     if config_data["Path"] == "tiledb":
       print("\nRunning cmake build")
-      cterm= "--build build --clean-first  --target "+ ucvmpath +"/lib/tiledb";
-      callAndRecord(["cmake", cterm])
+      callAndRecord(["cmake", "--build", "build", "--clean-first", "--target", "install"]);
     else :
       print("\nRunning make clean")
       callAndRecord(["make", "clean"])

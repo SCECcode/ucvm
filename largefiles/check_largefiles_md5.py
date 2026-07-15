@@ -2,7 +2,7 @@
 #
 # Script for checking downloaded UCVM Files. This script should be run
 # after the UCVM largefiles have been retrieved from their respository
-# into the ucvm/largefiles subdirectory.
+    # into the ucvm/largefiles subdirectory.
 #
 # When both the ucvm/largefiles and their associated md5 files
 # are located in the same directory, then this script will confirm
