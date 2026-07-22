@@ -122,16 +122,17 @@ def callAndRecord(command, nocall = False, noshell = True):
     if nocall == False:
         if noshell == False :
 ##            my_command=' '.join(command)
-            print('  IN SHELL ==> command used.. '+ shlex.join(command))
+##            print('  IN SHELL ==> command used.. '+ shlex.join(command))
             my_command=shlex.join(command)
             proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
             retout, reterr = proc.communicate()
             retVal = proc.poll()
         else:
-            print('  NOT IN SHELL ==> command used.. '+ shlex.join(command))
+##            print('  NOT IN SHELL ==> command used.. '+ shlex.join(command))
             proc = Popen(command, stdout = PIPE, stderr = PIPE)
             retout, reterr = proc.communicate()
-            retVal = proc.poll()
+            retVal = proc.returncode
+##            retVal = proc.poll()
 
 
         if not retVal == 0:
@@ -215,7 +216,8 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     # This enables us to untar into directories with static names like proj
     #
     print("Decompressing " + type)
-    callAndRecord(["mkdir", "-p", workpath + "/" + config_data["Path"]])
+    os.makedirs(workpath + "/" + config_data["Path"], exist_ok=True)
+## race?    callAndRecord(["mkdir", "-p", workpath + "/" + config_data["Path"]])
     callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/" + config_data["Path"], \
                      "--strip", strip_level])
 
