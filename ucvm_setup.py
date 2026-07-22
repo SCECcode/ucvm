@@ -122,11 +122,13 @@ def callAndRecord(command, nocall = False, noshell = True):
     if nocall == False:
         if noshell == False :
 ##            my_command=' '.join(command)
+            print('  IN SHELL ==> command used.. '+ shlex.join(command))
             my_command=shlex.join(command)
             proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
             retout, reterr = proc.communicate()
             retVal = proc.poll()
         else:
+            print('  NOT IN SHELL ==> command used.. '+ shlex.join(command))
             proc = Popen(command, stdout = PIPE, stderr = PIPE)
             retout, reterr = proc.communicate()
             retVal = proc.poll()
