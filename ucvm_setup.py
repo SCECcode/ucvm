@@ -216,9 +216,19 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     # This enables us to untar into directories with static names like proj
     #
     print("Decompressing " + type)
-    os.makedirs(workpath + "/" + config_data["Path"], exist_ok=True)
+##    os.makedirs(workpath + "/" + config_data["Path"], exist_ok=True)
 ## race? callAndRecord(["mkdir", "-p", workpath + "/" + config_data["Path"]])
-    callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/" + config_data["Path"], \
+    target_dir = os.path.join(workpath, str(config_data["Path"]).strip())
+    try:
+        os.makedirs(target_dir, exist_ok=True)
+        print(f"Successfully created or verified: {target_dir}")
+    except PermissionError:
+        print(f"Error: No permission to create directory at '{target_dir}'.")
+        # Handle permission failure (e.g., raise, exit, or log)
+    except OSError as e:
+        print(f"Failed to create directory '{target_dir}'. Cause: {e}")
+
+    callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", target_dir, \
                      "--strip", str(strip_level)])
 
 ## Any Preprocess needed ? 
