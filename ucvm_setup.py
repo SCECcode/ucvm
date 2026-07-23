@@ -217,9 +217,9 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     #
     print("Decompressing " + type)
     os.makedirs(workpath + "/" + config_data["Path"], exist_ok=True)
-## race?    callAndRecord(["mkdir", "-p", workpath + "/" + config_data["Path"]])
+## race? callAndRecord(["mkdir", "-p", workpath + "/" + config_data["Path"]])
     callAndRecord(["tar", "zxvf", workpath  + "/" + tarname, "-C", workpath + "/" + config_data["Path"], \
-                     "--strip", strip_level])
+                     "--strip", str(strip_level)])
 
 ## Any Preprocess needed ? 
 ## maybe download geomodelgrids into sfcvm source location ?
