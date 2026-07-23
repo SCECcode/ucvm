@@ -510,7 +510,7 @@
                         "Lib": "TileDB-2.30.0",
                         "Size": "1.0M",
 			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/lib/TileDB-2.30.0.tar.gz",
-			"Required": "yes",
+			"Required": "no",
                         "Libraries": [],
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
 			"Prerequisites": "Dynamic",
@@ -532,7 +532,7 @@
                         ],
                         "md5sum": "3aa11750391386a5a44c28c6fd273b8b",
 			"Ask": "no",
-                        "Needs":""
+                        "Needs":"OpenSSL"
 		},
 		"NetCDF": {
 			"Path": "netcdf",
