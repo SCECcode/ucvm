@@ -15,6 +15,7 @@ import socket
 import shlex
 import pdb
 import shutil
+from pathlib import Path
 
 
 # Variables
@@ -221,7 +222,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     target_dir = os.path.join(workpath, str(config_data["Path"]).strip())
     try:
         os.makedirs(target_dir, exist_ok=True)
-        print(f"Successfully created or verified: {target_dir}")
+        print(f"Successfully created: {target_dir}")
     except PermissionError:
         print(f"Error: No permission to create directory at '{target_dir}'.")
         # Handle permission failure (e.g., raise, exit, or log)
@@ -280,7 +281,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     if config_data["Path"] == "tiledb" :
 
       print("\nRunning cmake")
-
       configure_array = ["cmake"]
 
     else :
@@ -355,6 +355,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     if config_data["Path"] == "tiledb":
       print("\nRunning cmake build")
       callAndRecord(["cmake", "--build", "build", "--clean-first", "--target", "install"]);
+
     else :
       print("\nRunning make clean")
       callAndRecord(["make", "clean"])
@@ -375,9 +376,9 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
           callAndRecord(["mv", "./model/USGSBayAreaVM-08.3.0.etree", ucvmpath + "/model/" + config_data["Path"] + "/model/"])
           callAndRecord(["mv", "./model/USGSBayAreaVMExt-08.3.0.etree", ucvmpath + "/model/" + config_data["Path"] + "/model/"])
     
-      config_data["Install"]="true"
-      os.chdir(savedPath)
-      callAndRecord(["cd", savedPath], True)
+    config_data["Install"]="true"
+    os.chdir(savedPath)
+    callAndRecord(["cd", savedPath], True)
 
 ## Any Postprocess needed ? ie, proj needs to install proj-data at installed location
 ## special case, this is just a data package of a library, just need to stash it at the
