@@ -6,7 +6,7 @@
                 "MUSCAL2": {
                         "Version": "1.0",
                         "Abbreviation": "muscal2",
-                        "Size": "35M",
+                        "Size": "3.9G",
                         "Path": "muscal2",
                         "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/model/muscal2.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
@@ -24,7 +24,7 @@
                                "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
-                        "md5sum": "178e0ba03d34040eee7251685490ff88",
+                        "md5sum": "4c529c56f144000d4c259389b9c833c3",
                         "Order": 31
                 },
                 "SJQBN": {
