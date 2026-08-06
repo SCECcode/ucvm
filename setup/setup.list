@@ -156,7 +156,7 @@
                         "ConfigureFlags": "--enable-shared --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
                         "OldConfigureFlags": "--enable-shared CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -Wl,-rpath, ${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/netcdf/lib' LIBS='-lhdf5 -lnetcdf'",
                         "UCVMConfigureFlags": "--enable-model-muscalnc --with-muscalnc-lib-path=${UCVM_INSTALL_PATH}/model/muscalnc/lib --with-muscalnc-include-path=${UCVM_INSTALL_PATH}/model/muscalnc/include",
-                        "Ask": "yes",
+                        "Ask": "no",
                         "Libraries": ["netcdf"],
                         "Preprocess" : [
                              {
