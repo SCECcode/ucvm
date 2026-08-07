@@ -12,7 +12,7 @@
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-shared --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
                         "UCVMConfigureFlags": "--enable-model-muscaltdb --with-muscaltdb-lib-path=${UCVM_INSTALL_PATH}/model/muscaltdb/lib --with-muscaltdb-include-path=${UCVM_INSTALL_PATH}/model/muscaltdb/include",
-                        "Ask": "yes",
+                        "Ask": "no",
                         "Libraries": ["netcdf", "tiledb" ],
                         "Preprocess" : [
                              {
@@ -510,7 +510,7 @@
                         "Lib": "TileDB-2.30.0",
                         "Size": "1.0M",
 			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/lib/TileDB-2.30.0.tar.gz",
-			"Required": "yes",
+			"Required": "no",
                         "Libraries": [],
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
 			"Prerequisites": "Dynamic",
