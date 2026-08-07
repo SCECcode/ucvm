@@ -377,12 +377,12 @@
                         "Abbreviation": "cvmh",
                         "Size": "1.6G",
 			"Path": "cvmh",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/model/cvmh.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/cvmh.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "b950452d986953fc5480af53840127f2",
+                        "md5sum": "da86a80b36406cd42f0496d27f17d4cd",
 			"Order": 8
 		},
 		"CenCalVM": {
@@ -403,12 +403,12 @@
                         "Abbreviation": "cvmsi",
                         "Size": "1.6G",
 			"Path": "cvmsi",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/cvmsi.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/cvmsi.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/data/i26",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "7bd2de7ed583f6f998e2d3b479d31c7c",
+                        "md5sum": "88b3443992c739bf2aef4bd386bde981",
 			"Order": 6		
 		},
 		"CVM-S4": {
@@ -468,7 +468,7 @@
                         "Abbreviation": "cvms5",
                         "Size": "1.2G",
 			"Path": "cvms5",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/model/cvms5.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/cvms5.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
@@ -476,7 +476,7 @@
 
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "5dff7dfca9de92f1e8cd0c3ca9e3b0cf",
+                        "md5sum": "bf36e7fcb53f8a1aac72f240789d2d59",
 			"Order": 1		
 		}
 	},
