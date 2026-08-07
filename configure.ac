@@ -140,11 +140,11 @@ AC_ARG_ENABLE([model-muscalnc],
         [enable_model_muscalnc=yes],
         [enable_model_muscalnc=no])
 
-AC_ARG_ENABLE([model-muscal],
-        [AS_HELP_STRING([--enable-model-muscal],
-        [enable model SCEC MUSCAL])],
-        [enable_model_muscal=yes],
-        [enable_model_muscal=no])
+AC_ARG_ENABLE([model-muscaltdb],
+        [AS_HELP_STRING([--enable-model-muscaltdb],
+        [enable model SCEC MUSCALTDB])],
+        [enable_model_muscaltdb=yes],
+        [enable_model_muscaltdb=no])
 
 AC_ARG_ENABLE([model-cvmhlabn],
         [AS_HELP_STRING([--enable-model-cvmhlabn],
@@ -592,21 +592,21 @@ AC_ARG_WITH([muscalnc-include-path],
   [MUSCALNC_INCL="/usr/include/muscalnc"])
 AC_ARG_WITH([muscalnc-lib-path],
   [AS_HELP_STRING([--with-muscalnc-lib-path], [location of the SCEC MUSCALNC libraries])],
-  [MUSCALNC_LIB="-L$withval -lmuscalnc -lproj -letree"],
-  [MUSCALNC_LIB="-lmuscalnc -lproj -letree"])
+  [MUSCALNC_LIB="-L$withval -lmuscalnc"],
+  [MUSCALNC_LIB="-lmuscalnc"])
 fi
 
-# Get SCEC MUSCAL library and include locations
-if test "x$enable_model_muscal" = xyes; then
-AC_ARG_WITH([muscal-include-path],
-  [AS_HELP_STRING([--with-muscal-include-path],
-    [location of the SCEC MUSCAL headers])],
-  [MUSCAL_INCL="-I$withval"],
-  [MUSCAL_INCL="/usr/include/muscal"])
-AC_ARG_WITH([muscal-lib-path],
-  [AS_HELP_STRING([--with-muscal-lib-path], [location of the SCEC MUSCAL libraries])],
-  [MUSCAL_LIB="-L$withval -lmuscal -lproj -letree"],
-  [MUSCAL_LIB="-lmuscal -lproj -letree"])
+# Get SCEC MUSCALTDB library and include locations
+if test "x$enable_model_muscaltdb" = xyes; then
+AC_ARG_WITH([muscaltdb-include-path],
+  [AS_HELP_STRING([--with-muscaltdb-include-path],
+    [location of the SCEC MUSCALTDB headers])],
+  [MUSCALTDB_INCL="-I$withval"],
+  [MUSCALTDB_INCL="/usr/include/muscaltdb"])
+AC_ARG_WITH([muscaltdb-lib-path],
+  [AS_HELP_STRING([--with-muscaltdb-lib-path], [location of the SCEC MUSCALTDB libraries])],
+  [MUSCALTDB_LIB="-L$withval -lmuscaltdb"],
+  [MUSCALTDB_LIB="-lmuscaltdb"])
 fi
 
 # Get SCEC CVMHLABN library and include locations
@@ -1285,18 +1285,18 @@ else
 fi
 
 if test "x$enable_static" = xyes; then
-# Check optional SCEC MUSCAL installation
-if test "x$enable_model_muscal" = xyes; then
+# Check optional SCEC MUSCALTDB installation
+if test "x$enable_model_muscaltdb" = xyes; then
    # Setup compiler/linker flags
-   CFLAGS="$MUSCAL_INCL $CFLAGS"
-   LDFLAGS="$MUSCAL_LIB $LDFLAGS"
-   echo "Checking for SCEC MUSCAL"
-   AC_CHECK_HEADER(muscal.h,[],[AC_MSG_ERROR(["SCEC MUSCAL header not found; use --with-muscal-include-path"])],[AC_INCLUDES_DEFAULT])
+   CFLAGS="$MUSCALTDB_INCL $CFLAGS"
+   LDFLAGS="$MUSCALTDB_LIB $LDFLAGS"
+   echo "Checking for SCEC MUSCALTDB"
+   AC_CHECK_HEADER(muscaltdb.h,[],[AC_MSG_ERROR(["SCEC MUSCALTDB header not found; use --with-muscaltdb-include-path"])],[AC_INCLUDES_DEFAULT])
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL, false)
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCALTDB, false)
 fi
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL, [test x"$enable_model_muscal" = xyes])
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCALTDB, [test x"$enable_model_muscaltdb" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then

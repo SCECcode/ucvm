@@ -87,7 +87,7 @@
 #define UCVM_MODEL_CS248 "cs248"
 
 #define UCVM_MODEL_MUSCALNC "muscalnc"
-#define UCVM_MODEL_MUSCAL "muscal"
+#define UCVM_MODEL_MUSCAL "muscaltdb"
 #define UCVM_MODEL_SJQBN "sjqbn"
 
 #define UCVM_MODEL_SFCVM "sfcvm"

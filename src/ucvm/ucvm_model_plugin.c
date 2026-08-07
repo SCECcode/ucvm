@@ -89,12 +89,12 @@
      extern int muscalnc_version;
      extern int muscalnc_config;
 #endif
-#ifdef _UCVM_ENABLE_MUSCAL
-     extern int muscal_init;
-     extern int muscal_query;
-     extern int muscal_finalize;
-     extern int muscal_version;
-     extern int muscal_config;
+#ifdef _UCVM_ENABLE_MUSCALTDB
+     extern int muscaltdb_init;
+     extern int muscaltdb_query;
+     extern int muscaltdb_finalize;
+     extern int muscaltdb_version;
+     extern int muscaltdb_config;
 #endif
 #ifdef _UCVM_ENABLE_CVMHLABN
      extern int cvmhlabn_init;
@@ -485,13 +485,13 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 }
         }
 #endif
-#ifdef _UCVM_ENABLE_MUSCAL
-        if (strcmp(conf->label, UCVM_MODEL_MUSCAL) == 0) {
-                pptr->model_init = &muscal_init;
-                pptr->model_query = &muscal_query;
-                pptr->model_finalize = &muscal_finalize;
-                pptr->model_version = &muscal_version;
-                pptr->model_config = &muscal_config;
+#ifdef _UCVM_ENABLE_MUSCALTDB
+        if (strcmp(conf->label, UCVM_MODEL_MUSCALTDB) == 0) {
+                pptr->model_init = &muscaltdb_init;
+                pptr->model_query = &muscaltdb_query;
+                pptr->model_finalize = &muscaltdb_finalize;
+                pptr->model_version = &muscaltdb_version;
+                pptr->model_config = &muscaltdb_config;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;
