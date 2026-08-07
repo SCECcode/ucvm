@@ -338,9 +338,9 @@ int test_lib_add_model_uwpkfcvm()
   return(0);
 }
 
-int test_lib_add_model_muscal()
+int test_lib_add_model_muscalnc()
 {
-  printf("Test: UCVM lib add model MUSCAL\n");
+  printf("Test: UCVM lib add model MUSCALNC\n");
   
   /* Setup UCVM */
   if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
@@ -349,9 +349,9 @@ int test_lib_add_model_muscal()
   }
 
   /* Add model */
-  if (ucvm_add_model(UCVM_MODEL_MUSCAL) != UCVM_CODE_SUCCESS) {
+  if (ucvm_add_model(UCVM_MODEL_MUSCALNC) != UCVM_CODE_SUCCESS) {
     fprintf(stderr, "FAIL: Failed to enable model %s\n",
-            UCVM_MODEL_MUSCAL);
+            UCVM_MODEL_MUSCALNC);
     ucvm_finalize();
     return(1);
   } 
@@ -362,6 +362,32 @@ int test_lib_add_model_muscal()
   printf("PASS\n");
   return(0);
 }
+
+int test_lib_add_model_muscaltdb()
+{   
+  printf("Test: UCVM lib add model MUSCALTDB\n");
+  
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+  
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_MUSCALTDB) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_MUSCALTDB);
+    ucvm_finalize();
+    return(1);
+  } 
+  
+  /* Finalize UCVM */
+  ucvm_finalize();
+  
+  printf("PASS\n");
+  return(0);
+}
+
 
 int test_lib_add_model_cs248()
 {
@@ -1145,7 +1171,10 @@ int suite_lib(const char *xmldir)
 #ifdef _UCVM_ENABLE_UWPKFCVM
   suite.num_tests++;
 #endif
-#ifdef _UCVM_ENABLE_MUSCAL
+#ifdef _UCVM_ENABLE_MUSCALNC
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_MUSCALTDB
   suite.num_tests++;
 #endif
 #ifdef _UCVM_ENABLE_CS248
@@ -1224,10 +1253,18 @@ int suite_lib(const char *xmldir)
   suite.num_tests++;
 #endif
 
-#ifdef _UCVM_ENABLE_MUSCAL
+#ifdef _UCVM_ENABLE_MUSCALNC
   strcpy(suite.tests[suite.num_tests].test_name,
-         "test_lib_add_model_muscal");
-  suite.tests[suite.num_tests].test_func = &test_lib_add_model_muscal;
+         "test_lib_add_model_muscalnc");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_muscalnc;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_MUSCALTDB
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_muscaltdb");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_muscaltdb;
   suite.tests[suite.num_tests].elapsed_time = 0.0;
   suite.num_tests++;
 #endif
