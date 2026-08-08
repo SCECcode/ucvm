@@ -382,7 +382,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "da86a80b36406cd42f0496d27f17d4cd",
+                        "md5sum": "21b439372ffb73fb2764edd88b97179d",
 			"Order": 8
 		},
 		"CenCalVM": {
