@@ -134,17 +134,17 @@ AC_ARG_ENABLE([model-sjqbn],
         [enable_model_sjqbn=yes],
         [enable_model_sjqbn=no])
 
-AC_ARG_ENABLE([model-muscal],
-        [AS_HELP_STRING([--enable-model-muscal],
-        [enable model SCEC MUSCAL])],
-        [enable_model_muscal=yes],
-        [enable_model_muscal=no])
+AC_ARG_ENABLE([model-muscalnc],
+        [AS_HELP_STRING([--enable-model-muscalnc],
+        [enable model SCEC MUSCALNC])],
+        [enable_model_muscalnc=yes],
+        [enable_model_muscalnc=no])
 
-AC_ARG_ENABLE([model-muscal2],
-        [AS_HELP_STRING([--enable-model-muscal2],
-        [enable model SCEC MUSCAL2])],
-        [enable_model_muscal2=yes],
-        [enable_model_muscal2=no])
+AC_ARG_ENABLE([model-muscaltdb],
+        [AS_HELP_STRING([--enable-model-muscaltdb],
+        [enable model SCEC MUSCALTDB])],
+        [enable_model_muscaltdb=yes],
+        [enable_model_muscaltdb=no])
 
 AC_ARG_ENABLE([model-cvmhlabn],
         [AS_HELP_STRING([--enable-model-cvmhlabn],
@@ -577,36 +577,36 @@ AC_ARG_WITH([sjqbn-include-path],
     [location of the SCEC SJQBN headers])],
   [SJQBN_INCL="-I$withval"],
   [SJQBN_INCL="/usr/include/sjqbn"])
-AC_ARG_WITH([muscal-lib-path],
+AC_ARG_WITH([sjqbn-lib-path],
   [AS_HELP_STRING([--with-sjqbn-lib-path], [location of the SCEC SJQBN libraries])],
   [SJQBN_LIB="-L$withval -lsjqbn -lproj -letree"],
   [SJQBN_LIB="-lsjqbn -lproj -letree"])
 fi
 
-# Get SCEC MUSCAL library and include locations
-if test "x$enable_model_muscal" = xyes; then
-AC_ARG_WITH([muscal-include-path],
-  [AS_HELP_STRING([--with-muscal-include-path],
-    [location of the SCEC MUSCAL headers])],
-  [MUSCAL_INCL="-I$withval"],
-  [MUSCAL_INCL="/usr/include/muscal"])
-AC_ARG_WITH([muscal-lib-path],
-  [AS_HELP_STRING([--with-muscal-lib-path], [location of the SCEC MUSCAL libraries])],
-  [MUSCAL_LIB="-L$withval -lmuscal -lproj -letree"],
-  [MUSCAL_LIB="-lmuscal -lproj -letree"])
+# Get SCEC MUSCALNC library and include locations
+if test "x$enable_model_muscalnc" = xyes; then
+AC_ARG_WITH([muscalnc-include-path],
+  [AS_HELP_STRING([--with-muscalnc-include-path],
+    [location of the SCEC MUSCALNC headers])],
+  [MUSCALNC_INCL="-I$withval"],
+  [MUSCALNC_INCL="/usr/include/muscalnc"])
+AC_ARG_WITH([muscalnc-lib-path],
+  [AS_HELP_STRING([--with-muscalnc-lib-path], [location of the SCEC MUSCALNC libraries])],
+  [MUSCALNC_LIB="-L$withval -lmuscalnc"],
+  [MUSCALNC_LIB="-lmuscalnc"])
 fi
 
-# Get SCEC MUSCAL2 library and include locations
-if test "x$enable_model_muscal2" = xyes; then
-AC_ARG_WITH([muscal2-include-path],
-  [AS_HELP_STRING([--with-muscal2-include-path],
-    [location of the SCEC MUSCAL2 headers])],
-  [MUSCAL2_INCL="-I$withval"],
-  [MUSCAL2_INCL="/usr/include/muscal2"])
-AC_ARG_WITH([muscal2-lib-path],
-  [AS_HELP_STRING([--with-muscal2-lib-path], [location of the SCEC MUSCAL2 libraries])],
-  [MUSCAL2_LIB="-L$withval -lmuscal2 -lproj -letree"],
-  [MUSCAL2_LIB="-lmuscal2 -lproj -letree"])
+# Get SCEC MUSCALTDB library and include locations
+if test "x$enable_model_muscaltdb" = xyes; then
+AC_ARG_WITH([muscaltdb-include-path],
+  [AS_HELP_STRING([--with-muscaltdb-include-path],
+    [location of the SCEC MUSCALTDB headers])],
+  [MUSCALTDB_INCL="-I$withval"],
+  [MUSCALTDB_INCL="/usr/include/muscaltdb"])
+AC_ARG_WITH([muscaltdb-lib-path],
+  [AS_HELP_STRING([--with-muscaltdb-lib-path], [location of the SCEC MUSCALTDB libraries])],
+  [MUSCALTDB_LIB="-L$withval -lmuscaltdb"],
+  [MUSCALTDB_LIB="-lmuscaltdb"])
 fi
 
 # Get SCEC CVMHLABN library and include locations
@@ -1261,7 +1261,7 @@ if test "x$enable_model_sjqbn" = xyes; then
    LDFLAGS="$SJQBN_LIB $LDFLAGS"
 
    echo "Checking for SCEC SJQBN"
-   AC_CHECK_HEADER(sjqbn.h,[],[AC_MSG_ERROR(["SCEC SJQBN header not found; use --with-muscal-include-path"])],[AC_INCLUDES_DEFAULT])
+   AC_CHECK_HEADER(sjqbn.h,[],[AC_MSG_ERROR(["SCEC SJQBN header not found; use --with-sjqbn-include-path"])],[AC_INCLUDES_DEFAULT])
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_SJQBN, false)
 fi
@@ -1270,33 +1270,33 @@ else
 fi
 
 if test "x$enable_static" = xyes; then
-# Check optional SCEC MUSCAL installation
-if test "x$enable_model_muscal" = xyes; then
+# CHECK OPTIONAL SCEC MUSCALNC installation
+if test "x$enable_model_muscalnc" = xyes; then
    # Setup compiler/linker flags
-   CFLAGS="$MUSCAL_INCL $CFLAGS"
-   LDFLAGS="$MUSCAL_LIB $LDFLAGS"
-   echo "Checking for SCEC MUSCAL"
-   AC_CHECK_HEADER(muscal.h,[],[AC_MSG_ERROR(["SCEC MUSCAL header not found; use --with-muscal-include-path"])],[AC_INCLUDES_DEFAULT])
+   CFLAGS="$MUSCALNC_INCL $CFLAGS"
+   LDFLAGS="$MUSCALNC_LIB $LDFLAGS"
+   echo "Checking for SCEC MUSCALNC"
+   AC_CHECK_HEADER(muscalnc.h,[],[AC_MSG_ERROR(["SCEC MUSCALNC header not found; use --with-muscalnc-include-path"])],[AC_INCLUDES_DEFAULT])
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL, false)
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCALNC, false)
 fi
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL, [test x"$enable_model_muscal" = xyes])
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCALNC, [test x"$enable_model_muscalnc" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then
-# Check optional SCEC MUSCAL2 installation
-if test "x$enable_model_muscal2" = xyes; then
+# Check optional SCEC MUSCALTDB installation
+if test "x$enable_model_muscaltdb" = xyes; then
    # Setup compiler/linker flags
-   CFLAGS="$MUSCAL2_INCL $CFLAGS"
-   LDFLAGS="$MUSCAL2_LIB $LDFLAGS"
-   echo "Checking for SCEC MUSCAL2"
-   AC_CHECK_HEADER(muscal2.h,[],[AC_MSG_ERROR(["SCEC MUSCAL2 header not found; use --with-muscal-include-path"])],[AC_INCLUDES_DEFAULT])
+   CFLAGS="$MUSCALTDB_INCL $CFLAGS"
+   LDFLAGS="$MUSCALTDB_LIB $LDFLAGS"
+   echo "Checking for SCEC MUSCALTDB"
+   AC_CHECK_HEADER(muscaltdb.h,[],[AC_MSG_ERROR(["SCEC MUSCALTDB header not found; use --with-muscaltdb-include-path"])],[AC_INCLUDES_DEFAULT])
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL2, false)
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCALTDB, false)
 fi
 else
-   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCAL2, [test x"$enable_model_muscal2" = xyes])
+   AM_CONDITIONAL(UCVM_AM_ENABLE_MUSCALTDB, [test x"$enable_model_muscaltdb" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then

@@ -3,16 +3,16 @@
                "Version": "25.7"
                },
 	"models": {
-                "MUSCAL2": {
+                "MUSCALTDB": {
                         "Version": "1.0",
-                        "Abbreviation": "muscal2",
-                        "Size": "3.9G",
-                        "Path": "muscal2",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/model/muscal2.tar.gz",
+                        "Abbreviation": "muscaltdb",
+                        "Size": "4.1G",
+                        "Path": "muscaltdb",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/muscaltdb.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-shared --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
-                        "UCVMConfigureFlags": "--enable-model-muscal2 --with-muscal2-lib-path=${UCVM_INSTALL_PATH}/model/muscal2/lib --with-muscal2-include-path=${UCVM_INSTALL_PATH}/model/muscal2/include",
-                        "Ask": "yes",
+                        "UCVMConfigureFlags": "--enable-model-muscaltdb --with-muscaltdb-lib-path=${UCVM_INSTALL_PATH}/model/muscaltdb/lib --with-muscaltdb-include-path=${UCVM_INSTALL_PATH}/model/muscaltdb/include",
+                        "Ask": "no",
                         "Libraries": ["netcdf", "tiledb" ],
                         "Preprocess" : [
                              {
@@ -24,7 +24,7 @@
                                "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
-                        "md5sum": "4c529c56f144000d4c259389b9c833c3",
+                        "md5sum": "bfecf9ec0f8627577ed06924fc0b8d1c",
                         "Order": 31
                 },
                 "SJQBN": {
@@ -146,16 +146,16 @@
                         "md5sum": "de57c7cd33f6a17a787198f0d4dea033",
                         "Order": 24
                 },
-                "MUSCAL": {
+                "MUSCALNC": {
                         "Version": "1.0",
-                        "Abbreviation": "muscal",
+                        "Abbreviation": "muscalnc",
                         "Size": "35M",
-                        "Path": "muscal",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/model/muscal.tar.gz",
+                        "Path": "muscalnc",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/muscalnc.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-shared --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
                         "OldConfigureFlags": "--enable-shared CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -Wl,-rpath, ${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/netcdf/lib' LIBS='-lhdf5 -lnetcdf'",
-                        "UCVMConfigureFlags": "--enable-model-muscal --with-muscal-lib-path=${UCVM_INSTALL_PATH}/model/muscal/lib --with-muscal-include-path=${UCVM_INSTALL_PATH}/model/muscal/include",
+                        "UCVMConfigureFlags": "--enable-model-muscalnc --with-muscalnc-lib-path=${UCVM_INSTALL_PATH}/model/muscalnc/lib --with-muscalnc-include-path=${UCVM_INSTALL_PATH}/model/muscalnc/include",
                         "Ask": "yes",
                         "Libraries": ["netcdf"],
                         "Preprocess" : [
@@ -168,7 +168,7 @@
                                "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
-                        "md5sum": "ad1de2d745bada780132171a365b0bf0",
+                        "md5sum": "775f13a02250e66477a3acc47ec6762f",
                         "Order": 23
                 },
                 "SFCVM": {
@@ -377,12 +377,12 @@
                         "Abbreviation": "cvmh",
                         "Size": "1.6G",
 			"Path": "cvmh",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/model/cvmh.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/cvmh.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "b950452d986953fc5480af53840127f2",
+                        "md5sum": "da86a80b36406cd42f0496d27f17d4cd",
 			"Order": 8
 		},
 		"CenCalVM": {
@@ -403,12 +403,12 @@
                         "Abbreviation": "cvmsi",
                         "Size": "1.6G",
 			"Path": "cvmsi",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/cvmsi.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/cvmsi.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/data/i26",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "7bd2de7ed583f6f998e2d3b479d31c7c",
+                        "md5sum": "88b3443992c739bf2aef4bd386bde981",
 			"Order": 6		
 		},
 		"CVM-S4": {
@@ -468,7 +468,7 @@
                         "Abbreviation": "cvms5",
                         "Size": "1.2G",
 			"Path": "cvms5",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/model/cvms5.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/cvms5.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "ConfigureFlags": "--with-etree-libdir=${UCVM_INSTALL_PATH}/lib/euclid3/lib --with-etree-incdir=${UCVM_INSTALL_PATH}/lib/euclid3/include  --with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
@@ -476,7 +476,7 @@
 
 			"Ask": "yes",
 			"Libraries": ["euclid3", "proj"],
-                        "md5sum": "5dff7dfca9de92f1e8cd0c3ca9e3b0cf",
+                        "md5sum": "bf36e7fcb53f8a1aac72f240789d2d59",
 			"Order": 1		
 		}
 	},
@@ -510,7 +510,7 @@
                         "Lib": "TileDB-2.30.0",
                         "Size": "1.0M",
 			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_7/lib/TileDB-2.30.0.tar.gz",
-			"Required": "yes",
+			"Required": "no",
                         "Libraries": [],
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
 			"Prerequisites": "Dynamic",

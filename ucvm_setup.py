@@ -251,7 +251,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    libtoolize_list=["sfcvm","cvms5","cvmh","cs248","uwlinca","uwpkfcvm","muscal","muscal2","sjqbn"]
+    libtoolize_list=["sfcvm","cvms5","cvmh","cs248","uwlinca","uwpkfcvm","muscalnc","muscaltdb","sjqbn"]
     autoreconf_list=["sfcvm","cca","cs248"]
     skip_conf_list = ["openssl","netcdf","tiledb"]
 
@@ -658,10 +658,10 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
         str=str+"install_name_tool -change libcs248.so ${MY_UCVM_INSTALL_PATH}/model/cs248/lib/libcs248.so $1\n"
     if "SJQBN" in modelsToInstall:
         str=str+"install_name_tool -change libsjqbn.so ${MY_UCVM_INSTALL_PATH}/model/sjqbn/lib/libsjqbn.so $1\n"
-    if "MUSCAL" in modelsToInstall:
-        str=str+"install_name_tool -change libmuscal.so ${MY_UCVM_INSTALL_PATH}/model/muscal/lib/libmuscal.so $1\n"
-    if "MUSCAL2" in modelsToInstall:
-        str=str+"install_name_tool -change libmuscal2.so ${MY_UCVM_INSTALL_PATH}/model/muscal2/lib/libmuscal2.so $1\n"
+    if "MUSCALNC" in modelsToInstall:
+        str=str+"install_name_tool -change libmuscalnc.so ${MY_UCVM_INSTALL_PATH}/model/muscalnc/lib/libmuscalnc.so $1\n"
+    if "MUSCALTDB" in modelsToInstall:
+        str=str+"install_name_tool -change libmuscaltdb.so ${MY_UCVM_INSTALL_PATH}/model/muscaltdb/lib/libmuscaltdb.so $1\n"
     if "SJFZ" in modelsToInstall:
         str=str+"install_name_tool -change libsjfz.so ${MY_UCVM_INSTALL_PATH}/model/sjfz/lib/libsjfz.so $1\n"
     return str
