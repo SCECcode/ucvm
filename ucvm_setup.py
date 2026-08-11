@@ -118,33 +118,31 @@ def callAndRecord(command, nocall = False, noshell = True):
         else:
           print("WARN>>",env,"<< optional env is not set");
 
-##    print('  ==> command used.. '+'_'.join(command))
-    print('  ==> command used.. '+ shlex.join(command))
-    if nocall == False:
-        if noshell == False :
-##            my_command=' '.join(command)
-##            print('  IN SHELL ==> command used.. '+ shlex.join(command))
-            my_command=shlex.join(command)
+##TODO: new_env is not being used, it is a space holder when UCVM's setup.list become env complex
+
+    my_command=shlex.join(command)
+    print('  ==> command used.. '+ my_command)
+
+    if not nocall :
+        if not noshell :
             proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
-            retout, reterr = proc.communicate()
-            retVal = proc.poll()
         else:
-##            print('  NOT IN SHELL ==> command used.. '+ shlex.join(command))
             proc = Popen(command, stdout = PIPE, stderr = PIPE)
-            retout, reterr = proc.communicate()
-            retVal = proc.returncode
-##            retVal = proc.poll()
 
+        retout, reterr = proc.communicate()
+        retVal = proc.poll()
 
-        if not retVal == 0:
-            print("Return value for the call is ",retVal)
-            print(reterr)
-            if retVal == 1:
-               eG("Error executing command.", command)
+        if retVal != 0:
+            print(f"Return value for the call is {retVal}")
+            if reterr:
+                print(reterr.decode('utf-8', errors='replace'))
+
+            if retVal == 1 and 'eG' in globals():
+                eG("Error executing command.", command)
             else:
-               print("WHAT... Return value for the call is ",retVal)
+                print(f"WHAT... Return value for the call is {retVal}")
             exit(1)
-      
+
     shell_script += command[0]
     for cmd in command[1:]:
         shell_script += " \"" + cmd + "\""
