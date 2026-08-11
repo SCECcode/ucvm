@@ -168,7 +168,7 @@
                                "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
-                        "md5sum": "45c5c990787d9b4fca6ba73c7212f84d",
+                        "md5sum": "7affeadebff6f34959908d0e1a321043",
                         "Order": 23
                 },
                 "SFCVM": {
