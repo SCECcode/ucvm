@@ -26,6 +26,11 @@ if [ $tmp == 'Darwin' ]; then
   brew install pipx
   brew reinstall gcc
   export PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
+## needed by muscalnc
+  python3 -m venv .venv
+  source .venv/bin/activate
+  python3 -m pip install --upgrade pip
+  python3 -m pip install netCDF4
 fi
 
 mkdir $UCVM_INSTALL_PATH
