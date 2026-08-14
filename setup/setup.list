@@ -168,7 +168,7 @@
                                "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
-                        "md5sum": "4747d0e3d53120c4da30e393c8ec4359",
+                        "md5sum": "1d8576134fa5e5374c7444535336243a",
                         "Order": 23
                 },
                 "SFCVM": {
@@ -382,7 +382,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "135f11302df54d9ba994e7cbf09f06c6",
+                        "md5sum": "ca0f9a18e2b28cabf213ef1c178fb1bc",
 			"Order": 8
 		},
 		"CenCalVM": {
