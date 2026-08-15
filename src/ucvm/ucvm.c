@@ -410,19 +410,11 @@ int ucvm_add_model(const char *label) {
   /* Lookup any plugin-based model. */
   if (retval != UCVM_CODE_SUCCESS && is_predef == 0) {
 	  snprintf(key, UCVM_CONFIG_MAX_STR, "ucvm_install_path");
-fprintf(stderr,"XXX %s\n", label);
 	  cfgentry = ucvm_find_name(ucvm_cfg, key);
-
-fprintf(stderr,"XXX trying to get %s\n", cfgentry->value);
 	  retval = ucvm_plugin_get_model(cfgentry->value, label, &m);
-
-
-	  //PluginModel *pm = new PluginModel();
-
 	  is_predef = 1;
 	  is_plugin = 1;
   }
-  if (retval == UCVM_CODE_SUCCESS) { fprintf(stderr,"XXX found a plugin model\n"); }
 
   /* Lookup user-defined model */
   if ((retval != UCVM_CODE_SUCCESS) && 
