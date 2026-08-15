@@ -1001,6 +1001,7 @@ int ucvm_plugin_get_model(const char *dir, const char *label, ucvm_model_t *m) {
      FILE *fp;
 
      snprintf(sofile, 1024, "%s/model/%s/lib/lib%s.so", dir, label, label);
+fprintf(stderr,"XXX looking for sofile  %s\n", sofile);
      if ((fp = fopen(sofile, "r"))) {
           fclose(fp);
           m->mtype = UCVM_MODEL_CRUSTAL;
