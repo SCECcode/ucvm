@@ -1,3 +1,17 @@
+## 2026-08-13 Mei-Hui Su <mei@usc.edu>
+* Tag UCVM CVWS2026.8 
+
+## 2026-08-01 Mei-Hui Su <mei@usc.edu>
+* Added MUSCALTDB (TileDB version of MUSCAL)
+* MUSCALNC (Name Change: NetCDF version of MUSCAL)
+
+## 2026-03-01 Mei-Hui Su <mei@usc.edu>
+* MUSCAL with enabled_1d option
+* Added SJQBN 
+
+## 2026-01-01 Mei-Hui Su <mei@usc.edu>
+* Added MUSCAL 
+
 ## 2025-07-31 Mei-Hui Su <mei@usc.edu>
 * Tag UCVM v25.7 version
 
