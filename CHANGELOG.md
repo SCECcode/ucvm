@@ -9,6 +9,9 @@
 * MUSCAL with enabled_1d option
 * Added SJQBN 
 
+## 2026-02-01 Mei-Hui Su <mei@usc.edu>
+* UWPKFCVM (updated to corrected data model)
+
 ## 2026-01-01 Mei-Hui Su <mei@usc.edu>
 * Added MUSCAL 
 
