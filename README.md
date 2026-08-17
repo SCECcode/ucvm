@@ -1,224 +1,99 @@
-Welcome to the OpenSSL Project
-==============================
+# The Unified Community Velocity Model (UCVM) Software
 
-[![openssl logo]][www.openssl.org]
+<a href="https://github.com/sceccode/ucvm.git"><img src="https://github.com/sceccode/ucvm/wiki/images/ucvm_logo.png"></a>
 
-[![github actions ci badge]][github actions ci]
-[![appveyor badge]][appveyor jobs]
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+![GitHub repo size](https://img.shields.io/github/repo-size/sceccode/ucvm)
+[![ucvm-ci Actions Status](https://github.com/SCECcode/ucvm/workflows/ucvm-ci/badge.svg)](https://github.com/SCECcode/ucvm/actions)
+[![DOI](https://zenodo.org/badge/358720931.svg)](https://zenodo.org/badge/latestdoi/358720931)
 
-OpenSSL is a robust, commercial-grade, full-featured Open Source Toolkit
-for the Transport Layer Security (TLS) protocol formerly known as the
-Secure Sockets Layer (SSL) protocol. The protocol implementation is based
-on a full-strength general purpose cryptographic library, which can also
-be used stand-alone.
+## Description 
+The SCEC Unified Community Velocity Model (UCVM) software framework is a collection of software tools that provide a 
+standard query interface to seismic velocity models. Once a seismic velocity model is registered into UCVM, it can 
+be queried and combined with other velocity models through the UCVM software interface.
 
-OpenSSL is descended from the SSLeay library developed by Eric A. Young
-and Tim J. Hudson.
+UCVM was developed as an interdisciplinary research collaboration involving geoscientists and 
+computer scientists. UCVM geoscience research includes identification and assembly of existing California velocity 
+models into a state-wide model and improvements to existing velocity models. UCVM computer science research includes 
+definition of a easy-to-use CVM query interface, integration of regional 3D and geotechnical models, 
+and automated CVM evaluation processing capabilities.
 
-The official Home Page of the OpenSSL Project is [www.openssl.org].
+UCVM is open-source scientific software designed to support earth scientists, civil engineers, 
+and other groups interested in detailed information about earth properties. 
+UCVM is primarily used by scientists to work with earth material properties on regional scales. 
+One important use of UCVM is to create simulation meshes used in high resolution 3D wave propagation simulations.
 
-Table of Contents
-=================
 
- - [Overview](#overview)
- - [Download](#download)
- - [Build and Install](#build-and-install)
- - [Documentation](#documentation)
- - [License](#license)
- - [Support](#support)
- - [Contributing](#contributing)
- - [Legalities](#legalities)
+## Table of Contents
+1. [Software Documentation](https://github.com/SCECcode/ucvm/wiki)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Support](#support)
+5. [Citation](#citation)
+6. [Contributing](#contributing)
+7. [Credits](#credits)
+8. [License](#license)
 
-Overview
-========
+## Installation
+UCVM was developed to support seismic simulations run on high-performance computing systems, so it is designed to compile and run on Linux-based computers. Before installing UCVM, they should be aware that there are several ways to get access to UCVM without installing the software on your own Linux computer. Below we outline several of the options:
+1. [SCEC UCVM Web viewer](http://moho.scec.org/UCVM_web/web/viewer.php) Users can query UCVM velocity models, without installing UCVM, using the UCVM website. 
+2. [UCVM Docker Images](https://github.com/sceccode/ucvm_docker) Users can run UCVM in Docker on their local computers including laptops. Users can install free Docker software on most computers (e.g. Linux, MacOS, Windows) then run an UCVM Docker image in a terminal window on their computer. 
+3. [Installation Instructions for Linux Systems](https://github.com/SCECcode/ucvm/wiki/How-to-Guides) User can install UCVM on Linux system. Advanced users that want to install many of the UCVM models, or that want to run large parallel queries of the CVM models, should install the UCVM software on a Linux system. UCVM software is developed on USC Center for Advanced Research Computing (CARC) Linux cluster which provide MPI libraries. The UCVM software framework has several MPI-based executables. These executables are built using the automake system if the required MPI libraries are found in the installation computing environment. 
 
-The OpenSSL toolkit includes:
+## Usage 
+Once installed, UCVM provides an executable program, called ucvm_query, that implements a query interface to multiple seismic velocity models.
 
-- **libssl**
-  an implementation of all TLS protocol versions up to TLSv1.3 ([RFC 8446]).
+### ucvm_query
+'ucvm_query' is the basic UCVM interface that queries velocity model of interest.
 
-- **libcrypto**
-  a full-strength general purpose cryptographic library. It constitutes the
-  basis of the TLS implementation, but can also be used independently.
+<pre>
+$ ucvm_query -f /usr/local/opt/ucvm/conf/ucvm.conf -m cvmh -l 33.84007,-117.95683,0.0
+</pre>
+returns
+<pre>
+ -117.9568    33.8401      0.000     34.438    293.500       cvmh   1238.170    120.690   1450.659       none      0.000      0.000      0.000      crust   1238.170    120.690   1450.65
+</pre>
 
-- **openssl**
-  the OpenSSL command line tool, a swiss army knife for cryptographic tasks,
-  testing and analyzing. It can be used for
-  - creation of key parameters
-  - creation of X.509 certificates, CSRs and CRLs
-  - calculation of message digests
-  - encryption and decryption
-  - SSL/TLS client and server tests
-  - handling of S/MIME signed or encrypted mail
-  - and more...
+The results are in a column oriented format. Abbreviations are like this:
+<pre>
+Output format is:
+   0   1  2  3    4     5       6     7     8     9   10      11    12       13     14      15     16
+  lon lat Z surf vs30 crustal cr_vp cr_vs cr_rho gtl gtl_vp gtl_vs gtl_rho cmb_algo cmb_vp cmb_vs cmb_rho
+</pre>
 
-Download
-========
+The first three colums are the input values of lon (decimal degrees), lat (decimal degrees), and depth (meters). The other columns that are returned are information about the velocity model used provide the material properties. Crustal models, and Geotechnical Models can be stored and used seperately in UCVM. The contributions of each model are shown in columns 5-8 and 10-12, but the combined results returned in 14-16 are typically used by modelers.
 
-For Production Use
-------------------
+Detailed descriptions of the UCVM return parameters are listed in this UCVM parameter summary provided in the [UCVM documentation](https://github.com/sceccode/ucvm/wiki).
 
-Source code tarballs of the official releases can be downloaded from
-[www.openssl.org/source](https://www.openssl.org/source).
-The OpenSSL project does not distribute the toolkit in binary form.
+<a href="https://github.com/sceccode/ucvm/wiki/reference"><img src="https://github.com/sceccode/ucvm/wiki/images/UCVM_Query_Params.png" width="300"></a>
 
-However, for a large variety of operating systems precompiled versions
-of the OpenSSL toolkit are available. In particular on Linux and other
-Unix operating systems it is normally recommended to link against the
-precompiled shared libraries provided by the distributor or vendor.
+## Support
+Support for UCVM is provided by that Southern California Earthquake Center (SCEC) Research Computing Group. This group supports several research software distributions including UCVM. Users can report issues and feature requests using UCVM's github-based issue tracking link below. Developers will also respond to emails sent to the SCEC software contact listed below.
+1. [UCVM Github Issue Tracker](https://github.com/SCECcode/ucvm/issues)
+2. Email Contact: software@scec.org
 
-For Testing and Development
----------------------------
+## Citation
+References, citations, and acknowledgements help us obtain continued support for the development of the UCVM software. If you use the UCVM software in your research, please include the citation of the UCVM paper in the references/bibliography section of your publication. This is more effective than you providing in-text acknowledgements. 
 
-Although testing and development could in theory also be done using
-the source tarballs, having a local copy of the git repository with
-the entire project history gives you much more insight into the
-code base.
+* Preferred Reference: Small, P., Gill, D., Maechling, P. J., Taborda, R., Callaghan, S., Jordan, T. H., Ely, G. P., Olsen, K. B., & Goulet, C. A. (2017). The SCEC Unified Community Velocity Model Software Framework. Seismological Research Letters, 88(5). doi:10.1785/0220170082
 
-The official OpenSSL Git Repository is located at [git.openssl.org].
-There is a GitHub mirror of the repository at [github.com/openssl/openssl],
-which is updated automatically from the former on every commit.
+* Preferred Software Citation: Small, Patrick E., Maechling, Philip J., & Su, Mei-Hui. (2022). The Unified Community Velocity Model (UCVM) (22.7.0). Zenodo. https://doi.org/10.5281/zenodo.7033687
 
-A local copy of the Git Repository can be obtained by cloning it from
-the original OpenSSL repository using
+* Example Acknowlegement: We would like to acknowledge the use of the SCEC Unified Community Velocity Model Software (Small 2022) in this research. 
 
-    git clone git://git.openssl.org/openssl.git
+Along with citing the UCVM software, researchers should also cite the appropriate publication for any of the velocity models they use in their research. Citations for individual velocity models are included in the [Credits](CREDITS.md) file in this repository, and in the GitHub repository that has been created for each model.
 
-or from the GitHub mirror using
+## Contributing
+We welcome contributions to the UCVM software framework. 
+Geoscientists can register their seismic velocity models into UCVM and software developers can 
+improve and extend the UCVM software. An overview of the process for contributing seismic models or 
+software updates to the UCVM Project is provided in the UCVM [contribution guidelines](CONTRIBUTING.md). 
+UCVM contributors agree to abide by the code of conduct found in our [Code of Conduct](CODE_OF_CONDUCT.md) guidelines.
 
-    git clone https://github.com/openssl/openssl.git
+## Credits
+Development of UCVM is a group effort. A list of developers that have contributed to the UCVM Software framework 
+are listed in the [Credits.md](CREDITS.md) file in this repository.
 
-If you intend to contribute to OpenSSL, either to fix bugs or contribute
-new features, you need to fork the OpenSSL repository openssl/openssl on
-GitHub and clone your public fork instead.
-
-    git clone https://github.com/yourname/openssl.git
-
-This is necessary, because all development of OpenSSL nowadays is done via
-GitHub pull requests. For more details, see [Contributing](#contributing).
-
-Build and Install
-=================
-
-After obtaining the Source, have a look at the [INSTALL](INSTALL.md) file for
-detailed instructions about building and installing OpenSSL. For some
-platforms, the installation instructions are amended by a platform specific
-document.
-
- * [Notes for UNIX-like platforms](NOTES-UNIX.md)
- * [Notes for Android platforms](NOTES-ANDROID.md)
- * [Notes for Windows platforms](NOTES-WINDOWS.md)
- * [Notes for the DOS platform with DJGPP](NOTES-DJGPP.md)
- * [Notes for the OpenVMS platform](NOTES-VMS.md)
- * [Notes on Perl](NOTES-PERL.md)
- * [Notes on Valgrind](NOTES-VALGRIND.md)
-
-Specific notes on upgrading to OpenSSL 3.0 from previous versions can be found
-in the [migration_guide(7ossl)] manual page.
-
-Documentation
-=============
-
-Manual Pages
-------------
-
-The manual pages for the master branch and all current stable releases are
-available online.
-
-- [OpenSSL master](https://www.openssl.org/docs/manmaster)
-- [OpenSSL 3.0](https://www.openssl.org/docs/man3.0)
-- [OpenSSL 1.1.1](https://www.openssl.org/docs/man1.1.1)
-
-Wiki
-----
-
-There is a Wiki at [wiki.openssl.org] which is currently not very active.
-It contains a lot of useful information, not all of which is up to date.
-
-License
-=======
-
-OpenSSL is licensed under the Apache License 2.0, which means that
-you are free to get and use it for commercial and non-commercial
-purposes as long as you fulfill its conditions.
-
-See the [LICENSE.txt](LICENSE.txt) file for more details.
-
-Support
-=======
-
-There are various ways to get in touch. The correct channel depends on
-your requirement. see the [SUPPORT](SUPPORT.md) file for more details.
-
-Contributing
-============
-
-If you are interested and willing to contribute to the OpenSSL project,
-please take a look at the [CONTRIBUTING](CONTRIBUTING.md) file.
-
-Legalities
-==========
-
-A number of nations restrict the use or export of cryptography. If you are
-potentially subject to such restrictions you should seek legal advice before
-attempting to develop or distribute cryptographic code.
-
-Copyright
-=========
-
-Copyright (c) 1998-2022 The OpenSSL Project
-
-Copyright (c) 1995-1998 Eric A. Young, Tim J. Hudson
-
-All rights reserved.
-
-<!-- Links  -->
-
-[www.openssl.org]:
-    <https://www.openssl.org>
-    "OpenSSL Homepage"
-
-[git.openssl.org]:
-    <https://git.openssl.org>
-    "OpenSSL Git Repository"
-
-[git.openssl.org]:
-    <https://git.openssl.org>
-    "OpenSSL Git Repository"
-
-[github.com/openssl/openssl]:
-    <https://github.com/openssl/openssl>
-    "OpenSSL GitHub Mirror"
-
-[wiki.openssl.org]:
-    <https://wiki.openssl.org>
-    "OpenSSL Wiki"
-
-[migration_guide(7ossl)]:
-    <https://www.openssl.org/docs/man3.0/man7/migration_guide.html>
-    "OpenSSL Migration Guide"
-
-[RFC 8446]:
-     <https://tools.ietf.org/html/rfc8446>
-
-<!-- Logos and Badges -->
-
-[openssl logo]:
-    doc/images/openssl.svg
-    "OpenSSL Logo"
-
-[github actions ci badge]:
-    <https://github.com/openssl/openssl/workflows/GitHub%20CI/badge.svg>
-    "GitHub Actions CI Status"
-
-[github actions ci]:
-    <https://github.com/openssl/openssl/actions?query=workflow%3A%22GitHub+CI%22>
-    "GitHub Actions CI"
-
-[appveyor badge]:
-    <https://ci.appveyor.com/api/projects/status/8e10o7xfrg73v98f/branch/master?svg=true>
-    "AppVeyor Build Status"
-
-[appveyor jobs]:
-    <https://ci.appveyor.com/project/openssl/openssl/branch/master>
-    "AppVeyor Jobs"
+## License
+The UCVM software is distributed under the BSD 3-Clause open-source license. 
+Please see the [LICENSE.txt](LICENSE.txt) file for more information.
