@@ -23,13 +23,6 @@ jobs:
     - name: build ucvm with cvmh and elygtl:taper
       run: ./.github/scripts/ucvm-build.sh "cvmh,elygtl:taper"
       shell: bash
-#   - name: Start SSH via Ngrok
-#     if: ${{ success() }}
-#     uses: luchihoratiu/debug-via-ssh@main
-#     with:
-#         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_TOKEN }}
-#         NGROK_TIMEOUT: 3000
-#         SSH_PASS: ${{ secrets.NGROK_SECRET }}
     - name: test ucvm with cvmh and elygtl:taper
       run: ./.github/scripts/ucvm-test.sh
       shell: bash
@@ -59,8 +52,6 @@ jobs:
       run: echo "UCVM_INSTALL_PATH=$RUNNER_WORKSPACE/target" >> $GITHUB_ENV
     - name: checkout ucvm 
       uses: actions/checkout@v4
-#     with: 
-#       ref: testMei
     - name: checkout ucvm toPython3
       uses: actions/checkout@v4
     - name: build ucvm with cvms and cvmh
@@ -95,8 +86,6 @@ jobs:
 
     - name: checkout ucvm
       uses: actions/checkout@v4
-#     with: 
-#       ref: testMei
     - name: build ucvm with albacore, cvlsu, ivlsu and wfcvm
       run: ./.github/scripts/ucvm-build.sh "albacore,cvlsu,ivlsu,wfcvm"
       shell: bash

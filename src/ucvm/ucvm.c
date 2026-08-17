@@ -410,16 +410,11 @@ int ucvm_add_model(const char *label) {
   /* Lookup any plugin-based model. */
   if (retval != UCVM_CODE_SUCCESS && is_predef == 0) {
 	  snprintf(key, UCVM_CONFIG_MAX_STR, "ucvm_install_path");
-
 	  cfgentry = ucvm_find_name(ucvm_cfg, key);
 	  retval = ucvm_plugin_get_model(cfgentry->value, label, &m);
-
-	  //PluginModel *pm = new PluginModel();
-
 	  is_predef = 1;
 	  is_plugin = 1;
   }
-
 
   /* Lookup user-defined model */
   if ((retval != UCVM_CODE_SUCCESS) && 
@@ -428,6 +423,7 @@ int ucvm_add_model(const char *label) {
     /* Lookup interface type */
     snprintf(key, UCVM_CONFIG_MAX_STR, "%s_interface", label);
     cfgentry = ucvm_find_name(ucvm_cfg, key);
+
     if (cfgentry != NULL) {
       if (strcmp(cfgentry->value, UCVM_MODEL_ETREE) == 0) {
 	/* Get the etree model */
@@ -436,7 +432,7 @@ int ucvm_add_model(const char *label) {
 	/* Get the patch model */
 	retval = ucvm_patch_get_model(&m);
       }
-    }
+    } 
   }
 
   if (retval != UCVM_CODE_SUCCESS) {
