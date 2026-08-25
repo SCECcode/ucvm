@@ -1,4 +1,4 @@
-# GNU Autoconf config
+#GNU Autoconf config
 
 AC_INIT([UCVM], [25.7.0], [software@scec.org])
 AC_CONFIG_AUX_DIR([./aux-config])
@@ -193,6 +193,12 @@ AC_ARG_ENABLE([model-cvmhsbcbn],
         [enable model SCEC CVMHSBCBN])],
         [enable_model_cvmhsbcbn=yes],
         [enable_model_cvmhsbcbn=no])
+
+AC_ARG_ENABLE([model-sfcvm211],
+        [AS_HELP_STRING([--enable-model-sfcvm211],
+        [enable model SCEC SFCVM211])],
+        [enable_model_sfcvm211=yes],
+        [enable_model_sfcvm211=no])
 
 AC_ARG_ENABLE([model-sfcvm],
         [AS_HELP_STRING([--enable-model-sfcvm],
@@ -743,6 +749,23 @@ AC_ARG_WITH([cvmhsbcbn-model-path],
   [AS_HELP_STRING([--with-cvmhsbcbn-model-path], [location of the CVMHSBCBN  model files])],
   [CVMHSBCBN_MODEL="$withval"],
   [CVMHSBCBN_MODEL="/usr/cvmhsbcbn/src"])
+fi
+
+# Get SCEC SFCVM211 library and include locations
+if test "x$enable_model_sfcvm211" = xyes; then
+AC_ARG_WITH([sfcvm211-include-path],
+  [AS_HELP_STRING([--with-sfcvm211-include-path],
+    [location of the SCEC SFCVM211 headers])],
+  [SFCVM211_INCL="-I$withval"],
+  [SFCVM211_INCL="/usr/include/sfcvm211"])
+AC_ARG_WITH([sfcvm211-lib-path],
+  [AS_HELP_STRING([--with-sfcvm211-lib-path], [location of the SCEC SFCVM211 libraries])],
+  [SFCVM211_LIB="-L$withval -lsfcvm211"],
+  [SFCVM211_LIB="-lsfcvm211"])
+AC_ARG_WITH([sfcvm211-model-path],
+  [AS_HELP_STRING([--with-sfcvm211-model-path], [location of the SFCVM211 model files])],
+  [SFCVM211_MODEL="$withval"],
+  [SFCVM211_MODEL="/usr/sfcvm211/src"])
 fi
 
 # Get SCEC SFCVM library and include locations
@@ -1425,6 +1448,22 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_CVMHSBCBN, [test x"$enable_model_cvmhsbcbn" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# Check optional SCEC SFCVM211 installation
+if test "x$enable_model_sfcvm211" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$SFCVM211_INCL $CFLAGS"
+   LDFLAGS="$SFCVM211_LIB $LDFLAGS"
+  
+   echo "Checking for SCEC SFCVM211"
+   AC_CHECK_HEADER(sfcvm211.h,[],[AC_MSG_ERROR(["SCEC SFCVM211 header not found; use --with-sfcvm211-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SFCVM211, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SFCVM211, [test x"$enable_model_sfcvm211" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then

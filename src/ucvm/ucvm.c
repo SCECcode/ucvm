@@ -1229,6 +1229,13 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
     return(UCVM_CODE_ERROR);
   }
 #endif
+#ifdef _UCVM_ENABLE_SFCVM211
+  if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
+                     UCVM_MODEL_SFCVM211, "", res, numinst++, *len)
+      != UCVM_CODE_SUCCESS) {
+    return(UCVM_CODE_ERROR);
+  }
+#endif
 #ifdef _UCVM_ENABLE_SFCVM
   if (ucvm_save_resource(UCVM_RESOURCE_MODEL, UCVM_MODEL_CRUSTAL,
                      UCVM_MODEL_SFCVM, "", res, numinst++, *len)

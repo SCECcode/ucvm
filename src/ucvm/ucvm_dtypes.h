@@ -88,9 +88,12 @@
 
 #define UCVM_MODEL_MUSCALNC "muscalnc"
 #define UCVM_MODEL_MUSCALTDB "muscaltdb"
+
 #define UCVM_MODEL_SJQBN "sjqbn"
 
+#define UCVM_MODEL_SFCVM211 "sfcvm211"
 #define UCVM_MODEL_SFCVM "sfcvm"
+
 #define UCVM_MODEL_UWLINCA "uwlinca"
 #define UCVM_MODEL_UWPKFCVM "uwpkfcvm"
 #define UCVM_MODEL_CANVAS "canvas"

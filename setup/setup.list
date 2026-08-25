@@ -3,6 +3,40 @@
                "Version": "25.7"
                },
 	"models": {
+                "SFCVM211": {
+                        "Version": "1.0",
+                        "Abbreviation": "sfcvm211",
+                        "Size": "2.9G",
+                        "Path": "sfcvm211",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8_1/model/sfcvm211.tar.gz",
+                        "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
+                        "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
+                        "mohoConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
+                        "macConfigureFlags": "CC=gcc-10 CXX=g++-10",
+                        "UCVMConfigureFlags": "--enable-model-sfcvm211 --with-sfcvm211-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm211/lib --with-sfcvm211-include-path=${UCVM_INSTALL_PATH}/model/sfcvm211/include --with-sfcvm211-model-path=${UCVM_INSTALL_PATH}/model/sfcvm211/data/sfcvm211",
+                        "Preprocess" : [
+                             {
+                               "Action": "install",
+                               "CMD": ["python","-m","pip","install","pybind11","numpy","h5py"]
+                             },
+                             {
+                               "Action": "install",
+                               "CMD": ["pip","install","pybind11","numpy","h5py"]
+                             },
+                             {
+                               "Action": "download",
+                               "Path": "sfcvm211/dependencies",
+                               "Size": "598M",
+                               "Lib": "geomodelgrids",
+                               "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/lib/geomodelgrids.tar.gz",
+                               "md5sum": "d408b96011a52a3ce5f456ad53a1121a"
+                             }
+                        ],
+                        "Ask": "yes",
+                        "Libraries": [],
+                        "md5sum": "d95b3d4347aef42355232c6eecf48e96",
+                        "Order": 22 
+                },
                 "MUSCALTDB": {
                         "Version": "1.0",
                         "Abbreviation": "muscaltdb",
@@ -176,7 +210,7 @@
                         "Abbreviation": "sfcvm",
                         "Size": "2.9G",
                         "Path": "sfcvm",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/sfcvm.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8_1/model/sfcvm.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "mohoConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
@@ -202,7 +236,7 @@
                         ],
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "59659dde70ca129db9f4c186a239eae1",
+                        "md5sum": "ebb3d7c10e094c8a00996ab052e0943f",
                         "Order": 22 
                 },
                 "CVMHSMBN": {

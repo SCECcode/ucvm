@@ -139,6 +139,15 @@
         extern int cvmhsmbn_setparam;
 #endif
 
+#ifdef _UCVM_ENABLE_SFCVM211
+        extern int sfcvm211_init;
+        extern int sfcvm211_query;
+        extern int sfcvm211_finalize;
+        extern int sfcvm211_version;
+        extern int sfcvm211_config;
+        extern int sfcvm211_setparam;
+#endif
+
 #ifdef _UCVM_ENABLE_SFCVM
         extern int sfcvm_init;
         extern int sfcvm_query;
@@ -534,6 +543,20 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_version = &cvmhvbn_version;
                 pptr->model_config = &cvmhvbn_config;
                 pptr->model_setparam = &cvmhvbn_setparam;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_SFCVM211
+        if (strcmp(conf->label, UCVM_MODEL_SFCVM211) == 0) {
+                pptr->model_init = &sfcvm211_init;
+                pptr->model_query = &sfcvm211_query;
+                pptr->model_finalize = &sfcvm211_finalize;
+                pptr->model_version = &sfcvm211_version;
+                pptr->model_config = &sfcvm211_config;
+                pptr->model_setparam = &sfcvm211_setparam;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;

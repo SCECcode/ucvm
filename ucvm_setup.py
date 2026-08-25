@@ -119,7 +119,6 @@ def callAndRecord(command, nocall = False, noshell = True):
           print("WARN>>",env,"<< optional env is not set");
 
 ##TODO: new_env is not being used, it is a space holder when UCVM's setup.list become env complex
-
     my_command=shlex.join(command)
     print('  ==> command used.. '+ my_command)
 
@@ -127,7 +126,7 @@ def callAndRecord(command, nocall = False, noshell = True):
         if not noshell :
             proc = Popen([ my_command ], env=my_env, shell=True, stdout = PIPE, stderr = PIPE)
         else:
-            proc = Popen(command, stdout = PIPE, stderr = PIPE)
+            proc = Popen(command, stdout = PIPE, stderr = PIPE, text=True)
 
         retout, reterr = proc.communicate()
         retVal = proc.poll()
@@ -135,12 +134,14 @@ def callAndRecord(command, nocall = False, noshell = True):
         if retVal != 0:
             print(f"Return value for the call is {retVal}")
             if reterr:
+#                print("=== STDERR ===")
                 print(reterr.decode('utf-8', errors='replace'))
 
             if retVal == 1 and 'eG' in globals():
                 eG("Error executing command.", command)
             else:
                 print(f"WHAT... Return value for the call is {retVal}")
+
             exit(1)
 
     shell_script += command[0]
@@ -231,7 +232,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
                      "--strip", str(strip_level)])
 
 ## Any Preprocess needed ? 
-## maybe download geomodelgrids into sfcvm source location ?
+## download into source location ?
     if "Preprocess" in config_data :
         pre_tasks = config_data["Preprocess"]
         for the_task in pre_tasks :
@@ -249,8 +250,8 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    libtoolize_list=["sfcvm","cvms5","cvmh","cs248","uwlinca","uwpkfcvm","muscalnc","muscaltdb","sjqbn"]
-    autoreconf_list=["sfcvm","cca","cs248"]
+    libtoolize_list=["sfcvm211","sfcvm","cvms5","cvmh","cs248","uwlinca","uwpkfcvm","muscalnc","muscaltdb","sjqbn"]
+    autoreconf_list=["sfcvm211","sfcvm","cca","cs248"]
     skip_conf_list = ["openssl","netcdf","tiledb"]
 
     if config_data["Path"] in skip_conf_list :
@@ -290,14 +291,6 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
         configure_array = ["./Configure", prefix_string]
       else:
         configure_array = ["./configure", prefix_string]
-
-    ## special case, move to setup/setup.list
-    #if config_data["Path"] == "sfcvm" :
-    #    gcc10path=shutil.which("gcc10-gcc")
-    #    if gcc10path is None:
-    #      pass
-    #    else:
-    #      configure_array += "CC=gcc10-gcc CXX=gcc10-g++".split(" ")
 
     createInstallTargetPath( ucvmpath + "/" + pathname + "/" + config_data["Path"])
 
@@ -412,6 +405,10 @@ def _add2LIBRARYPATH_bash(modelsToInstall, librariesToInstall) :
 def _add2PATH_bash(modelsToInstall, librariesToInstall) :
     str=""
     model="SFCVM"
+    if model in modelsToInstall:
+        conf = config_data["models"][model]
+        str=str+"add2PATH ${UCVM_INSTALL_PATH}/model/"+conf['Path']+"/bin\n"
+    model="SFCVM211"
     if model in modelsToInstall:
         conf = config_data["models"][model]
         str=str+"add2PATH ${UCVM_INSTALL_PATH}/model/"+conf['Path']+"/bin\n"
@@ -616,6 +613,8 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
         str=str+"install_name_tool -change libcvmhsgbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhsgbn/lib/libcvmhsgbn.so $1\n"
     if "CVMHVBN" in modelsToInstall:
         str=str+"install_name_tool -change libcvmhvbn.so ${MY_UCVM_INSTALL_PATH}/model/cvmhvbn/lib/libcvmhvbn.so $1\n"
+    if "SFCVM211" in modelsToInstall:
+        str=str+"install_name_tool -change libsfcvm211.so ${MY_UCVM_INSTALL_PATH}/model/sfcvm211/lib/libsfcvm211.so $1\n"
     if "SFCVM" in modelsToInstall:
         str=str+"install_name_tool -change libsfcvm.so ${MY_UCVM_INSTALL_PATH}/model/sfcvm/lib/libsfcvm.so $1\n"
     if "UWPKFCVM" in modelsToInstall:
@@ -1145,3 +1144,4 @@ except OSError as e:
     eG(e, "Saving setup_install.list.")
 
 print("\nInstallation complete. Installation log file saved at ./setup_log.sh\n")
+
