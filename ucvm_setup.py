@@ -134,13 +134,13 @@ def callAndRecord(command, nocall = False, noshell = True):
         if retVal != 0:
             print(f"Return value for the call is {retVal}")
             if reterr:
-#                print("=== STDERR ===")
-                print(reterr.decode('utf-8', errors='replace'))
+                print("=== STDERR ===")
+                print(reterr)
 
             if retVal == 1 and 'eG' in globals():
-                eG("Error executing command.", command)
+                print("Error executing command.", command)
             else:
-                print(f"WHAT... Return value for the call is {retVal}")
+                print("WHAT... Return value for the call is {retVal}")
 
             exit(1)
 
