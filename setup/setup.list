@@ -29,7 +29,7 @@
                                "Size": "598M",
                                "Lib": "geomodelgrids",
                                "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/lib/geomodelgrids.tar.gz",
-                               "md5sum": "d408b96011a52a3ce5f456ad53a1121a"
+                               "md5sum": "2369ddff6194d5987bc1401c38a7ac4d"
                              }
                         ],
                         "Ask": "yes",
@@ -215,6 +215,7 @@
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "mohoConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
                         "macConfigureFlags": "CC=gcc-10 CXX=g++-10",
+                        "ConfigureFlags": "-L${UCVM_INSTALL_PATH}/lib/openssl/lib -lcrypto -lssl",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/data/sfcvm",
                         "Preprocess" : [
                              {
