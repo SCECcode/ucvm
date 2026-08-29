@@ -13,6 +13,7 @@
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "mohoConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
                         "macConfigureFlags": "CC=gcc-10 CXX=g++-10",
+                        "ConfigureFlags": "--with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-openssl-libdir=${UCVM_INSTALL_PATH}/lib/openssl/lib --with-openssl-incdir=${UCVM_INSTALL_PATH}/lib/openssl/include",
                         "UCVMConfigureFlags": "--enable-model-sfcvm211 --with-sfcvm211-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm211/lib --with-sfcvm211-include-path=${UCVM_INSTALL_PATH}/model/sfcvm211/include --with-sfcvm211-model-path=${UCVM_INSTALL_PATH}/model/sfcvm211/data/sfcvm211",
                         "Preprocess" : [
                              {
