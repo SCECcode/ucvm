@@ -216,7 +216,7 @@
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "mohoConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
                         "macConfigureFlags": "CC=gcc-10 CXX=g++-10",
-                        "ConfigureFlags": "-L${UCVM_INSTALL_PATH}/lib/openssl/lib -lcrypto -lssl",
+                        "ConfigureFlags": "--with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include --with-openssl-libdir=${UCVM_INSTALL_PATH}/lib/openssl/lib --with-openssl-incdir=${UCVM_INSTALL_PATH}/lib/openssl/include",
                         "UCVMConfigureFlags": "--enable-model-sfcvm --with-sfcvm-lib-path=${UCVM_INSTALL_PATH}/model/sfcvm/lib --with-sfcvm-include-path=${UCVM_INSTALL_PATH}/model/sfcvm/include --with-sfcvm-model-path=${UCVM_INSTALL_PATH}/model/sfcvm/data/sfcvm",
                         "Preprocess" : [
                              {
@@ -238,7 +238,7 @@
                         ],
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "ebb3d7c10e094c8a00996ab052e0943f",
+                        "md5sum": "7b07bfba0b6b5f787ee871f7790e4b7a",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
