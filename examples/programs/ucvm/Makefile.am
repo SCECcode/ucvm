@@ -110,7 +110,7 @@ endif
 if UCVM_AM_ENABLE_SFCVM211
 bin_PROGRAMS += run_ucvm_query_sfcvm211.sh
 run_ucvm_query_sfcvm211_sh_SOURCES = run_ucvm_query_sfcvm211.sh
-bin_PROGRAMS += run_ucvm_query_sfcvm_c.sh
+bin_PROGRAMS += run_ucvm_query_sfcvm211_c.sh
 run_ucvm_query_sfcvm211_c_sh_SOURCES = run_ucvm_query_sfcvm211_c.sh
 endif
 
