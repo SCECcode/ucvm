@@ -2,7 +2,7 @@ name: ucvm-ci
 
 on:
   push:
-   branches: [ main ]
+   branches: [ foo ]
 
 jobs:
   ucvm-build-cvmh-taper:
