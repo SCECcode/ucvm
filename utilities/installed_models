@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Generate a master mesh grid, out.grd, 
 # and time the model population speed of the
 # available crustal models 
@@ -11,12 +11,16 @@ import time
 UCVM_CVMS = {"1d":"1D(1d)", \
              "1dgtl":"1D w/ Vs30 GTL(1dgtl)", \
              "bbp1d":"Broadband Northridge Region 1D Model(bbp1d)", \
+             "sf1d":"SFCVM Sierra Foothill 1D Model used in Cybershake 24.8(sf1d)", \
+             "albacore":"ALBACORE(albacore)", \
+             "canvas":"CANVAS(canvas)", \
              "cvms":"CVM-S4(cvms)", \
              "cvms5":"CVM-S4.26(cvms5)", \
              "cvmsi":"CVM-S4.26.M01(cvms426)", \
              "cca":"CCA 06(cca)", \
              "cs173":"CyperShake 17.3(cs173)", \
              "cs173h":"CyperShake 17.3 with San Joaquin and Santa Maria Basins data(cs173h)", \
+             "cs248":"CyperShake 24.8(cs248)", \
              "cvmh":"CVM-H 15.1.1(cvmh1511)", \
              "cvmhlabn":"CVM-H Los Angeles Basin(cvmhlabn)",\
              "cvmhsgbn":"CVM-H San Gabriel Basin(cvmhsgbn)",\
@@ -27,13 +31,18 @@ UCVM_CVMS = {"1d":"1D(1d)", \
              "cvmhsbbn":"CVM-H San Bernardino Basin(cvmhsbbn)",\
              "cvmhsbcbn":"CVM-H Santa Barbara Channel Basin(cvmhsbcbn)",\
              "cvmhsmbn":"CVM-H Santa Maria Basin(cvmhsmbn)",\
-             "albacore":"ALBACORE(albacore)", \
-             "wfcvm":"Wasatch Front Utah(wfcvm)", \
              "ivlsu":"SSIP Imperial Valley(ivlsu)", \
              "cvlsu":"SSIP Coachella Valley(cvlsu)", \
              "cencal":"USGS Bay Area Model(cencal)", \
+             "muscalnc":"Multi-Scale Statewide California Velocity Model(muscalnc) netCDF", \
+             "sjqbn":"San Joaquin Basin Velocity Model(sjqbn)", \
              "sjfz":"San Jacinto Fault Zone(sjfz)", \
-             "sfcvm":"USGS San Francisco Bay Region 3D Seismic Velocity Model(sfcvm)"}
+             "sfcvm":"USGS San Francisco Bay Region 3D Seismic Velocity Model(sfcvm)", \
+             "sfcvm211":"SFCVM version 21.1(sfcvm211)", \
+             "uwpkfcvm":"UW Parkfield(uwpkfcvm)", \
+             "uwsfbcvm":"UW San Francisco Bay(uwsfbcvm)", \
+             "uwlinca":"UW Statewide(uwlinca)", \
+             "wfcvm":"Wasatch Front Utah(wfcvm)", }
 
 # get installed models
 mypath=os.environ.get('UCVM_INSTALL_PATH')
