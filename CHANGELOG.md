@@ -1,3 +1,6 @@
+## 2026-10-XX Mei-Hui Su <mei@usc.edu>
+* TARGET release UCVM_2610 
+
 ## 2026-08-13 Mei-Hui Su <mei@usc.edu>
 * Tag UCVM CVWS2026.8 
 

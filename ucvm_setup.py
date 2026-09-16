@@ -21,7 +21,7 @@ from pathlib import Path
 # Variables
 
 # Set the version number for the installation script.
-VERSION = "25.7.0"
+VERSION = "26.10.0"
 
 # UCVM_INSTALL_PATH and UCVM_SRC_PATH
 UCVM_SRC_PATH = os.getcwd()
@@ -546,6 +546,7 @@ def _add2path_python():
 def makePythonScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
     str="" 
     fp=open("conf/ucvm_env.py","w")
+    fp.write("#!/usr/bin/env python3\n\n")
     fp.write("## \n")
     fp.write("##  models: [")
     for x in modelsToInstall:

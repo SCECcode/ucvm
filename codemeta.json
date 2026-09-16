@@ -9,7 +9,7 @@
     "downloadUrl": "https://github.com/SCECcode/ucvm/release",
     "issueTracker": "https://github.com/SCECcode/ucvm/issues",
     "name": "SCEC Unified Community Velocity Model (UCVM)",
-    "version": "22.7.0",
+    "version": "26.10.0",
     "description": "The SCEC Unified Community Velocity Model (UCVM) is a collection of software tools that provide a standard interface to multiple, alternative, California 3D velocity models. One important use of UCVM is in high resolution 3D wave propagation simulations for California. UCVM was developed by an interdisciplinary research collaboration involving geoscientists and computer scientists. UCVM geoscience research includes identification and assembly of existing California velocity models into a state-wide model and improvements to existing velocity models. UCVM is released as open-source scientific software to support earth scientists, civil engineers, and other groups interested in detailed information about earth properties. UCVM is used by scientists working with earth material properties on regional scales and is used by scientists running large-scale 3D wave propagation simulations.",
     "applicationCategory": "Seismology",
     "developmentStatus": "active",
@@ -32,7 +32,7 @@
     ],
     "relatedLink": [
         "https://www.scec.org/research/ucvm",
-        "https://www.scec.org/research/CXM"
+        "https://www.scec.org/science/community-earth-models"
     ],
     "author": [
         {
@@ -42,31 +42,28 @@
             "email": "mei@usc.edu",
             "affiliation": {
                 "@type": "Organization",
-                "name": "Southern California Earthquake Center, University of Southern California"
+                "name": "Statewide California Earthquake Center, University of Southern California"
             }
         },
-        {
-            "@type": "Person",
-            "@id": "https://orcid.org/ 0000-0002-9221-7068",
             "givenName": "Philip",
             "familyName": "Maechling",
             "email": "maechlin@usc.edu",
             "affiliation": {
                 "@type": "Organization",
-                "name": "Southern California Earthquake Center, University of Southern California"
+                "name": "Statewide California Earthquake Center, University of Southern California"
             }
         }
     ],
     "contributor": [
         {
             "@type": "Person",
-            "givenName": "Andreas",
-            "familyName": "Plesch"
+            "givenName": "Philllip",
+            "familyName": "Maechling"
         },
         {
             "@type": "Person",
             "givenName": "Scott",
-            "familyName": "Marshall"
+            "familyName": ""
         }
     ]
 }

@@ -18,7 +18,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","pybind11","numpy","h5py"]
+                               "CMD": ["python3","-m","pip","install","pybind11","numpy","h5py"]
                              },
                              {
                                "Action": "install",
@@ -29,13 +29,13 @@
                                "Path": "sfcvm211/dependencies",
                                "Size": "598M",
                                "Lib": "geomodelgrids",
-                               "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/lib/geomodelgrids.tar.gz",
-                               "md5sum": "d408b96011a52a3ce5f456ad53a1121a"
+                               "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/lib/geomodelgrids.tar.gz",
+                               "md5sum": "3b108cf0f0d1f5d59ed55db434b342bd"
                              }
                         ],
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "a65ab2c95dc012a6fafcb168668dc21d",
+                        "md5sum": "3eafa1b39748eccad7c6db1a59765d42",
                         "Order": 22 
                 },
                 "MUSCALTDB": {
@@ -43,7 +43,7 @@
                         "Abbreviation": "muscaltdb",
                         "Size": "4.1G",
                         "Path": "muscaltdb",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/muscaltdb.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/muscaltdb.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-shared --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
                         "UCVMConfigureFlags": "--enable-model-muscaltdb --with-muscaltdb-lib-path=${UCVM_INSTALL_PATH}/model/muscaltdb/lib --with-muscaltdb-include-path=${UCVM_INSTALL_PATH}/model/muscaltdb/include",
@@ -52,14 +52,14 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","netCDF4","--only-binary=:all:"]
+                               "CMD": ["python3","-m","pip","install","netCDF4","--only-binary=:all:"]
                              },
                              {
                                "Action": "install",
                                "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
-                        "md5sum": "bfecf9ec0f8627577ed06924fc0b8d1c",
+                        "md5sum": "114d1c92a6cb0e62a930e110bd11f480",
                         "Order": 31
                 },
                 "SJQBN": {
@@ -76,7 +76,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","netCDF4","--only-binary=:all:"]
+                               "CMD": ["python3","-m","pip","install","netCDF4","--only-binary=:all:"]
                              },
                              {
                                "Action": "install",
@@ -112,7 +112,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","certifi"]
+                               "CMD": ["python3","-m","pip","install","certifi"]
                              },
                              {
                                "Action": "install",
@@ -178,7 +178,7 @@
                         "UCVMConfigureFlags": "--enable-model-cs248 --with-cs248-lib-path=${UCVM_INSTALL_PATH}/model/cs248/lib --with-cs248-include-path=${UCVM_INSTALL_PATH}/model/cs248/include",
                         "Ask": "maybe",
                         "Libraries": ["euclid3", "proj"],
-                        "md5sum": "de57c7cd33f6a17a787198f0d4dea033",
+                        "md5sum": "65ab5f025906afdf49f76767f9f3e88c",
                         "Order": 24
                 },
                 "MUSCALNC": {
@@ -186,7 +186,7 @@
                         "Abbreviation": "muscalnc",
                         "Size": "35M",
                         "Path": "muscalnc",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8_1/model/muscalnc.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/muscalnc.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-shared --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
                         "OldConfigureFlags": "--enable-shared CPPFLAGS='-I${UCVM_INSTALL_PATH}/lib/hdf5/include -I${UCVM_INSTALL_PATH}/lib/netcdf/include' LDFLAGS='-L${UCVM_INSTALL_PATH}/lib/hdf5/lib -L${UCVM_INSTALL_PATH}/lib/netcdf/lib -Wl,-rpath, ${UCVM_INSTALL_PATH}/lib/hdf5/lib -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/netcdf/lib' LIBS='-lhdf5 -lnetcdf'",
@@ -196,14 +196,14 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","netCDF4","--only-binary=:all:"]
+                               "CMD": ["python3","-m","pip","install","netCDF4","--only-binary=:all:"]
                              },
                              {
                                "Action": "install",
                                "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
-                        "md5sum": "2b06d65530ad026b3f45115c7cd3b02a",
+                        "md5sum": "340d5b97fb59700ab009416071a8c0d8",
                         "Order": 23
                 },
                 "SFCVM": {
@@ -211,7 +211,7 @@
                         "Abbreviation": "sfcvm",
                         "Size": "2.9G",
                         "Path": "sfcvm",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8_1/model/sfcvm.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/sfcvm.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "mohoConfigureFlags": "CC=gcc10-gcc CXX=gcc10-g++",
@@ -221,7 +221,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","pybind11","numpy","h5py"]
+                               "CMD": ["python3","-m","pip","install","pybind11","numpy","h5py"]
                              },
                              {
                                "Action": "install",
@@ -232,13 +232,13 @@
                                "Path": "sfcvm/dependencies",
                                "Size": "598M",
                                "Lib": "geomodelgrids",
-                               "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_9/lib/geomodelgrids.tar.gz",
-                               "md5sum": "d408b96011a52a3ce5f456ad53a1121a"
+                               "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/lib/geomodelgrids.tar.gz",
+                               "md5sum": "3b108cf0f0d1f5d59ed55db434b342bd"
                              }
                         ],
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "7a31f239906247f608706ea5b8a8c012",
+                        "md5sum": "341a64a67dae5536bc37c8ba47355a56",
                         "Order": 22 
                 },
                 "CVMHSMBN": {
@@ -413,12 +413,12 @@
                         "Abbreviation": "cvmh",
                         "Size": "1.6G",
 			"Path": "cvmh",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/cvmh.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmh.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "ca0f9a18e2b28cabf213ef1c178fb1bc",
+                        "md5sum": "ac4f27d449c4ebd787e07c917c1b3328",
 			"Order": 8
 		},
 		"CenCalVM": {
@@ -439,12 +439,12 @@
                         "Abbreviation": "cvmsi",
                         "Size": "1.6G",
 			"Path": "cvmsi",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/cvmsi.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmsi.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
 			"UCVMConfigureFlags": "--enable-model-cvmsi --with-cvmsi-lib-path=${UCVM_INSTALL_PATH}/model/cvmsi/lib --with-cvmsi-include-path=${UCVM_INSTALL_PATH}/model/cvmsi/include --with-cvmsi-model-path=${UCVM_INSTALL_PATH}/model/cvmsi/data/i26",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "88b3443992c739bf2aef4bd386bde981",
+                        "md5sum": "01c947c0bbb92c7f3a01b4bd500a9b89",
 			"Order": 6		
 		},
 		"CVM-S4": {
@@ -559,7 +559,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","cmake"]
+                               "CMD": ["python3","-m","pip","install","cmake"]
                              },
                              {
                                "Action": "install",

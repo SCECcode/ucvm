@@ -6,6 +6,11 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign no-exeext])
 AC_PROG_RANLIB
 
+dnl Require Python 3.0 or newer
+AM_PATH_PYTHON([3.0])
+AC_MSG_NOTICE([Using Python: $PYTHON])
+AC_SUBST([PYTHON])
+
 # Determine platform
 AC_CANONICAL_HOST
 # Check for which host we are on and setup a few things
