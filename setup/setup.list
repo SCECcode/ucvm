@@ -35,7 +35,7 @@
                         ],
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "3eafa1b39748eccad7c6db1a59765d42",
+                        "md5sum": "a6921b636c4bcb2f092d4845df6e15b3",
                         "Order": 22 
                 },
                 "MUSCALTDB": {
@@ -135,7 +135,7 @@
                         "UCVMConfigureFlags": "--enable-model-canvas --with-canvas-lib-path=${UCVM_INSTALL_PATH}/model/canvas/lib --with-canvas-include-path=${UCVM_INSTALL_PATH}/model/canvas/include",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "6b84edd15d733df7d6ac1f96c9207d73",
+                        "md5sum": "a1df8c86047513890510fdfd361e037a",
                         "Order": 27
                 },
                "SJFZ": {
