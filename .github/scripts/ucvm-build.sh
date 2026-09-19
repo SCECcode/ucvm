@@ -7,12 +7,10 @@ BRANCH=$2
 
 cd $UCVM_SRC_PATH/largefiles
 
-
-# ignore for now
+# no need for now
 #if [ "$BRANCH" != "" ]; then
 #   git checkout -b $BRANCH
 #fi
-
 
 if [ "$MODEL" == "" ]; then
    echo "FAIL: needs to supply a model name .."

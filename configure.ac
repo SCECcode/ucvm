@@ -26,8 +26,20 @@ case $host_os in
 esac
 
 # Determine MPI/CC compiler
-#: ${CFLAGS=""}
+AC_CHECK_PROGS([GCC10_CC], [gcc10-gcc gcc-10 gcc], [gcc])
+AC_CHECK_PROGS([GCC10_CXX], [gcc10-g++ g++-10 g++], [g++])
+
+# Tell OpenMPI / MPICH wrappers to use GCC 10 under the hood if present
+export OMPI_CC="$GCC10_CC"
+export MPICH_CC="$GCC10_CC"
+
 AX_PROG_CC_MPI([true],[use_mpi=yes],[use_mpi=no])
+if test "x$use_mpi" = "xno"; then
+   CC="$GCC10_CC" 
+fi
+
+AC_PROG_CC
+AC_PROG_CXX
 
 # Determine Running USC discovery cluster
 SCEC_CHECK_USC_DISCOVERY_HOST([true],[use_usc_discovery=yes],[use_usc_discovery=no])
@@ -67,6 +79,12 @@ AC_ARG_ENABLE([hdf5],
         [enable HDF5 module])],
         [enable_hdf5=yes],
         [enable_hdf5=no])
+
+AC_ARG_ENABLE([tiledb],
+        [AS_HELP_STRING([--enable-tiledb],
+        [enable TILEDB module])],
+        [enable_tiledb=yes],
+        [enable_tiledb=no])
 
 AC_ARG_ENABLE([iobuf],
         [AS_HELP_STRING([--enable-iobuf],
@@ -325,18 +343,6 @@ AC_ARG_WITH([proj-lib-path],
   [PROJ_LIB="-lproj -lpthread"])
 
 # Get optional netCDF library and include locations
-##if test "x$enable_netcdf" = xyes; then
-##   AC_ARG_WITH([netcdf-include-path],
-##   [AS_HELP_STRING([--with-netcdf-include-path],
-##   [location of the netCDF headers])],
-##   [NETCDF_INCL="-I$withval"],
-##   [NETCDF_INCL=""])
-##   AC_ARG_WITH([netcdf-lib-path],
-##   [AS_HELP_STRING([--with-netcdf-lib-path], [location of the netCDF libraries])],
-##   [NETCDF_LIB="-L$withval -lnetcdf  -lhdf5 -lm -lz -ldl -lxml2"],
-##   [NETCDF_LIB=" -lnetcdf -lhdf5 -lm -lz -ldl -lxml2"])
-##fi XX
-#
 if test "x$enable_netcdf" = xyes; then
   AC_ARG_WITH([netcdf-include-path],
     [AS_HELP_STRING([--with-netcdf-include-path],[location of NetCDF headers])],
@@ -355,7 +361,6 @@ if test "x$enable_netcdf" = xyes; then
     [NETCDF_EXTRALIBS=""])
 fi
 
-
 # Get optional HDF5 library and include locations
 if test "x$enable_hdf5" = xyes; then
    AC_ARG_WITH([hdf5-include-path],
@@ -367,6 +372,19 @@ if test "x$enable_hdf5" = xyes; then
    [AS_HELP_STRING([--with-hdf5-lib-path], [location of the HDF5 libraries])],
    [HDF5_LIB="-L$withval -lhdf5 -lz -ldl -lm"],
    [HDF5_LIB="-lhdf5 -lz -ldl -lm"])
+fi
+
+# Get optional TileDB library and include locations
+if test "x$enable_tiledb" = xyes; then
+   AC_ARG_WITH([tiledb-include-path],
+   [AS_HELP_STRING([--with-tiledb-include-path],
+   [location of the TileDB headers])],
+   [TILEDB_INCL="-I$withval"],
+   [TILEDB_INCL=""])
+   AC_ARG_WITH([tiledb-lib-path],
+   [AS_HELP_STRING([--with-tiledb-lib-path], [location of the TileDB libraries])],
+   [TILEDB_LIB="-L$withval -ltiledb -lz -ldl -lm"],
+   [TILEDB_LIB="-ltiledb -lz -ldl -lm"])
 fi
 
 # Get required FFTW library and include locations
@@ -390,6 +408,17 @@ AC_ARG_WITH([hdf5-lib-path],
   [AS_HELP_STRING([--with-hdf5-lib-path], [location of the HDF5 libraries])],
   [HDF5_LIB="-L$withval -lhdf5 -lz -ldl -lm"],
   [HDF5_LIB="-lhdf5 -lz -ldl -lm"])
+
+# Get required TileDB library and include locations
+AC_ARG_WITH([tiledb-include-path],
+  [AS_HELP_STRING([--with-tiledb-include-path],
+    [location of the TileDB headers])],
+  [TILEDB_INCL="-I$withval"],
+  [TILEDB_INCL=""])
+AC_ARG_WITH([tiledb-lib-path],
+  [AS_HELP_STRING([--with-tiledb-lib-path], [location of the TileDB libraries])],
+  [TILEDB_LIB="-L$withval -ltiledb -lz -ldl -lm"],
+  [TILEDB_LIB="-ltiledb -lz -ldl -lm"])
 
 # Get required TIFF library and include locations
 AC_ARG_WITH([tiff-include-path],
@@ -1094,9 +1123,25 @@ if test "x$enable_hdf5" = xyes; then
 	[],
 	[AC_MSG_ERROR([HDF5 header not found; use --with-hdf5-lib-path"])],
 	[AC_INCLUDES_DEFAULT])
-
 else
 	AM_CONDITIONAL(UCVM_HAVE_HDF5, false)
+fi
+
+# Check optional TileDB library
+if test "x$enable_tiledb" = xyes; then
+   echo "Checking for TileDB library"
+   CFLAGS="$TILEDB_INCL $CHECK_CFLAGS"
+   LDFLAGS="$CHECK_LDFLAGS $TILEDB_LIB"
+   AC_CHECK_LIB(tiledb, tiledb_ctx_alloc,
+	[AM_CONDITIONAL(UCVM_HAVE_TILEDB, true)], 
+	[AC_MSG_ERROR([TILEDB library not found; use --with-tiledb-include-path"])],
+	[-lz -ldl -lm])
+   AC_CHECK_HEADER(tiledb.h,
+	[],
+	[AC_MSG_ERROR([TileDB header not found; use --with-tiledb-lib-path"])],
+	[AC_INCLUDES_DEFAULT])
+else
+	AM_CONDITIONAL(UCVM_HAVE_TILEDB, false)
 fi
 
 # Set final CFLAGS and LDFLAGS

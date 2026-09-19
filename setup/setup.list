@@ -555,7 +555,7 @@
                         "ConfigureFlags": "-S . -B build  -G 'Unix Makefiles'  -DCMAKE_BUILD_TYPE=Release  -DBUILD_SHARED_LIBS=ON -DCOMPILER_SUPPORTS_AVX2=OFF -DTILEDB_S3=OFF  -DTILEDB_AZURE=OFF  -DTILEDB_GCS=OFF -DCMAKE_INSTALL_PREFIX=${UCVM_INSTALL_PATH}/lib/tiledb",
                         "cmakeBuildFlags": "--build build --clean-first --target ${UCVM_INSTALL_PATH}/lib/tiledb",
                         "OLDcmakeBuildFlags": "--build build --clean-first -j$(nproc) --target ${UCVM_INSTALL_PATH}/lib/tiledb",
-                        "UCVMConfigureFlags": "--with-tiledb-include-path=${UCVM_INSTALL_PATH}/lib/tiledb/include --with-tiledb-lib-path='${UCVM_INSTALL_PATH}/lib/tiledb/lib64 -ltiledb -Wl,-rpath,${UCVM_INSTALL_PATH}/lib/tiledb/lib64'",
+                        "UCVMConfigureFlags": "--with-tiledb-include-path=${UCVM_INSTALL_PATH}/lib/tiledb/include --with-tiledb-lib-path=${UCVM_INSTALL_PATH}/lib/tiledb/lib64",
                         "Preprocess" : [
                              {
                                "Action": "install",
