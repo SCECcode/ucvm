@@ -302,6 +302,7 @@ static int coalesce_stack(stack2_t *stack, int *stack_ptr)
 }
 
 
+/*  NOT BEING USED 
 static int coalesce_stack_percent(stack2_t *stack, int *stack_ptr)
 {
   etree_addr_t *addr, ref_addr;
@@ -312,20 +313,20 @@ static int coalesce_stack_percent(stack2_t *stack, int *stack_ptr)
   assert( MAX_STACK_SIZE > *stack_ptr );
   assert( *stack_ptr >= 7 );
 
-  /* Compute edge len */
+  // Compute edge len 
   edge_len = eh_edge_len(stack[*stack_ptr].addr.level);
 
-  /* Save the 8th previous octant as a reference */
+  // Save the 8th previous octant as a reference 
   memcpy(&(ref_addr), &(stack[*stack_ptr - 7].addr), sizeof(etree_addr_t));
 
-  /* Ensure reference x,y,z can be raised one level */
+  // Ensure reference x,y,z can be raised one level 
   if ((ref_addr.x % (edge_len * 2) != 0) || 
       (ref_addr.y % (edge_len * 2) != 0) || 
       (ref_addr.z % (edge_len * 2) != 0)) {
     return 0;
   }
 
-  /* Init material properties */
+  // Init material properties 
   vp = 0.0;
   vs = 0.0;
   rho = 0.0;
@@ -333,12 +334,12 @@ static int coalesce_stack_percent(stack2_t *stack, int *stack_ptr)
   for (i = *stack_ptr - 7; i <= *stack_ptr; i++) {
     addr = &(stack[i].addr);
 
-    /* Ensure all on same level as reference */
+    // Ensure all on same level as reference
     if (addr->level != ref_addr.level) {
       return 0;
     }
 
-    /* Ensure all are adjacent to reference */
+    // Ensure all are adjacent to reference
     addr_diff[0] = addr->x - ref_addr.x;
     addr_diff[1] = addr->y - ref_addr.y;
     addr_diff[2] = addr->z - ref_addr.z;
@@ -348,18 +349,18 @@ static int coalesce_stack_percent(stack2_t *stack, int *stack_ptr)
       }
     }
 
-    /* Sum up material properties for 8 octants */
+    // Sum up material properties for 8 octants
     vp = vp + stack[i].payload.Vp;
     vs = vs + stack[i].payload.Vs;
     rho = rho + stack[i].payload.density;
   }
 
-  /* Compute property averages */
+  // Compute property averages 
   vp = vp / 8.0;
   vs = vs / 8.0;
   rho = rho / 8.0;
 
-  /* Verify 8 octants are within tolerance for Vs, rho*/
+  // Verify 8 octants are within tolerance for Vs, rho
   for (i = *stack_ptr - 7; i <= *stack_ptr; i++) {
     if (fabs(stack[i].payload.Vs/vs - 1.0) > DEFAULT_VS_PERCENT/100.0) {
       return 0;
@@ -369,14 +370,14 @@ static int coalesce_stack_percent(stack2_t *stack, int *stack_ptr)
     }
   }
 
-  /* Verify 8 octants are within tolerance for Vp */
+  // Verify 8 octants are within tolerance for Vp
   for (i = *stack_ptr - 7; i <= *stack_ptr; i++) {
     if (fabs(stack[i].payload.Vp/vp - 1.0) > DEFAULT_VP_PERCENT/100.0) {
      break;
     }
   }
 
-  /* If Vp check fails, verify all Vp within factor of 2 of Vs */
+  // If Vp check fails, verify all Vp within factor of 2 of Vs
   if (i != *stack_ptr + 1) {
     for (i = *stack_ptr - 7; i <= *stack_ptr; i++) {
       if (stack[i].payload.Vp <= 2.0*vs || stack[i].payload.Vp >= 4.0*vs) {
@@ -385,9 +386,9 @@ static int coalesce_stack_percent(stack2_t *stack, int *stack_ptr)
     }
   }
 
-  /* Delete top 8 octants and replace with single octant one level up */
-  /* Address of new octant is same as first octant in the set since all 
-     data is in Z-order */
+  // Delete top 8 octants and replace with single octant one level up 
+  // Address of new octant is same as first octant in the set since all 
+  // data is in Z-order 
   *stack_ptr = *stack_ptr - 7;
   stack[*stack_ptr].payload.Vp = vp;
   stack[*stack_ptr].payload.Vs = vs;
@@ -396,7 +397,7 @@ static int coalesce_stack_percent(stack2_t *stack, int *stack_ptr)
 
   return 1;
 }
-
+***/
 
 int push_stack(stack2_t *stack, int *stack_ptr,
 	       etree_addr_t *addr, property_t *payload)

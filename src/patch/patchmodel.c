@@ -213,14 +213,19 @@ int write_surfs(patch_cfg_t *cfg)
   int i, j;
 
   /* File I/O */
-  char filename[UCVM_MAX_PATH_LEN];
+  //char filename[UCVM_MAX_PATH_LEN];
   FILE *fp;
+
+  size_t len = snprintf(NULL, 0, "%s/%s_%s_%d_%d.bin",
+                      cfg->modelpath, cfg->modelname, "surf", 2, 2) + 1;
+  char *filename = malloc(len);
 
   printf("Saving surfaces\n");
   for (j = 0; j < 2; j++) {
     for (i = 0; i < 2; i++) {
-      sprintf(filename, "%s/%s_%s_%d_%d.bin", 
+      snprintf(filename, len, "%s/%s_%s_%d_%d.bin", 
 	      cfg->modelpath, cfg->modelname, "surf", i, j);
+
       printf("\tSurf(%d,%d): Saving to %s\n", i, j, filename);
       fp = fopen(filename, "wb");
       if (fp == NULL) {
@@ -249,18 +254,22 @@ int write_conf(patch_cfg_t *cfg) {
   int i, j;
 
   /* File I/O */
-  char filename[UCVM_MAX_PATH_LEN];
-  char tmpstr[UCVM_CONFIG_MAX_STR];
   FILE *fp;
 
-  sprintf(filename, "%s/%s.conf", cfg->modelpath, cfg->modelname);
+  size_t len = snprintf(NULL, 0, "%s/%s.conf", cfg->modelpath, cfg->modelname)+1;
+  char *filename = malloc(len);
+
+  snprintf(filename, len, "%s/%s.conf", cfg->modelpath, cfg->modelname);
   printf("Writing patch conf file %s\n", filename);
   fp = fopen(filename, "wb");
   if (fp == NULL) {
     fprintf(stderr, "Failed to open conf file %s\n", filename);
     return(UCVM_CODE_ERROR);
   }
-  sprintf(tmpstr, "# %s patch conf file\n\n", cfg->modelname);
+  len = snprintf(NULL, 0, "# %s patch conf file\n\n", cfg->modelname)+1;
+  char *tmpstr = malloc(len);
+
+  snprintf(tmpstr, len, "# %s patch conf file\n\n", cfg->modelname);
   fwrite(tmpstr, 1, strlen(tmpstr), fp);
 
   sprintf(tmpstr, "# Version\n");
