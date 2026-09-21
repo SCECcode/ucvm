@@ -18,7 +18,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","pybind11","numpy","h5py"]
+                               "CMD": ["python3","-m","pip","install","pybind11","numpy","h5py"]
                              },
                              {
                                "Action": "install",
@@ -43,7 +43,7 @@
                         "Abbreviation": "muscaltdb",
                         "Size": "4.1G",
                         "Path": "muscaltdb",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8/model/muscaltdb.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/muscaltdb.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
                         "ConfigureFlags": "--enable-shared --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
                         "UCVMConfigureFlags": "--enable-model-muscaltdb --with-muscaltdb-lib-path=${UCVM_INSTALL_PATH}/model/muscaltdb/lib --with-muscaltdb-include-path=${UCVM_INSTALL_PATH}/model/muscaltdb/include",
@@ -52,14 +52,14 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","netCDF4","--only-binary=:all:"]
+                               "CMD": ["python3","-m","pip","install","netCDF4","--only-binary=:all:"]
                              },
                              {
                                "Action": "install",
                                "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
                              }
                         ],
-                        "md5sum": "bfecf9ec0f8627577ed06924fc0b8d1c",
+                        "md5sum": "0e9749342e6f7f3d22fd40fd2622560e",
                         "Order": 31
                 },
                 "SJQBN": {
@@ -76,7 +76,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","netCDF4","--only-binary=:all:"]
+                               "CMD": ["python3","-m","pip","install","netCDF4","--only-binary=:all:"]
                              },
                              {
                                "Action": "install",
@@ -112,7 +112,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","certifi"]
+                               "CMD": ["python3","-m","pip","install","certifi"]
                              },
                              {
                                "Action": "install",
@@ -196,7 +196,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","netCDF4","--only-binary=:all:"]
+                               "CMD": ["python3","-m","pip","install","netCDF4","--only-binary=:all:"]
                              },
                              {
                                "Action": "install",
@@ -221,7 +221,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","pybind11","numpy","h5py"]
+                               "CMD": ["python3","-m","pip","install","pybind11","numpy","h5py"]
                              },
                              {
                                "Action": "install",
@@ -559,7 +559,7 @@
                         "Preprocess" : [
                              {
                                "Action": "install",
-                               "CMD": ["python","-m","pip","install","cmake"]
+                               "CMD": ["python3","-m","pip","install","cmake"]
                              },
                              {
                                "Action": "install",
