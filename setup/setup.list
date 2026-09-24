@@ -3,6 +3,30 @@
                "Version": "25.7"
                },
 	"models": {
+                "SHAKEOUT2": {
+                        "Version": "1.0",
+                        "Abbreviation": "shakeout2",
+                        "Size": "400M",
+                        "Path": "shakeout2",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/shakeout2.tar.gz",
+                        "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
+                        "ConfigureFlags": "--enable-shared --with-hdf5-libdir=${UCVM_INSTALL_PATH}/lib/hdf5/lib --with-hdf5-incdir=${UCVM_INSTALL_PATH}/lib/hdf5/include  --with-netcdf-libdir=${UCVM_INSTALL_PATH}/lib/netcdf/lib --with-netcdf-incdir=${UCVM_INSTALL_PATH}/lib/netcdf/include",
+                        "UCVMConfigureFlags": "--enable-model-shakeout2 --with-shakeout2-lib-path=${UCVM_INSTALL_PATH}/model/shakeout2/lib --with-shakeout2-include-path=${UCVM_INSTALL_PATH}/model/shakeout2/include",
+                        "Ask": "yes",
+                        "Libraries": ["netcdf"],
+                        "Preprocess" : [
+                             {
+                               "Action": "install",
+                               "CMD": ["python3","-m","pip","install","netCDF4","--only-binary=:all:"]
+                             },
+                             {
+                               "Action": "install",
+                               "CMD": ["pip","install","netCDF4","--only-binary=:all:"]
+                             }
+                        ],
+                        "md5sum": "a6921b636c4bcb2f092d4845df6e15b3",
+                        "Order": 33
+                },
                 "SFCVM211": {
                         "Version": "1.0",
                         "Abbreviation": "sfcvm211",
@@ -36,7 +60,7 @@
                         "Ask": "yes",
                         "Libraries": [],
                         "md5sum": "a6921b636c4bcb2f092d4845df6e15b3",
-                        "Order": 22 
+                        "Order": 32 
                 },
                 "MUSCALTDB": {
                         "Version": "1.0",

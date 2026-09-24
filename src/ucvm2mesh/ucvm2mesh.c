@@ -23,21 +23,31 @@ extern char *optarg;
 extern int optind, opterr, optopt;
 
 
-int mesh_debug=0;
+int ucvm2mesh_debug=1;
+int ucvm2mesh_debug_detail=0;
+FILE *stderrfp=NULL;
 
 /* Display usage information */
 void usage(char *arg)
 {
-  printf("Usage: %s [-h] -f configfile\n\n",arg);
+  printf("Usage: %s [-h] -f configfile [-g gridfile] \n\n",arg);
   printf("where:\n");
   printf("\t-h: help message\n");
   printf("\t-f: config file containing mesh params\n\n");
+  printf("\t-g: pre-existing grid file\n\n");
   printf("Config file format:\n");
   printf("\tucvmlist: comma-delimited list of CVMs to query (as supported by UCVM)\n");
   printf("\tucvmconf: UCVM API config file\n");
   printf("\tgridtype: location of x-y gridded points: VERTEX, or CENTER\n");
   printf("\tquerymode: query mode, DEPTH, or ELEVATION\n");
   printf("\tspacing: grid spacing (units appropriate for proj)\n");
+  printf("\tz_spacing: (optional) mesh z_spacing\n");
+  printf("\tz_file: (optional) mesh z file\n");
+  printf("\tmin_zrange: (optional) interp min zrange\n");
+  printf("\tmax_zrange: (optional) interp max zrange\n");
+  printf("\tvs_floor: (optional) interp vs floor\n");
+  printf("\tvp_floor: (optional) interp vp floor\n");
+  printf("\tdensity_floor: (optional) interp density floor\n");
   printf("\tproj: Proj.4 projection specification, or 'cmu' for TeraShake\n");
   printf("\trot: proj rotation angle in degrees, (+ is counter-clockwise)\n");
   printf("\tx0: longitude of origin (deg), or x offset in cmu proj (m)\n");
@@ -98,6 +108,9 @@ int init_app(const char *cfgfile, mesh_config_t *cfg)
     fprintf(stderr, "Failed to set interpolation z range\n");
     return(1);
   }
+
+  /* Set interpolation floor */
+  ucvm_setfloor(cfg->ucvm_floor);
 
   return(0);
 }
@@ -165,6 +178,7 @@ int extract(mesh_config_t *cfg)
 
   printf("Grid 4 corners:\n");
   int dimx=cfg->dims.dim[0];
+  int dimy=cfg->dims.dim[1];
   // first one
   printf("  %lf %lf (%d)\n",pntbuf[0].coord[0],pntbuf[0].coord[1],0);
   // x-1
@@ -173,12 +187,24 @@ int extract(mesh_config_t *cfg)
   printf("  %lf %lf (%d)\n",pntbuf[num_grid-dimx].coord[0],pntbuf[num_grid-dimx].coord[1],num_grid-dimx);
   // num_grid - 1
   printf("  %lf %lf (%d)\n",pntbuf[num_grid-1].coord[0],pntbuf[num_grid-1].coord[1],num_grid-1);
-  if(mesh_debug) {
-    printf("grid size %d, %d, %d\n", cfg->dims.dim[0], cfg->dims.dim[1], cfg->dims.dim[2]);
-    printf("indexing at 0->%d->%d->%d\n",dimx-1, num_grid-dimx, num_grid-1); 
-    printf("Xaxis row:\n");
+  if(ucvm2mesh_debug) {
+    fprintf(stderrfp,"grid size %d, %d, %d\n", cfg->dims.dim[0], cfg->dims.dim[1], cfg->dims.dim[2]);
+    fprintf(stderrfp,"indexing at 0->%d->%d->%d\n",dimx-1, num_grid-dimx, num_grid-1); 
+    fprintf(stderrfp,"X-axis row:\n");
+
     for(int i=0; i<dimx; i++) {
-      printf("  %lf %lf\n",pntbuf[i].coord[0],pntbuf[i].coord[1]);
+      if(ucvm2mesh_debug_detail) {
+        fprintf(stderrfp,"  %lf %lf\n",pntbuf[i].coord[0],pntbuf[i].coord[1]);
+      }
+      fprintf(stderrfp,"x(%d):%lf\n",i,pntbuf[i].coord[0]);
+    }
+
+    fprintf(stderrfp,"Y-axis col:\n");
+    for(int j=0; j<dimy; j++) {
+      if(ucvm2mesh_debug_detail) {
+        fprintf(stderrfp,"  %lf %lf\n",pntbuf[dimx * j].coord[0],pntbuf[ dimx * j].coord[1]);
+      }
+      fprintf(stderrfp,"y(%d):%lf\n",j,pntbuf[dimx * j].coord[1]);
     }
   }
 
@@ -194,15 +220,36 @@ int extract(mesh_config_t *cfg)
 
 
   num_points = 0;
+
+  int k_start=0;
+  // k_start is the index where z0 in cfg->z_list  
+  for(k_start = 0; k_start < cfg->z_list_num; k_start ++) {
+     if (cfg->origin.coord[2] <= cfg->z_list[k_start]) {
+       break;
+     }
+  }
+  if(ucvm2mesh_debug) { fprintf(stderrfp, " k_start: %d (%lf)\n", k_start, cfg->z_list[k_start]); }
+
   for (k = 0; k < cfg->dims.dim[2]; k++) {
     gettimeofday(&start,NULL);
 
-    /* Set z coordinate */
-    if(cfg->querymode == UCVM_COORD_GEO_DEPTH) {
-      z = cfg->origin.coord[2] + (k * cfg->spacing);
+    /* Set z coordinate with k index */
+    if(cfg->z_list_num==1) {
+      if(cfg->querymode == UCVM_COORD_GEO_DEPTH) {
+        z = cfg->origin.coord[2] + (k * cfg->z_list[0]); // it is either z_spacing or spacing
+        } else {
+          z = cfg->origin.coord[2] - (k * cfg->z_list[0]); // it is either z_spacing or spacing
+      }
       } else {
-        z = cfg->origin.coord[2] - (k * cfg->spacing);
+
+        if(cfg->z_list_num < k) { // just reuse the last location
+          z=cfg->z_list[cfg->z_list_num-1];
+          } else {
+            z=cfg->z_list[k_start+k];
+        }
     }
+    if(ucvm2mesh_debug) { fprintf(stderrfp, " z(%d): %lf\n", k,z); }
+
     for (n = 0; n < num_grid; n++) {
       pntbuf[n].coord[2] = z;
     }
@@ -301,13 +348,22 @@ int main(int argc, char **argv)
   /* Options */
   int opt;
   char configfile[UCVM_MAX_PATH_LEN];
+  char gridfile[UCVM_MAX_PATH_LEN];
+
+  if(ucvm2mesh_debug) {
+    stderrfp = fopen("ucvm2mesh_debug.log", "w+");
+  }
 
   /* Parse options */
   strcpy(configfile, "");
-  while ((opt = getopt(argc, argv, "hf:")) != -1) {
+  strcpy(gridfile, "");
+  while ((opt = getopt(argc, argv, "hf:g:")) != -1) {
     switch (opt) {
     case 'f':
       strcpy(configfile, optarg);
+      break;
+    case 'g':
+      strcpy(gridfile, optarg);
       break;
     case 'h':
       usage(argv[0]);
@@ -333,42 +389,52 @@ int main(int argc, char **argv)
 
   /* Delete output mesh file if present */
   deleteFile(cfg.meshfile);
-  deleteFile(cfg.gridfile);
 
-  /* Generate the 2D grid */
-  printf("Generating 2D grid\n");
-  sprintf(iproj.proj, "%s", UCVM_PROJ_GEO);
-  sprintf(oproj.proj, "%s", cfg.proj);
-  trans.rotate = cfg.rot;
-  for (i = 0; i < 3; i++) {
-    trans.origin[i] = cfg.origin.coord[i];
-    trans.translate[i] = 0.0;
-  }
-  trans.gtype = cfg.gridtype;
-    
-  if (ucvm_grid_gen_file(&iproj, &trans, &oproj, &(cfg.dims), 
+  if (strcmp(gridfile, "") !=0) {
+    strcpy(cfg.gridfile,gridfile);
+    } else {
+      deleteFile(cfg.gridfile);
+
+    /* Generate the 2D grid */
+      printf("Generating 2D grid\n");
+      sprintf(iproj.proj, "%s", UCVM_PROJ_GEO);
+      sprintf(oproj.proj, "%s", cfg.proj);
+      trans.rotate = cfg.rot;
+      for (i = 0; i < 3; i++) {
+        trans.origin[i] = cfg.origin.coord[i];
+        trans.translate[i] = 0.0;
+      }
+      trans.gtype = cfg.gridtype;
+      
+      if (ucvm_grid_gen_file(&iproj, &trans, &oproj, &(cfg.dims), 
 			 cfg.spacing, cfg.gridfile) != UCVM_CODE_SUCCESS) {
-    fprintf(stderr, "Failed to create gridfile %s\n", cfg.gridfile);
-    return(1);
+        fprintf(stderr, "Failed to create gridfile %s\n", cfg.gridfile);
+        return(1);
+      }
+
+    /* Convert grid from Proj.4 projection to latlong */
+      printf("Converting grid to latlong\n");
+      fflush(stdout);
+      slice_size = (size_t)cfg.dims.dim[0] * (size_t)cfg.dims.dim[1];
+      if (ucvm_grid_convert_file(&oproj, &iproj, slice_size, 
+			       cfg.gridfile) != UCVM_CODE_SUCCESS) {
+        fprintf(stderr, "Failed to convert gridfile %s\n", cfg.gridfile);
+        return(1);
+      }
+      printf("Grid generation complete\n");
   }
 
-  /* Convert grid from Proj.4 projection to latlong */
-  printf("Converting grid to latlong\n");
-  fflush(stdout);
-  slice_size = (size_t)cfg.dims.dim[0] * (size_t)cfg.dims.dim[1];
-  if (ucvm_grid_convert_file(&oproj, &iproj, slice_size, 
-			     cfg.gridfile) != UCVM_CODE_SUCCESS) {
-    fprintf(stderr, "Failed to convert gridfile %s\n", cfg.gridfile);
-    return(1);
-  }
-
-  printf("Grid generation complete\n");
-  
   /* Perform extractions */
   if (extract(&cfg) != 0) {
     return(1);
   }
 
   fprintf(stdout, "Done.\n");
+
+  if(ucvm2mesh_debug) {
+    fprintf(stderrfp, "Done.\n");
+    fclose(stderrfp);
+  }
+
   return(0);
 }

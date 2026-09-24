@@ -82,6 +82,13 @@
      extern int sjqbn_version;
      extern int sjqbn_config;
 #endif
+#ifdef _UCVM_ENABLE_SHAKEOUT2
+     extern int shakeout2_init;
+     extern int shakeout2_query;
+     extern int shakeout2_finalize;
+     extern int shakeout2_version;
+     extern int shakeout2_config;
+#endif
 #ifdef _UCVM_ENABLE_MUSCALNC
      extern int muscalnc_init;
      extern int muscalnc_query;
@@ -475,6 +482,19 @@ int ucvm_plugin_model_init(int id, ucvm_modelconf_t *conf) {
                 pptr->model_finalize = &sjqbn_finalize;
                 pptr->model_version = &sjqbn_version;
                 pptr->model_config = &sjqbn_config;
+                if ((*pptr->model_init)(conf->config, conf->label) != 0) {
+                        fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
+                        return UCVM_CODE_ERROR;
+                }
+        }
+#endif
+#ifdef _UCVM_ENABLE_SHAKEOUT2
+        if (strcmp(conf->label, UCVM_MODEL_SHAKEOUT2) == 0) {
+                pptr->model_init = &shakeout2_init;
+                pptr->model_query = &shakeout2_query;
+                pptr->model_finalize = &shakeout2_finalize;
+                pptr->model_version = &shakeout2_version;
+                pptr->model_config = &shakeout2_config;
                 if ((*pptr->model_init)(conf->config, conf->label) != 0) {
                         fprintf(stderr, "Failed to initialize model, %s.\n", conf->label);
                         return UCVM_CODE_ERROR;

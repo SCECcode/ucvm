@@ -86,6 +86,7 @@
 #define UCVM_MODEL_SJFZ "sjfz"
 #define UCVM_MODEL_CS248 "cs248"
 
+#define UCVM_MODEL_SHAKEOUT2 "shakeout2"
 #define UCVM_MODEL_MUSCALNC "muscalnc"
 #define UCVM_MODEL_MUSCALTDB "muscaltdb"
 
