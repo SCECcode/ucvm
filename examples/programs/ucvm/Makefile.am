@@ -10,7 +10,7 @@ endif
 
 if UCVM_AM_ENABLE_SHAKEOUT2
 bin_PROGRAMS += run_ucvm_query_shakeout2.sh
-run_ucvm_query_muscalnc_sh_SOURCES = run_ucvm_query_shakeout2.sh
+run_ucvm_query_shakeout2_sh_SOURCES = run_ucvm_query_shakeout2.sh
 endif
 
 if UCVM_AM_ENABLE_MUSCALNC

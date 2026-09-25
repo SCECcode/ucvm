@@ -1102,17 +1102,6 @@ int test_lib_add_model_sfcvm()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 int suite_lib(const char *xmldir)
 {
   int numfixed;
@@ -1194,6 +1183,9 @@ int suite_lib(const char *xmldir)
   suite.num_tests++;
 #endif
 #ifdef _UCVM_ENABLE_UWPKFCVM
+  suite.num_tests++;
+#endif
+#ifdef _UCVM_ENABLE_SHAKEOUT2
   suite.num_tests++;
 #endif
 #ifdef _UCVM_ENABLE_MUSCALNC
