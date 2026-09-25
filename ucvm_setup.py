@@ -21,7 +21,7 @@ from pathlib import Path
 # Variables
 
 # Set the version number for the installation script.
-VERSION = "25.7.0"
+VERSION = "26.10.0"
 
 # UCVM_INSTALL_PATH and UCVM_SRC_PATH
 UCVM_SRC_PATH = os.getcwd()
@@ -250,7 +250,7 @@ def installConfigMakeInstall(tarname, ucvmpath, type, config_data):
     os.chdir(workpath + "/" + config_data["Path"])
     callAndRecord(["cd", workpath + "/" + config_data["Path"]], True)
 
-    libtoolize_list=["sfcvm211","sfcvm","cvms5","cvmh","cs248","uwlinca","uwpkfcvm","muscalnc","muscaltdb","sjqbn"]
+    libtoolize_list=["sfcvm211","sfcvm","cvms5","cvmh","cs248","uwlinca","uwpkfcvm","shakeout2","muscalnc","muscaltdb","sjqbn"]
     autoreconf_list=["sfcvm211","sfcvm","cca","cs248"]
     skip_conf_list = ["openssl","netcdf","tiledb"]
 
@@ -546,6 +546,7 @@ def _add2path_python():
 def makePythonScript(ucvmsrc, ucvmpath, modelsToInstall, librariesToInstall) :
     str="" 
     fp=open("conf/ucvm_env.py","w")
+    fp.write("#!/usr/bin/env python3\n\n")
     fp.write("## \n")
     fp.write("##  models: [")
     for x in modelsToInstall:
@@ -655,6 +656,8 @@ def _addInstallNameTool_bash(modelsToInstall, librariesToInstall):
         str=str+"install_name_tool -change libcs248.so ${MY_UCVM_INSTALL_PATH}/model/cs248/lib/libcs248.so $1\n"
     if "SJQBN" in modelsToInstall:
         str=str+"install_name_tool -change libsjqbn.so ${MY_UCVM_INSTALL_PATH}/model/sjqbn/lib/libsjqbn.so $1\n"
+    if "SHAKEOUT2" in modelsToInstall:
+        str=str+"install_name_tool -change libshakeout2.so ${MY_UCVM_INSTALL_PATH}/model/shakeout2/lib/libshakeout2.so $1\n"
     if "MUSCALNC" in modelsToInstall:
         str=str+"install_name_tool -change libmuscalnc.so ${MY_UCVM_INSTALL_PATH}/model/muscalnc/lib/libmuscalnc.so $1\n"
     if "MUSCALTDB" in modelsToInstall:

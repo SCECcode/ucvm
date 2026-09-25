@@ -161,7 +161,7 @@ int test_grid_lib_1d()
 int suite_grid(const char *xmldir)
 {
   test_suite_t suite;
-  char logfile[256];
+  char logfile[1024];
   FILE *lf = NULL;
 
   /* Setup test suite */
@@ -191,7 +191,9 @@ int suite_grid(const char *xmldir)
   }
 
   if (xmldir != NULL) {
+
     sprintf(logfile, "%s/%s.xml", xmldir, suite.suite_name);
+
     lf = init_log(logfile);
     if (lf == NULL) {
       fprintf(stderr, "Failed to initialize logfile\n");

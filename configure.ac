@@ -6,6 +6,11 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign no-exeext])
 AC_PROG_RANLIB
 
+dnl Require Python 3.0 or newer
+AM_PATH_PYTHON([3.0])
+AC_MSG_NOTICE([Using Python: $PYTHON])
+AC_SUBST([PYTHON])
+
 # Determine platform
 AC_CANONICAL_HOST
 # Check for which host we are on and setup a few things
@@ -133,6 +138,12 @@ AC_ARG_ENABLE([model-sjqbn],
         [enable model SCEC SJQBN])],
         [enable_model_sjqbn=yes],
         [enable_model_sjqbn=no])
+
+AC_ARG_ENABLE([model-shakeout2],
+        [AS_HELP_STRING([--enable-model-shakeout2],
+        [enable model SCEC SHAKEOUT2])],
+        [enable_model_shakeout2=yes],
+        [enable_model_shakeout2=no])
 
 AC_ARG_ENABLE([model-muscalnc],
         [AS_HELP_STRING([--enable-model-muscalnc],
@@ -587,6 +598,19 @@ AC_ARG_WITH([sjqbn-lib-path],
   [AS_HELP_STRING([--with-sjqbn-lib-path], [location of the SCEC SJQBN libraries])],
   [SJQBN_LIB="-L$withval -lsjqbn -lproj -letree"],
   [SJQBN_LIB="-lsjqbn -lproj -letree"])
+fi
+
+# Get SCEC SHAKEOUT2 library and include locations
+if test "x$enable_model_shakeout2" = xyes; then
+AC_ARG_WITH([shakeout2-include-path],
+  [AS_HELP_STRING([--with-shakeout2-include-path],
+    [location of the SCEC SHAKEOUT2 headers])],
+  [SHAKEOUT2_INCL="-I$withval"],
+  [SHAKEOUT2_INCL="/usr/include/shakeout2"])
+AC_ARG_WITH([shakeout2-lib-path],
+  [AS_HELP_STRING([--with-shakeout2-lib-path], [location of the SCEC SHAKEOUT2 libraries])],
+  [SHAKEOUT2_LIB="-L$withval -lshakeout2"],
+  [SHAKEOUT2_LIB="-lshakeout2"])
 fi
 
 # Get SCEC MUSCALNC library and include locations
@@ -1290,6 +1314,21 @@ else
 fi
 else
    AM_CONDITIONAL(UCVM_AM_ENABLE_SJQBN, [test x"$enable_model_sjqbn" = xyes])
+fi
+
+if test "x$enable_static" = xyes; then
+# CHECK OPTIONAL SCEC SHAKEOUT2 installation
+if test "x$enable_model_shakeout2" = xyes; then
+   # Setup compiler/linker flags
+   CFLAGS="$SHAKEOUT2_INCL $CFLAGS"
+   LDFLAGS="$SHAKEOUT2_LIB $LDFLAGS"
+   echo "Checking for SCEC SHAKEOUT2"
+   AC_CHECK_HEADER(shakeout2.h,[],[AC_MSG_ERROR(["SCEC SHAKEOUT2 header not found; use --with-shakeout2-include-path"])],[AC_INCLUDES_DEFAULT])
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SHAKEOUT2, false)
+fi
+else
+   AM_CONDITIONAL(UCVM_AM_ENABLE_SHAKEOUT2, [test x"$enable_model_shakeout2" = xyes])
 fi
 
 if test "x$enable_static" = xyes; then

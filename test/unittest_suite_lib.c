@@ -338,6 +338,31 @@ int test_lib_add_model_uwpkfcvm()
   return(0);
 }
 
+int test_lib_add_model_shakeout2()
+{
+  printf("Test: UCVM lib add model SHAKEOUT2\n");
+  
+  /* Setup UCVM */
+  if (ucvm_init("../conf/ucvm.conf") != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to initialize UCVM API\n");
+    return(1);
+  }
+
+  /* Add model */
+  if (ucvm_add_model(UCVM_MODEL_SHAKEOUT2) != UCVM_CODE_SUCCESS) {
+    fprintf(stderr, "FAIL: Failed to enable model %s\n",
+            UCVM_MODEL_SHAKEOUT2);
+    ucvm_finalize();
+    return(1);
+  } 
+  
+  /* Finalize UCVM */
+  ucvm_finalize();
+
+  printf("PASS\n");
+  return(0);
+}
+
 int test_lib_add_model_muscalnc()
 {
   printf("Test: UCVM lib add model MUSCALNC\n");
@@ -1077,17 +1102,6 @@ int test_lib_add_model_sfcvm()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 int suite_lib(const char *xmldir)
 {
   int numfixed;
@@ -1171,6 +1185,9 @@ int suite_lib(const char *xmldir)
 #ifdef _UCVM_ENABLE_UWPKFCVM
   suite.num_tests++;
 #endif
+#ifdef _UCVM_ENABLE_SHAKEOUT2
+  suite.num_tests++;
+#endif
 #ifdef _UCVM_ENABLE_MUSCALNC
   suite.num_tests++;
 #endif
@@ -1249,6 +1266,14 @@ int suite_lib(const char *xmldir)
   strcpy(suite.tests[suite.num_tests].test_name,
          "test_lib_add_model_uwpkfcvm");
   suite.tests[suite.num_tests].test_func = &test_lib_add_model_uwpkfcvm;
+  suite.tests[suite.num_tests].elapsed_time = 0.0;
+  suite.num_tests++;
+#endif
+
+#ifdef _UCVM_ENABLE_SHAKEOUT2
+  strcpy(suite.tests[suite.num_tests].test_name,
+         "test_lib_add_model_shakeout2");
+  suite.tests[suite.num_tests].test_func = &test_lib_add_model_shakeout2;
   suite.tests[suite.num_tests].elapsed_time = 0.0;
   suite.num_tests++;
 #endif

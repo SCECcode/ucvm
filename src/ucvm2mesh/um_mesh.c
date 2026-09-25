@@ -196,8 +196,10 @@ int mesh_transform_serial(mesh_ijk32_t *nodes, ucvm_dim_t *mesh_dims) {
   int dimx=mesh_dims->dim[0];
   int dimy=mesh_dims->dim[1];
   int dimz=mesh_dims->dim[2];
-  int total=dimx * dimy * dimz;
-  mesh_ijk32_t *fastx_nodes= (mesh_ijk32_t *) malloc(total * sizeof(mesh_ijk32_t));
+
+// NOT being used
+// int total=dimx * dimy * dimz;
+// mesh_ijk32_t *fastx_nodes= (mesh_ijk32_t *) malloc(total * sizeof(mesh_ijk32_t));
 
   for(int z=0; z<dimz; z++) {
     // go a layer at a time

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Generate a master mesh grid, out.grd, 
 # and time the model population speed of the
 # available crustal models 

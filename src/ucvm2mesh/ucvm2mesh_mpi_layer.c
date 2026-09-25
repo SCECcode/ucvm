@@ -58,6 +58,13 @@ void usage(char *arg)
   printf("\tgridtype: location of x-y gridded points: VERTEX, or CENTER\n");
   printf("\tquerymode: query mode, DEPTH, or ELEVATION\n");
   printf("\tspacing: grid spacing (units appropriate for proj)\n");
+  printf("\tz_spacing: (optional) mesh z_spacing\n");
+  printf("\tz_file: (optional) mesh z file\n");
+  printf("\tmin_zrange: (optional) interp min zrange\n");
+  printf("\tmax_zrange: (optional) interp max zrange\n");
+  printf("\tvs_floor: (optional) interp vs floor\n");
+  printf("\tvp_floor: (optional) interp vp floor\n");
+  printf("\tdensity_floor: (optional) interp density floor\n");
   printf("\tproj: Proj.4 projection specification, or 'cmu' for TeraShake\n");
   printf("\trot: proj rotation angle in degrees, (+ is counter-clockwise)\n");
   printf("\tx0: longitude of origin (deg), or x offset in cmu proj (m)\n");
@@ -182,14 +189,26 @@ int extract(int myid, int myrank, int nrank, mesh_config_t *cfg)
 //  fprintf(stdout, "[%d:%d] Starting extraction\n", myid, myrank);
 
   num_points = 0;
+
+// TODO??? NOT sure if k_start is right with z_list
+
   for (k = k_start; k < k_end; k++) {
-    
-    /* Set z coordinate */
-    if(cfg->querymode == UCVM_COORD_GEO_DEPTH) {
-      z = cfg->origin.coord[2] + (k * cfg->spacing);
+
+    /* Set z coordinate with k index */
+    if(cfg->z_list_num==1) {
+      if(cfg->querymode == UCVM_COORD_GEO_DEPTH) {
+        z = cfg->origin.coord[2] + (k * cfg->z_list[0]); // it is either z_spacing or spacing
+        } else {
+          z = cfg->origin.coord[2] - (k * cfg->z_list[0]); // it is either z_spacing or spacing
+      } 
       } else {
-        z = cfg->origin.coord[2] - (k * cfg->spacing);
+        if(cfg->z_list_num < k) { // just reuse the last location
+          z=cfg->z_list[cfg->z_list_num-1];
+          } else {
+            z=cfg->z_list[k];
+        }
     }
+
     for (n = 0; n < num_grid; n++) {
       pntbuf[n].coord[2] = z;
     }
@@ -396,6 +415,9 @@ int main(int argc, char **argv)
     fprintf(stderr, "[%d] Failed to set interpolation z range\n", myid);
     return(1);
   }
+
+  /* Set Interpolation floor */
+  ucvm_setfloor(cfg->ucvm_floor);
 
   /* Perform extractions */
   int myrank=myid;

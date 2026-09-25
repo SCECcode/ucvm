@@ -12,10 +12,24 @@ typedef struct mesh_config_t
   int rank;
   char ucvmstr[UCVM_MAX_LABEL_LEN];
   double ucvm_zrange[2];
+  double ucvm_floor[3];
   char ucvmconf[UCVM_MAX_PATH_LEN];
   ucvm_gtype_t gridtype;
   ucvm_ctype_t querymode;
+
+  double min_zrange; /* optional */
+  double max_zrange; /* optional */
+  double vs_floor; /* optional */
+  double vp_floor; /* optional */
+  double density_floor; /* optional */
+
   double spacing;
+  double z_spacing; /* optional */
+  char *z_file; /* optional */
+
+  double *z_list; 
+  int z_list_num; 
+
   char proj[UCVM_MAX_PROJ_LEN];
   double rot;
   ucvm_point_t origin;

@@ -26,6 +26,8 @@ target_large_model_list = []
 target_large_etree_list = []
 target_large_ref_list = []
 
+all_list=[]
+
 try:
     # We now have our list. Parse it.
     f = open("../setup/setup.list", "r")
@@ -42,20 +44,26 @@ for model in sorted(iter(config_data["models"].keys()), key=lambda k: int(config
     the_model = config_data["models"][model]
     _md5sum = str(the_model["md5sum"])
     _model = str(the_model["Abbreviation"])+".tar.gz"
-    target_large_model_list.append( {"model":_model,"md5sum":_md5sum })
+    if not _model in all_list:
+      target_large_model_list.append( {"model":_model,"md5sum":_md5sum })
+      all_list.append(_model);
     if "Preprocess" in the_model :
         pre_tasks = the_model["Preprocess"]
         for the_task in pre_tasks :
             if "Action" in the_task and the_task["Action"] == "download":
                 _md5sum = str(the_task["md5sum"])
                 _ref = str(the_task["Lib"])+".tar.gz"
-                target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum})
+                if not _ref in all_list:
+                  target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum})
+                  all_list.append(_ref);
 
 for library in config_data["libraries"].keys() :
     the_library = config_data["libraries"][library]
     _md5sum = str(the_library["md5sum"])
     _lib = str(the_library["Lib"])+".tar.gz"
-    target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
+    if not _lib in all_list:
+      target_large_lib_list.append({"library":_lib, "md5sum":_md5sum})
+      all_list.append(_lib);
 ## postprocess download tasks
     if "Postprocess" in the_library :
        post_tasks = the_library["Postprocess"]
@@ -63,20 +71,25 @@ for library in config_data["libraries"].keys() :
            if "Action" in the_task and the_task["Action"] == "download":
                _md5sum = str(the_task["md5sum"])
                _ref = str(the_task["Lib"])+".tar.gz"
-               target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum})
+               if not _ref in all_list:
+                 target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum})
+                 all_list.append(_ref);
 
 for etree in config_data["etrees"].keys() :
     the_etree = config_data["etrees"][etree]
     _md5sum = str(the_etree["md5sum"])
     _etree = str(the_etree["Path"])
-    target_large_etree_list.append({"etree":_etree, "md5sum":_md5sum})
+    if not _etree in all_list:
+      target_large_etree_list.append({"etree":_etree, "md5sum":_md5sum})
+      all_list.append(_etree);
 
 for ref in config_data["references"].keys() :
     the_reference = config_data["references"][ref]
     _md5sum = str(the_reference["md5sum"])
     _ref=str(the_reference["Path"])
-    target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum})
-
+    if not _ref in all_list:
+      target_large_ref_list.append({"reference":_ref, "md5sum":_md5sum})
+      all_list.append(_ref);
 
 #
 #

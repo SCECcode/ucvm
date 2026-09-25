@@ -8,6 +8,8 @@
 #include "ucvm_proj_bilinear.h"
 #include "ucvm_proj_ucvm.h"
 
+int debug=0;
+
 /* Insert 2D grid at required resolution in a buffer */
 int insert_grid_buf(ue_cfg_t *cfg,
 		     etree_addr_t *pnts, ucvm_data_t *props, 
@@ -409,9 +411,12 @@ int extract(ue_cfg_t *cfg,
   gettimeofday(&end,NULL);
   elapsed = (end.tv_sec - start.tv_sec) * 1000.0 +
     (end.tv_usec - start.tv_usec) / 1000.0;
-  //printf("[%d] Finished col %d,%d in %.2f s\n", cfg->rank,
-  //	 i, j, elapsed / 1000.0);
-  //fflush(stdout);
+
+  if(debug) {
+    printf("[%d] Finished col %d,%d in %.2f s\n", cfg->rank,
+  	 i, j, elapsed / 1000.0);
+    fflush(stdout);
+  }
   
   if (ztics != cfg->ecfg.max_ticks[2]) {
     fprintf(stderr, "ztics mismatch, was %u, expected %u\n", ztics,

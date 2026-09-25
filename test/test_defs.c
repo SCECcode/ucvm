@@ -1,4 +1,4 @@
-#define _BSD_SOURCE /* Needed got gethostname with std=c99 */
+#define _DEFAULT_SOURCE /* Needed got gethostname with std=c99 */
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
