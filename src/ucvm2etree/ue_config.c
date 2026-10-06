@@ -39,13 +39,10 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       return(UCVM_CODE_ERROR);
     }
 
-    if (strlen(cptr->value) > UCVM_MAX_PROJ_LEN - 1) {
-      memset(cfg->projinfo.projstr, 0, UCVM_MAX_PROJ_LEN);
-      strncpy(cfg->projinfo.projstr, cptr->value, UCVM_MAX_PROJ_LEN - 1);
-      cfg->projinfo.projstr[UCVM_MAX_PROJ_LEN - 1]='\0'; 
-    } else {
-      sprintf(cfg->projinfo.projstr, "%s", cptr->value);
-    }
+
+    int sz=strlen(cptr->value);
+    sz= sz > (UCVM_MAX_PROJ_LEN - 1) ? (UCVM_MAX_PROJ_LEN - 1) : sz;
+    snprintf(cfg->projinfo.projstr, sz, "%s", cptr->value);
     
     /* Geo-bilinear projection is special case */
     if (strcmp(cfg->projinfo.projstr, PROJ_GEO_BILINEAR) == 0) {
