@@ -70,8 +70,10 @@ USAGE: mesh_translate type seek-type nx ny n mesh
 
 ucvm2mesh.conf
 ucvm2mesh.c
---> Create a mesh making ucvm_query call. Origin is at north-west and fast-Y 
+--> Create a mesh making ucvm_query call. 
+    (??? Default Origin is at north-west and fast-Y ) 
     use ucvm/ucvm_grid_gen_file to create 'grid file'
+    but can use proj and rotation 
     pickup grid points from the 'grid file' and extract the mesh data
 USAGE: ucvm2mesh -f configfile 
 

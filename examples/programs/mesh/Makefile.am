@@ -23,6 +23,15 @@ run_ucvm2mesh_mpi_cvmh_sh_SOURCES = run_ucvm2mesh_mpi_cvmh.sh
 endif 
 endif
 
+if UCVM_AM_ENABLE_SHAKEOUT2
+if UCVM_ON_USC_DISCOVERY
+bin_PROGRAMS += run_ucvm2mesh_mpi_shakeout2.sh
+run_ucvm2mesh_mpi_shakeout2_sh_SOURCES = run_ucvm2mesh_mpi_shakeout2.sh
+bin_PROGRAMS += run_ucvm2mesh_mpi_layer_shakeout2.sh
+run_ucvm2mesh_mpi_layer_shakeout2_sh_SOURCES = run_ucvm2mesh_mpi_layer_shakeout2.sh
+endif 
+endif
+
 if UCVM_AM_ENABLE_CVMSI
 if UCVM_ON_USC_DISCOVERY
 bin_PROGRAMS += run_ucvm2mesh_mpi_cvmsi.sh

@@ -31,6 +31,10 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
 
   /* Set defaults for optional variables */
   cfg->z_spacing = -1.0;
+  cfg->x_file = NULL;
+  cfg->x_list_num = 0;
+  cfg->y_file = NULL;
+  cfg->y_list_num = 0;
   cfg->z_file = NULL;
   cfg->z_list = NULL;
   cfg->z_list_num = 0;
@@ -154,7 +158,27 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       int len=strlen(cptr->value);
       cfg->z_file=(char *) malloc(sizeof(char) * (len+1));
       if(sscanf(cptr->value, "%s", cfg->z_file) != 1) {
-        fprintf(stderr, "[%d] Failed to find z_file in config\n", myid);
+        fprintf(stderr, "[%d] Failed to retrieve z_file in config\n", myid);
+        return(1);
+      }
+    }
+
+    cptr = ucvm_find_name(chead, "x_file");
+    if (cptr != NULL) {
+      int len=strlen(cptr->value);
+      cfg->x_file=(char *) malloc(sizeof(char) * (len+1));
+      if(sscanf(cptr->value, "%s", cfg->x_file) != 1) {
+        fprintf(stderr, "[%d] Failed to retrieve x_file in config\n", myid);
+        return(1);
+      }
+    }
+
+    cptr = ucvm_find_name(chead, "y_file");
+    if (cptr != NULL) {
+      int len=strlen(cptr->value);
+      cfg->y_file=(char *) malloc(sizeof(char) * (len+1));
+      if(sscanf(cptr->value, "%s", cfg->y_file) != 1) {
+        fprintf(stderr, "[%d] Failed to retrieve y_file in config\n", myid);
         return(1);
       }
     }

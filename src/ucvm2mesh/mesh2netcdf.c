@@ -1,5 +1,9 @@
 /**
     mesh2netcdf.c
+
+This only works if the mesh can fit in memory because the data are read in memory 
+and then written out to a nc file
+
 **/
 
 #include <stdio.h>

@@ -1,0 +1,62 @@
+## example of ucvm2mesh config file
+ 
+# List of CVMs to query
+ucvmlist=cvmsi,elygtl:taper
+
+# UCVM conf file
+ucvmconf=${CONF_DIR}/conf/ucvm.conf
+
+## taper's max_z is forced to be 700m
+min_zrange=0.0
+max_zrange=700.0
+
+vs_floor=200.0
+vp_floor=500.0
+density_floor=200.0
+
+# Gridding cell centered or vertex
+gridtype=CENTER
+
+# Spacing of cells (m)
+spacing=1000.0
+z_file = shakeout2_zlist
+
+x_file = shakeout2_xlist
+y_file = shakeout2_ylist
+
+# Projection
+proj=+proj=utm +datum=WGS84 +zone=11
+# rotate?
+#rot=-39.9
+rot=0
+
+x0=-120.033556
+y0=31.869638
+z0=0.0
+
+# distance in meter for each dim
+#x=516k
+#y=469k
+#dz=50..,100..,350..,500..,1000..
+# Number of cells along each dim
+nx=516
+ny=468
+nz=152
+
+# Partitioning of grid among processors
+px=4
+py=4
+pz=8
+
+# Vs/Vp minimum
+vp_min=0
+vs_min=0
+
+# Mesh and grid files, format
+meshfile=shakeout2.mesh
+gridfile=shakeout2.grid
+#meshtype=IJK-12
+meshtype=SORD
+
+# Location of scratch dir
+scratch=${SCRATCH}
