@@ -38,9 +38,11 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       fprintf(stderr, "[%d] Failed to find proj in config\n", myid);
       return(UCVM_CODE_ERROR);
     }
+
     if (strlen(cptr->value) > UCVM_MAX_PROJ_LEN - 1) {
       memset(cfg->projinfo.projstr, 0, UCVM_MAX_PROJ_LEN);
       strncpy(cfg->projinfo.projstr, cptr->value, UCVM_MAX_PROJ_LEN - 1);
+      cfg->projinfo.projstr[UCVM_MAX_PROJ_LEN - 1]='\0'; 
     } else {
       sprintf(cfg->projinfo.projstr, "%s", cptr->value);
     }
@@ -198,6 +200,7 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
     if (strlen(cptr->value) > UCVM_META_MAX_STRING_LEN - 1) {
       memset(cfg->ecfg.title, 0, UCVM_META_MAX_STRING_LEN);
       strncpy(cfg->ecfg.title, cptr->value, UCVM_META_MAX_STRING_LEN - 1);
+      cfg->ecfg.title[UCVM_META_MAX_STRING_LEN-1]='\0' ;
     } else {
       sprintf(cfg->ecfg.title, "%s", cptr->value);
     }
@@ -210,6 +213,7 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
     if (strlen(cptr->value) > UCVM_META_MAX_STRING_LEN - 1) {
       memset(cfg->ecfg.author, 0, UCVM_META_MAX_STRING_LEN);
       strncpy(cfg->ecfg.author, cptr->value, UCVM_META_MAX_STRING_LEN - 1);
+      cfg->ecfg.author[UCVM_META_MAX_STRING_LEN-1]='\0' ;
     } else {
       sprintf(cfg->ecfg.author, "%s", cptr->value);
     }
@@ -222,6 +226,7 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
     if (strlen(cptr->value) > UCVM_META_MAX_STRING_LEN - 1) {
       memset(cfg->ecfg.date, 0, UCVM_META_MAX_STRING_LEN);
       strncpy(cfg->ecfg.date, cptr->value, UCVM_META_MAX_STRING_LEN - 1);
+      cfg->ecfg.date[UCVM_META_MAX_STRING_LEN-1]='\0' ;
     } else {
       sprintf(cfg->ecfg.date, "%s", cptr->value);
     }

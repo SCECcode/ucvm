@@ -27,6 +27,10 @@ int ucvm2mesh_debug=1;
 int ucvm2mesh_debug_detail=0;
 FILE *stderrfp=NULL;
 
+FILE *mesh_xfp=NULL;
+FILE *mesh_yfp=NULL;
+FILE *mesh_zfp=NULL;
+
 /* Display usage information */
 void usage(char *arg)
 {
@@ -196,7 +200,7 @@ int extract(mesh_config_t *cfg)
       if(ucvm2mesh_debug_detail) {
         fprintf(stderrfp,"  %lf %lf\n",pntbuf[i].coord[0],pntbuf[i].coord[1]);
       }
-      fprintf(stderrfp,"x(%d):%lf\n",i,pntbuf[i].coord[0]);
+      if(mesh_xfp) { fprintf(mesh_xfp,"%lf\n",pntbuf[i].coord[0]); }
     }
 
     fprintf(stderrfp,"Y-axis col:\n");
@@ -204,7 +208,7 @@ int extract(mesh_config_t *cfg)
       if(ucvm2mesh_debug_detail) {
         fprintf(stderrfp,"  %lf %lf\n",pntbuf[dimx * j].coord[0],pntbuf[ dimx * j].coord[1]);
       }
-      fprintf(stderrfp,"y(%d):%lf\n",j,pntbuf[dimx * j].coord[1]);
+      if(mesh_yfp) { fprintf(mesh_yfp,"%lf\n",pntbuf[dimx * j].coord[1]); }
     }
   }
 
@@ -248,7 +252,7 @@ int extract(mesh_config_t *cfg)
             z=cfg->z_list[k_start+k];
         }
     }
-    if(ucvm2mesh_debug) { fprintf(stderrfp, " z(%d): %lf\n", k,z); }
+    if(mesh_zfp) { fprintf(mesh_zfp, "%lf\n",z); }
 
     for (n = 0; n < num_grid; n++) {
       pntbuf[n].coord[2] = z;
@@ -387,6 +391,16 @@ int main(int argc, char **argv)
     return(1);
   }
 
+  /* open coordinate list's file */
+  if(cfg.x_file != NULL) { mesh_xfp = fopen(cfg.x_file, "w+"); }
+  if(cfg.y_file != NULL) { mesh_yfp = fopen(cfg.y_file, "w+"); }
+  /* special case */
+  if(cfg.z_file != NULL) { 
+    if(cfg.z_list_num == 0) { /* z depths are not user supplied */
+      mesh_yfp = fopen(cfg.y_file, "w+");
+    }
+  }
+ 
   /* Delete output mesh file if present */
   deleteFile(cfg.meshfile);
 
@@ -435,6 +449,9 @@ int main(int argc, char **argv)
     fprintf(stderrfp, "Done.\n");
     fclose(stderrfp);
   }
+  if(mesh_xfp != NULL) fclose(mesh_xfp);
+  if(mesh_yfp != NULL) fclose(mesh_yfp);
+  if(mesh_zfp != NULL) fclose(mesh_zfp);
 
   return(0);
 }

@@ -64,7 +64,7 @@ int ucvm_patch_model_init(int id, ucvm_modelconf_t *conf)
     memset(ucvm_patch_list, 0, sizeof(ucvm_patch_t) * UCVM_MAX_MODELS);
   }
 
-  if ((conf->config == NULL) || (strlen(conf->config) == 0)) {
+  if (strlen(conf->config) == 0) {
     fprintf(stderr, "No config path defined for model %s\n", conf->label);
     return(UCVM_CODE_ERROR);
   }

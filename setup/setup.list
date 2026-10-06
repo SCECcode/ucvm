@@ -6,7 +6,7 @@
                 "SHAKEOUT2": {
                         "Version": "1.0",
                         "Abbreviation": "shakeout2",
-                        "Size": "400M",
+                        "Size": "841M",
                         "Path": "shakeout2",
                         "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/shakeout2.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],
@@ -208,7 +208,7 @@
                 "MUSCALNC": {
                         "Version": "1.0",
                         "Abbreviation": "muscalnc",
-                        "Size": "35M",
+                        "Size": "1.4G",
                         "Path": "muscalnc",
                         "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/muscalnc.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH"],

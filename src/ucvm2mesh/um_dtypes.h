@@ -25,10 +25,16 @@ typedef struct mesh_config_t
 
   double spacing;
   double z_spacing; /* optional */
-  char *z_file; /* optional */
 
+     
+  char *z_file; /* optional, can be input or output filename */
   double *z_list; 
   int z_list_num; 
+
+  char *x_file; /* optional, output filename only */
+  int x_list_num;
+  char *y_file; /* optional, output filename only */
+  int y_list_num;
 
   char proj[UCVM_MAX_PROJ_LEN];
   double rot;
