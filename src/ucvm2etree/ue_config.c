@@ -17,6 +17,7 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
   ucvm_config_t *chead;
   ucvm_config_t *cptr;
   char tmpstr[UCVM_CONFIG_MAX_STR];
+  int sz;
 
   /* Set rank,nproc to -1 to disable MPI */
   cfg->rank = myid;
@@ -39,13 +40,9 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       return(UCVM_CODE_ERROR);
     }
 
-    if (strlen(cptr->value) > UCVM_MAX_PROJ_LEN - 1) {
-      memset(cfg->projinfo.projstr, 0, UCVM_MAX_PROJ_LEN);
-      strncpy(cfg->projinfo.projstr, cptr->value, UCVM_MAX_PROJ_LEN - 1);
-      cfg->projinfo.projstr[UCVM_MAX_PROJ_LEN - 1]='\0'; 
-    } else {
-      sprintf(cfg->projinfo.projstr, "%s", cptr->value);
-    }
+    sz= strlen(cptr->value);
+    sz= sz > (UCVM_MAX_PROJ_LEN - 1)?(UCVM_MAX_PROJ_LEN - 1):sz;
+    snprintf(cfg->projinfo.projstr, sz, "%s", cptr->value);
     
     /* Geo-bilinear projection is special case */
     if (strcmp(cfg->projinfo.projstr, PROJ_GEO_BILINEAR) == 0) {
@@ -197,40 +194,31 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       fprintf(stderr, "[%d] Failed to find title in config\n", myid);
       return(UCVM_CODE_ERROR);
     }
-    if (strlen(cptr->value) > UCVM_META_MAX_STRING_LEN - 1) {
-      memset(cfg->ecfg.title, 0, UCVM_META_MAX_STRING_LEN);
-      strncpy(cfg->ecfg.title, cptr->value, UCVM_META_MAX_STRING_LEN - 1);
-      cfg->ecfg.title[UCVM_META_MAX_STRING_LEN-1]='\0' ;
-    } else {
-      sprintf(cfg->ecfg.title, "%s", cptr->value);
-    }
+
+    sz= strlen(cptr->value);
+    sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
+    snprintf(cfg->ecfg.title, sz, "%s", cptr->value);
 
     cptr = ucvm_find_name(chead, "author");
     if (cptr == NULL) {
       fprintf(stderr, "[%d] Failed to find author in config\n", myid);
       return(UCVM_CODE_ERROR);
     }
-    if (strlen(cptr->value) > UCVM_META_MAX_STRING_LEN - 1) {
-      memset(cfg->ecfg.author, 0, UCVM_META_MAX_STRING_LEN);
-      strncpy(cfg->ecfg.author, cptr->value, UCVM_META_MAX_STRING_LEN - 1);
-      cfg->ecfg.author[UCVM_META_MAX_STRING_LEN-1]='\0' ;
-    } else {
-      sprintf(cfg->ecfg.author, "%s", cptr->value);
-    }
-    
+
+    sz= strlen(cptr->value);
+    sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
+    snprintf(cfg->ecfg.author, sz,"%s", cptr->value);
+
     cptr = ucvm_find_name(chead, "date");
     if (cptr == NULL) {
       fprintf(stderr, "[%d] Failed to find date in config\n", myid);
       return(UCVM_CODE_ERROR);
     }
-    if (strlen(cptr->value) > UCVM_META_MAX_STRING_LEN - 1) {
-      memset(cfg->ecfg.date, 0, UCVM_META_MAX_STRING_LEN);
-      strncpy(cfg->ecfg.date, cptr->value, UCVM_META_MAX_STRING_LEN - 1);
-      cfg->ecfg.date[UCVM_META_MAX_STRING_LEN-1]='\0' ;
-    } else {
-      sprintf(cfg->ecfg.date, "%s", cptr->value);
-    }
-    
+
+    sz= strlen(cptr->value);
+    sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
+    snprintf(cfg->ecfg.date, sz, "%s", cptr->value);
+
     cptr = ucvm_find_name(chead, "outputfile");
     if (cptr == NULL) {
       fprintf(stderr, "[%d] Failed to find outputfile in config\n", myid);
