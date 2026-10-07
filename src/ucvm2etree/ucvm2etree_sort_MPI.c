@@ -154,8 +154,8 @@ int main(int argc, char **argv)
   cfg.ecfg.max_octants = cfg.buf_sort_ffile_max_oct;
 
   /* Open flat files */
-  sprintf(inputfile, "%s/cvmbycols_%07d.f", cfg.scratch, cfg.rank);
-  sprintf(cfg.ecfg.outputfile, "%s/cvmbycols_%07d.fs", cfg.scratch, 
+  snprintf(inputfile, sizeof(inputfile), "%.230s/cvmbycols_%07d.f", cfg.scratch, cfg.rank);
+  snprintf(cfg.ecfg.outputfile, sizeof(cfg.ecfg.outputfile), "%.230s/cvmbycols_%07d.fs", cfg.scratch, 
 	  cfg.rank);
   cfg.ecfg.efp[0] = fopen(inputfile, "rb");
   cfg.ecfg.efp[1] = fopen(cfg.ecfg.outputfile, "wb");

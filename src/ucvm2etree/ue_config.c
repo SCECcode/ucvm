@@ -194,7 +194,6 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       fprintf(stderr, "[%d] Failed to find title in config\n", myid);
       return(UCVM_CODE_ERROR);
     }
-
     sz= strlen(cptr->value);
     sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
     snprintf(cfg->ecfg.title, sz, "%s", cptr->value);
@@ -204,7 +203,6 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       fprintf(stderr, "[%d] Failed to find author in config\n", myid);
       return(UCVM_CODE_ERROR);
     }
-
     sz= strlen(cptr->value);
     sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
     snprintf(cfg->ecfg.author, sz,"%s", cptr->value);
@@ -214,7 +212,6 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       fprintf(stderr, "[%d] Failed to find date in config\n", myid);
       return(UCVM_CODE_ERROR);
     }
-
     sz= strlen(cptr->value);
     sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
     snprintf(cfg->ecfg.date, sz, "%s", cptr->value);
@@ -224,14 +221,18 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       fprintf(stderr, "[%d] Failed to find outputfile in config\n", myid);
     return(UCVM_CODE_ERROR);
     }
-    sprintf(cfg->ecfg.outputfile, "%s", cptr->value);
+    sz= strlen(cptr->value);
+    sz= sz > (UCVM_MAX_PATH_LEN - 1)?(UCVM_MAX_PATH_LEN - 1):sz;
+    snprintf(cfg->ecfg.outputfile, sz, "%s", cptr->value);
     
     cptr = ucvm_find_name(chead, "format");
     if (cptr == NULL) {
       fprintf(stderr, "[%d] Failed to find format in config\n", myid);
     return(UCVM_CODE_ERROR);
     }
-    sprintf(cfg->ecfg.format, "%s", cptr->value);
+    sz= strlen(cptr->value);
+    sz= sz > (UCVM_CONFIG_MAX_STR - 1)?(UCVM_CONFIG_MAX_STR - 1):sz;
+    snprintf(cfg->ecfg.format, sz, "%s", cptr->value);
     
     if ((strcmp(cfg->ecfg.format, "flatfile") != 0) && 
       (strcmp(cfg->ecfg.format, "etree") != 0)) {

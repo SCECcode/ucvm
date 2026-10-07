@@ -353,7 +353,8 @@ int main(int argc, char **argv)
     write_func = insert_grid_buf;
 
     /* Open flat file */
-    sprintf(cfg.ecfg.outputfile, "%s/cvmbycols_%07d.f", cfg.scratch, 
+    // both outputfile(256) and scratch(512), so limit scratch to 230
+    snprintf(cfg.ecfg.outputfile, sizeof(cfg.ecfg.outputfile), "%.230s/cvmbycols_%07d.f", cfg.scratch, 
 	    (cfg.rank)-1);
     cfg.ecfg.efp[0] = fopen(cfg.ecfg.outputfile, "wb");
     if (cfg.ecfg.efp[0] == NULL) {

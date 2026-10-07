@@ -9,6 +9,7 @@
 int read_config(int myid, int nproc, const char *cfgfile, ge_cfg_t *cfg)
 {
   int i;
+  int sz;
   ucvm_config_t *chead;
   ucvm_config_t *cptr;
 
@@ -25,12 +26,9 @@ int read_config(int myid, int nproc, const char *cfgfile, ge_cfg_t *cfg)
     fprintf(stderr, "Failed to find proj in config\n");
     return(UCVM_CODE_ERROR);
   }
-  if (strlen(cptr->value) > UCVM_MAX_PROJ_LEN - 1) {
-    memset(cfg->projinfo.projstr, 0, UCVM_MAX_PROJ_LEN);
-    strncpy(cfg->projinfo.projstr, cptr->value, UCVM_MAX_PROJ_LEN - 1);
-  } else {
-    sprintf(cfg->projinfo.projstr, "%s", cptr->value);
-  }
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_MAX_PROJ_LEN - 1) ? (UCVM_MAX_PROJ_LEN - 1) : sz;
+  snprintf(cfg->projinfo.projstr, sz, "%s", cptr->value);
   
   /* Parse origin longitude */
   cptr = ucvm_find_name(chead, "lon_0");
@@ -100,91 +98,72 @@ int read_config(int myid, int nproc, const char *cfgfile, ge_cfg_t *cfg)
     fprintf(stderr, "Failed to find title in config\n");
     return(UCVM_CODE_ERROR);
   }
-  if (strlen(cptr->value) > UCVM_META_MAX_STRING_LEN - 1) {
-    memset(cfg->ecfg.title, 0, UCVM_META_MAX_STRING_LEN);
-    strncpy(cfg->ecfg.title, cptr->value, UCVM_META_MAX_STRING_LEN - 1);
-  } else {
-    sprintf(cfg->ecfg.title, "%s", cptr->value);
-  }
-  
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
+  snprintf(cfg->ecfg.title, sz, "%s", cptr->value);
+
   cptr = ucvm_find_name(chead, "author");
   if (cptr == NULL) {
     fprintf(stderr, "Failed to find author in config\n");
     return(UCVM_CODE_ERROR);
   }
-  if (strlen(cptr->value) > UCVM_META_MAX_STRING_LEN - 1) {
-    memset(cfg->ecfg.author, 0, UCVM_META_MAX_STRING_LEN);
-    strncpy(cfg->ecfg.author, cptr->value, UCVM_META_MAX_STRING_LEN - 1);
-  } else {
-    sprintf(cfg->ecfg.author, "%s", cptr->value);
-  }
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
+  snprintf(cfg->ecfg.author, sz,"%s", cptr->value);
   
   cptr = ucvm_find_name(chead, "date");
   if (cptr == NULL) {
     fprintf(stderr, "Failed to find date in config\n");
     return(UCVM_CODE_ERROR);
   }
-  if (strlen(cptr->value) > UCVM_META_MAX_STRING_LEN - 1) {
-    memset(cfg->ecfg.date, 0, UCVM_META_MAX_STRING_LEN);
-    strncpy(cfg->ecfg.date, cptr->value, UCVM_META_MAX_STRING_LEN - 1);
-  } else {
-    sprintf(cfg->ecfg.date, "%s", cptr->value);
-  }
-  
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
+  snprintf(cfg->ecfg.date, sz, "%s", cptr->value);
+
   cptr = ucvm_find_name(chead, "outputfile");
   if (cptr == NULL) {
     fprintf(stderr, "Failed to find outputfile in config\n");
     return(UCVM_CODE_ERROR);
   }
-  sprintf(cfg->ecfg.outputfile, "%s", cptr->value);
-  
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_MAX_PATH_LEN - 1)?(UCVM_MAX_PATH_LEN - 1):sz;
+  snprintf(cfg->ecfg.outputfile, sz, "%s", cptr->value);
+
   cptr = ucvm_find_name(chead, "elev_hr_dir");
   if (cptr == NULL) {
     fprintf(stderr, "Failed to find elev_hr_dir in config\n");
     return(UCVM_CODE_ERROR);
   }
-  if (strlen(cptr->value) > UCVM_MAX_PATH_LEN - 1) {
-    memset(cfg->elev_hr_dir, 0, UCVM_MAX_PATH_LEN);
-    strncpy(cfg->elev_hr_dir, cptr->value, UCVM_MAX_PATH_LEN - 1);
-  } else {
-    sprintf(cfg->elev_hr_dir, "%s", cptr->value);
-  }
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_MAX_PATH_LEN - 1)?(UCVM_MAX_PATH_LEN - 1):sz;
+  snprintf(cfg->elev_hr_dir, sz,"%s", cptr->value);
 
   cptr = ucvm_find_name(chead, "elev_lr_dir");
   if (cptr == NULL) {
     fprintf(stderr, "Failed to find elev_lr_dir in config\n");
     return(UCVM_CODE_ERROR);
   }
-  if (strlen(cptr->value) > UCVM_MAX_PATH_LEN - 1) {
-    memset(cfg->elev_lr_dir, 0, UCVM_MAX_PATH_LEN);
-    strncpy(cfg->elev_lr_dir, cptr->value, UCVM_MAX_PATH_LEN - 1);
-  } else {
-    sprintf(cfg->elev_lr_dir, "%s", cptr->value);
-  }
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_MAX_PATH_LEN - 1)?(UCVM_MAX_PATH_LEN - 1):sz;
+  snprintf(cfg->elev_lr_dir, sz,"%s", cptr->value);
 
   cptr = ucvm_find_name(chead, "vs30_hr_dir");
   if (cptr == NULL) {
     fprintf(stderr, "Failed to find vs30_hr_dir in config\n");
     return(UCVM_CODE_ERROR);
   }
-  if (strlen(cptr->value) > UCVM_MAX_PATH_LEN - 1) {
-    memset(cfg->vs30_hr_dir, 0, UCVM_MAX_PATH_LEN);
-    strncpy(cfg->vs30_hr_dir, cptr->value, UCVM_MAX_PATH_LEN - 1);
-  } else {
-    sprintf(cfg->vs30_hr_dir, "%s", cptr->value);
-  }
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_MAX_PATH_LEN - 1)?(UCVM_MAX_PATH_LEN - 1):sz;
+  snprintf(cfg->vs30_hr_dir, sz,"%s", cptr->value);
 
   cptr = ucvm_find_name(chead, "vs30_lr_dir");
   if (cptr == NULL) {
     fprintf(stderr, "Failed to find vs30_lr_dir in config\n");
     return(UCVM_CODE_ERROR);
   }
-  if (strlen(cptr->value) > UCVM_MAX_PATH_LEN - 1) {
-    memset(cfg->vs30_lr_dir, 0, UCVM_MAX_PATH_LEN);
-    strncpy(cfg->vs30_lr_dir, cptr->value, UCVM_MAX_PATH_LEN - 1);
-  } else {
-    sprintf(cfg->vs30_lr_dir, "%s", cptr->value);
-  }
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_MAX_PATH_LEN - 1)?(UCVM_MAX_PATH_LEN - 1):sz;
+  snprintf(cfg->vs30_lr_dir, sz,"%s", cptr->value);
 
   /* Setup projection */
   if (ucvm_proj_ucvm_init(cfg->projinfo.projstr, 
