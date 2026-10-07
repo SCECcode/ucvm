@@ -417,7 +417,7 @@ int main(int argc, char **argv)
   }
 
   /* Set Interpolation floor */
-  ucvm_setfloor(cfg->ucvm_floor);
+  ucvm_setfloor(cfg.ucvm_floor);
 
   /* Perform extractions */
   int myrank=myid;

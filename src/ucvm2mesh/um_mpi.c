@@ -68,7 +68,7 @@ void mpi_register_mesh_ijk32(MPI_Datatype *MPI_MESH_8_T, int *num_fields)
                                 MPI_FLOAT, MPI_FLOAT, MPI_FLOAT };
   int blocklen[8] = { 1, 1, 1, 1, 1, 1, 1, 1 };
   MPI_Aint disp[8] = { 0, 4, 8, 12, 16, 20, 24, 28 };
-  MPI_Type_struct(*num_fields, blocklen, disp, mesh_type, MPI_MESH_8_T);
+  MPI_Type_create_struct(*num_fields, blocklen, disp, mesh_type, MPI_MESH_8_T);
   MPI_Type_commit(MPI_MESH_8_T);
   return;
 }
@@ -81,7 +81,7 @@ void mpi_register_mesh_ijk20(MPI_Datatype *MPI_MESH_5_T, int *num_fields)
                                 MPI_FLOAT, MPI_FLOAT, MPI_FLOAT };
   int blocklen[5] = { 1, 1, 1, 1, 1 };
   MPI_Aint disp[5] = { 0, 4, 8, 12, 16 };
-  MPI_Type_struct(*num_fields, blocklen, disp, mesh_type, MPI_MESH_5_T);
+  MPI_Type_create_struct(*num_fields, blocklen, disp, mesh_type, MPI_MESH_5_T);
   MPI_Type_commit(MPI_MESH_5_T);
   return;
 }
@@ -94,7 +94,7 @@ void mpi_register_mesh_ijk12(MPI_Datatype *MPI_MESH_3_T, int *num_fields)
   MPI_Datatype mesh_type[3] = { MPI_FLOAT, MPI_FLOAT, MPI_FLOAT };
   int blocklen[3] = { 1, 1, 1 };
   MPI_Aint disp[3] = { 0, 4, 8 };
-  MPI_Type_struct(*num_fields, blocklen, disp, mesh_type, MPI_MESH_3_T);
+  MPI_Type_create_struct(*num_fields, blocklen, disp, mesh_type, MPI_MESH_3_T);
   MPI_Type_commit(MPI_MESH_3_T);
   return;
 }
@@ -107,7 +107,7 @@ void mpi_register_mesh_sord(MPI_Datatype *MPI_MESH_1_T, int *num_fields)
   MPI_Datatype mesh_type[1] = { MPI_FLOAT };
   int blocklen[1] = { 1 };
   MPI_Aint disp[1] = { 0 };
-  MPI_Type_struct(*num_fields, blocklen, disp, mesh_type, MPI_MESH_1_T);
+  MPI_Type_create_struct(*num_fields, blocklen, disp, mesh_type, MPI_MESH_1_T);
   MPI_Type_commit(MPI_MESH_1_T);
   return;
 }
@@ -121,7 +121,7 @@ void mpi_register_stat_4(MPI_Datatype *MPI_STAT_4_T, int *num_fields)
                                 MPI_FLOAT };
   int blocklen[4] = { 1, 1, 1, 1 };
   MPI_Aint disp[4] = { 0, 4, 8, 12 };
-  MPI_Type_struct(*num_fields, blocklen, disp, mesh_type, MPI_STAT_4_T);
+  MPI_Type_create_struct(*num_fields, blocklen, disp, mesh_type, MPI_STAT_4_T);
   MPI_Type_commit(MPI_STAT_4_T);
   return;
 }

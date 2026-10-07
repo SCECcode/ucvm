@@ -450,7 +450,7 @@ int main(int argc, char **argv) {
                 printf("spacing: %f\n", spacing);
                 printf("cvm_selected: %s\n", modellist);
                 printf("\nparams: -b %f,%f -u %f,%f -c %s -s %f -x %d -y %d\n",
-                         lat1,lon1,lat2,lon2,modellist,spacing,nx,ny);
+				lat1,lon1,lat2,lon2,modellist,spacing,nx,ny);
 
                 /* produce the meta data in json.. */
 
@@ -465,6 +465,19 @@ int main(int argc, char **argv) {
                 lonlist[0]='\0';
                 int ii;
                 // pnts.coord's format is coord[0] is the lon, ccord[1] is the lat
+                char *alist=latlist;
+                for (ii = 0; ii < ny; ii++) {
+                  double tlat= (double) (ii * spacing) + latlon[0];
+                  alist += sprintf(alist, (ii == 0) ? "%10.4f" : ",%10.4f", tlat);
+                }
+
+                char *olist=lonlist; 
+                for (ii = 0; ii < nx; ii++) {
+                  double tlon= (double) (ii * spacing) + latlon[1];
+                  olist += sprintf(olist, (ii == 0) ? "%10.4f" : ",%10.4f", tlon);
+                }
+
+/*
 		for (ii = 0; ii < ny; ii++) {
                    double tlat= (double) (ii * spacing) + latlon[0];
                    if(ii==0) {
@@ -475,13 +488,13 @@ int main(int argc, char **argv) {
                 }
 		for (ii = 0; ii < nx; ii++) {
                    double tlon= (double) (ii * spacing) + latlon[1];
-                   
                    if(ii==0) {
                        sprintf(lonlist,"%10.4f",tlon);
                        } else {
                            sprintf(lonlist,"%s,%10.4f",lonlist,tlon);
                    }
                 }
+*/
                 
                 if(ascii_meta_outfile != 0 && strlen(ascii_meta_outfile) > 0) { 
                 // a guess of how big the blob is..
@@ -491,7 +504,7 @@ int main(int argc, char **argv) {
                         fprintf(stderr,"failed to reesrve meta blob \n");
                         exit(1);
                     }
-		    sprintf(meta_blob,"{\"spacing\":%10.4f,\
+		    int rc=snprintf(meta_blob,strlen(meta_blob),"{\"spacing\":%10.4f,\
 			\"bottom-left lat\":%10.4f,\"bottom-left lon\":%10.4f,\
 			\"upper-right lat\":%10.4f,\"upper-right lon\":%10.4f,\
 			\"cvm_selected\":\"%s\",\"config\": \"%s\",\
@@ -503,6 +516,7 @@ int main(int argc, char **argv) {
                     modellist,configfile,
                     max_depth,vs_thresh,
                     nx,ny,latlist,lonlist);
+                    if(rc<0 || rc >= strlen(meta_blob)) exit(1);
 
 		    MPI_File_open(MPI_COMM_SELF, ascii_meta_outfile, MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &mfh);
 		    MPI_File_write(mfh, meta_blob, (int)strlen(meta_blob) * sizeof(char), MPI_CHAR, MPI_STATUS_IGNORE);

@@ -375,7 +375,7 @@ int main(int argc, char **argv)
 
   /* Filesytem IO */
   int i;
-  char tmp[UCVM_MAX_PATH_LEN], tmp2[UCVM_MAX_PATH_LEN];
+  char tmp[UCVM_MAX_PATH_LEN+3], tmp2[UCVM_MAX_PATH_LEN];
 
   /* Options */
   int opt;
@@ -504,7 +504,7 @@ int main(int argc, char **argv)
   }
 
   /* Set interpolation z range */
-  ucvm_setfloor(cfg->ucvm_floor);
+  ucvm_setfloor(cfg.ucvm_floor);
   
   /* Perform extractions */
   if (extract(myid, nproc, &cfg) != 0) {
@@ -515,8 +515,8 @@ int main(int argc, char **argv)
   if ((myid == 0) && (strlen(stageoutdir) > 0)) {
     printf("[%d] Staging out mesh file(s)\n", myid);
     if (cfg.meshtype == MESH_FORMAT_SORD) {
-      sprintf(tmp, "%s_*", cfg.meshfile);
-      sprintf(tmp2, "%s", stageoutdir);
+      snprintf(tmp, sizeof(tmp)-1, "%s_*", cfg.meshfile);
+      snprintf(tmp2, sizeof(tmp2)-1, "%s", stageoutdir);
       printf("[%d] Copying %s to %s\n", myid, tmp, tmp2);
       if (copyFile(tmp, tmp2) != 0) {
 	fprintf(stderr, 

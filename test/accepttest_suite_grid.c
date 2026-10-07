@@ -18,9 +18,12 @@ int test_grid_tool_1d()
   /* Save current directory */
   getcwd(currentdir, MAX_STRING_LEN);
   
-  snprintf(infile, MAX_STRING_LEN-1, "%s/inputs/%s", currentdir, "test-grid.in");
-  snprintf(outfile, MAX_STRING_LEN-1, "%s/%s", currentdir, "test-grid-ucvm_query-1d.out");
-  snprintf(reffile, MAX_STRING_LEN-1, "%s/ref/%s", currentdir, "test-grid-lib-1d.ref");
+  int rc=snprintf(infile, MAX_STRING_LEN, "%s/inputs/%s", currentdir, "test-grid.in");
+  if( rc < 0 || rc >= MAX_STRING_LEN) return -1;
+  rc=snprintf(outfile, MAX_STRING_LEN, "%s/%s", currentdir, "test-grid-ucvm_query-1d.out");
+  if( rc < 0 || rc >= MAX_STRING_LEN) return -1;
+  rc=snprintf(reffile, MAX_STRING_LEN, "%s/ref/%s", currentdir, "test-grid-lib-1d.ref");
+  if( rc < 0 || rc >= MAX_STRING_LEN) return -1;
   
   if (test_assert_int(run_ucvm_query(".", 
 				     "../conf/ucvm.conf", 
@@ -74,9 +77,12 @@ int test_grid_lib_1d()
     return(1);
   }
 
-  snprintf(infile, MAX_STRING_LEN-1, "%s/inputs/%s", currentdir, "test-grid.in");
-  snprintf(outfile, MAX_STRING_LEN-1, "%s/%s", currentdir, "test-grid-lib-1d.out");
-  snprintf(reffile, MAX_STRING_LEN-1, "%s/ref/%s", currentdir, "test-grid-lib-1d.ref");
+  int rc=snprintf(infile, MAX_STRING_LEN, "%s/inputs/%s", currentdir, "test-grid.in");
+  if( rc < 0 || rc >= MAX_STRING_LEN) return -1;
+  rc = snprintf(outfile, MAX_STRING_LEN, "%s/%s", currentdir, "test-grid-lib-1d.out");
+  if( rc < 0 || rc >= MAX_STRING_LEN) return -1;
+  rc= snprintf(reffile, MAX_STRING_LEN, "%s/ref/%s", currentdir, "test-grid-lib-1d.ref");
+  if( rc < 0 || rc >= MAX_STRING_LEN) return -1;
 
   /* Read in grid points */
   if (read_points(infile, MAX_POINTS, pnts, &num_pnts) != 0) {
