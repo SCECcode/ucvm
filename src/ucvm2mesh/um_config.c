@@ -61,14 +61,14 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       fprintf(stderr, "[%d] Failed to find ucvmlist in config\n", myid);
 	return(1);
     }
-    snprintf(cfg->ucvmstr, strlen(cptr->value), "%s", cptr->value);
+    snprintf(cfg->ucvmstr, strlen(cptr->value)+1, "%s", cptr->value);
     
     cptr = ucvm_find_name(chead, "ucvmconf");
     if (cptr == NULL) {
       fprintf(stderr, "[%d] Failed to find ucvmconf in config\n", myid);
       return(1);
     }
-    snprintf(cfg->ucvmconf, strlen(cptr->value), "%s", cptr->value);
+    snprintf(cfg->ucvmconf, strlen(cptr->value)+1, "%s", cptr->value);
 
     cptr = ucvm_find_name(chead, "gridtype");
     if (cptr == NULL) {
@@ -188,7 +188,7 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
 	fprintf(stderr, "[%d] Failed to find proj in config\n", myid);
 	return(1);
     }
-    snprintf(cfg->proj, strlen(cptr->value), "%s", cptr->value);
+    snprintf(cfg->proj, strlen(cptr->value)+1, "%s", cptr->value);
 
     cptr = ucvm_find_name(chead, "rot");
     if (cptr == NULL) {
@@ -315,14 +315,14 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       fprintf(stderr, "[%d] Failed to find meshfile in config\n", myid);
       return(1);
     }
-    snprintf(cfg->meshfile, strlen(cptr->value), "%s", cptr->value);
+    snprintf(cfg->meshfile, strlen(cptr->value)+1, "%s", cptr->value);
 
     cptr = ucvm_find_name(chead, "gridfile");
     if (cptr == NULL) {
       fprintf(stderr, "[%d] Failed to find gridfile in config\n", myid);
       return(1);
     }
-    snprintf(cfg->gridfile, strlen(cptr->value), "%s", cptr->value);
+    snprintf(cfg->gridfile, strlen(cptr->value)+1, "%s", cptr->value);
     
     cptr = ucvm_find_name(chead, "meshtype");
     if (cptr == NULL) {
@@ -345,7 +345,7 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       fprintf(stderr, "[%d] Failed to find scratch in config\n", myid);
       return(1);
     }
-    snprintf(cfg->scratch, strlen(cptr->value), "%s", cptr->value);
+    snprintf(cfg->scratch, strlen(cptr->value)+1, "%s", cptr->value);
 
     ucvm_free_config(chead);
 
