@@ -13,8 +13,6 @@ extern double ucvm_interp_vs_floor;
 extern double ucvm_interp_vp_floor;
 extern double ucvm_interp_density_floor;
 
-int interp_debug=0;
-
 /* Ely interpolation method */
 int ucvm_interp_ely(double zmin, double zmax, ucvm_ctype_t cmode,
 		    ucvm_point_t *pnt, ucvm_data_t *data)
@@ -86,7 +84,6 @@ int ucvm_interp_so2(double zmin, double zmax, ucvm_ctype_t cmode,
             ucvm_point_t *pnt, ucvm_data_t *data)
 {
   double z, f, g;
-//  fprintf(stderr,"XXX callin interp for data depth %lf\n", data->depth);
 
   switch (cmode) {
   case UCVM_COORD_GEO_DEPTH:
@@ -157,7 +154,6 @@ int ucvm_interp_so2(double zmin, double zmax, ucvm_ctype_t cmode,
 
     double ratio = (data->cmb.vp/data->cmb.vs);
 
-//    fprintf(stderr, "XXX using interp_vs_floor %lf\n", ucvm_interp_vs_floor);
     if(ucvm_interp_vs_floor != UCVM_DEFAULT_NULL_FLOOR &&
           data->cmb.vs < ucvm_interp_vs_floor)
     { 
@@ -194,7 +190,6 @@ int ucvm_interp_taper(double zmin, double zmax, ucvm_ctype_t cmode,
             ucvm_point_t *pnt, ucvm_data_t *data)
 {
   double z, f, g;
-//  fprintf(stderr,"XXX callin interp for data depth %lf\n", data->depth);
 
   switch (cmode) {
   case UCVM_COORD_GEO_DEPTH:
@@ -261,7 +256,6 @@ int ucvm_interp_taper(double zmin, double zmax, ucvm_ctype_t cmode,
 
     double ratio = (data->cmb.vp/data->cmb.vs);
 
-//    fprintf(stderr, "XXX using interp_vs_floor %lf\n", ucvm_interp_vs_floor);
     if(ucvm_interp_vs_floor != UCVM_DEFAULT_NULL_FLOOR &&
           data->cmb.vs < ucvm_interp_vs_floor)
     { 
