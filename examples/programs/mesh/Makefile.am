@@ -38,13 +38,17 @@ bin_PROGRAMS += run_ucvm2mesh_mpi_cvmsi.sh
 run_ucvm2mesh_mpi_cvmsi_sh_SOURCES = run_ucvm2mesh_mpi_cvmsi.sh
 bin_PROGRAMS += run_ucvm2mesh_mpi_layer_cvmsi.sh
 run_ucvm2mesh_mpi_layer_cvmsi_sh_SOURCES = run_ucvm2mesh_mpi_layer_cvmsi.sh
+bin_PROGRAMS += run_ucvm2mesh_mpi_la_habra_cvmsi.sh
+run_ucvm2mesh_mpi_la_habra_cvmsi_sh_SOURCES = run_ucvm2mesh_mpi_la_habra_cvmsi.sh
+bin_PROGRAMS += run_ucvm2mesh_mpi_layer_la_habra_cvmsi.sh
+run_ucvm2mesh_mpi_layer_la_habra_cvmsi_sh_SOURCES = run_ucvm2mesh_mpi_layer_la_habra_cvmsi.sh
 endif 
 endif
 
 if UCVM_AM_ENABLE_CVMS
 if UCVM_ON_USC_DISCOVERY
-bin_PROGRAMS += run_ucvm2mesh_mpi_layer_cvms.sh
-run_ucvm2mesh_mpi_layer_cvms_sh_SOURCES = run_ucvm2mesh_mpi_layer_cvms.sh
+bin_PROGRAMS += run_ucvm2mesh_mpi_layer_la_habra_cvms.sh
+run_ucvm2mesh_mpi_layer_la_habra_cvms_sh_SOURCES = run_ucvm2mesh_mpi_layer_la_habra_cvms.sh
 endif
 endif
 

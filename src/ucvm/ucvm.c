@@ -45,6 +45,8 @@
 #define UCVM_CONFIG_DELIM ","
 #define UCVM_GTL_DELIM ":"
 
+/* floating point tolerance fraction */
+const double EPS = 1e-12;
 
 /* Init flag */
 int ucvm_init_flag = 0;
@@ -904,8 +906,10 @@ int ucvm_setparam(ucvm_model_param_t param, ...)
   case UCVM_MODEL_PARAM_IFUNC_ZRANGE:
     dval = va_arg(ap, double);
     dval2 = va_arg(ap, double);
-    if (dval > dval2) {
-      fprintf(stderr, "Interp min depth greater than max depth\n");
+    if (dval > dval2 + EPS) {
+      fprintf(stderr, "XXX Interp min depth greater than max depth\n");
+      fprintf(stderr, "XXX Interp dval > dval2, %lf %lf %d\n", dval, dval2, (dval>dval2));
+      fprintf(stderr, "XXX Interp, dval=%+.17e dval2=%+.17e diff=%+.17e\n", dval, dval2, dval - dval2);
       return(UCVM_CODE_ERROR);
     }
     if ((dval < 0.0) || (dval2 < 0.0)) {

@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #ifdef UM_ENABLE_MPI
 #include <mpi.h>
 #endif
@@ -15,10 +16,10 @@
 #include "um_dtypes.h"
 #include "um_mesh.h"
 
+int get_spacing_list(char *fname, double **target);
 
 /* Read config file*/
-int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, int old_style)
-{
+int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, int old_style) {
   ucvm_config_t *chead;
   ucvm_config_t *cptr;
 
@@ -30,14 +31,25 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
   cfg->rank = myid;
 
   /* Set defaults for optional variables */
-  cfg->z_spacing = -1.0;
   cfg->x_file = NULL;
-  cfg->x_list_num = 0;
+  cfg->user_x = 0;
   cfg->y_file = NULL;
-  cfg->y_list_num = 0;
+  cfg->user_y = 0;
   cfg->z_file = NULL;
+  cfg->user_z = 0;
+
+  cfg->spacing = -1.0;
+  cfg->x_spacing = -1.0;
+  cfg->y_spacing = -1.0;
+  cfg->z_spacing = -1.0;
+
+  cfg->x_list = NULL;
+  cfg->x_list_num = 0;
+  cfg->y_list = NULL;
+  cfg->y_list_num = 0;
   cfg->z_list = NULL;
   cfg->z_list_num = 0;
+
   cfg->ucvm_zrange[0] = 0.0;
   cfg->ucvm_zrange[1] = 350.0;
   cfg->ucvm_floor[0] = 500.0;
@@ -108,6 +120,8 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       if(sscanf(cptr->value, "%lf", &cfg->min_zrange) != 1) {
         fprintf(stderr, "[%d] Failed set find min_zrange in config\n", myid);
         return(1);
+        } else { // fill in
+          cfg->ucvm_zrange[0]=cfg->min_zrange;   
       }
     }
     /* optional */
@@ -116,6 +130,8 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       if(sscanf(cptr->value, "%lf", &cfg->max_zrange) != 1) {
         fprintf(stderr, "[%d] Failed set find max_zrange in config\n", myid);
         return(1);
+        } else { // fill in
+          cfg->ucvm_zrange[1]=cfg->max_zrange;   
       }
     }
 
@@ -125,6 +141,8 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       if(sscanf(cptr->value, "%lf", &cfg->vs_floor) != 1) {
         fprintf(stderr, "[%d] Failed set find vs_floor in config\n", myid);
         return(1);
+        } else { //fill in
+          cfg->ucvm_floor[0]=cfg->vs_floor;   
       }
     }
     /* optional */
@@ -133,6 +151,8 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       if(sscanf(cptr->value, "%lf", &cfg->vp_floor) != 1) {
         fprintf(stderr, "[%d] Failed set find vp_floor in config\n", myid);
         return(1);
+        } else { //fill in
+          cfg->ucvm_floor[1]=cfg->vp_floor;   
       }
     }
     /* optional */
@@ -141,10 +161,26 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       if(sscanf(cptr->value, "%lf", &cfg->density_floor) != 1) {
         fprintf(stderr, "[%d] Failed set find density_floor in config\n", myid);
         return(1);
+        } else { //fill in
+          cfg->ucvm_floor[2]=cfg->density_floor;   
       }
     }
 
     /* optional */
+    cptr = ucvm_find_name(chead, "x_spacing");
+    if (cptr != NULL) {
+      if(sscanf(cptr->value, "%lf", &cfg->x_spacing) != 1) {
+        fprintf(stderr, "[%d] Failed to find x_spacing in config\n", myid);
+        return(1);
+      }
+    }
+    cptr = ucvm_find_name(chead, "y_spacing");
+    if (cptr != NULL) {
+      if(sscanf(cptr->value, "%lf", &cfg->y_spacing) != 1) {
+        fprintf(stderr, "[%d] Failed to find y_spacing in config\n", myid);
+        return(1);
+      }
+    }
     cptr = ucvm_find_name(chead, "z_spacing");
     if (cptr != NULL) {
       if(sscanf(cptr->value, "%lf", &cfg->z_spacing) != 1) {
@@ -152,7 +188,26 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
         return(1);
       }
     }
+
     /* optional */
+    cptr = ucvm_find_name(chead, "x_file");
+    if (cptr != NULL) {
+      int len=strlen(cptr->value);
+      cfg->x_file=(char *) malloc(sizeof(char) * (len+1));
+      if(sscanf(cptr->value, "%s", cfg->x_file) != 1) {
+        fprintf(stderr, "[%d] Failed to retrieve x_file in config\n", myid);
+        return(1);
+      }
+    }
+    cptr = ucvm_find_name(chead, "y_file");
+    if (cptr != NULL) {
+      int len=strlen(cptr->value);
+      cfg->y_file=(char *) malloc(sizeof(char) * (len+1));
+      if(sscanf(cptr->value, "%s", cfg->y_file) != 1) {
+        fprintf(stderr, "[%d] Failed to retrieve y_file in config\n", myid);
+        return(1);
+      }
+    }
     cptr = ucvm_find_name(chead, "z_file");
     if (cptr != NULL) {
       int len=strlen(cptr->value);
@@ -163,26 +218,6 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       }
     }
 
-    cptr = ucvm_find_name(chead, "x_file");
-    if (cptr != NULL) {
-      int len=strlen(cptr->value);
-      cfg->x_file=(char *) malloc(sizeof(char) * (len+1));
-      if(sscanf(cptr->value, "%s", cfg->x_file) != 1) {
-        fprintf(stderr, "[%d] Failed to retrieve x_file in config\n", myid);
-        return(1);
-      }
-    }
-
-    cptr = ucvm_find_name(chead, "y_file");
-    if (cptr != NULL) {
-      int len=strlen(cptr->value);
-      cfg->y_file=(char *) malloc(sizeof(char) * (len+1));
-      if(sscanf(cptr->value, "%s", cfg->y_file) != 1) {
-        fprintf(stderr, "[%d] Failed to retrieve y_file in config\n", myid);
-        return(1);
-      }
-    }
-    
     cptr = ucvm_find_name(chead, "proj");
     if (cptr == NULL) {
 	fprintf(stderr, "[%d] Failed to find proj in config\n", myid);
@@ -351,7 +386,7 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
 
 // Done with config file processing..
 // Do wrap up validation and post-processing
-
+//
     /* Check config */
     for (i = 0; i < 3; i++) {
       if (cfg->dims.dim[0] <= 0) {
@@ -377,58 +412,36 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
     cfg->ucvm_floor[1] = cfg->vp_floor; 
     cfg->ucvm_floor[2] = cfg->density_floor; 
 
-/* compose z_list */
-    if( cfg->z_file != NULL) {
-      /* open the z_file and bring in a list of floats */
-      int cap=30;
-      double val;
-      int cnt=0;
-      double *z_list= NULL;
-
-      FILE *fp = fopen(cfg->z_file, "r");
-      if (fp == NULL) {
-        fprintf(stderr, "Failed to open %s\n", cfg->z_file);
-        return UCVM_CODE_ERROR;
-      }
-
-      z_list = (double *)malloc(cap * sizeof(double));
-      if (z_list == NULL) {
-        fclose(fp);
-        fprintf(stderr, "Failed to malloc\n");
-        return UCVM_CODE_ERROR;
-      }
-
-      char line[UCVM_MAX_LINE_LEN];
-      while (fgets(line, UCVM_MAX_LINE_LEN, fp) != NULL) {
-        if(line[0]=='#') continue; // a comment line
-        if(sscanf(line,"%lf", &val) == 1) {
-          if (cnt >= cap) {
-            cap *= 2;
-            double *tmp = realloc(z_list, cap * sizeof(double));
-            if (tmp == NULL) {
-              free(z_list);
-              fclose(fp);
-              return UCVM_CODE_ERROR;
-            }
-            z_list = tmp;
-          }
-          z_list[cnt++] = val;
-        }
-      }
-      fclose(fp);
-
-/* save in config structure */
-      cfg->z_list_num = cnt;
-      cfg->z_list = z_list;
-      } else {
-        cfg->z_list=(double *)malloc (sizeof(double) * 1);
-        cfg->z_list_num=1;
-        if (cfg->z_spacing != -1.0) {
-          cfg->z_list[0]= cfg->z_spacing;
-          } else {
-            cfg->z_list[0]= cfg->spacing;
-        }
+/* compose x_list, y_list, z_list */
+    int rc=get_spacing_list(cfg->x_file, &cfg->x_list);
+    if(rc != UCVM_CODE_ERROR && rc > 0) { // user supplied a xlist
+       cfg->x_list_num=rc;
+       cfg->user_x=1;
+       } else { // malloc the space needed  but set later on
+          cfg->x_list=(double *) malloc(cfg->dims.dim[0] * sizeof(double));  
+          cfg->x_list_num=cfg->dims.dim[0];
     }
+    rc=get_spacing_list(cfg->y_file, &cfg->y_list);
+    if(rc != UCVM_CODE_ERROR && rc > 0) { // user supplied a ylist
+       cfg->y_list_num=rc;
+       cfg->user_y=1;
+       } else { // malloc the space needed  but set later on
+          cfg->y_list=(double *) malloc(cfg->dims.dim[1] * sizeof(double));  
+          cfg->y_list_num=cfg->dims.dim[1];
+    }
+    rc=get_spacing_list(cfg->z_file, &cfg->z_list);
+    if(rc != UCVM_CODE_ERROR && rc > 0) { // user supplied a zlist
+       cfg->z_list_num=rc;
+       cfg->user_z=1;
+       } else { // malloc the space needed but set later on 
+          cfg->z_list=(double *) malloc(cfg->dims.dim[2] * sizeof(double));  
+          cfg->z_list_num=cfg->dims.dim[2];
+    }
+
+    /* if no z_spacing default to spacing */
+    if (cfg->x_spacing == -1.0) cfg->x_spacing=cfg->spacing;
+    if (cfg->y_spacing == -1.0) cfg->y_spacing=cfg->spacing;
+    if (cfg->z_spacing == -1.0) cfg->z_spacing=cfg->spacing;
 
 #ifdef UM_ENABLE_MPI
     /* Check MPI related config items */
@@ -461,7 +474,7 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
 */
     }
 #endif
-  }
+}
 
 #ifdef UM_ENABLE_MPI
   if (nproc > 0) {
@@ -508,19 +521,6 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
       }
     }
 
-    if (MPI_Bcast(&cfg->z_list_num, 1, MPI_INT, 0, 
-		  MPI_COMM_WORLD) != MPI_SUCCESS) {
-        fprintf(stderr, "[%d] Failed to broadcast z_list_num\n", myid);
-        return(1);
-    }
-
-/* only can sent some of it */
-    if (MPI_Bcast(&cfg->z_list, cfg->z_list_num, MPI_DOUBLE, 0, 
-		  MPI_COMM_WORLD) != MPI_SUCCESS) {
-        fprintf(stderr, "[%d] Failed to broadcast z_list\n", myid);
-        return(1);
-    }
-    
     if (MPI_Bcast(&(cfg->proj[0]), 256, MPI_CHAR, 
 		  0, MPI_COMM_WORLD) != MPI_SUCCESS) {
       fprintf(stderr, "[%d] Failed to broadcast proj\n", myid);
@@ -604,6 +604,62 @@ int read_config(int myid, int nproc, const char *cfgfile, mesh_config_t *cfg, in
   return(0);
 }
 
+#ifdef UM_ENABLE_MPI
+
+int broadcast_config_lists(int myid, int nproc, mesh_config_t *cfg) {
+    if(nproc <= 0) return 0;
+
+    if (MPI_Bcast(&cfg->x_list_num, 1, MPI_INT, 0, 
+		  MPI_COMM_WORLD) != MPI_SUCCESS) {
+        fprintf(stderr, "[%d] Failed to broadcast x_list_num\n", myid);
+        return(1);
+    }
+    if(cfg->x_list_num > 0) {
+       if(myid != 0) { 
+           cfg->x_list=(double *) malloc(cfg->x_list_num * sizeof(double));  
+       }
+       if (MPI_Bcast(cfg->x_list, cfg->x_list_num, MPI_DOUBLE, 0, 
+		  MPI_COMM_WORLD) != MPI_SUCCESS) {
+           fprintf(stderr, "[%d] Failed to broadcast x_list\n", myid);
+           return(1);
+       }
+    }
+    
+    if (MPI_Bcast(&cfg->y_list_num, 1, MPI_INT, 0, 
+		  MPI_COMM_WORLD) != MPI_SUCCESS) {
+        fprintf(stderr, "[%d] Failed to broadcast y_list_num\n", myid);
+        return(1);
+    }
+    if(cfg->y_list_num > 0) {
+       if(myid != 0) { 
+           cfg->y_list=(double *) malloc(cfg->y_list_num * sizeof(double));  
+       }
+       if (MPI_Bcast(cfg->y_list, cfg->y_list_num, MPI_DOUBLE, 0, 
+		  MPI_COMM_WORLD) != MPI_SUCCESS) {
+           fprintf(stderr, "[%d] Failed to broadcast y_list\n", myid);
+           return(1);
+       }
+    }
+    
+    if (MPI_Bcast(&cfg->z_list_num, 1, MPI_INT, 0, 
+		  MPI_COMM_WORLD) != MPI_SUCCESS) {
+        fprintf(stderr, "[%d] Failed to broadcast z_list_num\n", myid);
+        return(1);
+    } 
+    if(cfg->z_list_num > 0) {
+       if(myid != 0) { 
+           cfg->z_list=(double *) malloc(cfg->z_list_num * sizeof(double));  
+       }
+       if (MPI_Bcast(cfg->z_list, cfg->z_list_num, MPI_DOUBLE, 0, 
+		  MPI_COMM_WORLD) != MPI_SUCCESS) {
+           fprintf(stderr, "[%d] Failed to broadcast z_list\n", myid);
+           return(1);
+       }
+    }
+    return(0);
+}
+#endif
+
 /* Return total number of ranks */
 int get_nrank(mesh_config_t *cfg) {
   int t=cfg->proc_dims.dim[0]*cfg->proc_dims.dim[1]*cfg->proc_dims.dim[2];
@@ -622,6 +678,50 @@ int get_nlayer(mesh_config_t *cfg) {
   return t;
 }
 
+/* extract user supplied spacing list */
+int get_spacing_list(char *fname, double **rlist) {
+  if (fname == NULL || fname[0] == '\0') {
+    return 0;
+  }
+
+  FILE *fp = fopen(fname, "r");
+  int cap=20;
+  double val;
+  int cnt=0;
+  double *target;
+  if (fp != NULL) {
+    // there is a user supplied list
+    target = (double *)malloc(cap * sizeof(double));
+    if (target == NULL) {
+      fclose(fp);
+      fprintf(stderr, "Failed to malloc\n");
+      return UCVM_CODE_ERROR;
+    }
+
+    char line[UCVM_MAX_LINE_LEN];
+    while (fgets(line, UCVM_MAX_LINE_LEN, fp) != NULL) {
+      if(line[0]=='#') continue; // a comment line
+      if(sscanf(line,"%lf", &val) == 1) {
+        if (cnt >= cap) {
+          cap *= 2;
+          double *tmp = realloc(target, cap * sizeof(double));
+          if (tmp == NULL) {
+            free(target);
+            fclose(fp);
+            return UCVM_CODE_ERROR;
+          }
+          target = tmp;
+        }
+        target[cnt++] = val;
+      }
+    }
+    *rlist=target;
+    return cnt;
+  }
+  return 0;
+}
+
+
 /* Dump config to stdout */
 int disp_config(mesh_config_t *cfg) {
 
@@ -631,7 +731,11 @@ int disp_config(mesh_config_t *cfg) {
   printf("\t[%d] Gridtype: %d\n", cfg->rank, (int)cfg->gridtype);
   printf("\t[%d] Querymode: %d\n", cfg->rank, (int)cfg->querymode);
   printf("\t[%d] Spacing: %lf\n", cfg->rank, cfg->spacing);
+  printf("\t[%d] X Spacing: %lf\n", cfg->rank, cfg->x_spacing);
+  printf("\t[%d] Y Spacing: %lf\n", cfg->rank, cfg->y_spacing);
   printf("\t[%d] Z Spacing: %lf\n", cfg->rank, cfg->z_spacing);
+  printf("\t[%d] X file: %s\n", cfg->rank, cfg->x_file);
+  printf("\t[%d] Y file: %s\n", cfg->rank, cfg->y_file);
   printf("\t[%d] Z file: %s\n", cfg->rank, cfg->z_file);
   printf("\t[%d] Min zrange: %lf\n", cfg->rank, cfg->min_zrange);
   printf("\t[%d] Max zrange: %lf\n", cfg->rank, cfg->max_zrange);
@@ -657,6 +761,4 @@ int disp_config(mesh_config_t *cfg) {
 
   return(0);
 }
-
-
 

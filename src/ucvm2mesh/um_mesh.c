@@ -26,6 +26,25 @@ void *node_buf_serial2 = NULL;
 void *node_buf_serial3 = NULL;
 int node_buf_size_serial = 0;
 
+/* Mesh coordinate writer */
+int mesh_coord_write(double *clist, int count, char *output, char *type)
+{
+
+  char fname[UCVM_MAX_PATH_LEN];
+  sprintf(fname, "%s_%s", output,type);
+
+  FILE *cfp = fopen(fname , "wb");
+  if (cfp == NULL) {
+    fprintf(stderr, "Failed to open output file\n");
+    return(1);
+  }
+  for(int i=0;i<count;i++) {
+    fprintf(cfp,"%lf\n",clist[i]);
+  }
+  fclose(cfp);
+  return(1);
+}
+
 /* Check if node is valid */
 int mesh_node_valid(int i, int j, int k, mesh_ijk32_t *node)
 {

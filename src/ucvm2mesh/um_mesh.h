@@ -56,6 +56,9 @@ int mesh_data_to_node(int myid, int i_start, int i_end,
 		      mesh_ijk32_t *node_buf, double vp_min, double vs_min);
 
 
+/* mesh coordinates writer */ 
+int mesh_coord_write(double *clist, int count, char *output, char *type);
+
 /* Serial mesh writer */
 int mesh_open_serial(ucvm_dim_t *mesh_dims, char *output, 
 		     mesh_format_t mtype, int bufsize);
