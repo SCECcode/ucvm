@@ -23,8 +23,8 @@ extern char *optarg;
 extern int optind, opterr, optopt;
 
 
-int ucvm2mesh_debug=1;
-int ucvm2mesh_debug_detail=1;
+int ucvm2mesh_debug=0;
+int ucvm2mesh_debug_detail=0;
 FILE *stderrfp=NULL;
 
 /* Display usage information */

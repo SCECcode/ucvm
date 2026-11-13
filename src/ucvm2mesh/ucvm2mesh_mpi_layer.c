@@ -38,6 +38,11 @@
 extern char *optarg;
 extern int optind, opterr, optopt;
 
+int ucvm2mesh_mpi_layer_debug=1;
+int ucvm2mesh_mpi_layer_debug_detail=0;
+FILE *stderrfp=NULL;
+
+
 /* MPI Statistic vars */
 MPI_Datatype MPI_STAT_T;
 int num_fields_stat;
@@ -339,6 +344,11 @@ int main(int argc, char **argv)
 
   if (myid == 0) {
 
+    if(ucvm2mesh_mpi_layer_debug) {
+      stderrfp = fopen("ucvm2mesh_mpi_layer_debug.log", "a");
+      fprintf(stderrfp,"--- OPEN ---\n");
+    }
+
     printf("[%d] Initialization complete\n", myid);
     fflush(stdout);
     
@@ -377,88 +387,84 @@ int main(int argc, char **argv)
       }
 
       printf("[%d] Grid generation complete\n", myid);
+      fflush(stdout);
+    }
 
-
-      int dimx=cfg.dims.dim[0];
-      int dimy=cfg.dims.dim[1];
-      int dimz=cfg.dims.dim[2];
-      int num_grid = dimx * dimy;
+    int dimx=cfg.dims.dim[0];
+    int dimy=cfg.dims.dim[1];
+    int dimz=cfg.dims.dim[2];
+    int num_grid = dimx * dimy;
 
 /* Open the grid file */
 
-      printf("[%d] Grid dims %d %d %d (%d) \n", myid,dimx,dimy,dimz, num_grid);
-      printf("[%d] Grid 4 corners:\n", myid);
+    printf("[%d] Grid dims %d %d %d (%d) \n", myid,dimx,dimy,dimz, num_grid);
+    printf("[%d] Grid 4 corners:\n", myid);
   
-      FILE *ifp = fopen(cfg.gridfile, "rb");
-      if (ifp == NULL) {
-        fprintf(stderr, "Failed to open gridfile %s for reading\n",
-                cfg.gridfile);
-         return(1);
-      }
+    FILE *ifp = fopen(cfg.gridfile, "rb");
+    if (ifp == NULL) {
+      fprintf(stderr, "Failed to open gridfile %s for reading\n",
+               cfg.gridfile);
+      return(1);
+    }
 
-      /* Read 4 grid points */
-      /* grid_offset= 0, dimx-1, num_grid-dimx, num_grid-1 */
-      //extract_all(ifp, dimx, dimy, myid);
-      ucvm_point_t tmp_pntbuf;
-      size_t grid_offset=0;
-      extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
-      printf("[%d] %lf %lf (%ld)\n", myid,tmp_pntbuf.coord[0],tmp_pntbuf.coord[1],grid_offset);
-      grid_offset=dimx-1;
-      extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
-      printf("[%d] %lf %lf (%ld)\n", myid,tmp_pntbuf.coord[0],tmp_pntbuf.coord[1],grid_offset);
-      grid_offset=num_grid-dimx;
-      extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
-      printf("[%d] %lf %lf (%ld)\n", myid,tmp_pntbuf.coord[0],tmp_pntbuf.coord[1],grid_offset);
-      grid_offset=num_grid-1;
-      extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
-      printf("[%d] %lf %lf (%ld)\n", myid,tmp_pntbuf.coord[0],tmp_pntbuf.coord[1],grid_offset);
+    /* Read 4 grid points */
+    /* grid_offset= 0, dimx-1, num_grid-dimx, num_grid-1 */
+    //extract_all(ifp, dimx, dimy, myid);
+    ucvm_point_t tmp_pntbuf;
+    size_t grid_offset=0;
+    extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
+    printf("[%d] %lf %lf (%ld)\n", myid,tmp_pntbuf.coord[0],tmp_pntbuf.coord[1],grid_offset);
+    grid_offset=dimx-1;
+    extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
+    printf("[%d] %lf %lf (%ld)\n", myid,tmp_pntbuf.coord[0],tmp_pntbuf.coord[1],grid_offset);
+    grid_offset=num_grid-dimx;
+    extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
+    printf("[%d] %lf %lf (%ld)\n", myid,tmp_pntbuf.coord[0],tmp_pntbuf.coord[1],grid_offset);
+    grid_offset=num_grid-1;
+    extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
+    printf("[%d] %lf %lf (%ld)\n", myid,tmp_pntbuf.coord[0],tmp_pntbuf.coord[1],grid_offset);
 
 // set lists and output to external files 
-      int i;
-      char fname[UCVM_MAX_PATH_LEN+20];
-      snprintf(fname,sizeof(fname),"%s_xlist_mpi_layer",cfg.meshfile);
-      FILE *mesh_xfp = fopen(fname, "w+");
-      if(!cfg.user_x) { // eventually need to skip grid generation and use the supplied list directly
-        for(i=0; i<dimx; i++) {
-          grid_offset=i;
-          extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
-          cfg.x_list[i]=tmp_pntbuf.coord[0];
-          fprintf(mesh_xfp, "%lf\n", cfg.x_list[i]);
-        }
+    int i;
+    char fname[UCVM_MAX_PATH_LEN+20];
+    snprintf(fname,sizeof(fname),"%s_xlist_mpi_layer",cfg.meshfile);
+    FILE *mesh_xfp = fopen(fname, "w+");
+    if(!cfg.user_x) { // eventually need to skip grid generation and use the supplied list directly
+      for(i=0; i<dimx; i++) {
+        grid_offset=i;
+        extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
+        cfg.x_list[i]=tmp_pntbuf.coord[0];
+        fprintf(mesh_xfp, "%lf\n", cfg.x_list[i]);
       }
-      fclose(mesh_xfp);
-      snprintf(fname,sizeof(fname),"%s_ylist_mpi_layer",cfg.meshfile);
-      FILE *mesh_yfp = fopen(fname, "w+");
-      if(!cfg.user_y) {
-        for(i=0; i<dimy; i++) {
-          grid_offset=(i * dimx);
-          extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
-          cfg.y_list[i]=tmp_pntbuf.coord[1];
-          fprintf(mesh_yfp, "%lf\n", cfg.y_list[i]);
-        }
-      }
-      fclose(mesh_yfp);
-      snprintf(fname,sizeof(fname),"%s_zlist_mpi_layer",cfg.meshfile);
-      FILE *mesh_zfp = fopen(fname, "w+");
-      if(!cfg.user_z) {
-        double z;
-        for(int k=0; k<dimz; k++) {
-          if(cfg.querymode == UCVM_COORD_GEO_DEPTH) {
-            z = cfg.origin.coord[2] + (k * cfg.z_spacing);
-            } else {
-              z = cfg.origin.coord[2] - (k * cfg.z_spacing);
-          }
-          cfg.z_list[k]=z;
-          fprintf(mesh_zfp, "%lf\n", cfg.z_list[k]);
-        }
-      }
-      fclose(mesh_zfp);
-  
-      fclose(ifp);
-      printf("[%d] Grid generation complete\n", myid);
-
-      fflush(stdout);
     }
+    fclose(mesh_xfp);
+    snprintf(fname,sizeof(fname),"%s_ylist_mpi_layer",cfg.meshfile);
+    FILE *mesh_yfp = fopen(fname, "w+");
+    if(!cfg.user_y) {
+      for(i=0; i<dimy; i++) {
+        grid_offset=(i * dimx);
+        extract_gridpoint(ifp, grid_offset, myid, &tmp_pntbuf);
+        cfg.y_list[i]=tmp_pntbuf.coord[1];
+        fprintf(mesh_yfp, "%lf\n", cfg.y_list[i]);
+      }
+    }
+    fclose(mesh_yfp);
+    snprintf(fname,sizeof(fname),"%s_zlist_mpi_layer",cfg.meshfile);
+    FILE *mesh_zfp = fopen(fname, "w+");
+    if(!cfg.user_z) {
+      double z;
+      for(int k=0; k<dimz; k++) {
+        if(cfg.querymode == UCVM_COORD_GEO_DEPTH) {
+          z = cfg.origin.coord[2] + (k * cfg.z_spacing);
+          } else {
+            z = cfg.origin.coord[2] - (k * cfg.z_spacing);
+        }
+        cfg.z_list[k]=z;
+        fprintf(mesh_zfp, "%lf\n", cfg.z_list[k]);
+      }
+    }
+    fclose(mesh_zfp);
+    fclose(ifp);
   }
 
 #ifdef UM_ENABLE_MPI
@@ -540,6 +546,13 @@ if( myrank >=start_rank && myrank <= end_rank ) {
 
   /* Final sync */
   mpi_barrier();
+
+  if (myid == 0) {
+    if(ucvm2mesh_mpi_layer_debug) {
+      fclose(stderrfp);
+    }
+  }
+
   mpi_final("MPI Done");
 
   return(0);

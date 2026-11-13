@@ -23,6 +23,11 @@
 extern char *optarg;
 extern int optind, opterr, optopt;
 
+int ucvm2mesh_mpi_debug=0;
+int ucvm2mesh_mpi_debug_detail=0;
+FILE *stderrfp=NULL;
+
+
 /* Display usage information */
 void usage(char *arg)
 {
@@ -431,6 +436,11 @@ int main(int argc, char **argv)
 
   if (myid == 0) {
 
+    if(ucvm2mesh_mpi_debug) {
+      stderrfp = fopen("ucvm2mesh_mpi_debug.log", "a");
+      fprintf(stderrfp,"--- OPEN ---\n");
+    }
+
     printf("[%d] Initialization complete\n", myid);
     fflush(stdout);
     
@@ -634,6 +644,13 @@ int main(int argc, char **argv)
 
   /* Final sync */
   mpi_barrier();
+
+  if (myid == 0) {
+    if(ucvm2mesh_mpi_debug) {
+      fclose(stderrfp);
+    }
+  }
+
   mpi_final("MPI Done");
 
   return(0);
