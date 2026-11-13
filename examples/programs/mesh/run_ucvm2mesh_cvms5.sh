@@ -30,6 +30,8 @@ cat > $expect << EOF_EXPECTED_RESULT
 0000144
 EOF_EXPECTED_RESULT
 
+cp $result result
+
 echo "Running examples_programs_ucvm2mesh ucvm2mesh_cvms5"
 if diff $result $expect > /dev/null 2>&1
 then

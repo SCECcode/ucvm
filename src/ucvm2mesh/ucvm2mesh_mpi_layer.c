@@ -38,7 +38,7 @@
 extern char *optarg;
 extern int optind, opterr, optopt;
 
-int ucvm2mesh_mpi_layer_debug=1;
+int ucvm2mesh_mpi_layer_debug=0;
 int ucvm2mesh_mpi_layer_debug_detail=0;
 FILE *stderrfp=NULL;
 

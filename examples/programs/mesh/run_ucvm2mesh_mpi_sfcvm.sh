@@ -22,7 +22,7 @@ sed 's ${CONF_DIR} '$CONF_DIR' ' southbay_sfcvm.conf_template | sed 's ${TYPE} '
 
 echo "start --${TEST}" `date` > ${TEST}.timing 
 
-salloc ${UCVM_SALLOC_ENV} --job-name=${TEST} --comment=${TEST} --nodes=1 --ntasks=8 --time=00:40:00 srun -e ${TEST}.srun.err -o ${TEST}.srun.out ./ucvm2mesh_mpi -f ./southbay_sfcvm.conf
+salloc ${UCVM_SALLOC_ENV} -Q --job-name=${TEST} --comment=${TEST} --nodes=1 --ntasks=8 --time=00:40:00 srun -e ${TEST}.srun.err -o ${TEST}.srun.out ./ucvm2mesh_mpi -f ./southbay_sfcvm.conf
 
 echo "done --${TEST}" `date` >> ${TEST}.timing
 

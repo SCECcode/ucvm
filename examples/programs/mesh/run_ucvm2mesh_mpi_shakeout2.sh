@@ -18,7 +18,7 @@ cp ${CONF_DIR}/ucvm.conf .
 
 sed 's ${CONF_DIR} '$CONF_DIR' ' shakeout2.conf_template | sed 's ${SCRATCH} '$SCRATCH' ' > shakeout2.conf
 
-salloc ${UCVM_SALLOC_ENV} -Q  --nodes=2 --ntasks=16 --time=00:30:00 srun -Q -o ${TEST}.srun.out ${BIN_DIR}/ucvm2mesh_mpi -f shakeout2.conf
+salloc ${UCVM_SALLOC_ENV} -Q  --nodes=2 --ntasks=16 --time=00:30:00 srun -o ${TEST}.srun.out ${BIN_DIR}/ucvm2mesh_mpi -f shakeout2.conf
 
 
 expect=$(mktemp) || exit 1

@@ -18,7 +18,7 @@ cp ${CONF_DIR}/ucvm.conf .
 
 sed 's ${CONF_DIR} '$CONF_DIR' ' small_cvmsi.conf_template | sed 's ${SCRATCH} '$SCRATCH' ' > small_cvmsi.conf
 
-salloc ${UCVM_SALLOC_ENV} --nodes=2 --ntasks=40 --time=00:30:00 srun -e ${TEST}.srun.err -o ${TEST}.srun.out ${BIN_DIR}/ucvm2mesh_mpi -f small_cvmsi.conf
+salloc ${UCVM_SALLOC_ENV} -Q --nodes=2 --ntasks=40 --time=00:30:00 srun -e ${TEST}.srun.err -o ${TEST}.srun.out ${BIN_DIR}/ucvm2mesh_mpi -f small_cvmsi.conf
 
 
 expect=$(mktemp) || exit 1

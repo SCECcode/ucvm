@@ -18,7 +18,7 @@ cp ${CONF_DIR}/ucvm.conf .
 
 sed 's ${CONF_DIR} '$CONF_DIR' ' small_cvmsi.conf_template | sed 's ${SCRATCH} '$SCRATCH' ' > small_cvmsi.conf
 
-salloc ${UCVM_SALLOC_ENV} -Q  --nodes=2 --ntasks=40 --time=00:30:00 srun -Q -o ${TEST}.srun.out ${BIN_DIR}/ucvm2mesh_mpi -f small_cvmsi.conf
+salloc ${UCVM_SALLOC_ENV} -Q  --nodes=2 --ntasks=40 --time=00:30:00 srun -e ${TEST}.srun.err -o ${TEST}.srun.out ${BIN_DIR}/ucvm2mesh_mpi -f small_cvmsi.conf
 
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
@@ -27,7 +27,6 @@ result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
 MAX_WAIT=30
 ELAPSED=0
 FILE="small_cvmsi.media_vs"
-echo "Waiting for ${FILE} to be created..."
 while [ ! -f "$FILE" ]; do
   if [ "$ELAPSED" -ge "$MAX_WAIT" ]; then
     echo "[ERROR] Timed out waiting for '${FILE}' after ${MAX_WAIT} seconds. Aborting."
@@ -36,7 +35,6 @@ while [ ! -f "$FILE" ]; do
   sleep 1
   ((ELAPSED++))
 done
-##echo "Found ${FILE} after ${ELAPSED} second(s)."
 
 od -N 100 small_cvmsi.media_vs |head -10 | sed 's/ //g' > $result 2>& 1
 

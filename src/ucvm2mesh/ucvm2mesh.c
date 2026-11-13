@@ -223,7 +223,7 @@ int extract(mesh_config_t *cfg)
   }
 
   if(!cfg->user_y) {
-    fprintf(stderrfp,"Y-axis col:\n");
+    if(ucvm2mesh_debug) fprintf(stderrfp,"Y-axis col:\n");
     for(int j=0; j<dimy; j++) {
       if(ucvm2mesh_debug_detail) {
         fprintf(stderrfp,"  %lf %lf\n",pntbuf[dimx * j].coord[0],pntbuf[ dimx * j].coord[1]);
@@ -365,7 +365,7 @@ int main(int argc, char **argv)
   char configfile[UCVM_MAX_PATH_LEN];
   char gridfile[UCVM_MAX_PATH_LEN];
 
-  if(ucvm2mesh_debug) {
+  if(ucvm2mesh_debug || ucvm2mesh_debug_detail) {
     stderrfp = fopen("ucvm2mesh_debug.log", "w+");
   }
 
@@ -447,7 +447,7 @@ int main(int argc, char **argv)
 
   fprintf(stdout, "Done.\n");
 
-  if(ucvm2mesh_debug) {
+  if(ucvm2mesh_debug || ucvm2mesh_debug_detail ) {
     fprintf(stderrfp, "Done.\n");
     fclose(stderrfp);
   }
