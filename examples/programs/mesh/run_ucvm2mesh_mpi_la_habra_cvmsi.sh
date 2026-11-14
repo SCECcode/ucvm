@@ -6,19 +6,20 @@ if [ -z "$UCVM_INSTALL_PATH" ]; then
 fi
 source $UCVM_INSTALL_PATH/conf/ucvm_env.sh
 
-rm -rf ucvm2mesh_mpi ucvm.conf small-cvmsi.conf small_cvmsi.grid small_cvmsi.media*
+rm -rf ucvm2mesh_mpi ucvm.conf la_habra_cvmsi.conf la_habra_cvmsi.grid la_habra_cvmsi.media*
 
 BIN_DIR=${UCVM_INSTALL_PATH}/bin
 CONF_DIR=${UCVM_INSTALL_PATH}/conf
 SCRATCH=./scratch
-TEST=ucvm2mesh_mpi_cvmsi
+PZ=2
+TEST=ucvm2mesh_mpi_la_habra_cvmsi
 
 cp ${BIN_DIR}/ucvm2mesh_mpi .
 cp ${CONF_DIR}/ucvm.conf .
 
-sed 's ${CONF_DIR} '$CONF_DIR' ' small_cvmsi.conf_template | sed 's ${SCRATCH} '$SCRATCH' ' > small_cvmsi.conf
+sed 's ${CONF_DIR} '$CONF_DIR' ' la_habra_cvmsi.conf_template | sed 's ${PZ} '${PZ}' ' | sed 's ${SCRATCH} '$SCRATCH' ' > la_habra_cvmsi.conf 
 
-salloc ${UCVM_SALLOC_ENV} -Q  --nodes=2 --ntasks=40 --time=00:30:00 srun -e ${TEST}.srun.err -o ${TEST}.srun.out ${BIN_DIR}/ucvm2mesh_mpi -f small_cvmsi.conf
+salloc ${UCVM_SALLOC_ENV} -Q  --nodes=2 --ntasks=8 --time=00:30:00 srun -e ${TEST}.srun.err -o ${TEST}.srun.out ${BIN_DIR}/ucvm2mesh_mpi -f la_habra_cvmsi.conf
 
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
