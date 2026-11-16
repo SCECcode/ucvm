@@ -10,6 +10,7 @@ BIN_DIR=${UCVM_INSTALL_PATH}/bin
 CONF_DIR=${UCVM_INSTALL_PATH}/conf
 TEST_DIR=${UCVM_INSTALL_PATH}/tests/inputs
 MODEL=cvmh
+TEST=basin_query_cvmh
 
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
@@ -23,7 +24,7 @@ cat > $expect << EOF_EXPECTED_RESULT_Z2500
  -120.0000    33.0000      0.000      0.000      0.000
 EOF_EXPECTED_RESULT_Z2500
 
-echo "Running examples_programs_basin z2500 basin_query_cvmh"
+echo "Running examples_programs_basin z2500" ${TEST}
 if diff $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]
@@ -45,7 +46,7 @@ cat > $expect << EOF_EXPECTED_RESULT_Z1000
  -120.0000    33.0000      0.000      0.000      0.000
 EOF_EXPECTED_RESULT_Z1000
 
-echo "Running examples_programs_basin z1000 basin_query_cvmh"
+echo "Running examples_programs_basin z1000" ${TEST}
 if diff $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]

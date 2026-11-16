@@ -10,6 +10,7 @@ BIN_DIR=${UCVM_INSTALL_PATH}/bin
 CONF_DIR=${UCVM_INSTALL_PATH}/conf
 TEST_DIR=${UCVM_INSTALL_PATH}/tests/inputs
 MODEL=cvmsi,elygtl:taper
+TEST=basin_query_cvmi_taper
 
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
@@ -22,7 +23,7 @@ cat > $expect << EOF_EXPECTED_RESULT_Z2500
  -118.7600    34.1100    500.000   1180.000   1180.000
 EOF_EXPECTED_RESULT_Z2500
 
-echo "Running examples_programs_basin z2500 basin_query_cvmi_taper"
+echo "Running examples_programs_basin z2500" ${TEST}
 if diff $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]
