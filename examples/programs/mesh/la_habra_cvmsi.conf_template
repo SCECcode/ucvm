@@ -25,7 +25,7 @@ nz=50
 # Partitioning of grid among processors
 px=2
 py=2
-pz=%{PZ}
+pz=${PZ}
 
 # Vs/Vp minimum
 vp_min=0

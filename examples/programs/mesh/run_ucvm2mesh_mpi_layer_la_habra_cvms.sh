@@ -20,9 +20,9 @@ cp ${CONF_DIR}/ucvm.conf .
 sed 's ${CONF_DIR} '$CONF_DIR' ' la_habra_cvms.conf_template | sed 's ${PZ} '${PZ}' ' | sed 's ${SCRATCH} '$SCRATCH' ' >  la_habra_cvms.conf
 
 
-salloc ${UCVM_SALLOC_ENV} -Q --nodes=2 --ntasks=4 --time=00:30:00 srun -o ${TEST}_1.srun.out ./ucvm2mesh_mpi_layer -f la_habra_cvms.conf -l 1 -c 3
-salloc ${UCVM_SALLOC_ENV} -Q --nodes=1 --ntasks=4 --time=00:30:00 srun -o ${TEST}_2.srun.out ./ucvm2mesh_mpi_layer -f la_habra_cvms.conf -l 4 -c 3 
-salloc ${UCVM_SALLOC_ENV} -Q --nodes=1 --ntasks=4 --time=00:30:00 srun -o ${TEST}_3.srun.out ./ucvm2mesh_mpi_layer -f la_habra_cvms.conf -l 7 -c 4 
+salloc ${UCVM_SALLOC_ENV} -Q --nodes=2 --ntasks=4 --time=00:30:00 srun -e ${TEST}_1.srun.err -o ${TEST}_1.srun.out ./ucvm2mesh_mpi_layer -f la_habra_cvms.conf -l 1 -c 3
+salloc ${UCVM_SALLOC_ENV} -Q --nodes=1 --ntasks=4 --time=00:30:00 srun -e ${TEST}_2.srun.err -o ${TEST}_2.srun.out ./ucvm2mesh_mpi_layer -f la_habra_cvms.conf -l 4 -c 3 
+salloc ${UCVM_SALLOC_ENV} -Q --nodes=1 --ntasks=4 --time=00:30:00 srun -e ${TEST}_3.srun.err -o ${TEST}_3.srun.out ./ucvm2mesh_mpi_layer -f la_habra_cvms.conf -l 7 -c 4 
 
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
