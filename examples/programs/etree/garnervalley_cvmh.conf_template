@@ -3,7 +3,6 @@
 # garnervalley_cvmh.conf
 #
 #
-
 proj=geo-bilinear 
 lon_0=-116.8593
 lat_0=33.6403

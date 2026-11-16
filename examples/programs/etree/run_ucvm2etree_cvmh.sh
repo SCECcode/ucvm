@@ -15,6 +15,7 @@ CONF_DIR=${UCVM_INSTALL_PATH}/conf
 PWD_DIR=`pwd`
 ## build etreeinfo if not avail
 if [ ! -x etreeinfo ]; then
+   echo "NOT FOUND"
    cd ${UCVM_SRC_PATH}/work/lib/euclid3/tools; \
 	make etreeinfo; \
 	cd ${PWD_DIR}; \

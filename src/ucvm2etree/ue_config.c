@@ -41,7 +41,7 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
     }
 
     sz= strlen(cptr->value);
-    sz= sz > (UCVM_MAX_PROJ_LEN - 1) ? (UCVM_MAX_PROJ_LEN - 1) : sz;
+    sz= sz > (UCVM_MAX_PROJ_LEN - 1) ? (UCVM_MAX_PROJ_LEN - 1) : sz+1;
     snprintf(cfg->projinfo.projstr, sz, "%s", cptr->value);
     
     /* Geo-bilinear projection is special case */
@@ -195,7 +195,7 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       return(UCVM_CODE_ERROR);
     }
     sz= strlen(cptr->value);
-    sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
+    sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz+1;
     snprintf(cfg->ecfg.title, sz, "%s", cptr->value);
 
     cptr = ucvm_find_name(chead, "author");
@@ -204,7 +204,7 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       return(UCVM_CODE_ERROR);
     }
     sz= strlen(cptr->value);
-    sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
+    sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz+1;
     snprintf(cfg->ecfg.author, sz,"%s", cptr->value);
 
     cptr = ucvm_find_name(chead, "date");
@@ -213,7 +213,7 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
       return(UCVM_CODE_ERROR);
     }
     sz= strlen(cptr->value);
-    sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz;
+    sz= sz > (UCVM_META_MAX_STRING_LEN - 1)?(UCVM_META_MAX_STRING_LEN - 1):sz+1;
     snprintf(cfg->ecfg.date, sz, "%s", cptr->value);
 
     cptr = ucvm_find_name(chead, "outputfile");
@@ -222,7 +222,7 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
     return(UCVM_CODE_ERROR);
     }
     sz= strlen(cptr->value);
-    sz= sz > (UCVM_MAX_PATH_LEN - 1)?(UCVM_MAX_PATH_LEN - 1):sz;
+    sz= sz > (UCVM_MAX_PATH_LEN - 1)?(UCVM_MAX_PATH_LEN - 1):sz+1;
     snprintf(cfg->ecfg.outputfile, sz, "%s", cptr->value);
     
     cptr = ucvm_find_name(chead, "format");
@@ -231,7 +231,7 @@ int read_config(int myid, int nproc, const char *cfgfile, ue_cfg_t *cfg)
     return(UCVM_CODE_ERROR);
     }
     sz= strlen(cptr->value);
-    sz= sz > (UCVM_CONFIG_MAX_STR - 1)?(UCVM_CONFIG_MAX_STR - 1):sz;
+    sz= sz > (UCVM_CONFIG_MAX_STR - 1)?(UCVM_CONFIG_MAX_STR - 1):sz+1;
     snprintf(cfg->ecfg.format, sz, "%s", cptr->value);
     
     if ((strcmp(cfg->ecfg.format, "flatfile") != 0) && 
