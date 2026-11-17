@@ -450,7 +450,7 @@ int main(int argc, char **argv) {
                 printf("spacing: %f\n", spacing);
                 printf("cvm_selected: %s\n", modellist);
                 printf("\nparams: -b %f,%f -u %f,%f -c %s -s %f -x %d -y %d\n",
-                         lat1,lon1,lat2,lon2,modellist,spacing,nx,ny);
+				lat1,lon1,lat2,lon2,modellist,spacing,nx,ny);
 
                 /* produce the meta data in json.. */
 
@@ -465,6 +465,19 @@ int main(int argc, char **argv) {
                 lonlist[0]='\0';
                 int ii;
                 // pnts.coord's format is coord[0] is the lon, ccord[1] is the lat
+                char *alist=latlist;
+                for (ii = 0; ii < ny; ii++) {
+                  double tlat= (double) (ii * spacing) + latlon[0];
+                  alist += sprintf(alist, (ii == 0) ? "%10.4f" : ",%10.4f", tlat);
+                }
+
+                char *olist=lonlist; 
+                for (ii = 0; ii < nx; ii++) {
+                  double tlon= (double) (ii * spacing) + latlon[1];
+                  olist += sprintf(olist, (ii == 0) ? "%10.4f" : ",%10.4f", tlon);
+                }
+
+/*
 		for (ii = 0; ii < ny; ii++) {
                    double tlat= (double) (ii * spacing) + latlon[0];
                    if(ii==0) {
@@ -475,23 +488,23 @@ int main(int argc, char **argv) {
                 }
 		for (ii = 0; ii < nx; ii++) {
                    double tlon= (double) (ii * spacing) + latlon[1];
-                   
                    if(ii==0) {
                        sprintf(lonlist,"%10.4f",tlon);
                        } else {
                            sprintf(lonlist,"%s,%10.4f",lonlist,tlon);
                    }
                 }
+*/
                 
                 if(ascii_meta_outfile != 0 && strlen(ascii_meta_outfile) > 0) { 
                 // a guess of how big the blob is..
                     int meta_sz=(int) strlen(latlist)+(int)strlen(lonlist)+ META_BASE_LEN;
 		    char *meta_blob=(char *)malloc(meta_sz*sizeof(char));
                     if (meta_blob == NULL ) {
-                        fprintf(stderr,"failed to reesrve meta blob \n");
-                        exit(1);
+                        fprintf(stderr,"failed to resrve meta blob \n");
+                        MPI_Abort(MPI_COMM_WORLD, 1);
                     }
-		    sprintf(meta_blob,"{\"spacing\":%10.4f,\
+		    int rc=snprintf(meta_blob,meta_sz,"{\"spacing\":%10.4f,\
 			\"bottom-left lat\":%10.4f,\"bottom-left lon\":%10.4f,\
 			\"upper-right lat\":%10.4f,\"upper-right lon\":%10.4f,\
 			\"cvm_selected\":\"%s\",\"config\": \"%s\",\
@@ -503,6 +516,10 @@ int main(int argc, char **argv) {
                     modellist,configfile,
                     max_depth,vs_thresh,
                     nx,ny,latlist,lonlist);
+                    if(rc<0 || rc >= meta_sz) {
+                       fprintf(stderr, "Metadata JSON truncated or formatting failed (rc=%d, meta_sz=%d)\n", rc, meta_sz);
+                       MPI_Abort(MPI_COMM_WORLD, 1);
+                    }
 
 		    MPI_File_open(MPI_COMM_SELF, ascii_meta_outfile, MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &mfh);
 		    MPI_File_write(mfh, meta_blob, (int)strlen(meta_blob) * sizeof(char), MPI_CHAR, MPI_STATUS_IGNORE);
@@ -571,25 +588,27 @@ int main(int argc, char **argv) {
 			}
 		}
 
+                MPI_Offset byte_offset = (MPI_Offset)currentline * (MPI_Offset)nx * sizeof(float);
+
                 if(bfh[0] != NULL) {
-		  MPI_File_set_view(bfh[0], currentline * nx * sizeof(float), MPI_FLOAT, MPI_FLOAT, "native", MPI_INFO_NULL);
-		  MPI_File_write(bfh[0], /*currentline * nx * sizeof(float),*/ retDepths, nx, MPI_FLOAT, MPI_STATUS_IGNORE);
+		  MPI_File_set_view(bfh[0], byte_offset, MPI_FLOAT, MPI_FLOAT, "native", MPI_INFO_NULL);
+		  MPI_File_write(bfh[0], retDepths, nx, MPI_FLOAT, MPI_STATUS_IGNORE);
                 }
                 if(bfh[1] != NULL) {
-		  MPI_File_set_view(bfh[1], currentline * nx * sizeof(float), MPI_FLOAT, MPI_FLOAT, "native", MPI_INFO_NULL);
-		  MPI_File_write(bfh[1], /*currentline * nx * sizeof(float),*/ retSecondDepths, nx, MPI_FLOAT, MPI_STATUS_IGNORE);
+		  MPI_File_set_view(bfh[1], byte_offset, MPI_FLOAT, MPI_FLOAT, "native", MPI_INFO_NULL);
+		  MPI_File_write(bfh[1], retSecondDepths, nx, MPI_FLOAT, MPI_STATUS_IGNORE);
                 }
                 if(bfh[2] != NULL) {
-		  MPI_File_set_view(bfh[2], currentline * nx * sizeof(float), MPI_FLOAT, MPI_FLOAT, "native", MPI_INFO_NULL);
-		  MPI_File_write(bfh[2], /*currentline * nx * sizeof(float),*/ retLastDepths, nx, MPI_FLOAT, MPI_STATUS_IGNORE);
+		  MPI_File_set_view(bfh[2], byte_offset, MPI_FLOAT, MPI_FLOAT, "native", MPI_INFO_NULL);
+		  MPI_File_write(bfh[2], retLastDepths, nx, MPI_FLOAT, MPI_STATUS_IGNORE);
                 }
                 if(bfh[3] != NULL) {
-		  MPI_File_set_view(bfh[3], currentline * nx * sizeof(float), MPI_FLOAT, MPI_FLOAT, "native", MPI_INFO_NULL);
-		  MPI_File_write(bfh[3], /*currentline * nx * sizeof(float),*/ retSecondOnlyDepths, nx, MPI_FLOAT, MPI_STATUS_IGNORE);
+		  MPI_File_set_view(bfh[3], byte_offset, MPI_FLOAT, MPI_FLOAT, "native", MPI_INFO_NULL);
+		  MPI_File_write(bfh[3], retSecondOnlyDepths, nx, MPI_FLOAT, MPI_STATUS_IGNORE);
                 }
                 if(bfh[4] != NULL) {
-		  MPI_File_set_view(bfh[4], currentline * nx * sizeof(float), MPI_FLOAT, MPI_FLOAT, "native", MPI_INFO_NULL);
-		  MPI_File_write(bfh[4], /*currentline * nx * sizeof(float),*/ retThirdLastDepths, nx, MPI_FLOAT, MPI_STATUS_IGNORE);
+		  MPI_File_set_view(bfh[4], byte_offset, MPI_FLOAT, MPI_FLOAT, "native", MPI_INFO_NULL);
+		  MPI_File_write(bfh[4], retThirdLastDepths, nx, MPI_FLOAT, MPI_STATUS_IGNORE);
                 }
 // XXX write out ascii 
 		if(afh != NULL) {
@@ -618,6 +637,8 @@ int main(int argc, char **argv) {
 		free(retDepths);
 		free(retLastDepths);
 		free(retSecondDepths);
+                free(retSecondOnlyDepths);
+                free(retThirdLastDepths);
                 free(retLiteral);
 
 		currentline += numprocs;

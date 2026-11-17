@@ -43,7 +43,7 @@ cat > $expect << EOF_EXPECTED_RESULT
 0000460 140000 042455 040000 042530 100000 042543 000000 042515
 EOF_EXPECTED_RESULT
 
-echo "Running examples_programs_basin basin_query_mpi_cvmsi_taper"
+echo "Running examples_programs_basin z2500" ${TEST}
 if diff $result $expect > /dev/null 2>&1
 then
   echo [SUCCESS]

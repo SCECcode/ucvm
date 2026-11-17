@@ -4,7 +4,7 @@
 ucvmlist=cvmsi,elygtl:taper
 
 # UCVM conf file
-ucvmconf=${CONF_DIR}/conf/ucvm.conf
+ucvmconf=${CONF_DIR}/ucvm.conf
 
 ## taper's max_z is forced to be 700m
 min_zrange=0.0
@@ -18,11 +18,11 @@ density_floor=200.0
 gridtype=CENTER
 
 # Spacing of cells (m)
-spacing=1000.0
-z_file = shakeout2_zlist
+spacing=100.0
 
-x_file = shakeout2_xlist
-y_file = shakeout2_ylist
+#z_file = shakeout2_zlist
+#x_file = shakeout2_xlist
+#y_file = shakeout2_ylist
 
 # Projection
 proj=+proj=utm +datum=WGS84 +zone=11
@@ -39,21 +39,24 @@ z0=0.0
 #y=469k
 #dz=50..,100..,350..,500..,1000..
 # Number of cells along each dim
-nx=516
-ny=468
-nz=152
+#nx=516
+#ny=468
+#nz=152
+nx=20
+ny=20
+nz=40
 
 # Partitioning of grid among processors
 px=4
 py=4
-pz=8
+pz=${PZ}
 
 # Vs/Vp minimum
 vp_min=0
 vs_min=0
 
 # Mesh and grid files, format
-meshfile=shakeout2.mesh
+meshfile=shakeout2.media
 gridfile=shakeout2.grid
 #meshtype=IJK-12
 meshtype=SORD

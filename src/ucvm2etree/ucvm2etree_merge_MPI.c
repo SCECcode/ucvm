@@ -383,8 +383,11 @@ int main(int argc, char **argv)
       fclose(cfg.ecfg.efp[0]);
 
       /* Save schema and meta data */
-      sprintf(efile1, "%s.schema", cfg.ecfg.outputfile);
-      sprintf(efile2, "%s.metadata", cfg.ecfg.outputfile);
+      int rc= snprintf(efile1, strlen(efile1), "%s.schema", cfg.ecfg.outputfile);
+      if(rc<0 || rc >= strlen(efile1)) return(1);
+      rc=snprintf(efile2, strlen(efile2), "%s.metadata", cfg.ecfg.outputfile);
+      if(rc<0 || rc >= strlen(efile2)) return(1);
+
       fp = fopen(efile1, "wb");
       fwrite(appschema, UCVM_META_MIN_META_LEN, 1, fp);
       fclose(fp);
@@ -549,8 +552,11 @@ int main(int argc, char **argv)
     rank2 = rank1 + 1;
     printf("[%d] Merging etrees %d and %d\n", myid, rank1, rank2);
 
-    sprintf(efile1, "%s/cvmbycols_%07d.fs", cfg.scratch, rank1);
-    sprintf(efile2, "%s/cvmbycols_%07d.fs", cfg.scratch, rank2);
+    int rc=snprintf(efile1, strlen(efile1),"%s/cvmbycols_%07d.fs", cfg.scratch, rank1);
+    if(rc<0 || rc >= strlen(efile1)) return(1);
+    rc=snprintf(efile2, strlen(efile2),"%s/cvmbycols_%07d.fs", cfg.scratch, rank2);
+    if(rc<0 || rc >= strlen(efile2)) return(1);
+
     printf("[%d] %s, %s\n", myid, efile1, efile2);
     cfg.ecfg.efp[0] = fopen(efile1, "rb");
     if (cfg.ecfg.efp[0] == NULL) {

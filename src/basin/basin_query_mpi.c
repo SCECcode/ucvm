@@ -54,9 +54,7 @@ void usage() {
 /* Extract basin values for the specified point */
 int extract_basin_mpi(ucvm_point_t *pnt, double *depths, double max_depth, double z_inter, double vs_thresh) {
 
-	int i, j, p, dnum, numz;
-	double vs_prev;
-	int mallocPts = 0;
+	int j, numz;
 
 	numz = (int) (max_depth / z_inter);
 
@@ -107,17 +105,10 @@ int main(int argc, char **argv) {
 
 	ucvm_ctype_t cmode;
 	int have_model = 0;
-	int have_zrange = 0;
 	int have_map = 0;
 
-	ucvm_point_t *pnt;
-	ucvm_point_t *qpnts;
-	ucvm_data_t *qprops;
-	int numread = 0;
 	char map_label[UCVM_MAX_LABEL_LEN];
 	char *binary_outfile = malloc(512 * sizeof(char));
-
-	double *depths;
 
 	int numprocs, rank, i;
 
@@ -267,7 +258,7 @@ int main(int argc, char **argv) {
 		double tempDepths[2];
 		float *retDepths = malloc(nx * sizeof(float));
 
-		printf("Current line: %d. Progress: %.2f\%\n", currentline, (float)currentline / (float)ny * 100.0f);
+		printf("Current line: %d. Progress: %.2f%%\n", currentline, (float)currentline / (float)ny * 100.0f);
 
 		for (i = 0; i < nx; i++) {
 			pnts[0].coord[1] = (currentline * spacing) + latlon[0];

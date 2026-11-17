@@ -45,6 +45,8 @@
 #define UCVM_CONFIG_DELIM ","
 #define UCVM_GTL_DELIM ":"
 
+/* floating point tolerance fraction */
+const double EPS = 1e-12;
 
 /* Init flag */
 int ucvm_init_flag = 0;
@@ -639,9 +641,6 @@ int ucvm_assoc_ifunc(const char *mlabel, const char *ilabel)
   if (strcmp(ilabel, UCVM_IFUNC_ELY) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_ELY, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_ely;
-  } else if (strcmp(ilabel, UCVM_IFUNC_SO2) == 0) {
-    ucvm_strcpy(ifunc.label, UCVM_IFUNC_SO2, UCVM_MAX_LABEL_LEN);
-    ifunc.interp = ucvm_interp_so2;
   } else if (strcmp(ilabel, UCVM_IFUNC_TAPER) == 0) {
     ucvm_strcpy(ifunc.label, UCVM_IFUNC_TAPER, UCVM_MAX_LABEL_LEN);
     ifunc.interp = ucvm_interp_taper;
@@ -907,8 +906,10 @@ int ucvm_setparam(ucvm_model_param_t param, ...)
   case UCVM_MODEL_PARAM_IFUNC_ZRANGE:
     dval = va_arg(ap, double);
     dval2 = va_arg(ap, double);
-    if (dval > dval2) {
-      fprintf(stderr, "Interp min depth greater than max depth\n");
+    if (dval > dval2 + EPS) {
+      fprintf(stderr, "XXX Interp min depth greater than max depth\n");
+      fprintf(stderr, "XXX Interp dval > dval2, %lf %lf %d\n", dval, dval2, (dval>dval2));
+      fprintf(stderr, "XXX Interp, dval=%+.17e dval2=%+.17e diff=%+.17e\n", dval, dval2, dval - dval2);
       return(UCVM_CODE_ERROR);
     }
     if ((dval < 0.0) || (dval2 < 0.0)) {
@@ -1513,12 +1514,6 @@ int ucvm_get_resources(ucvm_resource_t *res, int *len)
   /* Get installed ifuncs */
   if (ucvm_save_resource(UCVM_RESOURCE_IFUNC, UCVM_MODEL_CRUSTAL,
 		     UCVM_IFUNC_ELY, "", res, numinst++, *len) 
-      != UCVM_CODE_SUCCESS) {
-    return(UCVM_CODE_ERROR);
-  }
-
-  if (ucvm_save_resource(UCVM_RESOURCE_IFUNC, UCVM_MODEL_CRUSTAL,
-                     UCVM_IFUNC_SO2, "", res, numinst++, *len)
       != UCVM_CODE_SUCCESS) {
     return(UCVM_CODE_ERROR);
   }

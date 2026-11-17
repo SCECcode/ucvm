@@ -63,7 +63,7 @@ void mpi_register_octant(MPI_Datatype *dt)
     disp[i] = disp[i-1] + sizes[i-1]*blocklen[i-1];
   }
 
-  MPI_Type_struct(num_fields, blocklen, disp, ftype, dt);
+  MPI_Type_create_struct(num_fields, blocklen, disp, ftype, dt);
   MPI_Type_commit(dt);
   return;
 }
@@ -90,7 +90,7 @@ void mpi_register_dispatch(MPI_Datatype *dt)
     disp[i] = disp[i-1] + sizes[i-1]*blocklen[i-1];
   }
 
-  MPI_Type_struct(num_fields, blocklen, disp, ftype, dt);
+  MPI_Type_create_struct(num_fields, blocklen, disp, ftype, dt);
   MPI_Type_commit(dt);
   return;
 }

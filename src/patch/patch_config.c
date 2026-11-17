@@ -11,6 +11,7 @@
 int read_config(const char *cfgfile, patch_cfg_t *cfg)
 {
   int i;
+  int sz;
 
   ucvm_config_t *chead;
   ucvm_config_t *cptr;
@@ -29,24 +30,18 @@ int read_config(const char *cfgfile, patch_cfg_t *cfg)
     fprintf(stderr, "Failed to find version in config\n");
     return(UCVM_CODE_ERROR);
   }
-  if (strlen(cptr->value) > UCVM_MAX_VERSION_LEN - 1) {
-    memset(cfg->version, 0, UCVM_MAX_VERSION_LEN);
-    strncpy(cfg->version, cptr->value, UCVM_MAX_VERSION_LEN - 1);
-  } else {
-    sprintf(cfg->version, "%s", cptr->value);
-  }
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_MAX_VERSION_LEN - 1) ? (UCVM_MAX_VERSION_LEN - 1) : sz;
+  snprintf(cfg->version, sz,"%s", cptr->value);
 
   cptr = ucvm_find_name(chead, "proj");
   if (cptr == NULL) {
     fprintf(stderr, "Failed to find proj in config\n");
     return(UCVM_CODE_ERROR);
   }
-  if (strlen(cptr->value) > UCVM_MAX_PROJ_LEN - 1) {
-    memset(cfg->projinfo.projstr, 0, UCVM_MAX_PROJ_LEN);
-    strncpy(cfg->projinfo.projstr, cptr->value, UCVM_MAX_PROJ_LEN - 1);
-  } else {
-    sprintf(cfg->projinfo.projstr, "%s", cptr->value);
-  }    
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_MAX_PROJ_LEN - 1) ? (UCVM_MAX_PROJ_LEN - 1) : sz;
+  snprintf(cfg->projinfo.projstr, sz,"%s", cptr->value);
 
   /* Parse origin longitude */
   cptr = ucvm_find_name(chead, "lon_0");
@@ -133,7 +128,10 @@ int read_config(const char *cfgfile, patch_cfg_t *cfg)
     fprintf(stderr, "Failed to find modelpath in config\n");
     return(UCVM_CODE_ERROR);
   }
-  sprintf(cfg->modelpath, "%s", cptr->value);
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_MAX_PATH_LEN - 1) ? (UCVM_MAX_PATH_LEN - 1) : sz;
+  snprintf(cfg->modelpath, sz,"%s", cptr->value);
+
 
   cptr = ucvm_find_name(chead, "ucvmstr");
   if (cptr == NULL) {
@@ -158,7 +156,9 @@ int read_config(const char *cfgfile, patch_cfg_t *cfg)
     fprintf(stderr, "Failed to find ucvmconf in config\n");
     return(UCVM_CODE_ERROR);
   }
-  sprintf(cfg->ucvmconf, "%s", cptr->value);
+  sz= strlen(cptr->value);
+  sz= sz > (UCVM_MAX_PATH_LEN - 1) ? (UCVM_MAX_PATH_LEN - 1) : sz;
+  snprintf(cfg->ucvmconf, sz,"%s", cptr->value);
     
   ucvm_free_config(chead); 
 

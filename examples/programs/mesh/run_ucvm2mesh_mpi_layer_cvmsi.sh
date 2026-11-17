@@ -9,23 +9,24 @@ source $UCVM_INSTALL_PATH/conf/ucvm_env.sh
 BIN_DIR=${UCVM_INSTALL_PATH}/bin
 CONF_DIR=${UCVM_INSTALL_PATH}/conf
 SCRATCH=./scratch
+PZ=10
 TEST=ucvm2mesh_mpi_layer_cvmsi
 
-rm -rf la_habra_cvmsi.grid la_habra_cvmsi.media* la_habra_cvmsi.conf ucvm2mesh_mpi_layer ucvm.conf 
+rm -rf small_cvmsi.grid small_cvmsi.media* small_cvmsi.conf ucvm2mesh_mpi_layer ucvm.conf 
 
 cp ${BIN_DIR}/ucvm2mesh_mpi_layer .
 cp ${CONF_DIR}/ucvm.conf .
 
-sed 's ${CONF_DIR} '$CONF_DIR' ' la_habra_cvmsi.conf_template | sed 's ${SCRATCH} '$SCRATCH' ' > la_habra_cvmsi.conf
+sed 's ${CONF_DIR} '$CONF_DIR' ' small_cvmsi.conf_template | sed 's ${PZ} '${PZ}' ' | sed 's ${SCRATCH} '$SCRATCH' ' >  small_cvmsi.conf
 
-salloc ${UCVM_SALLOC_ENV} -Q --nodes=2 --ntasks=4 --ntasks=4 --time=00:30:00 srun -Q -o ${TEST}_1.srun.out ./ucvm2mesh_mpi_layer -f la_habra_cvmsi.conf -l 1 -c 3
-salloc ${UCVM_SALLOC_ENV} -Q --nodes=1 --ntasks=4 --time=00:30:00 srun -Q -o ${TEST}_2.srun.out ./ucvm2mesh_mpi_layer -f la_habra_cvmsi.conf -l 4 -c 3 
-salloc ${UCVM_SALLOC_ENV} -Q --nodes=1 --ntasks=4 --time=00:30:00 srun -Q -o ${TEST}_3.srun.out ./ucvm2mesh_mpi_layer -f la_habra_cvmsi.conf -l 7 -c 4 
+salloc -Q ${UCVM_SALLOC_ENV} --nodes=2 --ntasks=4 --time=00:30:00 srun -e ${TEST}_1.srun.err -o ${TEST}_1.srun.out ./ucvm2mesh_mpi_layer -f small_cvmsi.conf -l 1 -c 3
+salloc -Q ${UCVM_SALLOC_ENV} --nodes=1 --ntasks=4 --time=00:30:00 srun -e ${TEST}_2.srun.err -o ${TEST}_2.srun.out ./ucvm2mesh_mpi_layer -f small_cvmsi.conf -l 4 -c 3 
+salloc -Q ${UCVM_SALLOC_ENV} --nodes=1 --ntasks=4 --time=00:30:00 srun -e ${TEST}_3.srun.err -o ${TEST}_3.srun.out ./ucvm2mesh_mpi_layer -f small_cvmsi.conf -l 7 -c 4 
 
 expect=$(mktemp) || exit 1
 result=$(mktemp) || (trap 'rm -f "$expect"'; exit 1)
 
-od -N 100 la_habra_cvmsi.media_vs |head -10 | sed 's/ //g' > $result 2>& 1
+od -N 100 small_cvmsi.media_vs |head -10 | sed 's/ //g' > $result 2>& 1
 
 cat > $expect << EOF_EXPECTED_RESULT
 0000000015341041533015341041533015341041533017270041434
@@ -33,8 +34,8 @@ cat > $expect << EOF_EXPECTED_RESULT
 *
 0000060017270041434017270041434051463041430051463041430
 0000100051463041430051463041430051463041430051463041430
-0000120015341041533015341041533015341041533017270041434
-0000140017270041434
+*
+0000140051463041430
 0000144
 EOF_EXPECTED_RESULT
 

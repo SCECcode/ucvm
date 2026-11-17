@@ -23,17 +23,26 @@ typedef struct mesh_config_t
   double vp_floor; /* optional */
   double density_floor; /* optional */
 
-  double spacing;
+  double spacing; /* optional unified x/y/z spacing */
+  double x_spacing; /* optional */
+  double y_spacing; /* optional */
   double z_spacing; /* optional */
 
-     
-  char *z_file; /* optional, can be input or output filename */
-  double *z_list; 
+/* optional, to hold user specified input filename */
+  char *x_file; /* optional */ 
+  int user_x; /* if xlist were supplied by user */
+  char *y_file; /* optional */
+  int user_y; /* if ylist were supplied by user */
+  char *z_file; /* optional */
+  int user_z; /* if zlist were supplied by user */
+
+  double *z_list; // internal z_list 
   int z_list_num; 
 
-  char *x_file; /* optional, output filename only */
+  double *x_list; // internal x_list
   int x_list_num;
-  char *y_file; /* optional, output filename only */
+
+  double *y_list; // internal y_list
   int y_list_num;
 
   char proj[UCVM_MAX_PROJ_LEN];

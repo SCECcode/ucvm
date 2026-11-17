@@ -11,5 +11,7 @@ int get_nlayer(mesh_config_t *cfg);
 /* Dump config to stdout */
 int disp_config(mesh_config_t *cfg);
 
+int broadcast_config_lists(int myid, int nproc, mesh_config_t *cfg);
+
 #endif
 
