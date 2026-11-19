@@ -115,13 +115,13 @@
                         "Abbreviation": "uwpkfcvm",
                         "Size": "5.3M",
                         "Path": "uwpkfcvm",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8_1/model/uwpkfcvm.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/uwpkfcvm.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "--with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
                         "UCVMConfigureFlags": "--enable-model-uwpkfcvm --with-uwpkfcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwpkfcvm/lib --with-uwpkfcvm-include-path=${UCVM_INSTALL_PATH}/model/uwpkfcvm/include",
                         "Ask": "yes",
                         "Libraries": ["proj"],
-                        "md5sum": "fa0b81a153be05ae4ac5aafad04f0c11",
+                        "md5sum": "0efc8789b74ec32157ff935d83598a1f",
                         "Order": 29 
                },
                "UWSFBCVM": {
@@ -387,12 +387,12 @@
                         "Abbreviation": "wfcvm",
                         "Size": "50M",
                         "Path": "wfcvm",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/wfcvm.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/wfcvm.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-wfcvm --with-wfcvm-lib-path=${UCVM_INSTALL_PATH}/model/wfcvm/lib --with-wfcvm-include-path=${UCVM_INSTALL_PATH}/model/wfcvm/include --with-wfcvm-model-path=${UCVM_INSTALL_PATH}/model/wfcvm/src",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "6062ca271201a8ec2fe2df5133259d2a",
+                        "md5sum": "f1cb533369359439a93b911fb4df5c0a",
                         "Order": 12
                 },
 		"IMPERIAL": {
