@@ -57,14 +57,17 @@ int mesh_node_valid(int i, int j, int k, mesh_ijk32_t *node)
     return(1);
   }
 
+//if (node->vp <= 0.0) {
   if (node->vp <= 0.0) {
     fprintf(stderr, "Neg Vp at %d, %d, %d\n", i, j, k);
     return(1);
   }
+//if (node->vs < 0.0) {
   if (node->vs <= 0.0) {
     fprintf(stderr, "Neg Vs at %d, %d, %d\n", i, j, k);
     return(1);
   }
+//if (node->rho < 0.0) {
   if (node->rho <= 0.0) {
     fprintf(stderr, "Neg Rho at %d, %d, %d\n", i, j, k);
     return(1);
