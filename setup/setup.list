@@ -275,7 +275,7 @@
                         "UCVMConfigureFlags": "--enable-model-cvmhsmbn --with-cvmhsmbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhsmbn/lib --with-cvmhsmbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhsmbn/include --with-cvmhsmbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhsmbn/data/cvmhsmbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "416b799b1a5f1136d1b657823eb81201",
+                        "md5sum": "d44d58e4038aa5c10c190198562508cd",
                         "Order": 21 
                 },
                 "CVMHSBCBN": {
@@ -288,7 +288,7 @@
                         "UCVMConfigureFlags": "--enable-model-cvmhsbcbn --with-cvmhsbcbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhsbcbn/lib --with-cvmhsbcbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhsbcbn/include --with-cvmhsbcbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhsbcbn/data/cvmhsbcbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "f8e8688fd33db5e2ac80adb3bdb97df6",
+                        "md5sum": "b7e86f07d7f55fc32f442c71b54c0ee1",
                         "Order": 20 
                 },
                 "CVMHSBBN": {
@@ -301,7 +301,7 @@
                         "UCVMConfigureFlags": "--enable-model-cvmhsbbn --with-cvmhsbbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhsbbn/lib --with-cvmhsbbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhsbbn/include --with-cvmhsbbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhsbbn/data/cvmhsbbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "9a369208b0034185fe9765c49527c539",
+                        "md5sum": "dfe25bc983057e857330c4a2b3ee0278",
                         "Order": 19
                 },
                 "CVMHSTBN": {
@@ -314,7 +314,7 @@
                         "UCVMConfigureFlags": "--enable-model-cvmhstbn --with-cvmhstbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhstbn/lib --with-cvmhstbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhstbn/include --with-cvmhstbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhstbn/data/cvmhstbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "1813bb7e03a5672d07ddc9a1d6fa2e5f",
+                        "md5sum": "6096974fabbb789ba3a46ef5f187c0e1",
                         "Order": 18
                 },
                 "CVMHRBN": {
@@ -327,7 +327,7 @@
                         "UCVMConfigureFlags": "--enable-model-cvmhrbn --with-cvmhrbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhrbn/lib --with-cvmhrbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhrbn/include --with-cvmhrbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhrbn/data/cvmhrbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "943420a7130955aac820256efc7034af",
+                        "md5sum": "145ce12c7ef698f25bfe3b965049cf18",
                         "Order": 17
                 },
                 "CVMHIBBN": {
@@ -340,7 +340,7 @@
                         "UCVMConfigureFlags": "--enable-model-cvmhibbn --with-cvmhibbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhibbn/lib --with-cvmhibbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhibbn/include --with-cvmhibbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhibbn/data/cvmhibbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "907e0c6b407341cc974f9f1008359ef6",
+                        "md5sum": "5392a5c1d46fccba06afb2dc744efd42",
                         "Order": 16
                 },
                 "CVMHVBN": {
@@ -353,7 +353,7 @@
                         "UCVMConfigureFlags": "--enable-model-cvmhvbn --with-cvmhvbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhvbn/lib --with-cvmhvbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhvbn/include --with-cvmhvbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhvbn/data/cvmhvbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "3b5ef3569b39b6bb82740d91853952d5",
+                        "md5sum": "4e58a4002c8813216e552a70a90b39fd",
                         "Order": 15
                 },
                 "CVMHSGBN": {
@@ -366,7 +366,7 @@
                         "UCVMConfigureFlags": "--enable-model-cvmhsgbn --with-cvmhsgbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhsgbn/lib --with-cvmhsgbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhsgbn/include --with-cvmhsgbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhsgbn/data/cvmhsgbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "d52444990ed6f57fccb2950cdb2fe2a1",
+                        "md5sum": "8a84cdd68ce61acee658e5a15ca9a259",
                         "Order": 14
                 },
                 "CVMHLABN": {
@@ -379,7 +379,7 @@
                         "UCVMConfigureFlags": "--enable-model-cvmhlabn --with-cvmhlabn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhlabn/lib --with-cvmhlabn-include-path=${UCVM_INSTALL_PATH}/model/cvmhlabn/include --with-cvmhlabn-model-path=${UCVM_INSTALL_PATH}/model/cvmhlabn/data/cvmhlabn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "e59e4498180e9c5988ff89b7fd797464",
+                        "md5sum": "219ea1f6ab2605624bbe7e9e1f396850",
                         "Order": 13
                 },
                 "WFCVM": {
