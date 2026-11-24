@@ -115,13 +115,13 @@
                         "Abbreviation": "uwpkfcvm",
                         "Size": "5.3M",
                         "Path": "uwpkfcvm",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_8_1/model/uwpkfcvm.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/uwpkfcvm.tar.gz",
                         "ConfigureEnv": [ "UCVM_INSTALL_PATH","UCVM_SRC_PATH"],
                         "ConfigureFlags": "--with-proj-libdir=${UCVM_INSTALL_PATH}/lib/proj/lib --with-proj-incdir=${UCVM_INSTALL_PATH}/lib/proj/include --with-tiff-libdir=${UCVM_INSTALL_PATH}/lib/tiff/lib --with-tiff-incdir=${UCVM_INSTALL_PATH}/lib/tiff/include --with-sqlite-libdir=${UCVM_INSTALL_PATH}/lib/sqlite/lib --with-sqlite-incdir=${UCVM_INSTALL_PATH}/lib/sqlite/include",
                         "UCVMConfigureFlags": "--enable-model-uwpkfcvm --with-uwpkfcvm-lib-path=${UCVM_INSTALL_PATH}/model/uwpkfcvm/lib --with-uwpkfcvm-include-path=${UCVM_INSTALL_PATH}/model/uwpkfcvm/include",
                         "Ask": "yes",
                         "Libraries": ["proj"],
-                        "md5sum": "fa0b81a153be05ae4ac5aafad04f0c11",
+                        "md5sum": "0efc8789b74ec32157ff935d83598a1f",
                         "Order": 29 
                },
                "UWSFBCVM": {
@@ -270,12 +270,12 @@
                         "Abbreviation": "cvmhsmbn",
                         "Size": "1.6G",
                         "Path": "cvmhsmbn",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_1/model/cvmhsmbn.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmhsmbn.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-cvmhsmbn --with-cvmhsmbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhsmbn/lib --with-cvmhsmbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhsmbn/include --with-cvmhsmbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhsmbn/data/cvmhsmbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "15fe13a06c2613b21828d13dda787035",
+                        "md5sum": "937c79322d7bd84ff325437e00a575b9",
                         "Order": 21 
                 },
                 "CVMHSBCBN": {
@@ -283,12 +283,12 @@
                         "Abbreviation": "cvmhsbcbn",
                         "Size": "1.6G",
                         "Path": "cvmhsbcbn",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_1/model/cvmhsbcbn.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmhsbcbn.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-cvmhsbcbn --with-cvmhsbcbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhsbcbn/lib --with-cvmhsbcbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhsbcbn/include --with-cvmhsbcbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhsbcbn/data/cvmhsbcbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "d0d0af9a7cb0f3ed010dbb5ad33e9363",
+                        "md5sum": "17a7da90972699cda6eb24da6ba80035",
                         "Order": 20 
                 },
                 "CVMHSBBN": {
@@ -296,12 +296,12 @@
                         "Abbreviation": "cvmhsbbn",
                         "Size": "1.3G",
                         "Path": "cvmhsbbn",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_1/model/cvmhsbbn.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmhsbbn.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-cvmhsbbn --with-cvmhsbbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhsbbn/lib --with-cvmhsbbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhsbbn/include --with-cvmhsbbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhsbbn/data/cvmhsbbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "ed327c0b42e00f188791db87acc1fca0",
+                        "md5sum": "ae0676780dbdca353db2ebb8e9311071",
                         "Order": 19
                 },
                 "CVMHSTBN": {
@@ -309,12 +309,12 @@
                         "Abbreviation": "cvmhstbn",
                         "Size": "2.5G",
                         "Path": "cvmhstbn",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_1/model/cvmhstbn.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmhstbn.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-cvmhstbn --with-cvmhstbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhstbn/lib --with-cvmhstbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhstbn/include --with-cvmhstbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhstbn/data/cvmhstbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "502ba5048c12e809c45e5860e1f8d809",
+                        "md5sum": "19a9e34bea0ac019efd83e21f94b4159",
                         "Order": 18
                 },
                 "CVMHRBN": {
@@ -322,12 +322,12 @@
                         "Abbreviation": "cvmhrbn",
                         "Size": "1.4G",
                         "Path": "cvmhrbn",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_1/model/cvmhrbn.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmhrbn.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-cvmhrbn --with-cvmhrbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhrbn/lib --with-cvmhrbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhrbn/include --with-cvmhrbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhrbn/data/cvmhrbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "2c03d2d8df04ac495705a208f4b2009c",
+                        "md5sum": "0e5b6e156c67a968e514820a811de64f",
                         "Order": 17
                 },
                 "CVMHIBBN": {
@@ -335,12 +335,12 @@
                         "Abbreviation": "cvmhibbn",
                         "Size": "2.1G",
                         "Path": "cvmhibbn",
-                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_1/model/cvmhibbn.tar.gz",
+                        "URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmhibbn.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-cvmhibbn --with-cvmhibbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhibbn/lib --with-cvmhibbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhibbn/include --with-cvmhibbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhibbn/data/cvmhibbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "a969f44172dc4a341cd699fa99ada485",
+                        "md5sum": "209b05ce53ab113b20847883897b36c4",
                         "Order": 16
                 },
                 "CVMHVBN": {
@@ -348,12 +348,12 @@
                         "Abbreviation": "cvmhvbn",
                         "Size": "1.5G",
                         "Path": "cvmhvbn",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_1/model/cvmhvbn.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmhvbn.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-cvmhvbn --with-cvmhvbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhvbn/lib --with-cvmhvbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhvbn/include --with-cvmhvbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhvbn/data/cvmhvbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "6cdc44b0956ad3c1ed97631661010275",
+                        "md5sum": "5d6cb5816447b8219c70dca8311fb454",
                         "Order": 15
                 },
                 "CVMHSGBN": {
@@ -361,12 +361,12 @@
                         "Abbreviation": "cvmhsgbn",
                         "Size": "1.4G",
                         "Path": "cvmhsgbn",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_1/model/cvmhsgbn.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmhsgbn.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-cvmhsgbn --with-cvmhsgbn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhsgbn/lib --with-cvmhsgbn-include-path=${UCVM_INSTALL_PATH}/model/cvmhsgbn/include --with-cvmhsgbn-model-path=${UCVM_INSTALL_PATH}/model/cvmhsgbn/data/cvmhsgbn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "0d21ae2d92547fc73c130ba9367d5ffe",
+                        "md5sum": "c4aa35a76b4bce45149b0dee487aa940",
                         "Order": 14
                 },
                 "CVMHLABN": {
@@ -374,12 +374,12 @@
                         "Abbreviation": "cvmhlabn",
                         "Size": "1.6G",
                         "Path": "cvmhlabn",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_1/model/cvmhlabn.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/cvmhlabn.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-cvmhlabn --with-cvmhlabn-lib-path=${UCVM_INSTALL_PATH}/model/cvmhlabn/lib --with-cvmhlabn-include-path=${UCVM_INSTALL_PATH}/model/cvmhlabn/include --with-cvmhlabn-model-path=${UCVM_INSTALL_PATH}/model/cvmhlabn/data/cvmhlabn",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "e22ae1cca8a570a7f3687af8efc9490b",
+                        "md5sum": "a7b0e104553b58121fb92f6cd8c76016",
                         "Order": 13
                 },
                 "WFCVM": {
@@ -387,12 +387,12 @@
                         "Abbreviation": "wfcvm",
                         "Size": "50M",
                         "Path": "wfcvm",
-			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v25_7/model/wfcvm.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/model/wfcvm.tar.gz",
                         "ConfigureOptionalEnv": [ "CVM_LARGEDATA_DIR"],
                         "UCVMConfigureFlags": "--enable-model-wfcvm --with-wfcvm-lib-path=${UCVM_INSTALL_PATH}/model/wfcvm/lib --with-wfcvm-include-path=${UCVM_INSTALL_PATH}/model/wfcvm/include --with-wfcvm-model-path=${UCVM_INSTALL_PATH}/model/wfcvm/src",
                         "Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "6062ca271201a8ec2fe2df5133259d2a",
+                        "md5sum": "f1cb533369359439a93b911fb4df5c0a",
                         "Order": 12
                 },
 		"IMPERIAL": {
@@ -442,7 +442,7 @@
 			"UCVMConfigureFlags": "--enable-model-cvmh --with-gctpc-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-lib-path=${UCVM_INSTALL_PATH}/model/cvmh/lib --with-cvmh-include-path=${UCVM_INSTALL_PATH}/model/cvmh/include --with-cvmh-model-path=${UCVM_INSTALL_PATH}/model/cvmh/model",
 			"Ask": "yes",
                         "Libraries": [],
-                        "md5sum": "ac4f27d449c4ebd787e07c917c1b3328",
+                        "md5sum": "48a22701a864b85c788dfdc7f72e69b5",
 			"Order": 8
 		},
 		"CenCalVM": {
@@ -598,7 +598,8 @@
 			"Path": "netcdf",
                         "Note": "src tarball contains a working configure script and libtool ecosystem, skip bootstrapping",
                         "Lib": "netcdf-c-4.9.2",
-			"URL": "https://downloads.unidata.ucar.edu/netcdf-c/4.9.2/netcdf-c-4.9.2.tar.gz",
+			"oURL": "https://downloads.unidata.ucar.edu/netcdf-c/4.9.2/netcdf-c-4.9.2.tar.gz",
+			"URL": "https://g-3a9041.a78b8.36fe.data.globus.org/ucvm/v26_10/lib/netcdf-c-4.9.2.tar.gz",
 			"Required": "yes",
                         "Libraries": ["hdf5"],
 			"Prerequisites": "Dynamic",
